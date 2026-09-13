@@ -53,6 +53,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | Load Balancer | 줄 안내원 | [loadbalancer-ko](docs/loadbalancer-ko.html) | [loadbalancer-en](docs/loadbalancer-en.html) |
 | CDN | 마을마다 복사본 창고 | [cdn-ko](docs/cdn-ko.html) | [cdn-en](docs/cdn-en.html) |
 | DNS | 마을 안내소 | [dns-ko](docs/dns-ko.html) | [dns-en](docs/dns-en.html) |
+| DHCP | 번호표 나눠주는 창구 | [dhcp-ko](docs/dhcp-ko.html) | [dhcp-en](docs/dhcp-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
