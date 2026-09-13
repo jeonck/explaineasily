@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Hole Nobody Knows About</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="zeroday-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Security</div>
+<h1>What is a <em>Zero-day</em>?</h1>
+<p class="sub">Zero-days, told as a story about a crack in the wall that even the builder doesn't know about.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A builder with plans and a big wall; a small crack on one side of it" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><rect x="300" y="80" width="460" height="220" fill="var(--stone-dark)"/><rect x="300" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="342" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="384" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="425" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="467" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="509" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="551" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="593" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="635" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="676" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="718" y="62" width="21" height="20" fill="var(--stone-dark)"/><path d="M620 150 l6 14 l-8 12 l10 16 l-6 14" stroke="#0A1120" stroke-width="4" fill="none" stroke-linecap="round"/><g transform="translate(120,120) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><g transform="translate(50,60)"><rect width="40" height="50" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M8 12 h24 M8 22 h24 M8 32 h16" stroke="#C9A86A" stroke-width="2"/></g></g><text x="150" y="265" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">the builder</text><text x="620" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">a small crack</text><text x="380" y="40" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">any big wall has cracks even the builder doesn't know about</text></svg>
+<p>The wall was built by a builder.<small>Any big wall has small cracks even the builder doesn't know about.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A thief with a magnifying glass finds the crack; the builder and guard say A crack? In our wall?; a bag of gold reads sold dearly" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><rect x="300" y="80" width="460" height="220" fill="var(--stone-dark)"/><rect x="300" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="342" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="384" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="425" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="467" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="509" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="551" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="593" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="635" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="676" y="62" width="21" height="20" fill="var(--stone-dark)"/><rect x="718" y="62" width="21" height="20" fill="var(--stone-dark)"/><path d="M620 150 l6 14 l-8 12 l10 16 l-6 14" stroke="#0A1120" stroke-width="4" fill="none" stroke-linecap="round"/><g transform="translate(540,90) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><g transform="translate(70,60)"><circle r="16" fill="var(--panel)" fill-opacity="0.4" stroke="var(--night)" stroke-width="4"/><path d="M12 12 L26 26" stroke="var(--night)" stroke-width="6" stroke-linecap="round"/></g></g><g transform="translate(80,120) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(180,130) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="60" y="40" width="200" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M150.0 74 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="62" y="70" width="196" height="6" fill="var(--panel)"/><text x="160.0" y="61.68" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">A crack? In our wall?</text><g transform="translate(660,250)"><rect x="-36" y="-14" width="72" height="28" rx="6" fill="#E9B44C"/><text x="0" y="5" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">sold dearly</text></g><text x="380" y="285" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">the builder and the guards don't know — only the thief</text></svg>
+<p>The thief found the crack first.<small>The builder and the guards have no idea. Only the thief knows — and sometimes sells it to other thieves for a lot.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="A calendar reading days to fix: 0, and a timeline — thief finds the crack → thief uses it → somebody notices → builder makes a patch → every castle nails it on; the first stretch is labeled time with no patch" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--panel)"/><path d="M60 200 H700" stroke="var(--line)" stroke-width="4"/><circle cx="80" cy="200" r="12" fill="var(--bad)"/><text x="80" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">thief finds the crack</text><circle cx="230" cy="200" r="12" fill="var(--bad)"/><text x="230" y="258" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">thief uses it</text><circle cx="380" cy="200" r="12" fill="var(--accent)"/><text x="380" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">somebody notices</text><circle cx="530" cy="200" r="12" fill="var(--good)"/><text x="530" y="258" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">builder makes a patch</text><circle cx="680" cy="200" r="12" fill="var(--good)"/><text x="680" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">every castle nails it on</text><g transform="translate(155,90)"><rect x="-50" y="-40" width="100" height="80" rx="8" fill="var(--panel)" stroke="var(--bad)" stroke-width="3"/><rect x="-50" y="-40" width="100" height="22" rx="8" fill="var(--bad)"/><text x="0" y="-25" text-anchor="middle" font-size="11" font-weight="700" fill="#FFF">days to fix</text><text x="0" y="24" text-anchor="middle" font-size="44" font-weight="700" fill="var(--bad)" class="d">0</text></g><rect x="60" y="170" width="290" height="8" fill="var(--bad)" fill-opacity="0.35"/><text x="205" y="160" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">time with no patch to nail on</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">count from the day the crack is known; used before that, there's nothing to nail on</text></svg>
+<p>A zero-day is a crack the builder had zero days to fix.<small>Count from the day the crack becomes known. Used before that, there's no patch to nail on.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="14" width="48" height="40" fill="var(--stone-dark)"/><path d="M30 14 l4 10 l-6 8 l8 10 l-4 12" stroke="#0A1120" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>The crack</b><span>a vulnerability</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="8" width="36" height="48" rx="3" fill="#FFF8E7" stroke="var(--bad)" stroke-width="3"/><path d="M22 22 h20 M22 32 h14 M22 42 h18" stroke="var(--bad)" stroke-width="3"/></svg><b>How to get through it</b><span>an exploit</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="14" width="48" height="40" fill="var(--stone-dark)"/><rect x="24" y="12" width="16" height="44" rx="2" fill="#8B5E3C"/><circle cx="28" cy="18" r="1.5" fill="var(--night)"/><circle cx="36" cy="50" r="1.5" fill="var(--night)"/></svg><b>The patch</b><span>the builder's fix</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="12" width="40" height="40" rx="6" fill="var(--panel)" stroke="var(--bad)" stroke-width="3"/><rect x="12" y="12" width="40" height="12" rx="6" fill="var(--bad)"/><text x="32" y="46" text-anchor="middle" font-size="20" font-weight="700" fill="var(--bad)">0</text></svg><b>Zero days</b><span>used before anyone knew</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A thief slipping through the crack is barked at by the dog; the hallway is split by a wall; a one-room key and the hallway watcher" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><rect x="0" y="60" width="240" height="260" fill="var(--stone-dark)"/><rect x="0" y="42" width="20" height="20" fill="var(--stone-dark)"/><rect x="40" y="42" width="20" height="20" fill="var(--stone-dark)"/><rect x="80" y="42" width="20" height="20" fill="var(--stone-dark)"/><rect x="120" y="42" width="20" height="20" fill="var(--stone-dark)"/><rect x="160" y="42" width="20" height="20" fill="var(--stone-dark)"/><rect x="200" y="42" width="20" height="20" fill="var(--stone-dark)"/><path d="M180 130 l6 14 l-8 12 l10 16 l-6 14" stroke="#0A1120" stroke-width="4" fill="none" stroke-linecap="round"/><g transform="translate(200,140) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><path d="M250 200 L320 200" stroke="var(--bad)" stroke-width="3" stroke-dasharray="6 6"/><g transform="translate(370,230) scale(0.9)"><path d="M26 12 q16 -18 8 -30" stroke="#A9744F" stroke-width="7" fill="none" stroke-linecap="round"/><ellipse cx="0" cy="8" rx="30" ry="17" fill="#A9744F"/><rect x="-22" y="18" width="9" height="16" rx="4" fill="#A9744F"/><rect x="10" y="18" width="9" height="16" rx="4" fill="#A9744F"/><circle cx="-26" cy="-8" r="16" fill="#A9744F"/><path d="M-40 -18 q-10 10 -6 26 q8 -4 10 -16z" fill="#7A5236"/><ellipse cx="-36" cy="-2" rx="5" ry="3.5" fill="var(--night)"/><circle cx="-30" cy="-12" r="2.5" fill="var(--night)"/><circle cx="-20" cy="-12" r="2.5" fill="var(--night)"/><rect x="-18" y="-2" width="14" height="6" rx="3" fill="var(--accent)"/><text x="-40" y="-46" text-anchor="middle" font-size="20" font-weight="700" fill="var(--accent)" class="d">WOOF!</text><path d="M-6 -36 l6 -8 M2 -30 l9 -4" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/></g><rect x="450" y="60" width="8" height="260" fill="var(--stone-dark)"/><text x="454" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">hallway split</text><g transform="translate(560,170)"><circle r="12" fill="none" stroke="#E9B44C" stroke-width="6"/><rect x="10" y="-4" width="36" height="8" fill="#E9B44C"/></g><text x="580" y="210" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">one-room key</text><g transform="translate(660,100) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="680" y="220" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">hallway watcher</text><text x="480" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="var(--good)" class="d">one crack can't open the whole castle</text></svg>
+<p>You may not know the crack, but you can see what comes through it.<small>With the <a href="edr-en.html">dog</a> barking, the <a href="vlan-en.html">hallway split</a>, and <a href="zerotrust-en.html">one-room keys</a>, one crack can't open the whole castle.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Three walls: one patched, two still cracked though a patch exists; a thief inspects the open cracks" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--accent-soft)"/><rect x="40" y="90" width="200" height="180" fill="var(--stone-dark)"/><rect x="40" y="72" width="20" height="20" fill="var(--stone-dark)"/><rect x="80" y="72" width="20" height="20" fill="var(--stone-dark)"/><rect x="120" y="72" width="20" height="20" fill="var(--stone-dark)"/><rect x="160" y="72" width="20" height="20" fill="var(--stone-dark)"/><rect x="200" y="72" width="20" height="20" fill="var(--stone-dark)"/><path d="M180 150 l6 14 l-8 12 l10 16 l-6 14" stroke="#0A1120" stroke-width="4" fill="none" stroke-linecap="round"/><rect x="162" y="144" width="36" height="68" rx="2" fill="#8B5E3C"/><circle cx="170" cy="152" r="2" fill="var(--night)"/><circle cx="190" cy="204" r="2" fill="var(--night)"/><text x="140" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="var(--good)">patched</text><rect x="290" y="90" width="200" height="180" fill="var(--stone-dark)"/><rect x="290" y="72" width="20" height="20" fill="var(--stone-dark)"/><rect x="330" y="72" width="20" height="20" fill="var(--stone-dark)"/><rect x="370" y="72" width="20" height="20" fill="var(--stone-dark)"/><rect x="410" y="72" width="20" height="20" fill="var(--stone-dark)"/><rect x="450" y="72" width="20" height="20" fill="var(--stone-dark)"/><path d="M430 150 l6 14 l-8 12 l10 16 l-6 14" stroke="#0A1120" stroke-width="4" fill="none" stroke-linecap="round"/><text x="390" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">patch exists, not nailed on</text><rect x="540" y="90" width="200" height="180" fill="var(--stone-dark)"/><rect x="540" y="72" width="20" height="20" fill="var(--stone-dark)"/><rect x="580" y="72" width="20" height="20" fill="var(--stone-dark)"/><rect x="620" y="72" width="20" height="20" fill="var(--stone-dark)"/><rect x="660" y="72" width="20" height="20" fill="var(--stone-dark)"/><rect x="700" y="72" width="20" height="20" fill="var(--stone-dark)"/><path d="M680 150 l6 14 l-8 12 l10 16 l-6 14" stroke="#0A1120" stroke-width="4" fill="none" stroke-linecap="round"/><text x="640" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">not nailed on</text><g transform="translate(600,150) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><g transform="translate(70,60)"><circle r="16" fill="var(--panel)" fill-opacity="0.4" stroke="var(--night)" stroke-width="4"/><path d="M12 12 L26 26" stroke="var(--night)" stroke-width="6" stroke-linecap="round"/></g></g><text x="380" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">zero-days are rare; most break-ins come through cracks with a patch nobody nailed on</text></svg>
+<p>A patch nobody nails on fixes nothing.<small>Zero-days are rare. Most break-ins come through cracks that already had a patch. Set a day to nail them on.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2>A <b>zero-day</b> = a crack the builder doesn't know about, found <b>first</b> by the thief and used <b>before any patch exists</b>.</h2><p>Zero-day: the crack (vulnerability) + the way through (exploit) + the patch. Every crack gets a CVE number. They're rare and expensive — most incidents come through unpatched cracks (N-days).</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Vulnerability</dt><dd><b>The crack.</b> A hole the builder left by mistake. Every big wall has some.</dd></div><div><dt>Exploit</dt><dd><b>How to get through the crack.</b> A crack alone isn't enough — the thief needs the way through.</dd></div><div><dt>Patch</dt><dd><b>The patch board.</b> The builder's fix; nailing it on is the castle's job. → <a href="malware-en.html">fixing the open door</a></dd></div><div><dt>CVE</dt><dd><b>The crack's number.</b> A name like CVE-2024-1234 for every crack, so the whole world says the same thing.</dd></div><div><dt>N-day</dt><dd><b>A crack with a patch nobody nailed on.</b> Known for N days. Far more common than zero-days.</dd></div><div><dt>Bug bounty</dt><dd><b>A reward for finding cracks.</b> So the good folks find them before the thieves do.</dd></div><div><dt>Virtual patch</dt><dd><b>A guard at the crack until the board arrives.</b> The <a href="waf-en.html">note checker</a> or the <a href="idsips-en.html">poster-watcher</a> covers that one crack.</dd></div><div><dt>Defense in depth</dt><dd><b>Many layers.</b> So one crack never opens everything. → <a href="zerotrust-en.html">the castle that always asks</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="cti-en.html">The Watchtower Friend →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>
