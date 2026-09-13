@@ -27,6 +27,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | TLP | 비밀 신호등 | [tlp-ko](docs/tlp-ko.html) | [tlp-en](docs/tlp-en.html) |
 | SOC | 성의 경비실 | [soc-ko](docs/soc-ko.html) | [soc-en](docs/soc-en.html) |
 | SIEM | 경비실의 큰 화면 | [siem-ko](docs/siem-ko.html) | [siem-en](docs/siem-en.html) |
+| Log | 성 곳곳의 한 줄 일지 | [log-ko](docs/log-ko.html) | [log-en](docs/log-en.html) |
 | EDR | 방마다 한 마리 경비견 | [edr-ko](docs/edr-ko.html) | [edr-en](docs/edr-en.html) |
 | XDR | 한 무리가 된 파수꾼들 | [xdr-ko](docs/xdr-ko.html) | [xdr-en](docs/xdr-en.html) |
 | NDR | 복도를 지키는 사람 | [ndr-ko](docs/ndr-ko.html) | [ndr-en](docs/ndr-en.html) |
@@ -92,7 +93,7 @@ python3 build.py
 ### 분야 (카테고리)
 
 분야는 `terms/` 아래 폴더 이름이고, `build.py` 의 `CATEGORIES` 에 한글·영문 이름을 등록한다.
-목록 페이지는 맨 위 분야 탭으로 나뉘고, 탭 안에서 10개씩 페이지로 나눠 보여준다(`#cat=<폴더>&page=N`, `build.py` 의 `PER_PAGE`). "다음 이야기" 링크는 같은 분야 안에서만 돈다.
+목록 페이지에는 검색창(제목·용어·원어로 찾기)이 있고, 맨 위 분야 탭으로 나뉘며, 탭 안에서 10개씩 페이지로 나눠 보여준다(`#cat=<폴더>&page=N`, `build.py` 의 `PER_PAGE`). "다음 이야기" 링크는 같은 분야 안에서만 돈다.
 
 ```python
 CATEGORIES = {

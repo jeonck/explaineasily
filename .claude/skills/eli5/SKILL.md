@@ -46,6 +46,7 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | security | TLP | 비밀 신호등 |
 | security | SOC | 성의 경비실 |
 | security | SIEM | 경비실의 큰 화면 |
+| security | Log | 성 곳곳의 한 줄 일지 |
 | security | EDR | 방마다 한 마리 경비견 |
 | security | XDR | 한 무리가 된 파수꾼들 |
 | security | NDR | 복도를 지키는 사람 |
@@ -141,7 +142,7 @@ P1 = svg(300, sky(300) + castle() + ...)          # 패널 그림들
 ...
 
 PAGE = {
-    "slug": "ioc", "order": 2,                     # order 는 같은 분야 안에서의 순서 (목록·다음 이야기)
+    "slug": "ioc", "order": 2,                     # order 는 같은 분야 안에서의 순서 (목록·다음 이야기). 사이에 끼울 땐 8.5 처럼 소수도 됨
     "title": ("남겨진 발자국", "The Footprint"),    # 비유의 이름. 용어 이름이 아니다
     "h1": ("<em>IOC</em>가 뭐예요?", "What is an <em>IOC</em>?"),
     "sub": ("원어(영문 풀네임)를 … 이야기로 풀어봤어요.", "…, told as a story about …"),

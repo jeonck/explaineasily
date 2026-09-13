@@ -5,6 +5,7 @@
 분야는 폴더 이름이다 (CATEGORIES 에 등록). 문장은 (한글, 영문) 튜플, SVG 안의 글자는 ⟦한글|영문⟧ 로 적는다.
 """
 
+import html
 import importlib.util
 import re
 import sys
@@ -114,6 +115,13 @@ h1 em { color: var(--accent); font-style: normal; }
 .index { display: grid; gap: 14px; }
 .index h2 { grid-column: 1 / -1; }
 @media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
 .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
 .tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
 .tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
@@ -248,8 +256,11 @@ def render_index(terms):
         if n:
             tabs.append(f'<a href="#cat={key}" data-cat="{key}">{ko} <small>{en} · {n}</small></a>')
     for t in terms:
+        strip = lambda v: re.sub(r"<[^>]+>", "", v)
+        terms_txt = " ".join(f"{g[0]} {g[1]}" for g in t["glossary"])
+        hay = " ".join((t["slug"], L(t["title"], "ko"), L(t["title"], "en"), strip(L(t["h1"], "ko")), strip(L(t["h1"], "en")), strip(terms_txt))).lower()
         cards.append(
-            f'<article class="card" data-cat="{t["category"]}">'
+            f'<article class="card" data-cat="{t["category"]}" data-search="{html.escape(hay, quote=True)}">'
             f'<div class="eyebrow">{t["slug"].upper()}</div>'
             f'<h3>{L(t["title"], "ko")}</h3>'
             f'<div class="links"><a href="{t["slug"]}-ko.html">한국어</a>'
@@ -261,8 +272,10 @@ def render_index(terms):
 <p class="sub">어려운 용어를 다섯 살 눈높이의 그림책으로. 글은 적게, 그림은 크게.</p>
 <p class="request">{UI["ko"]["request"]} <a href="{REQUEST_URL}">{UI["ko"]["request_link"]}</a></p>
 </header>
+<label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="7" fill="none" stroke="var(--muted)" stroke-width="2.2"/><path d="M15.5 15.5 L21 21" stroke="var(--muted)" stroke-width="2.2" stroke-linecap="round"/></svg><input id="q" type="search" placeholder="용어 검색 — CTI, 방화벽, VPN, phishing…" autocomplete="off"></label>
 <nav class="tabs" id="tabs" aria-label="분야">{"".join(tabs)}</nav>
 <section class="index" id="index">{"".join(cards)}</section>
+<p class="empty" id="empty" hidden>찾는 용어가 없어요. 아래 "요청하기"로 알려주세요.</p>
 <nav class="pager" id="pager" aria-label="페이지" hidden></nav>
 <section class="glossary"><h3>작성 원칙</h3>
 <ul class="rules">
@@ -285,7 +298,19 @@ def render_index(terms):
     var n = p ? +p[1] : 1;
     return {{ cat: cat, page: Math.min(Math.max(n, 1), pages), pages: pages, mine: mine }};
   }}
+  var q = document.getElementById('q'), empty = document.getElementById('empty');
+  function search(text) {{
+    var t = text.trim().toLowerCase();
+    tabs.classList.toggle('off', !!t);
+    if (!t) {{ empty.hidden = true; show(); return; }}
+    var n = 0;
+    cards.forEach(function (c) {{ var hit = c.dataset.search.indexOf(t) >= 0; c.hidden = !hit; if (hit) n++; }});
+    pager.hidden = true;
+    empty.hidden = n > 0;
+  }}
+  q.addEventListener('input', function () {{ search(q.value); }});
   function show() {{
+    if (q.value.trim()) {{ search(q.value); return; }}
     var st = state();
     tabs.querySelectorAll('a').forEach(function (a) {{ a.classList.toggle('cur', a.dataset.cat === st.cat); }});
     cards.forEach(function (c) {{ c.hidden = true; }});
