@@ -80,6 +80,7 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | security | Malware | 선물 상자 속 벌레 |
 | security | Zero-day | 아무도 모르는 구멍 |
 | security | Patch | 목수가 보낸 판자 |
+| security | Backup | 멀리 둔 여분 상자 |
 | design | Dialog Map | 방과 문의 지도 |
 
 비유가 **깨지는 지점**을 반드시 패널 하나로 넣는다. 이게 정직한 설명과 거짓말의 차이다.

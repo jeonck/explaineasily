@@ -61,6 +61,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | Malware | 선물 상자 속 벌레 | [malware-ko](docs/malware-ko.html) | [malware-en](docs/malware-en.html) |
 | Zero-day | 아무도 모르는 구멍 | [zeroday-ko](docs/zeroday-ko.html) | [zeroday-en](docs/zeroday-en.html) |
 | Patch | 목수가 보낸 판자 | [patch-ko](docs/patch-ko.html) | [patch-en](docs/patch-en.html) |
+| Backup | 멀리 둔 여분 상자 | [backup-ko](docs/backup-ko.html) | [backup-en](docs/backup-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
