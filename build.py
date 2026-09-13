@@ -67,6 +67,9 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
 .top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
 .top a { color: var(--muted); text-decoration: none; }
 .top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
 header { display: grid; gap: 8px; }
 .eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
 h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
@@ -208,7 +211,8 @@ def render_term(t, lang, order):
     other = "en" if lang == "ko" else "ko"
     cat = L(CATEGORIES[t["category"]], lang)
     parts = [
-        f'<nav class="top"><a href="index.html">{ui["index"]}</a><a href="{slug}-{other}.html" lang="{other}">{ui["other"]}</a></nav>',
+        f'<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">{ui["index"]}</a></span>'
+        f'<a href="{slug}-{other}.html" lang="{other}">{ui["other"]}</a></nav>',
         "<header>",
         f'<div class="eyebrow">{ui["eyebrow"]} · {cat}</div>',
         f"<h1>{L(t['h1'], lang)}</h1>",
@@ -252,8 +256,8 @@ def render_index(terms):
             f'<a href="{t["slug"]}-en.html" lang="en">English</a></div></article>'
         )
     body = f"""<header>
-<div class="eyebrow">explaineasily</div>
-<h1>어려운 말을 <em>그림</em>으로</h1>
+<div class="eyebrow"><a class="brand" href="index.html">explaineasily</a></div>
+<h1><a href="index.html" style="color:inherit;text-decoration:none">어려운 말을 <em>그림</em>으로</a></h1>
 <p class="sub">어려운 용어를 다섯 살 눈높이의 그림책으로. 글은 적게, 그림은 크게.</p>
 <p class="request">{UI["ko"]["request"]} <a href="{REQUEST_URL}">{UI["ko"]["request_link"]}</a></p>
 </header>

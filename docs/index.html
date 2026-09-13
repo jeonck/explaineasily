@@ -37,6 +37,9 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
 .top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
 .top a { color: var(--muted); text-decoration: none; }
 .top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
 header { display: grid; gap: 8px; }
 .eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
 h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
@@ -114,8 +117,8 @@ header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
 <body>
 <main class="book">
 <header>
-<div class="eyebrow">explaineasily</div>
-<h1>어려운 말을 <em>그림</em>으로</h1>
+<div class="eyebrow"><a class="brand" href="index.html">explaineasily</a></div>
+<h1><a href="index.html" style="color:inherit;text-decoration:none">어려운 말을 <em>그림</em>으로</a></h1>
 <p class="sub">어려운 용어를 다섯 살 눈높이의 그림책으로. 글은 적게, 그림은 크게.</p>
 <p class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></p>
 </header>

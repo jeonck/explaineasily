@@ -37,6 +37,9 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
 .top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
 .top a { color: var(--muted); text-decoration: none; }
 .top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
 header { display: grid; gap: 8px; }
 .eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
 h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
@@ -113,7 +116,7 @@ header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
 </head>
 <body>
 <main class="book">
-<nav class="top"><a href="index.html">← 목록</a><a href="ioc-en.html" lang="en">English</a></nav>
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="ioc-en.html" lang="en">English</a></nav>
 <header>
 <div class="eyebrow">다섯 살도 알 수 있게 · 보안</div>
 <h1><em>IOC</em>가 뭐예요?</h1>
