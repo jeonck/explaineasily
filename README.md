@@ -37,6 +37,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | Passkey | 성문을 알아보는 반지 | [passkey-ko](docs/passkey-ko.html) | [passkey-en](docs/passkey-en.html) |
 | RBAC | 모자마다 열쇠 꾸러미 | [rbac-ko](docs/rbac-ko.html) | [rbac-en](docs/rbac-en.html) |
 | ABAC | 문지기의 조건 문장 | [abac-ko](docs/abac-ko.html) | [abac-en](docs/abac-en.html) |
+| PAM | 금고 속 마스터 열쇠 | [pam-ko](docs/pam-ko.html) | [pam-en](docs/pam-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
