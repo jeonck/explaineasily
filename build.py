@@ -111,6 +111,7 @@ h1 em { color: var(--accent); font-style: normal; }
 .index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
 .index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
 .request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
 .request a { color: var(--accent); font-weight: 700; text-decoration: none; }
 .request a:hover, .request a:focus-visible { text-decoration: underline; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
@@ -235,9 +236,9 @@ def render_index(terms):
 <div class="eyebrow">explaineasily</div>
 <h1>어려운 말을 <em>그림</em>으로</h1>
 <p class="sub">어려운 용어를 다섯 살 눈높이의 그림책으로. 글은 적게, 그림은 크게.</p>
+<p class="request">{UI["ko"]["request"]} <a href="{REQUEST_URL}">{UI["ko"]["request_link"]}</a></p>
 </header>
 <section class="index">{"".join(groups)}</section>
-<section class="request">{UI["ko"]["request"]} <a href="{REQUEST_URL}">{UI["ko"]["request_link"]}</a></section>
 <section class="glossary"><h3>작성 원칙</h3>
 <ul class="rules">
 <li>쉬움을 위해 사실을 왜곡하지 않는다.</li>
