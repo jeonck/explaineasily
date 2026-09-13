@@ -33,6 +33,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | Zero Trust | 문마다 물어보는 성 | [zerotrust-ko](docs/zerotrust-ko.html) | [zerotrust-en](docs/zerotrust-en.html) |
 | OAuth | 열쇠 대신 입장권 | [oauth-ko](docs/oauth-ko.html) | [oauth-en](docs/oauth-en.html) |
 | MFA | 세 번 확인하는 문지기 | [mfa-ko](docs/mfa-ko.html) | [mfa-en](docs/mfa-en.html) |
+| SSO | 마을 통행증 | [sso-ko](docs/sso-ko.html) | [sso-en](docs/sso-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
