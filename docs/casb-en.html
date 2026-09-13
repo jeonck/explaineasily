@@ -31,6 +31,7 @@
   --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
 .book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
 .top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
@@ -78,6 +79,13 @@ h1 em { color: var(--accent); font-style: normal; }
 .next a { color: var(--accent); font-weight: 700; text-decoration: none; }
 .next a:hover, .next a:focus-visible { text-decoration: underline; }
 .index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
 .index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
 .index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
 .request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
@@ -133,7 +141,7 @@ header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
 </section>
 <section class="sum"><div class="eyebrow">In one breath</div><h2>A <b>CASB</b> = the gatekeeper <b>between</b> the castle and the sheds outside. It sees who carries what where, blocks unknown sheds, and puts the <b>castle's rules</b> on known ones.</h2><p>Cloud Access Security Broker, a name Gartner coined in 2012. Today it usually ships inside an SSE/SASE bundle — Netskope, Zscaler, Microsoft Defender for Cloud Apps.</p></section>
 <section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>SaaS / cloud app</dt><dd><b>A shed outside.</b> Google Drive, Slack, Dropbox — storehouses outside the walls.</dd></div><div><dt>Shadow IT</dt><dd><b>The shed nobody knows about.</b> The free shed employees quietly use because it's easier.</dd></div><div><dt>Sanctioned app</dt><dd><b>The approved shed list.</b> Sheds the castle knows and has rules for. The rest are blocked or watched.</dd></div><div><dt>Inline / proxy mode</dt><dd><b>The gatekeeper on the road.</b> Every trip passes the gatehouse, so it can stop things in the moment.</dd></div><div><dt>API mode</dt><dd><b>The deal with the shed owner.</b> Sees inside the shed without the road — but only after things are already in.</dd></div><div><dt>Cloud DLP</dt><dd><b>Bag check on the way to the shed.</b> The <a href="dlp-en.html">red-stamped paper</a> check, applied on the shed road.</dd></div><div><dt>Sharing misconfiguration</dt><dd><b>The shed door left open to the whole town.</b> "Anyone with the link." The mistake the broker catches most.</dd></div><div><dt>SSE · SASE</dt><dd><b>The gatekeeper bundle.</b> The modern name for selling the shed broker, the <a href="ndr-en.html">hallway watcher</a> and the <a href="zerotrust-en.html">castle that always asks</a> as one bundle.</dd></div></dl></section>
-<section class="next"><div class="eyebrow">Next story</div><a href="cti-en.html">The Watchtower Friend →</a></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="swg-en.html">The Checkpoint to Town →</a></section>
 <section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
 </main>
 </body>

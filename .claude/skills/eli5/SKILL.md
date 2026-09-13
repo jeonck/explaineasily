@@ -60,6 +60,7 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | security | IAM | 성의 명부 관리소 |
 | security | DLP | 빨간 도장 찍힌 종이 |
 | security | CASB | 바깥 창고 문지기 |
+| security | SWG | 마을로 나가는 성문 검문소 |
 | design | Dialog Map | 방과 문의 지도 |
 
 비유가 **깨지는 지점**을 반드시 패널 하나로 넣는다. 이게 정직한 설명과 거짓말의 차이다.
@@ -95,6 +96,7 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | `foot(x, y, rot)` | 발자국 |
 | `corridor(h, doors, night_mode, marks)` | 문 다섯 개짜리 복도 (NDR·Zero Trust 가 같이 씀) |
 | `gate(x, y, s)` | 성문 (XDR·MFA 가 같이 씀) |
+| `gatehouse(x, y, s)` | 길 위의 검문소 (CASB·SWG 가 같이 씀) |
 | `dog(x, y, s, bark, asleep)` | 경비견 (EDR·XDR·NDR 이 같이 씀) |
 | `label(x, y, text, size, fill, anchor, cls)` | 글자. `cls="d"` 면 제목 서체 |
 | `icon(inner)` `dot_icon(color)` | 카드용 64×64 아이콘 |

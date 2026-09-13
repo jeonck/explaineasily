@@ -41,6 +41,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | IAM | 성의 명부 관리소 | [iam-ko](docs/iam-ko.html) | [iam-en](docs/iam-en.html) |
 | DLP | 빨간 도장 찍힌 종이 | [dlp-ko](docs/dlp-ko.html) | [dlp-en](docs/dlp-en.html) |
 | CASB | 바깥 창고 문지기 | [casb-ko](docs/casb-ko.html) | [casb-en](docs/casb-en.html) |
+| SWG | 마을로 나가는 성문 검문소 | [swg-ko](docs/swg-ko.html) | [swg-en](docs/swg-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
@@ -69,7 +70,7 @@ python3 build.py
 ### 분야 (카테고리)
 
 분야는 `terms/` 아래 폴더 이름이고, `build.py` 의 `CATEGORIES` 에 한글·영문 이름을 등록한다.
-목록 페이지는 분야별로 묶이고, "다음 이야기" 링크는 같은 분야 안에서만 돈다.
+목록 페이지는 분야별로 묶이고 한 페이지에 10개씩 나눠 보여준다(`#page=N`, `build.py` 의 `PER_PAGE`). "다음 이야기" 링크는 같은 분야 안에서만 돈다.
 
 ```python
 CATEGORIES = {

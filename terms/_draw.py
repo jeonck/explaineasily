@@ -138,3 +138,9 @@ def corridor(h, doors, night_mode=False, marks=True):
 def gate(x, y, s=1.0):
     return (f'<g transform="translate({x},{y}) scale({s})"><rect x="-70" y="30" width="140" height="90" fill="var(--stone-dark)"/>'
             f'{battlements(-70, 10, 140, 4, "var(--stone-dark)", 20)}<path d="M-28 120 V78 a28 28 0 0 1 56 0 V120 Z" fill="var(--night)"/></g>')
+
+
+def gatehouse(x, y, s=1.0):
+    return (f'<g transform="translate({x},{y}) scale({s})"><rect x="-44" y="0" width="88" height="90" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="4"/>'
+            f'<path d="M-56 0 L0 -36 L56 0 Z" fill="var(--good)"/><rect x="-30" y="26" width="60" height="30" fill="var(--sky)"/>'
+            f'<rect x="-70" y="60" width="26" height="8" fill="var(--stone-dark)"/><rect x="44" y="60" width="26" height="8" fill="var(--stone-dark)"/></g>')

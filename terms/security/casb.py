@@ -14,12 +14,6 @@ def shed(x, y, name, s=1.0, dashed=False, mark=""):
             f'{label(0, 80, name, 12, "var(--muted)")}{mark}</g>')
 
 
-def gatehouse(x, y, s=1.0):
-    return (f'<g transform="translate({x},{y}) scale({s})"><rect x="-44" y="0" width="88" height="90" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="4"/>'
-            f'<path d="M-56 0 L0 -36 L56 0 Z" fill="var(--good)"/><rect x="-30" y="26" width="60" height="30" fill="var(--sky)"/>'
-            f'<rect x="-70" y="60" width="26" height="8" fill="var(--stone-dark)"/><rect x="44" y="60" width="26" height="8" fill="var(--stone-dark)"/></g>')
-
-
 def road(pts, color="var(--stone-dark)", dash=""):
     d = f' stroke-dasharray="{dash}"' if dash else ""
     return f'<path d="{pts}" stroke="{color}" stroke-width="10" fill="none" stroke-linecap="round"{d}/>'

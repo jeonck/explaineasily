@@ -31,6 +31,7 @@
   --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
 .book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
 .top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
@@ -78,6 +79,13 @@ h1 em { color: var(--accent); font-style: normal; }
 .next a { color: var(--accent); font-weight: 700; text-decoration: none; }
 .next a:hover, .next a:focus-visible { text-decoration: underline; }
 .index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
 .index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
 .index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
 .request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
@@ -133,7 +141,7 @@ header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
 </section>
 <section class="sum"><div class="eyebrow">한 줄로</div><h2><b>CASB</b> = 성과 바깥 창고 <b>사이에 선</b> 문지기. 누가 어느 창고에 뭘 들고 가는지 보고, 낯선 창고는 막고, 아는 창고엔 <b>성의 규칙</b>을 붙여요.</h2><p>Cloud Access Security Broker. 가트너가 2012년에 붙인 이름이에요. 요즘은 SSE/SASE라는 묶음 안에 들어가 있어요. Netskope, Zscaler, Microsoft Defender for Cloud Apps 같은 것들.</p></section>
 <section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>클라우드 앱<br><small>SaaS / cloud app</small></dt><dd><b>바깥 창고.</b> Google Drive, Slack, Dropbox처럼 성 밖에 있는 창고.</dd></div><div><dt>섀도 IT<br><small>Shadow IT</small></dt><dd><b>아무도 모르는 창고.</b> 직원이 편해서 몰래 쓰는 공짜 창고.</dd></div><div><dt>허가 앱<br><small>Sanctioned app</small></dt><dd><b>허락된 창고 목록.</b> 성이 알고 규칙을 붙인 창고. 나머지는 막거나 지켜봐요.</dd></div><div><dt>프록시 모드<br><small>Inline / proxy mode</small></dt><dd><b>길 한가운데 문지기.</b> 모든 길이 문지기를 지나게 해요. 지나가는 순간 막을 수 있어요.</dd></div><div><dt>API 모드<br><small>API mode</small></dt><dd><b>창고 주인과의 약속.</b> 길을 안 지나도 창고 안을 봐요. 대신 이미 들어간 뒤에 알아요.</dd></div><div><dt>클라우드 DLP<br><small>Cloud DLP</small></dt><dd><b>창고 가는 가방 검사.</b> <a href="dlp-ko.html">빨간 도장 종이</a>를 창고 길에서도 살펴요.</dd></div><div><dt>공유 설정 오류<br><small>Sharing misconfiguration</small></dt><dd><b>창고 문을 온 동네에 열어둠.</b> "링크 있는 사람 누구나" 같은 것. 문지기가 제일 자주 잡는 실수.</dd></div><div><dt>SSE · SASE<br><small>SSE · SASE</small></dt><dd><b>문지기 묶음.</b> 창고 문지기, <a href="ndr-ko.html">복도 파수꾼</a>, <a href="zerotrust-ko.html">문마다 묻는 성</a>을 한 묶음으로 파는 요즘 이름.</dd></div></dl></section>
-<section class="next"><div class="eyebrow">다음 이야기</div><a href="cti-ko.html">망루 위의 친구 →</a></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="swg-ko.html">마을로 나가는 성문 검문소 →</a></section>
 <section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
 </main>
 </body>

@@ -61,6 +61,7 @@ CSS = """
   --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
 .book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
 .top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
@@ -108,6 +109,13 @@ h1 em { color: var(--accent); font-style: normal; }
 .next a { color: var(--accent); font-weight: 700; text-decoration: none; }
 .next a:hover, .next a:focus-visible { text-decoration: underline; }
 .index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
 .index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
 .index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
 .request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
@@ -220,32 +228,66 @@ def render_term(t, lang, order):
     return page_html(lang, L(t["title"], lang), "\n".join(parts))
 
 
+PER_PAGE = 10
+
+
 def render_index(terms):
-    groups = []
-    for key, (ko, en) in CATEGORIES.items():
-        cards = [
-            f'<article class="card"><div class="eyebrow">{t["slug"].upper()}</div>'
+    cards = []
+    for t in terms:
+        ko, en = CATEGORIES[t["category"]]
+        cards.append(
+            f'<article class="card" data-cat="{t["category"]}" data-cat-ko="{ko}" data-cat-en="{en}">'
+            f'<div class="eyebrow">{t["slug"].upper()}</div>'
             f'<h3>{L(t["title"], "ko")}</h3>'
             f'<div class="links"><a href="{t["slug"]}-ko.html">한국어</a>'
             f'<a href="{t["slug"]}-en.html" lang="en">English</a></div></article>'
-            for t in terms if t["category"] == key
-        ]
-        if cards:
-            groups.append(f"<h2>{ko}<small>{en}</small></h2>" + "".join(cards))
+        )
     body = f"""<header>
 <div class="eyebrow">explaineasily</div>
 <h1>어려운 말을 <em>그림</em>으로</h1>
 <p class="sub">어려운 용어를 다섯 살 눈높이의 그림책으로. 글은 적게, 그림은 크게.</p>
 <p class="request">{UI["ko"]["request"]} <a href="{REQUEST_URL}">{UI["ko"]["request_link"]}</a></p>
 </header>
-<section class="index">{"".join(groups)}</section>
+<section class="index" id="index">{"".join(cards)}</section>
+<nav class="pager" id="pager" aria-label="페이지" hidden></nav>
 <section class="glossary"><h3>작성 원칙</h3>
 <ul class="rules">
 <li>쉬움을 위해 사실을 왜곡하지 않는다.</li>
 <li>비유는 하나만 쓰고, 그 비유가 깨지는 지점을 함께 밝힌다.</li>
 <li>전문 용어는 쉬운 말로 먼저 쓰고 원어를 병기한다 — 나중에 검색할 수 있어야 한다.</li>
 <li>어휘를 낮추는 것이지, 읽는 사람을 낮추는 것이 아니다.</li>
-</ul></section>"""
+</ul></section>
+<script>
+(function () {{
+  var PER = {PER_PAGE};
+  var box = document.getElementById('index'), pager = document.getElementById('pager');
+  var cards = Array.prototype.slice.call(box.querySelectorAll('.card'));
+  var pages = Math.ceil(cards.length / PER);
+  if (pages < 2) return;
+  function page() {{ var m = /page=([0-9]+)/.exec(location.hash); var n = m ? +m[1] : 1; return Math.min(Math.max(n, 1), pages); }}
+  function show(n) {{
+    box.querySelectorAll('h2').forEach(function (h) {{ h.remove(); }});
+    var last = null;
+    cards.forEach(function (c, i) {{
+      var on = i >= (n - 1) * PER && i < n * PER;
+      c.hidden = !on;
+      if (on && c.dataset.cat !== last) {{
+        var h = document.createElement('h2');
+        h.innerHTML = c.dataset.catKo + '<small>' + c.dataset.catEn + '</small>';
+        box.insertBefore(h, c);
+        last = c.dataset.cat;
+      }}
+    }});
+    var html = '<a href="#page=' + (n - 1) + '" class="' + (n === 1 ? 'off' : '') + '">←</a>';
+    for (var i = 1; i <= pages; i++) html += i === n ? '<span class="cur">' + i + '</span>' : '<a href="#page=' + i + '">' + i + '</a>';
+    html += '<a href="#page=' + (n + 1) + '" class="' + (n === pages ? 'off' : '') + '">→</a>';
+    pager.innerHTML = html;
+    pager.hidden = false;
+  }}
+  show(page());
+  window.addEventListener('hashchange', function () {{ show(page()); window.scrollTo({{ top: box.offsetTop - 24, behavior: 'smooth' }}); }});
+}})();
+</script>"""
     return page_html("ko", "explaineasily", body)
 
 
