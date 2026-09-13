@@ -114,3 +114,22 @@ def dog(x, y, s=1.0, bark=False, asleep=False):
             f'<path d="M-40 -18 q-10 10 -6 26 q8 -4 10 -16z" fill="#7A5236"/>'
             f'<ellipse cx="-36" cy="-2" rx="5" ry="3.5" fill="var(--night)"/>{eyes}'
             f'<rect x="-18" y="-2" width="14" height="6" rx="3" fill="var(--accent)"/>{woof}</g>')
+
+
+WOOD = "#8B5E3C"
+
+
+def corridor(h, doors, night_mode=False, marks=True):
+    """가로로 긴 복도. doors 는 (이름, 개 있음) 튜플 다섯 개. marks=True 면 개가 있는 문엔 개, 없는 문엔 물음표."""
+    wall = "var(--night)" if night_mode else "var(--panel)"
+    floor = "#0A1120" if night_mode else "var(--stone)"
+    ink = "#C9D5E6" if night_mode else "var(--muted)"
+    out = (f'<rect width="760" height="{h}" fill="{wall}"/><rect y="190" width="760" height="{h - 190}" fill="{floor}"/>'
+           f'<rect y="186" width="760" height="6" fill="var(--stone-dark)"/>')
+    for i, (name, has_dog) in enumerate(doors):
+        x = 70 + i * 140
+        out += (f'<rect x="{x}" y="80" width="64" height="110" rx="3" fill="{WOOD}"/><circle cx="{x + 52}" cy="138" r="4" fill="#E9B44C"/>'
+                + label(x + 32, 66, name, 13, ink))
+        if marks:
+            out += dog(x + 32, 168, 0.4) if has_dog else label(x + 32, 150, "?", 30, "var(--accent)", cls="d")
+    return out

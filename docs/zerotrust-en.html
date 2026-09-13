@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Castle That Always Asks</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><a href="index.html">← Index</a><a href="zerotrust-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Security</div>
+<h1>What is <em>Zero Trust</em>?</h1>
+<p class="sub">Zero Trust, told as a story about a castle where every door asks again.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A gate guard says 'go ahead' and a masked figure in a green hat strolls down the hallway toward the vault" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--panel)"/><rect y="190" width="760" height="110" fill="var(--stone)"/><rect y="186" width="760" height="6" fill="var(--stone-dark)"/><rect x="70" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="122" cy="138" r="4" fill="#E9B44C"/><text x="102" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">Kitchen</text><rect x="210" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="262" cy="138" r="4" fill="#E9B44C"/><text x="242" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">Meeting</text><rect x="350" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="402" cy="138" r="4" fill="#E9B44C"/><text x="382" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">Storage</text><rect x="490" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="542" cy="138" r="4" fill="#E9B44C"/><text x="522" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">Vault</text><rect x="630" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="682" cy="138" r="4" fill="#E9B44C"/><text x="662" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">Study</text><rect x="14" y="60" width="14" height="240" fill="var(--stone-dark)"/><rect x="8" y="44" width="13" height="18" fill="var(--stone-dark)"/><g transform="translate(60,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="50" y="40" width="110" height="36" rx="14" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><path d="M95.0 76 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><rect x="52" y="72" width="106" height="6" fill="var(--panel)"/><text x="105.0" y="63.4" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Go ahead!</text><path d="M140 250 C300 230 420 260 560 220" stroke="var(--bad)" stroke-width="3" stroke-dasharray="8 8" fill="none"/><g transform="translate(330,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><text x="420" y="285" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">past one gate, anywhere you like</text></svg>
+<p>The old castle only guarded the gate.<small>Once you were in, you could go anywhere.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A masked figure in a green hat turning the vault dial, with a note: a stolen hat" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="280" fill="var(--bad-soft)"/><rect x="300" y="40" width="160" height="200" rx="8" fill="var(--night)"/><circle cx="380" cy="140" r="34" fill="none" stroke="var(--stone)" stroke-width="8"/><circle cx="380" cy="140" r="8" fill="var(--accent)"/><text x="380" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">Vault</text><g transform="translate(180,110) scale(0.95)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><path d="M250 150 L292 150" stroke="var(--night)" stroke-width="4" stroke-linecap="round"/><g transform="translate(560,80)"><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><path d="M0 30 L60 30" stroke="var(--bad)" stroke-width="4" stroke-dasharray="6 6"/></g><text x="590" y="130" text-anchor="middle" font-size="15" font-weight="700" fill="var(--bad)">a stolen hat</text><text x="590" y="152" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">nobody asks</text></svg>
+<p>Being inside doesn't make you trustworthy.<small>A stolen hat gets you through the gate — without even leaving a <a href="ioc-en.html">footprint</a>.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="A small guard at every door; a person shows a badge under bubbles saying Who are you?, What for?, All good right now?" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--panel)"/><rect y="190" width="760" height="130" fill="var(--stone)"/><rect y="186" width="760" height="6" fill="var(--stone-dark)"/><rect x="70" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="122" cy="138" r="4" fill="#E9B44C"/><text x="102" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)"></text><rect x="210" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="262" cy="138" r="4" fill="#E9B44C"/><text x="242" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)"></text><rect x="350" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="402" cy="138" r="4" fill="#E9B44C"/><text x="382" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)"></text><rect x="490" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="542" cy="138" r="4" fill="#E9B44C"/><text x="522" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)"></text><rect x="630" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="682" cy="138" r="4" fill="#E9B44C"/><text x="662" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)"></text><g transform="translate(132,128) scale(0.45)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(272,128) scale(0.45)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(412,128) scale(0.45)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(552,128) scale(0.45)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(692,128) scale(0.45)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="40" y="14" width="120" height="34" rx="14" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><path d="M90.0 48 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><rect x="42" y="44" width="116" height="6" fill="var(--panel)"/><text x="100.0" y="35.68" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">Who are you?</text><rect x="320" y="14" width="120" height="34" rx="14" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><path d="M370.0 48 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><rect x="322" y="44" width="116" height="6" fill="var(--panel)"/><text x="380.0" y="35.68" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">What for?</text><rect x="600" y="14" width="130" height="34" rx="14" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><path d="M655.0 48 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><rect x="602" y="44" width="126" height="6" fill="var(--panel)"/><text x="665.0" y="35.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">All good right now?</text><g transform="translate(330,170) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="46" y="60" width="30" height="38" rx="4" fill="var(--panel)" stroke="var(--accent)" stroke-width="2"/><circle cx="61" cy="73" r="6" fill="var(--accent)"/><rect x="52" y="84" width="18" height="4" fill="var(--line)"/></g><text x="380" y="305" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">even past the gate, every door asks again</text></svg>
+<p>Zero Trust is the castle where every door asks.<small>Even past the gate, each room asks again.</small></p>
+<div class="tricks" style="--cols:3">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="22" r="10" fill="var(--good)"/><rect x="18" y="36" width="28" height="20" rx="8" fill="var(--good)"/></svg><b>Who are you?</b><span>face, hat, and a password</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="22" cy="32" r="10" fill="none" stroke="var(--accent)" stroke-width="5"/><rect x="30" y="29" width="26" height="6" fill="var(--accent)"/><rect x="46" y="35" width="4" height="7" fill="var(--accent)"/><rect x="52" y="35" width="4" height="9" fill="var(--accent)"/></svg><b>Any business in this room?</b><span>only the rooms you need</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--bad)" stroke-width="3"/><path d="M32 16 V32 L42 40" stroke="var(--bad)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>All good right now?</b><span>no mud on your shoes?</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A key tagged 'Kitchen · until 3 pm today'; a green check on the kitchen door, a red X on the vault" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="280" fill="var(--accent-soft)"/><g transform="translate(120,110)"><circle cx="0" cy="0" r="34" fill="none" stroke="#E9B44C" stroke-width="14"/><rect x="30" y="-8" width="120" height="16" fill="#E9B44C"/><rect x="110" y="8" width="12" height="18" fill="#E9B44C"/><rect x="134" y="8" width="12" height="24" fill="#E9B44C"/><path d="M150 0 L200 -30" stroke="var(--muted)" stroke-width="2"/><rect x="196" y="-70" width="190" height="54" rx="8" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><text x="291" y="-47" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Kitchen · until 3 pm today</text><text x="291" y="-27" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">one room, for a while</text></g><g transform="translate(500,90)"><rect x="-40" y="0" width="80" height="130" rx="3" fill="#8B5E3C"/><circle cx="26" cy="70" r="5" fill="#E9B44C"/><text x="0" y="-12" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Kitchen</text><g transform="translate(0,64)"><path d="M-14 0 l10 10 l20 -22" stroke="var(--good)" stroke-width="6" fill="none" stroke-linecap="round"/></g></g><g transform="translate(640,90)"><rect x="-40" y="0" width="80" height="130" rx="3" fill="#8B5E3C"/><circle cx="26" cy="70" r="5" fill="#E9B44C"/><text x="0" y="-12" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Vault</text><g transform="translate(0,64)"><path d="M-14 -14 l28 28 M14 -14 l-28 28" stroke="var(--bad)" stroke-width="6" stroke-linecap="round"/></g></g><text x="570" y="258" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">a kitchen key won't open the vault</text></svg>
+<p>One key, one room, for a while.<small>A kitchen key won't open the vault, and it stops working after a while.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A face scanner shows a green check and a friend walks straight through; beside it: 'trust no one ✗ / check, then trust ✓'" viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="260" fill="var(--good-soft)"/><g transform="translate(300,60)"><rect width="120" height="150" rx="10" fill="var(--night)"/><rect x="14" y="14" width="92" height="92" rx="6" fill="var(--sky)"/><circle cx="60" cy="50" r="18" fill="#E8C9A8"/><rect x="42" y="72" width="36" height="26" rx="8" fill="var(--good)"/><circle cx="60" cy="128" r="12" fill="var(--good)"/><path d="M53 128 l5 5 l10 -11" stroke="#FFF" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(160,90) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><path d="M250 150 L290 150" stroke="var(--good)" stroke-width="4" stroke-linecap="round"/><path d="M280 140 L292 150 L280 160" stroke="var(--good)" stroke-width="4" fill="none"/><text x="360" y="240" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">a known face: one second</text><text x="590" y="110" text-anchor="middle" font-size="16" font-weight="700" fill="var(--bad)">"trust no one" ✗</text><text x="590" y="150" text-anchor="middle" font-size="16" font-weight="700" fill="var(--good)">"check, then trust" ✓</text></svg>
+<p>Asking every time is a bother.<small>So a machine checks faces in a second. It's not "trust no one" — it's "check, then trust."</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Zero Trust</b> = the castle that <b>asks again at every door</b>, even past the gate. One key, one room, for a while.</h2><p>Nothing is trusted just for being inside the walls. Named by John Kindervag in 2010; written up by NIST as SP 800-207 in 2020.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Perimeter security</dt><dd><b>Guarding only the gate.</b> The old way. Also called castle-and-moat.</dd></div><div><dt>Identity / MFA</dt><dd><b>Who are you?</b> One face isn't enough, so the hat and a password are checked too — that's multi-factor authentication.</dd></div><div><dt>Least privilege</dt><dd><b>A key to one room.</b> Only the rooms you need, only while you need them.</dd></div><div><dt>Device posture</dt><dd><b>Mud on your shoes?</b> The computer they brought is checked too, not just the person.</dd></div><div><dt>Micro-segmentation</dt><dd><b>A guard at every door.</b> Chop the hallway into pieces so one open room doesn't open the next. → <a href="ndr-en.html">the hallway story</a></dd></div><div><dt>Continuous verification</dt><dd><b>Still watching after you're in.</b> Getting in isn't the end. The <a href="edr-en.html">dog</a> keeps watching.</dd></div><div><dt>NIST SP 800-207</dt><dd><b>The rulebook.</b> The 2020 Zero Trust guide from the US standards body.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="cti-en.html">The Watchtower Friend →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

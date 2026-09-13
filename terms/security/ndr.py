@@ -1,24 +1,6 @@
 from _draw import *
 
-WOOD = "#8B5E3C"
 DOORS = (("⟦프린터|Printer⟧", False), ("⟦회의실|Meeting⟧", True), ("⟦손님|Guest⟧", False), ("⟦금고|Vault⟧", True), ("⟦부엌|Kitchen⟧", False))
-
-
-def corridor(h, doors=DOORS, night_mode=False, marks=True):
-    """가로로 긴 복도. 뒷벽에 문 다섯 개, 앞은 바닥. marks=True 면 개가 있는 문엔 개, 없는 문엔 물음표."""
-    wall = "var(--night)" if night_mode else "var(--panel)"
-    floor = "#0A1120" if night_mode else "var(--stone)"
-    ink = "#C9D5E6" if night_mode else "var(--muted)"
-    out = (f'<rect width="760" height="{h}" fill="{wall}"/><rect y="190" width="760" height="{h - 190}" fill="{floor}"/>'
-           f'<rect y="186" width="760" height="6" fill="var(--stone-dark)"/>')
-    for i, (name, has_dog) in enumerate(doors):
-        x = 70 + i * 140
-        out += (f'<rect x="{x}" y="80" width="64" height="110" rx="3" fill="{WOOD}"/><circle cx="{x + 52}" cy="138" r="4" fill="#E9B44C"/>'
-                + label(x + 32, 66, name, 13, ink))
-        if marks:
-            out += dog(x + 32, 168, 0.4) if has_dog else label(x + 32, 150, "?", 30, "var(--accent)", cls="d")
-    return out
-
 
 BAG = '<rect x="50" y="70" width="36" height="30" rx="4" fill="var(--night)"/><path d="M58 70 v-8 a10 10 0 0 1 20 0 v8" stroke="var(--night)" stroke-width="4" fill="none"/>'
 BIGBAG = '<rect x="46" y="50" width="70" height="60" rx="6" fill="var(--night)"/><path d="M62 50 v-10 a18 18 0 0 1 36 0 v10" stroke="var(--night)" stroke-width="5" fill="none"/>'
@@ -26,18 +8,18 @@ STOOL = '<rect x="20" y="150" width="60" height="8" rx="3" fill="#8B5E3C"/><rect
 WATCHER = STOOL + person(20, 50, hat="var(--good)", shirt="var(--good)", s=0.9, face=EYES)
 
 # 1. 개를 못 앉히는 방이 있다
-P1 = svg(300, corridor(300)
+P1 = svg(300, corridor(300, DOORS)
          + label(380, 280, "⟦개는 방 안에 앉아요. 그런데 못 앉는 방도 있어요.|Dogs sit inside rooms. Some rooms can\'t take one.⟧", 14, "var(--muted)"))
 
 # 2. 어느 방에 가든 복도는 지나야 한다
-P2 = svg(300, corridor(300, marks=False)
+P2 = svg(300, corridor(300, DOORS, marks=False)
          + '<path d="M120 250 C250 210 450 270 590 220" stroke="var(--bad)" stroke-width="3" stroke-dasharray="8 8" fill="none"/>'
          + person(330, 150, s=0.9, face=MASK, extra=BAG)
          + label(380, 285, "⟦프린터 방에서 금고 방으로 가려면, 복도.|From the printer room to the vault: the hallway.⟧", 14, "var(--muted)"))
 
 # 3. NDR = 복도를 지켜보는 파수꾼 (hero)
 SIGHT = "".join(f'<path d="M95 100 L{x} {y}" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 6" fill="none"/>' for x, y in ((320, 210), (520, 230), (700, 200)))
-P3 = svg(300, corridor(300, marks=False) + SIGHT + WATCHER
+P3 = svg(300, corridor(300, DOORS, marks=False) + SIGHT + WATCHER
          + person(300, 160, hat=None, shirt="#4A5A72", s=0.75, face=SMILE, extra=BAG)
          + person(500, 175, hat="var(--good)", shirt="var(--good)", s=0.7, face=SMILE)
          + person(680, 150, hat="var(--accent)", shirt="#4A5A72", s=0.75, face=SMILE))
@@ -47,7 +29,7 @@ PORTCULLIS = ('<rect x="640" y="60" width="90" height="220" fill="var(--stone-da
               + "".join(f'<rect x="{x}" y="60" width="8" height="220" fill="var(--stone-dark)"/>' for x in range(646, 730, 16))
               + '<path d="M685 30 L685 56 M677 48 L685 58 L693 48" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/>')
 WHISTLE = label(150, 60, "⟦삑!|TWEET!⟧", 34, "var(--accent)", cls="d")
-P4 = svg(300, corridor(300, night_mode=True, marks=False) + WATCHER + WHISTLE
+P4 = svg(300, corridor(300, DOORS, night_mode=True, marks=False) + WATCHER + WHISTLE
          + person(420, 140, s=0.95, face=MASK + SWEAT, extra=BIGBAG)
          + '<path d="M540 230 L630 230" stroke="var(--bad)" stroke-width="3" stroke-dasharray="8 8"/>'
          + PORTCULLIS + label(685, 292, "⟦성문 쪽 복도|hallway to the gate⟧", 12, "#C9D5E6")

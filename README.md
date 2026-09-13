@@ -6,9 +6,12 @@
 
 ## 용어 요청
 
-그림책으로 보고 싶은 용어가 있으면 이슈로 남겨주세요. 사이트 각 페이지 맨 아래에도 같은 링크가 있습니다.
+그림책으로 보고 싶은 용어가 있으면 이슈로 남겨주세요. 사이트 각 페이지 맨 아래의 "요청하기"도 같은 곳으로 갑니다.
 
-→ [용어 요청하기](https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml)
+→ [요청하기](https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml)
+
+이슈에 `term-request` 라벨이 붙으면(양식이 자동으로 붙임) GitHub Actions 가 Claude Code 로 페이지를 만들어 `term/<slug>` 브랜치에 PR 을 엽니다.
+PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workflows/term-request.yml`](.github/workflows/term-request.yml), 시크릿: `CLAUDE_CODE_OAUTH_TOKEN`.
 
 ## 문서
 
@@ -27,6 +30,7 @@
 | EDR | 방마다 한 마리 경비견 | [edr-ko](docs/edr-ko.html) | [edr-en](docs/edr-en.html) |
 | XDR | 한 무리가 된 파수꾼들 | [xdr-ko](docs/xdr-ko.html) | [xdr-en](docs/xdr-en.html) |
 | NDR | 복도를 지키는 사람 | [ndr-ko](docs/ndr-ko.html) | [ndr-en](docs/ndr-en.html) |
+| Zero Trust | 문마다 물어보는 성 | [zerotrust-ko](docs/zerotrust-ko.html) | [zerotrust-en](docs/zerotrust-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
@@ -43,6 +47,7 @@ terms/<분야>/<slug>.py   원본. 한 파일에 한글·영문을 같이 적는
 terms/_draw.py           같이 쓰는 SVG 조각 (사람, 성, 개, 말풍선, 방패 …)
 build.py                 terms/ → docs/*-ko.html, docs/*-en.html, docs/index.html
 .github/ISSUE_TEMPLATE/  용어 요청 양식
+.github/workflows/       이슈 → Claude Code → PR 자동화
 ```
 
 ```bash

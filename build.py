@@ -129,10 +129,10 @@ h1 em { color: var(--accent); font-style: normal; }
 UI = {
     "ko": {"index": "← 목록", "other": "English", "eyebrow": "다섯 살도 알 수 있게",
            "sum": "한 줄로", "gloss": "어른들은 이렇게 불러요", "next": "다음 이야기",
-           "request": "다른 용어도 그림책으로 보고 싶다면", "request_link": "GitHub 이슈로 요청하기 →"},
+           "request": "다른 용어도 그림책으로 보고 싶다면", "request_link": "요청하기 →"},
     "en": {"index": "← Index", "other": "한국어", "eyebrow": "Explain like I'm five",
            "sum": "In one breath", "gloss": "When grown-ups say it", "next": "Next story",
-           "request": "Want another term as a picture book?", "request_link": "Request it in a GitHub issue →"},
+           "request": "Want another term as a picture book?", "request_link": "Request →"},
 }
 
 

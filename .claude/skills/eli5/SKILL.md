@@ -49,6 +49,7 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | security | EDR | 방마다 한 마리 경비견 |
 | security | XDR | 한 무리가 된 파수꾼들 |
 | security | NDR | 복도를 지키는 사람 |
+| security | Zero Trust | 문마다 물어보는 성 |
 | design | Dialog Map | 방과 문의 지도 |
 
 비유가 **깨지는 지점**을 반드시 패널 하나로 넣는다. 이게 정직한 설명과 거짓말의 차이다.
@@ -82,6 +83,7 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | `bubble(x, y, w, h, text, size, fill, stroke, tail)` | 말풍선 |
 | `shield(x, y, s)` | 방어 |
 | `foot(x, y, rot)` | 발자국 |
+| `corridor(h, doors, night_mode, marks)` | 문 다섯 개짜리 복도 (NDR·Zero Trust 가 같이 씀) |
 | `dog(x, y, s, bark, asleep)` | 경비견 (EDR·XDR·NDR 이 같이 씀) |
 | `label(x, y, text, size, fill, anchor, cls)` | 글자. `cls="d"` 면 제목 서체 |
 | `icon(inner)` `dot_icon(color)` | 카드용 64×64 아이콘 |
