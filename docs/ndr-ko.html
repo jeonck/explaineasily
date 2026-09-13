@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>복도를 지키는 사람</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><a href="index.html">← 목록</a><a href="ndr-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게</div>
+<h1><em>NDR</em>이 뭐예요?</h1>
+<p class="sub">네트워크 탐지·대응(Network Detection and Response)을 복도를 지키는 파수꾼 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="문 다섯 개가 있는 복도. 두 문 앞엔 개가 있고 세 문엔 물음표" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--panel)"/><rect y="190" width="760" height="110" fill="var(--stone)"/><rect y="186" width="760" height="6" fill="var(--stone-dark)"/><rect x="70" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="122" cy="138" r="4" fill="#E9B44C"/><text x="102" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">프린터</text><text x="102" y="150" text-anchor="middle" font-size="30" font-weight="700" fill="var(--accent)" class="d">?</text><rect x="210" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="262" cy="138" r="4" fill="#E9B44C"/><text x="242" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">회의실</text><g transform="translate(242,168) scale(0.4)"><path d="M26 12 q16 -18 8 -30" stroke="#A9744F" stroke-width="7" fill="none" stroke-linecap="round"/><ellipse cx="0" cy="8" rx="30" ry="17" fill="#A9744F"/><rect x="-22" y="18" width="9" height="16" rx="4" fill="#A9744F"/><rect x="10" y="18" width="9" height="16" rx="4" fill="#A9744F"/><circle cx="-26" cy="-8" r="16" fill="#A9744F"/><path d="M-40 -18 q-10 10 -6 26 q8 -4 10 -16z" fill="#7A5236"/><ellipse cx="-36" cy="-2" rx="5" ry="3.5" fill="var(--night)"/><circle cx="-30" cy="-12" r="2.5" fill="var(--night)"/><circle cx="-20" cy="-12" r="2.5" fill="var(--night)"/><rect x="-18" y="-2" width="14" height="6" rx="3" fill="var(--accent)"/></g><rect x="350" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="402" cy="138" r="4" fill="#E9B44C"/><text x="382" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">손님</text><text x="382" y="150" text-anchor="middle" font-size="30" font-weight="700" fill="var(--accent)" class="d">?</text><rect x="490" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="542" cy="138" r="4" fill="#E9B44C"/><text x="522" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">금고</text><g transform="translate(522,168) scale(0.4)"><path d="M26 12 q16 -18 8 -30" stroke="#A9744F" stroke-width="7" fill="none" stroke-linecap="round"/><ellipse cx="0" cy="8" rx="30" ry="17" fill="#A9744F"/><rect x="-22" y="18" width="9" height="16" rx="4" fill="#A9744F"/><rect x="10" y="18" width="9" height="16" rx="4" fill="#A9744F"/><circle cx="-26" cy="-8" r="16" fill="#A9744F"/><path d="M-40 -18 q-10 10 -6 26 q8 -4 10 -16z" fill="#7A5236"/><ellipse cx="-36" cy="-2" rx="5" ry="3.5" fill="var(--night)"/><circle cx="-30" cy="-12" r="2.5" fill="var(--night)"/><circle cx="-20" cy="-12" r="2.5" fill="var(--night)"/><rect x="-18" y="-2" width="14" height="6" rx="3" fill="var(--accent)"/></g><rect x="630" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="682" cy="138" r="4" fill="#E9B44C"/><text x="662" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">부엌</text><text x="662" y="150" text-anchor="middle" font-size="30" font-weight="700" fill="var(--accent)" class="d">?</text><text x="380" y="280" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">개는 방 안에 앉아요. 그런데 못 앉는 방도 있어요.</text></svg>
+<p>개를 못 앉히는 방이 있어요.<small>오래된 프린터, 손님 노트북, 냉장고. <a href="edr-ko.html">개(EDR)</a>는 그 방을 못 봐요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="가방을 든 도둑이 복도를 따라 프린터 방에서 금고 방 쪽으로 걸어감" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--panel)"/><rect y="190" width="760" height="110" fill="var(--stone)"/><rect y="186" width="760" height="6" fill="var(--stone-dark)"/><rect x="70" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="122" cy="138" r="4" fill="#E9B44C"/><text x="102" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">프린터</text><rect x="210" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="262" cy="138" r="4" fill="#E9B44C"/><text x="242" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">회의실</text><rect x="350" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="402" cy="138" r="4" fill="#E9B44C"/><text x="382" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">손님</text><rect x="490" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="542" cy="138" r="4" fill="#E9B44C"/><text x="522" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">금고</text><rect x="630" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="682" cy="138" r="4" fill="#E9B44C"/><text x="662" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">부엌</text><path d="M120 250 C250 210 450 270 590 220" stroke="var(--bad)" stroke-width="3" stroke-dasharray="8 8" fill="none"/><g transform="translate(330,150) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><rect x="50" y="70" width="36" height="30" rx="4" fill="var(--night)"/><path d="M58 70 v-8 a10 10 0 0 1 20 0 v8" stroke="var(--night)" stroke-width="4" fill="none"/></g><text x="380" y="285" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">프린터 방에서 금고 방으로 가려면, 복도.</text></svg>
+<p>어느 방에 가든 복도는 지나야 해요.<small>방은 못 봐도, 복도는 볼 수 있어요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="높은 의자에 앉은 파수꾼이 복도를 오가는 세 사람을 점선으로 바라봄" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--panel)"/><rect y="190" width="760" height="110" fill="var(--stone)"/><rect y="186" width="760" height="6" fill="var(--stone-dark)"/><rect x="70" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="122" cy="138" r="4" fill="#E9B44C"/><text x="102" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">프린터</text><rect x="210" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="262" cy="138" r="4" fill="#E9B44C"/><text x="242" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">회의실</text><rect x="350" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="402" cy="138" r="4" fill="#E9B44C"/><text x="382" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">손님</text><rect x="490" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="542" cy="138" r="4" fill="#E9B44C"/><text x="522" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">금고</text><rect x="630" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="682" cy="138" r="4" fill="#E9B44C"/><text x="662" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">부엌</text><path d="M95 100 L320 210" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 6" fill="none"/><path d="M95 100 L520 230" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 6" fill="none"/><path d="M95 100 L700 200" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 6" fill="none"/><rect x="20" y="150" width="60" height="8" rx="3" fill="#8B5E3C"/><rect x="26" y="158" width="6" height="90" fill="#8B5E3C"/><rect x="68" y="158" width="6" height="90" fill="#8B5E3C"/><g transform="translate(20,50) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(300,160) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="50" y="70" width="36" height="30" rx="4" fill="var(--night)"/><path d="M58 70 v-8 a10 10 0 0 1 20 0 v8" stroke="var(--night)" stroke-width="4" fill="none"/></g><g transform="translate(500,175) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(680,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--accent)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g></svg>
+<p>NDR은 복도를 지켜보는 파수꾼이에요.<small>방에 들어가지 않아요. 지나가는 사람만 봐요.</small></p>
+<div class="tricks" style="--cols:3">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="20" r="8" fill="var(--good)"/><rect x="12" y="30" width="16" height="22" rx="5" fill="var(--good)"/><path d="M34 40 H52 M46 34 l6 6 -6 6" stroke="var(--good)" stroke-width="3" fill="none"/></svg><b>누가 어디로</b><span>어느 방에서 어느 방으로</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="3"/><path d="M32 16 V32 L42 40" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>몇 시에</b><span>낮인지 새벽인지</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="26" width="36" height="28" rx="4" fill="var(--bad)"/><path d="M22 26 v-6 a10 10 0 0 1 20 0 v6" stroke="var(--bad)" stroke-width="3" fill="none"/></svg><b>얼마나 들고</b><span>작은 가방인지 큰 가방인지</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="새벽 2시, 큰 가방을 든 도둑이 성문 쪽으로 가자 파수꾼이 호루라기를 불고 복도 쇠창살이 내려옴" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--night)"/><rect y="190" width="760" height="110" fill="#0A1120"/><rect y="186" width="760" height="6" fill="var(--stone-dark)"/><rect x="70" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="122" cy="138" r="4" fill="#E9B44C"/><text x="102" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#C9D5E6">프린터</text><rect x="210" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="262" cy="138" r="4" fill="#E9B44C"/><text x="242" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#C9D5E6">회의실</text><rect x="350" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="402" cy="138" r="4" fill="#E9B44C"/><text x="382" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#C9D5E6">손님</text><rect x="490" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="542" cy="138" r="4" fill="#E9B44C"/><text x="522" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#C9D5E6">금고</text><rect x="630" y="80" width="64" height="110" rx="3" fill="#8B5E3C"/><circle cx="682" cy="138" r="4" fill="#E9B44C"/><text x="662" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#C9D5E6">부엌</text><rect x="20" y="150" width="60" height="8" rx="3" fill="#8B5E3C"/><rect x="26" y="158" width="6" height="90" fill="#8B5E3C"/><rect x="68" y="158" width="6" height="90" fill="#8B5E3C"/><g transform="translate(20,50) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="150" y="60" text-anchor="middle" font-size="34" font-weight="700" fill="var(--accent)" class="d">삑!</text><g transform="translate(420,140) scale(0.95)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><rect x="46" y="50" width="70" height="60" rx="6" fill="var(--night)"/><path d="M62 50 v-10 a18 18 0 0 1 36 0 v10" stroke="var(--night)" stroke-width="5" fill="none"/></g><path d="M540 230 L630 230" stroke="var(--bad)" stroke-width="3" stroke-dasharray="8 8"/><rect x="640" y="60" width="90" height="220" fill="var(--stone-dark)" fill-opacity="0.5"/><rect x="646" y="60" width="8" height="220" fill="var(--stone-dark)"/><rect x="662" y="60" width="8" height="220" fill="var(--stone-dark)"/><rect x="678" y="60" width="8" height="220" fill="var(--stone-dark)"/><rect x="694" y="60" width="8" height="220" fill="var(--stone-dark)"/><rect x="710" y="60" width="8" height="220" fill="var(--stone-dark)"/><rect x="726" y="60" width="8" height="220" fill="var(--stone-dark)"/><path d="M685 30 L685 56 M677 48 L685 58 L693 48" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/><text x="685" y="292" text-anchor="middle" font-size="12" font-weight="700" fill="#C9D5E6">성문 쪽 복도</text><text x="430" y="40" text-anchor="middle" font-size="26" font-weight="700" fill="#F5E6B8" class="d">02:00</text></svg>
+<p>이상한 걸음이면 복도 문을 닫아요.<small>새벽에 큰 가방이 성문으로? 삑! 쇠창살 내리고 <a href="soc-ko.html">경비실</a>에 알려요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="봉해진 상자에 물음표가 있고, 옆 메모엔 크기·가는 곳·시간이 적혀 있음" viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="260" fill="var(--accent-soft)"/><rect x="20" y="150" width="60" height="8" rx="3" fill="#8B5E3C"/><rect x="26" y="158" width="6" height="90" fill="#8B5E3C"/><rect x="68" y="158" width="6" height="90" fill="#8B5E3C"/><g transform="translate(20,50) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(300,120)"><rect width="120" height="90" rx="6" fill="#C9A86A"/><rect x="52" width="16" height="90" fill="#E9B44C"/><rect y="38" width="120" height="14" fill="#E9B44C"/><text x="60" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="var(--night)" class="d">?</text></g><g transform="translate(470,100)"><rect width="250" height="130" rx="10" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><text x="20" y="36" text-anchor="start" font-size="16" font-weight="700" fill="var(--ink)">크기: 아주 큼</text><text x="20" y="68" text-anchor="start" font-size="16" font-weight="700" fill="var(--ink)">가는 곳: 성문</text><text x="20" y="100" text-anchor="start" font-size="16" font-weight="700" fill="var(--ink)">시간: 새벽 2시</text></g><text x="360" y="240" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">안은 몰라도</text><text x="595" y="250" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">겉은 다 알아요</text></svg>
+<p>상자 안은 못 봐요.<small>봉해진 상자(암호화)는 크기·방향·시간만 보여요. 그래서 방 안은 <a href="edr-ko.html">개</a>가, 복도는 파수꾼이 — 둘이 같이.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>NDR</b> = 방이 아니라 <b>복도</b>를 지켜보는 파수꾼. 누가 어디로, 언제, 얼마나 들고 가는지 보고, 이상하면 복도를 닫아요.</h2><p>Network Detection and Response. 방마다 개를 앉히지 않아도 돼서, 개를 못 앉히는 방까지 지켜요. 대신 봉해진 상자 안은 못 봐요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>네트워크<br><small>Network</small></dt><dd><b>복도.</b> 방과 방, 성 안과 밖을 잇는 길.</dd></div><div><dt>트래픽<br><small>Traffic</small></dt><dd><b>복도를 오가는 사람과 가방.</b> 컴퓨터끼리 주고받는 모든 것.</dd></div><div><dt>탭 · 미러링<br><small>TAP / port mirroring</small></dt><dd><b>복도 끝 거울.</b> 지나가는 걸 그대로 비춰 보여줘요. 사람을 멈춰 세우진 않아요.</dd></div><div><dt>에이전트리스<br><small>Agentless</small></dt><dd><b>방에 안 들어감.</b> 그래서 <a href="edr-ko.html">개</a>를 못 앉히는 방도 지켜요.</dd></div><div><dt>횡적 이동<br><small>Lateral movement</small></dt><dd><b>방에서 방으로 옮겨 다니기.</b> 프린터 방에서 나온 사람이 금고 방으로. 복도에서 제일 잘 보여요.</dd></div><div><dt>유출<br><small>Exfiltration</small></dt><dd><b>큰 가방 들고 나가기.</b> 새벽에, 성문으로, 아주 크게.</dd></div><div><dt>암호화<br><small>Encryption</small></dt><dd><b>봉해진 상자.</b> 안은 못 봐요. 크기·방향·시간은 봐요.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="dialogmap-ko.html">방과 문의 지도 →</a></section>
+</main>
+</body>
+</html>
