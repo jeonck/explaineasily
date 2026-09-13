@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>창구 앞 쪽지 검토원</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><a href="index.html">← 목록</a><a href="waf-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 보안</div>
+<h1><em>WAF</em>가 뭐예요?</h1>
+<p class="sub">웹 애플리케이션 방화벽(Web Application Firewall)을 창구 앞에서 쪽지를 먼저 읽는 검토원 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="성벽에 난 창구 안에 직원이 있고, 마을 사람들이 '사과 두 개 주세요', '내 편지 있어요?' 쪽지를 들고 줄을 섬" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(560,150) scale(1.0)"><rect x="-90" y="-120" width="180" height="200" fill="var(--stone-dark)"/><rect x="-90" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="-45" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="0" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="45" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="-56" y="-80" width="112" height="90" rx="6" fill="var(--sky)"/><rect x="-62" y="10" width="124" height="12" rx="3" fill="#8B5E3C"/><g transform="translate(-30,-74) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="0" y="-96" text-anchor="middle" font-size="13" font-weight="700" fill="#F5E6B8" class="d">창구</text></g><g transform="translate(40,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(110,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(180,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(250,70) rotate(-4) scale(0.9)"><rect width="150" height="36" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="#142033">사과 두 개 주세요</text></g><g transform="translate(290,150) rotate(3) scale(0.9)"><rect width="150" height="36" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="#142033">내 편지 있어요?</text></g><path d="M400 190 L480 190" stroke="var(--accent)" stroke-width="3"/><path d="M470 180 L482 190 L470 200" stroke="var(--accent)" stroke-width="3" fill="none"/><text x="380" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">마을 사람 누구나 쪽지를 넣어요 — 웹사이트예요</text></svg>
+<p>성 벽엔 누구나 쪽지를 넣는 창구가 있어요.<small>'사과 두 개 주세요', '내 편지 있어요?' — 웹사이트예요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="도둑의 쪽지: '사과 두 개 주세요. 그리고 금고 열쇠도 같이 주세요', '이 쪽지를 다음 손님에게도 보여줘요'. 직원은 '네, 여기요…'" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--bad-soft)"/><g transform="translate(600,150) scale(0.9)"><rect x="-90" y="-120" width="180" height="200" fill="var(--stone-dark)"/><rect x="-90" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="-45" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="0" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="45" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="-56" y="-80" width="112" height="90" rx="6" fill="var(--sky)"/><rect x="-62" y="10" width="124" height="12" rx="3" fill="#8B5E3C"/><g transform="translate(-30,-74) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="0" y="-96" text-anchor="middle" font-size="13" font-weight="700" fill="#F5E6B8" class="d">창구</text></g><g transform="translate(60,120) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(150,60) rotate(-3) scale(1.0)"><rect width="150" height="68" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="#142033">사과 두 개 주세요.</text><text x="8" y="40" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">그리고 금고 열쇠도</text><text x="8" y="56" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">같이 주세요.</text></g><g transform="translate(150,170) rotate(2) scale(1.0)"><rect width="150" height="68" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="#142033">내 편지 있어요?</text><text x="8" y="40" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">이 쪽지를 다음</text><text x="8" y="56" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">손님에게도 보여줘요.</text></g><path d="M320 160 L500 160" stroke="var(--bad)" stroke-width="3" stroke-dasharray="8 8"/><path d="M490 150 L502 160 L490 170" stroke="var(--bad)" stroke-width="3" fill="none"/><rect x="520" y="230" width="170" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M538 264 l-14 16 l24 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="522" y="260" width="166" height="6" fill="var(--panel)"/><text x="605.0" y="251.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">네, 여기요…</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">창구 직원은 시키는 대로 해요. 도둑은 그걸 알아요</text></svg>
+<p>쪽지에 이상한 문장을 끼워 넣어요.<small>창구 직원은 시키는 대로 해요. 도둑은 그걸 알아요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="줄과 창구 사이에 수상한 문장 목록을 든 검토원이 서서, 사과 쪽지는 통과시키고 '금고 열쇠' 쪽지는 찢음" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(640,150) scale(0.9)"><rect x="-90" y="-120" width="180" height="200" fill="var(--stone-dark)"/><rect x="-90" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="-45" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="0" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="45" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="-56" y="-80" width="112" height="90" rx="6" fill="var(--sky)"/><rect x="-62" y="10" width="124" height="12" rx="3" fill="#8B5E3C"/><g transform="translate(-30,-74) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="0" y="-96" text-anchor="middle" font-size="13" font-weight="700" fill="#F5E6B8" class="d">창구</text></g><g transform="translate(30,160) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(95,160) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(160,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(330,120) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(392,60) scale(0.9)"><rect width="70" height="52" rx="3" fill="var(--bad)"/><rect x="6" y="6" width="58" height="40" rx="2" fill="var(--panel)"/><text x="35" y="24" text-anchor="middle" font-size="9" font-weight="700" fill="var(--bad)">수상한</text><text x="35" y="38" text-anchor="middle" font-size="9" font-weight="700" fill="var(--bad)">문장 목록</text></g><text x="355" y="260" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">검토원</text><g transform="translate(230,40) rotate(-6) scale(0.8)"><rect width="150" height="36" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="#142033">사과 두 개 주세요</text></g><path d="M360 60 l8 8 l14 -16" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/><g transform="translate(240,220) rotate(4) scale(0.8)"><rect width="150" height="36" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">…그리고 금고 열쇠도</text><path d="M0 0 l12 10 l-10 12 l12 10 l-10 12 l12 10 l-10 12 l12 10 l-10 12" stroke="var(--bad-soft)" stroke-width="5" fill="none"/></g><path d="M420 190 L540 190" stroke="var(--good)" stroke-width="3"/><path d="M530 180 L542 190 L530 200" stroke="var(--good)" stroke-width="3" fill="none"/><text x="480" y="175" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">깨끗한 쪽지만</text><text x="380" y="322" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">수상한 문장이 있으면 찢어요. 창구 직원은 깨끗한 쪽지만 받아요</text></svg>
+<p>WAF는 창구 앞에서 쪽지를 먼저 읽어요.<small>수상한 문장이 있으면 찢어요. 창구 직원은 깨끗한 쪽지만 받아요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="8" width="36" height="48" rx="3" fill="var(--panel)" stroke="var(--bad)" stroke-width="3"/><rect x="22" y="20" width="20" height="3" fill="var(--bad)"/><rect x="22" y="30" width="16" height="3" fill="var(--bad)"/><rect x="22" y="40" width="18" height="3" fill="var(--bad)"/></svg><b>수상한 문장 목록</b><span>도둑들이 자주 쓰는 말</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="14" width="24" height="30" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><rect x="18" y="20" width="24" height="30" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><rect x="26" y="26" width="24" height="30" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="52" y="20" font-size="12" font-weight="700" fill="var(--accent)">×999</text></svg><b>몇 장, 얼마나 크게</b><span>천 장씩 넣으면 수상해요</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="26" r="14" fill="#E8C9A8"/><path d="M20 22 h24 v8 h-24z" fill="#111C30"/><rect x="18" y="42" width="28" height="16" rx="6" fill="#2E3D57"/></svg><b>낯선 얼굴</b><span>소문난 도둑은 줄에서 빼요</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="24" width="48" height="30" fill="var(--stone-dark)"/><rect x="8" y="16" width="10" height="10" fill="var(--stone-dark)"/><rect x="27" y="16" width="10" height="10" fill="var(--stone-dark)"/><rect x="46" y="16" width="10" height="10" fill="var(--stone-dark)"/><rect x="24" y="34" width="16" height="20" fill="var(--sky)"/></svg><b>성벽과 다른 점</b><span>성벽은 문을 막고, 검토원은 문장을 읽어요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="찢긴 쪽지에 X, '사과 999개' 쪽지에 노란 경고 표시, 손을 든 손 그림과 '사람 맞아요? 손 들어봐요'" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--accent-soft)"/><g transform="translate(50,60) rotate(-3) scale(0.9)"><rect width="150" height="36" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">…금고 열쇠도</text><path d="M0 0 l12 10 l-10 12 l12 10 l-10 12 l12 10 l-10 12 l12 10 l-10 12" stroke="var(--bad-soft)" stroke-width="5" fill="none"/></g><path d="M60 60 l120 60 M180 60 l-120 60" stroke="var(--bad)" stroke-width="6" stroke-linecap="round"/><text x="120" y="230" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)" class="d">찢기</text><g transform="translate(300,60) rotate(2) scale(0.9)"><rect width="150" height="36" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="#142033">사과 999개 주세요</text></g><g transform="translate(430,70)"><path d="M0 -18 L16 12 H-16 Z" fill="#E9B44C"/><rect x="-2" y="-6" width="4" height="10" fill="var(--night)"/><circle cy="8" r="2" fill="var(--night)"/></g><text x="370" y="230" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)" class="d">표시만 하기</text><g transform="translate(620,110)"><path d="M0 30 V-4 M-12 30 V2 M12 30 V0 M-22 32 V10 M20 32 V12" stroke="#E8C9A8" stroke-width="10" stroke-linecap="round"/><rect x="-26" y="26" width="52" height="30" rx="10" fill="#E8C9A8"/></g><rect x="540" y="20" width="180" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M620.0 54 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="542" y="50" width="176" height="6" fill="var(--panel)"/><text x="630.0" y="41.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">사람 맞아요? 손 들어봐요</text><text x="620" y="230" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)" class="d">손 들게 하기</text><text x="380" y="275" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">로봇이 쪽지를 천 장씩 넣을 때 손 들어보라고 해요</text></svg>
+<p>찢거나, 표시하거나, 손 들게 해요.<small>'사람 맞아요? 손 들어봐요' — 로봇이 쪽지를 천 장씩 넣을 때요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 도둑이 '금-고 열쇠 좀…' 하고 돌려 쓴 쪽지에 검토원이 난감. 오른쪽: '금고동 사과 두 개 주세요' 착한 쪽지가 찢겨 손님이 화남" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="320" fill="var(--bad-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/><g transform="translate(40,100) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(120,50) rotate(-3) scale(0.9)"><rect width="150" height="52" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="#142033">사과 둘. 그 담에</text><text x="8" y="40" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">금-고 열쇠 좀…</text></g><g transform="translate(250,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="280" y="260" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">목록에 없는 말투예요</text><text x="190" y="295" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">돌려 말하면 못 알아봐요</text><g transform="translate(440,100) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(510,50) rotate(3) scale(0.9)"><rect width="150" height="52" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="#142033">금고동 사과 두 개</text><text x="8" y="40" text-anchor="start" font-size="11" font-weight="700" fill="#142033">주세요</text><path d="M0 0 l12 10 l-10 12 l12 10 l-10 12 l12 10 l-10 12 l12 10 l-10 12" stroke="var(--bad-soft)" stroke-width="5" fill="none"/></g><g transform="translate(650,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="560" y="260" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">'금고'라는 말이 있어서 찢었어요</text><text x="570" y="295" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">착한 쪽지를 찢으면 손님이 화나요</text></svg>
+<p>새 말투는 못 알아보고, 착한 쪽지를 찢기도 해요.<small>도둑이 돌려 말하면 목록에 없어요. '금고동 사과'를 찢으면 손님이 화나요. 진짜 해법은 창구 직원이 애초에 시키는 대로 안 하는 것(안전한 코드)이에요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>WAF</b> = 창구(웹사이트) 앞에서 쪽지(요청)를 <b>먼저 읽고</b>, 수상한 문장을 <b>찢는</b> 검토원.</h2><p>Web Application Firewall. 성벽(방화벽)은 문을 막고, WAF는 문장을 읽어요. OWASP Top 10이 검토원의 교과서예요. Cloudflare WAF, AWS WAF, ModSecurity 같은 것들.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>요청<br><small>Request</small></dt><dd><b>쪽지.</b> 마을 사람이 창구에 넣는 것. 주소창, 검색어, 입력칸 전부.</dd></div><div><dt>웹 앱<br><small>Web application</small></dt><dd><b>창구.</b> 누구나 쪽지를 넣을 수 있어서, 도둑도 넣을 수 있어요.</dd></div><div><dt>SQL 인젝션<br><small>SQL injection</small></dt><dd><b>…그리고 금고도 열어줘.</b> 주문 쪽지에 창고 명령을 끼워 넣기.</dd></div><div><dt>XSS<br><small>Cross-site scripting</small></dt><dd><b>이 쪽지를 다음 손님에게 보여줘.</b> 내 쪽지가 남의 눈앞에서 움직이게 하기.</dd></div><div><dt>규칙 · 시그니처<br><small>Rules · signatures</small></dt><dd><b>수상한 문장 목록.</b> OWASP 핵심 규칙 세트(CRS)가 제일 널리 쓰여요.</dd></div><div><dt>봇 챌린지<br><small>Bot challenge</small></dt><dd><b>손 들어봐요.</b> CAPTCHA 같은 것. 로봇은 손이 없어요.</dd></div><div><dt>오탐<br><small>False positive</small></dt><dd><b>금고동 사과 찢기.</b> 착한 쪽지를 찢은 것. → <a href="soc-ko.html">경비실의 고양이</a></dd></div><div><dt>방화벽<br><small>Firewall</small></dt><dd><b>성벽.</b> 문을 열고 닫기만 해요. 문장은 안 읽어요. → <a href="ndr-ko.html">복도를 지키는 사람</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="cti-ko.html">망루 위의 친구 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

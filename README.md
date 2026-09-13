@@ -45,6 +45,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | ZTNA | 방 하나까지만 데려다주는 안내인 | [ztna-ko](docs/ztna-ko.html) | [ztna-en](docs/ztna-en.html) |
 | SASE | 마을 곳곳의 역 | [sase-ko](docs/sase-ko.html) | [sase-en](docs/sase-en.html) |
 | NAC | 복도 구멍마다 문지기 | [nac-ko](docs/nac-ko.html) | [nac-en](docs/nac-en.html) |
+| WAF | 창구 앞 쪽지 검토원 | [waf-ko](docs/waf-ko.html) | [waf-en](docs/waf-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
