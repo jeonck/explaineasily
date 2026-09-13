@@ -50,7 +50,7 @@ python3 build.py
 
 ## 스킬
 
-`.claude/skills/eli5/SKILL.md` — 위 원칙을 절차로 만든 Claude Code 스킬. 다른 프로젝트에서 쓰려면 디렉터리를 복사한다.
+`.claude/skills/eli5/SKILL.md` — 새 용어를 위 그림책 형식으로 만드는 절차 (비유 고르기 → 패널 3~5장 → `_draw.py` 조각으로 그리기 → `terms/<slug>.py` → 빌드·점검). 위 문서들이 이 스킬의 결과물이다. 다른 프로젝트에서 쓰려면 디렉터리를 복사한다.
 
 ```bash
 cp -r .claude/skills/eli5 ~/.claude/skills/
