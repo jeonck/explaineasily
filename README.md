@@ -40,6 +40,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | PAM | 금고 속 마스터 열쇠 | [pam-ko](docs/pam-ko.html) | [pam-en](docs/pam-en.html) |
 | IAM | 성의 명부 관리소 | [iam-ko](docs/iam-ko.html) | [iam-en](docs/iam-en.html) |
 | DLP | 빨간 도장 찍힌 종이 | [dlp-ko](docs/dlp-ko.html) | [dlp-en](docs/dlp-en.html) |
+| CASB | 바깥 창고 문지기 | [casb-ko](docs/casb-ko.html) | [casb-en](docs/casb-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 

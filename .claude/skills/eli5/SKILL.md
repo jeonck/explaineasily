@@ -59,6 +59,7 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | security | PAM | 금고 속 마스터 열쇠 |
 | security | IAM | 성의 명부 관리소 |
 | security | DLP | 빨간 도장 찍힌 종이 |
+| security | CASB | 바깥 창고 문지기 |
 | design | Dialog Map | 방과 문의 지도 |
 
 비유가 **깨지는 지점**을 반드시 패널 하나로 넣는다. 이게 정직한 설명과 거짓말의 차이다.
