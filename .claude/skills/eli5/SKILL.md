@@ -84,6 +84,7 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | security | Backup | 멀리 둔 여분 상자 |
 | security | Encryption | 열쇠 없이는 못 읽는 편지 |
 | security | Hashing | 물건마다 찍는 지문 |
+| security | Honeypot | 반짝이는 가짜 금고 방 |
 | design | Dialog Map | 방과 문의 지도 |
 
 비유가 **깨지는 지점**을 반드시 패널 하나로 넣는다. 이게 정직한 설명과 거짓말의 차이다.

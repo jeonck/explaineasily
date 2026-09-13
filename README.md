@@ -65,6 +65,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | Backup | 멀리 둔 여분 상자 | [backup-ko](docs/backup-ko.html) | [backup-en](docs/backup-en.html) |
 | Encryption | 열쇠 없이는 못 읽는 편지 | [encryption-ko](docs/encryption-ko.html) | [encryption-en](docs/encryption-en.html) |
 | Hashing | 물건마다 찍는 지문 | [hashing-ko](docs/hashing-ko.html) | [hashing-en](docs/hashing-en.html) |
+| Honeypot | 반짝이는 가짜 금고 방 | [honeypot-ko](docs/honeypot-ko.html) | [honeypot-en](docs/honeypot-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 

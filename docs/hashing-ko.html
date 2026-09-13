@@ -157,7 +157,7 @@ header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
 </section>
 <section class="sum"><div class="eyebrow">한 줄로</div><h2><b>해시</b> = 물건마다 찍는 <b>짧은 지문</b>. 한 글자만 바뀌어도 달라지고, 지문으로 물건을 <b>되만들 순 없어요</b>.</h2><p>Hash. 요즘 지문 기계는 SHA-256. 암호말 지문엔 소금을 뿌리고 일부러 느린 기계(bcrypt, argon2)를 써요. 암호화와 달라요 — 숨기는 게 아니라 알아보는 거예요.</p></section>
 <section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>해시 함수<br><small>Hash function</small></dt><dd><b>지문 기계.</b> SHA-256이 요즘 것. 같은 걸 넣으면 늘 같은 지문.</dd></div><div><dt>다이제스트<br><small>Digest</small></dt><dd><b>지문.</b> 늘 같은 길이. SHA-256은 64글자.</dd></div><div><dt>일방향<br><small>One-way</small></dt><dd><b>되돌릴 수 없음.</b> 그래서 <a href="encryption-ko.html">암호화</a>가 아니에요. 열쇠도 없어요.</dd></div><div><dt>무결성 · 체크섬<br><small>Integrity · checksum</small></dt><dd><b>바뀌었나 확인.</b> 받은 책의 지문이 보낸 사람 지문과 같은지.</dd></div><div><dt>솔트<br><small>Salt</small></dt><dd><b>사람마다 뿌리는 소금.</b> 같은 암호말도 다른 지문이 되게. 지문표 공격을 막아요.</dd></div><div><dt>충돌<br><small>Collision</small></dt><dd><b>다른 물건, 같은 지문.</b> MD5와 SHA-1은 이게 가능해져서 은퇴했어요.</dd></div><div><dt>bcrypt · argon2<br><small>bcrypt · argon2</small></dt><dd><b>일부러 느린 지문 기계.</b> 암호말용. 도둑이 백만 번 찍어보는 걸 느리게 해요.</dd></div><div><dt>IOC 해시<br><small>IOC hash</small></dt><dd><b>도둑 물건 지문.</b> 수배 전단에 적는 지문. → <a href="ioc-ko.html">남겨진 발자국</a></dd></div></dl></section>
-<section class="next"><div class="eyebrow">다음 이야기</div><a href="cti-ko.html">망루 위의 친구 →</a></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="honeypot-ko.html">반짝이는 가짜 금고 방 →</a></section>
 <section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
 </main>
 </body>
