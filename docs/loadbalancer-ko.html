@@ -147,7 +147,7 @@ header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
 </section>
 <section class="sum"><div class="eyebrow">한 줄로</div><h2><b>로드 밸런서</b> = 마을 사람들을 <b>한가한 창구</b>로 나눠 보내는 줄 안내원. 닫힌 창구엔 안 보내고, 창구가 몇 개인지 마을은 몰라요.</h2><p>Load Balancer. 접수원(리버스 프록시)이 하는 일 중 하나예요. 겉봉만 보고 나누면 L4, 쪽지를 읽고 나누면 L7. nginx, HAProxy, AWS ALB/NLB 같은 것들.</p></section>
 <section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>라운드 로빈<br><small>Round robin</small></dt><dd><b>차례대로 한 명씩.</b> 1, 2, 3, 1, 2, 3… 제일 단순한 나누기.</dd></div><div><dt>최소 연결<br><small>Least connections</small></dt><dd><b>제일 짧은 줄로.</b> 지금 손님이 제일 적은 창구로.</dd></div><div><dt>헬스 체크<br><small>Health check</small></dt><dd><b>창구 문 두드려 보기.</b> 대답 없는 창구엔 안 보내요.</dd></div><div><dt>스티키 세션<br><small>Sticky session</small></dt><dd><b>아까 그 창구로.</b> 장부가 창구마다 따로일 때 쓰는 방법.</dd></div><div><dt>오토스케일<br><small>Autoscaling</small></dt><dd><b>창구 더 열기.</b> 줄이 길어지면 창구를 늘리고, 한가하면 닫아요.</dd></div><div><dt>L4 · L7<br><small>L4 · L7</small></dt><dd><b>겉봉만 vs 쪽지 읽고.</b> L4는 주소만 보고 나누고, L7은 쪽지 내용을 보고 나눠요. → <a href="proxy-ko.html">접수원 이야기</a></dd></div><div><dt>단일 장애점<br><small>Single point of failure</small></dt><dd><b>안내원 하나.</b> 쓰러지면 다 멈춰요. 그래서 둘 둬요.</dd></div><div><dt>공유 세션 저장소<br><small>Shared session store</small></dt><dd><b>창구들이 같이 보는 장부.</b> 어느 창구로 가도 '아까 그 얘기'를 알아요.</dd></div></dl></section>
-<section class="next"><div class="eyebrow">다음 이야기</div><a href="cti-ko.html">망루 위의 친구 →</a></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="cdn-ko.html">마을마다 복사본 창고 →</a></section>
 <section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
 </main>
 </body>

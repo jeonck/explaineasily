@@ -51,6 +51,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | VPN | 봉인된 땅굴 | [vpn-ko](docs/vpn-ko.html) | [vpn-en](docs/vpn-en.html) |
 | Proxy | 대신 다녀오는 심부름꾼 | [proxy-ko](docs/proxy-ko.html) | [proxy-en](docs/proxy-en.html) |
 | Load Balancer | 줄 안내원 | [loadbalancer-ko](docs/loadbalancer-ko.html) | [loadbalancer-en](docs/loadbalancer-en.html) |
+| CDN | 마을마다 복사본 창고 | [cdn-ko](docs/cdn-ko.html) | [cdn-en](docs/cdn-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
