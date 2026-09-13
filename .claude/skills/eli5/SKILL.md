@@ -71,6 +71,7 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | security | Proxy | 대신 다녀오는 심부름꾼 |
 | security | Load Balancer | 줄 안내원 |
 | security | CDN | 마을마다 복사본 창고 |
+| security | DNS | 마을 안내소 |
 | design | Dialog Map | 방과 문의 지도 |
 
 비유가 **깨지는 지점**을 반드시 패널 하나로 넣는다. 이게 정직한 설명과 거짓말의 차이다.
