@@ -58,6 +58,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | DDoS | 성문 앞 가짜 손님 떼 | [ddos-ko](docs/ddos-ko.html) | [ddos-en](docs/ddos-en.html) |
 | Ransomware | 상자마다 채운 도둑의 자물쇠 | [ransomware-ko](docs/ransomware-ko.html) | [ransomware-en](docs/ransomware-en.html) |
 | Phishing | 우체국인 척하는 편지 | [phishing-ko](docs/phishing-ko.html) | [phishing-en](docs/phishing-en.html) |
+| Malware | 선물 상자 속 벌레 | [malware-ko](docs/malware-ko.html) | [malware-en](docs/malware-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
