@@ -78,6 +78,11 @@ h1 em { color: var(--accent); font-style: normal; }
 .next a { color: var(--accent); font-weight: 700; text-decoration: none; }
 .next a:hover, .next a:focus-visible { text-decoration: underline; }
 .index { display: grid; gap: 14px; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
 .card .eyebrow { margin: 0; }
 .card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
@@ -95,7 +100,7 @@ h1 em { color: var(--accent); font-style: normal; }
 <main class="book">
 <nav class="top"><a href="index.html">← 목록</a><a href="siem-en.html" lang="en">English</a></nav>
 <header>
-<div class="eyebrow">다섯 살도 알 수 있게</div>
+<div class="eyebrow">다섯 살도 알 수 있게 · 보안</div>
 <h1><em>SIEM</em>이 뭐예요?</h1>
 <p class="sub">보안 정보·이벤트 관리(Security Information and Event Management)를 경비실의 큰 화면 이야기로 풀어봤어요.</p>
 </header>
@@ -127,6 +132,7 @@ h1 em { color: var(--accent); font-style: normal; }
 <section class="sum"><div class="eyebrow">한 줄로</div><h2><b>SIEM</b> = 성 곳곳의 쪽지를 한 화면에 <b>모아 줄 세우고</b>, 규칙에 맞으면 <b>종을 울리는</b> 큰 화면.</h2><p>Security Information and Event Management. 경비실(SOC)의 눈이에요. 다만 뭘 볼지는 사람이 정해요.</p></section>
 <section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>로그<br><small>Log</small></dt><dd><b>쪽지.</b> 문이 열렸다, 누가 로그인했다 — 성 곳곳이 남기는 한 줄 기록.</dd></div><div><dt>수집<br><small>Ingestion</small></dt><dd><b>쪽지 모으기.</b> 모든 곳에서 큰 화면으로 쪽지를 보내는 일.</dd></div><div><dt>정규화<br><small>Normalization</small></dt><dd><b>같은 말로 고치기.</b> 낙서와 숫자를 한 가지 형식으로. 그래야 나란히 놓을 수 있어요.</dd></div><div><dt>상관 분석<br><small>Correlation</small></dt><dd><b>나란히 놓기.</b> 따로면 별거 아닌 쪽지를 이어서 도둑을 찾는 것.</dd></div><div><dt>탐지 규칙<br><small>Detection rule</small></dt><dd><b>종이 울리는 조건.</b> "새벽에 창문·부엌·금고가 10분 안에" 같은 문장. 사람이 적어요.</dd></div><div><dt>경보<br><small>Alert</small></dt><dd><b>종.</b> 규칙에 걸렸을 때 경비실로 가는 것. → <a href="soc-ko.html">경비실 이야기</a></dd></div><div><dt>보관<br><small>Retention</small></dt><dd><b>쪽지 서랍.</b> 지난 쪽지를 몇 달치 두는 것. 나중에 발자국을 찾을 때 열어봐요.</dd></div></dl></section>
 <section class="next"><div class="eyebrow">다음 이야기</div><a href="edr-ko.html">방마다 한 마리 경비견 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">GitHub 이슈로 요청하기 →</a></section>
 </main>
 </body>
 </html>

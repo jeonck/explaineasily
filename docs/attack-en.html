@@ -78,6 +78,11 @@ h1 em { color: var(--accent); font-style: normal; }
 .next a { color: var(--accent); font-weight: 700; text-decoration: none; }
 .next a:hover, .next a:focus-visible { text-decoration: underline; }
 .index { display: grid; gap: 14px; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
 .card .eyebrow { margin: 0; }
 .card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
@@ -95,7 +100,7 @@ h1 em { color: var(--accent); font-style: normal; }
 <main class="book">
 <nav class="top"><a href="index.html">← Index</a><a href="attack-ko.html" lang="ko">한국어</a></nav>
 <header>
-<div class="eyebrow">Explain like I'm five</div>
+<div class="eyebrow">Explain like I'm five · Security</div>
 <h1>What is <em>ATT&amp;CK</em>?</h1>
 <p class="sub">MITRE ATT&amp;CK, the catalog of attacker techniques, told as a story about an encyclopedia.</p>
 </header>
@@ -122,6 +127,7 @@ h1 em { color: var(--accent); font-style: normal; }
 <section class="sum"><div class="eyebrow">In one breath</div><h2><b>ATT&amp;CK</b> = a free dictionary that <b>names</b> every known bad-guy trick.</h2><p>Adversarial Tactics, Techniques &amp; Common Knowledge. Only tricks actually seen in the wild make it in.</p></section>
 <section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>MITRE</dt><dd><b>The keeper of the book.</b> A US non-profit research group. Started the book in 2013.</dd></div><div><dt>Tactic</dt><dd><b>A column.</b> The "what for" — get in, hide, steal. → <a href="ttp-en.html">the habit story</a></dd></div><div><dt>Technique</dt><dd><b>A cell.</b> The "how". Each has a number starting with T.</dd></div><div><dt>T1566</dt><dd><b>The number for fake letters.</b> Grown-ups call it phishing.</dd></div><div><dt>ATT&amp;CK Navigator</dt><dd><b>The paint tool.</b> A free web app for painting the table green and red.</dd></div></dl></section>
 <section class="next"><div class="eyebrow">Next story</div><a href="pyramid-en.html">The Pyramid of Pain →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request it in a GitHub issue →</a></section>
 </main>
 </body>
 </html>

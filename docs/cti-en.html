@@ -78,6 +78,11 @@ h1 em { color: var(--accent); font-style: normal; }
 .next a { color: var(--accent); font-weight: 700; text-decoration: none; }
 .next a:hover, .next a:focus-visible { text-decoration: underline; }
 .index { display: grid; gap: 14px; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
 .card .eyebrow { margin: 0; }
 .card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
@@ -95,7 +100,7 @@ h1 em { color: var(--accent); font-style: normal; }
 <main class="book">
 <nav class="top"><a href="index.html">← Index</a><a href="cti-ko.html" lang="ko">한국어</a></nav>
 <header>
-<div class="eyebrow">Explain like I'm five</div>
+<div class="eyebrow">Explain like I'm five · Security</div>
 <h1>What is <em>CTI</em>?</h1>
 <p class="sub">Cyber Threat Intelligence, told as a story about a castle and a friend on a tower.</p>
 </header>
@@ -132,6 +137,7 @@ h1 em { color: var(--accent); font-style: normal; }
 <section class="sum"><div class="eyebrow">In one breath</div><h2><b>CTI</b> = knowing the bad guys' tricks <b>before</b> they try them on you.</h2><p>Cyber Threat Intelligence is the "heads up!" that lets the good guys get ready first, instead of finding out after something breaks.</p></section>
 <section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Threat actor</dt><dd><b>The sneaky person.</b> A hacker, a gang, or a country's spies.</dd></div><div><dt>TTPs</dt><dd><b>Their favorite tricks.</b> How they usually get in and what they do next. → <a href="ttp-en.html">the habit story</a></dd></div><div><dt>IOC</dt><dd><b>A footprint.</b> A clue like "the red hat" — an address or a file the bad guy always uses. → <a href="ioc-en.html">the footprint story</a></dd></div><div><dt>Threat feed</dt><dd><b>The friend's shouting.</b> A stream of new warnings, all day long.</dd></div><div><dt>Threat report</dt><dd><b>The friend's storybook.</b> The full tale of one gang and everything they did.</dd></div></dl></section>
 <section class="next"><div class="eyebrow">Next story</div><a href="ioc-en.html">The Footprint →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request it in a GitHub issue →</a></section>
 </main>
 </body>
 </html>

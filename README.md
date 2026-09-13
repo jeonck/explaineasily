@@ -1,10 +1,18 @@
 # explaineasily
 
-어려운 보안 용어를 **그림책**으로. 글은 적게, 그림은 크게, 다섯 살 눈높이로.
+어려운 용어를 **그림책**으로. 글은 적게, 그림은 크게, 다섯 살 눈높이로.
 
 배포: https://explaineasily.metacog.co.kr (GitHub Pages, `main` 브랜치의 `/docs` 폴더, `docs/CNAME`)
 
+## 용어 요청
+
+그림책으로 보고 싶은 용어가 있으면 이슈로 남겨주세요. 사이트 각 페이지 맨 아래에도 같은 링크가 있습니다.
+
+→ [용어 요청하기](https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml)
+
 ## 문서
+
+### 보안
 
 | 용어 | 이야기 | 한글 | English |
 |---|---|---|---|
@@ -19,14 +27,22 @@
 | EDR | 방마다 한 마리 경비견 | [edr-ko](docs/edr-ko.html) | [edr-en](docs/edr-en.html) |
 | XDR | 한 무리가 된 파수꾼들 | [xdr-ko](docs/xdr-ko.html) | [xdr-en](docs/xdr-en.html) |
 | NDR | 복도를 지키는 사람 | [ndr-ko](docs/ndr-ko.html) | [ndr-en](docs/ndr-en.html) |
+
+보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
+
+### 소프트웨어 설계
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
 | Dialog Map | 방과 문의 지도 | [dialogmap-ko](docs/dialogmap-ko.html) | [dialogmap-en](docs/dialogmap-en.html) |
 
 ## 구조
 
 ```
-terms/<slug>.py   원본. 한 파일에 한글·영문을 같이 적는다 — 문장은 (ko, en) 튜플, SVG 글자는 ⟦ko|en⟧
-terms/_draw.py    같이 쓰는 SVG 조각 (사람, 성, 말풍선, 방패 …)
-build.py          terms/ → docs/*-ko.html, docs/*-en.html, docs/index.html
+terms/<분야>/<slug>.py   원본. 한 파일에 한글·영문을 같이 적는다 — 문장은 (ko, en) 튜플, SVG 글자는 ⟦ko|en⟧
+terms/_draw.py           같이 쓰는 SVG 조각 (사람, 성, 개, 말풍선, 방패 …)
+build.py                 terms/ → docs/*-ko.html, docs/*-en.html, docs/index.html
+.github/ISSUE_TEMPLATE/  용어 요청 양식
 ```
 
 ```bash
@@ -35,17 +51,31 @@ python3 build.py
 
 의존성 없음. **`docs/*.html` 은 생성물이라 직접 고치지 말 것** — `terms/` 를 고치고 다시 빌드한다.
 
+### 분야 (카테고리)
+
+분야는 `terms/` 아래 폴더 이름이고, `build.py` 의 `CATEGORIES` 에 한글·영문 이름을 등록한다.
+목록 페이지는 분야별로 묶이고, "다음 이야기" 링크는 같은 분야 안에서만 돈다.
+
+```python
+CATEGORIES = {
+    "security": ("보안", "Security"),
+    "design": ("소프트웨어 설계", "Software Design"),
+}
+```
+
+새 분야: 폴더를 만들고 위에 한 줄 추가.
+
 ### 페이지 한 장의 구성
 
 1. 제목 — `<em>용어</em>가 뭐예요?`
-2. 그림 패널 3~5장 — 큰 SVG 한 장 + 한 문장 + 작은 부연. 필요하면 카드 3~4개나 말풍선
+2. 그림 패널 3~5장 — 큰 SVG 한 장 + 한 문장 + 작은 부연. 필요하면 카드 2~4개나 말풍선
 3. 한 줄 요약 (어두운 상자)
 4. "어른들은 이렇게 불러요" — 쉬운 말 → 원어 대응표
-5. 다음 이야기 링크
+5. 다음 이야기 링크, 용어 요청 링크
 
 ### 새 용어 추가
 
-`terms/<slug>.py` 를 만들고 `PAGE` 딕셔너리에 `slug`, `order`, `title`, `h1`, `sub`, `panels`, `summary`, `glossary` 를 채운다. 기존 파일 하나를 복사해서 시작하면 된다.
+`terms/<분야>/<slug>.py` 를 만들고 `PAGE` 딕셔너리에 `slug`, `order`, `title`, `h1`, `sub`, `panels`, `summary`, `glossary` 를 채운다. 기존 파일 하나를 복사해서 시작하면 된다. 절차는 아래 스킬에 있다.
 
 ## 작성 원칙
 
@@ -56,7 +86,7 @@ python3 build.py
 
 ## 스킬
 
-`.claude/skills/eli5/SKILL.md` — 새 용어를 위 그림책 형식으로 만드는 절차 (비유 고르기 → 패널 3~5장 → `_draw.py` 조각으로 그리기 → `terms/<slug>.py` → 빌드·점검). 위 문서들이 이 스킬의 결과물이다. 다른 프로젝트에서 쓰려면 디렉터리를 복사한다.
+`.claude/skills/eli5/SKILL.md` — 새 용어를 위 그림책 형식으로 만드는 절차 (분야 정하기 → 비유 고르기 → 패널 3~5장 → `_draw.py` 조각으로 그리기 → `terms/<분야>/<slug>.py` → 빌드·점검). 위 문서들이 이 스킬의 결과물이다. 다른 프로젝트에서 쓰려면 디렉터리를 복사한다.
 
 ```bash
 cp -r .claude/skills/eli5 ~/.claude/skills/

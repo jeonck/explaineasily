@@ -1,0 +1,35 @@
+name: 용어 요청 / Term request
+description: 그림책으로 보고 싶은 용어를 알려주세요. Ask for a term you'd like as a picture book.
+title: "[용어] "
+labels: ["term-request"]
+body:
+  - type: input
+    id: term
+    attributes:
+      label: 용어 / Term
+      description: 원어 그대로 적어주세요. Write the term as it's normally spelled.
+      placeholder: "예: Zero Trust, OAuth, Kubernetes"
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: 분야 / Category
+      description: 없는 분야면 "기타"를 고르고 아래에 적어주세요. Pick "Other" and describe it below if it's new.
+      options:
+        - 보안 / Security
+        - 소프트웨어 설계 / Software Design
+        - 기타 / Other
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: 어디서 막혔나요? / Where did it get confusing?
+      description: 어떤 문장이나 상황에서 이 말을 만났는지 적어주시면 비유를 고르는 데 도움이 돼요. The sentence or situation you met it in helps pick the right analogy.
+      placeholder: "예: 회의에서 '제로 트러스트로 가자'고 하는데 뭘 하자는 건지 모르겠어요."
+  - type: input
+    id: link
+    attributes:
+      label: 참고 링크 / Reference link
+      description: 정의가 적힌 문서나 원문이 있으면 적어주세요. A page with the official definition, if you have one.

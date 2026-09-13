@@ -78,6 +78,11 @@ h1 em { color: var(--accent); font-style: normal; }
 .next a { color: var(--accent); font-weight: 700; text-decoration: none; }
 .next a:hover, .next a:focus-visible { text-decoration: underline; }
 .index { display: grid; gap: 14px; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
 .card .eyebrow { margin: 0; }
 .card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
@@ -95,7 +100,7 @@ h1 em { color: var(--accent); font-style: normal; }
 <main class="book">
 <nav class="top"><a href="index.html">← 목록</a><a href="cti-en.html" lang="en">English</a></nav>
 <header>
-<div class="eyebrow">다섯 살도 알 수 있게</div>
+<div class="eyebrow">다섯 살도 알 수 있게 · 보안</div>
 <h1><em>CTI</em>가 뭐예요?</h1>
 <p class="sub">사이버 위협 인텔리전스를 성과 망루 위의 친구 이야기로 풀어봤어요.</p>
 </header>
@@ -132,6 +137,7 @@ h1 em { color: var(--accent); font-style: normal; }
 <section class="sum"><div class="eyebrow">한 줄로</div><h2><b>CTI</b> = 나쁜 사람들의 수법을 당하기 <b>전에</b> 미리 아는 것.</h2><p>사이버 위협 인텔리전스는 사고가 난 뒤에 알게 되는 게 아니라, 착한 편이 먼저 준비할 수 있게 해주는 "조심해!"예요.</p></section>
 <section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>위협 행위자<br><small>Threat actor</small></dt><dd><b>나쁜 사람.</b> 해커, 범죄 조직, 어떤 나라의 스파이.</dd></div><div><dt>공격 수법<br><small>TTPs</small></dt><dd><b>즐겨 쓰는 수법.</b> 보통 어떻게 들어오고, 들어와서 뭘 하는지. → <a href="ttp-ko.html">버릇 이야기</a></dd></div><div><dt>침해 지표<br><small>IOC</small></dt><dd><b>발자국.</b> "빨간 모자" 같은 단서 — 나쁜 사람이 늘 쓰는 주소나 파일. → <a href="ioc-ko.html">발자국 이야기</a></dd></div><div><dt>위협 피드<br><small>Threat feed</small></dt><dd><b>친구의 외침.</b> 하루 종일 흘러오는 새 경고들.</dd></div><div><dt>위협 보고서<br><small>Threat report</small></dt><dd><b>친구의 이야기책.</b> 한 조직이 저지른 일을 처음부터 끝까지 적은 것.</dd></div></dl></section>
 <section class="next"><div class="eyebrow">다음 이야기</div><a href="ioc-ko.html">남겨진 발자국 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">GitHub 이슈로 요청하기 →</a></section>
 </main>
 </body>
 </html>

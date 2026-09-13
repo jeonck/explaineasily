@@ -78,6 +78,11 @@ h1 em { color: var(--accent); font-style: normal; }
 .next a { color: var(--accent); font-weight: 700; text-decoration: none; }
 .next a:hover, .next a:focus-visible { text-decoration: underline; }
 .index { display: grid; gap: 14px; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
 .card .eyebrow { margin: 0; }
 .card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
@@ -95,7 +100,7 @@ h1 em { color: var(--accent); font-style: normal; }
 <main class="book">
 <nav class="top"><a href="index.html">← Index</a><a href="ndr-ko.html" lang="ko">한국어</a></nav>
 <header>
-<div class="eyebrow">Explain like I'm five</div>
+<div class="eyebrow">Explain like I'm five · Security</div>
 <h1>What is <em>NDR</em>?</h1>
 <p class="sub">Network Detection and Response, told as a story about the person who watches the hallway.</p>
 </header>
@@ -126,7 +131,8 @@ h1 em { color: var(--accent); font-style: normal; }
 </section>
 <section class="sum"><div class="eyebrow">In one breath</div><h2><b>NDR</b> = the watcher of the <b>hallway</b>, not the rooms. Who goes where, when, carrying how much — and shuts the hallway when it's wrong.</h2><p>Network Detection and Response. No dog needed in every room, so it covers the rooms that can't take one. The price: it can't open sealed boxes.</p></section>
 <section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Network</dt><dd><b>The hallway.</b> The paths between rooms, and between the castle and outside.</dd></div><div><dt>Traffic</dt><dd><b>People and bags in the hallway.</b> Everything computers send each other.</dd></div><div><dt>TAP / port mirroring</dt><dd><b>The mirror at the end.</b> Shows a copy of everything passing, without stopping anyone.</dd></div><div><dt>Agentless</dt><dd><b>Never enters a room.</b> Which is why it covers rooms the <a href="edr-en.html">dog</a> can't.</dd></div><div><dt>Lateral movement</dt><dd><b>Room to room.</b> Someone leaving the printer room for the vault. Best seen from the hallway.</dd></div><div><dt>Exfiltration</dt><dd><b>Walking out with a huge bag.</b> At night, toward the gate, very big.</dd></div><div><dt>Encryption</dt><dd><b>The sealed box.</b> Contents hidden; size, direction and time still visible.</dd></div></dl></section>
-<section class="next"><div class="eyebrow">Next story</div><a href="dialogmap-en.html">The Room Map →</a></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="cti-en.html">The Watchtower Friend →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request it in a GitHub issue →</a></section>
 </main>
 </body>
 </html>

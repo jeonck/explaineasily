@@ -78,6 +78,11 @@ h1 em { color: var(--accent); font-style: normal; }
 .next a { color: var(--accent); font-weight: 700; text-decoration: none; }
 .next a:hover, .next a:focus-visible { text-decoration: underline; }
 .index { display: grid; gap: 14px; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
 .card .eyebrow { margin: 0; }
 .card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
@@ -95,7 +100,7 @@ h1 em { color: var(--accent); font-style: normal; }
 <main class="book">
 <nav class="top"><a href="index.html">← Index</a><a href="ttp-ko.html" lang="ko">한국어</a></nav>
 <header>
-<div class="eyebrow">Explain like I'm five</div>
+<div class="eyebrow">Explain like I'm five · Security</div>
 <h1>What are <em>TTPs</em>?</h1>
 <p class="sub">Tactics, Techniques and Procedures, told as a story about a burglar's habits.</p>
 </header>
@@ -123,6 +128,7 @@ h1 em { color: var(--accent); font-style: normal; }
 <section class="sum"><div class="eyebrow">In one breath</div><h2><b>TTPs</b> = the bad guy's <b>habits</b>. Know them and no disguise works.</h2><p>Tactics, Techniques, Procedures. They outlast any single clue, so this is where real defense is built.</p></section>
 <section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Tactic</dt><dd><b>The goal.</b> Get in, hide, steal, get out — the big steps.</dd></div><div><dt>Technique</dt><dd><b>The method.</b> Through a window, with a fake letter, with a stolen key.</dd></div><div><dt>Procedure</dt><dd><b>The exact moves.</b> This burglar's specific routine. Differs per burglar.</dd></div><div><dt>Behavior detection</dt><dd><b>The bell on the window.</b> Catching what they do, not what they look like.</dd></div><div><dt>ATT&amp;CK</dt><dd><b>The habit encyclopedia.</b> A book that names every known habit. → <a href="attack-en.html">the encyclopedia story</a></dd></div></dl></section>
 <section class="next"><div class="eyebrow">Next story</div><a href="attack-en.html">The Burglar Encyclopedia →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request it in a GitHub issue →</a></section>
 </main>
 </body>
 </html>

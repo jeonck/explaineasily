@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""terms/*.py 의 그림책 정의를 docs/ 의 한글·영문 HTML로 만든다.
+"""terms/<분야>/<slug>.py 의 그림책 정의를 docs/ 의 한글·영문 HTML로 만든다.
 
 의존성 없음. 사용법: python3 build.py
-문장은 (한글, 영문) 튜플, SVG 안의 글자는 ⟦한글|영문⟧ 로 적는다.
+분야는 폴더 이름이다 (CATEGORIES 에 등록). 문장은 (한글, 영문) 튜플, SVG 안의 글자는 ⟦한글|영문⟧ 로 적는다.
 """
 
 import importlib.util
@@ -13,6 +13,14 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 DOCS = ROOT / "docs"
 TERMS = ROOT / "terms"
+REPO = "https://github.com/jeonck/explaineasily"
+REQUEST_URL = f"{REPO}/issues/new?template=term-request.yml"
+
+# 폴더 이름 → (한글, 영문). 순서가 목록 순서다. 새 분야는 폴더를 만들고 여기 한 줄 추가.
+CATEGORIES = {
+    "security": ("보안", "Security"),
+    "design": ("소프트웨어 설계", "Software Design"),
+}
 
 FONTS = {
     "ko": (
@@ -100,6 +108,11 @@ h1 em { color: var(--accent); font-style: normal; }
 .next a { color: var(--accent); font-weight: 700; text-decoration: none; }
 .next a:hover, .next a:focus-visible { text-decoration: underline; }
 .index { display: grid; gap: 14px; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
 .card .eyebrow { margin: 0; }
 .card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
@@ -115,9 +128,11 @@ h1 em { color: var(--accent); font-style: normal; }
 
 UI = {
     "ko": {"index": "← 목록", "other": "English", "eyebrow": "다섯 살도 알 수 있게",
-           "sum": "한 줄로", "gloss": "어른들은 이렇게 불러요", "next": "다음 이야기", "lang": "ko"},
+           "sum": "한 줄로", "gloss": "어른들은 이렇게 불러요", "next": "다음 이야기",
+           "request": "다른 용어도 그림책으로 보고 싶다면", "request_link": "GitHub 이슈로 요청하기 →"},
     "en": {"index": "← Index", "other": "한국어", "eyebrow": "Explain like I'm five",
-           "sum": "In one breath", "gloss": "When grown-ups say it", "next": "Next story", "lang": "en"},
+           "sum": "In one breath", "gloss": "When grown-ups say it", "next": "Next story",
+           "request": "Want another term as a picture book?", "request_link": "Request it in a GitHub issue →"},
 }
 
 
@@ -176,10 +191,11 @@ def render_term(t, lang, order):
     ui = UI[lang]
     slug = t["slug"]
     other = "en" if lang == "ko" else "ko"
+    cat = L(CATEGORIES[t["category"]], lang)
     parts = [
         f'<nav class="top"><a href="index.html">{ui["index"]}</a><a href="{slug}-{other}.html" lang="{other}">{ui["other"]}</a></nav>',
         "<header>",
-        f'<div class="eyebrow">{ui["eyebrow"]}</div>',
+        f'<div class="eyebrow">{ui["eyebrow"]} · {cat}</div>',
         f"<h1>{L(t['h1'], lang)}</h1>",
         f'<p class="sub">{L(t["sub"], lang)}</p>',
         "</header>",
@@ -193,28 +209,35 @@ def render_term(t, lang, order):
         dt = f"{term_ko}<br><small>{term_en}</small>" if lang == "ko" and term_en else (term_en or term_ko)
         rows.append(f"<div><dt>{dt}</dt><dd><b>{L(b, lang)}</b> {L(rest, lang)}</dd></div>")
     parts.append(f'<section class="glossary"><h3>{ui["gloss"]}</h3><dl>{"".join(rows)}</dl></section>')
-    slugs = [o["slug"] for o in order]
-    nxt = order[(slugs.index(slug) + 1) % len(order)]
-    parts.append(f'<section class="next"><div class="eyebrow">{ui["next"]}</div>'
-                 f'<a href="{nxt["slug"]}-{lang}.html">{L(nxt["title"], lang)} →</a></section>')
+    same = [o for o in order if o["category"] == t["category"]]
+    slugs = [o["slug"] for o in same]
+    nxt = same[(slugs.index(slug) + 1) % len(same)]
+    if nxt is not t:
+        parts.append(f'<section class="next"><div class="eyebrow">{ui["next"]}</div>'
+                     f'<a href="{nxt["slug"]}-{lang}.html">{L(nxt["title"], lang)} →</a></section>')
+    parts.append(f'<section class="request">{ui["request"]} <a href="{REQUEST_URL}">{ui["request_link"]}</a></section>')
     return page_html(lang, L(t["title"], lang), "\n".join(parts))
 
 
 def render_index(terms):
-    cards = []
-    for t in terms:
-        cards.append(
+    groups = []
+    for key, (ko, en) in CATEGORIES.items():
+        cards = [
             f'<article class="card"><div class="eyebrow">{t["slug"].upper()}</div>'
             f'<h3>{L(t["title"], "ko")}</h3>'
             f'<div class="links"><a href="{t["slug"]}-ko.html">한국어</a>'
             f'<a href="{t["slug"]}-en.html" lang="en">English</a></div></article>'
-        )
+            for t in terms if t["category"] == key
+        ]
+        if cards:
+            groups.append(f"<h2>{ko}<small>{en}</small></h2>" + "".join(cards))
     body = f"""<header>
 <div class="eyebrow">explaineasily</div>
 <h1>어려운 말을 <em>그림</em>으로</h1>
-<p class="sub">보안 용어를 다섯 살 눈높이의 그림책으로. 글은 적게, 그림은 크게.</p>
+<p class="sub">어려운 용어를 다섯 살 눈높이의 그림책으로. 글은 적게, 그림은 크게.</p>
 </header>
-<section class="index">{"".join(cards)}</section>
+<section class="index">{"".join(groups)}</section>
+<section class="request">{UI["ko"]["request"]} <a href="{REQUEST_URL}">{UI["ko"]["request_link"]}</a></section>
 <section class="glossary"><h3>작성 원칙</h3>
 <ul class="rules">
 <li>쉬움을 위해 사실을 왜곡하지 않는다.</li>
@@ -228,12 +251,17 @@ def render_index(terms):
 def load_terms():
     sys.path.insert(0, str(TERMS))
     terms = []
-    for path in sorted(TERMS.glob("[!_]*.py")):
+    for path in sorted(TERMS.glob("*/[!_]*.py")):
+        cat = path.parent.name
+        if cat not in CATEGORIES:
+            raise SystemExit(f"{path}: 폴더 '{cat}' 가 CATEGORIES 에 없다")
         spec = importlib.util.spec_from_file_location(path.stem, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
+        mod.PAGE["category"] = cat
         terms.append(mod.PAGE)
-    terms.sort(key=lambda t: t["order"])
+    cats = list(CATEGORIES)
+    terms.sort(key=lambda t: (cats.index(t["category"]), t["order"]))
     return terms
 
 
@@ -244,7 +272,7 @@ def main():
         for lang in ("ko", "en"):
             dest = DOCS / f"{t['slug']}-{lang}.html"
             dest.write_text(render_term(t, lang, terms), encoding="utf-8")
-            print(f"  terms/{t['slug']}.py -> {dest.relative_to(ROOT)}")
+            print(f"  terms/{t['category']}/{t['slug']}.py -> {dest.relative_to(ROOT)}")
     (DOCS / "index.html").write_text(render_index(terms), encoding="utf-8")
     print("  (index) -> docs/index.html")
 
