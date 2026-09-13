@@ -69,6 +69,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | Sandbox | 창문 없는 빈 방 | [sandbox-ko](docs/sandbox-ko.html) | [sandbox-en](docs/sandbox-en.html) |
 | SBOM | 도구에 붙은 부품 목록표 | [sbom-ko](docs/sbom-ko.html) | [sbom-en](docs/sbom-en.html) |
 | Pentest | 우리가 고용한 도둑 | [pentest-ko](docs/pentest-ko.html) | [pentest-en](docs/pentest-en.html) |
+| Incident Response | 도둑 들었을 때 순서표 | [incident-ko](docs/incident-ko.html) | [incident-en](docs/incident-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
