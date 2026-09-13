@@ -4,89 +4,108 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>explaineasily</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
 <style>
 :root {
-  --bg: #fbfaf8; --fg: #24201c; --muted: #6b645c; --rule: #e2ddd6;
-  --accent: #9a3b1f; --card: #ffffff; --code-bg: #f1eee9;
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #191715; --fg: #e8e3dc; --muted: #9d958b; --rule: #35312c;
-    --accent: #e08a63; --card: #201d1a; --code-bg: #262220;
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
   }
 }
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
 * { box-sizing: border-box; }
-body {
-  margin: 0; background: var(--bg); color: var(--fg);
-  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo",
-    "Noto Sans KR", "Malgun Gothic", Segoe UI, sans-serif;
-  font-size: 17px; line-height: 1.75;
-  -webkit-text-size-adjust: 100%;
-}
-.wrap { max-width: 46rem; margin: 0 auto; padding: 3.5rem 1.25rem 6rem; }
-h1 {
-  font-size: 1.95rem; line-height: 1.3; letter-spacing: -0.02em;
-  margin: 0 0 1.75rem; padding-bottom: 1.25rem; border-bottom: 2px solid var(--fg);
-}
-h2 {
-  font-size: 1.3rem; letter-spacing: -0.01em;
-  margin: 3.25rem 0 1rem; padding-top: 1.25rem; border-top: 1px solid var(--rule);
-}
-h3 { font-size: 1.05rem; margin: 2rem 0 .6rem; }
-p { margin: 0 0 1.1rem; }
-a { color: var(--accent); text-underline-offset: 3px; }
-strong { font-weight: 650; }
-blockquote {
-  margin: 1.5rem 0; padding: .9rem 1.1rem; border-left: 3px solid var(--accent);
-  background: var(--card); color: var(--muted); border-radius: 0 4px 4px 0;
-}
-blockquote p:last-child { margin: 0; }
-code {
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
-  font-size: .86em; background: var(--code-bg); padding: .15em .4em; border-radius: 3px;
-}
-pre {
-  background: var(--code-bg); padding: 1rem; border-radius: 6px;
-  overflow-x: auto; margin: 1.5rem 0;
-}
-pre code { background: none; padding: 0; font-size: .85rem; line-height: 1.6; }
-ul, ol { margin: 0 0 1.1rem; padding-left: 1.4rem; }
-li { margin-bottom: .5rem; }
-li > strong:first-child { color: var(--accent); }
-.table-scroll { overflow-x: auto; margin: 1.5rem 0; }
-table { border-collapse: collapse; width: 100%; font-size: .93rem; }
-th, td {
-  text-align: left; padding: .65rem .8rem;
-  border-bottom: 1px solid var(--rule); vertical-align: top;
-}
-th { background: var(--card); font-weight: 650; white-space: nowrap; }
-tbody tr:last-child td { border-bottom: none; }
-.home {
-  display: inline-block; margin-bottom: 2rem; font-size: .9rem;
-  color: var(--muted); text-decoration: none;
-}
-.home:hover { color: var(--accent); }
-footer {
-  margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--rule);
-  font-size: .85rem; color: var(--muted);
-}
-@media (max-width: 480px) {
-  body { font-size: 16px; }
-  .wrap { padding: 2.25rem 1rem 4rem; }
-  h1 { font-size: 1.55rem; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-
-<h1>explaineasily</h1>
-<p>어려운 것을 정확하게, 쉽게 설명합니다.</p>
-<h2>문서</h2>
-<ul><li><a href="cti-ko.html">CTI(사이버 위협 인텔리전스) 쉽게 이해하기</a> — 한글</li><li><a href="cti-en.html">CTI (Cyber Threat Intelligence), Explained Simply</a> — English</li></ul>
-<h2>작성 원칙</h2>
-<ul><li>쉬움을 위해 사실을 왜곡하지 않는다.</li><li>비유는 하나만 쓰고, 그 비유가 깨지는 지점을 함께 밝힌다.</li><li>전문 용어는 쉬운 말로 먼저 쓰고 원어를 괄호에 병기한다.</li><li>어휘를 낮추는 것이지, 읽는 사람을 낮추는 것이 아니다.</li></ul>
-<footer>이 문서는 <code>docs/</code>의 마크다운 원본에서 <code>build.py</code>로 생성되었습니다. HTML을 직접 고치지 마세요.</footer>
-</div>
+<main class="book">
+<header>
+<div class="eyebrow">explaineasily</div>
+<h1>어려운 말을 <em>그림</em>으로</h1>
+<p class="sub">보안 용어를 다섯 살 눈높이의 그림책으로. 글은 적게, 그림은 크게.</p>
+</header>
+<section class="index"><article class="card"><div class="eyebrow">CTI</div><h3>망루 위의 친구</h3><div class="links"><a href="cti-ko.html">한국어</a><a href="cti-en.html" lang="en">English</a></div></article><article class="card"><div class="eyebrow">IOC</div><h3>남겨진 발자국</h3><div class="links"><a href="ioc-ko.html">한국어</a><a href="ioc-en.html" lang="en">English</a></div></article><article class="card"><div class="eyebrow">TTP</div><h3>도둑의 버릇</h3><div class="links"><a href="ttp-ko.html">한국어</a><a href="ttp-en.html" lang="en">English</a></div></article><article class="card"><div class="eyebrow">ATTACK</div><h3>도둑 백과사전</h3><div class="links"><a href="attack-ko.html">한국어</a><a href="attack-en.html" lang="en">English</a></div></article><article class="card"><div class="eyebrow">PYRAMID</div><h3>고통의 피라미드</h3><div class="links"><a href="pyramid-ko.html">한국어</a><a href="pyramid-en.html" lang="en">English</a></div></article><article class="card"><div class="eyebrow">TLP</div><h3>비밀 신호등</h3><div class="links"><a href="tlp-ko.html">한국어</a><a href="tlp-en.html" lang="en">English</a></div></article></section>
+<section class="glossary"><h3>작성 원칙</h3>
+<ul class="rules">
+<li>쉬움을 위해 사실을 왜곡하지 않는다.</li>
+<li>비유는 하나만 쓰고, 그 비유가 깨지는 지점을 함께 밝힌다.</li>
+<li>전문 용어는 쉬운 말로 먼저 쓰고 원어를 병기한다 — 나중에 검색할 수 있어야 한다.</li>
+<li>어휘를 낮추는 것이지, 읽는 사람을 낮추는 것이 아니다.</li>
+</ul></section>
+</main>
 </body>
 </html>

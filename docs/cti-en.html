@@ -3,120 +3,135 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CTI (Cyber Threat Intelligence), Explained Simply</title>
+<title>The Watchtower Friend</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
 <style>
 :root {
-  --bg: #fbfaf8; --fg: #24201c; --muted: #6b645c; --rule: #e2ddd6;
-  --accent: #9a3b1f; --card: #ffffff; --code-bg: #f1eee9;
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #191715; --fg: #e8e3dc; --muted: #9d958b; --rule: #35312c;
-    --accent: #e08a63; --card: #201d1a; --code-bg: #262220;
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
   }
 }
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
 * { box-sizing: border-box; }
-body {
-  margin: 0; background: var(--bg); color: var(--fg);
-  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo",
-    "Noto Sans KR", "Malgun Gothic", Segoe UI, sans-serif;
-  font-size: 17px; line-height: 1.75;
-  -webkit-text-size-adjust: 100%;
-}
-.wrap { max-width: 46rem; margin: 0 auto; padding: 3.5rem 1.25rem 6rem; }
-h1 {
-  font-size: 1.95rem; line-height: 1.3; letter-spacing: -0.02em;
-  margin: 0 0 1.75rem; padding-bottom: 1.25rem; border-bottom: 2px solid var(--fg);
-}
-h2 {
-  font-size: 1.3rem; letter-spacing: -0.01em;
-  margin: 3.25rem 0 1rem; padding-top: 1.25rem; border-top: 1px solid var(--rule);
-}
-h3 { font-size: 1.05rem; margin: 2rem 0 .6rem; }
-p { margin: 0 0 1.1rem; }
-a { color: var(--accent); text-underline-offset: 3px; }
-strong { font-weight: 650; }
-blockquote {
-  margin: 1.5rem 0; padding: .9rem 1.1rem; border-left: 3px solid var(--accent);
-  background: var(--card); color: var(--muted); border-radius: 0 4px 4px 0;
-}
-blockquote p:last-child { margin: 0; }
-code {
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
-  font-size: .86em; background: var(--code-bg); padding: .15em .4em; border-radius: 3px;
-}
-pre {
-  background: var(--code-bg); padding: 1rem; border-radius: 6px;
-  overflow-x: auto; margin: 1.5rem 0;
-}
-pre code { background: none; padding: 0; font-size: .85rem; line-height: 1.6; }
-ul, ol { margin: 0 0 1.1rem; padding-left: 1.4rem; }
-li { margin-bottom: .5rem; }
-li > strong:first-child { color: var(--accent); }
-.table-scroll { overflow-x: auto; margin: 1.5rem 0; }
-table { border-collapse: collapse; width: 100%; font-size: .93rem; }
-th, td {
-  text-align: left; padding: .65rem .8rem;
-  border-bottom: 1px solid var(--rule); vertical-align: top;
-}
-th { background: var(--card); font-weight: 650; white-space: nowrap; }
-tbody tr:last-child td { border-bottom: none; }
-.home {
-  display: inline-block; margin-bottom: 2rem; font-size: .9rem;
-  color: var(--muted); text-decoration: none;
-}
-.home:hover { color: var(--accent); }
-footer {
-  margin-top: 4rem; padding-top: 1.25rem; border-top: 1px solid var(--rule);
-  font-size: .85rem; color: var(--muted);
-}
-@media (max-width: 480px) {
-  body { font-size: 16px; }
-  .wrap { padding: 2.25rem 1rem 4rem; }
-  h1 { font-size: 1.55rem; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-<a class="home" href="index.html">← Back to index</a>
-<h1>CTI (Cyber Threat Intelligence), Explained Simply</h1>
-<blockquote><p>Korean version: <a href="./cti-ko.html">cti-ko.md</a></p></blockquote>
-<h2>In One Sentence</h2>
-<p><strong>CTI is finding out who is coming after you and how, then changing your defenses to match.</strong></p>
-<p>The second half is what matters. If you learn something and your defenses stay the same, that is not intelligence. That is news.</p>
-<h2>What It Feels Like — A Weather Forecast</h2>
-<p>CTI works like a <strong>weather forecast</strong>.</p>
-<p>A weather service collects satellite images, station readings, and historical records. Analysts turn that into &quot;rain in Seoul tomorrow afternoon.&quot; You hear it and take an umbrella. CTI has the same shape: collect traces of attacks from many places, analyze them, report that &quot;ransomware aimed at domestic manufacturers is rising this month,&quot; and the security team adjusts its backup policy in response.</p>
-<p><strong>But the analogy breaks in one place.</strong> The weather arrives whether or not you carry an umbrella. An attacker does not. When you block them, they change their method. So CTI is not a forecast you produce once — it is a forecast you keep rewriting, because the thing you are forecasting is watching how you respond.</p>
-<h2>Why You Need It</h2>
-<p>Without CTI, a security team runs into three problems.</p>
-<p><strong>1. Every attack looks brand new.</strong> Another company hit the same way three months ago and published exactly how they handled it. If you do not know that, you start over from zero.</p>
-<p><strong>2. Too many alerts, no way to rank them.</strong> Security tools generate thousands of alerts a day. Nobody reads them all. CTI adds context — &quot;this IP belongs to a group that is active right now&quot; — so the ten alerts worth opening first rise out of the thousands.</p>
-<p><strong>3. The budget goes to the wrong place.</strong> If most attacks against your industry arrive by email, and your spending is entirely elsewhere, you are paying for the wrong defense.</p>
-<h2>Four Kinds of CTI</h2>
-<p>The same intelligence looks completely different depending on <strong>who reads it</strong>. Confuse these and you end up handing an executive a list of IP addresses.</p>
-<div class="table-scroll"><table><thead><tr><th>Kind</th><th>Reader</th><th>Question it answers</th><th>Form</th><th>Shelf life</th></tr></thead><tbody><tr><td><strong>Strategic</strong></td><td>Executives, CISO</td><td>&quot;What risk are we accepting?&quot;</td><td>Reports, trend analysis</td><td>Months to years</td></tr><tr><td><strong>Operational</strong></td><td>Security leads</td><td>&quot;Who is targeting us, and why?&quot;</td><td>Campaign analysis</td><td>Weeks to months</td></tr><tr><td><strong>Tactical</strong></td><td>Analysts, detection engineers</td><td>&quot;How do they get in?&quot;</td><td>TTP write-ups</td><td>Months to years</td></tr><tr><td><strong>Technical</strong></td><td>Security tooling</td><td>&quot;What do we block?&quot;</td><td>IP, hash, domain lists</td><td>Hours to days</td></tr></tbody></table></div>
-<p>Notice that the bottom row <strong>expires fastest</strong>. A list of bad IP addresses is worthless within days, because swapping servers costs the attacker almost nothing.</p>
-<h2>Five Terms Worth Knowing</h2>
-<p>These acronyms are where most people stall. Plain meaning first, original term in parentheses — you need the original to search later.</p>
-<ul><li><strong>Indicator of Compromise (IOC)</strong> — a piece of evidence that you were already hit. A malicious file&#x27;s fingerprint (hash), an attacker&#x27;s server IP, a suspicious domain name.</li><li><strong>Tactics, Techniques, and Procedures (TTP)</strong> — the attacker&#x27;s *way of working*. A pattern like &quot;arrives by phishing email, borrows legitimate admin tools, exfiltrates data early on weekend mornings.&quot;</li><li><strong>MITRE ATT&amp;CK</strong> — a free, public catalog of attack techniques observed in the real world. It gives security teams everywhere a shared vocabulary for naming the same behavior.</li><li><strong>STIX / TAXII</strong> — a format for writing threat information so machines can read it (STIX), and a channel for exchanging it (TAXII). These exist so that people stop trading spreadsheets.</li><li><strong>Traffic Light Protocol (TLP)</strong> — a color code for how far you may pass information along. CLEAR (public) → GREEN (community) → AMBER (your organization) → RED (recipients only), narrowing at each step.</li></ul>
-<h2>One Concrete Example — Blocking an IP vs. Blocking a Method</h2>
-<p>Say a CTI feed hands you one attacker server IP.</p>
-<p><strong>Option A: block that IP at the firewall.</strong> Five minutes of work. The attacker rents a new server — a few dollars, ten minutes. You are back where you started.</p>
-<p><strong>Option B: look at *how* that IP was used.</strong> Analysis shows a pattern: a legitimate remote-admin tool gets installed, then large outbound transfers happen only between 2 and 4 a.m. You turn that <strong>behavior</strong> into a detection rule. Now the attacker can change IPs a hundred times and still trip it. To evade you, they have to redesign how they operate — and that takes months.</p>
-<p>This difference is the <strong>Pyramid of Pain</strong>. Lower levels are easy to block and painless for the attacker. Higher levels are hard to block and genuinely painful.</p>
-<div class="table-scroll"><table><thead><tr><th>Top ↑ hard to block</th><th>What it costs the attacker to change</th></tr></thead><tbody><tr><td><strong>TTPs</strong></td><td>Months — they must redesign how they operate</td></tr><tr><td><strong>Tools</strong></td><td>Weeks — they must build or learn a new one</td></tr><tr><td><strong>Host/network artifacts</strong></td><td>Days — they must change configuration</td></tr><tr><td><strong>Domain names</strong></td><td>Hours — they buy another one</td></tr><tr><td><strong>IP addresses</strong></td><td>Ten minutes — they rent another server</td></tr><tr><td><strong>File hashes</strong></td><td>One second — adding a single byte changes it</td></tr><tr><td>Bottom ↓ easy to block</td><td></td></tr></tbody></table></div>
-<p>Most organizations work only the bottom two rows and call it a CTI program. That is usually why it does not feel like it is working.</p>
-<h2>How Data Becomes Intelligence</h2>
-<p>Raw data is not intelligence. It has to pass through six steps.</p>
-<ol><li><strong>Direction</strong> — decide what you need to know before collecting anything. (Skipping this is the most common failure.)</li><li><strong>Collection</strong> — gather from feeds, dark web sources, internal logs, and industry sharing groups (ISACs).</li><li><strong>Processing</strong> — normalize formats, remove duplicates, translate.</li><li><strong>Analysis</strong> — attach the &quot;so what does this mean for us?&quot; <strong>This is the step where data becomes intelligence.</strong></li><li><strong>Dissemination</strong> — deliver it in the reader&#x27;s language. (See the four-kinds table again.)</li><li><strong>Feedback</strong> — ask whether it actually helped, then return to step 1.</li></ol>
-<h2>Three Common Ways This Fails</h2>
-<ul><li><strong>Subscribing to feeds and never using them.</strong> Nobody reads a feed that delivers 100,000 indicators a day. Volume collected is not a result.</li><li><strong>Chasing threats that do not apply to you.</strong> A widely reported attack may have nothing to do with your industry or your technology stack. &quot;Does this reach us?&quot; should be question one.</li><li><strong>Skipping step 1.</strong> Collect without knowing what you are protecting, and you produce reports nobody opens.</li></ul>
-<h2>Where to Go Next</h2>
-<p>Search these terms. In this order, they build on each other.</p>
-<ul><li><code>MITRE ATT&amp;CK</code> — the technique catalog. The fastest place to start.</li><li><code>Pyramid of Pain</code> — the original write-up of the pyramid above (David Bianco, 2013)</li><li><code>Diamond Model of Intrusion Analysis</code> — breaks an intrusion into adversary, capability, infrastructure, and victim</li><li><code>Cyber Kill Chain</code> — models an attack as stages from initial access to objective</li><li><code>STIX 2.1</code>, <code>TAXII 2.1</code> — current versions of the exchange standards</li><li><code>ISAC</code>, <code>TLP 2.0</code> — sharing communities and distribution markings</li></ul>
-<footer>Generated from the Markdown sources in <code>docs/</code> by <code>build.py</code>. Do not edit the HTML directly.</footer>
+<main class="book">
+<nav class="top"><a href="index.html">← Index</a><a href="cti-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five</div>
+<h1>What is <em>CTI</em>?</h1>
+<p class="sub">Cyber Threat Intelligence, told as a story about a castle and a friend on a tower.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A castle with a flag under a blue sky" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(150,70) scale(1.0)"><rect x="0" y="20" width="90" height="180" fill="var(--stone)"/><rect x="370" y="20" width="90" height="180" fill="var(--stone)"/><rect x="0" y="0" width="15" height="24" fill="var(--stone)"/><rect x="30" y="0" width="15" height="24" fill="var(--stone)"/><rect x="60" y="0" width="15" height="24" fill="var(--stone)"/><rect x="370" y="0" width="15" height="24" fill="var(--stone)"/><rect x="400" y="0" width="15" height="24" fill="var(--stone)"/><rect x="430" y="0" width="15" height="24" fill="var(--stone)"/><rect x="90" y="70" width="280" height="130" fill="var(--stone-dark)"/><rect x="90" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="146" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="202" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="258" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="314" y="50" width="28" height="24" fill="var(--stone-dark)"/><path d="M195 200 V140 a35 35 0 0 1 70 0 V200 Z" fill="var(--night)"/><rect x="34" y="60" width="22" height="34" rx="11" fill="var(--night)"/><rect x="404" y="60" width="22" height="34" rx="11" fill="var(--night)"/><rect x="228" y="-30" width="4" height="100" fill="var(--night)"/><path d="M232 -28 L290 -12 L232 4 Z" fill="var(--accent)"/></g><rect x="20" y="20" width="120" height="76" rx="8" fill="var(--panel)" stroke="var(--line)"/><rect x="32" y="30" width="96" height="50" rx="3" fill="var(--night)"/><rect x="20" y="88" width="120" height="8" rx="4" fill="var(--stone-dark)"/><text x="80" y="62" text-anchor="middle" font-size="20" font-weight="700" fill="#FFFFFF">= 🏰</text></svg>
+<p>Your computer is a castle.<small>It holds your stuff. You want to keep it safe.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Three sneaky figures approaching a castle at night" viewBox="0 0 760 240" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="240" fill="var(--night)"/><circle cx="660" cy="50" r="26" fill="#F5E6B8"/><circle cx="120" cy="40" r="2" fill="#F5E6B8"/><circle cx="300" cy="70" r="2" fill="#F5E6B8"/><circle cx="500" cy="30" r="2" fill="#F5E6B8"/><circle cx="420" cy="90" r="2" fill="#F5E6B8"/><circle cx="200" cy="120" r="2" fill="#F5E6B8"/><ellipse cx="380" cy="250" rx="440" ry="30" fill="#0A1120"/><rect x="560" y="120" width="140" height="110" fill="#111C30"/><rect x="560" y="105" width="18" height="18" fill="#111C30"/><rect x="595" y="105" width="18" height="18" fill="#111C30"/><rect x="630" y="105" width="18" height="18" fill="#111C30"/><rect x="665" y="105" width="18" height="18" fill="#111C30"/><g transform="translate(110,110) scale(1.0)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M52 56 L96 30 M60 68 L104 42" stroke="#C9A86A" stroke-width="6" stroke-linecap="round"/><path d="M66 62 L58 62 M78 55 L70 55 M90 48 L82 48" stroke="#C9A86A" stroke-width="5"/></g><g transform="translate(300,110) scale(1.0)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><rect x="46" y="66" width="60" height="18" rx="3" fill="#C9822B"/><text x="76" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#FFF">PIZZA?</text></g><g transform="translate(450,120)"><ellipse cx="50" cy="90" rx="60" ry="34" fill="#173A2E"/><circle cx="50" cy="60" r="22" fill="#E8C9A8"/><circle cx="42" cy="58" r="4" fill="#111C30"/><circle cx="58" cy="58" r="4" fill="#111C30"/></g></svg>
+<p>Sneaky people want to get in.<small>Each one has a favorite trick.</small></p>
+<div class="tricks" style="--cols:3">
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="40" height="44" rx="4" fill="var(--panel)" stroke="var(--bad)" stroke-width="3"/><path d="M12 32 h40 M32 10 v44" stroke="var(--bad)" stroke-width="3"/></svg><b>Climbs in windows</b><span>the red-hat one</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 L58 56 H6 Z" fill="#E9B44C"/><circle cx="26" cy="40" r="4" fill="var(--bad)"/><circle cx="38" cy="34" r="4" fill="var(--bad)"/><circle cx="32" cy="50" r="4" fill="var(--bad)"/></svg><b>Pretends to be pizza</b><span>so you open the door</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M40 8 a24 24 0 1 0 16 40 a20 20 0 0 1 -16 -40 z" fill="var(--bad)"/></svg><b>Comes after dark</b><span>when nobody's looking</span></div>
 </div>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="A friend on a tall watchtower with a spyglass and a beacon fire" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><rect x="40" y="230" width="60" height="50" fill="var(--stone)"/><path d="M36 232 L70 205 L104 232 Z" fill="var(--stone-dark)"/><rect x="130" y="240" width="50" height="40" fill="var(--stone)"/><path d="M126 242 L155 220 L184 242 Z" fill="var(--stone-dark)"/><circle cx="110" cy="270" r="8" fill="#E8C9A8"/><path d="M102 266 Q110 254 118 266 Z" fill="var(--bad)"/><rect x="430" y="120" width="110" height="200" fill="var(--stone-dark)"/><rect x="418" y="104" width="134" height="26" fill="var(--stone)"/><rect x="418" y="88" width="17" height="18" fill="var(--stone)"/><rect x="452" y="88" width="17" height="18" fill="var(--stone)"/><rect x="485" y="88" width="17" height="18" fill="var(--stone)"/><rect x="518" y="88" width="17" height="18" fill="var(--stone)"/><g class="flame"><path d="M485 100 C470 80 472 62 485 46 C488 62 496 66 498 56 C508 72 506 88 485 100 Z" fill="var(--accent)"/><path d="M485 96 C478 86 480 76 485 68 C488 76 492 78 493 72 C498 82 496 90 485 96 Z" fill="#FFC875"/></g><g transform="translate(560,20) scale(1.0)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="-36" y="30" width="48" height="12" rx="4" fill="var(--night)" transform="rotate(-18 -12 36)"/><rect x="-60" y="26" width="30" height="16" rx="4" fill="var(--stone-dark)" transform="rotate(-18 -45 34)"/></g><path d="M520 52 L120 262" stroke="var(--accent)" stroke-width="3" stroke-dasharray="8 8" fill="none"/></svg>
+<p>CTI is a friend on the watchtower.<small>They watch the whole town and learn what the sneaky people are doing.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The friend shouting down from the tower" viewBox="0 0 760 170" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="170" fill="var(--accent-soft)"/><g transform="translate(60,30)"><circle cx="40" cy="40" r="32" fill="#E8C9A8"/><path d="M8 34 Q40 -4 72 34 Z" fill="var(--good)"/><ellipse cx="40" cy="54" rx="9" ry="12" fill="var(--night)"/><circle cx="28" cy="36" r="4" fill="var(--night)"/><circle cx="52" cy="36" r="4" fill="var(--night)"/></g><g transform="translate(150,40)"><path d="M0 40 h40 l40 -30 v60 l-40 -30 z" fill="var(--accent)"/><path d="M100 25 a30 30 0 0 1 0 30 M116 12 a48 48 0 0 1 0 56" stroke="var(--accent)" stroke-width="6" fill="none" stroke-linecap="round"/></g><text x="470" y="98" text-anchor="middle" font-size="50" font-weight="700" fill="var(--accent)" class="d">HEADS UP!</text></svg>
+<p>The friend tells you the tricks.<small>Before anyone knocks.</small></p>
+<div class="bubbles">
+<div class="bubble">🧢 Red hat robbed 3 houses this week <span class="arrow">→</span> lock the windows</div>
+<div class="bubble">🍕 Fake pizza is going around <span class="arrow">→</span> don't open for pizza you didn't order</div>
+<div class="bubble">🌙 They come at night <span class="arrow">→</span> check the doors at bedtime</div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A big green shield with a lock in front of the castle" viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="260" fill="var(--good-soft)"/><rect x="230" y="100" width="300" height="160" fill="var(--stone-dark)"/><rect x="230" y="80" width="30" height="24" fill="var(--stone-dark)"/><rect x="290" y="80" width="30" height="24" fill="var(--stone-dark)"/><rect x="350" y="80" width="30" height="24" fill="var(--stone-dark)"/><rect x="410" y="80" width="30" height="24" fill="var(--stone-dark)"/><rect x="470" y="80" width="30" height="24" fill="var(--stone-dark)"/><g transform="translate(290,40) scale(1.0)"><path d="M90 0 L180 30 V100 C180 150 140 185 90 200 C40 185 0 150 0 100 V30 Z" fill="var(--good)"/><path d="M90 18 L162 42 V100 C162 138 132 166 90 180 C48 166 18 138 18 100 V42 Z" fill="var(--panel)"/><rect x="62" y="90" width="56" height="44" rx="8" fill="var(--night)"/><path d="M72 90 V76 a18 18 0 0 1 36 0 V90" stroke="var(--night)" stroke-width="8" fill="none"/><circle cx="90" cy="110" r="6" fill="var(--accent)"/></g><g transform="translate(600,150) scale(1.0)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><text x="60" y="20" text-anchor="start" font-size="18" font-weight="700" fill="var(--bad)">aw, nuts</text></g></svg>
+<p>So you lock up before they knock.<small>It's easy to stop a trick you already know.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>CTI</b> = knowing the bad guys' tricks <b>before</b> they try them on you.</h2><p>Cyber Threat Intelligence is the "heads up!" that lets the good guys get ready first, instead of finding out after something breaks.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Threat actor</dt><dd><b>The sneaky person.</b> A hacker, a gang, or a country's spies.</dd></div><div><dt>TTPs</dt><dd><b>Their favorite tricks.</b> How they usually get in and what they do next. → <a href="ttp-en.html">the habit story</a></dd></div><div><dt>IOC</dt><dd><b>A footprint.</b> A clue like "the red hat" — an address or a file the bad guy always uses. → <a href="ioc-en.html">the footprint story</a></dd></div><div><dt>Threat feed</dt><dd><b>The friend's shouting.</b> A stream of new warnings, all day long.</dd></div><div><dt>Threat report</dt><dd><b>The friend's storybook.</b> The full tale of one gang and everything they did.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="ioc-en.html">The Footprint →</a></section>
+</main>
 </body>
 </html>
