@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Guard Room</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><a href="index.html">← Index</a><a href="soc-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five</div>
+<h1>What is a <em>SOC</em>?</h1>
+<p class="sub">The Security Operations Center, told as a story about a castle's guard room.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A friend looking overwhelmed in front of a castle with far too many windows" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(150,70) scale(1.0)"><rect x="0" y="20" width="90" height="180" fill="var(--stone)"/><rect x="370" y="20" width="90" height="180" fill="var(--stone)"/><rect x="0" y="0" width="15" height="24" fill="var(--stone)"/><rect x="30" y="0" width="15" height="24" fill="var(--stone)"/><rect x="60" y="0" width="15" height="24" fill="var(--stone)"/><rect x="370" y="0" width="15" height="24" fill="var(--stone)"/><rect x="400" y="0" width="15" height="24" fill="var(--stone)"/><rect x="430" y="0" width="15" height="24" fill="var(--stone)"/><rect x="90" y="70" width="280" height="130" fill="var(--stone-dark)"/><rect x="90" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="146" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="202" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="258" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="314" y="50" width="28" height="24" fill="var(--stone-dark)"/><path d="M195 200 V140 a35 35 0 0 1 70 0 V200 Z" fill="var(--night)"/><rect x="34" y="60" width="22" height="34" rx="11" fill="var(--night)"/><rect x="404" y="60" width="22" height="34" rx="11" fill="var(--night)"/><rect x="228" y="-30" width="4" height="100" fill="var(--night)"/><path d="M232 -28 L290 -12 L232 4 Z" fill="var(--accent)"/></g><rect x="262" y="160" width="18" height="26" rx="9" fill="var(--night)"/><rect x="300" y="160" width="18" height="26" rx="9" fill="var(--night)"/><rect x="338" y="160" width="18" height="26" rx="9" fill="var(--night)"/><rect x="462" y="160" width="18" height="26" rx="9" fill="var(--night)"/><rect x="500" y="160" width="18" height="26" rx="9" fill="var(--night)"/><rect x="262" y="210" width="18" height="26" rx="9" fill="var(--night)"/><rect x="300" y="210" width="18" height="26" rx="9" fill="var(--night)"/><rect x="462" y="210" width="18" height="26" rx="9" fill="var(--night)"/><rect x="500" y="210" width="18" height="26" rx="9" fill="var(--night)"/><g transform="translate(40,150) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><text x="90" y="130" text-anchor="middle" font-size="40" font-weight="700" fill="var(--accent)" class="d">?</text><text x="130" y="100" text-anchor="middle" font-size="28" font-weight="700" fill="var(--accent)" class="d">?</text><text x="60" y="110" text-anchor="middle" font-size="24" font-weight="700" fill="var(--accent)" class="d">?</text></svg>
+<p>A castle has too many doors and windows.<small>One person can't watch them all.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="Three guards in a dark room watching six screens, with a clock that says 24" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--night)"/><rect y="270" width="760" height="50" fill="#0A1120"/><g transform="translate(60,30)"><rect width="110" height="80" rx="6" fill="var(--night)"/><rect x="8" y="8" width="94" height="58" fill="var(--sky)"/><path d="M42 66 V40 a13 13 0 0 1 26 0 V66 Z" fill="var(--night)"/><rect x="16" y="20" width="14" height="20" rx="7" fill="var(--night)"/><rect x="80" y="20" width="14" height="20" rx="7" fill="var(--night)"/><rect x="43.0" y="80" width="24" height="10" fill="var(--stone-dark)"/></g><g transform="translate(190,30)"><rect width="110" height="80" rx="6" fill="var(--night)"/><rect x="8" y="8" width="94" height="58" fill="var(--sky)"/><path d="M42 66 V40 a13 13 0 0 1 26 0 V66 Z" fill="var(--night)"/><rect x="16" y="20" width="14" height="20" rx="7" fill="var(--night)"/><rect x="80" y="20" width="14" height="20" rx="7" fill="var(--night)"/><rect x="43.0" y="80" width="24" height="10" fill="var(--stone-dark)"/></g><g transform="translate(320,30)"><rect width="110" height="80" rx="6" fill="var(--night)"/><rect x="8" y="8" width="94" height="58" fill="var(--sky)"/><path d="M42 66 V40 a13 13 0 0 1 26 0 V66 Z" fill="var(--night)"/><rect x="16" y="20" width="14" height="20" rx="7" fill="var(--night)"/><rect x="80" y="20" width="14" height="20" rx="7" fill="var(--night)"/><rect x="43.0" y="80" width="24" height="10" fill="var(--stone-dark)"/></g><g transform="translate(60,130)"><rect width="110" height="80" rx="6" fill="var(--night)"/><rect x="8" y="8" width="94" height="58" fill="var(--sky)"/><path d="M42 66 V40 a13 13 0 0 1 26 0 V66 Z" fill="var(--night)"/><rect x="16" y="20" width="14" height="20" rx="7" fill="var(--night)"/><rect x="80" y="20" width="14" height="20" rx="7" fill="var(--night)"/><rect x="43.0" y="80" width="24" height="10" fill="var(--stone-dark)"/></g><g transform="translate(190,130)"><rect width="110" height="80" rx="6" fill="var(--night)"/><rect x="8" y="8" width="94" height="58" fill="var(--sky)"/><path d="M42 66 V40 a13 13 0 0 1 26 0 V66 Z" fill="var(--night)"/><rect x="16" y="20" width="14" height="20" rx="7" fill="var(--night)"/><rect x="80" y="20" width="14" height="20" rx="7" fill="var(--night)"/><rect x="43.0" y="80" width="24" height="10" fill="var(--stone-dark)"/></g><g transform="translate(320,130)"><rect width="110" height="80" rx="6" fill="var(--night)"/><rect x="8" y="8" width="94" height="58" fill="var(--sky)"/><path d="M42 66 V40 a13 13 0 0 1 26 0 V66 Z" fill="var(--night)"/><rect x="16" y="20" width="14" height="20" rx="7" fill="var(--night)"/><rect x="80" y="20" width="14" height="20" rx="7" fill="var(--night)"/><rect x="43.0" y="80" width="24" height="10" fill="var(--stone-dark)"/></g><g transform="translate(90,180) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(210,180) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(330,180) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="40" y="250" width="410" height="14" rx="4" fill="#8B5E3C"/><circle cx="620" cy="90" r="56" fill="var(--panel)" stroke="var(--line)" stroke-width="4"/><text x="620" y="100" text-anchor="middle" font-size="34" font-weight="700" fill="var(--ink)" class="d">24</text><text x="620" y="170" text-anchor="middle" font-size="16" font-weight="700" fill="#C9D5E6">day and night</text></svg>
+<p>A SOC is the castle's guard room.<small>Every door and window is on a screen. Someone is watching at night and on weekends too.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A red screen with a bell, a guard looking, and a question mark between a cat and a burglar" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="280" fill="var(--panel)"/><g transform="translate(40,40) scale(1.6)"><g transform="translate(0,0)"><rect width="110" height="80" rx="6" fill="var(--night)"/><rect x="8" y="8" width="94" height="58" fill="var(--bad)"/><g transform="translate(55,22) scale(0.8)"><path d="M-30 -6 a40 40 0 0 1 -12 -28 M30 -6 a40 40 0 0 0 12 -28" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-20 10 c0 -30 40 -30 40 0 v18 h-40 z" fill="#E9B44C"/><rect x="-24" y="28" width="48" height="6" rx="3" fill="#C9822B"/><circle cy="38" r="4" fill="#C9822B"/></g><rect x="43.0" y="80" width="24" height="10" fill="var(--stone-dark)"/></g></g><g transform="translate(260,110) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="420" y="150" text-anchor="middle" font-size="56" font-weight="700" fill="var(--accent)" class="d">?</text><g transform="translate(500,60) scale(1.1)"><ellipse cx="26" cy="30" rx="26" ry="16" fill="var(--stone-dark)"/><circle cx="-2" cy="14" r="14" fill="var(--stone-dark)"/><path d="M-12 6 L-10 -8 L-2 4 Z M8 4 L12 -8 L6 6 Z" fill="var(--stone-dark)"/><path d="M50 28 q14 -10 8 -26" stroke="var(--stone-dark)" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="-6" cy="12" r="2" fill="#FFF"/><circle cx="2" cy="12" r="2" fill="#FFF"/></g><text x="520" y="130" text-anchor="middle" font-size="16" font-weight="700" fill="var(--muted)">a cat?</text><g transform="translate(600,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><text x="624" y="260" text-anchor="middle" font-size="16" font-weight="700" fill="var(--muted)">a burglar?</text></svg>
+<p>When a bell rings, they go look.<small>Is it a burglar, or just a cat?</small></p>
+<div class="tricks" style="--cols:3">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 32 Q32 8 58 32 Q32 56 6 32 Z" fill="none" stroke="var(--good)" stroke-width="3"/><circle cx="32" cy="32" r="9" fill="var(--good)"/></svg><b>Watch</b><span>keep eyes on the screens</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 10 H56 L38 34 V54 L26 48 V34 Z" fill="var(--accent)"/></svg><b>Sort</b><span>throw out the cats</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="40" cy="12" r="6" fill="var(--bad)"/><path d="M36 20 L26 34 L34 44 L28 58 M26 34 L14 30 M34 44 L50 42" stroke="var(--bad)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Run</b><span>if it's a burglar, lock the door</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A board with a pinned footprint card and a 'watch for red hat' note, the watchtower friend and a guard on either side" viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="260" fill="var(--sky)"/><rect x="200" y="30" width="400" height="200" rx="10" fill="#C9A86A"/><rect x="214" y="44" width="372" height="172" fill="#E3CFA2"/><rect x="240" y="70" width="110" height="80" rx="6" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><g transform="translate(295,118) rotate(10)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><circle cx="295" cy="70" r="6" fill="var(--bad)"/><g transform="translate(390,66) rotate(4)"><rect width="170" height="90" rx="6" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><text x="85" y="38" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Watch for red hat!</text><text x="85" y="66" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">— your watchtower friend</text></g><circle cx="475" cy="66" r="6" fill="var(--bad)"/><g transform="translate(60,120) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(640,120) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g></svg>
+<p>Notes from the watchtower go on the wall.<small>The <a href="cti-en.html">watchtower friend (CTI)</a> says who's coming. The guard room sees who's here now.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A worn-out guard surrounded by ringing bells, a cat beside them, and the real burglar sneaking in at the edge" viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="260" fill="var(--bad-soft)"/><g transform="translate(90,70) scale(0.7)"><path d="M-30 -6 a40 40 0 0 1 -12 -28 M30 -6 a40 40 0 0 0 12 -28" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-20 10 c0 -30 40 -30 40 0 v18 h-40 z" fill="#E9B44C"/><rect x="-24" y="28" width="48" height="6" rx="3" fill="#C9822B"/><circle cy="38" r="4" fill="#C9822B"/></g><g transform="translate(180,40) scale(0.6)"><path d="M-30 -6 a40 40 0 0 1 -12 -28 M30 -6 a40 40 0 0 0 12 -28" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-20 10 c0 -30 40 -30 40 0 v18 h-40 z" fill="#E9B44C"/><rect x="-24" y="28" width="48" height="6" rx="3" fill="#C9822B"/><circle cy="38" r="4" fill="#C9822B"/></g><g transform="translate(270,80) scale(0.8)"><path d="M-30 -6 a40 40 0 0 1 -12 -28 M30 -6 a40 40 0 0 0 12 -28" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-20 10 c0 -30 40 -30 40 0 v18 h-40 z" fill="#E9B44C"/><rect x="-24" y="28" width="48" height="6" rx="3" fill="#C9822B"/><circle cy="38" r="4" fill="#C9822B"/></g><g transform="translate(150,150) scale(0.6)"><path d="M-30 -6 a40 40 0 0 1 -12 -28 M30 -6 a40 40 0 0 0 12 -28" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-20 10 c0 -30 40 -30 40 0 v18 h-40 z" fill="#E9B44C"/><rect x="-24" y="28" width="48" height="6" rx="3" fill="#C9822B"/><circle cy="38" r="4" fill="#C9822B"/></g><g transform="translate(250,170) scale(0.5)"><path d="M-30 -6 a40 40 0 0 1 -12 -28 M30 -6 a40 40 0 0 0 12 -28" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-20 10 c0 -30 40 -30 40 0 v18 h-40 z" fill="#E9B44C"/><rect x="-24" y="28" width="48" height="6" rx="3" fill="#C9822B"/><circle cy="38" r="4" fill="#C9822B"/></g><g transform="translate(60,170) scale(0.6)"><path d="M-30 -6 a40 40 0 0 1 -12 -28 M30 -6 a40 40 0 0 0 12 -28" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-20 10 c0 -30 40 -30 40 0 v18 h-40 z" fill="#E9B44C"/><rect x="-24" y="28" width="48" height="6" rx="3" fill="#C9822B"/><circle cy="38" r="4" fill="#C9822B"/></g><g transform="translate(380,90) scale(1.1)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><g transform="translate(560,150) scale(1.2)"><ellipse cx="26" cy="30" rx="26" ry="16" fill="var(--stone-dark)"/><circle cx="-2" cy="14" r="14" fill="var(--stone-dark)"/><path d="M-12 6 L-10 -8 L-2 4 Z M8 4 L12 -8 L6 6 Z" fill="var(--stone-dark)"/><path d="M50 28 q14 -10 8 -26" stroke="var(--stone-dark)" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="-6" cy="12" r="2" fill="#FFF"/><circle cx="2" cy="12" r="2" fill="#FFF"/></g><text x="600" y="230" text-anchor="middle" font-size="16" font-weight="700" fill="var(--muted)">the 100th cat</text><g transform="translate(690,170) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><text x="708" y="250" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)">the real one</text></svg>
+<p>Too many bells wear the guards out.<small>A hundred cat alarms, and the real burglar walks right in.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>SOC</b> = the <b>guard room</b> that watches every door <b>day and night</b> and runs when a bell rings.</h2><p>Security Operations Center: people, screens and rules in one room. The hard part isn't spotting burglars — it's throwing out the cats fast.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>SIEM</dt><dd><b>The guard room's big screen.</b> Collects news from every door and window into one place.</dd></div><div><dt>Alert</dt><dd><b>The bell.</b> Something looks off. Could be a burglar, could be a cat.</dd></div><div><dt>Triage</dt><dd><b>Cat or burglar?</b> Deciding which bells to look at first.</dd></div><div><dt>False positive</dt><dd><b>The cat.</b> A bell that wasn't a burglar. → <a href="ioc-en.html">the footprint story</a></dd></div><div><dt>Incident response</dt><dd><b>Running to lock the door.</b> What happens when it's real: stop, remove, repair.</dd></div><div><dt>Tier 1 · Tier 2</dt><dd><b>New guards and senior guards.</b> Who looks first, and who takes the hard ones.</dd></div><div><dt>Alert fatigue</dt><dd><b>The hundredth cat.</b> So many bells that the real one gets missed.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="cti-en.html">The Watchtower Friend →</a></section>
+</main>
+</body>
+</html>

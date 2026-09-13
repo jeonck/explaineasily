@@ -14,6 +14,7 @@
 | MITRE ATT&CK | 도둑 백과사전 | [attack-ko](docs/attack-ko.html) | [attack-en](docs/attack-en.html) |
 | Pyramid of Pain | 고통의 피라미드 | [pyramid-ko](docs/pyramid-ko.html) | [pyramid-en](docs/pyramid-en.html) |
 | TLP | 비밀 신호등 | [tlp-ko](docs/tlp-ko.html) | [tlp-en](docs/tlp-en.html) |
+| SOC | 성의 경비실 | [soc-ko](docs/soc-ko.html) | [soc-en](docs/soc-en.html) |
 
 ## 구조
 
