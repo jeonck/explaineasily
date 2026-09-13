@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Gatekeeper's If-Sentence</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><a href="index.html">← Index</a><a href="abac-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Security</div>
+<h1>What is <em>ABAC</em>?</h1>
+<p class="sub">Attribute-Based Access Control, told as a story about tags and if-sentences.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A pile of hats, and 'cook hat + 2 a.m. = ?'" viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="260" fill="var(--accent-soft)"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C" transform="translate(50,178) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF" transform="translate(76,178) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)" transform="translate(102,178) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--accent)" transform="translate(128,178) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)" transform="translate(154,178) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C" transform="translate(50,164) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF" transform="translate(76,164) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)" transform="translate(102,164) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--accent)" transform="translate(128,164) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)" transform="translate(154,164) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C" transform="translate(50,150) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF" transform="translate(76,150) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)" transform="translate(102,150) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--accent)" transform="translate(128,150) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)" transform="translate(154,150) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C" transform="translate(50,136) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF" transform="translate(76,136) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)" transform="translate(102,136) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--accent)" transform="translate(128,136) scale(0.7)"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)" transform="translate(154,136) scale(0.7)"/><text x="130" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">a 'cook·night' hat, a 'cook·no guests' hat…</text><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C" transform="translate(370,88) scale(1.6)"/><text x="400" y="150" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Cook</text><text x="470" y="122" text-anchor="middle" font-size="30" font-weight="700" fill="var(--muted)" class="d">+</text><g transform="translate(540,110)"><circle r="26" fill="var(--panel)" stroke="var(--line)" stroke-width="3"/><path d="M0 -16 V0 L-10 -8" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="540" y="160" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">02:00</text><text x="610" y="122" text-anchor="middle" font-size="30" font-weight="700" fill="var(--muted)" class="d">=</text><text x="670" y="124" text-anchor="middle" font-size="40" font-weight="700" fill="var(--accent)" class="d">?</text><text x="540" y="240" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">'cook, but only at night' — no hat says that</text></svg>
+<p>A hat can't say 'only at night'.<small>The last scene of the <a href="rbac-en.html">hat story</a>. A hat for every condition means a hundred hats.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Tags on the cook (cook, works on 3F, 2 years here), tags on the kitchen door (kitchen, sharp tools), and situation tags above (now 02:00, no guests)" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(200,110) scale(1.0)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(90,90) scale(1.0)"><rect x="-55.0" y="-14" width="110" height="28" rx="14" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2"/><circle cx="-43.0" r="4" fill="var(--good)"/><text x="6" y="5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">cook</text></g><g transform="translate(90,130) scale(1.0)"><rect x="-60.0" y="-14" width="120" height="28" rx="14" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2"/><circle cx="-48.0" r="4" fill="var(--good)"/><text x="6" y="5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">works on 3F</text></g><g transform="translate(90,170) scale(1.0)"><rect x="-60.0" y="-14" width="120" height="28" rx="14" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2"/><circle cx="-48.0" r="4" fill="var(--good)"/><text x="6" y="5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">2 years here</text></g><path d="M150 90 L200 90" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 4"/><path d="M150 130 L200 130" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 4"/><path d="M150 170 L200 170" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 4"/><g transform="translate(560,60) scale(1.0)"><rect x="-36" width="72" height="120" rx="3" fill="#8B5E3C"/><circle cx="24" cy="64" r="4" fill="#E9B44C"/></g><g transform="translate(560,210) scale(1.0)"><rect x="-55.0" y="-14" width="110" height="28" rx="14" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><circle cx="-43.0" r="4" fill="var(--accent)"/><text x="6" y="5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">kitchen</text></g><g transform="translate(560,250) scale(1.0)"><rect x="-65.0" y="-14" width="130" height="28" rx="14" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><circle cx="-53.0" r="4" fill="var(--accent)"/><text x="6" y="5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">sharp tools</text></g><g transform="translate(380,40) scale(1.0)"><rect x="-60.0" y="-14" width="120" height="28" rx="14" fill="var(--sky)" stroke="var(--ink)" stroke-width="2"/><circle cx="-48.0" r="4" fill="var(--ink)"/><text x="6" y="5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">now 02:00</text></g><g transform="translate(380,80) scale(1.0)"><rect x="-60.0" y="-14" width="120" height="28" rx="14" fill="var(--sky)" stroke="var(--ink)" stroke-width="2"/><circle cx="-48.0" r="4" fill="var(--ink)"/><text x="6" y="5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">no guests</text></g><text x="380" y="300" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">the hat is only one of the tags</text></svg>
+<p>People, rooms and the moment all carry tags.<small>The hat is just one of them.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="A sign by the door reads 'is a cook ✓, it's daytime ✓, no guests ✓ → OPEN'; the gatekeeper holds the cook's tags (cook, 14:00, guests: 0) and compares" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(660,60) scale(1.0)"><rect x="-36" width="72" height="120" rx="3" fill="#8B5E3C"/><circle cx="24" cy="64" r="4" fill="#E9B44C"/></g><g transform="translate(330,40)"><rect width="260" height="142" rx="6" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><circle cx="14" cy="14" r="3" fill="var(--stone-dark)"/><circle cx="246" cy="14" r="3" fill="var(--stone-dark)"/><text x="20" y="34" text-anchor="start" font-size="15" font-weight="700" fill="var(--ink)">is a cook ✓</text><text x="20" y="60" text-anchor="start" font-size="15" font-weight="700" fill="var(--ink)">it's daytime ✓</text><text x="20" y="86" text-anchor="start" font-size="15" font-weight="700" fill="var(--ink)">no guests inside ✓</text><rect x="0" y="100" width="260" height="34" fill="var(--good)"/><text x="130.0" y="123" text-anchor="middle" font-size="16" font-weight="700" fill="#FFF">→ OPEN</text></g><g transform="translate(180,130) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(120,70) scale(0.8)"><rect x="-45.0" y="-14" width="90" height="28" rx="14" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2"/><circle cx="-33.0" r="4" fill="var(--good)"/><text x="6" y="5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">cook</text></g><g transform="translate(120,100) scale(0.8)"><rect x="-45.0" y="-14" width="90" height="28" rx="14" fill="var(--sky)" stroke="var(--ink)" stroke-width="2"/><circle cx="-33.0" r="4" fill="var(--ink)"/><text x="6" y="5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">14:00</text></g><g transform="translate(120,130) scale(0.8)"><rect x="-45.0" y="-14" width="90" height="28" rx="14" fill="var(--sky)" stroke="var(--ink)" stroke-width="2"/><circle cx="-33.0" r="4" fill="var(--ink)"/><text x="6" y="5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">guests: 0</text></g><g transform="translate(40,160) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="320" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">the gatekeeper checks the tags against the sentence</text></svg>
+<p>ABAC turns tags into a sentence.<small>'If cook, and daytime, and no guests: open.' The gatekeeper checks the tags against it.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="20" width="48" height="24" rx="12" fill="var(--good-soft)" stroke="var(--good)" stroke-width="3"/><circle cx="20" cy="32" r="4" fill="var(--good)"/></svg><b>Person tags</b><span>role, team, tenure</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="20" width="48" height="24" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="3"/><circle cx="20" cy="32" r="4" fill="var(--accent)"/></svg><b>Room tags</b><span>which room, how secret</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="20" fill="var(--sky)" stroke="var(--ink)" stroke-width="3"/><path d="M32 18 V32 L40 38" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>Moment tags</b><span>time, place, device</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="12" width="44" height="40" rx="3" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><rect x="18" y="22" width="24" height="3" fill="var(--line)"/><rect x="18" y="30" width="28" height="3" fill="var(--line)"/><rect x="18" y="38" width="20" height="3" fill="var(--line)"/></svg><b>The sentence</b><span>the rule that ties them together</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left, daytime: the same cook at 14:00, door checked. Right, night: the same cook at 02:00, door crossed" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="280" fill="var(--sky)"/><rect x="380" width="380" height="280" fill="var(--night)"/><circle cx="60" cy="50" r="24" fill="#FFD166"/><circle cx="700" cy="50" r="22" fill="#F5E6B8"/><g transform="translate(120,100) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="150" y="240" text-anchor="middle" font-size="16" font-weight="700" fill="var(--ink)">14:00</text><g transform="translate(280,60) scale(0.9)"><rect x="-36" width="72" height="120" rx="3" fill="#8B5E3C"/><circle cx="24" cy="64" r="4" fill="#E9B44C"/><path d="M-14 60 l10 10 l20 -22" stroke="var(--good)" stroke-width="6" fill="none" stroke-linecap="round"/></g><g transform="translate(500,100) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="530" y="240" text-anchor="middle" font-size="16" font-weight="700" fill="#F5E6B8">02:00</text><g transform="translate(660,60) scale(0.9)"><rect x="-36" width="72" height="120" rx="3" fill="#8B5E3C"/><circle cx="24" cy="64" r="4" fill="#E9B44C"/><path d="M-14 -14 l28 28 M14 -14 l-28 28" stroke="var(--bad)" stroke-width="6" stroke-linecap="round" transform="translate(0,64)"/></g><text x="190" y="265" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">the same cook</text><text x="570" y="265" text-anchor="middle" font-size="13" font-weight="700" fill="#C9D5E6">same hat, different hour</text></svg>
+<p>Same person: open by day, shut at night.<small>No new hat needed. One sentence does it.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A six-line sign; the gatekeeper sweats and the cook asks why it won't open" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(300,20)"><rect width="300" height="186" rx="6" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><circle cx="14" cy="14" r="3" fill="var(--stone-dark)"/><circle cx="286" cy="14" r="3" fill="var(--stone-dark)"/><text x="20" y="34" text-anchor="start" font-size="15" font-weight="700" fill="var(--ink)">is a cook</text><text x="20" y="60" text-anchor="start" font-size="15" font-weight="700" fill="var(--ink)">daytime, or on duty</text><text x="20" y="86" text-anchor="start" font-size="15" font-weight="700" fill="var(--ink)">no guests, or at most three</text><text x="20" y="112" text-anchor="start" font-size="15" font-weight="700" fill="var(--ink)">works on 3F, and</text><text x="20" y="138" text-anchor="start" font-size="15" font-weight="700" fill="var(--ink)">took last week's training</text><text x="20" y="164" text-anchor="start" font-size="15" font-weight="700" fill="var(--ink)">except on rainy days…</text></g><g transform="translate(160,110) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><g transform="translate(40,130) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="20" y="50" width="150" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M85.0 84 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="22" y="80" width="146" height="6" fill="var(--panel)"/><text x="95.0" y="71.68" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">why won't it open?</text><text x="650" y="150" text-anchor="middle" font-size="40" font-weight="700" fill="var(--muted)" class="d">…</text><text x="680" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)">hard to answer</text></svg>
+<p>A long sentence, and nobody can read it.<small>'Why won't it open?' gets hard to answer. So most castles sort by hat (RBAC) first and add only a few conditions on top.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>ABAC</b> = instead of a hat, a <b>sentence</b> built from <b>tags</b> on the person, the room and the moment opens the door.</h2><p>Attribute-Based Access Control, written up by NIST as SP 800-162 (2014). Cloud permissions (AWS IAM conditions) work this way; in practice it's layered on top of RBAC.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Attribute</dt><dd><b>A tag.</b> One fact about a person, room or moment: 'cook', '3F', '02:00'.</dd></div><div><dt>Subject</dt><dd><b>The person's tags.</b> Who wants in: role, team, tenure, training.</dd></div><div><dt>Resource</dt><dd><b>The room's tags.</b> What they want into: which room, how secret.</dd></div><div><dt>Environment</dt><dd><b>The moment's tags.</b> Time, place, which device, whether guests are in.</dd></div><div><dt>Policy</dt><dd><b>The sentence.</b> "If cook and daytime and no guests: open." → <a href="rbac-en.html">the hat story</a></dd></div><div><dt>Policy Decision Point (PDP)</dt><dd><b>The gatekeeper who reads the sentence.</b> Matches tags to the sentence and says open or closed.</dd></div><div><dt>Policy Enforcement Point (PEP)</dt><dd><b>The hand on the door.</b> Actually does what the gatekeeper decided.</dd></div><div><dt>Policy language</dt><dd><b>How sentences are written.</b> XACML, Cedar, AWS IAM condition blocks.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="cti-en.html">The Watchtower Friend →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>
