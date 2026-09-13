@@ -81,6 +81,12 @@ h1 em { color: var(--accent); font-style: normal; }
 .index { display: grid; gap: 14px; }
 .index h2 { grid-column: 1 / -1; }
 @media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
 .pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
 .pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
 .pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
@@ -141,7 +147,7 @@ header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
 </section>
 <section class="sum"><div class="eyebrow">In one breath</div><h2>An <b>SWG</b> = the <b>checkpoint</b> on the road to town (the internet). It blocks bad alleys, opens the boxes you bring back, and writes down where you went.</h2><p>Secure Web Gateway — what used to be called a web proxy. Today it's sold in an SSE bundle with the shed broker (CASB) and the castle that always asks (ZTNA): Zscaler, Netskope, Cisco Umbrella.</p></section>
 <section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Web proxy</dt><dd><b>The checkpoint.</b> Goes to town on my behalf — which is why it sees everything.</dd></div><div><dt>URL filtering</dt><dd><b>The town map.</b> Every alley has a color: gambling red, library green.</dd></div><div><dt>Reputation</dt><dd><b>Alley gossip.</b> "Lots of people got robbed in that alley." → the <a href="cti-en.html">watchtower friend</a> passes it on</dd></div><div><dt>Malware scanning</dt><dd><b>Opening the box.</b> A bug inside means it never enters. Miss it, and it's the <a href="edr-en.html">dog</a>'s turn.</dd></div><div><dt>TLS inspection</dt><dd><b>Breaking the seal.</b> Opening sealed (encrypted) boxes at the checkpoint — something the <a href="ndr-en.html">hallway watcher</a> can't do.</dd></div><div><dt>Sandbox</dt><dd><b>Opening it in a side room.</b> Suspicious boxes get opened in an empty room first. If a bug jumps out, it ends there.</dd></div><div><dt>Cloud SWG</dt><dd><b>Checkpoints all over town.</b> Not one gate, but a checkpoint wherever you start from.</dd></div><div><dt>SSE</dt><dd><b>The checkpoint bundle.</b> Checkpoint (SWG) + <a href="casb-en.html">shed broker</a> (CASB) + <a href="zerotrust-en.html">castle that always asks</a> (ZTNA).</dd></div></dl></section>
-<section class="next"><div class="eyebrow">Next story</div><a href="cti-en.html">The Watchtower Friend →</a></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="ztna-en.html">The Escort to One Room →</a></section>
 <section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
 </main>
 </body>

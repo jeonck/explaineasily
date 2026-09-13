@@ -111,6 +111,12 @@ h1 em { color: var(--accent); font-style: normal; }
 .index { display: grid; gap: 14px; }
 .index h2 { grid-column: 1 / -1; }
 @media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
 .pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
 .pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
 .pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
@@ -232,11 +238,14 @@ PER_PAGE = 10
 
 
 def render_index(terms):
-    cards = []
+    cards, tabs = [], []
+    for key, (ko, en) in CATEGORIES.items():
+        n = sum(1 for t in terms if t["category"] == key)
+        if n:
+            tabs.append(f'<a href="#cat={key}" data-cat="{key}">{ko} <small>{en} · {n}</small></a>')
     for t in terms:
-        ko, en = CATEGORIES[t["category"]]
         cards.append(
-            f'<article class="card" data-cat="{t["category"]}" data-cat-ko="{ko}" data-cat-en="{en}">'
+            f'<article class="card" data-cat="{t["category"]}">'
             f'<div class="eyebrow">{t["slug"].upper()}</div>'
             f'<h3>{L(t["title"], "ko")}</h3>'
             f'<div class="links"><a href="{t["slug"]}-ko.html">한국어</a>'
@@ -248,6 +257,7 @@ def render_index(terms):
 <p class="sub">어려운 용어를 다섯 살 눈높이의 그림책으로. 글은 적게, 그림은 크게.</p>
 <p class="request">{UI["ko"]["request"]} <a href="{REQUEST_URL}">{UI["ko"]["request_link"]}</a></p>
 </header>
+<nav class="tabs" id="tabs" aria-label="분야">{"".join(tabs)}</nav>
 <section class="index" id="index">{"".join(cards)}</section>
 <nav class="pager" id="pager" aria-label="페이지" hidden></nav>
 <section class="glossary"><h3>작성 원칙</h3>
@@ -260,32 +270,32 @@ def render_index(terms):
 <script>
 (function () {{
   var PER = {PER_PAGE};
-  var box = document.getElementById('index'), pager = document.getElementById('pager');
+  var box = document.getElementById('index'), pager = document.getElementById('pager'), tabs = document.getElementById('tabs');
   var cards = Array.prototype.slice.call(box.querySelectorAll('.card'));
-  var pages = Math.ceil(cards.length / PER);
-  if (pages < 2) return;
-  function page() {{ var m = /page=([0-9]+)/.exec(location.hash); var n = m ? +m[1] : 1; return Math.min(Math.max(n, 1), pages); }}
-  function show(n) {{
-    box.querySelectorAll('h2').forEach(function (h) {{ h.remove(); }});
-    var last = null;
-    cards.forEach(function (c, i) {{
-      var on = i >= (n - 1) * PER && i < n * PER;
-      c.hidden = !on;
-      if (on && c.dataset.cat !== last) {{
-        var h = document.createElement('h2');
-        h.innerHTML = c.dataset.catKo + '<small>' + c.dataset.catEn + '</small>';
-        box.insertBefore(h, c);
-        last = c.dataset.cat;
-      }}
-    }});
-    var html = '<a href="#page=' + (n - 1) + '" class="' + (n === 1 ? 'off' : '') + '">←</a>';
-    for (var i = 1; i <= pages; i++) html += i === n ? '<span class="cur">' + i + '</span>' : '<a href="#page=' + i + '">' + i + '</a>';
-    html += '<a href="#page=' + (n + 1) + '" class="' + (n === pages ? 'off' : '') + '">→</a>';
+  var cats = Array.prototype.slice.call(tabs.querySelectorAll('a')).map(function (a) {{ return a.dataset.cat; }});
+  function state() {{
+    var c = /cat=([a-z0-9_-]+)/.exec(location.hash), p = /page=([0-9]+)/.exec(location.hash);
+    var cat = c && cats.indexOf(c[1]) >= 0 ? c[1] : cats[0];
+    var mine = cards.filter(function (x) {{ return x.dataset.cat === cat; }});
+    var pages = Math.max(1, Math.ceil(mine.length / PER));
+    var n = p ? +p[1] : 1;
+    return {{ cat: cat, page: Math.min(Math.max(n, 1), pages), pages: pages, mine: mine }};
+  }}
+  function show() {{
+    var st = state();
+    tabs.querySelectorAll('a').forEach(function (a) {{ a.classList.toggle('cur', a.dataset.cat === st.cat); }});
+    cards.forEach(function (c) {{ c.hidden = true; }});
+    st.mine.forEach(function (c, i) {{ c.hidden = !(i >= (st.page - 1) * PER && i < st.page * PER); }});
+    if (st.pages < 2) {{ pager.hidden = true; return; }}
+    var h = function (n) {{ return '#cat=' + st.cat + '&page=' + n; }};
+    var html = '<a href="' + h(st.page - 1) + '" class="' + (st.page === 1 ? 'off' : '') + '">←</a>';
+    for (var i = 1; i <= st.pages; i++) html += i === st.page ? '<span class="cur">' + i + '</span>' : '<a href="' + h(i) + '">' + i + '</a>';
+    html += '<a href="' + h(st.page + 1) + '" class="' + (st.page === st.pages ? 'off' : '') + '">→</a>';
     pager.innerHTML = html;
     pager.hidden = false;
   }}
-  show(page());
-  window.addEventListener('hashchange', function () {{ show(page()); window.scrollTo({{ top: box.offsetTop - 24, behavior: 'smooth' }}); }});
+  show();
+  window.addEventListener('hashchange', show);
 }})();
 </script>"""
     return page_html("ko", "explaineasily", body)

@@ -81,6 +81,12 @@ h1 em { color: var(--accent); font-style: normal; }
 .index { display: grid; gap: 14px; }
 .index h2 { grid-column: 1 / -1; }
 @media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
 .pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
 .pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
 .pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
@@ -141,7 +147,7 @@ header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
 </section>
 <section class="sum"><div class="eyebrow">한 줄로</div><h2><b>SWG</b> = 바깥 마을(인터넷)로 나가는 <b>성문 검문소</b>. 위험한 골목은 막고, 가져오는 상자는 열어보고, 어디 갔는지 적어요.</h2><p>Secure Web Gateway. 옛날엔 '웹 프록시'라고 불렀어요. 요즘은 창고 문지기(CASB), 문마다 묻는 성(ZTNA)과 함께 SSE라는 묶음으로 팔려요. Zscaler, Netskope, Cisco Umbrella 같은 것들.</p></section>
 <section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>웹 프록시<br><small>Web proxy</small></dt><dd><b>검문소.</b> 내 대신 마을에 갔다 와요. 그래서 다 볼 수 있어요.</dd></div><div><dt>URL 필터링<br><small>URL filtering</small></dt><dd><b>마을 지도.</b> 골목마다 색이 있어요: 도박 골목 빨강, 도서관 초록.</dd></div><div><dt>평판<br><small>Reputation</small></dt><dd><b>골목 소문.</b> "저 골목에서 도둑맞은 사람이 많대요." → <a href="cti-ko.html">망루 위의 친구</a>가 알려줘요</dd></div><div><dt>멀웨어 검사<br><small>Malware scanning</small></dt><dd><b>상자 열어보기.</b> 벌레가 들었으면 성에 못 들어와요. 놓치면 <a href="edr-ko.html">경비견</a> 차례.</dd></div><div><dt>TLS 검사<br><small>TLS inspection</small></dt><dd><b>봉인 뜯어보기.</b> 봉해진 상자(암호화)를 검문소에서 열어요. <a href="ndr-ko.html">복도 파수꾼</a>은 못 하는 일.</dd></div><div><dt>샌드박스<br><small>Sandbox</small></dt><dd><b>따로 방에서 열어보기.</b> 수상한 상자는 빈 방에서 먼저 열어요. 벌레가 튀어나와도 거기서 끝.</dd></div><div><dt>클라우드 SWG<br><small>Cloud SWG</small></dt><dd><b>마을 곳곳의 검문소.</b> 성문 하나가 아니라 어디서 나가든 거치는 검문소.</dd></div><div><dt>SSE<br><small>SSE</small></dt><dd><b>검문소 묶음.</b> 검문소(SWG) + <a href="casb-ko.html">창고 문지기</a>(CASB) + <a href="zerotrust-ko.html">문마다 묻는 성</a>(ZTNA).</dd></div></dl></section>
-<section class="next"><div class="eyebrow">다음 이야기</div><a href="cti-ko.html">망루 위의 친구 →</a></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="ztna-ko.html">방 하나까지만 데려다주는 안내인 →</a></section>
 <section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
 </main>
 </body>

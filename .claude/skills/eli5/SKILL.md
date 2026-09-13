@@ -61,6 +61,7 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | security | DLP | 빨간 도장 찍힌 종이 |
 | security | CASB | 바깥 창고 문지기 |
 | security | SWG | 마을로 나가는 성문 검문소 |
+| security | ZTNA | 방 하나까지만 데려다주는 안내인 |
 | design | Dialog Map | 방과 문의 지도 |
 
 비유가 **깨지는 지점**을 반드시 패널 하나로 넣는다. 이게 정직한 설명과 거짓말의 차이다.
