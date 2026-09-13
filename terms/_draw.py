@@ -96,3 +96,21 @@ def icon(inner):
 
 def dot_icon(color):
     return icon(f'<circle cx="32" cy="32" r="22" fill="{color}" stroke="var(--line)" stroke-width="3"/>')
+
+
+FUR = "#A9744F"
+
+
+def dog(x, y, s=1.0, bark=False, asleep=False):
+    eyes = ('<path d="M-32 -12 h8 M-22 -12 h8" stroke="var(--night)" stroke-width="2.5" stroke-linecap="round"/>' if asleep
+            else '<circle cx="-30" cy="-12" r="2.5" fill="var(--night)"/><circle cx="-20" cy="-12" r="2.5" fill="var(--night)"/>')
+    woof = (label(-40, -46, "⟦멍!|WOOF!⟧", 20, "var(--accent)", cls="d")
+            + '<path d="M-6 -36 l6 -8 M2 -30 l9 -4" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>') if bark else ""
+    return (f'<g transform="translate({x},{y}) scale({s})">'
+            f'<path d="M26 12 q16 -18 8 -30" stroke="{FUR}" stroke-width="7" fill="none" stroke-linecap="round"/>'
+            f'<ellipse cx="0" cy="8" rx="30" ry="17" fill="{FUR}"/>'
+            f'<rect x="-22" y="18" width="9" height="16" rx="4" fill="{FUR}"/><rect x="10" y="18" width="9" height="16" rx="4" fill="{FUR}"/>'
+            f'<circle cx="-26" cy="-8" r="16" fill="{FUR}"/>'
+            f'<path d="M-40 -18 q-10 10 -6 26 q8 -4 10 -16z" fill="#7A5236"/>'
+            f'<ellipse cx="-36" cy="-2" rx="5" ry="3.5" fill="var(--night)"/>{eyes}'
+            f'<rect x="-18" y="-2" width="14" height="6" rx="3" fill="var(--accent)"/>{woof}</g>')

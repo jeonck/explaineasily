@@ -73,7 +73,7 @@ BOX_I = icon('<rect x="8" y="16" width="48" height="32" rx="5" fill="var(--panel
 ARROW_I = icon('<path d="M8 32 H44" stroke="var(--accent)" stroke-width="4"/><path d="M40 20 L56 32 L40 44 Z" fill="var(--accent)"/>')
 
 PAGE = {
-    "slug": "dialogmap", "order": 10,
+    "slug": "dialogmap", "order": 11,
     "title": ("방과 문의 지도", "The Room Map"),
     "h1": ("<em>다이얼로그 맵</em>이 뭐예요?", "What is a <em>Dialog Map</em>?"),
     "sub": ("앱 화면 사이를 어떻게 오가는지 그리는 다이얼로그 맵(Dialog Map)을, 방과 문이 있는 집 이야기로 풀어봤어요.",

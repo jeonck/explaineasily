@@ -2,7 +2,7 @@
 
 어려운 보안 용어를 **그림책**으로. 글은 적게, 그림은 크게, 다섯 살 눈높이로.
 
-배포: `main` 브랜치의 `/docs` 폴더 (GitHub Pages)
+배포: https://explaineasily.metacog.co.kr (GitHub Pages, `main` 브랜치의 `/docs` 폴더, `docs/CNAME`)
 
 ## 문서
 
@@ -17,6 +17,7 @@
 | SOC | 성의 경비실 | [soc-ko](docs/soc-ko.html) | [soc-en](docs/soc-en.html) |
 | SIEM | 경비실의 큰 화면 | [siem-ko](docs/siem-ko.html) | [siem-en](docs/siem-en.html) |
 | EDR | 방마다 한 마리 경비견 | [edr-ko](docs/edr-ko.html) | [edr-en](docs/edr-en.html) |
+| XDR | 한 무리가 된 파수꾼들 | [xdr-ko](docs/xdr-ko.html) | [xdr-en](docs/xdr-en.html) |
 | Dialog Map | 방과 문의 지도 | [dialogmap-ko](docs/dialogmap-ko.html) | [dialogmap-en](docs/dialogmap-en.html) |
 
 ## 구조
