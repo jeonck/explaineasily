@@ -47,6 +47,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | NAC | 복도 구멍마다 문지기 | [nac-ko](docs/nac-ko.html) | [nac-en](docs/nac-en.html) |
 | WAF | 창구 앞 쪽지 검토원 | [waf-ko](docs/waf-ko.html) | [waf-en](docs/waf-en.html) |
 | IDS / IPS | 수배 전단 든 파수꾼 | [idsips-ko](docs/idsips-ko.html) | [idsips-en](docs/idsips-en.html) |
+| Firewall | 문이 많은 성벽 | [firewall-ko](docs/firewall-ko.html) | [firewall-en](docs/firewall-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
