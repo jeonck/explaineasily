@@ -15,6 +15,17 @@
 |---|---|---|
 | CTI (사이버 위협 인텔리전스) | [docs/cti-ko.md](docs/cti-ko.md) | [docs/cti-en.md](docs/cti-en.md) |
 
+마크다운이 원본이고, HTML은 여기서 생성한다.
+
+```bash
+python3 build.py
+```
+
+`docs/*.html` 과 `docs/index.html` 이 만들어진다. 의존성은 없고 파이썬 3만 있으면 된다.
+**생성된 HTML은 직접 고치지 말 것** — 다음 빌드에서 덮어써진다. 내용은 `.md` 를 고친다.
+
+GitHub Pages 를 `main` 브랜치의 `/docs` 폴더로 설정하면 그대로 배포된다.
+
 ## 스킬
 
 ### `eli5`
