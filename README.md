@@ -15,6 +15,7 @@
 | Pyramid of Pain | 고통의 피라미드 | [pyramid-ko](docs/pyramid-ko.html) | [pyramid-en](docs/pyramid-en.html) |
 | TLP | 비밀 신호등 | [tlp-ko](docs/tlp-ko.html) | [tlp-en](docs/tlp-en.html) |
 | SOC | 성의 경비실 | [soc-ko](docs/soc-ko.html) | [soc-en](docs/soc-en.html) |
+| SIEM | 경비실의 큰 화면 | [siem-ko](docs/siem-ko.html) | [siem-en](docs/siem-en.html) |
 
 ## 구조
 
