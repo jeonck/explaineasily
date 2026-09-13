@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Gatekeeper's Three Questions</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><a href="index.html">← Index</a><a href="mfa-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Security</div>
+<h1>What is <em>MFA</em>?</h1>
+<p class="sub">Multi-Factor Authentication, told as a story about a gatekeeper who asks three different questions.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A gatekeeper asks 'Password?', the visitor says 'Apple!', and a thief listens from behind a bush" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(260,60) scale(1.0)"><rect x="-70" y="30" width="140" height="90" fill="var(--stone-dark)"/><rect x="-70" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="-35" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="0" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="35" y="10" width="18" height="20" fill="var(--stone-dark)"/><path d="M-28 120 V78 a28 28 0 0 1 56 0 V120 Z" fill="var(--night)"/></g><g transform="translate(230,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="150" y="20" width="150" height="34" rx="14" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><path d="M215.0 54 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><rect x="152" y="50" width="146" height="6" fill="var(--panel)"/><text x="225.0" y="42.04" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">Password?</text><g transform="translate(80,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="40" y="84" width="100" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M80.0 118 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="42" y="114" width="96" height="6" fill="var(--panel)"/><text x="90.0" y="106.4" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Apple!</text><g transform="translate(520,100)"><ellipse cx="50" cy="90" rx="60" ry="34" fill="#173A2E"/><circle cx="50" cy="60" r="22" fill="#E8C9A8"/><circle cx="42" cy="58" r="4" fill="#111C30"/><circle cx="58" cy="58" r="4" fill="#111C30"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)" transform="translate(20,20)"/></g><text x="570" y="265" text-anchor="middle" font-size="14" font-weight="700" fill="var(--bad)">listening</text></svg>
+<p>The old gatekeeper only asked for the password.<small>A password can be overheard.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A sticky note reading 'apple', three small castles all using 'apple', and an ear" viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="270" fill="var(--bad-soft)"/><g transform="translate(60,60) rotate(-6)"><rect width="90" height="80" fill="#FFE97A"/><rect x="30" y="-6" width="30" height="12" fill="var(--line)" fill-opacity="0.8"/><text x="45" y="50" text-anchor="middle" font-size="18" font-weight="700" fill="#142033" class="d">apple</text></g><text x="105" y="190" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">written on a note</text><g transform="translate(280,60) scale(0.45)"><rect x="0" y="40" width="160" height="110" fill="var(--stone-dark)"/><rect x="0" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="40" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="80" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="120" y="20" width="20" height="24" fill="var(--stone-dark)"/><path d="M60 150 V110 a20 20 0 0 1 40 0 V150 Z" fill="var(--night)"/></g><g transform="translate(370,60) scale(0.45)"><rect x="0" y="40" width="160" height="110" fill="var(--stone-dark)"/><rect x="0" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="40" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="80" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="120" y="20" width="20" height="24" fill="var(--stone-dark)"/><path d="M60 150 V110 a20 20 0 0 1 40 0 V150 Z" fill="var(--night)"/></g><g transform="translate(460,60) scale(0.45)"><rect x="0" y="40" width="160" height="110" fill="var(--stone-dark)"/><rect x="0" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="40" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="80" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="120" y="20" width="20" height="24" fill="var(--stone-dark)"/><path d="M60 150 V110 a20 20 0 0 1 40 0 V150 Z" fill="var(--night)"/></g><text x="316" y="150" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">apple</text><text x="406" y="150" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">apple</text><text x="496" y="150" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">apple</text><text x="406" y="190" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">the same one everywhere</text><g transform="translate(640,110)"><path d="M-20 -30 q30 -20 40 10 q6 20 -12 26 q-14 4 -14 -8" stroke="var(--night)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M-30 -10 a30 30 0 0 0 -8 30" stroke="var(--night)" stroke-width="5" fill="none" stroke-linecap="round"/></g><text x="640" y="190" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">overheard</text></svg>
+<p>Passwords keep leaking.<small>Written on notes, reused at every castle, overheard.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="The gatekeeper asks ① Password? ② Your ring? ③ Let me see your face; the visitor shows a password, a ring and a face" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(560,70) scale(1.0)"><rect x="-70" y="30" width="140" height="90" fill="var(--stone-dark)"/><rect x="-70" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="-35" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="0" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="35" y="10" width="18" height="20" fill="var(--stone-dark)"/><path d="M-28 120 V78 a28 28 0 0 1 56 0 V120 Z" fill="var(--night)"/></g><g transform="translate(520,160) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="380" y="20" width="180" height="34" rx="14" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><path d="M460.0 54 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><rect x="382" y="50" width="176" height="6" fill="var(--panel)"/><text x="470.0" y="42.04" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">① Password?</text><rect x="400" y="70" width="180" height="34" rx="14" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><path d="M480.0 104 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><rect x="402" y="100" width="176" height="6" fill="var(--panel)"/><text x="490.0" y="92.04" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">② Your ring?</text><rect x="420" y="120" width="180" height="34" rx="14" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><path d="M500.0 154 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><rect x="422" y="150" width="176" height="6" fill="var(--panel)"/><text x="510.0" y="141.68" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">③ Let me see your face</text><g transform="translate(120,160) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="60" y="60" width="100" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M100.0 94 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="62" y="90" width="96" height="6" fill="var(--panel)"/><text x="110.0" y="82.4" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Apple!</text><g transform="translate(200,250) scale(1.1)"><circle r="14" fill="none" stroke="#E9B44C" stroke-width="7"/><path d="M-7 -14 L0 -24 L7 -14 Z" fill="var(--accent)"/></g><g transform="translate(240,232)"><circle cx="16" cy="16" r="12" fill="#E8C9A8"/><path d="M4 12 Q16 -2 28 12 Z" fill="#4A5A72"/><circle cx="12" cy="16" r="1.8" fill="var(--night)"/><circle cx="20" cy="16" r="1.8" fill="var(--night)"/></g><text x="380" y="320" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">one can leak; the others still hold</text></svg>
+<p>MFA asks two or more questions of different kinds.<small>Something you know, something you have, something you are. One can leak; the others still hold.</small></p>
+<div class="tricks" style="--cols:3">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 40 Q8 18 30 16 Q54 14 52 32 L42 34 L46 50 L30 40 Z" fill="var(--good)"/></svg><b>Something you know</b><span>a password</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="36" r="14" fill="none" stroke="#E9B44C" stroke-width="7"/><path d="M25 22 L32 10 L39 22 Z" fill="var(--accent)"/></svg><b>Something you have</b><span>a ring from the castle, your phone</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="28" r="14" fill="#E8C9A8"/><path d="M18 22 Q32 6 46 22 Z" fill="var(--bad)"/><circle cx="27" cy="28" r="2" fill="var(--night)"/><circle cx="37" cy="28" r="2" fill="var(--night)"/><path d="M26 36 Q32 41 38 36" stroke="var(--night)" stroke-width="2" fill="none"/></svg><b>Something you are</b><span>your face, your fingerprint</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A masked thief says 'Apple!', the gatekeeper asks 'And your ring?', the thief has none — big X" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="280" fill="var(--sky)"/><ellipse cx="380" cy="280" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(560,40) scale(1.0)"><rect x="-70" y="30" width="140" height="90" fill="var(--stone-dark)"/><rect x="-70" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="-35" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="0" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="35" y="10" width="18" height="20" fill="var(--stone-dark)"/><path d="M-28 120 V78 a28 28 0 0 1 56 0 V120 Z" fill="var(--night)"/></g><g transform="translate(520,130) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="410" y="10" width="160" height="34" rx="14" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><path d="M480.0 44 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><rect x="412" y="40" width="156" height="6" fill="var(--panel)"/><text x="490.0" y="32.04" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">And your ring?</text><g transform="translate(140,130) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="90" y="30" width="100" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M130.0 64 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="92" y="60" width="96" height="6" fill="var(--panel)"/><text x="140.0" y="52.4" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">Apple!</text><g transform="translate(240,215)"><circle r="14" fill="none" stroke="var(--line)" stroke-width="4" stroke-dasharray="5 5"/></g><text x="240" y="255" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)">no ring</text><path d="M330 120 l60 60 M390 120 l-60 60" stroke="var(--bad)" stroke-width="10" stroke-linecap="round"/></svg>
+<p>Steal the password, and you still have no ring.<small>Stealing two different things at once is much harder.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: passwords 'apple' and 'banana' equal 1. Right: a visitor reads code 482 913 aloud to a thief behind a cardboard fake gate" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/><rect x="40" y="40" width="110" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M85.0 74 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="42" y="70" width="106" height="6" fill="var(--panel)"/><text x="95.0" y="62.4" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">apple</text><rect x="170" y="40" width="130" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M225.0 74 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="172" y="70" width="126" height="6" fill="var(--panel)"/><text x="235.0" y="62.4" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">banana</text><text x="190" y="130" text-anchor="middle" font-size="40" font-weight="700" fill="var(--accent)" class="d">= 1</text><text x="190" y="170" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">two passwords aren't two factors</text><text x="190" y="190" text-anchor="middle" font-size="13" font-weight="700" fill="var(--muted)">they're the same kind</text><g transform="translate(560,70)"><rect x="-70" y="30" width="140" height="90" fill="var(--stone)" stroke="var(--stone-dark)" stroke-width="3" stroke-dasharray="8 6"/><rect x="-70" y="10" width="18" height="20" fill="var(--stone)"/><rect x="-35" y="10" width="18" height="20" fill="var(--stone)"/><rect x="0" y="10" width="18" height="20" fill="var(--stone)"/><rect x="35" y="10" width="18" height="20" fill="var(--stone)"/><path d="M-28 120 V78 a28 28 0 0 1 56 0 V120 Z" fill="var(--night)"/><rect x="60" y="40" width="10" height="90" fill="#8B5E3C" transform="rotate(-20 65 85)"/><text x="0" y="150" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)">fake gate</text></g><g transform="translate(640,100) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><g transform="translate(90,40) scale(0.5)"><rect x="-26" y="-46" width="52" height="92" rx="8" fill="var(--night)"/><rect x="-20" y="-36" width="40" height="66" rx="3" fill="var(--panel)"/><text x="0" y="2" text-anchor="middle" font-size="13" font-weight="700" fill="#142033">482 913</text></g></g><g transform="translate(420,130) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="400" y="60" width="120" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M450.0 94 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="402" y="90" width="116" height="6" fill="var(--panel)"/><text x="460.0" y="82.4" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">482 913</text><text x="470" y="275" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">read the code aloud and the thief uses it at the real gate</text></svg>
+<p>Even the ring can be fooled by a fake gate.<small>Read the code aloud and the thief uses it at the real gate. That's why newer rings recognize the gate themselves (passkeys).</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>MFA</b> = the gatekeeper checks two or more things <b>of different kinds</b>: know, have, are.</h2><p>Multi-Factor Authentication. With exactly two, it's 2FA. A texted 6-digit code is the most common 'have'; a passkey is a ring that can't be fooled by a fake gate.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Something you know</dt><dd><b>The password.</b> Lives only in your head. Leaks the easiest.</dd></div><div><dt>Something you have</dt><dd><b>The ring.</b> Your phone, an authenticator app, a security key. To steal it, they need the object.</dd></div><div><dt>Something you are</dt><dd><b>Face, fingerprint.</b> Attached to you. Can't be changed — a strength and a weakness.</dd></div><div><dt>2FA</dt><dd><b>Two of them.</b> MFA with exactly two kinds.</dd></div><div><dt>One-time password</dt><dd><b>A number used once.</b> The ring makes a fresh one each time — every 30 seconds, or by text.</dd></div><div><dt>Phishing</dt><dd><b>The fake gate.</b> A door that looks real, collecting your password and code. → <a href="attack-en.html">T1566 in the encyclopedia</a></dd></div><div><dt>Passkey (FIDO2)</dt><dd><b>A ring that knows the gate.</b> Only works at the real gate. Does nothing at a fake one.</dd></div><div><dt>MFA fatigue</dt><dd><b>Asked so often you just say yes.</b> A thief rings the ring all night until you tap yes half asleep.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="cti-en.html">The Watchtower Friend →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

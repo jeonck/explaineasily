@@ -133,3 +133,8 @@ def corridor(h, doors, night_mode=False, marks=True):
         if marks:
             out += dog(x + 32, 168, 0.4) if has_dog else label(x + 32, 150, "?", 30, "var(--accent)", cls="d")
     return out
+
+
+def gate(x, y, s=1.0):
+    return (f'<g transform="translate({x},{y}) scale({s})"><rect x="-70" y="30" width="140" height="90" fill="var(--stone-dark)"/>'
+            f'{battlements(-70, 10, 140, 4, "var(--stone-dark)", 20)}<path d="M-28 120 V78 a28 28 0 0 1 56 0 V120 Z" fill="var(--night)"/></g>')

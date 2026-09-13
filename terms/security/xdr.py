@@ -14,11 +14,6 @@ def cloud(x, y, s=1.0):
             f'<rect x="-22" y="-6" width="44" height="22" fill="var(--stone-dark)"/><path d="M-26 -6 L0 -22 L26 -6 Z" fill="var(--stone)"/></g>')
 
 
-def gate(x, y, s=1.0):
-    return (f'<g transform="translate({x},{y}) scale({s})"><rect x="-70" y="30" width="140" height="90" fill="var(--stone-dark)"/>'
-            f'{battlements(-70, 10, 140, 4, "var(--stone-dark)", 20)}<path d="M-28 120 V78 a28 28 0 0 1 56 0 V120 Z" fill="var(--night)"/></g>')
-
-
 def room(x, y, s=1.0, inner=""):
     return (f'<g transform="translate({x},{y}) scale({s})"><rect x="-80" y="-10" width="160" height="110" rx="6" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="6"/>{inner}</g>')
 
