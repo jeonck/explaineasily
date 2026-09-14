@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Coordinate Tag on Every Word</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="embedding-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · AI</div>
+<h1>What is an <em>Embedding</em>?</h1>
+<p class="sub">Embeddings, told as a story about coordinate tags that record where every word and sentence sits in meaning.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A sweating librarian holds a note reading cat and looks at a shelf holding only kitty, meow-cat and car books, with question marks" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(90,110) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><text x="122" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">librarian</text><g transform="translate(170,60) scale(0.95)"><rect width="120" height="60" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="120" height="26" rx="6" fill="#C9A86A"/><text x="60.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">LOOKING FOR</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">cat</text></g><rect x="380" y="70" width="350" height="170" rx="8" fill="var(--stone)" opacity="0.5"/><rect x="380" y="200" width="350" height="8" fill="var(--stone-dark)"/><rect x="410" y="100" width="60" height="100" rx="3" fill="#2E7D6B"/><text x="440.0" y="216" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">kitty</text><rect x="500" y="100" width="60" height="100" rx="3" fill="#7B3FA0"/><text x="530.0" y="216" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">meow-cat</text><rect x="590" y="100" width="60" height="100" rx="3" fill="#C9822B"/><text x="620.0" y="216" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">car</text><text x="440" y="90" text-anchor="middle" font-size="22" font-weight="700" fill="var(--bad)" class="d">?</text><text x="530" y="90" text-anchor="middle" font-size="22" font-weight="700" fill="var(--bad)" class="d">?</text><text x="380" y="282" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">the letters differ, so it can't find them — even though the meaning is the same</text></svg>
+<p>The librarian looks for a cat book and can't find the one labeled kitty.<small>The letters are different — even though the meaning is exactly the same.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Red background. Beans c-a-t vs k-it get a × for different letters; c-a-t vs c-a-t-fur get a ✓ though the meaning is off. The librarian says I want to search by meaning" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><text x="200" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">searching by letters</text><g transform="translate(90,110) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">c</text></g><g transform="translate(130,110) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">a</text></g><g transform="translate(170,110) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">t</text></g><text x="200" y="116" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">vs</text><g transform="translate(250,110) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">k</text></g><g transform="translate(290,110) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">it</text></g><text x="200" y="160" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">×  different letters → missed</text><g transform="translate(90,210) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">c</text></g><g transform="translate(130,210) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">a</text></g><g transform="translate(170,210) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">t</text></g><text x="200" y="216" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">vs</text><g transform="translate(250,210) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">c</text></g><g transform="translate(290,210) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">a</text></g><g transform="translate(330,210) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">t</text></g><g transform="translate(370,210) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">fur</text></g><text x="200" y="260" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">✓  same letters → wrong things match too</text><g transform="translate(520,90) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="440" y="20" width="300" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M580.0 60 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="442" y="56" width="296" height="6" fill="var(--panel)"/><text x="590.0" y="44.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">I want to search by meaning</text><text x="590" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">the librarian can only look at letters</text><text x="380" y="288" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">words that mean the same look different</text></svg>
+<p>Search by letters and you miss same-meaning words — and catch wrong ones that merely look alike.<small>Same-meaning words look different, and same-looking words can mean different things. The librarian can only see letters.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="A map of meaning: an animals cluster (cat, kitty, meow-cat) and a vehicles cluster (car, bus) sit apart; the parrot writes coordinate tags (cat 3,8 / kitty 3,9 / car 9,2)" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><rect x="40" y="30" width="380" height="270" rx="8" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M64 46 V276 H404" stroke="var(--muted)" stroke-width="2" fill="none"/><text x="230" y="50" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)" class="d">MAP OF MEANING</text><circle cx="150" cy="150" r="58" fill="var(--good-soft)"/><text x="150" y="78" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)" class="d">animals</text><circle cx="130" cy="140" r="7" fill="var(--good)"/><text x="130" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">cat</text><circle cx="170" cy="158" r="7" fill="var(--good)"/><text x="170" y="146" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">kitty</text><circle cx="140" cy="185" r="7" fill="var(--good)"/><text x="140" y="173" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">meow-cat</text><circle cx="330" cy="230" r="46" fill="var(--accent-soft)"/><text x="330" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="var(--accent)" class="d">vehicles</text><circle cx="318" cy="225" r="7" fill="var(--accent)"/><text x="318" y="213" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">car</text><circle cx="350" cy="250" r="7" fill="var(--accent)"/><text x="350" y="238" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">bus</text><g transform="translate(520,150) scale(1.2)"><path d="M-6 16 l-6 24 l8 -2z M6 16 l6 24 l-8 -2z" fill="#5B8DEF"/><ellipse rx="14" ry="20" fill="#5B8DEF"/><ellipse cx="-3" cy="3" rx="7" ry="13" fill="#142033" opacity="0.25"/><circle cy="-24" r="12" fill="#5B8DEF"/><path d="M9 -30 l14 0 l-14 6z M9 -22 l14 0 l-14 -4z" fill="#E9B44C"/><circle cx="3" cy="-27" r="3" fill="#FFF"/><circle cx="4" cy="-27" r="1.5" fill="#142033"/><path d="M-4 20 v8 M4 20 v8" stroke="#E9B44C" stroke-width="3" stroke-linecap="round"/></g><text x="520" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">the tag-writing parrot</text><g transform="translate(580,40) scale(0.95)"><rect width="160" height="130" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="160" height="26" rx="6" fill="#C9A86A"/><text x="80.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">TAGS</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">cat      (3, 8)</text><text x="14" y="72" text-anchor="start" font-size="12" font-weight="700" fill="#142033">kitty    (3, 9)</text><text x="14" y="94" text-anchor="start" font-size="12" font-weight="700" fill="#142033">car      (9, 2)</text><text x="14" y="116" text-anchor="start" font-size="12" font-weight="700" fill="#142033">…hundreds of numbers</text></g><text x="660" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">close in meaning,</text><text x="660" y="218" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">close in numbers</text><text x="380" y="340" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">an embedding is a coordinate tag that records where each word or sentence sits in meaning</text></svg>
+<p>An embedding is a coordinate tag that records where each word or sentence sits in meaning.<small>The parrot writes a tag for every word. Cat, kitty and meow-cat cluster together; car sits far away. Close in meaning means close in numbers. The shelf that stores these tags is the <a href="vectordb-en.html">vector DB</a> story.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="22" cy="26" r="7" fill="var(--good)"/><circle cx="34" cy="34" r="7" fill="var(--good)"/><circle cx="52" cy="50" r="6" fill="var(--accent)"/><path d="M12 54 V12 M12 54 H54" stroke="var(--muted)" stroke-width="2"/></svg><b>Close meaning, close coordinates</b><span>kitty sits next to cat</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 18 h44 M10 28 h36 M10 38 h30" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/><rect x="28" y="44" width="30" height="14" rx="4" fill="var(--accent)"/><circle cx="35" cy="51" r="2" fill="#FFF8E7"/></svg><b>A sentence gets one tag too</b><span>even a long text becomes one point</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="22" r="10" fill="#5B8DEF"/><circle cx="44" cy="22" r="10" fill="#5B8DEF"/><rect x="12" y="40" width="16" height="10" rx="3" fill="var(--accent)"/><rect x="36" y="40" width="16" height="10" rx="3" fill="var(--accent)"/><path d="M26 58 l5 4 l8 -9" stroke="var(--good)" stroke-width="3" fill="none"/></svg><b>Compare same-parrot tags only</b><span>different maps can't be measured</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="16" width="48" height="32" rx="6" fill="var(--accent)"/><text x="32" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF8E7">0.2 -0.7 …</text></svg><b>A tag is hundreds of numbers</b><span>the picture shows 2, real ones have more</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="On the map a short green line links cat and kitty; a long dashed red line links cat and car. The sentence my cat slept is one dot too. A measuring note: close = similar, a sentence gets one tag, same-parrot tags only, (cosine similarity)" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><rect x="40" y="30" width="440" height="240" rx="8" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M64 46 V246 H464" stroke="var(--muted)" stroke-width="2" fill="none"/><circle cx="150" cy="120" r="7" fill="var(--good)"/><text x="150" y="108" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">cat</text><circle cx="200" cy="140" r="7" fill="var(--good)"/><text x="200" y="128" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">kitty</text><circle cx="400" cy="220" r="7" fill="var(--good)"/><text x="400" y="208" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">car</text><circle cx="120" cy="190" r="7" fill="#2E7D6B"/><text x="120" y="178" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">my cat slept</text><path d="M150 120 L200 140" stroke="var(--good)" stroke-width="3"/><text x="190" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)" class="d">short</text><path d="M150 120 L400 220" stroke="var(--bad)" stroke-width="3" stroke-dasharray="6 4"/><text x="300" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)" class="d">long</text><g transform="translate(510,40) scale(0.95)"><rect width="230" height="130" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="230" height="26" rx="6" fill="#C9A86A"/><text x="115.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">MEASURING</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">close = similar meaning</text><text x="14" y="72" text-anchor="start" font-size="12" font-weight="700" fill="#142033">a sentence gets one tag too</text><text x="14" y="94" text-anchor="start" font-size="12" font-weight="700" fill="#142033">only compare same-parrot tags</text><text x="14" y="116" text-anchor="start" font-size="12" font-weight="700" fill="#142033">(cosine similarity)</text></g><text x="625" y="210" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">tags from another parrot</text><text x="625" y="228" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">are on a different map</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">measure the distance between tags like a ruler — short means similar</text></svg>
+<p>You measure the distance between tags like with a ruler. Short means similar meaning.<small>A whole sentence becomes one tag too. But tags written by a different parrot live on a different map, so you can't measure them together.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left, green: the librarian finds the cat photos book using kitty photo ✓. Right, red: on the map hot and cold sit close together — though they are opposites" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--bad-soft)"/><g transform="translate(40,90) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(120,40) scale(0.9)"><rect width="120" height="60" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="120" height="26" rx="6" fill="#C9A86A"/><text x="60.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">LOOKING FOR</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">kitty photo</text></g><rect x="270" y="90" width="60" height="90" rx="3" fill="#2E7D6B"/><text x="300.0" y="196" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">cat photos</text><text x="300" y="70" text-anchor="middle" font-size="22" font-weight="700" fill="var(--good)" class="d">✓</text><text x="190" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">different letters, found by meaning</text><rect x="410" y="40" width="200" height="150" rx="8" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M434 56 V166 H594" stroke="var(--muted)" stroke-width="2" fill="none"/><circle cx="490" cy="110" r="7" fill="var(--bad)"/><text x="490" y="98" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">hot</text><circle cx="530" cy="130" r="7" fill="var(--bad)"/><text x="530" y="118" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">cold</text><text x="660" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">opposites,</text><text x="660" y="118" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">but tags sit close</text><text x="570" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">a tag is only a rough position of meaning</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">so you find by tag, then the parrot reads and answers</text></svg>
+<p>Now you can search by meaning. But a tag is only a rough position of meaning.<small>Hot and cold are both about temperature, so their tags can sit close. So you find by tag, then the parrot reads and answers — see <a href="rag-en.html">the page the librarian brought</a>.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Embedding</b> = a <b>coordinate tag recording where each word or sentence sits in meaning</b>. Close meanings get close tags, so you can <b>search by meaning even when the letters differ</b>. But it is a rough position — opposites can sit close.</h2><p>Text (or images) turned into a numeric vector of hundreds to thousands of dimensions, produced by an embedding model trained so that similar meanings yield nearby vectors. Closeness is usually measured with cosine similarity, and only vectors from the same model are comparable. It underpins semantic search, vector DBs and RAG.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Embedding</dt><dd><b>The coordinate tag.</b> A word or sentence's meaning written as a numeric position.</dd></div><div><dt>Vector</dt><dd><b>The row of numbers on the tag.</b> Several numbers in a row like (3, 8) — real ones have hundreds.</dd></div><div><dt>Dimension</dt><dd><b>How many numbers a tag holds.</b> The picture is 2-D; real tags are 384, 768 or 1536 dimensions.</dd></div><div><dt>Cosine similarity</dt><dd><b>The closeness score between tags.</b> Near 1 means same meaning, 0 means unrelated.</dd></div><div><dt>Embedding model</dt><dd><b>The tag-writing parrot.</b> A dedicated model that makes tags. Change the parrot and every tag must be rewritten.</dd></div><div><dt>Semantic search</dt><dd><b>Searching by meaning.</b> Search by tag distance rather than letters — kitty finds cat.</dd></div><div><dt>Vector DB</dt><dd><b>The shelf organized by tags.</b> Where tags are shelved for fast lookup. → <a href="vectordb-en.html">the shelf organized by tags</a></dd></div><div><dt>RAG</dt><dd><b>The page the librarian brought.</b> The page found by tag goes to the parrot. → <a href="rag-en.html">the page the librarian brought</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="vectordb-en.html">The Shelf Organized by Tags →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>콩을 하나씩 바로 보여주기</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="streaming-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · AI</div>
+<h1><em>스트리밍</em>이 뭐예요?</h1>
+<p class="sub">스트리밍(응답 스트리밍)을 앵무새가 콩을 하나 고를 때마다 바로 손님에게 보여주는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="손님이 '고장 났나?' 하며 빈 화면을 보고, 시계는 30초, 오른쪽에서 앵무새는 눈을 감고 콩을 고르는 중" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(80,110) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="10" y="30" width="180" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M90.0 70 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="12" y="66" width="176" height="6" fill="var(--panel)"/><text x="100.0" y="54.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">고장 났나?</text><rect x="200" y="60" width="300" height="160" rx="10" fill="var(--stone-dark)"/><rect x="210" y="70" width="280" height="140" rx="4" fill="var(--panel)"/><text x="350" y="145" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)">(빈 화면)</text><circle cx="560" cy="100" r="30" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M560 100 V79.0 M560 100 L575.0 109.0" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><text x="560" y="150" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">30초…</text><g transform="translate(670,150) scale(1.0)"><path d="M-6 16 l-6 24 l8 -2z M6 16 l6 24 l-8 -2z" fill="#5B8DEF"/><ellipse rx="14" ry="20" fill="#5B8DEF"/><ellipse cx="-3" cy="3" rx="7" ry="13" fill="#142033" opacity="0.25"/><circle cy="-24" r="12" fill="#5B8DEF"/><path d="M9 -28 l14 4 l-14 6z" fill="#E9B44C"/><path d="M0 -28 q4 -3 8 0" stroke="#142033" stroke-width="2" fill="none"/><path d="M-4 20 v8 M4 20 v8" stroke="#E9B44C" stroke-width="3" stroke-linecap="round"/></g><text x="670" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">콩을 고르는 중</text><text x="350" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">앵무새는 일하고 있는데 손님은 몰라요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">30초 동안 빈 화면 — 손님은 고장난 줄 알아요</text></svg>
+<p>30초 동안 빈 화면이에요. 손님은 고장난 줄 알아요.<small>긴 답은 <a href="token-ko.html">콩</a>이 많아요. 앵무새는 열심히 고르고 있는데, 손님 화면에는 아무것도 안 보여요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="앵무새가 콩을 하나씩 만들어 '모아 두기' 상자에 넣고, 다 될 때까지 보여 주지 않음. 오른쪽 손님은 기다림" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(100,130) scale(1.0)"><path d="M-6 16 l-6 24 l8 -2z M6 16 l6 24 l-8 -2z" fill="#5B8DEF"/><ellipse rx="14" ry="20" fill="#5B8DEF"/><ellipse cx="-3" cy="3" rx="7" ry="13" fill="#142033" opacity="0.25"/><circle cy="-24" r="12" fill="#5B8DEF"/><path d="M9 -30 l14 0 l-14 6z M9 -22 l14 0 l-14 -4z" fill="#E9B44C"/><circle cx="3" cy="-27" r="3" fill="#FFF"/><circle cx="4" cy="-27" r="1.5" fill="#142033"/><path d="M-4 20 v8 M4 20 v8" stroke="#E9B44C" stroke-width="3" stroke-linecap="round"/></g><g transform="translate(180,100) scale(0.9)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">파리</text></g><g transform="translate(230,100) scale(0.9)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">는</text></g><g transform="translate(280,100) scale(0.9)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">프랑스</text></g><g transform="translate(330,100) scale(0.9)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">의</text></g><g transform="translate(380,100) scale(0.9)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">수도</text></g><text x="280" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">하나씩 만들어요</text><rect x="420" y="60" width="150" height="110" rx="8" fill="var(--panel)" stroke="var(--bad)" stroke-width="3" stroke-dasharray="6 4"/><text x="495" y="88" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">모아 두기</text><g transform="translate(450,118) scale(0.6)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(490,118) scale(0.6)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(530,118) scale(0.6)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(450,144) scale(0.6)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(490,144) scale(0.6)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><text x="495" y="195" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">다 될 때까지 보여 주지 않아요</text><g transform="translate(640,110) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="670" y="235" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">…기다림</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">한꺼번에 보여 주면, 첫 콩부터 마지막 콩까지 다 기다려요</text></svg>
+<p>앵무새는 원래 콩을 하나씩 만들어요. 다 만든 뒤 한꺼번에 보여 주면 기다림이 길어요.<small>첫 콩은 1초 만에 나왔어요. 그런데 마지막 콩까지 모아 뒀다가 보여 주니 손님은 30초를 통째로 기다려요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="횃대 위 앵무새가 고른 콩이 점선을 따라 손님 화면으로 날아가고, 화면에는 '파리 는 프랑스' 콩 셋과 깜빡이는 커서. 손님은 벌써 읽기 시작" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><text x="380" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">1초    2초    3초    4초 …</text><rect x="75.0" y="240" width="150" height="6" rx="3" fill="#8B5E3C"/><rect x="147" y="240" width="6" height="40" fill="#5A3B22"/><g transform="translate(150,200) scale(1.3)"><path d="M-6 16 l-6 24 l8 -2z M6 16 l6 24 l-8 -2z" fill="#5B8DEF"/><ellipse rx="14" ry="20" fill="#5B8DEF"/><ellipse cx="-3" cy="3" rx="7" ry="13" fill="#142033" opacity="0.25"/><circle cy="-24" r="12" fill="#5B8DEF"/><path d="M9 -30 l14 0 l-14 6z M9 -22 l14 0 l-14 -4z" fill="#E9B44C"/><circle cx="3" cy="-27" r="3" fill="#FFF"/><circle cx="4" cy="-27" r="1.5" fill="#142033"/><path d="M-4 20 v8 M4 20 v8" stroke="#E9B44C" stroke-width="3" stroke-linecap="round"/></g><g transform="translate(230,150) scale(0.8)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">의</text></g><g transform="translate(290,135) scale(0.8)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">수도</text></g><path d="M200 165 q60 -50 130 -40" stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 4" fill="none"/><rect x="400" y="70" width="300" height="160" rx="10" fill="var(--stone-dark)"/><rect x="410" y="80" width="280" height="140" rx="4" fill="var(--panel)"/><g transform="translate(440,150) scale(0.9)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">파리</text></g><g transform="translate(500,150) scale(0.9)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">는</text></g><g transform="translate(560,150) scale(0.9)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">프랑스</text></g><rect x="605" y="141" width="3" height="18" fill="var(--accent)"/><text x="550" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">1초부터 콩이 하나씩 보여요</text><g transform="translate(300,230) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="550" y="262" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">손님은 읽기 시작해요 — 앵무새는 아직 고르는 중</text><text x="380" y="340" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">스트리밍 = 콩을 하나 고를 때마다 바로 손님에게 보여주기</text></svg>
+<p>스트리밍은 콩을 하나 고를 때마다 바로 손님에게 보여주는 거예요.<small>1초부터 첫 콩이 보여요. 손님은 읽기 시작하고, 앵무새는 뒤에서 계속 골라요. 기다림이 짧게 느껴져요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="26" cy="32" r="18" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M26 32 V20 M26 32 L34 37" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/><ellipse cx="50" cy="44" rx="10" ry="7" fill="#C9822B"/></svg><b>첫 콩까지 시간이 체감 속도</b><span>첫 콩이 빠르면 빠르게 느껴요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="22" cy="32" rx="12" ry="8" fill="#C9822B"/><ellipse cx="46" cy="32" rx="12" ry="8" fill="#C9822B" opacity="0.4"/><path d="M34 24 h24" stroke="var(--muted)" stroke-width="2" stroke-dasharray="3 3"/><text x="46" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">?</text></svg><b>다 끝나기 전엔 답이 바뀔 수 있어요</b><span>마지막 콩까지 봐야 해요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 32 h18" stroke="var(--muted)" stroke-width="4" stroke-linecap="round"/><path d="M28 32 l4 -8 l4 16 l4 -8" stroke="var(--bad)" stroke-width="3" fill="none"/><path d="M42 32 h14" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><path d="M50 26 l8 6 l-8 6" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>끊기면 이어 받거나 다시</b><span>받은 콩까지는 남겨 둬요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="8" width="40" height="48" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="26" y="16" width="20" height="9" rx="2" fill="#FFF" stroke="#C9A86A" stroke-width="2"/><rect x="26" y="30" width="20" height="9" rx="2" fill="#FFF" stroke="#C9A86A" stroke-width="2"/><ellipse cx="32" cy="50" rx="8" ry="5" fill="#C9822B"/><ellipse cx="48" cy="50" rx="8" ry="5" fill="#C9822B" opacity="0.4"/></svg><b>도구 호출·양식은 끝까지 모아요</b><span>반쪽 양식은 못 읽어요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="위 줄 '한꺼번에': 1초·10초·20초 화면은 빈칸, 30초에 답 전체. 아래 줄 '스트리밍': 1초에 콩 하나, 10초에 둘, 20초에 넷, 30초에 전체" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><text x="255" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">1초</text><text x="385" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">10초</text><text x="515" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">20초</text><text x="645" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">30초</text><text x="30" y="40" text-anchor="start" font-size="13" font-weight="700" fill="var(--bad)" class="d">한꺼번에</text><rect x="200" y="70" width="110" height="70" rx="10" fill="var(--stone-dark)"/><rect x="210" y="80" width="90" height="50" rx="4" fill="var(--panel)"/><text x="255" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">(빈칸)</text><rect x="330" y="70" width="110" height="70" rx="10" fill="var(--stone-dark)"/><rect x="340" y="80" width="90" height="50" rx="4" fill="var(--panel)"/><text x="385" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">(빈칸)</text><rect x="460" y="70" width="110" height="70" rx="10" fill="var(--stone-dark)"/><rect x="470" y="80" width="90" height="50" rx="4" fill="var(--panel)"/><text x="515" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">(빈칸)</text><rect x="590" y="70" width="110" height="70" rx="10" fill="var(--stone-dark)"/><rect x="600" y="80" width="90" height="50" rx="4" fill="var(--panel)"/><g transform="translate(610,105) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(627,105) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(644,105) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(661,105) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(678,105) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><text x="255" y="180" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">1초</text><text x="385" y="180" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">10초</text><text x="515" y="180" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">20초</text><text x="645" y="180" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">30초</text><text x="30" y="180" text-anchor="start" font-size="13" font-weight="700" fill="var(--good)" class="d">스트리밍</text><rect x="200" y="210" width="110" height="70" rx="10" fill="var(--stone-dark)"/><rect x="210" y="220" width="90" height="50" rx="4" fill="var(--panel)"/><g transform="translate(220,245) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><rect x="330" y="210" width="110" height="70" rx="10" fill="var(--stone-dark)"/><rect x="340" y="220" width="90" height="50" rx="4" fill="var(--panel)"/><g transform="translate(350,245) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(367,245) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><rect x="460" y="210" width="110" height="70" rx="10" fill="var(--stone-dark)"/><rect x="470" y="220" width="90" height="50" rx="4" fill="var(--panel)"/><g transform="translate(480,245) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(497,245) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(514,245) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(531,245) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><rect x="590" y="210" width="110" height="70" rx="10" fill="var(--stone-dark)"/><rect x="600" y="220" width="90" height="50" rx="4" fill="var(--panel)"/><g transform="translate(610,245) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(627,245) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(644,245) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(661,245) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><g transform="translate(678,245) scale(0.5)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/></g><text x="380" y="304" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">끝나는 시각은 같아요 — 시작이 보이는 게 달라요</text></svg>
+<p>끝나는 시각은 같아요. 시작이 보이는 게 달라요.<small>두 줄 다 30초에 끝나요. 위는 30초 동안 빈 화면, 아래는 1초부터 읽을 게 있어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽 초록: 시계 둘 — 첫 콩 1초 ✓, 마지막 콩 30초 그대로. 오른쪽 빨강: '입력: 3 +'에서 끊긴 반쪽 도구 부탁 양식을 든 조련사 — 끝까지 모아서 읽어야 함" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--bad-soft)"/><circle cx="100" cy="100" r="32" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M100 100 V77.6 M100 100 L116.0 109.6" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><text x="100" y="152" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">첫 콩: 1초 ✓</text><circle cx="270" cy="100" r="32" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M270 100 V77.6 M270 100 L286.0 109.6" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><text x="270" y="152" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">마지막 콩: 30초</text><text x="190" y="215" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">보이는 건 빨라졌고</text><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">총 시간은 그대로예요</text><g transform="translate(430,50) scale(1.0)"><rect width="170" height="110" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="170" height="26" rx="6" fill="#C9A86A"/><text x="85.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">도구 부탁 양식</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">도구: 계산기</text><text x="14" y="72" text-anchor="start" font-size="12" font-weight="700" fill="#142033">입력: 3 +</text><text x="14" y="94" text-anchor="start" font-size="12" font-weight="700" fill="#142033">(아직 오는 중)</text></g><text x="515" y="190" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">반쪽 양식은 못 읽어요</text><g transform="translate(630,70) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="660" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">끝까지 모아서</text><text x="570" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">도구 호출·양식은 다 온 뒤에 읽어요</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">스트리밍은 기다림을 짧게 느끼게 해요 — 일 자체가 줄진 않아요</text></svg>
+<p>스트리밍은 기다림을 짧게 느끼게 해요. 일 자체가 줄진 않아요.<small>빨리 보이는 것이지 빨리 끝나는 게 아니에요 — 콩 값과 총 시간은 <a href="inference-ko.html">그대로</a>예요. 그리고 <a href="structuredoutput-ko.html">양식</a>과 도구 부탁은 다 온 뒤에 읽어요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>스트리밍</b> = 앵무새가 <b>콩을 하나 고를 때마다 바로</b> 손님에게 보여주기. 첫 콩이 빨리 보여 <b>기다림이 짧게 느껴지지만</b>, 총 시간과 콩 값은 그대로예요.</h2><p>Streaming response. 모델이 생성한 토큰을 완성 전에 청크 단위로 순차 전송해요(주로 SSE). 체감 속도는 첫 토큰 시간(TTFT)이 좌우하고, 총 지연·비용은 같아요. 도구 호출 인자나 JSON 같은 구조화 출력은 스트림이 끝나야 온전하니 모아서 파싱하고, 끊기면 취소·재시도를 다뤄야 해요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>스트리밍<br><small>Streaming</small></dt><dd><b>콩을 하나씩 바로 보여주기.</b> 다 만들 때까지 기다리지 않고 나오는 대로 보내요.</dd></div><div><dt>첫 토큰 시간<br><small>TTFT (time to first token)</small></dt><dd><b>첫 콩까지 걸린 시간.</b> 손님이 느끼는 빠르기는 거의 이 숫자예요.</dd></div><div><dt>초당 토큰<br><small>Tokens per second</small></dt><dd><b>1초에 나오는 콩 수.</b> 첫 콩 뒤로 얼마나 술술 나오는지.</dd></div><div><dt>SSE<br><small>SSE (server-sent events)</small></dt><dd><b>콩을 한 줄로 흘려보내는 관.</b> 한 번 연결하면 서버가 계속 조금씩 보내요. 스트리밍에 흔히 써요.</dd></div><div><dt>청크<br><small>Chunk</small></dt><dd><b>한 번에 오는 콩 묶음.</b> 콩 하나일 수도, 몇 개일 수도 있어요. 이어 붙여야 답이 돼요.</dd></div><div><dt>취소<br><small>Cancellation</small></dt><dd><b>그만! 하고 관 닫기.</b> 손님이 그만 읽으면 앵무새도 그만 골라요 — 콩 값을 아껴요.</dd></div><div><dt>구조화 출력과 스트리밍<br><small>Structured output and streaming</small></dt><dd><b>양식은 끝까지 모아야.</b> 반쪽 양식은 기계가 못 읽어요. → <a href="structuredoutput-ko.html">정해진 칸에 쓰기</a></dd></div><div><dt>추론 비용·시간<br><small>Inference cost and time</small></dt><dd><b>콩 값과 총 시간.</b> 스트리밍해도 그대로예요. → <a href="inference-ko.html">앵무새가 답하는 값과 시간</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="toolcall-ko.html">도구 상자 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

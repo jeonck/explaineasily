@@ -35,7 +35,7 @@ def check_docs():
 
 
 def check_pages(category, slugs, strict):
-    sys.path.insert(0, "terms")
+    sys.path.insert(0, "terms"); sys.path.insert(0, f"terms/{category}")  # 분야 전용 _world.py
     files = [f"terms/{category}/{s}.py" for s in slugs] if slugs else sorted(glob.glob(f"terms/{category}/[!_]*.py"))
     bad, orders = [], {}
     for f in files:

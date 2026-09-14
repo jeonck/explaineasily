@@ -141,6 +141,53 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 |---|---|---|---|
 | Dialog Map | 방과 문의 지도 | [dialogmap-ko](docs/dialogmap-ko.html) | [dialogmap-en](docs/dialogmap-en.html) |
 
+### AI
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
+| LLM | 책을 산더미로 읽은 앵무새 | [llm-ko](docs/llm-ko.html) | [llm-en](docs/llm-en.html) |
+| Token | 앵무새가 말을 콩으로 세요 | [token-ko](docs/token-ko.html) | [token-en](docs/token-en.html) |
+| Prompt | 앵무새에게 주는 조련 쪽지 | [prompt-ko](docs/prompt-ko.html) | [prompt-en](docs/prompt-en.html) |
+| Context Window | 앵무새 앞의 쟁반 | [context-ko](docs/context-ko.html) | [context-en](docs/context-en.html) |
+| Hallucination | 그럴듯 앵무새 | [hallucination-ko](docs/hallucination-ko.html) | [hallucination-en](docs/hallucination-en.html) |
+| Fine-tuning | 짧은 특훈 | [finetune-ko](docs/finetune-ko.html) | [finetune-en](docs/finetune-en.html) |
+| Embedding | 낱말마다 좌표 딱지 | [embedding-ko](docs/embedding-ko.html) | [embedding-en](docs/embedding-en.html) |
+| Vector DB | 딱지로 정리한 서가 | [vectordb-ko](docs/vectordb-ko.html) | [vectordb-en](docs/vectordb-en.html) |
+| RAG | 사서가 찾아온 페이지 | [rag-ko](docs/rag-ko.html) | [rag-en](docs/rag-en.html) |
+| Memory | 앵무새의 수첩 | [memory-ko](docs/memory-ko.html) | [memory-en](docs/memory-en.html) |
+| temperature | 엉뚱함 다이얼 | [temperature-ko](docs/temperature-ko.html) | [temperature-en](docs/temperature-en.html) |
+| prompt caching | 미리 놓아둔 콩 | [promptcaching-ko](docs/promptcaching-ko.html) | [promptcaching-en](docs/promptcaching-en.html) |
+| structured output | 정해진 칸에 쓰기 | [structuredoutput-ko](docs/structuredoutput-ko.html) | [structuredoutput-en](docs/structuredoutput-en.html) |
+| streaming | 콩을 하나씩 바로 보여주기 | [streaming-ko](docs/streaming-ko.html) | [streaming-en](docs/streaming-en.html) |
+| Tool Calling | 도구 상자 | [toolcall-ko](docs/toolcall-ko.html) | [toolcall-en](docs/toolcall-en.html) |
+| Agent | 심부름 목록을 스스로 짜는 앵무새 | [agent-ko](docs/agent-ko.html) | [agent-en](docs/agent-en.html) |
+| MCP | 도구 상자 규격 | [mcp-ko](docs/mcp-ko.html) | [mcp-en](docs/mcp-en.html) |
+| Multi-agent | 앵무새 회의 | [multiagent-ko](docs/multiagent-ko.html) | [multiagent-en](docs/multiagent-en.html) |
+| Guardrail | 울타리 | [guardrail-ko](docs/guardrail-ko.html) | [guardrail-en](docs/guardrail-en.html) |
+| Reasoning | 답하기 전 혼자 중얼거리기 | [reasoning-ko](docs/reasoning-ko.html) | [reasoning-en](docs/reasoning-en.html) |
+| Evaluation | 시험관의 채점표 | [evaluation-ko](docs/evaluation-ko.html) | [evaluation-en](docs/evaluation-en.html) |
+| Human-in-the-Loop | 마지막은 사람이 | [humanloop-ko](docs/humanloop-ko.html) | [humanloop-en](docs/humanloop-en.html) |
+| Multimodal | 그림도 보는 앵무새 | [multimodal-ko](docs/multimodal-ko.html) | [multimodal-en](docs/multimodal-en.html) |
+| Diffusion Model | 안개에서 그림 꺼내기 | [diffusion-ko](docs/diffusion-ko.html) | [diffusion-en](docs/diffusion-en.html) |
+| Code Generation | 코드 쓰는 앵무새 | [codegen-ko](docs/codegen-ko.html) | [codegen-en](docs/codegen-en.html) |
+| Workflow | 심부름 순서표 | [workflow-ko](docs/workflow-ko.html) | [workflow-en](docs/workflow-en.html) |
+| Distillation | 작은 앵무새에게 흉내 가르치기 | [distillation-ko](docs/distillation-ko.html) | [distillation-en](docs/distillation-en.html) |
+| Quantization | 콩을 굵게 세기 | [quantization-ko](docs/quantization-ko.html) | [quantization-en](docs/quantization-en.html) |
+| Inference | 앵무새가 답하는 값과 시간 | [inference-ko](docs/inference-ko.html) | [inference-en](docs/inference-en.html) |
+| Pricing | 콩 값 | [pricing-ko](docs/pricing-ko.html) | [pricing-en](docs/pricing-en.html) |
+| Attention | 앵무새의 눈길 | [attention-ko](docs/attention-ko.html) | [attention-en](docs/attention-en.html) |
+| Pre-training | 책 읽는 학교 | [pretraining-ko](docs/pretraining-ko.html) | [pretraining-en](docs/pretraining-en.html) |
+| Alignment | 앵무새 예절 교육 | [alignment-ko](docs/alignment-ko.html) | [alignment-en](docs/alignment-en.html) |
+| Knowledge Cutoff | 책을 덮은 날 | [knowledgecutoff-ko](docs/knowledgecutoff-ko.html) | [knowledgecutoff-en](docs/knowledgecutoff-en.html) |
+| Open Weights | 우리 집 앵무새 vs 빌린 앵무새 | [openweights-ko](docs/openweights-ko.html) | [openweights-en](docs/openweights-en.html) |
+| Routing | 어느 앵무새에게 시킬까 | [routing-ko](docs/routing-ko.html) | [routing-en](docs/routing-en.html) |
+| LLMOps | 앵무새 돌보기 | [llmops-ko](docs/llmops-ko.html) | [llmops-en](docs/llmops-en.html) |
+| Bias | 앵무새가 읽은 책의 치우침 | [bias-ko](docs/bias-ko.html) | [bias-en](docs/bias-en.html) |
+| AI Privacy | 앵무새에게 준 비밀 콩 | [aiprivacy-ko](docs/aiprivacy-ko.html) | [aiprivacy-en](docs/aiprivacy-en.html) |
+| Synthetic Data | 앵무새가 쓴 책으로 앵무새 가르치기 | [synthetic-ko](docs/synthetic-ko.html) | [synthetic-en](docs/synthetic-en.html) |
+
+AI 용어는 하나의 세계를 공유한다 — 모델은 책을 산더미로 읽은 앵무새, 토큰은 콩, 프롬프트는 조련 쪽지, 컨텍스트 창은 쟁반, RAG 는 사서, 도구는 공방의 도구 상자 (`terms/ai/_WORLD.md`).
+
 ## 구조
 
 ```
@@ -166,6 +213,7 @@ python3 build.py
 CATEGORIES = {
     "security": ("보안", "Security"),
     "design": ("소프트웨어 설계", "Software Design"),
+    "ai": ("AI", "AI"),
 }
 ```
 

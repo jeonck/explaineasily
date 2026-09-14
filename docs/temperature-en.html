@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Whimsy Dial</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="temperature-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · AI</div>
+<h1>What is <em>temperature</em>?</h1>
+<p class="sub">Temperature, told as a story about a dial that decides whether the parrot picks only the top bean or sometimes a lower one.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A guest asks for one cat name three times; the parrot on the perch answers Nabi, Cloud, Cheese — different each time" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(70,110) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="20" y="30" width="220" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M120.0 70 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="22" y="66" width="216" height="6" fill="var(--panel)"/><text x="130.0" y="54.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">one name for my cat!</text><text x="100" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">asked three times</text><rect x="260.0" y="200" width="140" height="6" rx="3" fill="#8B5E3C"/><rect x="327" y="200" width="6" height="40" fill="#5A3B22"/><g transform="translate(330,160) scale(1.1)"><path d="M-6 16 l-6 24 l8 -2z M6 16 l6 24 l-8 -2z" fill="#5B8DEF"/><ellipse rx="14" ry="20" fill="#5B8DEF"/><ellipse cx="-3" cy="3" rx="7" ry="13" fill="#142033" opacity="0.25"/><circle cy="-24" r="12" fill="#5B8DEF"/><path d="M9 -30 l14 0 l-14 6z M9 -22 l14 0 l-14 -4z" fill="#E9B44C"/><circle cx="3" cy="-27" r="3" fill="#FFF"/><circle cx="4" cy="-27" r="1.5" fill="#142033"/><path d="M-4 20 v8 M4 20 v8" stroke="#E9B44C" stroke-width="3" stroke-linecap="round"/></g><rect x="430" y="40" width="150" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M448 74 l-14 16 l24 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="432" y="70" width="146" height="6" fill="var(--panel)"/><text x="505.0" y="61.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">1st: Nabi</text><rect x="430" y="100" width="150" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M448 134 l-14 16 l24 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="432" y="130" width="146" height="6" fill="var(--panel)"/><text x="505.0" y="121.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">2nd: Cloud</text><rect x="430" y="160" width="150" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M448 194 l-14 16 l24 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="432" y="190" width="146" height="6" fill="var(--panel)"/><text x="505.0" y="181.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">3rd: Cheese</text><text x="660" y="120" text-anchor="middle" font-size="12" font-weight="700" fill="var(--accent)" class="d">different every time!</text><text x="380" y="282" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">same question, yet the answer keeps changing — why?</text></svg>
+<p>Same question, yet the answer keeps changing.<small>Yesterday Nabi, today Cloud, just now Cheese. The guest wonders if the parrot is broken.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Three beans reading Today the weather is … and a question mark; a note ranks next beans nice ★★★★, cold ★★, banana ☆; on the right: always the top is boring, sometimes lower is fresh but odd" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(80,100) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">Today</text></g><g transform="translate(140,100) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">the weather</text></g><g transform="translate(200,100) scale(1.0)"><ellipse rx="16" ry="11" fill="#C9822B"/><path d="M-6 -4 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#FFF8E7">is</text></g><rect x="250" y="78" width="52" height="44" rx="8" fill="none" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 4"/><text x="276" y="106" text-anchor="middle" font-size="22" font-weight="700" fill="var(--accent)" class="d">?</text><g transform="translate(330,40) scale(1.0)"><rect width="180" height="130" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="180" height="26" rx="6" fill="#C9A86A"/><text x="90.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">NEXT BEAN</text><rect x="6" y="35" width="168" height="22" rx="4" fill="var(--accent-soft)"/><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">nice   ★★★★</text><text x="14" y="72" text-anchor="start" font-size="12" font-weight="700" fill="#142033">cold   ★★</text><text x="14" y="94" text-anchor="start" font-size="12" font-weight="700" fill="#142033">banana ☆</text></g><text x="640" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">always pick the top</text><text x="640" y="90" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">same and boring</text><text x="640" y="140" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">sometimes pick lower</text><text x="640" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">fresh but odd</text><text x="300" y="215" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">there are several candidates — which to pick?</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">only the top? lower too? the picking habit changes the answer</text></svg>
+<p>There are several candidates for the next bean. Which one to pick is the question.<small>Always pick the top <a href="token-en.html">bean</a> and the answer is the same and boring. Sometimes pick a lower one and it is fresh — but sometimes odd.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="A big whimsy dial (0 same answer … high odd answers) turned by the trainer; the parrot on the perch says cold!; a next-bean candidate note beside it" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><text x="200" y="60" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">WHIMSY DIAL</text><g transform="translate(200,140) scale(2.0)"><circle r="28" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M0 0 L0.0 -22.0" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><circle r="4" fill="var(--accent)"/></g><text x="140" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">0 same answer</text><text x="265" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">high odd answers</text><g transform="translate(290,110) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="322" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">the trainer turns it</text><rect x="425.0" y="240" width="150" height="6" rx="3" fill="#8B5E3C"/><rect x="497" y="240" width="6" height="40" fill="#5A3B22"/><g transform="translate(500,200) scale(1.3)"><path d="M-6 16 l-6 24 l8 -2z M6 16 l6 24 l-8 -2z" fill="#5B8DEF"/><ellipse rx="14" ry="20" fill="#5B8DEF"/><ellipse cx="-3" cy="3" rx="7" ry="13" fill="#142033" opacity="0.25"/><circle cy="-24" r="12" fill="#5B8DEF"/><path d="M9 -30 l14 0 l-14 6z M9 -22 l14 0 l-14 -4z" fill="#E9B44C"/><circle cx="3" cy="-27" r="3" fill="#FFF"/><circle cx="4" cy="-27" r="1.5" fill="#142033"/><path d="M-4 20 v8 M4 20 v8" stroke="#E9B44C" stroke-width="3" stroke-linecap="round"/></g><rect x="400" y="60" width="160" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M470.0 100 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="402" y="96" width="156" height="6" fill="var(--panel)"/><text x="480.0" y="84.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">cold!</text><g transform="translate(580,40) scale(1.0)"><rect width="160" height="110" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="160" height="26" rx="6" fill="#C9A86A"/><text x="80.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">NEXT BEAN</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">nice   ★★★★</text><text x="14" y="72" text-anchor="start" font-size="12" font-weight="700" fill="#142033">cold   ★★</text><text x="14" y="94" text-anchor="start" font-size="12" font-weight="700" fill="#142033">banana ☆</text></g><text x="500" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">top bean only, or lower beans too, as the dial says</text><text x="380" y="340" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">temperature is the whimsy dial: top bean only, or lower ones too</text></svg>
+<p>Temperature is the whimsy dial: only the top bean, or sometimes a lower one.<small>At 0 the parrot always takes the top bean. The higher the dial, the more often a lower bean gets picked. The trainer sets it to fit the job.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="34" r="22" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M32 34 L17 44" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="34" r="4" fill="var(--accent)"/><text x="12" y="16" font-size="12" font-weight="700" fill="var(--muted)">0</text></svg><b>Near 0: the same answer</b><span>good for sorting, code, extraction</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="34" r="22" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M32 34 L47 44" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="34" r="4" fill="var(--accent)"/><path d="M50 8 l3 6 l6 3 l-6 3 l-3 6 l-3 -6 l-6 -3 l6 -3z" fill="var(--accent)"/></svg><b>Higher: fresh answers</b><span>good for ideas and stories</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="40" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 22 h24 M20 30 h24 M20 38 h14" stroke="#142033" stroke-width="2.5" stroke-linecap="round"/><path d="M38 44 l6 6 l10 -12" stroke="var(--good)" stroke-width="3" fill="none"/></svg><b>Facts: keep it low</b><span>an odd bean makes it wrong</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="20" cy="40" rx="12" ry="8" fill="#C9822B"/><ellipse cx="44" cy="40" rx="12" ry="8" fill="#C9822B"/><path d="M14 38 q6 -4 12 0 M38 38 q6 -4 12 0" stroke="#5A3B22" stroke-width="1.5" fill="none"/><path d="M20 14 q6 8 12 0 q6 -8 12 0" stroke="var(--muted)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>Same dial, not identical</b><span>even at 0 it can differ a bit</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Same question, name my cat: dial 0 gives Nabi, Nabi, Nabi; 0.7 gives Nabi, Cloud, Cheese; 1.5 gives Sock King III from a sweating parrot" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><text x="380" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">same question: name my cat</text><g transform="translate(130,62) scale(1.0)"><circle r="28" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M0 0 L-19.1 11.0" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><circle r="4" fill="var(--accent)"/><text x="0" y="44" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">0</text></g><rect x="50" y="120" width="160" height="36" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M120.0 156 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="52" y="152" width="156" height="6" fill="var(--panel)"/><text x="130.0" y="142.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">Nabi, Nabi, Nabi</text><g transform="translate(130,215) scale(1.0)"><path d="M-6 16 l-6 24 l8 -2z M6 16 l6 24 l-8 -2z" fill="#5B8DEF"/><ellipse rx="14" ry="20" fill="#5B8DEF"/><ellipse cx="-3" cy="3" rx="7" ry="13" fill="#142033" opacity="0.25"/><circle cy="-24" r="12" fill="#5B8DEF"/><path d="M9 -30 l14 0 l-14 6z M9 -22 l14 0 l-14 -4z" fill="#E9B44C"/><circle cx="3" cy="-27" r="3" fill="#FFF"/><circle cx="4" cy="-27" r="1.5" fill="#142033"/><path d="M-4 20 v8 M4 20 v8" stroke="#E9B44C" stroke-width="3" stroke-linecap="round"/></g><text x="130" y="280" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">always the same</text><g transform="translate(380,62) scale(1.0)"><circle r="28" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M0 0 L-8.9 -20.1" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><circle r="4" fill="var(--accent)"/><text x="0" y="44" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">0.7</text></g><rect x="300" y="120" width="160" height="36" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M370.0 156 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="302" y="152" width="156" height="6" fill="var(--panel)"/><text x="380.0" y="142.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">Nabi, Cloud, Cheese</text><g transform="translate(380,215) scale(1.0)"><path d="M-6 16 l-6 24 l8 -2z M6 16 l6 24 l-8 -2z" fill="#5B8DEF"/><ellipse rx="14" ry="20" fill="#5B8DEF"/><ellipse cx="-3" cy="3" rx="7" ry="13" fill="#142033" opacity="0.25"/><circle cy="-24" r="12" fill="#5B8DEF"/><path d="M9 -30 l14 0 l-14 6z M9 -22 l14 0 l-14 -4z" fill="#E9B44C"/><circle cx="3" cy="-27" r="3" fill="#FFF"/><circle cx="4" cy="-27" r="1.5" fill="#142033"/><path d="M-4 20 v8 M4 20 v8" stroke="#E9B44C" stroke-width="3" stroke-linecap="round"/></g><text x="380" y="280" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">a little different</text><g transform="translate(630,62) scale(1.0)"><circle r="28" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M0 0 L21.9 2.3" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><circle r="4" fill="var(--accent)"/><text x="0" y="44" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">1.5</text></g><rect x="550" y="120" width="160" height="36" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M620.0 156 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="552" y="152" width="156" height="6" fill="var(--panel)"/><text x="630.0" y="142.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">Sock King III</text><g transform="translate(630,215) scale(1.0)"><path d="M-6 16 l-6 24 l8 -2z M6 16 l6 24 l-8 -2z" fill="#5B8DEF"/><ellipse rx="14" ry="20" fill="#5B8DEF"/><ellipse cx="-3" cy="3" rx="7" ry="13" fill="#142033" opacity="0.25"/><circle cy="-24" r="12" fill="#5B8DEF"/><path d="M9 -30 l14 0 l-14 6z M9 -22 l14 0 l-14 -4z" fill="#E9B44C"/><circle cx="3" cy="-27" r="3" fill="#FFF"/><circle cx="4" cy="-27" r="1.5" fill="#142033"/><path d="M-16 -36 q5 6 0 12 q-5 -6 0 -12z" fill="#5B9BD5"/><path d="M-4 20 v8 M4 20 v8" stroke="#E9B44C" stroke-width="3" stroke-linecap="round"/></g><text x="630" y="280" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">fresh but odd</text><text x="380" y="304" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">only the dial changes — and the answers change like this</text></svg>
+<p>Only the dial changes — and the answers change like this.<small>0 always gives the same answer, 0.7 varies a little, 1.5 gets fresh but odd. Most jobs sit comfortably in the middle.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left, green: even with the dial all the way up the candidate note is unchanged. Right, red: a red parrot says cats came from the moon — the higher the dial, the likelier a plausible lie" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--bad-soft)"/><g transform="translate(90,110) scale(1.2)"><circle r="28" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M0 0 L19.1 11.0" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><circle r="4" fill="var(--accent)"/><text x="0" y="44" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">all the way up</text></g><g transform="translate(160,50) scale(1.0)"><rect width="190" height="130" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="190" height="26" rx="6" fill="#C9A86A"/><text x="95.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">NEXT BEAN</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">nice   ★★★★</text><text x="14" y="72" text-anchor="start" font-size="12" font-weight="700" fill="#142033">cold   ★★</text><text x="14" y="94" text-anchor="start" font-size="12" font-weight="700" fill="#142033">banana ☆</text></g><text x="190" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">the candidate list stays the same</text><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">no bean from outside its books</text><g transform="translate(470,140) scale(1.0)"><path d="M-6 16 l-6 24 l8 -2z M6 16 l6 24 l-8 -2z" fill="var(--bad)"/><ellipse rx="14" ry="20" fill="var(--bad)"/><ellipse cx="-3" cy="3" rx="7" ry="13" fill="#142033" opacity="0.25"/><circle cy="-24" r="12" fill="var(--bad)"/><path d="M9 -30 l14 0 l-14 6z M9 -22 l14 0 l-14 -4z" fill="#E9B44C"/><circle cx="3" cy="-27" r="3" fill="#FFF"/><circle cx="4" cy="-27" r="1.5" fill="#142033"/><path d="M-16 -36 q5 6 0 12 q-5 -6 0 -12z" fill="#5B9BD5"/><path d="M-4 20 v8 M4 20 v8" stroke="#E9B44C" stroke-width="3" stroke-linecap="round"/></g><rect x="520" y="50" width="210" height="40" rx="14" fill="var(--panel)" stroke="var(--bad)" stroke-width="2"/><path d="M615.0 90 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--bad)" stroke-width="2"/><rect x="522" y="86" width="206" height="6" fill="var(--panel)"/><text x="625.0" y="73.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">cats came from the moon</text><text x="590" y="210" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">higher means odd beans slip in more</text><text x="590" y="235" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">and plausible lies get likelier</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">the dial only changes the picking habit — no new knowledge appears</text></svg>
+<p>The dial only changes the picking habit. No new knowledge appears.<small>It only picks among the candidates it has, so no bean from outside its books appears. But the higher the dial, the easier a <a href="hallucination-en.html">plausible lie</a> slips in.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Temperature</b> = the <b>whimsy dial</b> that decides whether the parrot picks <b>only the top bean</b> or <b>sometimes a lower one</b>. Low means the same answer every time, high means fresh but odd answers — and no new knowledge either way.</h2><p>A sampling parameter that flattens or sharpens the next-token probability distribution. Near 0 it almost always takes the top token (near-deterministic); higher values let low-probability tokens through — more variety, more errors and hallucinations. Used together with top-p and top-k.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Temperature</dt><dd><b>The whimsy dial.</b> Near 0 only the top bean; higher lets lower beans in. Usually between 0 and 2.</dd></div><div><dt>Sampling</dt><dd><b>Drawing one from the candidates.</b> Picking a bean according to its stars (probability). The dial changes how this draw behaves.</dd></div><div><dt>Top-p (nucleus)</dt><dd><b>Keep candidates until their stars add up to p.</b> Cuts off tail candidates like banana ☆. Used together with the dial.</dd></div><div><dt>Top-k</dt><dd><b>Only the top k candidates.</b> For example k=3 keeps nice, cold, banana only.</dd></div><div><dt>Deterministic output</dt><dd><b>Dial at 0.</b> Always the top bean, so nearly the same answer — though not guaranteed identical.</dd></div><div><dt>Seed</dt><dd><b>The starting number of the draw dice.</b> Same seed, same draw — in principle. Not every parrot supports it.</dd></div><div><dt>Creativity vs accuracy</dt><dd><b>The two ends of the dial.</b> Stories and ideas high; facts, code and sorting low.</dd></div><div><dt>Next-token candidates</dt><dd><b>The next-bean note.</b> The bean with the most stars is the top. → <a href="token-en.html">beans</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="promptcaching-en.html">Beans Laid Out Ahead →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

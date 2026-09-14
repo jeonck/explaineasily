@@ -154,6 +154,46 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | security | OSINT | 마을 소문만 모아도 성 지도가 나와요 |
 | security | Physical Security | 성문을 잠가도 창문이 열려 있으면 |
 | design | Dialog Map | 방과 문의 지도 |
+| ai | LLM | 책을 산더미로 읽은 앵무새 |
+| ai | Token | 앵무새가 말을 콩으로 세요 |
+| ai | Prompt | 앵무새에게 주는 조련 쪽지 |
+| ai | Context Window | 앵무새 앞의 쟁반 |
+| ai | Hallucination | 그럴듯 앵무새 |
+| ai | Fine-tuning | 짧은 특훈 |
+| ai | Embedding | 낱말마다 좌표 딱지 |
+| ai | Vector DB | 딱지로 정리한 서가 |
+| ai | RAG | 사서가 찾아온 페이지 |
+| ai | Memory | 앵무새의 수첩 |
+| ai | temperature | 엉뚱함 다이얼 |
+| ai | prompt caching | 미리 놓아둔 콩 |
+| ai | structured output | 정해진 칸에 쓰기 |
+| ai | streaming | 콩을 하나씩 바로 보여주기 |
+| ai | Tool Calling | 도구 상자 |
+| ai | Agent | 심부름 목록을 스스로 짜는 앵무새 |
+| ai | MCP | 도구 상자 규격 |
+| ai | Multi-agent | 앵무새 회의 |
+| ai | Guardrail | 울타리 |
+| ai | Reasoning | 답하기 전 혼자 중얼거리기 |
+| ai | Evaluation | 시험관의 채점표 |
+| ai | Human-in-the-Loop | 마지막은 사람이 |
+| ai | Multimodal | 그림도 보는 앵무새 |
+| ai | Diffusion Model | 안개에서 그림 꺼내기 |
+| ai | Code Generation | 코드 쓰는 앵무새 |
+| ai | Workflow | 심부름 순서표 |
+| ai | Distillation | 작은 앵무새에게 흉내 가르치기 |
+| ai | Quantization | 콩을 굵게 세기 |
+| ai | Inference | 앵무새가 답하는 값과 시간 |
+| ai | Pricing | 콩 값 |
+| ai | Attention | 앵무새의 눈길 |
+| ai | Pre-training | 책 읽는 학교 |
+| ai | Alignment | 앵무새 예절 교육 |
+| ai | Knowledge Cutoff | 책을 덮은 날 |
+| ai | Open Weights | 우리 집 앵무새 vs 빌린 앵무새 |
+| ai | Routing | 어느 앵무새에게 시킬까 |
+| ai | LLMOps | 앵무새 돌보기 |
+| ai | Bias | 앵무새가 읽은 책의 치우침 |
+| ai | AI Privacy | 앵무새에게 준 비밀 콩 |
+| ai | Synthetic Data | 앵무새가 쓴 책으로 앵무새 가르치기 |
 
 비유가 **깨지는 지점**을 반드시 패널 하나로 넣는다. 이게 정직한 설명과 거짓말의 차이다.
 (발자국 → "신발을 바꾸면 발자국도 바뀌어요")

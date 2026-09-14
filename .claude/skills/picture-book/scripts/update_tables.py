@@ -13,7 +13,7 @@ import argparse, glob, importlib.util, os, re, sys
 
 
 def load(category):
-    sys.path.insert(0, "terms"); terms = []
+    sys.path.insert(0, "terms"); sys.path.insert(0, f"terms/{category}"); terms = []  # 분야 전용 _world.py
     for f in glob.glob(f"terms/{category}/[!_]*.py"):
         spec = importlib.util.spec_from_file_location(os.path.basename(f)[:-3], f)
         m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); terms.append(m.PAGE)

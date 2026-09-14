@@ -21,6 +21,7 @@ REQUEST_URL = f"{REPO}/issues/new?template=term-request.yml"
 CATEGORIES = {
     "security": ("보안", "Security"),
     "design": ("소프트웨어 설계", "Software Design"),
+    "ai": ("AI", "AI"),
 }
 
 FONTS = {
@@ -332,11 +333,15 @@ def render_index(terms):
 
 def load_terms():
     sys.path.insert(0, str(TERMS))
+    sys.path.insert(0, str(TERMS))  # [0] 은 분야 폴더로 바꿔 끼운다
     terms = []
     for path in sorted(TERMS.glob("*/[!_]*.py")):
         cat = path.parent.name
         if cat not in CATEGORIES:
             raise SystemExit(f"{path}: 폴더 '{cat}' 가 CATEGORIES 에 없다")
+        # 분야 전용 헬퍼: terms/<분야>/_world.py 가 있으면 `from _world import *` 로 쓴다
+        sys.path[0] = str(path.parent)
+        sys.modules.pop("_world", None)
         spec = importlib.util.spec_from_file_location(path.stem, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)

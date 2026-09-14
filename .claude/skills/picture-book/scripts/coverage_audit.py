@@ -12,7 +12,7 @@ import argparse, glob, importlib.util, os, sys
 
 
 def page_text(category):
-    sys.path.insert(0, "terms"); out = []
+    sys.path.insert(0, "terms"); sys.path.insert(0, f"terms/{category}"); out = []  # 분야 전용 _world.py
     for f in glob.glob(f"terms/{category}/[!_]*.py"):
         spec = importlib.util.spec_from_file_location(os.path.basename(f)[:-3], f)
         m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); P = m.PAGE
