@@ -95,6 +95,7 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | security | Blue Team | 성을 지키는 파란 모자들 |
 | security | Bug Bounty | 성문에 붙인 상금 방 |
 | security | Vulnerability Management | 매달 도는 틈 장부 |
+| security | Attack Surface Management | 바깥에서 세는 우리 성의 문 |
 | design | Dialog Map | 방과 문의 지도 |
 
 비유가 **깨지는 지점**을 반드시 패널 하나로 넣는다. 이게 정직한 설명과 거짓말의 차이다.
