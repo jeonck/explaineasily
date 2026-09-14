@@ -50,7 +50,7 @@ P3 = svg(340, corridor(340, DOORS, marks=False) + stripes(196, 144, (BLUE, GREEN
 
 # 4. 색을 넘으려면 문지기, 통로 하나엔 여러 색
 RULEBOOK = ('<g transform="translate(60,60)"><rect width="56" height="40" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/>'
-            + label(28, 16, "⟦초록→빨강|green→red⟧", 8, "#142033") + label(28, 30, "⟦✗ 안 돼요|✗ no⟧", 9, "var(--bad)") + "</g>")
+            + label(28, 16, "⟦초록→빨강|green→red⟧", 8, "#142033") + label(28, 30, "⟦× 안 돼요|× no⟧", 9, "var(--bad)") + "</g>")
 P4 = svg(320, '<rect width="380" height="320" fill="var(--sky)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
          + stripes(200, 60, (GREEN,), 0, 150) + stripes(200, 60, (RED,), 230, 150)
          + walker(40, 110, GUEST, GREEN) + gate(170, 60, 0.7) + person(230, 95, s=0.6, face=EYES, **GUARD, extra=RULEBOOK)

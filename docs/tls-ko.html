@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>상점과 주고받는 봉인 약속</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="tls-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 보안</div>
+<h1><em>TLS</em>가 뭐예요?</h1>
+<p class="sub">TLS 와 HTTPS 를 마을 상점과 봉인 편지를 주고받기로 약속하는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="성에서 내가 '빵 열 개 주세요' 편지를 마을 빵집으로 보내는데, 길 위의 배달부가 편지를 뜯어 눈으로 읽음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(30,80) scale(0.6)"><rect x="0" y="40" width="160" height="110" fill="var(--stone-dark)"/><rect x="0" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="40" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="80" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="120" y="20" width="20" height="24" fill="var(--stone-dark)"/><path d="M60 150 V110 a20 20 0 0 1 40 0 V150 Z" fill="var(--night)"/></g><g transform="translate(130,140) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(200,110) scale(0.7)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M0 4 L70 46 L140 4" stroke="#C9A86A" stroke-width="3" fill="none"/><text x="70" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">빵 열 개 주세요</text></g><path d="M310 150 L540 150" stroke="var(--stone-dark)" stroke-width="8" fill="none" stroke-linecap="round"/><g transform="translate(400,40) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(360,130) scale(0.6)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M0 4 L70 -30 L140 4" stroke="#C9A86A" stroke-width="3" fill="#FFF8E7"/></g><g transform="translate(402,138)"><path d="M-14 0 Q0 -10 14 0 Q0 10 -14 0 Z" fill="#FFF" stroke="var(--night)" stroke-width="2"/><circle r="4" fill="var(--night)"/></g><text x="420" y="225" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">배달부가 뜯어 봐요</text><g transform="translate(640,90) scale(1.0)"><rect x="-70" y="0" width="140" height="110" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="4"/><path d="M-80 0 L0 -40 L80 0 Z" fill="var(--accent)"/><rect x="-50" y="12" width="100" height="24" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="29" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">빵집</text><rect x="-20" y="60" width="40" height="50" fill="var(--night)"/><rect x="-58" y="48" width="28" height="22" fill="var(--sky)"/><rect x="30" y="48" width="28" height="22" fill="var(--sky)"/></g><text x="640" y="225" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">마을 빵집</text><text x="380" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">길에서는 누가 읽는지 몰라요</text></svg>
+<p>마을 빵집에 편지를 보내요. 그런데 배달부가 뜯어 봐요.<small>길에서는 누가 읽는지 몰라요. 그래서 <a href="encryption-ko.html">봉인 편지</a>를 쓰고 싶은데, 빵집과 나는 만난 적이 없어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 내가 봉인 도장을 편지에 넣어 보내자 배달부가 도장을 베낌. 오른쪽: 빵집이 둘 — 진짜 빵집과 빨간 지붕 가짜 빵집" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--bad-soft)"/><g transform="translate(70,110) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="30" y="30" width="230" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M135.0 70 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="32" y="66" width="226" height="6" fill="var(--panel)"/><text x="145.0" y="53.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">봉인 도장을 어떻게 나눠 갖죠?</text><g transform="translate(150,120) scale(0.8)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M0 4 L70 -30 L140 4" stroke="#C9A86A" stroke-width="3" fill="#FFF8E7"/></g><g transform="translate(220,175) scale(0.8)"><circle r="10" fill="none" stroke="#E9B44C" stroke-width="5"/><rect x="8" y="-3" width="30" height="6" fill="#E9B44C"/><rect x="24" y="3" width="4" height="7" fill="#E9B44C"/><rect x="32" y="3" width="4" height="9" fill="#E9B44C"/></g><g transform="translate(330,110) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(400,175) scale(0.8)"><circle r="10" fill="none" stroke="#E9B44C" stroke-width="5"/><rect x="8" y="-3" width="30" height="6" fill="#E9B44C"/><rect x="24" y="3" width="4" height="7" fill="#E9B44C"/><rect x="32" y="3" width="4" height="9" fill="#E9B44C"/></g><text x="420" y="150" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">베꼈다!</text><text x="240" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">도장을 편지로 보내면 배달부가 베껴요</text><g transform="translate(560,100) scale(0.7)"><rect x="-70" y="0" width="140" height="110" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="4"/><path d="M-80 0 L0 -40 L80 0 Z" fill="var(--accent)"/><rect x="-50" y="12" width="100" height="24" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="29" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">빵집</text><rect x="-20" y="60" width="40" height="50" fill="var(--night)"/><rect x="-58" y="48" width="28" height="22" fill="var(--sky)"/><rect x="30" y="48" width="28" height="22" fill="var(--sky)"/></g><g transform="translate(680,100) scale(0.7)"><rect x="-70" y="0" width="140" height="110" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="4"/><path d="M-80 0 L0 -40 L80 0 Z" fill="var(--bad)"/><rect x="-50" y="12" width="100" height="24" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="29" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">빵집</text><rect x="-20" y="60" width="40" height="50" fill="var(--night)"/><rect x="-58" y="48" width="28" height="22" fill="var(--sky)"/><rect x="30" y="48" width="28" height="22" fill="var(--sky)"/></g><text x="560" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">진짜 빵집</text><text x="680" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">가짜 빵집</text><text x="620" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">어느 게 진짜죠?</text><text x="380" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">둘만 아는 도장도 없고, 상대가 진짜인지도 몰라요</text></svg>
+<p>도장을 편지로 보내면 배달부가 베껴요. 게다가 어느 빵집이 진짜인지도 몰라요.<small>둘만 아는 도장이 필요한데, 도장을 보내는 길이 바로 그 위험한 길이에요. 가짜 빵집에 봉인 편지를 보내면 더 나빠요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="① 빵집의 신분증 확인, ② 반짝이는 새 도장을 그 자리에서 만들기, 그리고 ③ 나와 빵집 주인 사이 편지가 전부 봉인됨. 가운데 배달부는 '???'" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><circle cx="240" cy="40" r="11" fill="var(--accent)"/><text x="240" y="44" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF8E7" class="d">1</text><g transform="translate(258,30) scale(0.7)"><rect width="150" height="90" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="150" height="20" rx="6" fill="#C9A86A"/><text x="75" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">신분증</text><circle cx="28" cy="50" r="14" fill="#E8C9A8"/><path d="M14 46 Q28 30 42 46 Z" fill="var(--accent)"/><text x="50" y="48" text-anchor="start" font-size="12" font-weight="700" fill="#142033" class="d">빵집</text><text x="50" y="66" text-anchor="start" font-size="9" font-weight="700" fill="#142033">유효: 내년까지</text><g transform="translate(122,58) scale(0.9)"><circle r="20" fill="#7B3FA0"/><circle r="15" fill="none" stroke="#FFF8E7" stroke-width="2"/><path d="M-9 5 l-2 -11 l6 4 l5 -8 l5 8 l6 -4 l-2 11z" fill="#E9B44C"/></g></g><text x="310" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">신분증부터 확인</text><circle cx="410" cy="40" r="11" fill="var(--accent)"/><text x="410" y="44" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF8E7" class="d">2</text><g transform="translate(470,62) scale(1.1)"><circle r="20" fill="#7B3FA0"/><circle r="15" fill="none" stroke="#FFF8E7" stroke-width="2"/><path d="M-9 5 l-2 -11 l6 4 l5 -8 l5 8 l6 -4 l-2 11z" fill="#E9B44C"/><path d="M26 -26 l3 8 l8 3 l-8 3 l-3 8 l-3 -8 l-8 -3 l8 -3z" fill="var(--accent)"/></g><text x="470" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">새 도장은 그 자리에서</text><g transform="translate(80,130) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(350,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><text x="375" y="140" text-anchor="middle" font-size="18" font-weight="700" fill="var(--bad)" class="d">???</text><g transform="translate(660,40) scale(0.5)"><rect x="-70" y="0" width="140" height="110" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="4"/><path d="M-80 0 L0 -40 L80 0 Z" fill="var(--accent)"/><rect x="-50" y="12" width="100" height="24" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="29" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">빵집</text><rect x="-20" y="60" width="40" height="50" fill="var(--night)"/><rect x="-58" y="48" width="28" height="22" fill="var(--sky)"/><rect x="30" y="48" width="28" height="22" fill="var(--sky)"/></g><g transform="translate(600,130) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--accent)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><path d="M150 190 L340 190 M420 190 L590 190" stroke="var(--good)" stroke-width="3" stroke-dasharray="6 5"/><g transform="translate(160,242) scale(0.5)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M0 4 L70 46 L140 4" stroke="#C9A86A" stroke-width="3" fill="none"/><circle cx="70" cy="46" r="12" fill="var(--good)"/></g><g transform="translate(260,242) scale(0.5)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M0 4 L70 46 L140 4" stroke="#C9A86A" stroke-width="3" fill="none"/><circle cx="70" cy="46" r="12" fill="var(--good)"/></g><g transform="translate(460,242) scale(0.5)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M0 4 L70 46 L140 4" stroke="#C9A86A" stroke-width="3" fill="none"/><circle cx="70" cy="46" r="12" fill="var(--good)"/></g><g transform="translate(560,242) scale(0.5)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M0 4 L70 46 L140 4" stroke="#C9A86A" stroke-width="3" fill="none"/><circle cx="70" cy="46" r="12" fill="var(--good)"/></g><text x="380" y="306" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">③ 이제부터 편지는 다 봉인</text><text x="380" y="344" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">신분증 확인, 새 도장, 그리고 봉인 — 배달부는 이제 못 읽어요</text></svg>
+<p>TLS는 상점과 주고받는 봉인 약속이에요.<small>먼저 빵집의 신분증을 확인하고, 둘만 아는 새 도장을 그 자리에서 만들어요. 그다음부터 편지는 다 봉인이에요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="16" width="48" height="32" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><circle cx="20" cy="32" r="6" fill="#E8C9A8"/><circle cx="46" cy="32" r="7" fill="#7B3FA0"/><path d="M30 28 h8 M30 36 h8" stroke="#C9A86A" stroke-width="2"/></svg><b>신분증 먼저</b><span>왕의 도장이 찍힌 것만</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="28" cy="36" r="16" fill="#7B3FA0"/><circle cx="28" cy="36" r="11" fill="none" stroke="#FFF8E7" stroke-width="2"/><path d="M48 10 l3 8 l8 3 l-8 3 l-3 8 l-3 -8 l-8 -3 l8 -3z" fill="var(--accent)"/></svg><b>새 도장은 그 자리에서</b><span>길로 보내지 않아요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="18" width="48" height="30" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M8 20 L32 36 L56 20" stroke="#C9A86A" stroke-width="3" fill="none"/><circle cx="32" cy="36" r="7" fill="var(--good)"/></svg><b>편지마다 봉인</b><span>배달부는 못 읽어요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="18" y="28" width="28" height="24" rx="5" fill="var(--good)"/><path d="M24 28 v-8 a8 8 0 0 1 16 0 v8" stroke="var(--good)" stroke-width="5" fill="none"/></svg><b>자물쇠 표시</b><span>약속이 됐다는 표시</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="봉인 약속 순서 네 줄: 안녕, 신분증 보여줘 → 여기요 (왕의 도장) → 도장 재료를 반씩 섞기 (배달부는 반쪽만 봄) → 새 도장으로 봉인. 아래엔 봉인된 편지 셋" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><rect x="60" y="30" width="640" height="230" rx="8" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="60" y="30" width="640" height="30" rx="8" fill="#C9A86A"/><text x="380" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">봉인 약속 순서</text><circle cx="88" cy="92" r="11" fill="var(--accent)"/><text x="88" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF8E7" class="d">1</text><text x="110" y="97" text-anchor="start" font-size="12" font-weight="700" fill="#142033">나 → 빵집: 안녕! 신분증 보여줘요</text><circle cx="88" cy="136" r="11" fill="var(--accent)"/><text x="88" y="140" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF8E7" class="d">2</text><text x="110" y="141" text-anchor="start" font-size="12" font-weight="700" fill="#142033">빵집 → 나: 여기요 (왕의 도장 찍힌 신분증)</text><circle cx="88" cy="180" r="11" fill="var(--good)"/><text x="88" y="184" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF8E7" class="d">3</text><text x="110" y="185" text-anchor="start" font-size="12" font-weight="700" fill="#142033">둘이: 도장 재료를 반씩 섞어요 — 배달부는 반쪽만 봐요</text><circle cx="88" cy="224" r="11" fill="var(--good)"/><text x="88" y="228" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF8E7" class="d">4</text><text x="110" y="229" text-anchor="start" font-size="12" font-weight="700" fill="#142033">둘이: 새 도장으로 봉인! 오늘 편지는 다 이걸로</text><text x="110" y="202" text-anchor="start" font-size="10" font-weight="700" fill="#7B3FA0">반쪽만 봐서는 도장을 못 만들어요</text><g transform="translate(200,272) scale(0.45)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M0 4 L70 46 L140 4" stroke="#C9A86A" stroke-width="3" fill="none"/><circle cx="70" cy="46" r="12" fill="var(--good)"/></g><g transform="translate(380,272) scale(0.45)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M0 4 L70 46 L140 4" stroke="#C9A86A" stroke-width="3" fill="none"/><circle cx="70" cy="46" r="12" fill="var(--good)"/></g><g transform="translate(560,272) scale(0.45)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M0 4 L70 46 L140 4" stroke="#C9A86A" stroke-width="3" fill="none"/><circle cx="70" cy="46" r="12" fill="var(--good)"/></g><text x="380" y="344" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">한 번 약속하면 오늘 편지는 전부 봉인이에요</text></svg>
+<p>약속은 네 마디면 끝나요. 도장은 길로 보내지 않고, 재료를 반씩 섞어 각자 만들어요.<small>배달부가 오가는 말을 다 엿봐도 반쪽으론 도장을 못 만들어요. 그리고 이 도장은 오늘만 써요 — 내일은 새로 만들어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="셋: 초록 자물쇠가 달린 봉인 편지(봉인됐고 신분증도 봤음), 빨간 열린 자물쇠(기한 지난 신분증 — 돌아서요), 그리고 초록 자물쇠가 달린 가짜 빵집" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="253" height="320" fill="var(--good-soft)"/><rect x="253" width="254" height="320" fill="var(--bad-soft)"/><rect x="507" width="253" height="320" fill="var(--accent-soft)"/><g transform="translate(30,60) scale(1.3)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M0 4 L70 46 L140 4" stroke="#C9A86A" stroke-width="3" fill="none"/><circle cx="70" cy="46" r="12" fill="var(--good)"/></g><g transform="translate(130,160) scale(1.4)"><rect x="-13" y="-8" width="26" height="20" rx="4" fill="var(--good)"/><path d="M-8 -8 V-14 a8 8 0 0 1 16 0 V-8" stroke="var(--good)" stroke-width="4" fill="none"/></g><text x="126" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">자물쇠 = 봉인됐고</text><text x="126" y="234" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">신분증도 봤어요</text><g transform="translate(290,60) scale(1.3)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M0 4 L70 46 L140 4" stroke="#C9A86A" stroke-width="3" fill="none"/><circle cx="70" cy="46" r="12" fill="var(--bad)"/></g><g transform="translate(390,160) scale(1.4)"><rect x="-13" y="-8" width="26" height="20" rx="4" fill="var(--bad)"/><path d="M-8 -8 V-16 a8 8 0 0 1 16 0" stroke="var(--bad)" stroke-width="4" fill="none"/></g><text x="380" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">기한 지난 신분증</text><text x="380" y="234" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">빨간 자물쇠는 돌아서요</text><g transform="translate(634,70) scale(0.6)"><rect x="-70" y="0" width="140" height="110" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="4"/><path d="M-80 0 L0 -40 L80 0 Z" fill="var(--bad)"/><rect x="-50" y="12" width="100" height="24" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="29" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">빵집</text><rect x="-20" y="60" width="40" height="50" fill="var(--night)"/><rect x="-58" y="48" width="28" height="22" fill="var(--sky)"/><rect x="30" y="48" width="28" height="22" fill="var(--sky)"/></g><g transform="translate(634,165) scale(1.2)"><rect x="-13" y="-8" width="26" height="20" rx="4" fill="var(--good)"/><path d="M-8 -8 V-14 a8 8 0 0 1 16 0 V-8" stroke="var(--good)" stroke-width="4" fill="none"/></g><text x="634" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">가짜 빵집도</text><text x="634" y="234" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">자물쇠는 있을 수 있어요</text><text x="380" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">자물쇠는 편지를 지켜요 — 상점이 착한지는 이름을 봐야 해요</text></svg>
+<p>자물쇠는 편지를 지켜요. 하지만 가짜 빵집도 자물쇠를 달 수 있어요.<small>자물쇠는 "봉인됐고 신분증을 봤다"는 뜻이지 "착한 상점"이라는 뜻이 아니에요. <a href="phishing-ko.html">가짜 편지</a>가 이끄는 가짜 빵집도 자기 이름으로 신분증을 받을 수 있어요 — 이름을 꼭 봐요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>TLS</b> = 상점의 <b>신분증을 먼저 확인</b>하고, 둘만 아는 <b>새 도장을 그 자리에서</b> 만들어, 그다음 편지를 <b>전부 봉인</b>하는 약속. <b>자물쇠</b>는 그 약속이 됐다는 표시예요.</h2><p>TLS, Transport Layer Security. HTTPS 의 S 가 이거예요. 핸드셰이크에서 서버 인증서를 검증하고 키 교환으로 세션 키를 만든 뒤, 이후 통신을 모두 암호화해요. 중간자 공격을 막지만, 상대가 '착한' 사이트인지는 보장하지 않아요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>HTTPS<br><small>HTTPS</small></dt><dd><b>봉인 약속을 한 상점 주소.</b> 주소 앞에 https 가 붙고 자물쇠가 보이면, 그 상점과는 봉인 편지로만 주고받아요.</dd></div><div><dt>핸드셰이크<br><small>Handshake</small></dt><dd><b>약속을 맺는 네 마디.</b> 안녕 → 신분증 → 재료 반씩 → 봉인 시작. 편지를 보내기 전에 딱 한 번 해요.</dd></div><div><dt>세션 키<br><small>Session key</small></dt><dd><b>오늘만 쓰는 새 도장.</b> 그 자리에서 만들고, 길로 보내지 않고, 끝나면 버려요. 내일은 새로 만들어요.</dd></div><div><dt>인증서<br><small>Certificate</small></dt><dd><b>빵집의 신분증.</b> 왕의 도장이 찍혀 있어야 믿어요. → <a href="pki-ko.html">왕의 도장이 찍힌 신분증</a></dd></div><div><dt>자물쇠 아이콘<br><small>Padlock icon</small></dt><dd><b>약속이 됐다는 표시.</b> 봉인됐고 신분증을 봤다는 뜻. '착한 상점'이라는 뜻은 아니에요.</dd></div><div><dt>중간자 공격<br><small>Man-in-the-middle</small></dt><dd><b>편지를 뜯어 보는 배달부.</b> 신분증 확인과 봉인이 막아요. 가짜 신분증을 들이밀면 빨간 자물쇠가 떠요. → <a href="mitm-ko.html">편지를 중간에서 뜯어보는 배달부</a></dd></div><div><dt>암호화<br><small>Encryption</small></dt><dd><b>봉인 편지 그 자체.</b> TLS 는 봉인 편지를 낯선 상점과도 쓸 수 있게 해 주는 약속이에요. → <a href="encryption-ko.html">열쇠 없이는 못 읽는 편지</a></dd></div><div><dt>만료<br><small>Expiry</small></dt><dd><b>기한 지난 신분증.</b> 빵집 신분증도 기한이 있어요. 지나면 브라우저가 빨간 자물쇠로 돌려세워요.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="leastprivilege-ko.html">딱 필요한 열쇠만 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

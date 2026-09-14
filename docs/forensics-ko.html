@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>발자국을 굳혀서 보관하기</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="forensics-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 보안</div>
+<h1><em>디지털 포렌식</em>이 뭐예요?</h1>
+<p class="sub">디지털 포렌식(Digital Forensics)을 도둑이 남긴 발자국을 그대로 굳혀서 유리 상자에 보관하는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="아침, 열린 상자까지 이어진 발자국. 하녀가 빗자루를 들고 '제가 다 쓸어 놓을게요!' 하고, 경비는 얼굴을 찌푸림" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(30,80) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(140,235) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(190,218) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(240,202) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(290,186) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(340,170) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(390,154) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(470,195) scale(1.2)"><rect x="-30" y="-14" width="60" height="36" rx="3" fill="#8B5E3C"/><path d="M-30 -14 h60 v-4 a30 12 0 0 0 -60 0z" fill="#5A3B22" transform="rotate(-40 -30 -14)"/></g><g transform="translate(420,120) rotate(-20) scale(0.7)"><rect x="-26" y="-30" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-18 -8 h28 M-18 1 h18 M-18 10 h28" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><text x="470" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">열린 상자와 발자국</text><g transform="translate(600,110) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(655,150)"><path d="M0 0 L40 80" stroke="#8B5E3C" stroke-width="5" stroke-linecap="round"/><path d="M30 60 l30 40 M40 74 l24 26 M36 68 l34 22 M44 82 l14 30" stroke="#C9A86A" stroke-width="4" stroke-linecap="round"/></g><rect x="500" y="30" width="240" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M610.0 64 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="502" y="60" width="236" height="6" fill="var(--panel)"/><text x="620.0" y="50.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">제가 다 쓸어 놓을게요!</text><text x="380" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">쓸어 버리면 어떻게 들어왔는지 영영 몰라요</text></svg>
+<p>도둑이 다녀간 아침이에요. 발자국이 상자까지 이어져요.<small>하녀는 치우려고 해요. 그런데 <a href="ioc-ko.html">발자국</a>을 쓸어 버리면 도둑이 어떻게 들어왔는지 영영 몰라요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="초록 발자국이 도둑 발자국 위에 찍히고, 일지에 빨간 지운 자국이 있고, 왕이 '이게 진짜예요?' 하고 찌푸림" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(100,150) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(150,130) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(120,140) rotate(20)"><ellipse rx="9" ry="14" fill="var(--good)"/><ellipse cy="-20" rx="7" ry="6" fill="var(--good)"/></g><g transform="translate(165,120) rotate(20)"><ellipse rx="9" ry="14" fill="var(--good)"/><ellipse cy="-20" rx="7" ry="6" fill="var(--good)"/></g><text x="130" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">우리 발자국이 덮어요</text><g transform="translate(380,120) rotate(0) scale(1.3)"><rect x="-26" y="-30" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-18 -8 h28 M-18 1 h18 M-18 10 h28" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/><path d="M-14 1 h20" stroke="var(--bad)" stroke-width="6" stroke-linecap="round" opacity="0.6"/></g><text x="380" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">일지에 손을 대요</text><g transform="translate(600,100) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="530" y="30" width="200" height="34" rx="14" fill="var(--panel)" stroke="var(--bad)" stroke-width="2"/><path d="M620.0 64 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--bad)" stroke-width="2"/><rect x="532" y="60" width="196" height="6" fill="var(--panel)"/><text x="630.0" y="50.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">이게 진짜예요?</text><text x="630" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">아무도 안 믿어요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">한 번 흐트러진 발자국은 다시 못 만들어요</text></svg>
+<p>잘못 만지면 세 가지가 깨져요. 덮이고, 고쳐지고, 아무도 안 믿어요.<small>우리 발자국이 도둑 발자국을 덮어요. <a href="log-ko.html">일지</a>에 손을 대면 "고친 거 아니야?" 소리를 들어요. 한 번 흐트러지면 다시 못 만들어요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="발자국을 점선 틀 안에 그대로 굳히고, 유리 상자에 넣어 지문과 '누가·언제' 꼬리표를 달고, 파란 모자 친구가 돋보기로 만지지 않고 들여다봄" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><rect x="70" y="150" width="100" height="90" rx="6" fill="#FFF3D6" stroke="#C9A86A" stroke-width="3" stroke-dasharray="8 5"/><g transform="translate(120,205) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><text x="120" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">그대로 굳혀요</text><path d="M185 195 H245" stroke="var(--muted)" stroke-width="3" stroke-dasharray="6 4"/><path d="M238 189 l10 6 l-10 6z" fill="var(--muted)"/><rect x="270" y="120" width="180" height="130" rx="6" fill="var(--sky)" fill-opacity="0.5" stroke="var(--line)" stroke-width="3"/><path d="M280 132 l14 -0" stroke="#FFF" stroke-width="3" stroke-linecap="round" opacity="0.7"/><g transform="translate(360,205) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(420,150) scale(1.0)"><circle r="14" fill="none" stroke="var(--accent)" stroke-width="3"/><circle r="8" fill="none" stroke="var(--accent)" stroke-width="3"/><circle r="2.5" fill="var(--accent)"/></g><g transform="translate(316,148) rotate(-12) scale(1.0)"><path d="M-34 -12 h58 l10 12 l-10 12 h-58z" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="26" cy="0" r="2.5" fill="#C9A86A"/><text x="-6" y="4" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">누가·언제</text></g><text x="360" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">유리 상자 + 지문 + 꼬리표</text><g transform="translate(540,110) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5B8DEF"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(625,160) scale(1.0)"><circle r="20" fill="var(--sky)" fill-opacity="0.4" stroke="var(--night)" stroke-width="6"/><path d="M14 14 l22 22" stroke="var(--night)" stroke-width="8" stroke-linecap="round"/></g><text x="600" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">만지지 않고 들여다봐요</text><text x="380" y="310" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">그대로 굳혀서, 지문 찍고, 꼬리표를 달아요</text><text x="380" y="342" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">진짜 발자국은 아무도 못 만져요 — 보는 건 복사본이에요</text></svg>
+<p>디지털 포렌식은 발자국을 그대로 굳혀서 보관하는 거예요.<small>굳히고, 지문 찍고, 꼬리표 달아요. 진짜 발자국은 아무도 못 만져요 — 들여다보는 건 복사본이에요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="12" width="44" height="40" rx="4" fill="#FFF3D6" stroke="#C9A86A" stroke-width="3" stroke-dasharray="6 4"/><ellipse cx="32" cy="36" rx="7" ry="11" fill="#7A5236"/><ellipse cx="32" cy="20" rx="5" ry="4" fill="#7A5236"/></svg><b>그대로 굳히기</b><span>한 톨도 안 바뀌게 복사</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="20" fill="none" stroke="var(--accent)" stroke-width="3"/><circle cx="32" cy="32" r="12" fill="none" stroke="var(--accent)" stroke-width="3"/><circle cx="32" cy="32" r="4" fill="var(--accent)"/></svg><b>지문 찍기</b><span>하나라도 바뀌면 지문이 달라요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 22 h36 l12 10 l-12 10 h-36z" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><circle cx="44" cy="32" r="3" fill="#C9A86A"/><path d="M14 28 h18 M14 36 h12" stroke="#C9A86A" stroke-width="2.5" stroke-linecap="round"/></svg><b>꼬리표</b><span>누가 언제 만졌는지 다 적어요</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="20" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M32 18 v14 l9 6" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="10" cy="54" r="4" fill="var(--bad)"/><circle cx="54" cy="54" r="4" fill="var(--bad)"/><path d="M14 54 h36" stroke="var(--bad)" stroke-width="2"/></svg><b>시계에 꿰기</b><span>순서가 곧 이야기</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="종이 위의 시간 줄: 밤 11시 가짜 편지 → 11시 30분 복도 발자국 → 자정 상자 열림 → 12시 20분 뒷문으로 나감. 구석에 촛불" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><rect x="60" y="30" width="640" height="210" rx="8" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="60" y="30" width="640" height="28" rx="8" fill="#C9A86A"/><text x="380" y="49" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">도둑의 밤 — 시간 순서로</text><path d="M100 150 H660" stroke="#C9A86A" stroke-width="4" stroke-linecap="round"/><circle cx="140" cy="150" r="9" fill="var(--bad)"/><text x="140" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">밤 11시</text><text x="140" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">가짜 편지</text><circle cx="300" cy="150" r="9" fill="var(--bad)"/><text x="300" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">11시 30분</text><text x="300" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">복도 발자국</text><circle cx="460" cy="150" r="9" fill="var(--bad)"/><text x="460" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">자정</text><text x="460" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">상자 열림</text><circle cx="620" cy="150" r="9" fill="var(--bad)"/><text x="620" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">12시 20분</text><text x="620" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">뒷문으로 나감</text><g transform="translate(140,100)"><rect x="-22" y="-14" width="44" height="30" rx="3" fill="#FFF3D6" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -14 l22 16 l22 -16" stroke="#C9A86A" stroke-width="2" fill="none"/></g><g transform="translate(292,104) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(312,98) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(460,108) scale(0.8)"><rect x="-30" y="-14" width="60" height="36" rx="3" fill="#8B5E3C"/><path d="M-30 -14 h60 v-4 a30 12 0 0 0 -60 0z" fill="#5A3B22" transform="rotate(-40 -30 -14)"/></g><g transform="translate(620,100)"><rect x="-16" y="-24" width="32" height="48" rx="3" fill="#8B5E3C"/><circle cx="8" cy="2" r="3" fill="#E9B44C"/></g><g transform="translate(690,70) scale(0.7)"><rect x="-8" y="0" width="16" height="34" rx="3" fill="#FFF3D6" stroke="#C9A86A" stroke-width="2"/><path d="M0 -18 q8 8 4 16 q-4 4 -8 0 q-4 -8 4 -16z" fill="var(--accent)"/></g><text x="380" y="275" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">발자국 하나하나를 시계에 맞춰 줄로 꿰어요</text><text x="380" y="303" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">촛불처럼 사라지는 것부터 먼저 — 그러면 이야기가 돼요</text></svg>
+<p>발자국 하나하나를 시계에 맞춰 줄로 꿰어요.<small><a href="phishing-ko.html">가짜 편지</a>, 복도 발자국, 열린 상자, 뒷문. 촛불처럼 금방 사라지는 것부터 먼저 굳혀요. 줄로 꿰면 이야기가 돼요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 왕이 유리 상자 속 굳힌 발자국을 봄 — 재판에서 증거로. 오른쪽: 배우기 종이에 어디로·무엇을·다음엔 적히고 경비가 웃음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(60,100) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="160" y="120" width="120" height="80" rx="6" fill="var(--sky)" fill-opacity="0.5" stroke="var(--line)" stroke-width="3"/><path d="M170 132 l14 -0" stroke="#FFF" stroke-width="3" stroke-linecap="round" opacity="0.7"/><g transform="translate(225,170) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(262,140) scale(0.7)"><circle r="14" fill="none" stroke="var(--accent)" stroke-width="3"/><circle r="8" fill="none" stroke="var(--accent)" stroke-width="3"/><circle r="2.5" fill="var(--accent)"/></g><g transform="translate(188,134) rotate(-12) scale(0.8)"><path d="M-34 -12 h58 l10 12 l-10 12 h-58z" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="26" cy="0" r="2.5" fill="#C9A86A"/><text x="-6" y="4" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">누가·언제</text></g><text x="190" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">재판에서 증거로</text><rect x="430" y="50" width="200" height="140" rx="8" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="430" y="50" width="200" height="26" rx="8" fill="#C9A86A"/><text x="530" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">배우기</text><text x="444" y="100" text-anchor="start" font-size="11" font-weight="700" fill="#142033">어디로: 서쪽 창문</text><text x="444" y="126" text-anchor="start" font-size="11" font-weight="700" fill="#142033">무엇을: 명부 한 장</text><text x="444" y="152" text-anchor="start" font-size="11" font-weight="700" fill="#142033">다음엔: 창문 잠그기</text><g transform="translate(660,110) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="560" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">경비실 순서표의 마지막 칸</text><text x="380" y="288" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">발자국이 그대로여야 재판도, 배우기도 돼요</text></svg>
+<p>굳힌 발자국은 재판에서도, 배우기에도 쓰여요.<small>꼬리표가 끊기지 않아야 왕이 믿어요. 그리고 <a href="incident-ko.html">순서표</a>의 마지막 칸 "배우기"는 이 발자국으로 채워요. 굳히는 데는 시간이 걸려요 — 그 사이 도둑은 이미 갔고요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>디지털 포렌식</b> = 도둑이 남긴 발자국·일지를 <b>그대로 굳혀서</b>(복사) <b>지문 찍고 꼬리표 달아</b> 보관하고, <b>시계에 꿰어</b> 이야기로 만드는 일. 재판에도, 배우기에도 써요.</h2><p>Digital Forensics. 디스크·메모리·로그를 변조 없이 이미지로 떠서 해시로 무결성을 증명하고, 관리 연속성을 기록한 뒤 타임라인으로 재구성해요. 법적 증거와 사고 대응의 교훈 도출에 쓰여요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>포렌식<br><small>Forensics</small></dt><dd><b>발자국 굳혀서 보관.</b> 도둑이 남긴 것을 손대지 않고 보관하고, 순서대로 읽어 내는 일.</dd></div><div><dt>증거 보전<br><small>Evidence preservation</small></dt><dd><b>빗자루 치우기.</b> 쓸기 전에 굳혀요. 발자국은 → <a href="ioc-ko.html">남겨진 발자국</a></dd></div><div><dt>디스크 이미지<br><small>Disk image</small></dt><dd><b>그대로 굳힌 복사본.</b> 상자 속 종이를 한 톨도 안 바꾸고 통째로 떠요. 들여다보는 건 이 복사본이에요.</dd></div><div><dt>해시<br><small>Hash</small></dt><dd><b>지문.</b> 굳힌 것에 지문을 찍어 두면, 하나라도 바뀌었을 때 바로 알아요. → <a href="hashing-ko.html">물건마다 찍는 지문</a></dd></div><div><dt>관리 연속성<br><small>Chain of custody</small></dt><dd><b>누가·언제 꼬리표.</b> 누가 언제 받아서 누구에게 넘겼는지 빠짐없이. 한 칸이라도 비면 왕이 안 믿어요.</dd></div><div><dt>타임라인<br><small>Timeline</small></dt><dd><b>시계에 꿰기.</b> 발자국·일지·편지를 시간 순서로. → <a href="log-ko.html">성 곳곳의 한 줄 일지</a></dd></div><div><dt>메모리 포렌식<br><small>Memory forensics</small></dt><dd><b>촛불부터.</b> 불을 끄면 사라지는 것이 있어요. 그건 상자보다 먼저 굳혀요.</dd></div><div><dt>사고 대응<br><small>Incident response</small></dt><dd><b>순서표의 마지막 칸.</b> 굳힌 발자국으로 "배우기"를 채워요. → <a href="incident-ko.html">도둑 들었을 때 순서표</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="masking-ko.html">이름 대신 번호표 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

@@ -79,6 +79,47 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | Attack Surface Management | 바깥에서 세는 우리 성의 문 | [asm-ko](docs/asm-ko.html) | [asm-en](docs/asm-en.html) |
 | Security Awareness Training | 성 사람 모두가 듣는 도둑 수업 | [awareness-ko](docs/awareness-ko.html) | [awareness-en](docs/awareness-en.html) |
 | Data Classification | 종이마다 찍는 색 도장 | [classification-ko](docs/classification-ko.html) | [classification-en](docs/classification-en.html) |
+| Data Retention | 종이마다 정해둔 태우는 날 | [retention-ko](docs/retention-ko.html) | [retention-en](docs/retention-en.html) |
+| Password | 문지기에게 속삭이는 암호말 | [password-ko](docs/password-ko.html) | [password-en](docs/password-en.html) |
+| PKI | 왕의 도장이 찍힌 신분증 | [pki-ko](docs/pki-ko.html) | [pki-en](docs/pki-en.html) |
+| TLS | 상점과 주고받는 봉인 약속 | [tls-ko](docs/tls-ko.html) | [tls-en](docs/tls-en.html) |
+| Least Privilege | 딱 필요한 열쇠만 | [leastprivilege-ko](docs/leastprivilege-ko.html) | [leastprivilege-en](docs/leastprivilege-en.html) |
+| Man-in-the-Middle Attack | 편지를 중간에서 뜯어보는 배달부 | [mitm-ko](docs/mitm-ko.html) | [mitm-en](docs/mitm-en.html) |
+| Brute-Force Attack | 열쇠 천 개를 다 꽂아보는 도둑 | [bruteforce-ko](docs/bruteforce-ko.html) | [bruteforce-en](docs/bruteforce-en.html) |
+| Injection Attack | 쪽지에 숨긴 명령 | [injection-ko](docs/injection-ko.html) | [injection-en](docs/injection-en.html) |
+| Botnet | 홀려서 조종당하는 마을 사람들 | [botnet-ko](docs/botnet-ko.html) | [botnet-en](docs/botnet-en.html) |
+| APT | 몇 달을 기다리는 끈질긴 도둑 무리 | [apt-ko](docs/apt-ko.html) | [apt-en](docs/apt-en.html) |
+| Kill Chain | 도둑의 일곱 걸음 | [killchain-ko](docs/killchain-ko.html) | [killchain-en](docs/killchain-en.html) |
+| Insider Threat | 안에서 문을 여는 사람 | [insider-ko](docs/insider-ko.html) | [insider-en](docs/insider-en.html) |
+| Supply Chain Attack | 목수의 연장통에 숨어 들어온 벌레 | [supplychain-ko](docs/supplychain-ko.html) | [supplychain-en](docs/supplychain-en.html) |
+| Risk Management | 어느 문부터 지킬지 정하는 저울 | [risk-ko](docs/risk-ko.html) | [risk-en](docs/risk-en.html) |
+| Compliance | 이웃 나라 규칙 검사관 | [compliance-ko](docs/compliance-ko.html) | [compliance-en](docs/compliance-en.html) |
+| Security Policy | 성의 규칙 두루마리 | [policy-ko](docs/policy-ko.html) | [policy-en](docs/policy-en.html) |
+| Disaster Recovery | 성이 불타도 다음 날 장사하는 법 | [drp-ko](docs/drp-ko.html) | [drp-en](docs/drp-en.html) |
+| DevSecOps | 짓는 동안 같이 보는 목수와 경비 | [devsecops-ko](docs/devsecops-ko.html) | [devsecops-en](docs/devsecops-en.html) |
+| Threat Modeling | 짓기 전에 도둑 눈으로 보는 도면 | [threatmodel-ko](docs/threatmodel-ko.html) | [threatmodel-en](docs/threatmodel-en.html) |
+| Secrets Management | 열쇠를 벽에 못 박아 두지 않기 | [secrets-ko](docs/secrets-ko.html) | [secrets-en](docs/secrets-en.html) |
+| Code Scanning | 도면 검사와 두드려 보기 | [codescan-ko](docs/codescan-ko.html) | [codescan-en](docs/codescan-en.html) |
+| SOAR | 경비실의 자동 순서표 기계 | [soar-ko](docs/soar-ko.html) | [soar-en](docs/soar-en.html) |
+| Digital Forensics | 발자국을 굳혀서 보관하기 | [forensics-ko](docs/forensics-ko.html) | [forensics-en](docs/forensics-en.html) |
+| Data Masking | 이름 대신 번호표 | [masking-ko](docs/masking-ko.html) | [masking-en](docs/masking-en.html) |
+| Cloud Security | 빌린 창고 문단속 점검 | [cspm-ko](docs/cspm-ko.html) | [cspm-en](docs/cspm-en.html) |
+| Email Security | 우체국 도장 세 개 | [emailsec-ko](docs/emailsec-ko.html) | [emailsec-en](docs/emailsec-en.html) |
+| Antivirus | 벌레 그림 카드를 든 경비 | [antivirus-ko](docs/antivirus-ko.html) | [antivirus-en](docs/antivirus-en.html) |
+| UEBA | 평소와 다른 걸음걸이 | [ueba-ko](docs/ueba-ko.html) | [ueba-en](docs/ueba-en.html) |
+| Spyware | 몰래 엿보고, 몰래 일 시키는 벌레들 | [spyware-ko](docs/spyware-ko.html) | [spyware-en](docs/spyware-en.html) |
+| API Security | 창구 뒷문으로 오는 심부름꾼 | [apisec-ko](docs/apisec-ko.html) | [apisec-en](docs/apisec-en.html) |
+| Container Security | 똑같이 찍어낸 짐칸 | [container-ko](docs/container-ko.html) | [container-en](docs/container-en.html) |
+| IoT / OT Security | 말 못 하는 성 안 기계들 | [iotsec-ko](docs/iotsec-ko.html) | [iotsec-en](docs/iotsec-en.html) |
+| Privacy | 손님 이름표는 손님 것 | [privacy-ko](docs/privacy-ko.html) | [privacy-en](docs/privacy-en.html) |
+| Session Hijacking | 입장 팔찌를 훔치는 도둑 | [session-ko](docs/session-ko.html) | [session-en](docs/session-en.html) |
+| AI Security | 왕의 목소리를 흉내 내는 앵무새 | [aisec-ko](docs/aisec-ko.html) | [aisec-en](docs/aisec-en.html) |
+| Security Framework | 성 지키기 다섯 기둥 | [framework-ko](docs/framework-ko.html) | [framework-en](docs/framework-en.html) |
+| Security Metrics | 얼마나 빨리 알아채고, 얼마나 빨리 쫓아내나 | [metrics-ko](docs/metrics-ko.html) | [metrics-en](docs/metrics-en.html) |
+| Air Gap | 다리 없는 섬 창고 | [airgap-ko](docs/airgap-ko.html) | [airgap-en](docs/airgap-en.html) |
+| HSM | 열쇠를 만드는 쇠금고 | [hsm-ko](docs/hsm-ko.html) | [hsm-en](docs/hsm-en.html) |
+| Allowlist | 명단에 있는 사람만 | [allowlist-ko](docs/allowlist-ko.html) | [allowlist-en](docs/allowlist-en.html) |
+| Cyber Insurance | 도둑 보험 | [cyberinsurance-ko](docs/cyberinsurance-ko.html) | [cyberinsurance-en](docs/cyberinsurance-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 

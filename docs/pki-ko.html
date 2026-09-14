@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>왕의 도장이 찍힌 신분증</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="pki-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 보안</div>
+<h1><em>PKI</em>가 뭐예요?</h1>
+<p class="sub">PKI(공개 키 기반 구조)와 인증서를 왕의 도장이 찍힌 신분증 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="성문 앞에서 낯선 상인이 '나 왕의 친구예요!' 하고, 문지기는 '…정말요?' 함. 옆의 도둑도 '나도 왕의 친구예요!' 함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(300,60) scale(1.0)"><rect x="-70" y="30" width="140" height="90" fill="var(--stone-dark)"/><rect x="-70" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="-35" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="0" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="35" y="10" width="18" height="20" fill="var(--stone-dark)"/><path d="M-28 120 V78 a28 28 0 0 1 56 0 V120 Z" fill="var(--night)"/></g><g transform="translate(270,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="180" y="20" width="150" height="34" rx="14" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><path d="M245.0 54 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><rect x="182" y="50" width="146" height="6" fill="var(--panel)"/><text x="255.0" y="41.68" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">…정말요?</text><g transform="translate(100,140) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--accent)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="20" y="60" width="190" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M105.0 100 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="22" y="96" width="186" height="6" fill="var(--panel)"/><text x="115.0" y="83.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">나 왕의 친구예요!</text><g transform="translate(560,130) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><rect x="50" y="70" width="36" height="30" rx="4" fill="var(--night)"/><path d="M58 70 v-8 a10 10 0 0 1 20 0 v8" stroke="var(--night)" stroke-width="4" fill="none"/></g><rect x="500" y="50" width="220" height="40" rx="14" fill="var(--panel)" stroke="var(--bad)" stroke-width="2"/><path d="M600.0 90 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--bad)" stroke-width="2"/><rect x="502" y="86" width="216" height="6" fill="var(--panel)"/><text x="610.0" y="73.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">나도 왕의 친구예요!</text><text x="590" y="255" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">둘 다 그렇게 말해요</text><text x="380" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">말만으론 누가 진짜인지 몰라요</text></svg>
+<p>낯선 상인이 왕의 친구라고 해요. 믿어도 될까요?<small>도둑도 똑같이 말할 수 있어요. 말만으로는 누가 진짜인지 몰라요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 땀 흘리는 왕 앞에 긴 줄. 오른쪽: 도둑이 직접 그린 신분증에 '나' 라고 쓴 점선 도장을 찍어 들고 있음" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--bad-soft)"/><text x="240" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">매번 왕에게 물어볼 순 없어요</text><text x="240" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">왕은 하루 종일 줄만 봐요</text><g transform="translate(90,120) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><g transform="translate(200,160) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--accent)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(260,160) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(320,160) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(380,160) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="300" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">줄, 줄, 줄…</text><text x="650" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">직접 그린 신분증</text><text x="650" y="82" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">도장도 자기가 찍었어요</text><g transform="translate(560,110) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(630,120) rotate(6) scale(0.8)"><rect width="150" height="90" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="150" height="20" rx="6" fill="#C9A86A"/><text x="75" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">신분증</text><circle cx="28" cy="50" r="14" fill="#E8C9A8"/><path d="M14 46 Q28 30 42 46 Z" fill="var(--accent)"/><text x="50" y="46" text-anchor="start" font-size="11" font-weight="700" fill="#142033" class="d">왕의 친구</text><text x="50" y="66" text-anchor="start" font-size="9" font-weight="700" fill="#142033">유효: 영원히</text><circle cx="122" cy="58" r="16" fill="none" stroke="var(--bad)" stroke-width="3" stroke-dasharray="4 3"/><text x="122" y="63" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">나</text></g><text x="380" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">신분증도 아무나 만들면 소용없어요 — 누가 도장을 찍었는지가 중요해요</text></svg>
+<p>매번 왕에게 물어볼 순 없어요. 직접 그린 신분증은 소용없고요.<small>왕은 하루 종일 줄만 보게 돼요. 신분증은 누구나 그릴 수 있으니, 누가 도장을 찍었는지가 중요해요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="왕이 도장을 들고 상인 토마의 신분증에 보라색 도장을 찍음. 신분증엔 이름과 '올해 12월까지'. 문지기는 왕의 도장 견본을 들고 비교하며 '똑같네! 통과'" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(90,90) scale(1.0)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(180,150) scale(1.0)"><rect x="-8" y="-40" width="16" height="26" rx="4" fill="#5A3B22"/><rect x="-18" y="-14" width="36" height="10" rx="2" fill="#5A3B22"/><rect x="-16" y="-4" width="32" height="6" rx="1" fill="#7B3FA0"/></g><g transform="translate(230,110) rotate(0) scale(1.3)"><rect width="150" height="90" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="150" height="20" rx="6" fill="#C9A86A"/><text x="75" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">신분증</text><circle cx="28" cy="50" r="14" fill="#E8C9A8"/><path d="M14 46 Q28 30 42 46 Z" fill="var(--accent)"/><text x="50" y="46" text-anchor="start" font-size="11" font-weight="700" fill="#142033" class="d">상인 토마</text><text x="50" y="66" text-anchor="start" font-size="9" font-weight="700" fill="#142033">유효: 올해 12월까지</text><g transform="translate(122,58) scale(0.9)"><circle r="20" fill="#7B3FA0"/><circle r="15" fill="none" stroke="#FFF8E7" stroke-width="2"/><path d="M-9 5 l-2 -11 l6 4 l5 -8 l5 8 l6 -4 l-2 11z" fill="#E9B44C"/></g></g><text x="150" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">왕이 직접 찍어요</text><text x="330" y="262" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">신분증 = 이름 + 기한 + 왕의 도장</text><g transform="translate(520,130) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(640,170) scale(1.2)"><circle r="20" fill="#7B3FA0"/><circle r="15" fill="none" stroke="#FFF8E7" stroke-width="2"/><path d="M-9 5 l-2 -11 l6 4 l5 -8 l5 8 l6 -4 l-2 11z" fill="#E9B44C"/></g><text x="640" y="118" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">왕의 도장 견본</text><text x="640" y="218" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">똑같네! 통과</text><text x="380" y="310" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">누구나 신분증을 만들 순 있어요 — 왕의 도장은 왕만 찍어요</text><text x="380" y="344" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">문지기는 왕을 안 불러도 도장만 보면 알아요</text></svg>
+<p>PKI는 왕이 도장 찍어준 신분증으로 서로를 믿는 약속이에요.<small>신분증엔 이름, 기한, 왕의 도장이 있어요. 문지기는 도장 견본만 있으면 왕을 부르지 않고도 알아봐요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="26" y="8" width="12" height="18" rx="3" fill="#5A3B22"/><rect x="18" y="26" width="28" height="8" rx="2" fill="#5A3B22"/><circle cx="32" cy="48" r="10" fill="#7B3FA0"/><path d="M27 51 l-1 -6 l3 2 l3 -4 l3 4 l3 -2 l-1 6z" fill="#E9B44C"/></svg><b>왕이 찍어요</b><span>모두가 믿는 한 사람</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="32" r="14" fill="#7B3FA0"/><circle cx="24" cy="32" r="10" fill="none" stroke="#FFF8E7" stroke-width="2"/><rect x="42" y="28" width="14" height="12" rx="2" fill="var(--night)"/><path d="M45 28 v-4 a4 4 0 0 1 8 0 v4" stroke="var(--night)" stroke-width="3" fill="none"/></svg><b>도장은 못 베껴요</b><span>찍는 도장은 금고 속에</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="14" width="40" height="38" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="12" y="14" width="40" height="10" rx="4" fill="var(--accent)"/><path d="M22 10 v8 M42 10 v8" stroke="#5A3B22" stroke-width="3"/><path d="M22 38 l6 6 l12 -12" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>기한이 있어요</b><span>지나면 다시 받아요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="8" width="36" height="48" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 22 h20 M22 32 h20 M22 42 h20" stroke="#C9A86A" stroke-width="2"/><path d="M40 16 l8 8 M48 16 l-8 8" stroke="var(--bad)" stroke-width="3" stroke-linecap="round"/></svg><b>잃어버리면 명부에</b><span>문지기가 명부를 봐요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="셋: 금고 속 찍는 도장(왕만 가짐), 문지기의 확인용 견본(누구나 가져도 되지만 찍지는 못함), 도둑이 베껴 찍은 도장에 빨간 X(모양이 안 맞음)" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><text x="130" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">찍는 도장</text><rect x="70" y="70" width="120" height="110" rx="8" fill="var(--night)"/><rect x="82" y="82" width="96" height="86" rx="4" fill="#0A1120"/><g transform="translate(130,150) scale(1.1)"><rect x="-8" y="-40" width="16" height="26" rx="4" fill="#5A3B22"/><rect x="-18" y="-14" width="36" height="10" rx="2" fill="#5A3B22"/><rect x="-16" y="-4" width="32" height="6" rx="1" fill="#7B3FA0"/></g><rect x="118" y="164" width="24" height="18" rx="3" fill="#E9B44C"/><path d="M123 164 v-6 a7 7 0 0 1 14 0 v6" stroke="#E9B44C" stroke-width="3" fill="none"/><text x="130" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">왕만 가져요 — 절대 안 빌려줘요</text><text x="380" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">확인용 견본</text><g transform="translate(340,90) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(430,130) scale(1.0)"><circle r="20" fill="#7B3FA0"/><circle r="15" fill="none" stroke="#FFF8E7" stroke-width="2"/><path d="M-9 5 l-2 -11 l6 4 l5 -8 l5 8 l6 -4 l-2 11z" fill="#E9B44C"/></g><path d="M414 160 l10 10 l20 -22" stroke="var(--good)" stroke-width="5" fill="none" stroke-linecap="round"/><text x="380" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">누구나 가져도 돼요</text><text x="380" y="236" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">견본으론 못 찍어요</text><text x="630" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">베껴 찍은 도장</text><g transform="translate(590,90) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(680,130) scale(1.0)"><circle r="20" fill="#7B3FA0"/><circle r="15" fill="none" stroke="#FFF8E7" stroke-width="2"/><path d="M-9 5 l-2 -11 l6 4 l5 -8 l5 8 l6 -4 l-2 11z" fill="#E9B44C"/><path d="M-14 -14 l28 28 M14 -14 l-28 28" stroke="var(--bad)" stroke-width="5" stroke-linecap="round"/></g><text x="630" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">모양이 안 맞아요</text><text x="380" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">찍는 도장은 하나, 확인 견본은 많이 — 그래서 위조가 안 돼요</text></svg>
+<p>찍는 도장은 하나, 확인 견본은 많이. 그래서 위조가 안 돼요.<small>찍는 도장은 왕만 갖고 절대 안 빌려줘요. 견본은 누구나 가져도 되지만 견본으로는 찍을 수 없어요. 도둑이 베껴 찍으면 모양이 안 맞아요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="신분증 셋: 작년에 기한이 지난 것(X), 잃어버려 취소 명부에 오른 것, 아직 유효한 것(통과). 통과한 신분증에서 화살표가 봉인 편지로 이어짐" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(40,60) rotate(0) scale(0.9)"><rect width="150" height="90" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="150" height="20" rx="6" fill="#C9A86A"/><text x="75" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">신분증</text><circle cx="28" cy="50" r="14" fill="#E8C9A8"/><path d="M14 46 Q28 30 42 46 Z" fill="var(--accent)"/><text x="50" y="46" text-anchor="start" font-size="11" font-weight="700" fill="#142033" class="d">상인 벤</text><text x="50" y="66" text-anchor="start" font-size="9" font-weight="700" fill="#142033">유효: 작년 3월까지</text><g transform="translate(122,58) scale(0.9)"><circle r="20" fill="#7B3FA0"/><circle r="15" fill="none" stroke="#FFF8E7" stroke-width="2"/><path d="M-9 5 l-2 -11 l6 4 l5 -8 l5 8 l6 -4 l-2 11z" fill="#E9B44C"/></g></g><path d="M60 70 l100 60 M160 70 l-100 60" stroke="var(--bad)" stroke-width="4" stroke-linecap="round" opacity="0.7"/><text x="108" y="170" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">기한 지남</text><g transform="translate(200,60) rotate(0) scale(0.9)"><rect width="150" height="90" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="150" height="20" rx="6" fill="#C9A86A"/><text x="75" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">신분증</text><circle cx="28" cy="50" r="14" fill="#E8C9A8"/><path d="M14 46 Q28 30 42 46 Z" fill="var(--accent)"/><text x="50" y="46" text-anchor="start" font-size="11" font-weight="700" fill="#142033" class="d">상인 토마</text><text x="50" y="66" text-anchor="start" font-size="9" font-weight="700" fill="#142033">유효: 올해 12월까지</text><g transform="translate(122,58) scale(0.9)"><circle r="20" fill="#7B3FA0"/><circle r="15" fill="none" stroke="#FFF8E7" stroke-width="2"/><path d="M-9 5 l-2 -11 l6 4 l5 -8 l5 8 l6 -4 l-2 11z" fill="#E9B44C"/></g></g><text x="268" y="170" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">취소 명부에 있음</text><g transform="translate(160,200) scale(1.0)"><rect width="200" height="80" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="200" height="26" rx="6" fill="#C9A86A"/><text x="100.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">취소 명부</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">상인 토마 — 잃어버림</text></g><g transform="translate(360,60) rotate(0) scale(0.9)"><rect width="150" height="90" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="150" height="20" rx="6" fill="#C9A86A"/><text x="75" y="14" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">신분증</text><circle cx="28" cy="50" r="14" fill="#E8C9A8"/><path d="M14 46 Q28 30 42 46 Z" fill="var(--accent)"/><text x="50" y="46" text-anchor="start" font-size="11" font-weight="700" fill="#142033" class="d">상인 애나</text><text x="50" y="66" text-anchor="start" font-size="9" font-weight="700" fill="#142033">유효: 내년 5월까지</text><g transform="translate(122,58) scale(0.9)"><circle r="20" fill="#7B3FA0"/><circle r="15" fill="none" stroke="#FFF8E7" stroke-width="2"/><path d="M-9 5 l-2 -11 l6 4 l5 -8 l5 8 l6 -4 l-2 11z" fill="#E9B44C"/></g></g><text x="428" y="170" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">통과</text><path d="M500 100 h50" stroke="var(--good)" stroke-width="4" stroke-linecap="round"/><path d="M542 92 l10 8 l-10 8" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/><g transform="translate(570,60) scale(1.0)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M0 4 L70 46 L140 4" stroke="#C9A86A" stroke-width="3" fill="none"/><g transform="translate(70,46) scale(0.7)"><circle r="20" fill="#7B3FA0"/><circle r="15" fill="none" stroke="#FFF8E7" stroke-width="2"/><path d="M-9 5 l-2 -11 l6 4 l5 -8 l5 8 l6 -4 l-2 11z" fill="#E9B44C"/></g></g><text x="640" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">이제 봉인 약속을 시작해요</text><text x="380" y="305" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">기한이 지나거나 명부에 오르면 문지기가 돌려보내요</text></svg>
+<p>기한이 지나거나 명부에 오르면 돌려보내요. 통과하면 봉인 약속을 시작해요.<small>신분증을 잃어버리면 왕이 취소 명부에 이름을 올려요. 신분증이 통과되면 그때부터 <a href="tls-ko.html">봉인 편지</a>를 주고받을 수 있어요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>PKI</b> = 모두가 믿는 <b>왕</b>이 <b>도장 찍어준 신분증</b>으로 서로를 믿는 약속. 찍는 도장은 <b>왕만</b>, 확인 견본은 <b>누구나</b>. 신분증엔 <b>기한</b>이 있고, 잃어버리면 <b>취소 명부</b>에 올라요.</h2><p>PKI, Public Key Infrastructure. 인증기관(CA)이 개인키로 서명한 인증서를 발급하고, 누구나 CA 의 공개키로 그 서명을 검증해요. 인증서엔 유효기간이 있고, 폐기된 인증서는 CRL 이나 OCSP 로 확인해요. TLS/HTTPS 가 이 위에서 돌아가요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>인증서<br><small>Certificate</small></dt><dd><b>왕의 도장이 찍힌 신분증.</b> 이름, 기한, 도장. 상점(서버)이 '나 진짜예요' 하고 보여주는 종이예요.</dd></div><div><dt>인증기관 CA<br><small>Certificate Authority (CA)</small></dt><dd><b>도장을 찍어주는 왕.</b> 모두가 믿기로 한 한 사람. 신분증을 발급하고, 잃어버린 건 명부에 올려요.</dd></div><div><dt>공개키 / 개인키<br><small>Public / private key</small></dt><dd><b>확인 견본 / 찍는 도장.</b> 견본으론 찍을 수 없고, 도장으로 찍은 건 견본으로 확인돼요. → <a href="encryption-ko.html">열쇠 없이는 못 읽는 편지</a></dd></div><div><dt>유효기간 · 만료<br><small>Validity · expiry</small></dt><dd><b>신분증의 기한.</b> 지나면 아무리 진짜여도 돌려보내요. 요즘 상점 신분증은 1년 안쪽이에요.</dd></div><div><dt>폐기 목록 CRL<br><small>Revocation list (CRL / OCSP)</small></dt><dd><b>취소 명부.</b> 잃어버렸거나 도둑맞은 신분증 이름표. 문지기가 통과시키기 전에 명부를 봐요.</dd></div><div><dt>루트 인증서<br><small>Root certificate</small></dt><dd><b>문지기가 가진 왕의 도장 견본.</b> 컴퓨터와 브라우저에 미리 들어 있어요. 이게 없으면 어떤 신분증도 확인 못 해요.</dd></div><div><dt>자체 서명<br><small>Self-signed</small></dt><dd><b>직접 그린 신분증.</b> 도장도 자기가 찍은 것. 성 안에서 연습할 땐 쓰지만, 마을 사람은 안 믿어요.</dd></div><div><dt>TLS<br><small>TLS</small></dt><dd><b>신분증 다음의 봉인 약속.</b> 신분증이 통과되면 그제서야 봉인 편지를 시작해요. → <a href="tls-ko.html">상점과 주고받는 봉인 약속</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="tls-ko.html">상점과 주고받는 봉인 약속 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

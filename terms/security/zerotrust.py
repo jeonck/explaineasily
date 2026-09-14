@@ -66,7 +66,7 @@ P5 = svg(260, '<rect width="760" height="260" fill="var(--good-soft)"/>' + SCANN
          + person(160, 90, s=0.9, face=SMILE, **GUARD)
          + '<path d="M250 150 L290 150" stroke="var(--good)" stroke-width="4" stroke-linecap="round"/><path d="M280 140 L292 150 L280 160" stroke="var(--good)" stroke-width="4" fill="none"/>'
          + label(360, 240, "⟦아는 얼굴은 1초|a known face: one second⟧", 14, "var(--muted)")
-         + label(590, 110, "⟦아무도 안 믿는다 ✗|\"trust no one\" ✗⟧", 16, "var(--bad)")
+         + label(590, 110, "⟦아무도 안 믿는다 ×|\"trust no one\" ×⟧", 16, "var(--bad)")
          + label(590, 150, "⟦확인하고 믿는다 ✓|\"check, then trust\" ✓⟧", 16, "var(--good)"))
 
 WHO_I = icon('<circle cx="32" cy="22" r="10" fill="var(--good)"/><rect x="18" y="36" width="28" height="20" rx="8" fill="var(--good)"/>')
@@ -98,7 +98,7 @@ PAGE = {
         {"svg": P4, "alt": ("'부엌 · 오늘 3시까지' 꼬리표가 달린 열쇠, 부엌 문엔 초록 체크, 금고 문엔 빨간 X", "A key tagged 'Kitchen · until 3 pm today'; a green check on the kitchen door, a red X on the vault"),
          "caption": ("열쇠는 방 하나, 잠깐만이에요.", "One key, one room, for a while."),
          "small": ("부엌 열쇠로 금고는 못 열어요. 시간이 지나면 열쇠가 사라져요.", "A kitchen key won't open the vault, and it stops working after a while.")},
-        {"svg": P5, "alt": ("얼굴 확인 기계가 초록 체크를 띄우고 친구가 빠르게 통과함. 옆에 '아무도 안 믿는다 ✗ / 확인하고 믿는다 ✓'", "A face scanner shows a green check and a friend walks straight through; beside it: 'trust no one ✗ / check, then trust ✓'"),
+        {"svg": P5, "alt": ("얼굴 확인 기계가 초록 체크를 띄우고 친구가 빠르게 통과함. 옆에 '아무도 안 믿는다 × / 확인하고 믿는다 ✓'", "A face scanner shows a green check and a friend walks straight through; beside it: 'trust no one × / check, then trust ✓'"),
          "caption": ("매번 묻는 건 귀찮아요.", "Asking every time is a bother."),
          "small": ("그래서 얼굴 확인은 기계가 1초에 해요. '아무도 안 믿는다'가 아니라 '확인하고 믿는다'예요.", "So a machine checks faces in a second. It's not \"trust no one\" — it's \"check, then trust.\"")},
     ],

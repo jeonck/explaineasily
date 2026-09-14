@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>성 지키기 다섯 기둥</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="framework-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 보안</div>
+<h1><em>보안 프레임워크</em>가 뭐예요?</h1>
+<p class="sub">보안 프레임워크(Security Framework, NIST CSF 중심)를 이웃 나라 현자들이 정리한 성 지키기 다섯 기둥과 지붕 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="왕이 '빠진 건 없지?' 묻고 경비는 땀을 흘리며 '아마도요?' 함. 종, 경비견, 판자, 여분 상자, 망루, 열쇠 꾸러미, 도둑 수업, 일지라고 적힌 쪽지가 흩어져 있음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(80,100) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="40" y="20" width="240" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M150.0 54 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="42" y="50" width="236" height="6" fill="var(--panel)"/><text x="160.0" y="40.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">우리 성, 빠진 건 없지?</text><g transform="translate(210,110) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><text x="240" y="232" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">음… 아마도요?</text><g transform="translate(330,70) rotate(-6)"><rect x="-40" y="-20" width="80" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="5" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">종</text></g><g transform="translate(410,115) rotate(5)"><rect x="-40" y="-20" width="80" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="5" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">경비견</text></g><g transform="translate(360,165) rotate(-3)"><rect x="-40" y="-20" width="80" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="5" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">판자</text></g><g transform="translate(455,60) rotate(4)"><rect x="-40" y="-20" width="80" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="5" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">여분 상자</text></g><g transform="translate(500,150) rotate(-5)"><rect x="-40" y="-20" width="80" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="5" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">망루</text></g><g transform="translate(560,95) rotate(6)"><rect x="-40" y="-20" width="80" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="5" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">열쇠 꾸러미</text></g><g transform="translate(625,155) rotate(-4)"><rect x="-40" y="-20" width="80" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="5" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">도둑 수업</text></g><g transform="translate(680,80) rotate(3)"><rect x="-40" y="-20" width="80" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="5" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">일지</text></g><text x="510" y="235" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">할 일은 많은데 목록이 없어요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">뭘 다 했는지, 뭘 빠뜨렸는지 아무도 몰라요</text></svg>
+<p>성 지키는 일이 너무 많아요. 뭘 빠뜨렸는지 아무도 몰라요.<small><a href="soc-ko.html">경비실</a>, <a href="edr-ko.html">경비견</a>, <a href="patch-ko.html">판자</a>, <a href="backup-ko.html">여분 상자</a>… 다 따로따로 열심히 해요. 그런데 목록이 없어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="아주 두꺼운 성벽 옆에 X 표시된 종과 X 표시된 여분 상자. 가방을 든 도둑이 벌써 안에 있고 경비는 웃으며 모름" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><rect x="40" y="60" width="160" height="170" fill="var(--stone)"/><rect x="40" y="40" width="20" height="24" fill="var(--stone)"/><rect x="80" y="40" width="20" height="24" fill="var(--stone)"/><rect x="120" y="40" width="20" height="24" fill="var(--stone)"/><rect x="160" y="40" width="20" height="24" fill="var(--stone)"/><text x="120" y="255" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">성벽은 아주 두꺼워요</text><g transform="translate(330,110) scale(0.9)"><path d="M-20 10 c0 -30 40 -30 40 0 v18 h-40 z" fill="#E9B44C"/><rect x="-24" y="28" width="48" height="6" rx="3" fill="#C9822B"/><circle cy="38" r="4" fill="#C9822B"/></g><path d="M310.8 100.8 l38.4 38.4 M349.2 100.8 l-38.4 38.4" stroke="var(--panel)" stroke-width="10" stroke-linecap="round"/><path d="M310.8 100.8 l38.4 38.4 M349.2 100.8 l-38.4 38.4" stroke="var(--bad)" stroke-width="5" stroke-linecap="round"/><text x="330" y="180" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">종은 없어요</text><g transform="translate(450,130) scale(1.0)"><rect x="-30" y="-14" width="60" height="36" rx="3" fill="#8B5E3C"/><path d="M-30 -14 h60 v-4 a30 12 0 0 0 -60 0z" fill="#5A3B22"/><rect x="-7" y="-6" width="14" height="12" rx="2" fill="#E9B44C"/></g><path d="M430.8 108.8 l38.4 38.4 M469.2 108.8 l-38.4 38.4" stroke="var(--panel)" stroke-width="10" stroke-linecap="round"/><path d="M430.8 108.8 l38.4 38.4 M469.2 108.8 l-38.4 38.4" stroke="var(--bad)" stroke-width="5" stroke-linecap="round"/><text x="450" y="180" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">여분 상자도 없어요</text><g transform="translate(560,100) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><rect x="50" y="70" width="36" height="30" rx="4" fill="var(--night)"/><path d="M58 70 v-8 a10 10 0 0 1 20 0 v8" stroke="var(--night)" stroke-width="4" fill="none"/></g><g transform="translate(660,110) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="620" y="235" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">도둑은 벌써 안에 — 아무도 몰라요</text><text x="380" y="282" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">막기만 두꺼운 성은 넘어온 도둑을 못 알아채고, 되돌리지도 못해요</text></svg>
+<p>한쪽만 두꺼운 성이 돼요. 넘어온 도둑을 아무도 못 알아채요.<small><a href="firewall-ko.html">성벽</a>만 높이면 종이 없고, 종만 달면 <a href="backup-ko.html">여분 상자</a>가 없어요. 빠진 자리는 도둑이 제일 먼저 찾아요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="밤. 다스리기라고 적힌 지붕 아래 다섯 기둥: 알기(문을 세요), 막기(문을 잠가요), 알아채기(종을 달아요), 쫓아내기(순서표대로), 되돌리기(여분 상자로)" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--night)"/><circle cx="660" cy="50" r="26" fill="#F5E6B8"/><circle cx="120" cy="40" r="2" fill="#F5E6B8"/><circle cx="300" cy="70" r="2" fill="#F5E6B8"/><circle cx="500" cy="30" r="2" fill="#F5E6B8"/><circle cx="420" cy="90" r="2" fill="#F5E6B8"/><circle cx="200" cy="120" r="2" fill="#F5E6B8"/><ellipse cx="380" cy="370" rx="440" ry="30" fill="#0A1120"/><path d="M60 128 L380 40 L700 128 Z" fill="#C9A86A"/><rect x="60" y="120" width="640" height="18" rx="3" fill="#C9A86A"/><text x="380" y="108" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">다스리기 — 누가, 어떤 규칙으로</text><rect x="98.0" y="138" width="84" height="124" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="92.0" y="138" width="96" height="10" rx="2" fill="#C9A86A"/><rect x="92.0" y="252" width="96" height="10" rx="2" fill="#C9A86A"/><text x="140" y="196.0" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">알기</text><text x="140" y="218.0" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">문을 세요</text><rect x="218.0" y="138" width="84" height="124" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="212.0" y="138" width="96" height="10" rx="2" fill="#C9A86A"/><rect x="212.0" y="252" width="96" height="10" rx="2" fill="#C9A86A"/><text x="260" y="196.0" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">막기</text><text x="260" y="218.0" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">문을 잠가요</text><rect x="338.0" y="138" width="84" height="124" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="332.0" y="138" width="96" height="10" rx="2" fill="#C9A86A"/><rect x="332.0" y="252" width="96" height="10" rx="2" fill="#C9A86A"/><text x="380" y="196.0" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">알아채기</text><text x="380" y="218.0" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">종을 달아요</text><rect x="458.0" y="138" width="84" height="124" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="452.0" y="138" width="96" height="10" rx="2" fill="#C9A86A"/><rect x="452.0" y="252" width="96" height="10" rx="2" fill="#C9A86A"/><text x="500" y="196.0" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">쫓아내기</text><text x="500" y="218.0" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">순서표대로</text><rect x="578.0" y="138" width="84" height="124" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="572.0" y="138" width="96" height="10" rx="2" fill="#C9A86A"/><rect x="572.0" y="252" width="96" height="10" rx="2" fill="#C9A86A"/><text x="620" y="196.0" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">되돌리기</text><text x="620" y="218.0" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">여분 상자로</text><rect x="50" y="262" width="660" height="16" rx="3" fill="#C9A86A"/><text x="380" y="306" text-anchor="middle" font-size="13" font-weight="700" fill="#F5E6B8" class="d">이웃 나라 현자들이 정리한 다섯 기둥과 지붕</text><text x="380" y="338" text-anchor="middle" font-size="12" font-weight="700" fill="#C9D5E6">기둥 하나라도 빠지면 지붕이 기울어요</text></svg>
+<p>보안 프레임워크는 현자들이 정리한 성 지키기 다섯 기둥이에요.<small>알기, 막기, 알아채기, 쫓아내기, 되돌리기. 그리고 지붕은 다스리기 — 누가 책임지고 어떤 규칙으로 할지예요. 기둥 하나라도 빠지면 지붕이 기울어요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="20" y="22" width="20" height="30" rx="2" fill="#8B5E3C"/><circle cx="36" cy="38" r="2" fill="#E9B44C"/><circle cx="44" cy="22" r="11" fill="none" stroke="var(--ink)" stroke-width="4"/><path d="M52 30 l8 8" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/></svg><b>알기</b><span>성의 문과 틈을 세요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 L54 16 V30 C54 44 44 54 32 58 C20 54 10 44 10 30 V16 Z" fill="var(--good)"/><rect x="24" y="30" width="16" height="13" rx="3" fill="var(--panel)"/><path d="M27 30 v-5 a5 5 0 0 1 10 0 v5" stroke="var(--panel)" stroke-width="3" fill="none"/></svg><b>막기</b><span>잠그고, 세 번 확인</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20 34 c0 -20 24 -20 24 0 v10 h-24 z" fill="#E9B44C"/><rect x="17" y="44" width="30" height="5" rx="2" fill="#C9822B"/><circle cx="32" cy="53" r="3" fill="#C9822B"/><path d="M12 30 a22 22 0 0 1 -6 -16 M52 30 a22 22 0 0 0 6 -16" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>알아채기</b><span>종과 경비견</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="30" width="36" height="22" rx="3" fill="#8B5E3C"/><path d="M14 30 h36 v-3 a18 7 0 0 0 -36 0z" fill="#5A3B22"/><path d="M20 20 a12 12 0 1 1 4 9" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M18 26 l2 -8 l8 3" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><b>쫓아내고 되돌리기</b><span>순서표와 여분 상자</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="기둥 점수표 막대그래프: 알기 2점, 막기 5점, 알아채기 1점, 쫓아내기 2점, 되돌리기 3점. 왕이 '종부터 달아야겠네' 함" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><text x="310" y="56" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">우리 성 기둥 점수표</text><path d="M80 230 h460" stroke="var(--stone-dark)" stroke-width="2"/><rect x="102" y="174" width="56" height="56" rx="4" fill="var(--bad)"/><text x="130" y="166" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">2점</text><text x="130" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">알기</text><rect x="192" y="90" width="56" height="140" rx="4" fill="var(--good)"/><text x="220" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">5점</text><text x="220" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">막기</text><rect x="282" y="202" width="56" height="28" rx="4" fill="var(--bad)"/><text x="310" y="194" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">1점</text><text x="310" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">알아채기</text><rect x="372" y="174" width="56" height="56" rx="4" fill="var(--bad)"/><text x="400" y="166" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">2점</text><text x="400" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">쫓아내기</text><rect x="462" y="146" width="56" height="84" rx="4" fill="var(--accent)"/><text x="490" y="138" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">3점</text><text x="490" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">되돌리기</text><g transform="translate(580,90) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(660,100) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="540" y="14" width="210" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M635.0 48 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="542" y="44" width="206" height="6" fill="var(--panel)"/><text x="645.0" y="34.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">종부터 달아야겠네</text><text x="620" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">제일 낮은 기둥부터</text><text x="380" y="296" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">기둥마다 몇 점인지 세면, 무엇부터 할지 보여요</text></svg>
+<p>기둥마다 우리 성은 몇 점인지 세요. 제일 낮은 기둥부터 세워요.<small>알기는 <a href="asm-ko.html">바깥에서 문 세기</a>와 <a href="vulnmgmt-ko.html">틈 장부</a>, 알아채기는 <a href="siem-ko.html">큰 화면</a>과 <a href="edr-ko.html">경비견</a>, 쫓아내기는 <a href="incident-ko.html">순서표</a>, 되돌리기는 <a href="backup-ko.html">여분 상자</a>예요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="세 권의 책: 다섯 기둥 책, 도장 찍힌 책, 열여덟 할 일. 왕이 '어느 책이든 좋아 — 우리 성에 맞게' 하고, 점수는 해마다 다시 잼" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,60)"><rect width="130" height="140" rx="6" fill="#5B8DEF"/><rect x="0" y="0" width="14" height="140" rx="4" fill="#142033" opacity="0.25"/><rect x="26" y="26" width="90" height="70" rx="4" fill="#FFF8E7" opacity="0.9"/><text x="71" y="56" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">다섯 기둥 책</text><text x="71" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">기둥별로 재요</text></g><g transform="translate(210,70)"><rect width="130" height="140" rx="6" fill="#3F8F5A"/><rect x="0" y="0" width="14" height="140" rx="4" fill="#142033" opacity="0.25"/><rect x="26" y="26" width="90" height="70" rx="4" fill="#FFF8E7" opacity="0.9"/><text x="71" y="56" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">도장 찍힌 책</text><text x="71" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">검사관이 확인</text></g><g transform="translate(360,80)"><rect width="130" height="140" rx="6" fill="#C9822B"/><rect x="0" y="0" width="14" height="140" rx="4" fill="#142033" opacity="0.25"/><rect x="26" y="26" width="90" height="70" rx="4" fill="#FFF8E7" opacity="0.9"/><text x="71" y="56" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">열여덟 할 일</text><text x="71" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">순서대로 해요</text></g><text x="270" y="252" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">책은 여러 권이에요 — 하나 골라 우리 성을 비춰 봐요</text><g transform="translate(540,100) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(630,110) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="480" y="14" width="260" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M600.0 48 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="482" y="44" width="256" height="6" fill="var(--panel)"/><text x="610.0" y="34.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">어느 책이든 좋아 — 우리 성에 맞게</text><text x="600" y="235" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">점수는 해마다 다시 재요</text><text x="380" y="302" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">기둥이 갖춰지면 왕이 '안전해?' 물을 때 숫자로 답해요</text></svg>
+<p>현자들의 책은 여러 권이에요. 하나 골라 우리 성을 비춰 봐요.<small>도장 찍힌 책은 <a href="compliance-ko.html">검사관</a>이 확인해 줘요. 지붕은 <a href="policy-ko.html">성의 규칙 책</a>, 어느 기둥부터 세울지는 <a href="risk-ko.html">위험 저울</a>이 정해요. 점수가 나아지는지는 <a href="metrics-ko.html">숫자</a>로 봐요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>보안 프레임워크</b> = 현자들이 정리한 성 지키기 <b>다섯 기둥</b>(알기·막기·알아채기·쫓아내기·되돌리기)과 <b>지붕</b>(다스리기). 기둥마다 <b>점수</b>를 매기고 <b>빠진 기둥부터</b> 세워요.</h2><p>Security Framework. NIST CSF 2.0은 Govern·Identify·Protect·Detect·Respond·Recover 여섯 기능으로 보안 활동을 정리하고, ISO 27001은 인증, CIS Controls는 우선순위 있는 통제 목록을 제공해요. 갭 분석으로 현재 성숙도를 재고, 위험에 따라 통제를 우선순위화해요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>다섯 기둥<br><small>NIST CSF</small></dt><dd><b>이웃 나라 현자들의 성 지키기 책.</b> 다스리기·알기·막기·알아채기·쫓아내기·되돌리기, 여섯 기능. 2.0에서 다스리기(지붕)가 더해졌어요.</dd></div><div><dt>도장 찍힌 책<br><small>ISO 27001</small></dt><dd><b>검사관이 도장을 찍어 주는 책.</b> 규칙대로 하는지 남이 확인해 줘요. → <a href="compliance-ko.html">검사관의 도장</a></dd></div><div><dt>열여덟 가지 할 일<br><small>CIS Controls</small></dt><dd><b>먼저 할 일 순서표.</b> 뭐부터 할지 정해진 목록이에요. 작은 성도 바로 시작할 수 있어요.</dd></div><div><dt>통제<br><small>Control</small></dt><dd><b>기둥을 받치는 벽돌 하나.</b> 종, 자물쇠, 여분 상자처럼 손에 잡히는 장치 하나하나예요.</dd></div><div><dt>성숙도<br><small>Maturity</small></dt><dd><b>기둥 점수.</b> 0점(없음)부터 5점(늘 하고, 재고, 고치는 중)까지.</dd></div><div><dt>갭 분석<br><small>Gap analysis</small></dt><dd><b>빠진 기둥 찾기.</b> 책과 우리 성을 나란히 놓고 빈 자리를 세요.</dd></div><div><dt>다스리기<br><small>Governance</small></dt><dd><b>지붕.</b> 누가 책임지고 어떤 규칙으로 할지. → <a href="policy-ko.html">성의 규칙 책</a></dd></div><div><dt>위험<br><small>Risk</small></dt><dd><b>어느 기둥부터 세울지 정하는 저울.</b> 점수가 낮아도 도둑이 안 노리는 기둥은 나중에. → <a href="risk-ko.html">위험 저울</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="metrics-ko.html">얼마나 빨리 알아채고, 얼마나 빨리 쫓아내나 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>쪽지에 숨긴 명령</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="injection-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 보안</div>
+<h1><em>인젝션</em>이 뭐예요?</h1>
+<p class="sub">인젝션(Injection — SQL 인젝션, XSS)을 손님 쪽지에 '그리고 금고도 열어' 를 끼워 쓰는 도둑 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="손님이 '사과 3개 주세요' 쪽지를 창구에 내고, 창구 직원이 화살표를 따라 장부 담당에게 그대로 넘김" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(40,130) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="66" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">손님</text><g transform="translate(200,150) scale(1.0)"><rect x="-90" y="-120" width="180" height="200" fill="var(--stone-dark)"/><rect x="-90" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="-45" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="0" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="45" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="-56" y="-80" width="112" height="90" rx="6" fill="var(--sky)"/><rect x="-62" y="10" width="124" height="12" rx="3" fill="#8B5E3C"/><g transform="translate(-30,-74) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="0" y="-96" text-anchor="middle" font-size="13" font-weight="700" fill="#F5E6B8" class="d">창구</text></g><g transform="translate(300,90) rotate(0) scale(0.9)"><rect width="150" height="36" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="#142033">사과 3개 주세요</text></g><path d="M300 175 L500 175" stroke="var(--accent)" stroke-width="3" stroke-dasharray="8 6"/><path d="M500 175 l-12 -7 v14z" fill="var(--accent)"/><g transform="translate(510,110) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(590,120) scale(0.9)"><rect width="110" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="110" height="22" rx="4" fill="#C9A86A"/><text x="55" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">장부</text><path d="M14 34 h70" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/><path d="M14 48 h50" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/><path d="M14 62 h70" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><text x="600" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">장부 담당</text><text x="300" y="255" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">창구 직원은 쪽지를 그대로 전해요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">쪽지에 적힌 대로 장부에 적어요</text></svg>
+<p>창구 직원은 손님 쪽지를 읽고 장부 담당에게 그대로 전해요.<small>장부 담당은 쪽지에 적힌 대로 장부에 적어요. 사과 3개, 하고요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="복면 도둑의 쪽지: '사과 3개 주세요' 아래 빨간 글씨로 '그리고 금고도 열어 줘'. 직원이 넘기고, 장부 담당 옆 금고가 열려 금화가 보임" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--bad-soft)"/><g transform="translate(40,110) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><text x="68" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">도둑</text><g transform="translate(105,45) rotate(-4) scale(0.9)"><rect width="150" height="52" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="#142033">사과 3개 주세요</text><text x="8" y="40" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">그리고 금고도 열어 줘</text></g><g transform="translate(330,150) scale(0.9)"><rect x="-90" y="-120" width="180" height="200" fill="var(--stone-dark)"/><rect x="-90" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="-45" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="0" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="45" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="-56" y="-80" width="112" height="90" rx="6" fill="var(--sky)"/><rect x="-62" y="10" width="124" height="12" rx="3" fill="#8B5E3C"/><g transform="translate(-30,-74) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="0" y="-96" text-anchor="middle" font-size="13" font-weight="700" fill="#F5E6B8" class="d">창구</text></g><path d="M415 175 L490 175" stroke="var(--accent)" stroke-width="3" stroke-dasharray="8 6"/><path d="M490 175 l-12 -7 v14z" fill="var(--accent)"/><g transform="translate(500,110) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(640,160) scale(1.4)"><rect x="-30" y="-14" width="60" height="36" rx="3" fill="#8B5E3C"/><path d="M-30 -14 h60 v-4 a30 12 0 0 0 -60 0z" fill="#5A3B22" transform="rotate(-35 -30 -14)"/><circle cx="-10" cy="-10" r="6" fill="#E9B44C"/><circle cx="4" cy="-14" r="6" fill="#E9B44C"/><circle cx="16" cy="-8" r="6" fill="#E9B44C"/></g><text x="640" y="225" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">금고가 열렸어요</text><text x="330" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">직원은 손님 말과 명령을 구분 못 해요</text><text x="380" y="295" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">쪽지에 끼워 넣은 한 줄이 금고를 열어요</text></svg>
+<p>도둑이 쪽지에 '그리고 금고도 열어 줘' 를 끼워 써요. 직원은 손님 말과 명령을 구분 못 해요.<small>쪽지가 통째로 장부 담당에게 가요. 장부 담당은 적힌 대로 해요. 금고가 열려요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="밤. 도둑 옆의 큰 쪽지: '사과 3개 주세요' 뒤에 빨간 줄 '그리고 금고도 열어 줘', '그리고 장부를 다 지워'. 직원은 '다 손님 말이지?' 하고 넘김" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--night)"/><circle cx="660" cy="50" r="26" fill="#F5E6B8"/><circle cx="120" cy="40" r="2" fill="#F5E6B8"/><circle cx="300" cy="70" r="2" fill="#F5E6B8"/><circle cx="500" cy="30" r="2" fill="#F5E6B8"/><circle cx="420" cy="90" r="2" fill="#F5E6B8"/><circle cx="200" cy="120" r="2" fill="#F5E6B8"/><ellipse cx="380" cy="350" rx="440" ry="30" fill="#0A1120"/><g transform="translate(120,70) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><text x="150" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#C9D5E6">손님인 척하는 도둑</text><g transform="translate(230,60) rotate(0) scale(1.4)"><rect width="150" height="68" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="#142033">사과 3개 주세요</text><text x="8" y="40" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">그리고 금고도 열어 줘</text><text x="8" y="56" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">그리고 장부를 다 지워</text></g><text x="335" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#F5E6B8" class="d">쪽지 = 손님 말 + 숨긴 명령</text><rect x="440" y="20" width="250" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M555.0 54 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="442" y="50" width="246" height="6" fill="var(--panel)"/><text x="565.0" y="40.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">다 손님 말이지?</text><g transform="translate(500,80) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="530" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#C9D5E6">창구 직원</text><text x="380" y="270" text-anchor="middle" font-size="14" font-weight="700" fill="#F5E6B8" class="d">인젝션 = 손님 쪽지에 숨겨 넣은 명령</text><text x="380" y="305" text-anchor="middle" font-size="12" font-weight="700" fill="#C9D5E6">직원이 쪽지를 통째로 전하면 명령도 같이 가요</text></svg>
+<p>인젝션은 손님 쪽지에 숨겨 넣은 명령이에요.<small>손님 말이 들어갈 자리에 명령을 끼워 넣어요. 직원이 쪽지를 통째로 전하면 명령도 같이 가요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="8" width="40" height="48" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><rect x="18" y="18" width="24" height="3" fill="#142033"/><rect x="18" y="26" width="18" height="3" fill="#142033"/><rect x="18" y="38" width="28" height="3" fill="var(--bad)"/><rect x="18" y="46" width="22" height="3" fill="var(--bad)"/></svg><b>쪽지에 끼워 넣기</b><span>손님 말 뒤에 명령 한 줄</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="14" width="44" height="40" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><rect x="10" y="14" width="44" height="10" rx="3" fill="#C9A86A"/><path d="M18 34 h28 M18 44 h20" stroke="#C9A86A" stroke-width="2"/><path d="M40 30 l14 14 M54 30 l-14 14" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/></svg><b>장부를 노려요</b><span>읽고, 바꾸고, 지워요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="12" width="48" height="36" rx="2" fill="#8B5E3C"/><rect x="14" y="18" width="16" height="20" fill="#FFF8E7"/><rect x="34" y="18" width="16" height="20" fill="#FFF8E7"/><rect x="36" y="26" width="12" height="3" fill="var(--bad)"/><rect x="30" y="48" width="4" height="10" fill="#5A3B22"/></svg><b>게시판에 붙이면</b><span>다른 손님까지 속아요</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="26" r="12" fill="#E8C9A8"/><path d="M12 22 Q24 6 36 22 Z" fill="#5B8DEF"/><circle cx="20" cy="26" r="2" fill="var(--night)"/><circle cx="28" cy="26" r="2" fill="var(--night)"/><text x="50" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="var(--accent)">?</text></svg><b>직원은 구분 못 해요</b><span>말과 명령이 같은 종이에</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 인쇄된 명령 아래 초록 테두리 '손님 말 칸' — 그 안의 '3, 그리고 금고도 열어' 는 전부 그냥 글자. 가운데: 체가 따옴표와 꺾쇠 같은 이상한 글자를 거르고 3만 통과. 오른쪽: 초록 모자 검토원이 이상한 쪽지를 찢음" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(30,40) scale(1.0)"><rect width="220" height="130" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="110" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">명령: 사과 (   )개 주기</text><path d="M14 36 h192" stroke="#C9A86A" stroke-width="2"/><text x="110" y="56" text-anchor="middle" font-size="10" font-weight="700" fill="var(--good)">손님 말 칸</text><rect x="14" y="64" width="192" height="52" rx="4" fill="var(--panel)" stroke="var(--good)" stroke-width="3"/><text x="110" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)">3, 그리고 금고도 열어</text><text x="110" y="106" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">← 전부 그냥 글자예요</text></g><text x="140" y="210" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">손님 말은 손님 말 칸에만</text><text x="330" y="60" text-anchor="middle" font-size="20" font-weight="700" fill="var(--bad)" class="d">; ' &lt;</text><path d="M330 70 v20" stroke="var(--bad)" stroke-width="3" stroke-dasharray="4 4"/><g transform="translate(330,130) scale(1.0)"><circle r="34" fill="var(--stone)" stroke="var(--stone-dark)" stroke-width="4"/><circle cx="-16" cy="-12" r="3" fill="var(--sky)"/><circle cx="-16" cy="0" r="3" fill="var(--sky)"/><circle cx="-16" cy="12" r="3" fill="var(--sky)"/><circle cx="0" cy="-12" r="3" fill="var(--sky)"/><circle cx="0" cy="0" r="3" fill="var(--sky)"/><circle cx="0" cy="12" r="3" fill="var(--sky)"/><circle cx="16" cy="-12" r="3" fill="var(--sky)"/><circle cx="16" cy="0" r="3" fill="var(--sky)"/><circle cx="16" cy="12" r="3" fill="var(--sky)"/><rect x="34" y="-5" width="30" height="10" rx="5" fill="#8B5E3C"/></g><text x="330" y="195" text-anchor="middle" font-size="16" font-weight="700" fill="var(--good)" class="d">3</text><text x="340" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">이상한 글자는 걸러요</text><g transform="translate(520,80) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(590,110) rotate(8) scale(0.8)"><rect width="150" height="52" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="8" y="24" text-anchor="start" font-size="11" font-weight="700" fill="#142033">사과 3개</text><text x="8" y="40" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">그리고 금고도…</text><path d="M0 0 l12 10 l-10 12 l12 10 l-10 12 l12 10 l-10 12" stroke="var(--bad)" stroke-width="4" fill="none"/></g><text x="600" y="210" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">창구 앞 검토원</text><text x="380" y="268" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">칸 나누기 + 거르기 + 검토원</text><text x="380" y="298" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">제일 중요한 건 칸 나누기예요 — 나머지는 덤이에요</text></svg>
+<p>손님 말은 손님 말 칸에만 넣어요. 이상한 글자는 거르고, 창구 앞에 검토원을 세워요.<small>칸이 나뉘어 있으면 손님 말 칸에 뭘 적어도 명령이 되지 않아요. 이게 제일 중요해요. <a href="waf-ko.html">창구 앞 검토원</a>은 덤이에요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="땀 흘리는 도둑의 쪽지가 칸 나뉜 주문표에 들어가고, 장부 담당이 '그런 개수는 없는데요?' 하며 자물쇠 달린 금고 옆에 섬" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(40,130) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><text x="66" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">도둑</text><g transform="translate(200,150) scale(1.0)"><rect x="-90" y="-120" width="180" height="200" fill="var(--stone-dark)"/><rect x="-90" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="-45" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="0" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="45" y="-138" width="22" height="20" fill="var(--stone-dark)"/><rect x="-56" y="-80" width="112" height="90" rx="6" fill="var(--sky)"/><rect x="-62" y="10" width="124" height="12" rx="3" fill="#8B5E3C"/><g transform="translate(-30,-74) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="0" y="-96" text-anchor="middle" font-size="13" font-weight="700" fill="#F5E6B8" class="d">창구</text></g><g transform="translate(295,70) scale(0.6)"><rect width="220" height="130" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="110" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">명령: 사과 (   )개 주기</text><path d="M14 36 h192" stroke="#C9A86A" stroke-width="2"/><text x="110" y="56" text-anchor="middle" font-size="10" font-weight="700" fill="var(--good)">손님 말 칸</text><rect x="14" y="64" width="192" height="52" rx="4" fill="var(--panel)" stroke="var(--good)" stroke-width="3"/><text x="110" y="86" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)">3, 그리고 금고도 열어</text><text x="110" y="106" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">← 전부 그냥 글자예요</text></g><path d="M430 175 L500 175" stroke="var(--accent)" stroke-width="3" stroke-dasharray="8 6"/><path d="M500 175 l-12 -7 v14z" fill="var(--accent)"/><rect x="440" y="14" width="290" height="36" rx="14" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><path d="M575.0 50 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><rect x="442" y="46" width="286" height="6" fill="var(--panel)"/><text x="585.0" y="35.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">그런 개수는 없는데요?</text><g transform="translate(510,110) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(650,165) scale(1.3)"><rect x="-30" y="-14" width="60" height="36" rx="3" fill="#8B5E3C"/><path d="M-30 -14 h60 v-4 a30 12 0 0 0 -60 0z" fill="#5A3B22"/><rect x="-7" y="-6" width="14" height="12" rx="2" fill="#E9B44C"/><path d="M-4 -6 v-5 a4 4 0 0 1 8 0 v5" stroke="#E9B44C" stroke-width="3" fill="none"/></g><text x="650" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">금고는 닫힌 채</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">쪽지에 뭘 적어도 손님 말은 손님 말일 뿐이에요</text></svg>
+<p>이제 쪽지에 뭘 적어도 손님 말은 손님 말일 뿐이에요.<small>금고는 닫힌 채예요. 잘 됐는지 <a href="pentest-ko.html">고용한 도둑</a>에게 쪽지 시험을 부탁해요. 새 구멍이 나오면 <a href="patch-ko.html">목수</a>가 판자를 보내요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>인젝션</b> = 손님 쪽지에 <b>숨겨 넣은 명령</b>. 직원이 쪽지를 <b>통째로 전하면</b> 명령도 같이 가요. 막으려면 <b>손님 말은 손님 말 칸에만</b>.</h2><p>Injection. 사용자 입력이 코드나 쿼리의 일부로 해석되는 취약점이에요. SQL 인젝션은 데이터베이스를, XSS 는 다른 사용자의 브라우저를 노려요. 파라미터화 쿼리와 출력 이스케이프가 핵심 방어예요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>SQL 인젝션<br><small>SQL injection</small></dt><dd><b>장부 담당에게 가는 쪽지에 숨긴 명령.</b> 장부를 읽고, 바꾸고, 지워요. 장부는 데이터베이스예요.</dd></div><div><dt>XSS<br><small>XSS (cross-site scripting)</small></dt><dd><b>게시판에 붙인 쪽지.</b> 도둑의 쪽지를 성이 게시판에 붙이면, 읽는 손님마다 명령을 따라요.</dd></div><div><dt>입력 검증<br><small>Input validation</small></dt><dd><b>쪽지 모양 확인.</b> 사과 개수 칸엔 숫자만. 글자가 오면 돌려보내요.</dd></div><div><dt>파라미터화 쿼리<br><small>Parameterized query</small></dt><dd><b>손님 말은 손님 말 칸에만.</b> 명령은 미리 인쇄, 손님 말은 빈칸에. 뭘 적어도 명령이 안 돼요. 제일 중요한 방어예요.</dd></div><div><dt>이스케이프<br><small>Escaping</small></dt><dd><b>이상한 글자에 표시하기.</b> 따옴표나 꺾쇠를 '그냥 글자' 라고 표시해서 명령으로 안 읽히게 해요.</dd></div><div><dt>WAF<br><small>WAF</small></dt><dd><b>창구 앞 검토원.</b> 수상한 쪽지를 창구 앞에서 걸러요. 덤이지, 칸 나누기를 대신하진 못해요. → <a href="waf-ko.html">창구 앞 쪽지 검토원</a></dd></div><div><dt>시큐어 코딩<br><small>Secure coding</small></dt><dd><b>칸을 나눠서 창구 만들기.</b> 처음부터 손님 말과 명령이 섞이지 않게 창구를 짓는 습관이에요.</dd></div><div><dt>OWASP Top 10<br><small>OWASP Top 10</small></dt><dd><b>창구 수법 열 가지 목록.</b> 도둑들이 창구에서 제일 많이 쓰는 수법 열 가지. 인젝션은 늘 윗줄이에요. → <a href="attack-ko.html">도둑 백과사전</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="botnet-ko.html">홀려서 조종당하는 마을 사람들 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

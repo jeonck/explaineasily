@@ -80,7 +80,7 @@ P5 = svg(280, '<rect width="760" height="280" fill="var(--accent-soft)"/>'
          + fridge(110, 120, 1.1) + label(110, 190, "⟦냉장고|fridge⟧", 12, "var(--muted)")
          + '<g transform="translate(240,110)"><rect x="-22" y="-14" width="44" height="28" rx="4" fill="var(--stone-dark)"/><circle r="8" fill="var(--sky)"/><rect x="-6" y="-24" width="12" height="10" fill="var(--stone-dark)"/></g>' + label(240, 190, "⟦카메라|camera⟧", 12, "var(--muted)")
          + printer(370, 120, 1.0) + label(370, 190, "⟦오래된 프린터|old printer⟧", 12, "var(--muted)")
-         + "".join(label(x, 62, "⟦이름표 ✗|no tag ✗⟧", 11, "var(--bad)") for x in (110, 240, 370))
+         + "".join(label(x, 62, "⟦이름표 ×|no tag ×⟧", 11, "var(--bad)") for x in (110, 240, 370))
          + person(520, 60, s=0.8, face=EYES, **GUARD)
          + bubble(500, 0, 240, 34, "⟦얼굴(MAC)로만 알아봐야 해요|only a face (MAC) to go by⟧", 12, "var(--panel)", "var(--line)", "bottom")
          + person(640, 120, s=0.7, face=MASK, extra=f'<g transform="translate(64,40)"><rect x="-18" y="-10" width="36" height="20" rx="3" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>{label(0, 4, "⟦프린터|printer⟧", 9, "#142033")}</g>')

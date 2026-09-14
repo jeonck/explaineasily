@@ -104,7 +104,7 @@ PAGE = {
              (HANG_I, ("그 자리에서 종 달기", "Hang a bell now"), ("내년까지 안 기다려요", "no waiting till next year")),
              (AGAIN_I, ("다시 해봐", "Try again"), ("이번엔 울리나?", "does it ring this time?"), "calm"),
          ])},
-        {"svg": P4, "alt": ("도둑의 버릇 목록: 가짜 편지 ✓, 서쪽 창문 ✗ 종 달기, 열쇠 복사 ✓, 창고 상자 옮기기 ✗ 종 달기, 일지 지우기 ✓. 양쪽에 도둑과 파수꾼", "The thief\'s habits list: fake letter ✓, west window ✗ hang bell, copy a key ✓, move chests ✗ hang bell, erase the diary ✓; the thief and the guard on either side"),
+        {"svg": P4, "alt": ("도둑의 버릇 목록: 가짜 편지 ✓, 서쪽 창문 × 종 달기, 열쇠 복사 ✓, 창고 상자 옮기기 × 종 달기, 일지 지우기 ✓. 양쪽에 도둑과 파수꾼", "The thief\'s habits list: fake letter ✓, west window × hang bell, copy a key ✓, move chests × hang bell, erase the diary ✓; the thief and the guard on either side"),
          "caption": ("도둑의 버릇 목록을 한 줄씩 해봐요.", "Go through the thief\'s habits, one line at a time."),
          "small": ('<a href="attack-ko.html">도둑 백과사전</a>에서 버릇을 하나씩 골라 해봐요. 초록은 종이 울린 것, 빨강은 안 울린 것. 빨강 줄이 하나씩 초록으로 바뀌어요.',
                    'Pick habits one by one from the <a href="attack-en.html">thief encyclopedia</a>. Green means the bell rang; red means it didn\'t. One by one, red lines turn green.')},

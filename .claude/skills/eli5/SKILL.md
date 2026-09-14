@@ -98,6 +98,47 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | security | Attack Surface Management | 바깥에서 세는 우리 성의 문 |
 | security | Security Awareness Training | 성 사람 모두가 듣는 도둑 수업 |
 | security | Data Classification | 종이마다 찍는 색 도장 |
+| security | Data Retention | 종이마다 정해둔 태우는 날 |
+| security | Password | 문지기에게 속삭이는 암호말 |
+| security | PKI | 왕의 도장이 찍힌 신분증 |
+| security | TLS | 상점과 주고받는 봉인 약속 |
+| security | Least Privilege | 딱 필요한 열쇠만 |
+| security | Man-in-the-Middle Attack | 편지를 중간에서 뜯어보는 배달부 |
+| security | Brute-Force Attack | 열쇠 천 개를 다 꽂아보는 도둑 |
+| security | Injection Attack | 쪽지에 숨긴 명령 |
+| security | Botnet | 홀려서 조종당하는 마을 사람들 |
+| security | APT | 몇 달을 기다리는 끈질긴 도둑 무리 |
+| security | Kill Chain | 도둑의 일곱 걸음 |
+| security | Insider Threat | 안에서 문을 여는 사람 |
+| security | Supply Chain Attack | 목수의 연장통에 숨어 들어온 벌레 |
+| security | Risk Management | 어느 문부터 지킬지 정하는 저울 |
+| security | Compliance | 이웃 나라 규칙 검사관 |
+| security | Security Policy | 성의 규칙 두루마리 |
+| security | Disaster Recovery | 성이 불타도 다음 날 장사하는 법 |
+| security | DevSecOps | 짓는 동안 같이 보는 목수와 경비 |
+| security | Threat Modeling | 짓기 전에 도둑 눈으로 보는 도면 |
+| security | Secrets Management | 열쇠를 벽에 못 박아 두지 않기 |
+| security | Code Scanning | 도면 검사와 두드려 보기 |
+| security | SOAR | 경비실의 자동 순서표 기계 |
+| security | Digital Forensics | 발자국을 굳혀서 보관하기 |
+| security | Data Masking | 이름 대신 번호표 |
+| security | Cloud Security | 빌린 창고 문단속 점검 |
+| security | Email Security | 우체국 도장 세 개 |
+| security | Antivirus | 벌레 그림 카드를 든 경비 |
+| security | UEBA | 평소와 다른 걸음걸이 |
+| security | Spyware | 몰래 엿보고, 몰래 일 시키는 벌레들 |
+| security | API Security | 창구 뒷문으로 오는 심부름꾼 |
+| security | Container Security | 똑같이 찍어낸 짐칸 |
+| security | IoT / OT Security | 말 못 하는 성 안 기계들 |
+| security | Privacy | 손님 이름표는 손님 것 |
+| security | Session Hijacking | 입장 팔찌를 훔치는 도둑 |
+| security | AI Security | 왕의 목소리를 흉내 내는 앵무새 |
+| security | Security Framework | 성 지키기 다섯 기둥 |
+| security | Security Metrics | 얼마나 빨리 알아채고, 얼마나 빨리 쫓아내나 |
+| security | Air Gap | 다리 없는 섬 창고 |
+| security | HSM | 열쇠를 만드는 쇠금고 |
+| security | Allowlist | 명단에 있는 사람만 |
+| security | Cyber Insurance | 도둑 보험 |
 | design | Dialog Map | 방과 문의 지도 |
 
 비유가 **깨지는 지점**을 반드시 패널 하나로 넣는다. 이게 정직한 설명과 거짓말의 차이다.

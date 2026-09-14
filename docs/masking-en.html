@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Number Instead of a Name</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="masking-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Security</div>
+<h1>What is <em>Data Masking</em>?</h1>
+<p class="sub">Data masking, tokenization, and pseudonymization, told as a story about swapping the names on a guest roster for numbered tickets.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="The real guest roster (Tom, room 3, key 12 …) is copied exactly; a carpenter with a hammer smiles: one roster to practice on, please!" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(40,50) scale(1.0)"><rect width="200" height="130" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="200" height="26" rx="6" fill="var(--bad)"/><text x="100.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF" class="d">GUEST ROSTER</text><text x="12" y="50" text-anchor="start" font-size="11" font-weight="700" fill="#142033">Tom · room 3 · key 12</text><text x="12" y="74" text-anchor="start" font-size="11" font-weight="700" fill="#142033">Ann · room 5 · key 7</text><text x="12" y="98" text-anchor="start" font-size="11" font-weight="700" fill="#142033">Max · room 1 · key 9</text></g><text x="140" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">the real roster</text><path d="M250 115 H300" stroke="var(--muted)" stroke-width="3" stroke-dasharray="6 4"/><path d="M293 109 l10 6 l-10 6z" fill="var(--muted)"/><g transform="translate(310,50) scale(1.0)"><rect width="200" height="130" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="200" height="26" rx="6" fill="var(--bad)"/><text x="100.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF" class="d">GUEST ROSTER (copy)</text><text x="12" y="50" text-anchor="start" font-size="11" font-weight="700" fill="#142033">Tom · room 3 · key 12</text><text x="12" y="74" text-anchor="start" font-size="11" font-weight="700" fill="#142033">Ann · room 5 · key 7</text><text x="12" y="98" text-anchor="start" font-size="11" font-weight="700" fill="#142033">Max · room 1 · key 9</text></g><text x="410" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">copied exactly</text><g transform="translate(600,110) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><g transform="translate(58,60) rotate(30)"><rect x="-3" y="0" width="6" height="34" rx="2" fill="#8B5E3C"/><rect x="-12" y="-8" width="24" height="12" rx="3" fill="var(--stone-dark)"/></g></g><rect x="470" y="30" width="260" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M590.0 64 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="472" y="60" width="256" height="6" fill="var(--panel)"/><text x="600.0" y="50.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">one roster to practice on, please!</text><text x="640" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">practicing a new shelf</text><text x="380" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">the real names are right there on the practice sheet</text></svg>
+<p>The carpenter wants a roster to practice a new shelf on.<small>The clerk copies the real roster exactly — names, room numbers, key numbers, everything. The <a href="patch-en.html">carpenter</a> only wanted to practice.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A roster beside a village workshop, a thief carrying it off, and a guest frowning: why is my name in the village?" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(120,90) scale(1.0)"><rect x="-40" y="0" width="80" height="60" fill="var(--stone-dark)"/><path d="M-48 0 L0 -34 L48 0 Z" fill="var(--stone)"/><rect x="-10" y="26" width="20" height="34" fill="var(--night)"/></g><g transform="translate(165,115) scale(0.9)"><rect width="60" height="44" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="60" height="26" rx="6" fill="var(--bad)"/><text x="30.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF" class="d">roster</text></g><text x="150" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">the practice sheet sits in a village workshop</text><g transform="translate(360,90) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><rect x="50" y="70" width="36" height="30" rx="4" fill="var(--night)"/><path d="M58 70 v-8 a10 10 0 0 1 20 0 v8" stroke="var(--night)" stroke-width="4" fill="none"/></g><g transform="translate(420,100) scale(0.9)"><rect width="70" height="50" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="70" height="26" rx="6" fill="var(--bad)"/><text x="35.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF" class="d">roster</text></g><text x="400" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">a thief picks it up: name, room, key</text><g transform="translate(620,100) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="540" y="30" width="200" height="34" rx="14" fill="var(--panel)" stroke="var(--bad)" stroke-width="2"/><path d="M630.0 64 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--bad)" stroke-width="2"/><rect x="542" y="60" width="196" height="6" fill="var(--panel)"/><text x="640.0" y="50.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">why is my name in the village?</text><text x="650" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">the guest is upset</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">it was only practice — and the real thing leaked</text></svg>
+<p>The practice sheet sits in a village workshop. The real thing leaks.<small>Nobody guards a practice sheet like the castle. A thief who finds it learns "Tom, room 3, key 12." It was practice — and a real guest gets hurt.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="The real roster passes through a ticket machine and becomes a practice roster: Tom → #4821, key 12 → ★★. The number↔name list sits in a locked chest; only the king has the key" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(30,60) scale(1.0)"><rect width="200" height="130" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="200" height="26" rx="6" fill="var(--bad)"/><text x="100.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF" class="d">THE REAL ROSTER</text><text x="12" y="50" text-anchor="start" font-size="11" font-weight="700" fill="#142033">Tom · room 3 · key 12</text><text x="12" y="74" text-anchor="start" font-size="11" font-weight="700" fill="#142033">Ann · room 5 · key 7</text><text x="12" y="98" text-anchor="start" font-size="11" font-weight="700" fill="#142033">Max · room 1 · key 9</text></g><path d="M240 125 H270" stroke="var(--muted)" stroke-width="3" stroke-dasharray="6 4"/><path d="M263 119 l10 6 l-10 6z" fill="var(--muted)"/><g transform="translate(310,125) scale(1.0)"><rect x="-30" y="-45" width="60" height="90" rx="8" fill="var(--accent)"/><rect x="-20" y="-30" width="40" height="8" rx="2" fill="var(--night)"/><circle cy="10" r="8" fill="#FFF3D6"/><g transform="translate(0,-46) rotate(0) scale(0.8)"><rect x="-26" y="-14" width="52" height="28" rx="4" fill="#FFF3D6" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 3"/><text x="0" y="4" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">#4821</text></g></g><text x="310" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">the ticket machine</text><path d="M350 125 H380" stroke="var(--muted)" stroke-width="3" stroke-dasharray="6 4"/><path d="M373 119 l10 6 l-10 6z" fill="var(--muted)"/><g transform="translate(390,60) scale(1.0)"><rect width="210" height="130" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="210" height="26" rx="6" fill="#C9A86A"/><text x="105.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">PRACTICE ROSTER</text><text x="12" y="50" text-anchor="start" font-size="11" font-weight="700" fill="#142033">#4821 · room 3 · key ★★</text><text x="12" y="74" text-anchor="start" font-size="11" font-weight="700" fill="#142033">#0937 · room 5 · key ★★</text><text x="12" y="98" text-anchor="start" font-size="11" font-weight="700" fill="#142033">#5512 · room 1 · key ★★</text></g><text x="660" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">number↔name list</text><text x="660" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">in a locked chest</text><g transform="translate(660,130) scale(1.3)"><rect x="-30" y="-14" width="60" height="36" rx="3" fill="#8B5E3C"/><path d="M-30 -14 h60 v-4 a30 12 0 0 0 -60 0z" fill="#5A3B22"/><rect x="-7" y="-6" width="14" height="12" rx="2" fill="#E9B44C"/><path d="M-4 -6 v-5 a4 4 0 0 1 8 0 v5" stroke="#E9B44C" stroke-width="3" fill="none"/></g><g transform="translate(700,165) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="650" y="242" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">only the king has the key</text><text x="380" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">names become numbers, key numbers become stars</text><text x="380" y="336" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">practice never needs the real name — the chest stays in the castle</text></svg>
+<p>Data masking is handing out a number instead of a name.<small>Names become numbers, key numbers become stars. The list that joins number to name goes in a locked chest. Practice never needs the real name.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="22" width="36" height="20" rx="4" fill="#FFF3D6" stroke="var(--accent)" stroke-width="3" stroke-dasharray="4 3"/><text x="26" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">#48</text><path d="M46 32 h10" stroke="var(--muted)" stroke-width="3" stroke-linecap="round"/></svg><b>Name → number</b><span>undoing it takes the chest key</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="26" width="44" height="28" rx="3" fill="#8B5E3C"/><path d="M10 26 h44 v-4 a22 10 0 0 0 -44 0z" fill="#5A3B22"/><rect x="27" y="34" width="10" height="10" rx="2" fill="#E9B44C"/><path d="M29 34 v-4 a3 3 0 0 1 6 0 v4" stroke="#E9B44C" stroke-width="2.5" fill="none"/></svg><b>The locked chest</b><span>the real list never leaves</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="20" width="48" height="24" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="18" y="37" font-size="12" font-weight="700" fill="#142033">T</text><text x="27" y="37" font-size="12" font-weight="700" fill="var(--bad)">★★★</text></svg><b>Stars over it</b><span>show only a part</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="20" fill="none" stroke="var(--muted)" stroke-width="3"/><path d="M20 26 q6 -8 12 0 t12 0 M20 38 q6 8 12 0 t12 0" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M44 12 l8 8 M52 12 l-8 8" stroke="var(--bad)" stroke-width="3" stroke-linecap="round"/></svg><b>Scramble it</b><span>can't be undone, fine for counting</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A table: mask (T★★, can't undo, showing on a screen), token (#4821, only with the chest key, real name needed later), scramble (scrambled, never, counting and statistics)" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><rect x="40" y="30" width="680" height="220" rx="8" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="40" y="30" width="680" height="40" rx="8" fill="#C9A86A"/><text x="300" y="56" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">MASK</text><text x="470" y="56" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">TOKEN</text><text x="640" y="56" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">SCRAMBLE</text><path d="M40 130 h680" stroke="#C9A86A" stroke-width="1.5"/><path d="M40 190 h680" stroke="#C9A86A" stroke-width="1.5"/><text x="130" y="106" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">looks like</text><text x="300" y="106" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">T★★</text><text x="470" y="106" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">#4821</text><text x="640" y="106" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">xq7 (scrambled)</text><text x="130" y="166" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">can it be undone?</text><text x="300" y="166" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">no</text><text x="470" y="166" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">only with the chest key</text><text x="640" y="166" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">never</text><text x="130" y="226" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">use it when</text><text x="300" y="226" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">showing on a screen</text><text x="470" y="226" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">the real name is needed later</text><text x="640" y="226" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">counting, statistics</text><text x="380" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">all three mean working without the real name</text></svg>
+<p>Mask, token, scramble — they differ in whether you can undo them.<small>Stars are good for showing on a screen. A number can be undone with the chest key. Scrambled can never be undone — use it when you only need to count.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The carpenter practices with a #4821 ticket, a bar chart counts numbers, and the thief holds a #4821 ticket with a question mark" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,90) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><g transform="translate(58,60) rotate(30)"><rect x="-3" y="0" width="6" height="34" rx="2" fill="#8B5E3C"/><rect x="-12" y="-8" width="24" height="12" rx="3" fill="var(--stone-dark)"/></g></g><g transform="translate(150,110) rotate(-10) scale(1.0)"><rect x="-26" y="-14" width="52" height="28" rx="4" fill="#FFF3D6" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 3"/><text x="0" y="4" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">#4821</text></g><text x="130" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">practice works</text><g transform="translate(310,180)"><path d="M0 0 h130" stroke="var(--muted)" stroke-width="2"/><rect x="10" y="-40" width="22" height="40" rx="3" fill="var(--good)"/><rect x="42" y="-70" width="22" height="70" rx="3" fill="#5B8DEF"/><rect x="74" y="-55" width="22" height="55" rx="3" fill="var(--accent)"/><rect x="106" y="-30" width="22" height="30" rx="3" fill="var(--good)"/></g><text x="380" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">counting works too</text><g transform="translate(580,90) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><rect x="50" y="70" width="36" height="30" rx="4" fill="var(--night)"/><path d="M58 70 v-8 a10 10 0 0 1 20 0 v8" stroke="var(--night)" stroke-width="4" fill="none"/></g><g transform="translate(670,110) rotate(10) scale(1.0)"><rect x="-26" y="-14" width="52" height="28" rx="4" fill="#FFF3D6" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 3"/><text x="0" y="4" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">#4821</text></g><text x="670" y="80" text-anchor="middle" font-size="26" font-weight="700" fill="var(--bad)" class="d">?</text><text x="630" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">the thief can't use it</text><text x="380" y="288" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">the real names exist only in the locked chest in the castle</text></svg>
+<p>Practice works, counting works — and the thief gets nothing.<small>But if the ticket still says "room 3, arrived December 3rd," someone might work out who it is. Which papers get a number is decided by the <a href="classification-en.html">colored stamp</a>.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Data masking and tokenization</b> = on practice and statistics papers, hand out <b>a number instead of a name</b>, <b>cover parts with stars</b>, and keep the number↔name list in <b>a locked chest</b>. Practice works; the thief gets nothing.</h2><p>When personal data goes to dev, test, or analytics environments, real values are replaced by tokens, partial masks, or irreversible transforms. The token-to-original mapping lives only in a token vault; anonymization cannot be reversed.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Masking</dt><dd><b>Stars over it.</b> T★★, key ★★. Show only a part, never undo. Common on screens.</dd></div><div><dt>Tokenization</dt><dd><b>Name → number.</b> A meaningless number stands in for the real value. The number alone tells you nothing.</dd></div><div><dt>Pseudonymization</dt><dd><b>A number you can undo.</b> A number↔name list exists somewhere, so it can be undone with the key. Which is why the list must be guarded.</dd></div><div><dt>Anonymization</dt><dd><b>Scrambling it.</b> No list, no key. Nobody can undo it. Use it when you only need to count.</dd></div><div><dt>Token vault</dt><dd><b>The locked chest.</b> Where the number↔name list lives. The best-locked chest in the castle. → <a href="pam-en.html">the master key in the vault</a></dd></div><div><dt>PII</dt><dd><b>Guest name, room, key.</b> Anything that identifies someone. Not just a name — room number plus date can do it too.</dd></div><div><dt>Data classification</dt><dd><b>Which papers get a number.</b> A red stamp means numbers first. → <a href="classification-en.html">a colored stamp on every paper</a></dd></div><div><dt>Versus encryption</dt><dd><b>A sealed letter opens fully with the key.</b> A sealed letter reads in full once you have the key. A number has no name in it at all, so practice stays safe. → <a href="encryption-en.html">the letter no one reads without the key</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="cspm-en.html">The Rented-Shed Lock-Up Check →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

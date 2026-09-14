@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setting the Footprint in Plaster</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="forensics-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Security</div>
+<h1>What is <em>Digital Forensics</em>?</h1>
+<p class="sub">Digital forensics, told as a story about setting a thief's footprint in plaster and keeping it in a glass box.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="Morning: footprints lead to an open chest. The maid holds a broom — I'll sweep it all up! — and the guard frowns" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(30,80) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(140,235) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(190,218) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(240,202) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(290,186) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(340,170) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(390,154) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(470,195) scale(1.2)"><rect x="-30" y="-14" width="60" height="36" rx="3" fill="#8B5E3C"/><path d="M-30 -14 h60 v-4 a30 12 0 0 0 -60 0z" fill="#5A3B22" transform="rotate(-40 -30 -14)"/></g><g transform="translate(420,120) rotate(-20) scale(0.7)"><rect x="-26" y="-30" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-18 -8 h28 M-18 1 h18 M-18 10 h28" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><text x="470" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">an open chest and footprints</text><g transform="translate(600,110) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(655,150)"><path d="M0 0 L40 80" stroke="#8B5E3C" stroke-width="5" stroke-linecap="round"/><path d="M30 60 l30 40 M40 74 l24 26 M36 68 l34 22 M44 82 l14 30" stroke="#C9A86A" stroke-width="4" stroke-linecap="round"/></g><rect x="500" y="30" width="240" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M610.0 64 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="502" y="60" width="236" height="6" fill="var(--panel)"/><text x="620.0" y="50.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">I'll sweep it all up!</text><text x="380" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">sweep it away, and we never learn how he got in</text></svg>
+<p>The morning after a thief. Footprints lead to the chest.<small>The maid wants to tidy up. But sweep the <a href="ioc-en.html">footprints</a> away, and we never learn how he got in.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Green footprints stamped over the thief's, a red smudge on the log, and the king frowning: is this even real?" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(100,150) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(150,130) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(120,140) rotate(20)"><ellipse rx="9" ry="14" fill="var(--good)"/><ellipse cy="-20" rx="7" ry="6" fill="var(--good)"/></g><g transform="translate(165,120) rotate(20)"><ellipse rx="9" ry="14" fill="var(--good)"/><ellipse cy="-20" rx="7" ry="6" fill="var(--good)"/></g><text x="130" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">our own prints cover his</text><g transform="translate(380,120) rotate(0) scale(1.3)"><rect x="-26" y="-30" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-18 -8 h28 M-18 1 h18 M-18 10 h28" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/><path d="M-14 1 h20" stroke="var(--bad)" stroke-width="6" stroke-linecap="round" opacity="0.6"/></g><text x="380" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">the log gets touched up</text><g transform="translate(600,100) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="530" y="30" width="200" height="34" rx="14" fill="var(--panel)" stroke="var(--bad)" stroke-width="2"/><path d="M620.0 64 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--bad)" stroke-width="2"/><rect x="532" y="60" width="196" height="6" fill="var(--panel)"/><text x="630.0" y="50.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">is this even real?</text><text x="630" y="225" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">nobody believes it</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">a footprint once disturbed can never be made again</text></svg>
+<p>Touch it wrong and three things break: it gets covered, it gets edited, and nobody believes it.<small>Our own prints cover the thief's. Touch the <a href="log-en.html">log</a>, and someone asks "didn't you edit that?" Once disturbed, it can never be made again.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="A footprint set in a dashed mold, placed in a glass box with a fingerprint and a who·when tag, while a blue-hat friend studies it through a magnifier without touching" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><rect x="70" y="150" width="100" height="90" rx="6" fill="#FFF3D6" stroke="#C9A86A" stroke-width="3" stroke-dasharray="8 5"/><g transform="translate(120,205) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><text x="120" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">set it as it is</text><path d="M185 195 H245" stroke="var(--muted)" stroke-width="3" stroke-dasharray="6 4"/><path d="M238 189 l10 6 l-10 6z" fill="var(--muted)"/><rect x="270" y="120" width="180" height="130" rx="6" fill="var(--sky)" fill-opacity="0.5" stroke="var(--line)" stroke-width="3"/><path d="M280 132 l14 -0" stroke="#FFF" stroke-width="3" stroke-linecap="round" opacity="0.7"/><g transform="translate(360,205) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(420,150) scale(1.0)"><circle r="14" fill="none" stroke="var(--accent)" stroke-width="3"/><circle r="8" fill="none" stroke="var(--accent)" stroke-width="3"/><circle r="2.5" fill="var(--accent)"/></g><g transform="translate(316,148) rotate(-12) scale(1.0)"><path d="M-34 -12 h58 l10 12 l-10 12 h-58z" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="26" cy="0" r="2.5" fill="#C9A86A"/><text x="-6" y="4" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">who·when</text></g><text x="360" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">glass box + fingerprint + tag</text><g transform="translate(540,110) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5B8DEF"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(625,160) scale(1.0)"><circle r="20" fill="var(--sky)" fill-opacity="0.4" stroke="var(--night)" stroke-width="6"/><path d="M14 14 l22 22" stroke="var(--night)" stroke-width="8" stroke-linecap="round"/></g><text x="600" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">look, never touch</text><text x="380" y="310" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">set it, fingerprint it, tag it</text><text x="380" y="342" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">nobody touches the real print — we study a copy</text></svg>
+<p>Digital forensics is setting the footprint as it is, and keeping it.<small>Set it, fingerprint it, tag it. Nobody touches the real print — what we study is a copy.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="12" width="44" height="40" rx="4" fill="#FFF3D6" stroke="#C9A86A" stroke-width="3" stroke-dasharray="6 4"/><ellipse cx="32" cy="36" rx="7" ry="11" fill="#7A5236"/><ellipse cx="32" cy="20" rx="5" ry="4" fill="#7A5236"/></svg><b>Set it as it is</b><span>a copy, not a grain changed</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="20" fill="none" stroke="var(--accent)" stroke-width="3"/><circle cx="32" cy="32" r="12" fill="none" stroke="var(--accent)" stroke-width="3"/><circle cx="32" cy="32" r="4" fill="var(--accent)"/></svg><b>Fingerprint it</b><span>change anything, the print changes</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 22 h36 l12 10 l-12 10 h-36z" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><circle cx="44" cy="32" r="3" fill="#C9A86A"/><path d="M14 28 h18 M14 36 h12" stroke="#C9A86A" stroke-width="2.5" stroke-linecap="round"/></svg><b>Tag it</b><span>who touched it, and when</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="20" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M32 18 v14 l9 6" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="10" cy="54" r="4" fill="var(--bad)"/><circle cx="54" cy="54" r="4" fill="var(--bad)"/><path d="M14 54 h36" stroke="var(--bad)" stroke-width="2"/></svg><b>String it on the clock</b><span>the order is the story</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A timeline on paper: 11 pm fake letter → 11:30 hall footprints → midnight chest opened → 12:20 out the back door. A candle in the corner" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><rect x="60" y="30" width="640" height="210" rx="8" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="60" y="30" width="640" height="28" rx="8" fill="#C9A86A"/><text x="380" y="49" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">THE THIEF'S NIGHT, IN ORDER</text><path d="M100 150 H660" stroke="#C9A86A" stroke-width="4" stroke-linecap="round"/><circle cx="140" cy="150" r="9" fill="var(--bad)"/><text x="140" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">11 pm</text><text x="140" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">fake letter</text><circle cx="300" cy="150" r="9" fill="var(--bad)"/><text x="300" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">11:30 pm</text><text x="300" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">hall footprints</text><circle cx="460" cy="150" r="9" fill="var(--bad)"/><text x="460" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">midnight</text><text x="460" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">chest opened</text><circle cx="620" cy="150" r="9" fill="var(--bad)"/><text x="620" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">12:20 am</text><text x="620" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">out the back door</text><g transform="translate(140,100)"><rect x="-22" y="-14" width="44" height="30" rx="3" fill="#FFF3D6" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -14 l22 16 l22 -16" stroke="#C9A86A" stroke-width="2" fill="none"/></g><g transform="translate(292,104) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(312,98) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(460,108) scale(0.8)"><rect x="-30" y="-14" width="60" height="36" rx="3" fill="#8B5E3C"/><path d="M-30 -14 h60 v-4 a30 12 0 0 0 -60 0z" fill="#5A3B22" transform="rotate(-40 -30 -14)"/></g><g transform="translate(620,100)"><rect x="-16" y="-24" width="32" height="48" rx="3" fill="#8B5E3C"/><circle cx="8" cy="2" r="3" fill="#E9B44C"/></g><g transform="translate(690,70) scale(0.7)"><rect x="-8" y="0" width="16" height="34" rx="3" fill="#FFF3D6" stroke="#C9A86A" stroke-width="2"/><path d="M0 -18 q8 8 4 16 q-4 4 -8 0 q-4 -8 4 -16z" fill="var(--accent)"/></g><text x="380" y="275" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">every print, strung on the clock in order</text><text x="380" y="303" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">the candle-like things first — then it becomes a story</text></svg>
+<p>Every print gets strung on the clock, in order.<small>The <a href="phishing-en.html">fake letter</a>, the hall prints, the open chest, the back door. Set the candle-like things first — the ones that fade fast. Strung together, it becomes a story.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: the king looks at the set print in its glass box — evidence in court. Right: a lesson page lists where, what, and next; the guard smiles" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(60,100) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="160" y="120" width="120" height="80" rx="6" fill="var(--sky)" fill-opacity="0.5" stroke="var(--line)" stroke-width="3"/><path d="M170 132 l14 -0" stroke="#FFF" stroke-width="3" stroke-linecap="round" opacity="0.7"/><g transform="translate(225,170) rotate(-60)"><ellipse rx="9" ry="14" fill="#7A5236"/><ellipse cy="-20" rx="7" ry="6" fill="#7A5236"/></g><g transform="translate(262,140) scale(0.7)"><circle r="14" fill="none" stroke="var(--accent)" stroke-width="3"/><circle r="8" fill="none" stroke="var(--accent)" stroke-width="3"/><circle r="2.5" fill="var(--accent)"/></g><g transform="translate(188,134) rotate(-12) scale(0.8)"><path d="M-34 -12 h58 l10 12 l-10 12 h-58z" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="26" cy="0" r="2.5" fill="#C9A86A"/><text x="-6" y="4" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">who·when</text></g><text x="190" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">as evidence in court</text><rect x="430" y="50" width="200" height="140" rx="8" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="430" y="50" width="200" height="26" rx="8" fill="#C9A86A"/><text x="530" y="68" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">LEARN</text><text x="444" y="100" text-anchor="start" font-size="11" font-weight="700" fill="#142033">where: west window</text><text x="444" y="126" text-anchor="start" font-size="11" font-weight="700" fill="#142033">what: one roster page</text><text x="444" y="152" text-anchor="start" font-size="11" font-weight="700" fill="#142033">next: lock the window</text><g transform="translate(660,110) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="560" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">the book's last step</text><text x="380" y="288" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">only an untouched print works in court — and in the lesson</text></svg>
+<p>The set print serves in court — and in the lesson.<small>The king believes it only if the tag chain is unbroken. And the last step of the <a href="incident-en.html">book</a>, "learn", is filled from this print. Setting it takes time — and by then, the thief is long gone.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Digital forensics</b> = <b>set the thief's prints and logs as they are</b> (a copy), <b>fingerprint and tag</b> them, and <b>string them on the clock</b> into a story — for court, and for the lesson.</h2><p>Imaging disks, memory, and logs without alteration, proving integrity with hashes, recording chain of custody, then reconstructing a timeline. Used as legal evidence and to draw lessons in incident response.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Forensics</dt><dd><b>Setting and keeping the print.</b> Keeping what the thief left untouched, and reading it in order.</dd></div><div><dt>Evidence preservation</dt><dd><b>Putting the broom away.</b> Set it before anyone sweeps. The prints → <a href="ioc-en.html">the footprint left behind</a></dd></div><div><dt>Disk image</dt><dd><b>The copy set in plaster.</b> The whole chest, copied without changing a grain. This copy is what gets studied.</dd></div><div><dt>Hash</dt><dd><b>The fingerprint.</b> Stamp a fingerprint on the set copy, and any change shows at once. → <a href="hashing-en.html">a fingerprint on everything</a></dd></div><div><dt>Chain of custody</dt><dd><b>The who·when tag.</b> Who received it when, and handed it to whom, with no gaps. One blank, and the king won't believe it.</dd></div><div><dt>Timeline</dt><dd><b>Stringing it on the clock.</b> Prints, logs, and letters in time order. → <a href="log-en.html">the one-line log everywhere</a></dd></div><div><dt>Memory forensics</dt><dd><b>The candle first.</b> Some things vanish when the flame goes out. Set those before the chest.</dd></div><div><dt>Incident response</dt><dd><b>The book's last step.</b> The set print fills in "learn". → <a href="incident-en.html">the book for when a thief gets in</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="masking-en.html">A Number Instead of a Name →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

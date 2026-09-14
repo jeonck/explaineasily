@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Post Office's Three Stamps</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="emailsec-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Security</div>
+<h1>What is <em>Email Security</em>?</h1>
+<p class="sub">Email security (SPF, DKIM, DMARC), told as a story about three stamps only the real post office can press.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A thief writes 'from: the Royal Post' on an envelope and drops it in the castle mailbox; the receiver is delighted — a letter from the Royal Post!" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(50,110) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><path d="M112 160 l30 -18" stroke="#142033" stroke-width="4" stroke-linecap="round"/><g transform="translate(150,120) scale(1.0)"><rect width="130" height="84" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M0 30 L65 64 L130 30" stroke="#C9A86A" stroke-width="2" fill="none"/><text x="10" y="20" text-anchor="start" font-size="10" font-weight="700" fill="#142033">from: the Royal Post</text></g><text x="215" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">the thief just writes it</text><path d="M300 162 H390" stroke="var(--muted)" stroke-width="3" stroke-dasharray="6 5" fill="none"/><path d="M382 154 l10 8 l-10 8" stroke="var(--muted)" stroke-width="3" fill="none"/><g transform="translate(430,100) scale(1.0)"><rect x="-6" y="40" width="12" height="50" fill="var(--stone-dark)"/><rect x="-34" y="0" width="68" height="44" rx="10" fill="#4A5A72"/><rect x="-22" y="12" width="44" height="22" rx="3" fill="var(--panel)"/><path d="M-22 14 L0 28 L22 14" stroke="var(--line)" stroke-width="2" fill="none"/></g><text x="430" y="225" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">castle mailbox</text><g transform="translate(560,110) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="470" y="30" width="250" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M585.0 70 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="472" y="66" width="246" height="6" fill="var(--panel)"/><text x="595.0" y="54.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">a letter from the Royal Post!</text><text x="380" y="282" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">the name on the envelope is not a seal</text></svg>
+<p>Anyone can write 'the Royal Post' on an envelope.<small>That is what makes a <a href="phishing-en.html">fake letter</a> dangerous. The sender's name is just handwriting. A thief can write it too.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Two identical envelopes — one from the real post, one from the thief. The doorkeeper sweats: they look exactly the same…" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(100,90) scale(1.0)"><rect width="130" height="84" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M0 30 L65 64 L130 30" stroke="#C9A86A" stroke-width="2" fill="none"/><text x="10" y="20" text-anchor="start" font-size="10" font-weight="700" fill="#142033">from: the Royal Post</text></g><text x="165" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">sent by the real post</text><text x="255" y="145" text-anchor="middle" font-size="34" font-weight="700" fill="var(--muted)" class="d">=</text><g transform="translate(290,90) scale(1.0)"><rect width="130" height="84" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M0 30 L65 64 L130 30" stroke="#C9A86A" stroke-width="2" fill="none"/><text x="10" y="20" text-anchor="start" font-size="10" font-weight="700" fill="#142033">from: the Royal Post</text></g><text x="355" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">sent by the thief</text><g transform="translate(520,100) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="440" y="20" width="270" height="36" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M565.0 56 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="442" y="52" width="266" height="6" fill="var(--panel)"/><text x="575.0" y="41.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">they look exactly the same…</text><text x="555" y="235" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">the doorkeeper can't choose</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">worse — fakes go out to the village in our name too</text></svg>
+<p>Looking at the envelope alone, nobody can tell.<small>No matter how sharp the doorkeeper is, handwriting isn't enough. Worse, the thief also sends fakes to the village in our castle's name — and then nobody trusts our real letters either.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="Three things: a list of couriers allowed to deliver, a wax seal only the post can press, and a note saying what to do if the seal is wrong (leave it, set it aside, throw it away). All three pinned at the village desk" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><text x="140" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">① the courier list</text><g transform="translate(50,60) scale(1.0)"><rect width="180" height="150" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="180" height="26" rx="6" fill="#C9A86A"/><text x="90.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">WHO MAY DELIVER</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">courier A ✓</text><text x="14" y="72" text-anchor="start" font-size="12" font-weight="700" fill="#142033">courier B ✓</text><text x="14" y="94" text-anchor="start" font-size="12" font-weight="700" fill="#142033">no one else</text></g><text x="140" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">who is allowed to send</text><text x="380" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">② the seal</text><g transform="translate(380,135) scale(3.2)"><circle r="16" fill="#B5382C"/><circle r="12" fill="none" stroke="#FFF8E7" stroke-width="1.5" opacity="0.7"/><path d="M-10 4 l-2 -12 l6 5 l6 -9 l6 9 l6 -5 l-2 12z" fill="#FFF8E7"/></g><text x="380" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">only the post can press it</text><text x="620" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">③ the instructions</text><g transform="translate(530,60) scale(1.0)"><rect width="180" height="150" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="180" height="26" rx="6" fill="#C9A86A"/><text x="90.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">IF THE SEAL IS WRONG</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">leave it</text><text x="14" y="72" text-anchor="start" font-size="12" font-weight="700" fill="#142033">set it aside</text><text x="14" y="94" text-anchor="start" font-size="12" font-weight="700" fill="#142033">throw it away</text></g><text x="620" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">what to do if it's wrong</text><text x="380" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">all three are pinned at the village desk ahead of time</text><text x="380" y="336" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">anyone who asks can look them up</text></svg>
+<p>Email security is three stamps the post office puts up ahead of time.<small>A courier list, a seal, and a note. All three are pinned at the <a href="dns-en.html">village desk</a>, so anyone can look them up.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="8" width="36" height="48" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M20 22 h10 M20 34 h10 M20 46 h10" stroke="#142033" stroke-width="2" stroke-linecap="round"/><path d="M36 20 l3 3 l6 -6 M36 32 l3 3 l6 -6" stroke="var(--good)" stroke-width="2.5" fill="none"/><path d="M36 42 l8 8 M44 42 l-8 8" stroke="var(--bad)" stroke-width="2.5"/></svg><b>The courier list</b><span>only A and B may carry this post's letters</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="20" fill="#B5382C"/><circle cx="32" cy="32" r="15" fill="none" stroke="#FFF8E7" stroke-width="1.5" opacity="0.7"/><path d="M20 38 l-3 -15 l8 6 l7 -11 l7 11 l8 -6 l-3 15z" fill="#FFF8E7"/></svg><b>The seal</b><span>only the post can press it; it breaks if opened</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="8" width="36" height="48" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="24" cy="22" r="4" fill="#4A5A72"/><circle cx="24" cy="34" r="4" fill="var(--accent)"/><circle cx="24" cy="46" r="4" fill="var(--bad)"/><path d="M32 22 h12 M32 34 h12 M32 46 h12" stroke="#142033" stroke-width="2" stroke-linecap="round"/></svg><b>The note</b><span>if wrong: leave it, set aside, throw away</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="20" width="44" height="28" rx="6" fill="#4A5A72"/><rect x="18" y="28" width="28" height="14" rx="2" fill="var(--panel)"/><path d="M18 30 l14 8 l14 -8" stroke="var(--line)" stroke-width="2" fill="none"/><circle cx="50" cy="18" r="9" fill="var(--good)"/><path d="M45 18 l4 4 l6 -7" stroke="#FFF" stroke-width="2.5" fill="none"/></svg><b>The mailbox keeper</b><span>checks all three on every letter</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The doorkeeper holds a sealed letter and reads the checklist — courier on the list? seal real? if not, follow the note. Three boxes beside: deliver, quarantine, reject" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(50,120) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(130,140) scale(0.8)"><rect width="130" height="84" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M0 30 L65 64 L130 30" stroke="#C9A86A" stroke-width="2" fill="none"/><text x="10" y="20" text-anchor="start" font-size="10" font-weight="700" fill="#142033">Royal Post</text><g transform="translate(104,22) scale(0.9)"><circle r="16" fill="#B5382C"/><circle r="12" fill="none" stroke="#FFF8E7" stroke-width="1.5" opacity="0.7"/><path d="M-10 4 l-2 -12 l6 5 l6 -9 l6 9 l6 -5 l-2 12z" fill="#FFF8E7"/></g></g><g transform="translate(270,40) scale(1.0)"><rect width="240" height="120" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="240" height="26" rx="6" fill="#C9A86A"/><text x="120.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">THE DOORKEEPER'S CHECK</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">is the courier on the list?</text><text x="14" y="72" text-anchor="start" font-size="12" font-weight="700" fill="#142033">is the seal real?</text><text x="14" y="94" text-anchor="start" font-size="12" font-weight="700" fill="#142033">if not → follow the note</text></g><text x="390" y="185" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">either one matching is enough</text><g transform="translate(560,230)"><rect x="-28" y="-24" width="56" height="48" rx="4" fill="#4A5A72"/><rect x="-32" y="-30" width="64" height="8" rx="2" fill="#4A5A72"/><path d="M-14 -6 L0 4 L14 -6" stroke="var(--panel)" stroke-width="2" fill="none"/></g><text x="560" y="275" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">deliver</text><g transform="translate(640,230)"><rect x="-28" y="-24" width="56" height="48" rx="4" fill="var(--accent)"/><rect x="-32" y="-30" width="64" height="8" rx="2" fill="var(--accent)"/><text x="0" y="6" text-anchor="middle" font-size="22" font-weight="700" fill="#FFF8E7" class="d">!</text></g><text x="640" y="275" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">quarantine</text><g transform="translate(720,230)"><rect x="-28" y="-24" width="56" height="48" rx="4" fill="var(--bad)"/><rect x="-32" y="-30" width="64" height="8" rx="2" fill="var(--bad)"/><path d="M-10 -10 l20 20 M10 -10 l-20 20" stroke="#FFF8E7" stroke-width="3" stroke-linecap="round"/></g><text x="720" y="275" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">reject</text><text x="640" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">if wrong, do what the note says</text><text x="380" y="322" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">the doorkeeper reads the seal, not the handwriting</text></svg>
+<p>The keeper checks the list and the seal on every letter.<small>If the courier is on the list or the seal is real, it passes. If neither, the keeper does what the note says — leave it, set it aside, or throw it away.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Our castle's note says: throw it away. The thief sends fakes in our name to three other castles, but every one has a wrong seal and gets thrown out" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(20,70) scale(0.42)"><rect x="0" y="20" width="90" height="180" fill="var(--stone)"/><rect x="370" y="20" width="90" height="180" fill="var(--stone)"/><rect x="0" y="0" width="15" height="24" fill="var(--stone)"/><rect x="30" y="0" width="15" height="24" fill="var(--stone)"/><rect x="60" y="0" width="15" height="24" fill="var(--stone)"/><rect x="370" y="0" width="15" height="24" fill="var(--stone)"/><rect x="400" y="0" width="15" height="24" fill="var(--stone)"/><rect x="430" y="0" width="15" height="24" fill="var(--stone)"/><rect x="90" y="70" width="280" height="130" fill="var(--stone-dark)"/><rect x="90" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="146" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="202" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="258" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="314" y="50" width="28" height="24" fill="var(--stone-dark)"/><path d="M195 200 V140 a35 35 0 0 1 70 0 V200 Z" fill="var(--night)"/><rect x="34" y="60" width="22" height="34" rx="11" fill="var(--night)"/><rect x="404" y="60" width="22" height="34" rx="11" fill="var(--night)"/><rect x="228" y="-30" width="4" height="100" fill="var(--night)"/><path d="M232 -28 L290 -12 L232 4 Z" fill="var(--accent)"/></g><text x="117" y="195" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">our castle</text><text x="117" y="216" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">our note says: throw it away</text><g transform="translate(280,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(340,60) scale(0.7)"><rect width="130" height="84" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M0 30 L65 64 L130 30" stroke="#C9A86A" stroke-width="2" fill="none"/><text x="10" y="20" text-anchor="start" font-size="10" font-weight="700" fill="#142033">from: our castle</text></g><text x="310" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">sends fakes in our name</text><path d="M440 100 Q500 30 560 60" stroke="var(--bad)" stroke-width="2" stroke-dasharray="5 5" fill="none"/><path d="M440 100 Q500 120 560 150" stroke="var(--bad)" stroke-width="2" stroke-dasharray="5 5" fill="none"/><path d="M440 100 Q500 210 560 240" stroke="var(--bad)" stroke-width="2" stroke-dasharray="5 5" fill="none"/><g transform="translate(560,20) scale(0.45)"><rect x="0" y="40" width="160" height="110" fill="var(--stone-dark)"/><rect x="0" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="40" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="80" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="120" y="20" width="20" height="24" fill="var(--stone-dark)"/><path d="M60 150 V110 a20 20 0 0 1 40 0 V150 Z" fill="var(--night)"/></g><g transform="translate(650,40) scale(0.5)"><rect width="130" height="84" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M0 30 L65 64 L130 30" stroke="#C9A86A" stroke-width="2" fill="none"/><g transform="translate(104,22) scale(0.9)"><circle r="16" fill="#B5382C"/><circle r="12" fill="none" stroke="#FFF8E7" stroke-width="1.5" opacity="0.7"/><path d="M-8 -8 l16 16 M8 -8 l-16 16" stroke="#FFF8E7" stroke-width="3" stroke-linecap="round"/></g><path d="M10 10 l110 64 M120 10 l-110 64" stroke="var(--bad)" stroke-width="5" stroke-linecap="round"/></g><g transform="translate(560,110) scale(0.45)"><rect x="0" y="40" width="160" height="110" fill="var(--stone-dark)"/><rect x="0" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="40" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="80" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="120" y="20" width="20" height="24" fill="var(--stone-dark)"/><path d="M60 150 V110 a20 20 0 0 1 40 0 V150 Z" fill="var(--night)"/></g><g transform="translate(650,130) scale(0.5)"><rect width="130" height="84" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M0 30 L65 64 L130 30" stroke="#C9A86A" stroke-width="2" fill="none"/><g transform="translate(104,22) scale(0.9)"><circle r="16" fill="#B5382C"/><circle r="12" fill="none" stroke="#FFF8E7" stroke-width="1.5" opacity="0.7"/><path d="M-8 -8 l16 16 M8 -8 l-16 16" stroke="#FFF8E7" stroke-width="3" stroke-linecap="round"/></g><path d="M10 10 l110 64 M120 10 l-110 64" stroke="var(--bad)" stroke-width="5" stroke-linecap="round"/></g><g transform="translate(560,200) scale(0.45)"><rect x="0" y="40" width="160" height="110" fill="var(--stone-dark)"/><rect x="0" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="40" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="80" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="120" y="20" width="20" height="24" fill="var(--stone-dark)"/><path d="M60 150 V110 a20 20 0 0 1 40 0 V150 Z" fill="var(--night)"/></g><g transform="translate(650,220) scale(0.5)"><rect width="130" height="84" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M0 30 L65 64 L130 30" stroke="#C9A86A" stroke-width="2" fill="none"/><g transform="translate(104,22) scale(0.9)"><circle r="16" fill="#B5382C"/><circle r="12" fill="none" stroke="#FFF8E7" stroke-width="1.5" opacity="0.7"/><path d="M-8 -8 l16 16 M8 -8 l-16 16" stroke="#FFF8E7" stroke-width="3" stroke-linecap="round"/></g><path d="M10 10 l110 64 M120 10 l-110 64" stroke="var(--bad)" stroke-width="5" stroke-linecap="round"/></g><text x="380" y="302" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">fakes in our name get thrown away at every castle in the village</text></svg>
+<p>Fakes in our name get thrown away at every castle in the village.<small>The stamps protect our name, not only our castle. But a letter with every stamp correct can still carry a lie — that part is taught in the <a href="awareness-en.html">thief lessons</a>.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Email security</b> = <b>three stamps</b> the post office pins at the village desk — who may send (the list), is the seal real (the seal), what to do if wrong (the note). The keeper checks every letter.</h2><p>SPF lists the servers allowed to send mail for a domain, DKIM is a digital signature only the domain owner can make, and DMARC is the policy for when both fail (none, quarantine, reject). All three are published as DNS records and checked by the receiving mail gateway.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>SPF</dt><dd><b>Who may send.</b> The list of couriers allowed to send letters in our castle's name. Pinned at the <a href="dns-en.html">village desk</a>.</dd></div><div><dt>DKIM</dt><dd><b>The seal only the post can press.</b> Pressed to match the letter's contents, so it breaks if anyone edits it on the way.</dd></div><div><dt>DMARC</dt><dd><b>What to do if it's wrong.</b> Our castle picks one of: leave it, set it aside, throw it away. It also gets reports of what happened.</dd></div><div><dt>Spoofing</dt><dd><b>Writing someone else's name on the envelope.</b> The thief sending fakes in our castle's name. Exactly what the three stamps stop.</dd></div><div><dt>Email gateway</dt><dd><b>The one who checks every letter.</b> Reads the stamps, checks for bugs, sets the odd ones aside.</dd></div><div><dt>Quarantine</dt><dd><b>The set-aside box.</b> Not thrown away, but not delivered either. A person looks later.</dd></div><div><dt>Phishing</dt><dd><b>A letter pretending to be the post.</b> Before the stamps, we trusted handwriting alone. → <a href="phishing-en.html">the letter that pretends to be the post</a></dd></div><div><dt>Security awareness training</dt><dd><b>Staying wary even when every stamp is right.</b> Even a genuine letter can carry a lie. → <a href="awareness-en.html">the thief lessons everyone attends</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="antivirus-en.html">The Guard with the Bug Cards →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

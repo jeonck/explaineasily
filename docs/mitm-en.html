@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Postman Who Opens Your Letters</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="mitm-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Security</div>
+<h1>What is a <em>Man-in-the-Middle Attack</em>?</h1>
+<p class="sub">A man-in-the-middle attack, told as a story about a fake postman who secretly opens and rewrites letters between the castle and the shop.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="Me at the castle holding a letter, and a blue-hat postman on the road carrying it to the shop" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(30,90) scale(0.7)"><rect x="0" y="40" width="160" height="110" fill="var(--stone-dark)"/><rect x="0" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="40" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="80" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="120" y="20" width="20" height="24" fill="var(--stone-dark)"/><path d="M60 150 V110 a20 20 0 0 1 40 0 V150 Z" fill="var(--night)"/></g><text x="86" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">our castle</text><g transform="translate(150,110) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(212,130) scale(0.5)"><rect width="120" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M0 4 L60 40 L120 4" stroke="#C9A86A" stroke-width="2" fill="none"/></g><path d="M280 200 L560 200" stroke="var(--stone-dark)" stroke-width="3" stroke-dasharray="10 8"/><g transform="translate(360,100) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5B8DEF"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(414,138) scale(0.45)"><rect width="120" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M0 4 L60 40 L120 4" stroke="#C9A86A" stroke-width="2" fill="none"/></g><text x="388" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">the postman</text><g transform="translate(620,100) scale(1.0)"><rect x="-50" y="14" width="100" height="76" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><rect x="-56" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="-40" y="8" width="16" height="14" fill="var(--bad)"/><rect x="-24" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="-8" y="8" width="16" height="14" fill="var(--bad)"/><rect x="8" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="24" y="8" width="16" height="14" fill="var(--bad)"/><rect x="40" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="-14" y="52" width="28" height="38" fill="var(--night)"/><rect x="18" y="40" width="22" height="20" fill="var(--sky)"/><text x="0" y="0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">SHOP</text></g><text x="620" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">the shop</text><text x="380" y="270" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">'send 10 coins' — the postman carries the letter</text></svg>
+<p>We send a letter from the castle to the shop. The postman carries it.<small>The letter says 'send 10 coins'. When it reaches the shop, the shop reads it.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A masked thief in postman's clothes in the middle. The left letter reads '10 coins, to the shop'; the right one, in red, '100 coins, to the thief'. Me and the shop at either end are smiling" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--bad-soft)"/><g transform="translate(60,100) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="90" y="225" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">me: no idea</text><g transform="translate(180,90) scale(1.0)"><rect width="120" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="10" y="30" text-anchor="start" font-size="11" font-weight="700" fill="#142033">10 coins</text><text x="10" y="46" text-anchor="start" font-size="11" font-weight="700" fill="#142033">to the shop</text></g><text x="240" y="195" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">opens and reads</text><g transform="translate(340,80) scale(1.0)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5B8DEF"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><text x="375" y="225" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)" class="d">the fake postman</text><g transform="translate(440,90) scale(1.0)"><rect width="120" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="10" y="30" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">100 coins</text><text x="10" y="46" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">to the thief</text></g><text x="500" y="195" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">rewrites it</text><g transform="translate(660,100) scale(0.9)"><rect x="-50" y="14" width="100" height="76" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><rect x="-56" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="-40" y="8" width="16" height="14" fill="var(--bad)"/><rect x="-24" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="-8" y="8" width="16" height="14" fill="var(--bad)"/><rect x="8" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="24" y="8" width="16" height="14" fill="var(--bad)"/><rect x="40" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="-14" y="52" width="28" height="38" fill="var(--night)"/><rect x="18" y="40" width="22" height="20" fill="var(--sky)"/><text x="0" y="0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">SHOP</text></g><text x="660" y="225" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">the shop: no idea</text><text x="380" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">the letter arrived just fine — but the words changed</text></svg>
+<p>A fake postman opens the letter, reads it, and rewrites it. Neither side knows.<small>The letter still arrives. But the words are different. Both I and the shop believe he is the real postman.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="Night. A masked thief in postman's clothes stands in the middle of the road between our castle and the shop, arrows running both ways" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--night)"/><circle cx="660" cy="50" r="26" fill="#F5E6B8"/><circle cx="120" cy="40" r="2" fill="#F5E6B8"/><circle cx="300" cy="70" r="2" fill="#F5E6B8"/><circle cx="500" cy="30" r="2" fill="#F5E6B8"/><circle cx="420" cy="90" r="2" fill="#F5E6B8"/><circle cx="200" cy="120" r="2" fill="#F5E6B8"/><ellipse cx="380" cy="370" rx="440" ry="30" fill="#0A1120"/><g transform="translate(40,120) scale(0.8)"><rect x="0" y="40" width="160" height="110" fill="var(--stone-dark)"/><rect x="0" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="40" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="80" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="120" y="20" width="20" height="24" fill="var(--stone-dark)"/><path d="M60 150 V110 a20 20 0 0 1 40 0 V150 Z" fill="var(--night)"/></g><text x="104" y="268" text-anchor="middle" font-size="12" font-weight="700" fill="#C9D5E6">our castle</text><path d="M180 190 L300 190" stroke="var(--accent)" stroke-width="3" stroke-dasharray="8 6"/><path d="M300 190 l-12 -7 v14z" fill="var(--accent)"/><path d="M460 190 L590 190" stroke="var(--accent)" stroke-width="3" stroke-dasharray="8 6"/><path d="M590 190 l-12 -7 v14z" fill="var(--accent)"/><g transform="translate(345,90) scale(1.0)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5B8DEF"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(400,150) scale(0.4)"><rect width="120" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M0 4 L60 40 L120 4" stroke="#C9A86A" stroke-width="2" fill="none"/></g><text x="380" y="232" text-anchor="middle" font-size="13" font-weight="700" fill="#F5E6B8" class="d">the fake postman in the middle</text><g transform="translate(660,140) scale(0.9)"><rect x="-50" y="14" width="100" height="76" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><rect x="-56" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="-40" y="8" width="16" height="14" fill="var(--bad)"/><rect x="-24" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="-8" y="8" width="16" height="14" fill="var(--bad)"/><rect x="8" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="24" y="8" width="16" height="14" fill="var(--bad)"/><rect x="40" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="-14" y="52" width="28" height="38" fill="var(--night)"/><rect x="18" y="40" width="22" height="20" fill="var(--sky)"/><text x="0" y="0" text-anchor="middle" font-size="12" font-weight="700" fill="#F5E6B8" class="d">SHOP</text></g><text x="660" y="268" text-anchor="middle" font-size="12" font-weight="700" fill="#C9D5E6">the shop</text><text x="380" y="305" text-anchor="middle" font-size="13" font-weight="700" fill="#F5E6B8" class="d">slips between two people, reads and rewrites their letters</text><text x="380" y="338" text-anchor="middle" font-size="12" font-weight="700" fill="#C9D5E6">both sides believe he is the real postman</text></svg>
+<p>A man-in-the-middle attack is a postman who opens your letters on the way.<small>He slips between two people. He reads the letter, rewrites it, seals it again, and passes it on.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="22" width="40" height="28" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M8 22 l20 14 l20 -14" stroke="#C9A86A" stroke-width="2" fill="none"/><ellipse cx="48" cy="20" rx="12" ry="7" fill="var(--panel)" stroke="var(--bad)" stroke-width="2"/><circle cx="48" cy="20" r="3.5" fill="var(--bad)"/></svg><b>Reads in secret</b><span>the letter's secrets leak</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="12" width="34" height="40" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><rect x="16" y="22" width="20" height="3" fill="#C9A86A"/><rect x="16" y="30" width="20" height="3" fill="var(--bad)"/><path d="M52 14 l-18 24 l-4 8 l8 -4 l18 -24z" fill="var(--bad)"/></svg><b>Rewrites it</b><span>10 coins become 100</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="14" cy="26" r="9" fill="#E8C9A8"/><path d="M8 24 q6 6 12 0" stroke="var(--night)" stroke-width="2" fill="none"/><circle cx="50" cy="26" r="9" fill="#E8C9A8"/><path d="M44 24 q6 6 12 0" stroke="var(--night)" stroke-width="2" fill="none"/><circle cx="32" cy="34" r="9" fill="#E8C9A8"/><path d="M22 32 Q32 18 42 32 Z" fill="#5B8DEF"/><rect x="25" y="32" width="14" height="5" fill="#111C30"/></svg><b>Neither side knows</b><span>he wears the postman's coat</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="16" y="14" width="32" height="24" rx="8" fill="#4A5A72"/><rect x="30" y="38" width="4" height="16" fill="var(--stone-dark)"/><text x="32" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--bad)">?</text></svg><b>The shared mailbox</b><span>the easiest place to slip in</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: the fake postman sweats over a sealed letter with a lock — 'can't read it!'. Right: I check the shop's golden badge — 'yes, the real shop's seal'" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(90,90) scale(1.0)"><rect width="120" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M0 4 L60 40 L120 4" stroke="#C9A86A" stroke-width="2" fill="none"/><rect x="50" y="26" width="20" height="18" rx="3" fill="#E9B44C"/><path d="M54 26 v-7 a6 6 0 0 1 12 0 v7" stroke="#E9B44C" stroke-width="3" fill="none"/></g><g transform="translate(250,80) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5B8DEF"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="230" y="20" width="150" height="34" rx="14" fill="var(--panel)" stroke="var(--bad)" stroke-width="2"/><path d="M295.0 54 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--bad)" stroke-width="2"/><rect x="232" y="50" width="146" height="6" fill="var(--panel)"/><text x="305.0" y="40.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">can't read it!</text><text x="200" y="215" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">sealed letter: unreadable without the key</text><path d="M380 30 V230" stroke="var(--line)" stroke-width="2" stroke-dasharray="6 6"/><g transform="translate(560,90) scale(0.9)"><rect x="-50" y="14" width="100" height="76" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><rect x="-56" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="-40" y="8" width="16" height="14" fill="var(--bad)"/><rect x="-24" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="-8" y="8" width="16" height="14" fill="var(--bad)"/><rect x="8" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="24" y="8" width="16" height="14" fill="var(--bad)"/><rect x="40" y="8" width="16" height="14" fill="#FFF8E7"/><rect x="-14" y="52" width="28" height="38" fill="var(--night)"/><rect x="18" y="40" width="22" height="20" fill="var(--sky)"/><text x="0" y="0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">SHOP</text></g><g transform="translate(604,100) scale(0.9)"><circle r="16" fill="#E9B44C" stroke="#C9822B" stroke-width="3"/><path d="M-7 0 l5 5 l9 -10" stroke="#FFF" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(650,100) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="430" y="20" width="190" height="34" rx="14" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><path d="M515.0 54 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><rect x="432" y="50" width="186" height="6" fill="var(--panel)"/><text x="525.0" y="40.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">yes, the real shop's seal</text><text x="570" y="215" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">shop ID: check it is real first</text><text x="380" y="262" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">seal + ID = a postman in the middle can do nothing</text><text x="380" y="296" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">the seal is encryption, the ID is a certificate</text></svg>
+<p>Seal the letter, and check the shop is real first.<small>A <a href="encryption-en.html">sealed letter</a> can't be read without the key. Checking the shop's ID first means we never send letters to a fake shop.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: a masked thief lurking by the village's shared mailbox. Right: I send a sealed letter through a locked tunnel" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(20,120) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(120,100) scale(1.0)"><rect x="-6" y="40" width="12" height="50" fill="var(--stone-dark)"/><rect x="-34" y="0" width="68" height="44" rx="10" fill="#4A5A72"/><rect x="-22" y="12" width="44" height="22" rx="3" fill="var(--panel)"/><path d="M-22 14 L0 28 L22 14" stroke="var(--line)" stroke-width="2" fill="none"/></g><g transform="translate(180,125) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="120" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">the village's shared mailbox</text><g transform="translate(260,95) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><text x="285" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">anyone could be peeking</text><g transform="translate(360,90) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="420" y="120" width="260" height="50" rx="25" fill="var(--night)" stroke="var(--good)" stroke-width="4"/><g transform="translate(520,130) scale(0.5)"><rect width="120" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M0 4 L60 40 L120 4" stroke="#C9A86A" stroke-width="2" fill="none"/><rect x="50" y="26" width="20" height="18" rx="3" fill="#E9B44C"/><path d="M54 26 v-7 a6 6 0 0 1 12 0 v7" stroke="#E9B44C" stroke-width="3" fill="none"/></g><text x="550" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)">send it through the sealed tunnel</text><text x="380" y="250" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">careful with the shared box, safe in the tunnel</text><text x="380" y="278" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">a fake info desk can also point you the wrong way</text></svg>
+<p>Be careful with the village's shared mailbox. The sealed tunnel is safe.<small>Public Wi-Fi is the shared mailbox. Send through the <a href="vpn-en.html">sealed tunnel</a> instead. A fake <a href="dns-en.html">info desk</a> can also send you the wrong way.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Man-in-the-middle</b> = a fake postman who <b>secretly slips between</b> the castle and the shop, <b>reading and rewriting</b> letters. Stop it with <b>sealed letters</b> and <b>checking the shop's ID</b>.</h2><p>An attacker inserts themselves between two communicating parties to eavesdrop on or tamper with traffic. HTTPS (TLS encryption plus certificate validation) and VPNs are the main defenses.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Man-in-the-middle (MITM)</dt><dd><b>The postman who opens letters on the way.</b> Slips between two sides, reads and rewrites. Neither side knows.</dd></div><div><dt>Eavesdropping</dt><dd><b>Reading in secret.</b> Even without changing anything, secrets leak just by being read.</dd></div><div><dt>Tampering</dt><dd><b>Rewriting.</b> 10 coins become 100; the shop's address becomes the thief's barn.</dd></div><div><dt>Public Wi-Fi</dt><dd><b>The village's shared mailbox.</b> Anyone can use it, so it is the easiest place to slip in.</dd></div><div><dt>ARP / DNS spoofing</dt><dd><b>The fake info desk.</b> Gives wrong directions so letters go to the thief. → <a href="dns-en.html">the village info desk</a></dd></div><div><dt>HTTPS</dt><dd><b>Sealed letter + shop ID.</b> Does both at once. The padlock in the address bar is the sign. → <a href="encryption-en.html">the letter no one can read without the key</a></dd></div><div><dt>Certificate</dt><dd><b>The shop's ID.</b> Stamped by the town office, so a thief can't fake it.</dd></div><div><dt>VPN</dt><dd><b>The sealed tunnel.</b> Skips the shared mailbox and goes straight to the castle. → <a href="vpn-en.html">the sealed tunnel</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="bruteforce-en.html">The Thief With a Thousand Keys →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>
