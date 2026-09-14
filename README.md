@@ -78,6 +78,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | Vulnerability Management | 매달 도는 틈 장부 | [vulnmgmt-ko](docs/vulnmgmt-ko.html) | [vulnmgmt-en](docs/vulnmgmt-en.html) |
 | Attack Surface Management | 바깥에서 세는 우리 성의 문 | [asm-ko](docs/asm-ko.html) | [asm-en](docs/asm-en.html) |
 | Security Awareness Training | 성 사람 모두가 듣는 도둑 수업 | [awareness-ko](docs/awareness-ko.html) | [awareness-en](docs/awareness-en.html) |
+| Data Classification | 종이마다 찍는 색 도장 | [classification-ko](docs/classification-ko.html) | [classification-en](docs/classification-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
