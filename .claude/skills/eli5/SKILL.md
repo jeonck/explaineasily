@@ -139,6 +139,18 @@ description: 어려운 용어·개념을 "다섯 살도 알 수 있게" 그림�
 | security | HSM | 열쇠를 만드는 쇠금고 |
 | security | Allowlist | 명단에 있는 사람만 |
 | security | Cyber Insurance | 도둑 보험 |
+| security | the CIA Triad | 지키는 것 세 가지: 못 보게, 못 바꾸게, 늘 쓰게 |
+| security | Defense in Depth | 겹겹이 두른 성벽 |
+| security | DMZ | 성벽과 성벽 사이의 마당 |
+| security | Hardening | 새 방을 쓰기 전에 하는 문단속 |
+| security | MDM and BYOD | 성 밖으로 들고 나가는 작은 상자 |
+| security | Wi-Fi Security | 마을 광장의 공짜 우체통 |
+| security | BEC, Smishing and Vishing | 왕의 글씨체로 온 편지 |
+| security | Trojans, Worms, Rootkits and Backdoors | 벌레 도감: 선물 벌레, 기어 다니는 벌레, 숨는 벌레, 뒷문 벌레 |
+| security | Active Directory | 성의 명부와 열쇠를 한꺼번에 쥔 관리소 |
+| security | CSRF | 손님 팔찌를 빌려 몰래 보내는 쪽지 |
+| security | OSINT | 마을 소문만 모아도 성 지도가 나와요 |
+| security | Physical Security | 성문을 잠가도 창문이 열려 있으면 |
 | design | Dialog Map | 방과 문의 지도 |
 
 비유가 **깨지는 지점**을 반드시 패널 하나로 넣는다. 이게 정직한 설명과 거짓말의 차이다.

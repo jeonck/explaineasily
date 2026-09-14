@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>손님 팔찌를 빌려 몰래 보내는 쪽지</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="csrf-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 보안</div>
+<h1><em>CSRF</em>가 뭐예요?</h1>
+<p class="sub">CSRF(Cross-Site Request Forgery)와 그 사촌 클릭재킹을, 손님이 찬 입장 팔찌를 빌려 손님 몰래 창구에 쪽지를 보내는 도둑 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="금화 창구의 직원이 '팔찌 있네요 — 됐어요!' 하며 팔찌 찬 손님의 쪽지(대장장이에게 금화 3개)를 받음. 오른쪽 마을 게시판엔 도둑이 붙인 '공짜 빵!' 종이" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(115,60) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="60" y="8" width="200" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M150.0 42 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="62" y="38" width="196" height="6" fill="var(--panel)"/><text x="160.0" y="28.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">팔찌 있네요 — 됐어요!</text><g transform="translate(230,100) scale(1.0)"><rect x="-42.0" y="-26" width="84" height="52" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="-4" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">대장장이에게</text><text x="0" y="12" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">금화 3개</text></g><rect x="40" y="150" width="220" height="80" rx="4" fill="#8B5E3C"/><rect x="36" y="146" width="228" height="10" rx="3" fill="#5A3B22"/><text x="150.0" y="200" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF8E7" class="d">금화 창구</text><g transform="translate(290,110) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="50" y="62" width="12" height="34" rx="6" fill="#E8C9A8"/><rect x="46" y="86" width="20" height="9" rx="4" fill="var(--accent)" stroke="#142033" stroke-width="1.5"/></g><text x="320" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">팔찌 찬 손님</text><rect x="613.0" y="60" width="14" height="140" fill="#5A3B22"/><rect x="520" y="60" width="200" height="120" rx="4" fill="#8B5E3C" stroke="#5A3B22" stroke-width="4"/><rect x="545" y="80" width="60" height="40" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="1.5"/><path d="M553 96.0 h44 M553 108.0 h36" stroke="#C9A86A" stroke-width="2"/><rect x="615" y="80" width="60" height="40" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="1.5"/><path d="M623 96.0 h44 M623 108.0 h36" stroke="#C9A86A" stroke-width="2"/><rect x="575" y="125" width="90" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="1.5"/><text x="620.0" y="151.0" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)" class="d">공짜 빵!</text><text x="620" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">마을 게시판</text><g transform="translate(520,190) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><text x="541" y="280" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)">도둑이 종이를 붙였어요</text><text x="380" y="306" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">창구는 팔찌만 봐요 — 편하지만, 도둑도 그걸 알아요</text></svg>
+<p>창구는 손님 팔찌만 보고 쪽지를 들어줘요.<small><a href="session-ko.html">입장 팔찌</a>를 찬 손님이 쪽지를 내면 창구는 팔찌만 보고 금화를 보내요. 편해요. 그런데 마을 게시판에 도둑이 이상한 종이를 붙여 뒀어요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="손님이 게시판의 '공짜 빵!' 종이를 보는 사이, 종이에서 빨간 점선이 손님 뒤로 돌아 창구로 감. 그 쪽지엔 '금화 전부 도둑에게 — 손님 팔찌 붙여서'. 직원은 '팔찌 진짜네 — 보내요!' 하고 금화가 도둑에게 감" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><rect x="113.0" y="50" width="14" height="130" fill="#5A3B22"/><rect x="40" y="50" width="160" height="110" rx="4" fill="#8B5E3C" stroke="#5A3B22" stroke-width="4"/><rect x="60" y="70" width="120" height="70" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="1.5"/><text x="120.0" y="109.0" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)" class="d">공짜 빵!</text><g transform="translate(215,100) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><rect x="50" y="62" width="12" height="34" rx="6" fill="#E8C9A8"/><rect x="46" y="86" width="20" height="9" rx="4" fill="var(--accent)" stroke="#142033" stroke-width="1.5"/></g><text x="245" y="230" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">손님은 빵 그림만 봐요</text><path d="M185 68 Q240 10 295 40" stroke="var(--bad)" stroke-width="2.5" fill="none" stroke-dasharray="6 4"/><path d="M445 45 Q490 45 520 82" stroke="var(--bad)" stroke-width="2.5" fill="none" stroke-dasharray="6 4"/><g transform="translate(370,45) scale(1.0)"><rect x="-75.0" y="-26" width="150" height="52" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="-4" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">금화 전부 도둑에게</text><text x="0" y="12" text-anchor="middle" font-size="9" font-weight="700" fill="var(--bad)">— 손님 팔찌 붙여서</text></g><text x="370" y="92" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)" class="d">손님 몰래 보내는 쪽지</text><g transform="translate(520,80) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="500" y="18" width="180" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M580.0 52 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="502" y="48" width="176" height="6" fill="var(--panel)"/><text x="590.0" y="38.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">팔찌 진짜네 — 보내요!</text><rect x="450" y="170" width="200" height="80" rx="4" fill="#8B5E3C"/><rect x="446" y="166" width="208" height="10" rx="3" fill="#5A3B22"/><text x="550.0" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="#FFF8E7" class="d">금화 창구</text><circle cx="662" cy="200" r="7" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle cx="674" cy="206" r="7" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle cx="652" cy="208" r="7" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><g transform="translate(680,130) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><text x="690" y="250" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)">금화는 도둑에게</text><text x="380" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">팔찌는 진짜, 뜻은 가짜</text><text x="380" y="336" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">손님은 아무것도 시킨 적이 없어요</text></svg>
+<p>CSRF는 손님 팔찌를 빌려 몰래 보내는 쪽지예요.<small>손님은 빵 그림만 봤어요. 그런데 그 종이가 손님 팔찌를 달아 '내 금화를 도둑에게' 쪽지를 창구로 보내요. 팔찌는 진짜라서 창구는 믿어요 — 뜻만 가짜예요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="29" y="10" width="6" height="50" fill="#5A3B22"/><rect x="8" y="12" width="48" height="32" rx="3" fill="#8B5E3C"/><rect x="16" y="18" width="32" height="20" rx="2" fill="#FFF8E7"/><path d="M22 25 h20 M22 31 h14" stroke="var(--bad)" stroke-width="2"/></svg><b>게시판의 종이</b><span>도둑이 붙여 뒀어요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="22" r="10" fill="#E8C9A8"/><rect x="14" y="34" width="20" height="22" rx="5" fill="#4A5A72"/><path d="M40 20 q16 6 8 24" stroke="var(--bad)" stroke-width="3" fill="none" stroke-dasharray="4 3"/><path d="M44 40 l4 6 l5 -7" stroke="var(--bad)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>손님 몰래</b><span>빵 그림만 봤을 뿐</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="34" rx="20" ry="11" fill="none" stroke="var(--accent)" stroke-width="8"/><rect x="24" y="16" width="16" height="11" rx="3" fill="#142033"/><circle cx="32" cy="21" r="2.5" fill="#F5E6B8"/></svg><b>팔찌는 진짜</b><span>그래서 창구가 믿어요</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="36" r="12" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><path d="M38 36 h16" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><path d="M48 30 l7 6 l-7 6" stroke="var(--bad)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M14 14 l10 10 M24 14 l-10 10" stroke="var(--bad)" stroke-width="3" stroke-linecap="round"/></svg><b>뜻은 가짜</b><span>손님은 시킨 적 없어요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="금화 창구 위에 반투명 종이 '공짜 빵!'이 덮여 있고, '여기 눌러요!' 점선 표시 밑으로 진짜 '금화 보내기' 빨간 버튼이 비침. 팔찌 찬 손님이 손가락으로 그 자리를 누름" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><rect x="200" y="50" width="280" height="180" rx="8" fill="var(--panel)" stroke="var(--line)" stroke-width="3"/><text x="340" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)" class="d">금화 창구</text><rect x="300" y="150" width="150" height="40" rx="8" fill="var(--bad)"/><text x="375" y="175" text-anchor="middle" font-size="13" font-weight="700" fill="#FFF" class="d">금화 보내기</text><rect x="215" y="35" width="280" height="175" rx="8" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3" opacity="0.6"/><text x="355" y="62" text-anchor="middle" font-size="14" font-weight="700" fill="var(--bad)" class="d">공짜 빵!</text><rect x="300" y="150" width="150" height="40" rx="8" fill="none" stroke="var(--good)" stroke-width="3" stroke-dasharray="7 5"/><text x="375" y="135" text-anchor="middle" font-size="13" font-weight="700" fill="var(--good)" class="d">↓ 여기 눌러요!</text><rect x="455" y="138" width="115" height="12" rx="6" fill="#E8C9A8"/><g transform="translate(560,90) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="50" y="62" width="12" height="34" rx="6" fill="#E8C9A8"/><rect x="46" y="86" width="20" height="9" rx="4" fill="var(--accent)" stroke="#142033" stroke-width="1.5"/></g><text x="640" y="225" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">투명 종이 밑에 진짜 버튼</text><text x="640" y="247" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">손님 손가락이 눌러요</text><text x="380" y="290" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">클릭재킹 — 팔찌 빌리기의 사촌: 손가락까지 빌려요</text></svg>
+<p>사촌도 있어요: 투명 종이 밑에 진짜 버튼을 숨겨요.<small>도둑이 우리 창구 위에 투명 종이를 덮고 '여기 눌러요!'라고 써요. 손님이 누르면 밑에 있던 진짜 '금화 보내기' 버튼이 눌려요. 팔찌도 진짜, 손가락도 진짜예요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="셋: 초록 '번호표 7482' 쪽지와 번호 없는 게시판 쪽지에 ×, '우리 창구에서만' 표가 붙은 팔찌, 남의 창문 안에 × 표시" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(130,95) scale(1.0)"><rect x="-55.0" y="-26" width="110" height="52" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="-4" text-anchor="middle" font-size="10" font-weight="700" fill="var(--good)" class="d">번호표 7482</text><text x="0" y="12" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">쪽지마다 새 번호</text></g><g transform="translate(130,165) scale(1.0)"><rect x="-55.0" y="-26" width="110" height="52" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2" stroke-dasharray="6 4"/><text x="0" y="-4" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)" class="d">번호 없음</text><text x="0" y="12" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">게시판에서 온 쪽지</text></g><path d="M192 157 l16 16 M208 157 l-16 16" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><text x="130" y="225" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">그 자리에서 준 번호표</text><text x="130" y="247" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">게시판 종이는 번호를 몰라요</text><g transform="translate(380,110) scale(1.6)"><ellipse rx="24" ry="13" fill="none" stroke="var(--accent)" stroke-width="9"/><rect x="-9" y="-19" width="18" height="12" rx="3" fill="#142033"/><circle cy="-13" r="2.5" fill="#F5E6B8"/></g><text x="380" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">우리 창구에서만</text><text x="380" y="225" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">팔찌는 우리 창구에서만</text><text x="380" y="247" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">게시판에서 온 쪽지엔 안 붙어요</text><rect x="580" y="50" width="120" height="120" rx="4" fill="var(--panel)" stroke="#5A3B22" stroke-width="6"/><path d="M640 50 v120 M580 110 h120" stroke="#5A3B22" stroke-width="4"/><rect x="600" y="120" width="80" height="30" rx="3" fill="#8B5E3C"/><path d="M610 115 l60 40 M670 115 l-60 40" stroke="var(--bad)" stroke-width="5" stroke-linecap="round"/><text x="640" y="190" text-anchor="middle" font-size="9" font-weight="700" fill="var(--muted)">남의 창문</text><text x="640" y="225" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">남의 창문엔 안 나와요</text><text x="640" y="247" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">투명 종이 밑에 깔릴 수 없어요</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">쪽지엔 번호표, 팔찌는 우리 창구만, 창문은 우리 것만</text><text x="380" y="326" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">팔찌를 빌려도 쪽지가 통하지 않아요</text></svg>
+<p>쪽지엔 번호표, 팔찌는 우리 창구만, 창문은 우리 것만.<small>창구가 그 자리에서 준 번호표 없는 쪽지는 안 받아요 — 게시판 종이는 번호를 몰라요. 팔찌는 우리 창구에 낸 쪽지에만 붙고, 우리 창구는 남의 창문 안에 나오지 않아요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 도둑이 '빵 하나 주세요 …그리고 금고 열어' 쪽지를 직접 냄. 오른쪽: 팔찌 찬 손님이 자기도 모르게 '금화 도둑에게' 쪽지를 냄. 가운데 점선" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><path d="M380 30 v210" stroke="var(--line)" stroke-width="2" stroke-dasharray="6 5"/><g transform="translate(110,70) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(235,110) scale(1.0)"><rect x="-60.0" y="-26" width="120" height="52" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="-4" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">빵 하나 주세요</text><text x="0" y="12" text-anchor="middle" font-size="9" font-weight="700" fill="var(--bad)">…그리고 금고 열어</text></g><text x="190" y="210" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">쪽지에 숨긴 명령</text><text x="190" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">도둑이 자기 손으로 보내요</text><g transform="translate(490,70) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><rect x="50" y="62" width="12" height="34" rx="6" fill="#E8C9A8"/><rect x="46" y="86" width="20" height="9" rx="4" fill="var(--accent)" stroke="#142033" stroke-width="1.5"/></g><g transform="translate(620,110) scale(1.0)"><rect x="-60.0" y="-26" width="120" height="52" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="-4" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)" class="d">금화 도둑에게</text><text x="0" y="12" text-anchor="middle" font-size="9" font-weight="700" fill="#142033">(손님은 몰라요)</text></g><text x="570" y="210" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">남의 팔찌로 보낸 쪽지</text><text x="570" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">손님이 자기도 모르게 보내요</text><text x="380" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">둘 다 창구 앞 쪽지 검토원이 먼저 봐요</text><text x="380" y="292" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">인젝션은 쪽지 속을 노리고, 이 도둑은 팔찌를 노려요</text></svg>
+<p>쪽지 속을 노리는 도둑과 팔찌를 노리는 도둑은 달라요.<small><a href="injection-ko.html">쪽지에 숨긴 명령</a>은 도둑이 자기 손으로 보내고, 이 도둑은 손님 손으로 보내게 해요. 둘 다 <a href="waf-ko.html">창구 앞 쪽지 검토원</a>이 먼저 보지만, 팔찌 도둑은 번호표가 있어야 막혀요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>CSRF</b> = 도둑이 붙인 종이가 <b>손님 팔찌를 빌려</b> 손님 몰래 창구에 <b>가짜 뜻의 쪽지</b>를 보내는 것. <b>번호표</b>(그 자리에서 준 비밀 번호), <b>팔찌는 우리 창구만</b>, <b>남의 창문엔 안 나오기</b>로 막아요.</h2><p>Cross-Site Request Forgery. 로그인된 사용자의 브라우저가 쿠키를 자동으로 붙이는 걸 이용해, 다른 사이트에서 사용자 몰래 요청을 보내게 하는 공격이에요. CSRF 토큰, SameSite 쿠키, 그리고 클릭재킹을 막는 X-Frame-Options / CSP frame-ancestors 로 막아요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>CSRF<br><small>CSRF</small></dt><dd><b>팔찌 빌려 몰래 보내는 쪽지.</b> 손님은 진짜, 팔찌도 진짜, 뜻만 가짜. 손님이 로그인한 채로 도둑의 페이지를 열면 생겨요.</dd></div><div><dt>CSRF 토큰<br><small>CSRF token</small></dt><dd><b>그 자리에서 준 번호표.</b> 창구가 쪽지 종이에 미리 적어 준 비밀 번호. 게시판 종이는 이 번호를 알 수 없어요.</dd></div><div><dt>SameSite 쿠키<br><small>SameSite cookie</small></dt><dd><b>우리 창구에서만 통하는 팔찌.</b> 다른 마을에서 보낸 쪽지엔 팔찌가 안 붙어요. 요즘 브라우저는 기본으로 이렇게 해요.</dd></div><div><dt>클릭재킹<br><small>Clickjacking</small></dt><dd><b>투명 종이 밑의 진짜 버튼.</b> 손님이 '여기 눌러요'를 누르면 밑의 진짜 버튼이 눌려요. 팔찌 빌리기의 사촌이에요.</dd></div><div><dt>X-Frame-Options / CSP<br><small>X-Frame-Options / CSP</small></dt><dd><b>남의 창문엔 안 나오기.</b> 우리 창구를 다른 페이지 안에 끼워 넣을 수 없게 해요. 그러면 투명 종이를 덮을 곳이 없어요.</dd></div><div><dt>세션<br><small>Session</small></dt><dd><b>입장 팔찌.</b> 창구가 손님을 알아보는 팔찌. 훔칠 수도, 빌릴 수도 있어요. → <a href="session-ko.html">입장 팔찌를 훔치는 도둑</a></dd></div><div><dt>인젝션과의 차이<br><small>Versus injection</small></dt><dd><b>쪽지 속 vs 팔찌.</b> 인젝션은 쪽지 안에 명령을 숨기고, CSRF는 남의 팔찌로 보내요. → <a href="injection-ko.html">쪽지에 숨긴 명령</a></dd></div><div><dt>WAF<br><small>WAF</small></dt><dd><b>창구 앞 쪽지 검토원.</b> 이상한 쪽지를 먼저 걸러요. 하지만 팔찌 도둑은 번호표가 있어야 확실히 막혀요. → <a href="waf-ko.html">창구 앞 쪽지 검토원</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="osint-ko.html">마을 소문만 모아도 성 지도가 나와요 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

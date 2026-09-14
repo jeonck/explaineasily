@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three Things to Keep: No Peeking, No Tampering, Always There</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="ciatriad-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Security</div>
+<h1>What is the <em>CIA Triad</em>?</h1>
+<p class="sub">The CIA triad — confidentiality, integrity, availability — told as a story about the three promises a castle keeps.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="Beside a king asking whether keeping thieves out is enough, three scenes: a thief peeks at a letter, a ledger's 30 loaves is changed to 80, and a crowd of fake guests at the gate keeps a real guest out" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(40,80) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="20" y="18" width="250" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M135.0 52 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="22" y="48" width="246" height="6" fill="var(--panel)"/><text x="145.0" y="38.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">as long as no thief gets in, right?</text><g transform="translate(240,95) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(335,150) scale(1.0)"><rect x="-20" y="-42" width="40" height="28" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-12 -34 h24 M-12 -26 h16" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/><rect x="-30" y="-20" width="60" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-30 -20 l30 20 l30 -20" stroke="#C9A86A" stroke-width="2" fill="none"/></g><path d="M272 116 L312 118" stroke="var(--bad)" stroke-width="3" stroke-dasharray="4 4" stroke-linecap="round"/><text x="300" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">someone peeks</text><g transform="translate(470,150) scale(1.0)"><rect x="-32" y="-40" width="64" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="-22" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">bread today</text><text x="0" y="0" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">30 loaves</text><path d="M-24 -4 h48" stroke="var(--bad)" stroke-width="3" stroke-linecap="round"/><text x="0" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="var(--bad)" class="d">→ 80</text></g><text x="470" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">someone changes it</text><g transform="translate(640,60) scale(0.8)"><rect x="-70" y="30" width="140" height="90" fill="var(--stone-dark)"/><rect x="-70" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="-35" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="0" y="10" width="18" height="20" fill="var(--stone-dark)"/><rect x="35" y="10" width="18" height="20" fill="var(--stone-dark)"/><path d="M-28 120 V78 a28 28 0 0 1 56 0 V120 Z" fill="var(--night)"/></g><g transform="translate(596,128) scale(0.4)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(626,138) scale(0.4)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(656,128) scale(0.4)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(540,150) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="640" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">real guests can't get in</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">even with thieves out, three things can still go wrong</text></svg>
+<p>A castle guards against more than thieves.<small>Even with thieves out, someone can peek at a letter, quietly change the ledger, or block the gate. Three different kinds of trouble.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Beside a locked stone vault, a sweating guard says everything is in the vault but the key is missing, and a cook says the recipe is locked in and there is no bread today" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(150,175) scale(1.7)"><rect x="-30" y="-14" width="60" height="36" rx="3" fill="var(--stone)"/><path d="M-30 -14 h60 v-4 a30 12 0 0 0 -60 0z" fill="#5A3B22"/><rect x="-7" y="-6" width="14" height="12" rx="2" fill="#E9B44C"/><path d="M-4 -6 v-5 a4 4 0 0 1 8 0 v5" stroke="#E9B44C" stroke-width="3" fill="none"/></g><text x="150" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">no peeking: kept</text><g transform="translate(280,75) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="200" y="14" width="230" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M305.0 48 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="202" y="44" width="226" height="6" fill="var(--panel)"/><text x="315.0" y="34.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">all in the vault… now where's the key?</text><g transform="translate(520,95) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#FFF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="440" y="34" width="250" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M555.0 68 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="442" y="64" width="246" height="6" fill="var(--panel)"/><text x="565.0" y="54.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">the recipe's locked in… no bread today</text><text x="560" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">always there: broken</text><text x="380" y="288" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">guard just one, and the castle stops — you need all three</text></svg>
+<p>Keep just one promise, and the castle stops.<small>The guard locked everything in the vault and lost the key. Nobody can peek — not even the cook. So there is no bread today.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="Three big circles: a blue one with a sealed letter (no peeking), an orange one with a fingerprint (no tampering), a green one with two spare chests (always there), each listing which helpers keep it" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><text x="380" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">the three promises a castle keeps</text><circle cx="140" cy="96" r="44" fill="#5B8DEF"/><text x="140" y="172" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)" class="d">no peeking</text><text x="140" y="194" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">others can't read it</text><text x="140" y="218" text-anchor="middle" font-size="11" font-weight="700" fill="var(--accent)">sealed letters · colored stamps</text><circle cx="380" cy="96" r="44" fill="var(--accent)"/><text x="380" y="172" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)" class="d">no tampering</text><text x="380" y="194" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">nobody changes it in secret</text><text x="380" y="218" text-anchor="middle" font-size="11" font-weight="700" fill="var(--accent)">fingerprints · the king's seal</text><circle cx="620" cy="96" r="44" fill="var(--good)"/><text x="620" y="172" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)" class="d">always there</text><text x="620" y="194" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">there when you need it</text><text x="620" y="218" text-anchor="middle" font-size="11" font-weight="700" fill="var(--accent)">spare chests · an open gate</text><g transform="translate(140,96) scale(1.0)"><rect x="-30" y="-20" width="60" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-30 -20 l30 20 l30 -20" stroke="#C9A86A" stroke-width="2" fill="none"/><circle cy="2" r="7" fill="var(--bad)"/></g><g transform="translate(380,90) scale(1.1)" fill="none" stroke="#FFF" stroke-width="2.5" stroke-linecap="round"><path d="M-4 6 a4 4 0 0 1 8 0 v6"/><path d="M-10 6 a10 10 0 0 1 20 0 v10"/><path d="M-16 6 a16 16 0 0 1 32 0 v12"/><path d="M-22 6 a22 22 0 0 1 44 0"/></g><g transform="translate(602,100) scale(0.75)"><rect x="-30" y="-14" width="60" height="36" rx="3" fill="#8B5E3C"/><path d="M-30 -14 h60 v-4 a30 12 0 0 0 -60 0z" fill="#5A3B22"/></g><g transform="translate(640,94) scale(0.75)"><rect x="-30" y="-14" width="60" height="36" rx="3" fill="#8B5E3C"/><path d="M-30 -14 h60 v-4 a30 12 0 0 0 -60 0z" fill="#5A3B22"/></g><text x="380" y="276" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">keep all three, or it isn't a castle</text></svg>
+<p>The CIA triad is the three promises a castle keeps.<small>No peeking (<a href="encryption-en.html">sealed letters</a>, <a href="classification-en.html">colored stamps</a>), no tampering (<a href="hashing-en.html">fingerprints</a>, <a href="pki-en.html">the king's seal</a>), always there (<a href="backup-en.html">spare chests</a>). All three, together.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="20" width="44" height="30" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M10 20 l22 16 l22 -16" stroke="#C9A86A" stroke-width="2" fill="none"/><circle cx="32" cy="38" r="6" fill="var(--bad)"/></svg><b>No peeking</b><span>stolen, still unreadable</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"><path d="M28 34 a4 4 0 0 1 8 0 v8"/><path d="M22 34 a10 10 0 0 1 20 0 v12"/><path d="M16 34 a16 16 0 0 1 32 0 v14"/><path d="M12 30 a20 20 0 0 1 40 0"/></g></svg><b>No tampering</b><span>change it, the print won't match</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="30" width="26" height="20" rx="3" fill="#8B5E3C"/><rect x="8" y="26" width="26" height="6" fill="#5A3B22"/><rect x="30" y="22" width="26" height="20" rx="3" fill="#8B5E3C"/><rect x="30" y="18" width="26" height="6" fill="#5A3B22"/></svg><b>Always there</b><span>through fires and fake crowds</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 12 L12 50 H52 Z" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/><circle cx="32" cy="12" r="5" fill="#5B8DEF"/><circle cx="12" cy="50" r="5" fill="var(--accent)"/><circle cx="52" cy="50" r="5" fill="var(--good)"/><circle cx="32" cy="36" r="4" fill="var(--ink)"/></svg><b>All three at once</b><span>push one too hard, another falls</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A table: no peeking — sealed letters, colored stamps, key rings; no tampering — fingerprints, the king's seal, the logbook; always there — spare chests, line ushers, the next-day plan" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><rect x="40" y="30" width="680" height="240" rx="8" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="40" y="30" width="680" height="36" rx="8" fill="#C9A86A"/><text x="130" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">promise</text><text x="470" y="54" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">who keeps it</text><path d="M220 66 v204" stroke="#C9A86A" stroke-width="1.5"/><path d="M40 134 h680" stroke="#C9A86A" stroke-width="1.5"/><path d="M40 202 h680" stroke="#C9A86A" stroke-width="1.5"/><circle cx="70" cy="100" r="9" fill="#5B8DEF"/><text x="145" y="105" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">no peeking</text><text x="470" y="96" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">sealed letters · colored stamps · key rings</text><text x="470" y="118" text-anchor="middle" font-size="10" font-weight="400" fill="#142033">stolen, still unreadable; not everyone gets a key</text><circle cx="70" cy="168" r="9" fill="var(--accent)"/><text x="145" y="173" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">no tampering</text><text x="470" y="164" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">fingerprints · the king's seal · the logbook</text><text x="470" y="186" text-anchor="middle" font-size="10" font-weight="400" fill="#142033">change it, and the print no longer matches</text><circle cx="70" cy="236" r="9" fill="var(--good)"/><text x="145" y="241" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">always there</text><text x="470" y="232" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">spare chests · line ushers · the next-day plan</text><text x="470" y="254" text-anchor="middle" font-size="10" font-weight="400" fill="#142033">through fires and fake crowds</text><text x="380" y="312" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">every tool in the castle keeps one of these three</text></svg>
+<p>Every tool in the castle keeps one of the three.<small><a href="rbac-en.html">Key rings</a> keep no peeking, the <a href="log-en.html">logbook</a> keeps no tampering, <a href="loadbalancer-en.html">line ushers</a> and the <a href="drp-en.html">next-day plan</a> keep always there. Meet a new tool, and just ask: which of the three?</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A triangle with corners no peeking, no tampering, always there. The bank castle sits toward the first two, the market board toward always there, and our castle is a question mark in the middle. The king wonders whether to lock tighter or hand out more keys" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><path d="M300 60 L150 250 L450 250 Z" fill="var(--panel)" stroke="var(--line)" stroke-width="3"/><circle cx="300" cy="60" r="12" fill="#5B8DEF"/><circle cx="150" cy="250" r="12" fill="var(--accent)"/><circle cx="450" cy="250" r="12" fill="var(--good)"/><text x="300" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">no peeking</text><text x="150" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">no tampering</text><text x="450" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">always there</text><circle cx="240" cy="210" r="7" fill="var(--night)"/><text x="240" y="196" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">the bank castle</text><circle cx="370" cy="220" r="7" fill="var(--night)"/><text x="370" y="206" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">the market board</text><circle cx="300" cy="150" r="9" fill="var(--accent)"/><text x="300" y="136" text-anchor="middle" font-size="11" font-weight="700" fill="var(--accent)" class="d">our castle?</text><g transform="translate(560,90) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="480" y="18" width="260" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M600.0 52 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="482" y="48" width="256" height="6" fill="var(--panel)"/><text x="610.0" y="38.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">lock it tighter, or hand out more keys?</text><text x="600" y="220" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">tighter: nobody can use it · looser: it leaks</text><text x="380" y="304" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">the three pull on each other — every castle sets its own balance</text></svg>
+<p>The three pull on each other. Every castle sets its own balance.<small>Tighter, and nobody can use it; looser, and it leaks. Where to lean is decided on the <a href="risk-en.html">scale</a>, and whatever you keep, you keep <a href="defenseindepth-en.html">in layers</a>.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>The CIA triad</b> = the three promises a castle keeps — <b>no peeking</b>, <b>no tampering</b>, <b>always there</b>. They pull on each other, so you weigh them <b>together</b>.</h2><p>Confidentiality, Integrity, Availability — the three goals of information security. Encryption and access control serve confidentiality; hashing, signatures, and logs serve integrity; backups, redundancy, and DDoS defense serve availability. They trade off, so the balance follows the risk.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Confidentiality</dt><dd><b>No peeking.</b> Only those allowed get to see. → <a href="encryption-en.html">the letter no one reads without the key</a></dd></div><div><dt>Integrity</dt><dd><b>No tampering.</b> If it changes in secret, you can tell. → <a href="hashing-en.html">a fingerprint on everything</a></dd></div><div><dt>Availability</dt><dd><b>Always there.</b> It has to be there when needed. → <a href="backup-en.html">the spare chest far away</a>, <a href="ddos-en.html">fake guests at the gate</a></dd></div><div><dt>Non-repudiation</dt><dd><b>No saying you never sent it.</b> The king's seal is on it. → <a href="pki-en.html">the badge with the king's seal</a></dd></div><div><dt>Authentication</dt><dd><b>Proving you are you.</b> To keep any promise, you first need to know who is asking. → <a href="mfa-en.html">the doorkeeper who checks three times</a></dd></div><div><dt>Trade-off</dt><dd><b>The three-way scale.</b> Tighter means unusable, looser means leaky. A bank leans toward no tampering, a notice board toward always there.</dd></div><div><dt>Risk</dt><dd><b>Which way to lean.</b> Keep first the promise that hurts most to break. → <a href="risk-en.html">the scale that picks which door to guard first</a></dd></div><div><dt>Defense in depth</dt><dd><b>In layers.</b> No promise rests on a single tool. → <a href="defenseindepth-en.html">walls within walls</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="defenseindepth-en.html">Walls Within Walls →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

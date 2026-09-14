@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gather the Gossip, Draw the Castle</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="osint-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Security</div>
+<h1>What is <em>OSINT</em>?</h1>
+<p class="sub">OSINT (open-source intelligence), told as a story about a thief who gathers village gossip to draw a map of the castle before ever climbing the wall.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A masked thief with a spyglass watches a small castle from far off, three question marks floating above it. He hasn't even neared the wall" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(90,90) scale(1.0)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><g transform="translate(56,52) rotate(-35)"><rect x="-4" y="0" width="8" height="30" rx="3" fill="#5A3B22"/><rect x="-6" y="-8" width="12" height="10" rx="2" fill="#C9A86A"/></g></g><text x="120" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">the thief hasn't even neared the wall</text><g transform="translate(560,60) scale(0.9)"><rect x="0" y="40" width="160" height="110" fill="var(--stone-dark)"/><rect x="0" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="40" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="80" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="120" y="20" width="20" height="24" fill="var(--stone-dark)"/><path d="M60 150 V110 a20 20 0 0 1 40 0 V150 Z" fill="var(--night)"/></g><circle cx="300" cy="70" r="16" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><text x="300" y="75" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)" class="d">?</text><circle cx="400" cy="50" r="16" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><text x="400" y="55" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)" class="d">?</text><circle cx="480" cy="90" r="16" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><text x="480" y="95" text-anchor="middle" font-size="14" font-weight="700" fill="var(--muted)" class="d">?</text><text x="380" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">before climbing the wall, gather the village gossip</text></svg>
+<p>Before climbing the wall, the thief gathers gossip first.<small>A good thief doesn't rush. Before the wall, he first collects everything the village already knows about the castle.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A locksmith job post at the market, a cook off Tuesdays note on the village board, gate nameplates (west gate, north tower), and an old paper with a leaked list. All of it out in the open" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--bad-soft)"/><g transform="translate(130,40) scale(1.0)"><rect x="-3" y="0" width="6" height="46" fill="#5A3B22"/><rect x="-46" y="-30" width="92" height="34" rx="4" fill="#8B5E3C"/><text x="0" y="-8" text-anchor="middle" font-size="11" font-weight="700" fill="#FFF8E7" class="d">MARKET STALL</text></g><g transform="translate(130,130) rotate(-4) scale(1.0)"><rect x="-52" y="-22" width="104" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">hiring: locksmith</text></g><text x="130" y="200" text-anchor="middle" font-size="9" font-weight="700" fill="var(--muted)">which locks our castle uses</text><g transform="translate(340,40) scale(1.0)"><rect x="-3" y="0" width="6" height="46" fill="#5A3B22"/><rect x="-46" y="-30" width="92" height="34" rx="4" fill="#8B5E3C"/><text x="0" y="-8" text-anchor="middle" font-size="11" font-weight="700" fill="#FFF8E7" class="d">VILLAGE BOARD</text></g><g transform="translate(340,130) rotate(3) scale(1.0)"><rect x="-52" y="-22" width="104" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)">cook: off Tuesdays!</text></g><text x="340" y="200" text-anchor="middle" font-size="9" font-weight="700" fill="var(--muted)">castle folk post it themselves</text><g transform="translate(540,40) scale(1.0)"><rect x="-3" y="0" width="6" height="46" fill="#5A3B22"/><rect x="-46" y="-30" width="92" height="34" rx="4" fill="#8B5E3C"/><text x="0" y="-8" text-anchor="middle" font-size="11" font-weight="700" fill="#FFF8E7" class="d">GATE NAMEPLATE</text></g><g transform="translate(540,130) rotate(-2) scale(1.0)"><rect x="-52" y="-22" width="104" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">west gate · north tower</text></g><text x="540" y="200" text-anchor="middle" font-size="9" font-weight="700" fill="var(--muted)">every door wears a name</text><g transform="translate(670,250) rotate(6) scale(0.8)"><rect x="-52" y="-22" width="104" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)">old paper: leaked list</text></g><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">nothing was stolen — it's all out in the open</text></svg>
+<p>The pieces are all public. Nothing was stolen.<small>A job post reveals which <a href="password-en.html">locks</a> we use; castle folk's board posts reveal who is away and when. Gate nameplates feed the <a href="dns-en.html">directory</a> and <a href="asm-en.html">door-counting</a>; a leaked list in an old paper feeds <a href="bruteforce-en.html">password</a> guessing.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="Four dotted lines run from the thief with the spyglass to a map paper on the right — drawn by the thief — with a path, a building, and a crown mark" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(80,100) scale(1.0)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><g transform="translate(56,52) rotate(-35)"><rect x="-4" y="0" width="8" height="30" rx="3" fill="#5A3B22"/><rect x="-6" y="-8" width="12" height="10" rx="2" fill="#C9A86A"/></g></g><path d="M150 150 Q250 70 340 70" stroke="var(--muted)" stroke-width="2" fill="none" stroke-dasharray="6 4"/><path d="M150 150 Q250 120 340 120" stroke="var(--muted)" stroke-width="2" fill="none" stroke-dasharray="6 4"/><path d="M150 150 Q250 170 340 170" stroke="var(--muted)" stroke-width="2" fill="none" stroke-dasharray="6 4"/><path d="M150 150 Q250 220 340 220" stroke="var(--muted)" stroke-width="2" fill="none" stroke-dasharray="6 4"/><g transform="translate(360,60) scale(1.0)"><rect width="200" height="150" rx="6" fill="#FDF3D9" stroke="#C9A86A" stroke-width="3"/><path d="M20 120 L60 120 L60 70 L110 70 L110 40 L170 40" stroke="var(--bad)" stroke-width="3" fill="none" stroke-dasharray="7 5"/><rect x="70" y="80" width="70" height="50" fill="none" stroke="var(--stone-dark)" stroke-width="2"/><path d="M95 80 v-14 a10 10 0 0 1 20 0 v14" stroke="var(--stone-dark)" stroke-width="2" fill="none"/><circle cx="20" cy="120" r="5" fill="var(--bad)"/><circle cx="170" cy="40" r="5" fill="var(--accent)"/><text x="100" y="20" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">CASTLE MAP (drawn by the thief)</text></g><text x="380" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">piece it together and out comes the castle map and a name list</text><text x="380" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">OSINT: gather only the open gossip, and the castle map appears</text><text x="380" y="336" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">nothing stolen — just open pieces, fitted together</text></svg>
+<p>OSINT: gather only the open gossip, and the castle map appears.<small>Not one thing was stolen. Fit the market, the board, the nameplates, and the old paper together, and out comes the castle map and a name list. That becomes the sketch for the next attack.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="26" cy="26" r="14" fill="none" stroke="var(--stone-dark)" stroke-width="4"/><rect x="36" y="36" width="16" height="6" rx="3" fill="var(--stone-dark)" transform="rotate(45 40 40)"/><circle cx="26" cy="26" r="6" fill="var(--bad)"/></svg><b>Watching from afar</b><span>no wall climbed yet</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="40" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 22 h24 M20 30 h24 M20 38 h16" stroke="#C9A86A" stroke-width="2"/><circle cx="46" cy="14" r="7" fill="var(--bad)"/></svg><b>What we posted</b><span>job posts, social, nameplates</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="14" width="44" height="12" rx="3" fill="var(--bad)"/><path d="M18 26 v10 M32 26 v18 M46 26 v10" stroke="#5B9BD5" stroke-width="3" stroke-linecap="round"/><ellipse cx="32" cy="50" rx="10" ry="6" fill="#5B9BD5"/></svg><b>Old leaked lists</b><span>hints for the password</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="24" r="10" fill="#E8C9A8"/><path d="M12 20 Q24 6 36 20 Z" fill="var(--good)"/><path d="M42 30 q10 8 4 20 M48 26 q12 10 4 24" stroke="var(--good)" stroke-width="3" fill="none" stroke-dasharray="3 3"/></svg><b>Fitted into a map</b><span>each piece looks harmless</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A blue hat uses the same spyglass on our own castle, pulling a job post and removing a nameplate, while telling the cook: careful with castle talk in the square" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(90,70) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5B8DEF"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><g transform="translate(56,52) rotate(-35)"><rect x="-4" y="0" width="8" height="30" rx="3" fill="#5A3B22"/><rect x="-6" y="-8" width="12" height="10" rx="2" fill="#C9A86A"/></g></g><text x="120" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">the blue hat picks up the same spyglass</text><path d="M170 120 Q250 70 320 70" stroke="var(--good)" stroke-width="2" fill="none" stroke-dasharray="6 4"/><path d="M170 120 Q250 130 320 130" stroke="var(--good)" stroke-width="2" fill="none" stroke-dasharray="6 4"/><path d="M170 120 Q250 190 320 190" stroke="var(--good)" stroke-width="2" fill="none" stroke-dasharray="6 4"/><g transform="translate(400,70) rotate(0) scale(1.0)"><rect x="-52" y="-22" width="104" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="var(--good)">pull the job post</text></g><g transform="translate(400,140) rotate(0) scale(1.0)"><rect x="-52" y="-22" width="104" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="0" y="4" text-anchor="middle" font-size="10" font-weight="700" fill="var(--good)">remove stray nameplates</text></g><g transform="translate(600,60) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#FFF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="490" y="190" width="250" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M508 224 l-14 16 l24 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="492" y="220" width="246" height="6" fill="var(--panel)"/><text x="615.0" y="210.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">careful with castle talk in the square</text><text x="620" y="150" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">castle-folk class</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">before the thief looks, we look at our own gossip first</text></svg>
+<p>Before the thief looks, we look at our own gossip first.<small>The blue hat looks at our castle with the thief's eyes — <a href="asm-en.html">counting doors from outside</a> and gathering gossip like a <a href="redteam-en.html">scout</a>. Pull the stray nameplates, and teach the folk to <a href="awareness-en.html">watch castle talk in the square</a>.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The thief's four-step path: recon → letter → climb → vault. The thief is still on step one (recon); a bubble reads stop it here and the next steps never begin" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><path d="M60 210 L700 210" stroke="var(--stone-dark)" stroke-width="3"/><circle cx="80" cy="210" r="10" fill="var(--accent)"/><text x="80" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">1. recon</text><circle cx="230" cy="210" r="10" fill="var(--bad)"/><text x="230" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">2. letter</text><circle cx="380" cy="210" r="10" fill="var(--bad)"/><text x="380" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">3. climb</text><circle cx="530" cy="210" r="10" fill="var(--bad)"/><text x="530" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">4. vault</text><g transform="translate(80,100) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/><g transform="translate(56,52) rotate(-35)"><rect x="-4" y="0" width="8" height="30" rx="3" fill="#5A3B22"/><rect x="-6" y="-8" width="12" height="10" rx="2" fill="#C9A86A"/></g></g><text x="80" y="62" text-anchor="middle" font-size="10" font-weight="700" fill="var(--accent)">here, now</text><rect x="300" y="40" width="380" height="44" rx="14" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><path d="M480.0 84 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--good)" stroke-width="2"/><rect x="302" y="80" width="376" height="6" fill="var(--panel)"/><text x="490.0" y="66.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">stop it here, and the next steps never begin</text><text x="380" y="288" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">recon is the thief's first step — shrink our footprints and the map goes blurry</text></svg>
+<p>Recon is the thief's very first step.<small>OSINT is the first of the <a href="killchain-en.html">thief's steps</a>: reconnaissance. Shrink our footprints (the <a href="asm-en.html">attack surface</a>) here, and the thief's map goes blurry.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>OSINT</b> = before climbing the wall, a thief gathers only the <b>open gossip</b> — job posts, social media, gate nameplates, old leaked lists — to draw <b>the castle map and a name list</b>. Nothing is stolen; only <b>open pieces</b> are fitted together.</h2><p>Gathering publicly available information — websites, job posts, social media, DNS records, breach data, the dark web — to profile a target. It's the first stage of the kill chain, so defenders use the same methods to audit their own attack surface first.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>OSINT</dt><dd><b>Gossip alone makes a map.</b> Profiling a target from public information only. Not stealing — collecting what's already out in the open.</dd></div><div><dt>Reconnaissance</dt><dd><b>The thief's first step.</b> The stage of sizing up a target before attacking. → step 1 of the <a href="killchain-en.html">thief's steps</a></dd></div><div><dt>Footprinting</dt><dd><b>Collecting nameplates.</b> Gathering an org's domains, IPs, and staff list. → <a href="dns-en.html">the village directory</a></dd></div><div><dt>Social media exposure</dt><dd><b>What the folk post themselves.</b> People reveal who is away and what tools they use, all by themselves. → <a href="awareness-en.html">the thief class</a></dd></div><div><dt>Breach data search</dt><dd><b>The list in the old paper.</b> Finding passwords in lists that leaked long ago. → <a href="bruteforce-en.html">the thief who tries a thousand keys</a></dd></div><div><dt>Dark web monitoring</dt><dd><b>Listening in the back alleys.</b> Watching whether our lists are being sold in the back alleys. → <a href="cti-en.html">the friend on the watchtower</a></dd></div><div><dt>Reducing digital footprint</dt><dd><b>Removing nameplates.</b> Removing needless public information so the thief's map goes blurry.</dd></div><div><dt>Attack surface</dt><dd><b>Our doors, seen from outside.</b> Every point a thief could aim at. → <a href="asm-en.html">counting our castle's doors from outside</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="physical-en.html">A Locked Gate, an Open Window →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

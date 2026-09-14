@@ -120,6 +120,18 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | HSM | 열쇠를 만드는 쇠금고 | [hsm-ko](docs/hsm-ko.html) | [hsm-en](docs/hsm-en.html) |
 | Allowlist | 명단에 있는 사람만 | [allowlist-ko](docs/allowlist-ko.html) | [allowlist-en](docs/allowlist-en.html) |
 | Cyber Insurance | 도둑 보험 | [cyberinsurance-ko](docs/cyberinsurance-ko.html) | [cyberinsurance-en](docs/cyberinsurance-en.html) |
+| the CIA Triad | 지키는 것 세 가지: 못 보게, 못 바꾸게, 늘 쓰게 | [ciatriad-ko](docs/ciatriad-ko.html) | [ciatriad-en](docs/ciatriad-en.html) |
+| Defense in Depth | 겹겹이 두른 성벽 | [defenseindepth-ko](docs/defenseindepth-ko.html) | [defenseindepth-en](docs/defenseindepth-en.html) |
+| DMZ | 성벽과 성벽 사이의 마당 | [dmz-ko](docs/dmz-ko.html) | [dmz-en](docs/dmz-en.html) |
+| Hardening | 새 방을 쓰기 전에 하는 문단속 | [hardening-ko](docs/hardening-ko.html) | [hardening-en](docs/hardening-en.html) |
+| MDM and BYOD | 성 밖으로 들고 나가는 작은 상자 | [mdm-ko](docs/mdm-ko.html) | [mdm-en](docs/mdm-en.html) |
+| Wi-Fi Security | 마을 광장의 공짜 우체통 | [wifi-ko](docs/wifi-ko.html) | [wifi-en](docs/wifi-en.html) |
+| BEC, Smishing and Vishing | 왕의 글씨체로 온 편지 | [bec-ko](docs/bec-ko.html) | [bec-en](docs/bec-en.html) |
+| Trojans, Worms, Rootkits and Backdoors | 벌레 도감: 선물 벌레, 기어 다니는 벌레, 숨는 벌레, 뒷문 벌레 | [malwaretypes-ko](docs/malwaretypes-ko.html) | [malwaretypes-en](docs/malwaretypes-en.html) |
+| Active Directory | 성의 명부와 열쇠를 한꺼번에 쥔 관리소 | [activedirectory-ko](docs/activedirectory-ko.html) | [activedirectory-en](docs/activedirectory-en.html) |
+| CSRF | 손님 팔찌를 빌려 몰래 보내는 쪽지 | [csrf-ko](docs/csrf-ko.html) | [csrf-en](docs/csrf-en.html) |
+| OSINT | 마을 소문만 모아도 성 지도가 나와요 | [osint-ko](docs/osint-ko.html) | [osint-en](docs/osint-en.html) |
+| Physical Security | 성문을 잠가도 창문이 열려 있으면 | [physical-ko](docs/physical-ko.html) | [physical-en](docs/physical-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
