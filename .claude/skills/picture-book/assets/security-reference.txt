@@ -1,0 +1,182 @@
+# 보안 분야 기준 용어 (Security+/CISSP 도메인 기반). 한 줄 하나, 표기 변형은 | 로.
+cia triad
+confidentiality
+integrity
+availability
+authentication
+authorization
+non-repudiation
+least privilege
+defense in depth
+zero trust
+risk assessment|risk
+risk management|risk
+threat
+vulnerability
+exploit
+zero-day
+patch
+vulnerability management
+attack surface
+asset inventory
+security policy
+compliance
+audit
+iso 27001
+nist
+gdpr
+incident response
+forensics
+business continuity
+disaster recovery
+backup
+rto
+rpo
+encryption
+symmetric
+asymmetric|public key
+hashing
+salt
+digital signature
+certificate
+pki
+tls
+https
+vpn
+firewall
+ids
+ips
+waf
+proxy
+dmz
+vlan
+segmentation
+nac
+load balancer
+dns
+dhcp
+cdn
+wi-fi
+wpa
+mfa
+sso
+password
+passkey
+rbac
+abac
+pam
+iam
+oauth
+session
+cookie
+active directory
+kerberos
+malware
+virus
+worm
+trojan
+ransomware
+spyware
+adware
+rootkit
+backdoor
+botnet
+keylogger
+phishing
+spear
+smishing
+vishing
+bec
+social engineering
+mitm|man-in-the-middle
+brute force|brute-force
+credential stuffing
+password spraying
+sql injection
+xss
+csrf
+clickjacking
+ddos
+dos
+apt
+insider threat
+supply chain
+sbom
+osint
+reconnaissance
+kill chain
+att&ck
+ttp
+ioc
+cti|threat intelligence
+threat hunting
+siem
+soar
+soc
+edr
+xdr
+ndr
+ueba
+antivirus
+sandbox
+honeypot
+log
+dlp
+data classification
+data retention
+masking
+tokenization
+privacy
+pii
+casb
+cspm
+sase
+swg
+ztna
+container
+kubernetes
+devsecops
+sast
+dast
+threat modeling
+secrets
+hsm
+key management
+air gap
+hardening
+baseline
+allowlist
+blocklist
+mdm
+byod
+iot
+ot
+api security
+rate limit
+email security
+spf
+dkim
+dmarc
+awareness training
+physical security
+tailgating
+penetration test|pentest
+red team
+blue team
+purple team
+bug bounty
+responsible disclosure|coordinated disclosure
+cyber insurance
+metrics
+mttr
+deepfake
+prompt injection
+security framework
+tabletop
+playbook
+shadow it
+cvss
+cve
+separation of duties
+change management
+acceptable use

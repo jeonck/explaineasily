@@ -192,7 +192,8 @@ CATEGORIES = {
 
 ## 스킬
 
-`.claude/skills/eli5/SKILL.md` — 새 용어를 위 그림책 형식으로 만드는 절차 (분야 정하기 → 비유 고르기 → 패널 3~5장 → `_draw.py` 조각으로 그리기 → `terms/<분야>/<slug>.py` → 빌드·점검). 위 문서들이 이 스킬의 결과물이다. 다른 프로젝트에서 쓰려면 디렉터리를 복사한다.
+`.claude/skills/picture-book/` — 분야에 상관없이 그림책 용어집을 만드는 일반화 스킬 (세계관 설계 `references/world-design.md`, 대량 작성 루프 `references/batch-loop.md`, 스크립트 `validate.py`·`render_qa.py`·`update_tables.py`·`coverage_audit.py`). 분야별 세계관은 `terms/<분야>/_WORLD.md`.
+`.claude/skills/eli5/SKILL.md` — 보안 분야의 구체 예시. 새 용어를 위 그림책 형식으로 만드는 절차 (분야 정하기 → 비유 고르기 → 패널 3~5장 → `_draw.py` 조각으로 그리기 → `terms/<분야>/<slug>.py` → 빌드·점검). 위 문서들이 이 스킬의 결과물이다. 다른 프로젝트에서 쓰려면 디렉터리를 복사한다.
 
 ```bash
 cp -r .claude/skills/eli5 ~/.claude/skills/
