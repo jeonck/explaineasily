@@ -72,6 +72,7 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 | Incident Response | 도둑 들었을 때 순서표 | [incident-ko](docs/incident-ko.html) | [incident-en](docs/incident-en.html) |
 | Threat Hunting | 종을 기다리지 않는 파수꾼 | [hunting-ko](docs/hunting-ko.html) | [hunting-en](docs/hunting-en.html) |
 | Purple Team | 같은 책상에 앉은 도둑과 파수꾼 | [purpleteam-ko](docs/purpleteam-ko.html) | [purpleteam-en](docs/purpleteam-en.html) |
+| Red Team | 진짜 도둑인 척하는 팀 | [redteam-ko](docs/redteam-ko.html) | [redteam-en](docs/redteam-en.html) |
 
 보안 용어는 하나의 세계를 공유한다 — 내 컴퓨터는 성, 공격자는 수상한 사람, 방어자는 망루 위의 친구·경비실·경비견·복도 파수꾼.
 
