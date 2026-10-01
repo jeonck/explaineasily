@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>우리 공사팀 네 가지 성적표</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="dorametrics-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · SRE</div>
+<h1><em>DORA 지표</em>가 뭐예요?</h1>
+<p class="sub">DORA 지표를 느낌 대신 숫자 네 가지로 공사팀 실력을 재는 성적표 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="공원장이 공사팀이 잘하고 있는지 묻고, 정비사 쪽 사람은 '열심히 하는 것 같다'는 느낌으로만 답함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(110,230) scale(0.65)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--accent)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--accent)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/></g><g transform="translate(280,193) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><g transform="translate(58,54) rotate(-30)"><rect x="-3" y="0" width="6" height="34" rx="2" fill="#5A3B22"/><circle cy="-4" r="7" fill="none" stroke="#5A3B22" stroke-width="4"/></g></g><g transform="translate(540,193) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="440" y="100" width="260" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M560.0 146 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="442" y="142" width="256" height="6" fill="var(--panel)"/><text x="570.0" y="126.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">우리 공사팀, 잘하고 있는 거 맞아요?</text><rect x="140" y="100" width="220" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M240.0 146 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="142" y="142" width="216" height="6" fill="var(--panel)"/><text x="250.0" y="126.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">음... 열심히 하는 것 같은데요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">공원장이 물으면, 느낌으로만 답해요</text></svg>
+<p>"우리 공사팀, 잘하고 있는 거 맞아요?" "열심히 하는 것 같은데요."<small>느낌으로만 답하면 정말 잘하고 있는지 알 수 없어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="지난달 '꽤 잘했다'는 안내판과 이번 달 '그럭저럭'이라는 안내판, 관제실 요원이 비교하지 못해 당황함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(40,40) scale(1.0)"><rect width="260" height="110" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="260" height="26" rx="6" fill="#C9A86A"/><text x="130.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">지난달</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">'꽤 잘했어요'</text></g><g transform="translate(460,40) scale(1.0)"><rect width="260" height="110" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="260" height="26" rx="6" fill="#C9A86A"/><text x="130.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">이번 달</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">'그럭저럭요'</text></g><text x="380" y="170" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)" class="d">그래서... 좋아진 거예요, 나빠진 거예요?</text><g transform="translate(380,199) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">느낌으로만 말하면 지난달과 비교가 안 돼요</text></svg>
+<p>느낌으로만 말하면 좋아진 건지 나빠진 건지 비교가 안 돼요.<small>지난달과 이번 달을 나란히 놓고 봐야 알 수 있어요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="공사팀 성적표 안내판에 네 가지 항목 — 빈도, 준비~완료 시간, 잘못될 확률, 고치는 시간" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(30,40) scale(1.0)"><rect width="310" height="260" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="310" height="26" rx="6" fill="#C9A86A"/><text x="155.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">공사팀 성적표</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">① 공사 빈도</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">② 준비~완료 걸린 시간</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">③ 잘못될 확률</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">④ 고치는 시간</text></g><g transform="translate(470,235) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><g transform="translate(58,54) rotate(-30)"><rect x="-3" y="0" width="6" height="34" rx="2" fill="#5A3B22"/><circle cy="-4" r="7" fill="none" stroke="#5A3B22" stroke-width="4"/></g></g><g transform="translate(610,300) scale(0.8)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="#5B8DEF"/><path d="M-48 -62 l8 10 l8 -10z" fill="#5B8DEF"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="#5B8DEF"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="#5B8DEF"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="#5B8DEF"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/></g><text x="380" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">공사팀 실력을 느낌이 아니라 숫자 네 가지로 재요</text><text x="380" y="345" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">얼마나 자주, 얼마나 빨리, 얼마나 안전하게, 얼마나 빨리 고치는지예요</text></svg>
+<p>공사팀의 실력을 숫자 네 가지로 재요.<small>얼마나 자주, 얼마나 빨리, 얼마나 안전하게, 얼마나 빨리 고치는지예요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="40" width="10" height="14" fill="var(--accent)"/><rect x="24" y="30" width="10" height="24" fill="var(--accent)"/><rect x="38" y="18" width="10" height="36" fill="var(--accent)"/><rect x="52" y="10" width="6" height="44" fill="var(--accent)"/></svg><b>자주 조금씩 공사해요</b><span>빈도를 높여요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--good)" stroke-width="5"/><path d="M32 18 V32 L44 40" stroke="var(--good)" stroke-width="5" fill="none" stroke-linecap="round"/></svg><b>준비를 빠르게 해요</b><span>리드 타임을 줄여요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 10 L54 54 H10 Z" fill="var(--bad)"/><rect x="29" y="24" width="6" height="14" fill="var(--panel)"/><circle cx="32" cy="44" r="3.5" fill="var(--panel)"/></svg><b>실수를 줄여요</b><span>실패율을 낮춰요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M44 32 a12 12 0 1 1 -4 -9" stroke="var(--accent)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M40 12 l6 10 -12 2z" fill="var(--accent)"/><rect x="26" y="38" width="12" height="12" rx="2" fill="var(--good)"/></svg><b>실수해도 빨리 고쳐요</b><span>복구 시간을 줄여요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="작년과 올해를 비교하는 성적표 — 공사 빈도, 준비~완료 시간, 잘못될 확률, 고치는 시간 네 가지 모두 좋아짐" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(40,30) scale(1.0)"><rect width="680" height="265" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="680" height="26" rx="6" fill="#C9A86A"/><text x="340.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">작년 vs 올해</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">공사 빈도: 한 달 2번 → 매주 1번  ✓</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">준비~완료: 열흘 → 이틀  ✓</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">잘못될 확률: 30% → 12%  ✓</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">고치는 시간: 하루 → 두 시간  ✓</text></g><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">네 가지 모두 작년보다 좋아졌어요</text></svg>
+<p>네 지표 모두 작년보다 올해가 좋아졌어요.<small>자주 하고, 빨리 준비하고, 덜 실패하고, 빨리 고쳐요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 공사는 자주 하지만 다른 지표는 모른 채 놔둠. 오른쪽: 네 가지를 같이 보는 안내판" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(170,230) scale(0.6)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--accent)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--accent)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/></g><g transform="translate(90,204) scale(0.4)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(114,204) scale(0.4)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(138,204) scale(0.4)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#C9822B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="190" y="255" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">빈도만 보면 — 자주는 하는데...</text><g transform="translate(440,40) scale(1.0)"><rect width="280" height="110" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="280" height="26" rx="6" fill="#C9A86A"/><text x="140.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">네 가지 같이 보기</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">자주 + 안전 + 빠른 복구</text></g><g transform="translate(640,185) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="640" y="255" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)" class="d">이래야 진짜 잘하는 팀</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">넷 중 하나만 보면 안 돼요 — 자주만 하고 실패율은 무시하면 안 돼요</text></svg>
+<p>넷 중 하나만 보면 안 돼요 — 네 가지를 같이 봐야 진짜 잘하는 팀이에요.<small>자주 공사하면서 실패율은 무시하면, 자주 사고 내는 팀일 뿐이에요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>DORA 지표</b> = <b>공사 빈도·준비 시간·실패율·복구 시간</b> 네 가지 숫자로, 느낌이 아니라 <b>실제로</b> 공사팀이 잘하고 있는지 재는 성적표.</h2><p>DORA(DevOps Research and Assessment)가 정리한 네 가지 소프트웨어 배포 성과 지표예요: 배포 빈도(Deployment Frequency), 변경 리드 타임(Lead Time for Changes), 변경 실패율(Change Failure Rate), 서비스 복구 시간(Time to Restore Service). 네 가지를 같이 봐야 '엘리트(Elite)'부터 '낮음(Low)'까지의 등급을 가늠할 수 있어요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>DORA 지표<br><small>DORA metrics</small></dt><dd><b>공사팀 실력을 재는 숫자 네 가지.</b> 공원을 돌보는 일 전체 중 한 조각이에요. → <a href="reliability-ko.html">쉬지 않는 공원을 돌보는 사람들</a></dd></div><div><dt>배포 빈도<br><small>Deployment frequency</small></dt><dd><b>공사를 얼마나 자주 하는지.</b> 한 달에 두 번보다 매주 한 번이 더 좋은 신호예요.</dd></div><div><dt>변경 리드 타임<br><small>Lead time for changes</small></dt><dd><b>공사 준비부터 완료까지 걸리는 시간.</b> 짧을수록 빨리 손님에게 선보일 수 있어요.</dd></div><div><dt>변경 실패율<br><small>Change failure rate</small></dt><dd><b>공사가 잘못될 확률.</b> 낮을수록 공사팀이 안전하게 일한다는 뜻이에요.</dd></div><div><dt>서비스 복구 시간(MTTR)<br><small>Time to restore service (MTTR)</small></dt><dd><b>잘못됐을 때 얼마나 빨리 고치는지.</b> 실수를 아예 안 할 순 없어도, 빨리 고치면 괜찮아요.</dd></div><div><dt>등급(엘리트/높음/보통)<br><small>Performance tiers (Elite/High/Medium/Low)</small></dt><dd><b>네 지표를 종합해 매기는 이름.</b> 이름만 알아둬도 충분해요 — 세부 기준은 상황마다 달라요.</dd></div><div><dt>롤백 · 사후 분석과의 관계<br><small>Relation to rollback and postmortems</small></dt><dd><b>복구 시간은 롤백으로, 실패율은 사후 분석으로 줄여요.</b> 이상하면 바로 어제 버전으로 되돌리고, 끝나면 탓하지 않고 기록해요.</dd></div><div><dt>용량 계획과의 관계<br><small>Relation to capacity planning</small></dt><dd><b>네 지표가 좋아져도 손님이 몰리는 날엔 또 다른 준비가 필요해요.</b> 작년 기록과 올해 행사를 미리 세어보는 일이에요. → <a href="capacityplanning-ko.html">내년 손님 수를 미리 세어보기</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="reliability-ko.html">쉬지 않는 공원을 돌보는 사람들 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

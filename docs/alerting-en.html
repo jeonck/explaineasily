@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Many Rings Make a Real Emergency</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="alerting-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · SRE</div>
+<h1>What is <em>Alerting</em>?</h1>
+<p class="sub">Alerting, told as a story about a pager that only rings when things stay bad enough for guests to feel it.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="The control room keeps flashing minor red bars; the operator turns the pager off — while a big ride sits broken and unnoticed" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--night)"/><circle cx="660" cy="50" r="26" fill="#F5E6B8"/><circle cx="120" cy="40" r="2" fill="#F5E6B8"/><circle cx="300" cy="70" r="2" fill="#F5E6B8"/><circle cx="500" cy="30" r="2" fill="#F5E6B8"/><circle cx="420" cy="90" r="2" fill="#F5E6B8"/><circle cx="200" cy="120" r="2" fill="#F5E6B8"/><ellipse cx="380" cy="330" rx="440" ry="30" fill="#0A1120"/><g transform="translate(40,30)"><rect width="190" height="100" rx="6" fill="#1B2A44"/><rect x="6" y="6" width="178" height="88" rx="4" fill="#0A1120"/><rect x="14.0" y="69.0" width="35.5" height="19.0" rx="2" fill="var(--bad)"/><rect x="55.5" y="72.8" width="35.5" height="15.200000000000001" rx="2" fill="var(--bad)"/><rect x="97.0" y="65.2" width="35.5" height="22.8" rx="2" fill="var(--bad)"/><rect x="138.5" y="74.32" width="35.5" height="13.68" rx="2" fill="var(--bad)"/></g><g transform="translate(260,140) scale(0.9)"><rect x="-10" y="-20" width="20" height="36" rx="4" fill="var(--stone-dark)"/><rect x="-6" y="-16" width="12" height="8" fill="#5B9BD5"/><rect x="-3" y="-28" width="6" height="10" fill="var(--stone-dark)"/><circle cx="0" cy="-30" r="3" fill="var(--bad)"/></g><g transform="translate(100,181.60000000000002) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="10" y="150" width="190" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M95.0 194 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="12" y="190" width="186" height="6" fill="var(--panel)"/><text x="105.0" y="175.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">ringing again... I'll just turn it off</text><g transform="translate(620,260) scale(0.9)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--bad)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--bad)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--bad)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--bad)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--bad)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/><rect x="-46" y="-36" width="92" height="12" fill="var(--bad)" transform="rotate(-8)"/><rect x="-46" y="-16" width="92" height="12" fill="var(--bad)" transform="rotate(6)"/><text x="0" y="-128" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">the real emergency</text></g><text x="620" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="#C9D5E6">nobody noticed</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="#F5E6B8" class="d">the pager keeps ringing over small stuff, so the on-call turns it off — and misses the real emergency</text></svg>
+<p>The pager keeps ringing over small stuff, so the on-call turns it off.<small>And when the real emergency hits, nobody hears it.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The control-room bars are jumbled, several pagers ring at once, and the exhausted operator says they can't tell what's urgent" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(90,40)"><rect width="220" height="120" rx="6" fill="#1B2A44"/><rect x="6" y="6" width="208" height="108" rx="4" fill="#0A1120"/><rect x="14.0" y="79.2" width="43.0" height="28.799999999999997" rx="2" fill="var(--bad)"/><rect x="63.0" y="31.19999999999999" width="43.0" height="76.80000000000001" rx="2" fill="var(--bad)"/><rect x="112.0" y="88.8" width="43.0" height="19.200000000000003" rx="2" fill="var(--bad)"/><rect x="161.0" y="60.0" width="43.0" height="48.0" rx="2" fill="var(--bad)"/></g><g transform="translate(360,90) scale(1.0)"><rect x="-10" y="-20" width="20" height="36" rx="4" fill="var(--stone-dark)"/><rect x="-6" y="-16" width="12" height="8" fill="#5B9BD5"/><rect x="-3" y="-28" width="6" height="10" fill="var(--stone-dark)"/><circle cx="0" cy="-30" r="3" fill="var(--bad)"/></g><g transform="translate(410,70) scale(0.8)"><rect x="-10" y="-20" width="20" height="36" rx="4" fill="var(--stone-dark)"/><rect x="-6" y="-16" width="12" height="8" fill="#5B9BD5"/><rect x="-3" y="-28" width="6" height="10" fill="var(--stone-dark)"/><circle cx="0" cy="-30" r="3" fill="var(--bad)"/></g><g transform="translate(460,105) scale(0.85)"><rect x="-10" y="-20" width="20" height="36" rx="4" fill="var(--stone-dark)"/><rect x="-6" y="-16" width="12" height="8" fill="#5B9BD5"/><rect x="-3" y="-28" width="6" height="10" fill="var(--stone-dark)"/><circle cx="0" cy="-30" r="3" fill="var(--bad)"/></g><g transform="translate(580,187.2) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="500" y="70" width="220" height="50" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M600.0 120 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="502" y="116" width="216" height="6" fill="var(--panel)"/><text x="610.0" y="98.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">they all ring the same — I can't tell what's urgent</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">ring for everything, and the important gets lost in the unimportant — that's alert fatigue</text></svg>
+<p>Ring for everything, and the important gets lost in the unimportant.<small>That's alert fatigue — eventually everything gets ignored.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="A line marked 'the line guests feel' sits beside the gauges, and only crossing it connects the pager to the operator" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(50,50)"><rect width="220" height="130" rx="6" fill="#1B2A44"/><rect x="6" y="6" width="208" height="118" rx="4" fill="#0A1120"/><rect x="14.0" y="75.6" width="43.0" height="42.400000000000006" rx="2" fill="var(--good)"/><rect x="63.0" y="22.599999999999994" width="43.0" height="95.4" rx="2" fill="var(--bad)"/><rect x="112.0" y="86.2" width="43.0" height="31.799999999999997" rx="2" fill="var(--good)"/><rect x="161.0" y="65.0" width="43.0" height="53.0" rx="2" fill="var(--good)"/></g><g transform="translate(370,150) scale(1.3)"><circle r="30" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M0 0 L25.9 -2.7" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><circle r="4" fill="var(--bad)"/><text x="0" y="44" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">the line guests feel</text></g><path d="M270 150 L340 150" stroke="var(--bad)" stroke-width="3" stroke-dasharray="6 4"/><g transform="translate(520,120) scale(1.0)"><rect x="-10" y="-20" width="20" height="36" rx="4" fill="var(--stone-dark)"/><rect x="-6" y="-16" width="12" height="8" fill="#5B9BD5"/><rect x="-3" y="-28" width="6" height="10" fill="var(--stone-dark)"/><circle cx="0" cy="-30" r="3" fill="var(--bad)"/></g><g transform="translate(560,221.60000000000002) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><path d="M470 150 L525 125" stroke="var(--bad)" stroke-width="3" stroke-dasharray="6 4"/><text x="380" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">it only rings when things stay bad enough for guests to feel it</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">a brief wobble passes — staying bad is what triggers the call</text></svg>
+<p>It only rings when things stay bad enough for guests to feel it.<small>A brief wobble passes — staying bad is what triggers the call.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 16 A24 24 0 0 1 50 16" stroke="var(--bad)" stroke-width="4" fill="none"/><circle cx="32" cy="38" r="16" fill="var(--accent)"/><circle cx="26" cy="36" r="2.5" fill="#142033"/><circle cx="38" cy="36" r="2.5" fill="#142033"/><path d="M24 44 Q32 50 40 44" stroke="#142033" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg><b>Only what guests would feel</b><span>below that, just let it pass</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 32 H20 L26 18 L32 44 L38 32 H56" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 10 L44 10" stroke="var(--muted)" stroke-width="3" stroke-dasharray="3 3"/></svg><b>Let a brief wobble pass</b><span>that's the duration condition</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="10" width="36" height="10" rx="3" fill="var(--bad)"/><rect x="14" y="27" width="36" height="10" rx="3" fill="var(--accent)"/><rect x="14" y="44" width="36" height="10" rx="3" fill="var(--good)"/></svg><b>Grade the rings too</b><span>just watch vs call right now</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="8" width="28" height="36" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M18 18 h16 M18 26 h16 M18 34 h10" stroke="#142033" stroke-width="2.5"/><circle cx="42" cy="44" r="9" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M48 50 L56 58" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/></svg><b>Review every ring afterward</b><span>check whether it was real</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: the gauge spikes briefly then recovers, no ring. Right: it stays bad for minutes, and the pager rings" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--bad-soft)"/><g transform="translate(190,110) scale(1.1)"><circle r="30" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M0 0 L5.4 -25.4" stroke="var(--good)" stroke-width="4" stroke-linecap="round"/><circle r="4" fill="var(--good)"/></g><text x="190" y="175" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">spikes briefly, then comes right back</text><text x="190" y="215" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">-> doesn't ring</text><g transform="translate(570,110) scale(1.1)"><circle r="30" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M0 0 L25.9 -2.7" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><circle r="4" fill="var(--bad)"/></g><text x="570" y="175" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">stays bad for minutes</text><g transform="translate(570,210) scale(0.9)"><rect x="-10" y="-20" width="20" height="36" rx="4" fill="var(--stone-dark)"/><rect x="-6" y="-16" width="12" height="8" fill="#5B9BD5"/><rect x="-3" y="-28" width="6" height="10" fill="var(--stone-dark)"/><circle cx="0" cy="-30" r="3" fill="var(--bad)"/></g><text x="570" y="255" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">-> it rings</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">a duration condition: it has to stay bad for minutes to count</text></svg>
+<p>A brief spike (no ring) versus staying bad (it rings).<small>Only staying bad for minutes counts as a real signal.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The gauge sits near the top but never rang, and the startled operator spots a broken ride too late" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(160,110) scale(1.2)"><circle r="30" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M0 0 L24.7 8.0" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><circle r="4" fill="var(--bad)"/></g><text x="160" y="185" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">set the threshold too loose</text><g transform="translate(440,192.8) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="360" y="150" width="170" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M435.0 194 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="362" y="190" width="166" height="6" fill="var(--panel)"/><text x="445.0" y="175.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">it didn't ring this time...</text><g transform="translate(620,260) scale(0.8)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--bad)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--bad)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--bad)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--bad)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--bad)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/><rect x="-46" y="-36" width="92" height="12" fill="var(--bad)" transform="rotate(-8)"/><rect x="-46" y="-16" width="92" height="12" fill="var(--bad)" transform="rotate(6)"/><text x="0" y="-128" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">missed this one too</text></g><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">set it too quiet and you miss real problems too — finding the right threshold is ongoing work</text></svg>
+<p>Set it too quiet, and you miss real problems too.<small>The right threshold isn't set once — it keeps getting tuned.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Alerting</b> = deciding to ring only when things are bad enough for <b>guests to feel</b> — and <b>stay</b> that way — so the pager is saved for real emergencies.</h2><p>A mechanism that notifies a person when a monitored metric crosses a threshold. Combining a threshold with a duration condition filters out brief wobbles, and severity levels separate 'just watch' from 'page now'. Too many alerts cause alert fatigue, which is its own danger.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Alerting</dt><dd><b>A signal that rings only for real trouble.</b> Quiet the rest of the time.</dd></div><div><dt>Alert fatigue</dt><dd><b>When everything rings, nothing stands out.</b> Eventually, everything gets turned off.</dd></div><div><dt>Threshold</dt><dd><b>The line that decides when it rings.</b> Too low rings too often; too high misses things.</dd></div><div><dt>Duration condition</dt><dd><b>The rule that ignores a brief wobble.</b> Only staying bad triggers a ring.</dd></div><div><dt>Severity levels</dt><dd><b>Just watch versus call right now.</b> Not every alert carries the same weight.</dd></div><div><dt>Burn-rate alerting</dt><dd><b>An alert that watches how fast the allowed failures are being used up.</b> → <a href="errorbudget-en.html">the bundle of allowed failure tickets</a></dd></div><div><dt>SLI</dt><dd><b>The number shown on the gauge itself.</b> It's the value the alert watches. → <a href="sli-en.html">today's operating record</a></dd></div><div><dt>On-call</dt><dd><b>Whoever answers when it rings.</b> Whoever is holding the pager this week. → <a href="oncall-en.html">whoever's holding the pager</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="incidentcommand-en.html">The One Holding the Baton →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

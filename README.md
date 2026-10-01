@@ -188,6 +188,60 @@ PR 을 확인하고 머지하면 배포됩니다. 워크플로: [`.github/workfl
 
 AI 용어는 하나의 세계를 공유한다 — 모델은 책을 산더미로 읽은 앵무새, 토큰은 콩, 프롬프트는 조련 쪽지, 컨텍스트 창은 쟁반, RAG 는 사서, 도구는 공방의 도구 상자 (`terms/ai/_WORLD.md`).
 
+### SRE
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
+| SRE | 쉬지 않는 공원을 돌보는 사람들 | [reliability-ko](docs/reliability-ko.html) | [reliability-en](docs/reliability-en.html) |
+| Golden Signals | 관제실의 계기판 네 개 | [goldensignals-ko](docs/goldensignals-ko.html) | [goldensignals-en](docs/goldensignals-en.html) |
+| API Gateway | 정문 안내소 | [apigateway-ko](docs/apigateway-ko.html) | [apigateway-en](docs/apigateway-en.html) |
+| Service Mesh | 기구 사이 전용 통로 | [servicemesh-ko](docs/servicemesh-ko.html) | [servicemesh-en](docs/servicemesh-en.html) |
+| Caching | 자주 묻는 질문 미리 적어둔 메모판 | [caching-ko](docs/caching-ko.html) | [caching-en](docs/caching-en.html) |
+| Sharding | 번호별로 나뉜 매표 창구 | [sharding-ko](docs/sharding-ko.html) | [sharding-en](docs/sharding-en.html) |
+| Replication | 손님 명부를 두 창고에 똑같이 | [replication-ko](docs/replication-ko.html) | [replication-en](docs/replication-en.html) |
+| Consensus | 여러 관제실이 손 들어 정하기 | [consensus-ko](docs/consensus-ko.html) | [consensus-en](docs/consensus-en.html) |
+| Split-Brain | 두 관제실이 서로 자기가 진짜라고 | [splitbrain-ko](docs/splitbrain-ko.html) | [splitbrain-en](docs/splitbrain-en.html) |
+| CAP Theorem | 정확함과 항상 열림, 둘 다는 못 가져요 | [captheorem-ko](docs/captheorem-ko.html) | [captheorem-en](docs/captheorem-en.html) |
+| Eventual Consistency | 조금 늦게 맞춰지는 재고판 | [eventualconsistency-ko](docs/eventualconsistency-ko.html) | [eventualconsistency-en](docs/eventualconsistency-en.html) |
+| Message Queue | 주문서를 쌓아두는 바구니 | [messagequeue-ko](docs/messagequeue-ko.html) | [messagequeue-en](docs/messagequeue-en.html) |
+| Dead-letter Queue | 아무도 안 찾아간 바구니함 | [deadletterqueue-ko](docs/deadletterqueue-ko.html) | [deadletterqueue-en](docs/deadletterqueue-en.html) |
+| Backpressure | 입구를 잠깐 막기 | [backpressure-ko](docs/backpressure-ko.html) | [backpressure-en](docs/backpressure-en.html) |
+| Bulkhead | 불이 안 번지게 나눈 구역 | [bulkhead-ko](docs/bulkhead-ko.html) | [bulkhead-en](docs/bulkhead-en.html) |
+| Circuit Breaker | 고장나면 누르는 빨간 버튼 | [circuitbreaker-ko](docs/circuitbreaker-ko.html) | [circuitbreaker-en](docs/circuitbreaker-en.html) |
+| Retry with Backoff | 잠깐 쉬었다 다시 줄서기 | [retrybackoff-ko](docs/retrybackoff-ko.html) | [retrybackoff-en](docs/retrybackoff-en.html) |
+| Idempotency | 같은 티켓으로 두 번 못 타요 | [idempotency-ko](docs/idempotency-ko.html) | [idempotency-en](docs/idempotency-en.html) |
+| Rate Limiting | 한 번에 몇 명까지만 | [ratelimiting-ko](docs/ratelimiting-ko.html) | [ratelimiting-en](docs/ratelimiting-en.html) |
+| Autoscaling | 줄이 길어지면 직원을 더 부르기 | [autoscaling-ko](docs/autoscaling-ko.html) | [autoscaling-en](docs/autoscaling-en.html) |
+| Health Check | 안전바 딸깍 확인 | [healthcheck-ko](docs/healthcheck-ko.html) | [healthcheck-en](docs/healthcheck-en.html) |
+| Graceful Degradation | 일부만 고장나도 나머지는 그대로 | [gracefuldegradation-ko](docs/gracefuldegradation-ko.html) | [gracefuldegradation-en](docs/gracefuldegradation-en.html) |
+| Failover | 발전기가 꺼지면 예비 발전기가 | [failover-ko](docs/failover-ko.html) | [failover-en](docs/failover-en.html) |
+| Multi-region | 쌍둥이 공원 | [multiregion-ko](docs/multiregion-ko.html) | [multiregion-en](docs/multiregion-en.html) |
+| Service Discovery | 지금 열린 창구 안내판 | [servicediscovery-ko](docs/servicediscovery-ko.html) | [servicediscovery-en](docs/servicediscovery-en.html) |
+| Orchestration | 몇 대를 켤지 정하는 운영 본부 | [orchestration-ko](docs/orchestration-ko.html) | [orchestration-en](docs/orchestration-en.html) |
+| Infrastructure as Code | 설계도 한 장으로 공원 통째로 짓기 | [iac-ko](docs/iac-ko.html) | [iac-en](docs/iac-en.html) |
+| GitOps | 설계도가 바뀌면 자동으로 공사 | [gitops-ko](docs/gitops-ko.html) | [gitops-en](docs/gitops-en.html) |
+| Feature Flag | 새 기구에 친 커튼 | [featureflag-ko](docs/featureflag-ko.html) | [featureflag-en](docs/featureflag-en.html) |
+| Canary Deployment | 구석에서 몰래 하는 시험 운행 | [canary-ko](docs/canary-ko.html) | [canary-en](docs/canary-en.html) |
+| Blue-Green Deployment | 쌍둥이 기구를 번갈아 운영 | [bluegreen-ko](docs/bluegreen-ko.html) | [bluegreen-en](docs/bluegreen-en.html) |
+| Rollback | 이상하면 바로 어제 버전으로 | [rollback-ko](docs/rollback-ko.html) | [rollback-en](docs/rollback-en.html) |
+| SLI | 오늘 운행 기록판 | [sli-ko](docs/sli-ko.html) | [sli-en](docs/sli-en.html) |
+| SLO | 우리끼리 정한 목표 줄 | [slo-ko](docs/slo-ko.html) | [slo-en](docs/slo-en.html) |
+| SLA | 손님과 맺은 약속 계약서 | [sla-ko](docs/sla-ko.html) | [sla-en](docs/sla-en.html) |
+| Error Budget | 허용된 고장 티켓 묶음 | [errorbudget-ko](docs/errorbudget-ko.html) | [errorbudget-en](docs/errorbudget-en.html) |
+| On-call | 이번 주 호출기를 든 사람 | [oncall-ko](docs/oncall-ko.html) | [oncall-en](docs/oncall-en.html) |
+| Alerting | 몇 번 울려야 진짜 비상인가 | [alerting-ko](docs/alerting-ko.html) | [alerting-en](docs/alerting-en.html) |
+| Incident Commander | 지휘봉을 든 사람 | [incidentcommand-ko](docs/incidentcommand-ko.html) | [incidentcommand-en](docs/incidentcommand-en.html) |
+| Postmortem | 탓하지 않고 모여 쓰는 기록 | [postmortem-ko](docs/postmortem-ko.html) | [postmortem-en](docs/postmortem-en.html) |
+| Runbook | 정비사의 공책 | [runbook-ko](docs/runbook-ko.html) | [runbook-en](docs/runbook-en.html) |
+| Chaos Engineering | 일부러 내는 가짜 고장 | [chaosengineering-ko](docs/chaosengineering-ko.html) | [chaosengineering-en](docs/chaosengineering-en.html) |
+| Game Day | 가짜 화재 훈련일 | [gameday-ko](docs/gameday-ko.html) | [gameday-en](docs/gameday-en.html) |
+| Toil | 매일 똑같이 반복하는 허드렛일 | [toil-ko](docs/toil-ko.html) | [toil-en](docs/toil-en.html) |
+| Observability | 세 가지로 들여다보기 | [observability-ko](docs/observability-ko.html) | [observability-en](docs/observability-en.html) |
+| Capacity Planning | 내년 손님 수를 미리 세어보기 | [capacityplanning-ko](docs/capacityplanning-ko.html) | [capacityplanning-en](docs/capacityplanning-en.html) |
+| DORA Metrics | 우리 공사팀 네 가지 성적표 | [dorametrics-ko](docs/dorametrics-ko.html) | [dorametrics-en](docs/dorametrics-en.html) |
+
+SRE 용어는 하나의 세계를 공유한다 — 공원은 우리 시스템, 놀이기구는 서비스, 손님은 요청, 관제실은 모니터링, 정비사는 엔지니어 (`terms/sre/_WORLD.md`).
+
 ## 구조
 
 ```
@@ -214,6 +268,7 @@ CATEGORIES = {
     "security": ("보안", "Security"),
     "design": ("소프트웨어 설계", "Software Design"),
     "ai": ("AI", "AI"),
+    "sre": ("SRE", "SRE"),
 }
 ```
 

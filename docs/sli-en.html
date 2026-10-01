@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today's Ride Log</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="sli-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · SRE</div>
+<h1>What is an <em>SLI</em>?</h1>
+<p class="sub">SLI, told as a story about keeping today's ride log measured in numbers, instead of by feel.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="The manager asks how the park was today, and the operator gives a vague so-so answer" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(260,180) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="170" y="90" width="210" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M265.0 136 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="172" y="132" width="206" height="6" fill="var(--panel)"/><text x="275.0" y="117.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">how was the park today?</text><g transform="translate(480,190) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="400" y="110" width="200" height="42" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M490.0 152 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="402" y="148" width="196" height="6" fill="var(--panel)"/><text x="500.0" y="135.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">uh... so-so, I guess?</text><text x="380" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">ask how today went, and everyone answers by feel alone</text></svg>
+<p>Ask how today went, and everyone answers by feel alone.<small>So-so, pretty good, I think — it's all vague talk.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Three staff members each describe today differently — great, not great, so-so" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(130,163) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="50" y="80" width="160" height="42" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M120.0 122 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="52" y="118" width="156" height="6" fill="var(--panel)"/><text x="130.0" y="104.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">it was great!</text><g transform="translate(380,163) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="300" y="80" width="160" height="42" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M370.0 122 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="302" y="118" width="156" height="6" fill="var(--panel)"/><text x="380.0" y="104.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">it wasn't, really</text><g transform="translate(630,163) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="550" y="80" width="160" height="42" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M620.0 122 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="552" y="118" width="156" height="6" fill="var(--panel)"/><text x="630.0" y="104.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">so-so, I guess</text><text x="380" y="286" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)" class="d">everyone's feeling is different, so you can't compare them</text></svg>
+<p>Everyone's feeling is different, so you can't compare them.<small>You can't tell if it's better than yesterday, or close to any target.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="The control-room screen shows bars for response time and success rate, watched calmly by an operator" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(200,70)"><rect width="360" height="140" rx="6" fill="#1B2A44"/><rect x="6" y="6" width="348" height="128" rx="4" fill="#0A1120"/><rect x="14.0" y="41.0" width="162.0" height="87.0" rx="2" fill="var(--good)"/><rect x="182.0" y="23.599999999999994" width="162.0" height="104.4" rx="2" fill="var(--good)"/></g><text x="290" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">response time</text><text x="470" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">success rate</text><g transform="translate(620,260) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">instead of feelings, keep a log measured in numbers</text><text x="380" y="328" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">a number measured this way is called an SLI</text></svg>
+<p>Instead of feelings, keep a log measured in numbers.<small>A number measured this way is called an SLI — a service level indicator.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="36" r="20" fill="none" stroke="var(--accent)" stroke-width="5"/><path d="M32 36 V22" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><rect x="26" y="8" width="12" height="8" rx="2" fill="var(--stone-dark)"/></svg><b>Measure what guests actually feel</b><span>like response time and success rate</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="20" width="44" height="28" rx="4" fill="#1B2A44"/><rect x="14" y="24" width="36" height="20" fill="var(--good)"/></svg><b>Write it as a number, not a feeling</b><span>no vague words allowed</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="14" width="40" height="36" rx="4" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M12 26 h40" stroke="var(--stone-dark)" stroke-width="3"/><rect x="18" y="32" width="8" height="8" fill="var(--accent)"/><rect x="30" y="32" width="8" height="8" fill="var(--accent)"/></svg><b>Measure it the same way, every day</b><span>so it can be compared</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--bad)" stroke-width="4"/><circle cx="32" cy="32" r="13" fill="none" stroke="var(--bad)" stroke-width="4"/><circle cx="32" cy="32" r="4" fill="var(--bad)"/></svg><b>This number later becomes the target's baseline</b><span>today's reading becomes tomorrow's promise</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Today's log board reads 100,000 requests, 99.2% answered within a second, 99.95% succeeded" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><g transform="translate(260,50) scale(1.0)"><rect width="300" height="190" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">TODAY'S LOG</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">requests: 100,000</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">answered within 1s: 99.2%</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">succeeded: 99.95%</text></g><g transform="translate(170,203) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><rect x="48" y="60" width="26" height="34" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M54 68 h14 M54 76 h14 M54 84 h8" stroke="#142033" stroke-width="2"/></g><text x="380" y="286" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">measured the same way, every day, and written down as numbers</text></svg>
+<p>Today: 100,000 requests, 99.2% answered within 1s, 99.95% succeeded.<small>Measured the same way, every day, and written down as numbers.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Next to a log board showing a great 99.99% success rate, the manager says the line was still too long and upsetting" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(60,50) scale(1.0)"><rect width="280" height="150" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="280" height="26" rx="6" fill="#C9A86A"/><text x="140.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">THE LOG</text><rect x="6" y="35" width="268" height="22" rx="4" fill="var(--accent-soft)"/><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">success rate: 99.99%</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">looks great</text></g><g transform="translate(480,190) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="420" y="90" width="240" height="50" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M530.0 140 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="422" y="136" width="236" height="6" fill="var(--panel)"/><text x="540.0" y="119.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">but the line was so long, I'm upset</text><text x="380" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">measure the wrong thing, and the numbers look great while guests stay unhappy</text></svg>
+<p>Measure the wrong thing, and the numbers look great while guests stay unhappy.<small>It only matters if you measure what guests actually care about.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>SLI</b> = today's log, keeping things like <b>response time and success rate as numbers</b>, <b>measured the same way</b> every single day.</h2><p>A service level indicator — a numeric measure of how well a system actually performs, from the guest's point of view. Things like latency, error rate, and availability become the baseline an SLO later sets a target against.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>SLI</dt><dd><b>Today's log, measured in numbers.</b> Written down as numbers, not feelings.</dd></div><div><dt>Response time</dt><dd><b>How long it takes to answer a guest's request.</b> One of the most common SLIs.</dd></div><div><dt>Success rate</dt><dd><b>The share of attempts that finished properly.</b> The flip side of the failure rate — same thing, viewed the other way.</dd></div><div><dt>Availability</dt><dd><b>The share of time the park stayed open.</b> Uptime, turned into a measurable number.</dd></div><div><dt>Measurement point</dt><dd><b>Where you measure — the guest's side, or the server's.</b> Measuring closer to the guest gets you closer to the real experience.</dd></div><div><dt>vs. golden signals</dt><dd><b>A few of the four gauges, picked out as SLIs.</b> All four could be SLIs, but you don't have to use every one.</dd></div><div><dt>SLO</dt><dd><b>The target set using this number.</b> You need an SLI before you can set an SLO.</dd></div><div><dt>Observability</dt><dd><b>Looking deeper than the numbers.</b> Needed when even a great-looking log isn't the whole story. → <a href="reliability-en.html">the people who keep the park open</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="slo-en.html">The Target Line We Set Ourselves →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

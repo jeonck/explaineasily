@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>정비사의 공책</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="runbook-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · SRE</div>
+<h1><em>런북</em>이 뭐예요?</h1>
+<p class="sub">런북을, 자주 나는 고장마다 '이럴 땐 이렇게' 순서를 적어둔 정비사의 공책 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="고장난 기구 앞에서 신참 정비사가 지난번에 어떻게 고쳤는지 떠올리려 애쓰고, 선배는 휴가 중이라 물어볼 수도 없음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(380,260) scale(1.0)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--bad)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--bad)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--bad)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--bad)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--bad)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/><rect x="-46" y="-36" width="92" height="12" fill="var(--bad)" transform="rotate(-8)"/><rect x="-46" y="-16" width="92" height="12" fill="var(--bad)" transform="rotate(6)"/></g><g transform="translate(560,192.8) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="440" y="120" width="220" height="50" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M540.0 170 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="442" y="166" width="216" height="6" fill="var(--panel)"/><text x="550.0" y="148.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">지난번에 어떻게 고쳤더라...</text><g transform="translate(160,198.39999999999998) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="160" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">선배는 휴가중</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">같은 고장이 또 났는데, 지난번에 어떻게 고쳤는지 아무도 기억 못해요</text></svg>
+<p>같은 고장이 또 났는데, 아무도 기억 못해요.<small>처음부터 다시 헤매요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="정비사의 머릿속에만 해결법이 있고, 신참은 전혀 모른다고 말함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(300,187.2) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="190" y="70" width="260" height="60" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M310.0 130 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="192" y="126" width="256" height="6" fill="var(--panel)"/><text x="320.0" y="103.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">(머릿속에만 있어요)</text><g transform="translate(520,192.8) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="520" y="175" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">저는 몰라요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">머릿속에만 있으면, 그 사람이 쉬는 날엔 아무도 몰라요</text></svg>
+<p>머릿속에만 있으면 그 사람이 쉬는 날엔 아무도 몰라요.<small>신참이 당황할 수밖에 없어요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="공책에 자주 나는 고장 종류가 적혀 있고, 정비사가 공책을 들고 신참에게 건네줌" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(230,60) scale(1.1)"><rect width="300" height="210" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">공책</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">기구가 안 열려요</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">줄이 안 줄어요</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">화면이 꺼져요</text></g><g transform="translate(120,232.8) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="48" y="60" width="26" height="34" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M54 68 h14 M54 76 h14 M54 84 h8" stroke="#142033" stroke-width="2"/></g><g transform="translate(620,232.8) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">자주 나는 고장마다, '이럴 땐 이렇게' 순서를 공책에 적어둬요</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">누가 당번이어도 공책대로 하면 돼요</text></svg>
+<p>자주 나는 고장마다, '이럴 땐 이렇게' 순서를 공책에 적어둬요.<small>누가 당번이어도 공책대로 하면 돼요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 10 L38 24 L54 26 L42 36 L46 52 L32 43 L18 52 L22 36 L10 26 L26 24 Z" fill="var(--accent)"/></svg><b>자주 나는 고장부터 적어요</b><span>드물게 나는 건 나중에요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="var(--accent)"/><circle cx="16" cy="32" r="7" fill="var(--accent)"/><circle cx="16" cy="48" r="7" fill="var(--accent)"/><path d="M28 16 H54 M28 32 H54 M28 48 H54" stroke="var(--muted)" stroke-width="4" stroke-linecap="round"/></svg><b>순서대로, 그림책처럼 쉽게</b><span>한 줄씩 또박또박요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="18" r="9" fill="var(--accent)"/><rect x="12" y="30" width="24" height="26" rx="6" fill="var(--accent)"/><path d="M40 36 l8 8 16 -16" stroke="var(--good)" stroke-width="5" fill="none" stroke-linecap="round"/></svg><b>신참도 따라할 수 있게</b><span>설명 없이도 돼요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="34" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M18 20 h18 M18 28 h18" stroke="#142033" stroke-width="2.5"/><path d="M44 40 l10 -10 6 6 -10 10z" fill="var(--accent)"/><path d="M50 44 l6 6" stroke="var(--accent)" stroke-width="3"/></svg><b>새로 배운 건 공책에 추가</b><span>사후 분석에서 나온 것도요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="공책을 펼친 모습: 1. 빨간 버튼부터 확인 2. 창고에 재고 있는지 확인 3. 안 되면 호출기로 선배에게" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(120,30) scale(1.1)"><rect width="520" height="230" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="520" height="26" rx="6" fill="#C9A86A"/><text x="260.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">기구가 안 열릴 때</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">1. 빨간 버튼부터 확인</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">2. 창고에 재고 있는지 확인</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">3. 안 되면 호출기로 선배에게</text></g><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">순서대로, 그림책처럼 쉽게 — 신참도 따라할 수 있어요</text></svg>
+<p>공책을 펼치면 번호 순서대로 적혀 있어요.<small>순서대로 하면 신참도 따라할 수 있어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 옛날 공책의 옛날 방식이 이제 안 통해서 신참이 당황함. 오른쪽: 새로 배운 것을 추가해 고친 공책을 든 정비사가 웃음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(40,60) scale(1.0)"><rect width="300" height="150" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">옛날 공책</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">1. 옛날 방식대로</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">(이제 안 통해요)</text></g><g transform="translate(140,204.0) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="190" y="282" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)" class="d">고치지 않고 오래 두면 틀린 내용이 남아요</text><g transform="translate(420,60) scale(1.0)"><rect width="300" height="150" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">새로 고친 공책</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">+ 새로 배운 것 추가</text></g><g transform="translate(680,204.0) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="48" y="60" width="26" height="34" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M54 68 h14 M54 76 h14 M54 84 h8" stroke="#142033" stroke-width="2"/></g><text x="570" y="282" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">고칠 때마다 공책도 같이 고쳐요</text></svg>
+<p>안 고치고 오래 두면 틀린 내용이 남아요.<small>고칠 때마다 공책도 같이 고쳐야 해요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>런북</b> = 자주 나는 고장마다 <b>순서대로 적어둔 공책</b>으로, 누가 당번이어도 <b>그대로 따라하면</b> 고칠 수 있게 하는 것.</h2><p>Runbook. 반복되는 장애 상황에 대한 단계별 대응 절차를 적어둔 문서예요. 플레이북이라고도 불러요. 자동화의 대본이 되기도 하고, 신참 온보딩에도 쓰이며, 사후 분석에서 배운 내용이 꾸준히 더해져야 녹슬지 않아요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>런북<br><small>Runbook (playbook)</small></dt><dd><b>고장마다 순서를 적어둔 공책.</b> 플레이북이라고도 불러요.</dd></div><div><dt>단계별 절차<br><small>Step-by-step procedure</small></dt><dd><b>1, 2, 3 번호로 적힌 순서.</b> 순서대로만 하면 돼요.</dd></div><div><dt>자동화와의 관계<br><small>Relationship to automation</small></dt><dd><b>공책이 결국 자동화 대본이 되는 것.</b> 같은 단계가 반복되면 자동화할 신호예요.</dd></div><div><dt>신참 온보딩<br><small>Rookie onboarding</small></dt><dd><b>새로 온 사람이 공책으로 배우는 것.</b> 설명 없이도 혼자 따라할 수 있어요.</dd></div><div><dt>최신화<br><small>Keeping it current</small></dt><dd><b>오래된 내용을 그대로 안 두는 것.</b> 안 고치면 '스테일(stale) 런북'이 돼요.</dd></div><div><dt>체크리스트<br><small>Checklist</small></dt><dd><b>빠뜨리지 않게 하나씩 확인하는 목록.</b> 런북 안에 자주 함께 들어가요.</dd></div><div><dt>사후 분석과의 연결<br><small>Link to the postmortem</small></dt><dd><b>사고에서 배운 걸 공책에 추가하는 것.</b> → <a href="postmortem-ko.html">탓하지 않고 모여 쓰는 기록</a></dd></div><div><dt>토일<br><small>Toil</small></dt><dd><b>공책이 자꾸 늘어나면 뜨는 신호.</b> 매일 반복되는 허드렛일이에요. → <a href="toil-ko.html">매일 똑같이 반복하는 허드렛일</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="chaosengineering-ko.html">일부러 내는 가짜 고장 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

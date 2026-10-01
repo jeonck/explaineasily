@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Target Line We Set Ourselves</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="slo-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · SRE</div>
+<h1>What is an <em>SLO</em>?</h1>
+<p class="sub">A Service Level Objective, told as a story about the line a park draws for itself and promises to stay inside.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A control-room operator and a mechanic argue over what counts as good enough" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(190,156) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="60" y="50" width="220" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M160.0 96 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="62" y="92" width="216" height="6" fill="var(--panel)"/><text x="170.0" y="76.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">isn't this good enough?</text><g transform="translate(470,156) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="370" y="50" width="210" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M465.0 96 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="372" y="92" width="206" height="6" fill="var(--panel)"/><text x="475.0" y="76.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">no, we need to do better!</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">the control room and the mechanic argue over this every time</text></svg>
+<p>The control room and the mechanic argue over this every time.<small>Everyone's idea of fine is different, so it always ends in a fight.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Three people each say a different number — 90%, 99%, 99.99% — is good enough" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--bad-soft)"/><g transform="translate(130,178) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="40" y="70" width="180" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M120.0 114 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="42" y="110" width="176" height="6" fill="var(--panel)"/><text x="130.0" y="95.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">90% is plenty</text><g transform="translate(400,178) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="300" y="70" width="190" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M385.0 114 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="302" y="110" width="186" height="6" fill="var(--panel)"/><text x="395.0" y="95.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">has to be 99%</text><g transform="translate(650,178) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="560" y="70" width="190" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M645.0 114 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="562" y="110" width="186" height="6" fill="var(--panel)"/><text x="655.0" y="95.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">needs to be 99.99%!</text><text x="380" y="305" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">without a shared line, everyone's idea of fine is different</text></svg>
+<p>Why is this hard?<small>Without a shared line, everyone's idea of fine is different.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="A record board beside a target board, with a smiling operator connecting the two" viewBox="0 0 760 350" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="350" fill="var(--sky)"/><ellipse cx="380" cy="350" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(50,50)"><rect width="230" height="140" rx="6" fill="#1B2A44"/><rect x="6" y="6" width="218" height="128" rx="4" fill="#0A1120"/><rect x="14.0" y="58.400000000000006" width="45.5" height="69.6" rx="2" fill="var(--good)"/><rect x="65.5" y="70.0" width="45.5" height="58.0" rx="2" fill="var(--good)"/><rect x="117.0" y="52.599999999999994" width="45.5" height="75.4" rx="2" fill="var(--good)"/><rect x="168.5" y="64.19999999999999" width="45.5" height="63.800000000000004" rx="2" fill="var(--good)"/></g><text x="165" y="212" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">today's record (SLI)</text><path d="M290 120 L370 120" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 4"/><g transform="translate(370,50) scale(1.0)"><rect width="320" height="170" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="320" height="26" rx="6" fill="#C9A86A"/><text x="160.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">OUR OWN TARGET</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">target: 99.9% a month</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">respond within 1 second</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">free to move within it</text></g><g transform="translate(650,250) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">look at today's numbers, then promise a target in advance</text><text x="380" y="335" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">stay inside it freely — cross it, and everyone pauses</text></svg>
+<p>Look at today's numbers, then promise a target in advance.<small>Stay inside it freely — cross it, and everyone pauses.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="38" width="10" height="16" fill="var(--good)"/><rect x="26" y="26" width="10" height="28" fill="var(--good)"/><rect x="42" y="14" width="10" height="40" fill="var(--good)"/><path d="M6 20 H58" stroke="var(--accent)" stroke-width="3" stroke-dasharray="5 4"/></svg><b>Set the target from SLI numbers</b><span>today's record is the baseline</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="12" width="12" height="40" fill="var(--stone-dark)"/><rect x="44" y="12" width="12" height="40" fill="var(--stone-dark)"/><path d="M26 32 H38" stroke="var(--good)" stroke-width="5" stroke-linecap="round"/></svg><b>Too tight and there's no room to breathe</b><span>the slack is the error budget</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="14" width="36" height="36" rx="4" fill="var(--bad-soft)" stroke="var(--bad)" stroke-width="3"/><path d="M22 42 L42 22" stroke="#5A3B22" stroke-width="5" stroke-linecap="round"/><circle cx="42" cy="22" r="6" fill="none" stroke="#5A3B22" stroke-width="4"/></svg><b>Cross it, and fixing comes first</b><span>before any new feature</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="34" r="20" fill="none" stroke="var(--accent)" stroke-width="5"/><path d="M30 20 V34 L42 40" stroke="var(--accent)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M46 16 a24 24 0 0 1 6 14" stroke="var(--good)" stroke-width="4" fill="none"/></svg><b>Review it once in a while</b><span>the target can change too</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A target-line chart where the real numbers wander above and below, with the crossed stretch marked red" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><rect x="260" y="170" width="300" height="60" fill="var(--bad-soft)"/><path d="M60 170 H700" stroke="var(--accent)" stroke-width="3" stroke-dasharray="7 5"/><text x="140" y="150" text-anchor="start" font-size="11" font-weight="700" fill="var(--accent)">target line: 99.9%</text><path d="M60 150 L160 130" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M160 130 L260 165" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M260 165 L360 205" stroke="var(--bad)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M360 205 L460 215" stroke="var(--bad)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M460 215 L560 160" stroke="var(--bad)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M560 160 L660 140" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="60" cy="150" r="4" fill="var(--good)"/><circle cx="160" cy="130" r="4" fill="var(--good)"/><circle cx="260" cy="165" r="4" fill="var(--good)"/><circle cx="360" cy="205" r="4" fill="var(--bad)"/><circle cx="460" cy="215" r="4" fill="var(--bad)"/><circle cx="560" cy="160" r="4" fill="var(--good)"/><circle cx="660" cy="140" r="4" fill="var(--good)"/><text x="410" y="255" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">crossed the line</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">the real numbers wander above and below the target line</text></svg>
+<p>The real numbers wander above and below the target line.<small>When a stretch crosses the line, you can see it right away.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: a 99.9% target with a reasonable cost gauge. Right: a 99.999% target with a cost gauge pinned near the top" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/><g transform="translate(40,30) scale(1.0)"><rect width="300" height="120" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">WHAT GUESTS ACTUALLY NEED</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">target: 99.9%</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">cost: reasonable</text></g><g transform="translate(190,210) scale(1.0)"><circle r="30" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M0 0 L10.6 -23.8" stroke="var(--good)" stroke-width="4" stroke-linecap="round"/><circle r="4" fill="var(--good)"/><text x="0" y="44" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">cost</text></g><g transform="translate(420,30) scale(1.0)"><rect width="300" height="120" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">TOO HIGH A TARGET</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">target: 99.999%</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">cost: never stops</text></g><g transform="translate(570,210) scale(1.0)"><circle r="30" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M0 0 L24.0 10.1" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><circle r="4" fill="var(--bad)"/><text x="0" y="44" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">cost</text></g><text x="380" y="282" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">promise only as much as guests really need</text></svg>
+<p>There's no such thing as perfect uptime. Instead, promise in advance.<small>Set the target too high, and the cost never stops growing.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2>An <b>SLO</b> is the <b>target line a team sets for itself</b> by looking at today's record (<b>SLI</b>). Stay inside it and move freely; cross it, and <b>fixing comes before any new feature</b>.</h2><p>A target the team sets for itself, distinct from the formal SLA made with customers — usually stricter than the SLA. The slack left over is the error budget, and a burn rate tracks how fast it's being spent.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>SLO</dt><dd><b>The promise line a team sets for itself.</b> Cross it, and everyone pauses.</dd></div><div><dt>SLI</dt><dd><b>The number actually measured today.</b> This number is what sets the target. → <a href="sli-en.html">today's record board</a></dd></div><div><dt>Error budget</dt><dd><b>The slack left over by the target.</b> Spend it on bold new tries. → <a href="errorbudget-en.html">the bundle of allowed-failure tickets</a></dd></div><div><dt>Setting the target</dt><dd><b>Starts from today's record.</b> Set it too high, and the cost never stops growing.</dd></div><div><dt>SLO vs SLA</dt><dd><b>What's set internally versus promised to the customer.</b> The contract is usually looser than this. → <a href="sla-en.html">the promise written up for the customer</a></dd></div><div><dt>Review cadence</dt><dd><b>Looked at again every so often.</b> Because both guests and the system change.</dd></div><div><dt>Burn rate</dt><dd><b>How fast the slack gets spent.</b> A fast drop triggers a warning early.</dd></div><div><dt>Golden signals</dt><dd><b>The four gauges that measure today's record.</b> Latency, traffic, errors, saturation. → <a href="goldensignals-en.html">the four gauges on the control-room wall</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="sla-en.html">The Contract We Sign With a Customer →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

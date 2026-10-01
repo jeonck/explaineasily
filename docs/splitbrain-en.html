@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two Control Rooms Each Insisting They're the Real One</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="splitbrain-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · SRE</div>
+<h1>What is <em>Split-Brain</em>?</h1>
+<p class="sub">Split-brain, told as a story about two control rooms, cut off from each other, each insisting it's the one in charge.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="Two control rooms, disconnected, each claiming to be on call and giving different orders" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,110)"><rect width="180" height="110" rx="6" fill="#1B2A44"/><rect x="6" y="6" width="168" height="98" rx="4" fill="#0A1120"/></g><g transform="translate(520,110)"><rect width="180" height="110" rx="6" fill="#1B2A44"/><rect x="6" y="6" width="168" height="98" rx="4" fill="#0A1120"/></g><g transform="translate(100,164) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(560,164) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="50" y="20" width="190" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M135.0 66 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="52" y="62" width="186" height="6" fill="var(--panel)"/><text x="145.0" y="46.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">I'm on call! Start ride A</text><rect x="510" y="20" width="200" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M600.0 66 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="512" y="62" width="196" height="6" fill="var(--panel)"/><text x="610.0" y="46.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">I'm on call! Start ride B</text><path d="M240 165 h280" stroke="var(--stone-dark)" stroke-width="4" stroke-dasharray="2 10" fill="none"/><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">the line is down, and both claim to be on call</text></svg>
+<p>The line is down, and both claim to be on call.<small>Different orders go out from both sides at once.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The line between two control rooms snaps like lightning, and each assumes the other is down" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(60,100)"><rect width="170" height="100" rx="6" fill="#1B2A44"/><rect x="6" y="6" width="158" height="88" rx="4" fill="#0A1120"/></g><g transform="translate(530,100)"><rect width="170" height="100" rx="6" fill="#1B2A44"/><rect x="6" y="6" width="158" height="88" rx="4" fill="#0A1120"/></g><path d="M230 150 h300" stroke="var(--bad)" stroke-width="5" fill="none"/><path d="M360 135 l20 15 -20 15 M400 135 l-20 15 20 15" stroke="var(--bad)" stroke-width="4" fill="none"/><g transform="translate(100,154) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="40" y="220" width="190" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M125.0 264 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="42" y="260" width="186" height="6" fill="var(--panel)"/><text x="135.0" y="245.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">that side must be down</text><g transform="translate(570,154) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="500" y="220" width="200" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M590.0 264 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="502" y="260" width="196" height="6" fill="var(--panel)"/><text x="600.0" y="245.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">that side must be down</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">when the line breaks, each side assumes the other is gone</text></svg>
+<p>When the line breaks, each side assumes the other is gone.<small>With no way to check, each side just decides on its own.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="Two control rooms, split by a broken line, each giving orders to a different ride, with a lightning-shaped crack in the middle" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(50,130)"><rect width="190" height="110" rx="6" fill="#1B2A44"/><rect x="6" y="6" width="178" height="98" rx="4" fill="#0A1120"/></g><g transform="translate(520,130)"><rect width="190" height="110" rx="6" fill="#1B2A44"/><rect x="6" y="6" width="178" height="98" rx="4" fill="#0A1120"/></g><g transform="translate(90,184) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(610,184) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(200,300) scale(0.6)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--accent)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--accent)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/></g><g transform="translate(560,300) scale(0.6)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="#5B8DEF"/><path d="M-48 -62 l8 10 l8 -10z" fill="#5B8DEF"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="#5B8DEF"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="#5B8DEF"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="#5B8DEF"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/><rect x="-46" y="-36" width="92" height="12" fill="var(--bad)" transform="rotate(-8)"/><rect x="-46" y="-16" width="92" height="12" fill="var(--bad)" transform="rotate(6)"/></g><path d="M240 185 L520 185" stroke="var(--bad)" stroke-width="4" stroke-dasharray="2 10" fill="none"/><path d="M365 150 l14 30 l-10 0 l14 30 l-30 -36 l12 0z" fill="var(--bad)"/><text x="380" y="40" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">both believe they're the only one on call, and give orders at the same time — split-brain</text><text x="380" y="325" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">one turns ride A on, the other turns ride B off — the park falls out of sync</text></svg>
+<p>Both believe they're the only one on call, and give orders at once — the park falls out of sync.<small>This is split-brain.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="18" cy="32" r="8" fill="var(--good)"/><circle cx="32" cy="32" r="8" fill="var(--good)"/><circle cx="46" cy="32" r="8" fill="var(--good)"/></svg><b>Use an odd number</b><span>like 3 or 5</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="20" y="12" width="10" height="40" rx="3" fill="var(--bad)"/><rect x="36" y="12" width="10" height="40" rx="3" fill="var(--bad)"/></svg><b>Pause without a majority</b><span>that's a safe mode</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="28" r="10" fill="var(--good)"/><path d="M40 10 l10 10 -24 24 -12 2 2 -12z" fill="var(--stone)" opacity="0.5"/><path d="M40 10 l10 10" stroke="var(--ink)" stroke-width="2" fill="none"/></svg><b>Keep only one, once fixed</b><span>clean up the rest</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="22" r="10" fill="var(--accent)"/><rect x="22" y="34" width="20" height="24" rx="4" fill="var(--accent)"/><path d="M14 46 q18 -14 36 0" stroke="var(--good)" stroke-width="3" fill="none"/></svg><b>Practice ahead of time</b><span>with a dry run</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A sign listing how to prevent it: use odd numbers, pause without a majority, keep only one after recovery, practice ahead" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(260,40) scale(1.0)"><rect width="240" height="180" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="240" height="26" rx="6" fill="#C9A86A"/><text x="120.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">HOW TO PREVENT</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">use odd numbers (3, 5)</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">can't reach a majority → pause itself</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">once fixed, keep only one</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">practice it ahead of time</text></g><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">only recognizing a majority means no more double claims</text></svg>
+<p>Only recognizing a majority means no more double claims.<small>Keep an odd number, and have both sides pause when cut off.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Three rides already received conflicting orders, left on or off out of sync" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(170,230) scale(0.75)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--accent)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--accent)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/></g><g transform="translate(380,230) scale(0.75)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="#5B8DEF"/><path d="M-48 -62 l8 10 l8 -10z" fill="#5B8DEF"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="#5B8DEF"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="#5B8DEF"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="#5B8DEF"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/><rect x="-46" y="-36" width="92" height="12" fill="var(--bad)" transform="rotate(-8)"/><rect x="-46" y="-16" width="92" height="12" fill="var(--bad)" transform="rotate(6)"/></g><g transform="translate(590,230) scale(0.75)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--stone)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--stone)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/><rect x="-46" y="-36" width="92" height="12" fill="var(--bad)" transform="rotate(-8)"/><rect x="-46" y="-16" width="92" height="12" fill="var(--bad)" transform="rotate(6)"/></g><text x="380" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">three orders already went out</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">orders already sent are hard to undo — prevention is the real fix</text></svg>
+<p>Orders already sent are hard to undo.<small>So prevention is the real fix.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Split-brain</b> = two disconnected control rooms, each <b>believing it alone is in charge</b>, giving conflicting orders at the same time. Prevented by keeping an <b>odd number of rooms</b> and recognizing only a <b>majority</b>.</h2><p>A state where two parts of a distributed system each believe they're the leader, caused by a network partition. Requiring a quorum (a majority) prevents it, since neither side alone can reach one and both pause. Forcibly shutting down a fake leader is called fencing.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Split-brain</dt><dd><b>Two control rooms each insisting they're the real one.</b> Conflicting orders throw the park out of sync.</dd></div><div><dt>Network partition</dt><dd><b>The line between control rooms going down.</b> This is what causes split-brain.</dd></div><div><dt>Quorum</dt><dd><b>The majority a side must clear to be recognized as on call.</b> Fail to reach it, and a side pauses itself. → <a href="consensus-en.html">control rooms raising hands to decide</a></dd></div><div><dt>Fencing</dt><dd><b>Forcibly shutting a fake leader down.</b> Done during cleanup.</dd></div><div><dt>Odd node count</dt><dd><b>Keeping control rooms at an odd number, like 3 or 5.</b> It keeps the majority from ever being ambiguous.</dd></div><div><dt>Safe mode</dt><dd><b>Pausing itself when it can't reach a majority.</b> It stops before conflicting orders go out.</dd></div><div><dt>Leader election</dt><dd><b>The vote that re-picks a leader after recovery.</b> → <a href="consensus-en.html">control rooms raising hands to decide</a></dd></div><div><dt>Multi-region</dt><dd><b>The same risk applies when control rooms sit in different cities.</b> A design meant to survive losing a whole city.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="captheorem-en.html">You Can't Have Both Correctness and Always-Open →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

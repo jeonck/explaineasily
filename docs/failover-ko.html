@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>발전기가 꺼지면 예비 발전기가</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="failover-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · SRE</div>
+<h1><em>장애 조치</em>가 뭐예요?</h1>
+<p class="sub">장애 조치를, 주 발전기가 꺼지면 예비 발전기가 자동으로 넘겨받는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="밤에 주 발전기가 고장나 공원이 어둡고, 정비사가 땀을 흘리며 예비가 없어서 오래 걸린다고 말함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--night)"/><circle cx="660" cy="50" r="26" fill="#F5E6B8"/><circle cx="120" cy="40" r="2" fill="#F5E6B8"/><circle cx="300" cy="70" r="2" fill="#F5E6B8"/><circle cx="500" cy="30" r="2" fill="#F5E6B8"/><circle cx="420" cy="90" r="2" fill="#F5E6B8"/><circle cx="200" cy="120" r="2" fill="#F5E6B8"/><ellipse cx="380" cy="310" rx="440" ry="30" fill="#0A1120"/><g transform="translate(160,230) scale(1.0)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/></g><text x="160" y="160" text-anchor="middle" font-size="11" font-weight="700" fill="#C9D5E6" class="d">주 발전기</text><g transform="translate(160,205)"><rect x="-46" y="-6" width="92" height="10" fill="var(--bad)" transform="rotate(-8)"/><rect x="-46" y="10" width="92" height="10" fill="var(--bad)" transform="rotate(6)"/></g><g transform="translate(420,230) scale(0.8)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="#3A4A68"/><path d="M-48 -62 l8 10 l8 -10z" fill="#3A4A68"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="#3A4A68"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="#3A4A68"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="#3A4A68"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/></g><g transform="translate(540,230) scale(0.6)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="#3A4A68"/><path d="M-48 -62 l8 10 l8 -10z" fill="#3A4A68"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="#3A4A68"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="#3A4A68"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="#3A4A68"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/></g><g transform="translate(650,163) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><g transform="translate(58,54) rotate(-30)"><rect x="-3" y="0" width="6" height="34" rx="2" fill="#5A3B22"/><circle cy="-4" r="7" fill="none" stroke="#5A3B22" stroke-width="4"/></g></g><rect x="540" y="70" width="200" height="50" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M630.0 120 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="542" y="116" width="196" height="6" fill="var(--panel)"/><text x="640.0" y="98.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">예비가 없어서 한참 걸려요...</text><text x="380" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="#F5E6B8" class="d">주 발전기가 꺼져서 공원 전체가 깜깜해졌어요 — 예비가 없어서 한참 걸려요</text></svg>
+<p>주 발전기가 꺼져서 공원 전체가 깜깜해졌어요.<small>예비가 없어서 한참 걸려요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="발전기 하나에 연결된 기구 두 개가 함께 고장남을 화살표로 보여줌" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(220,230) scale(1.0)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">발전기 딱 하나</text></g><path d="M260 180 Q400 140 540 180" stroke="var(--bad)" stroke-width="3" stroke-dasharray="6 4" fill="none"/><g transform="translate(540,230) scale(0.6)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--stone)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--stone)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/><rect x="-46" y="-36" width="92" height="12" fill="var(--bad)" transform="rotate(-8)"/><rect x="-46" y="-16" width="92" height="12" fill="var(--bad)" transform="rotate(6)"/></g><g transform="translate(640,230) scale(0.55)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--stone)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--stone)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/><rect x="-46" y="-36" width="92" height="12" fill="var(--bad)" transform="rotate(-8)"/><rect x="-46" y="-16" width="92" height="12" fill="var(--bad)" transform="rotate(6)"/></g><text x="590" y="150" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">연결된 기구가 다 같이 멈춰요</text><text x="380" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">하나에만 의존하면, 그게 멈추는 순간 전부 멈춰요</text></svg>
+<p>하나에만 의존하면, 그게 멈추는 순간 전부 멈춰요.<small>연결된 기구가 다 같이 멈춰요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="꺼진 주 발전기에서 화살표가 예비 발전기로 이어지고, 예비가 켜져 기구를 돌림" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(140,280) scale(1.0)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">주 발전기(꺼짐)</text></g><g transform="translate(140,250)"><rect x="-46" y="-6" width="92" height="10" fill="var(--bad)" transform="rotate(-8)"/><rect x="-46" y="10" width="92" height="10" fill="var(--bad)" transform="rotate(6)"/></g><path d="M210 230 L420 200" stroke="var(--accent)" stroke-width="4" stroke-dasharray="4 4"/><path d="M400 192 l22 10 -8 20z" fill="var(--accent)"/><g transform="translate(480,280) scale(1.0)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">예비 발전기(켜짐)</text></g><g transform="translate(600,202) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(660,182) scale(0.8)"><rect x="-10" y="-20" width="20" height="36" rx="4" fill="var(--stone-dark)"/><rect x="-6" y="-16" width="12" height="8" fill="#5B9BD5"/><rect x="-3" y="-28" width="6" height="10" fill="var(--stone-dark)"/><circle cx="0" cy="-30" r="3" fill="var(--bad)"/></g><g transform="translate(700,280) scale(0.55)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--good)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--good)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--good)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--good)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--good)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/></g><text x="380" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">주 발전기가 꺼지면, 예비 발전기가 자동으로 넘겨받아요</text><text x="380" y="325" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">평소엔 꺼둔 예비가, 그 순간엔 스스로 켜져요</text></svg>
+<p>주 발전기가 꺼지면, 예비 발전기가 자동으로 넘겨받아요.<small>평소엔 꺼둔 예비가, 그 순간엔 스스로 켜져요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="24" width="44" height="30" rx="4" fill="var(--stone)"/><path d="M20 24 V16 h24 v8" stroke="var(--stone-dark)" stroke-width="4" fill="none"/><text x="32" y="44" text-anchor="middle" font-size="14" font-weight="700" fill="var(--panel)">zZ</text></svg><b>평소엔 예비를 꺼둬요</b><span>비용 때문이에요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="26" cy="26" r="16" fill="none" stroke="var(--accent)" stroke-width="5"/><path d="M38 38 L54 54" stroke="var(--accent)" stroke-width="6" stroke-linecap="round"/><path d="M18 26 h6 l3 -8 4 16 3 -8 h6" stroke="var(--bad)" stroke-width="3" fill="none"/></svg><b>자동으로 알아채요</b><span>주 발전기가 꺼지면요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 20 h30" stroke="var(--good)" stroke-width="5"/><path d="M32 12 l10 8 -10 8z" fill="var(--good)"/><path d="M54 44 h-30" stroke="var(--bad)" stroke-width="5"/><path d="M32 36 l-10 8 10 8z" fill="var(--bad)"/></svg><b>자동으로 전환해요</b><span>수동이면 늦어요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="10" width="36" height="44" rx="4" fill="var(--panel)" stroke="var(--line)" stroke-width="3"/><path d="M22 22 h20 M22 30 h20 M22 38 h12" stroke="var(--muted)" stroke-width="3" stroke-linecap="round"/><circle cx="46" cy="44" r="9" fill="var(--good)"/><path d="M42 44 l3 4 6 -8" stroke="#FFF8E7" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg><b>가끔 예비도 테스트해요</b><span>안 켜지면 소용없어요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="안내판에 자동 전환 네 단계가 적혀 있고, 꺼진 주 발전기에서 예비 발전기로 신호 화살표가 이어짐" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(40,30) scale(1.0)"><rect width="280" height="160" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="280" height="26" rx="6" fill="#C9A86A"/><text x="140.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">자동 전환 순서</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">① 주 발전기 꺼짐 감지</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">② 예비에 신호 보내기</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">③ 예비가 넘겨받음</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">④ 다시 켜지면 안내</text></g><g transform="translate(480,240) scale(0.8)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">주 발전기</text></g><g transform="translate(480,215)"><rect x="-37" y="-5" width="74" height="8" fill="var(--bad)" transform="rotate(-8)"/><rect x="-37" y="7" width="74" height="8" fill="var(--bad)" transform="rotate(6)"/></g><path d="M540 200 Q610 170 660 220" stroke="var(--good)" stroke-width="3" stroke-dasharray="6 4" fill="none"/><path d="M645 206 l20 14 -22 6z" fill="var(--good)"/><g transform="translate(690,240) scale(0.65)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">예비</text></g><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">감지 → 신호 → 전환, 이 세 가지가 자동으로 이어져요</text></svg>
+<p>감지 → 신호 → 전환, 이 세 가지가 자동으로 이어져요.<small>주 발전기가 멈추면, 예비가 바로 넘겨받아요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 손님이 짧은 멈춤을 느낌. 오른쪽: 테스트 안 한 예비 발전기도 고장나 있음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/><g transform="translate(130,174) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="60" y="90" width="200" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M150.0 136 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="62" y="132" width="196" height="6" fill="var(--panel)"/><text x="160.0" y="116.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">어, 잠깐 멈췄었나?</text><text x="190" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">전환하는 그 짧은 순간은 손님이 느낄 수 있어요</text><g transform="translate(590,230) scale(0.8)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/></g><g transform="translate(590,205)"><rect x="-37" y="-5" width="74" height="8" fill="var(--bad)" transform="rotate(-8)"/><rect x="-37" y="7" width="74" height="8" fill="var(--bad)" transform="rotate(6)"/></g><text x="590" y="150" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)" class="d">테스트 안 한 예비</text><text x="590" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">가끔 테스트 안 하면, 예비도 고장나 있을 수 있어요</text><text x="380" y="288" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">그 둘 다 신경 써야 진짜 장애 조치예요</text></svg>
+<p>전환하는 그 짧은 순간은 손님이 느낄 수 있어요.<small>가끔 테스트 안 하면, 예비도 고장나 있을 수 있어요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>장애 조치</b> = 평소엔 꺼둔 <b>예비</b>를, 주 발전기가 멈추는 순간 <b>자동으로 알아채고 전환</b>해 서비스를 이어가는 일. 전환 순간은 완전히 안 느껴지게는 못 해도, <b>가끔 테스트</b>해 두면 예비가 멀쩡한지 확인돼요.</h2><p>한 구성 요소가 실패했을 때 대기 중인 다른 구성 요소로 자동 전환하는 메커니즘이에요. 액티브-패시브(평소엔 대기)와 액티브-액티브(둘 다 받음) 방식이 있고, 전환에 걸리는 시간을 failover time이라고 불러요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>장애 조치<br><small>Failover</small></dt><dd><b>주 발전기가 꺼지면 예비로 넘어가는 일.</b> 자동으로, 빠르게 일어나야 의미가 있어요.</dd></div><div><dt>액티브-패시브<br><small>Active-passive</small></dt><dd><b>예비는 평소엔 대기만 해요.</b> 주 발전기가 멈춰야 그제서야 켜져요.</dd></div><div><dt>액티브-액티브<br><small>Active-active</small></dt><dd><b>둘 다 평소에도 손님을 받아요.</b> 하나가 멈춰도 나머지가 이미 돌고 있어요.</dd></div><div><dt>자동 전환<br><small>Automatic switch</small></dt><dd><b>사람이 누르지 않아도 스스로 넘어가는 것.</b> 수동으로 하면 그만큼 늦어져요.</dd></div><div><dt>전환 시간<br><small>Failover time</small></dt><dd><b>전환이 끝날 때까지 걸리는 시간.</b> 0초는 어려워요 — 그 짧은 순간은 손님이 느낄 수 있어요.</dd></div><div><dt>헬스 체크<br><small>Health check</small></dt><dd><b>주 발전기가 살아 있는지 계속 확인하는 일.</b> 이게 있어야 '꺼졌다'는 걸 자동으로 알아채요.</dd></div><div><dt>다중 리전<br><small>Multi-region</small></dt><dd><b>발전기가 아니라 도시 전체를 예비로 두는 것.</b> 장애 조치를 도시 단위로 키운 이야기예요. → <a href="multiregion-ko.html">쌍둥이 공원</a></dd></div><div><dt>복제<br><small>Replication</small></dt><dd><b>명부도 예비 쪽에 미리 똑같이 적어 두는 일.</b> 예비가 넘겨받아도 명부가 없으면 소용없어요.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="multiregion-ko.html">쌍둥이 공원 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Front Gate Information Booth</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="apigateway-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · SRE</div>
+<h1>What is an <em>API Gateway</em>?</h1>
+<p class="sub">An API gateway, told as a story about the front gate booth that sends every guest to the right window.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="Three guests each run off in confused directions looking for the right booth" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(120,230) scale(0.85)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">A</text></g><g transform="translate(380,230) scale(0.85)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">B</text></g><g transform="translate(640,230) scale(0.85)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">C</text></g><g transform="translate(40,174) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(260,174) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(500,174) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#C9822B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><path d="M70 200 Q220 150 345 210" stroke="var(--bad)" stroke-width="2" fill="none" stroke-dasharray="5 4"/><path d="M290 200 Q450 160 605 215" stroke="var(--bad)" stroke-width="2" fill="none" stroke-dasharray="5 4"/><path d="M530 200 Q400 180 155 215" stroke="var(--bad)" stroke-width="2" fill="none" stroke-dasharray="5 4"/><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">every guest runs to a different booth on their own</text></svg>
+<p>Every guest runs to a different booth on their own.<small>Not knowing where to go, they wander the whole park.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Twelve numbered booths in a row; a guest sweats, unable to tell which is which" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--bad-soft)"/><g transform="translate(70,100) scale(0.5)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">1</text></g><g transform="translate(180,100) scale(0.5)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">2</text></g><g transform="translate(290,100) scale(0.5)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">3</text></g><g transform="translate(400,100) scale(0.5)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">4</text></g><g transform="translate(510,100) scale(0.5)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">5</text></g><g transform="translate(620,100) scale(0.5)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">6</text></g><g transform="translate(70,220) scale(0.5)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">7</text></g><g transform="translate(180,220) scale(0.5)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">8</text></g><g transform="translate(290,220) scale(0.5)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">9</text></g><g transform="translate(400,220) scale(0.5)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">10</text></g><g transform="translate(510,220) scale(0.5)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">11</text></g><g transform="translate(620,220) scale(0.5)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">12</text></g><g transform="translate(690,150) scale(0.45)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><text x="380" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)" class="d">12 rides, 12 booths — no way to tell which is which</text></svg>
+<p>12 rides, 12 booths — no way to tell which is which.<small>The more booths there are, the harder it is to find the right one alone.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="The gate operator checks a guest's ID; an arrow leads on to booth A" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(150,130) scale(1.0)"><rect x="-44" y="0" width="88" height="90" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="4"/><path d="M-56 0 L0 -36 L56 0 Z" fill="var(--good)"/><rect x="-30" y="26" width="60" height="30" fill="var(--sky)"/><rect x="-70" y="60" width="26" height="8" fill="var(--stone-dark)"/><rect x="44" y="60" width="26" height="8" fill="var(--stone-dark)"/></g><g transform="translate(40,158) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(230,168) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(560,230) scale(0.8)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">A</text></g><path d="M235 190 Q400 150 540 210" stroke="var(--good)" stroke-width="3" fill="none" stroke-dasharray="6 4"/><text x="380" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">one booth takes everyone and sends them to the right window</text><text x="380" y="328" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">one entrance, one ID check, one set of directions</text></svg>
+<p>One booth takes everyone and sends them to the right window.<small>One entrance, one ID check, one set of directions.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="16" y="18" width="32" height="36" rx="3" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M32 18 V54" stroke="var(--accent)" stroke-width="3"/><circle cx="26" cy="36" r="2.5" fill="var(--accent)"/></svg><b>One entrance</b><span>everyone comes through here</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="16" width="40" height="28" rx="4" fill="none" stroke="var(--accent)" stroke-width="4"/><circle cx="24" cy="30" r="5" fill="var(--accent)"/><path d="M34 26 h10 M34 33 h10" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/></svg><b>Check ID once</b><span>booths don't ask again</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="18" r="6" fill="var(--good)"/><path d="M32 24 V32" stroke="var(--good)" stroke-width="4"/><path d="M32 32 L16 48 M32 32 L48 48" stroke="var(--good)" stroke-width="4" stroke-linecap="round"/></svg><b>The booth routes you</b><span>no need to know the way</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="20" fill="var(--bad)"/><rect x="20" y="29" width="24" height="6" fill="#FFF8E7"/></svg><b>Throttles when crowded</b><span>it notices the crowd first</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="From one booth, three arrows branch out to rides A, B, and C" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><g transform="translate(80,120) scale(1.0)"><rect x="-44" y="0" width="88" height="90" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="4"/><path d="M-56 0 L0 -36 L56 0 Z" fill="var(--good)"/><rect x="-30" y="26" width="60" height="30" fill="var(--sky)"/><rect x="-70" y="60" width="26" height="8" fill="var(--stone-dark)"/><rect x="44" y="60" width="26" height="8" fill="var(--stone-dark)"/></g><g transform="translate(430,230) scale(0.55)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--accent)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--accent)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--accent)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/><text x="0" y="-128" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">Ride A</text></g><g transform="translate(560,230) scale(0.55)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="#5B8DEF"/><path d="M-48 -62 l8 10 l8 -10z" fill="#5B8DEF"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="#5B8DEF"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="#5B8DEF"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="#5B8DEF"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/><text x="0" y="-128" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">Ride B</text></g><g transform="translate(690,230) scale(0.55)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="#2E7D6B"/><path d="M-48 -62 l8 10 l8 -10z" fill="#2E7D6B"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="#2E7D6B"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="#2E7D6B"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="#2E7D6B"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/><text x="0" y="-128" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">Ride C</text></g><path d="M175 175 Q300 110 390 185" stroke="var(--accent)" stroke-width="3" fill="none"/><path d="M175 175 Q350 175 515 200" stroke="#5B8DEF" stroke-width="3" fill="none"/><path d="M175 175 Q400 250 645 208" stroke="#2E7D6B" stroke-width="3" fill="none"/><text x="380" y="282" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">one door in, many paths out</text></svg>
+<p>One door in, many paths out.<small>The booth looks at each guest and decides which ride to send them to.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The booth is stalled and a long line of guests can't get in" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(330,150) scale(1.1)"><rect x="-44" y="0" width="88" height="90" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="4"/><path d="M-56 0 L0 -36 L56 0 Z" fill="var(--good)"/><rect x="-30" y="26" width="60" height="30" fill="var(--sky)"/><rect x="-70" y="60" width="26" height="8" fill="var(--stone-dark)"/><rect x="44" y="60" width="26" height="8" fill="var(--stone-dark)"/></g><path d="M297 179 L363 212 M363 179 L297 212" stroke="var(--bad)" stroke-width="5" stroke-linecap="round"/><g transform="translate(40,206) scale(0.45)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(70,206) scale(0.45)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(100,206) scale(0.45)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#C9822B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(130,206) scale(0.45)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(160,206) scale(0.45)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="190" y="262" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">can't get in</text><g transform="translate(600,230) scale(0.5)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--stone)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--stone)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/></g><g transform="translate(690,230) scale(0.45)"><rect x="-60" y="-6" width="120" height="8" rx="3" fill="var(--stone-dark)"/><rect x="-42" y="-62" width="10" height="58" fill="var(--stone-dark)"/><rect x="32" y="-62" width="10" height="58" fill="var(--stone-dark)"/><path d="M-52 -62 Q0 -118 52 -62 Z" fill="var(--stone)"/><path d="M-48 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M-32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M-16 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M0 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M16 -62 l8 10 l8 -10z" fill="var(--stone)"/><path d="M32 -62 l8 10 l8 -10z" fill="#FFF8E7"/><path d="M48 -62 l8 10 l8 -10z" fill="var(--stone)"/><rect x="-16" y="-40" width="32" height="34" rx="3" fill="var(--night)"/></g><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">if the one booth breaks, the whole park locks up</text></svg>
+<p>If the one booth breaks, the whole park locks up.<small>So parks keep more than one booth and split the load between them.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2>An <b>API gateway</b> = one front booth that <b>checks ID, shows the way, and throttles the crowd</b> for every guest.</h2><p>A single entry point for incoming requests that handles authentication, authorization, routing, and rate limiting in one place — instead of every backend service implementing it separately.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>API gateway</dt><dd><b>The front gate booth.</b> Every request passes through here first.</dd></div><div><dt>Authentication</dt><dd><b>Showing your ID.</b> Confirms who you are.</dd></div><div><dt>Authorization</dt><dd><b>Checking you're allowed in.</b> After knowing who you are, it checks what you're allowed to do.</dd></div><div><dt>Routing</dt><dd><b>The booth pointing the way.</b> Sends each request to the right backend window.</dd></div><div><dt>Rate limiting</dt><dd><b>Letting in only so many at a time.</b> The booth throttles before things get overwhelmed. → <a href="caching-en.html">the memo board of frequent answers</a></dd></div><div><dt>Single entry point</dt><dd><b>There's only one door in.</b> Which means if that one door breaks, nobody gets in.</dd></div><div><dt>Load balancer</dt><dd><b>The device that splits guests across several booths.</b> Used when one booth isn't enough. → <a href="loadbalancer-en.html">the traffic officer who splits the queue</a></dd></div><div><dt>Service mesh</dt><dd><b>The dedicated path rides use to talk to each other.</b> The gateway sits between guests and rides; a service mesh sits between rides themselves. → <a href="servicemesh-en.html">the dedicated path between rides</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="servicemesh-en.html">The Dedicated Path Between Rides →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

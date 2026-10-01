@@ -1,0 +1,114 @@
+# SRE/시스템 설계 기준 용어 (Google SRE book + 시스템 설계 인터뷰 토픽 기반)
+site reliability engineering|sre
+sli
+slo
+sla
+error budget
+golden signals
+use method
+red method
+monitoring|observability
+metrics
+logging|logs
+distributed tracing|tracing
+on-call
+alerting
+paging
+alert fatigue
+incident response
+incident commander
+postmortem|post-mortem
+blameless
+runbook|playbook
+toil
+automation
+capacity planning
+load testing
+dora metrics
+deployment frequency
+lead time
+change failure rate
+mttr
+load balancer|load balancing
+api gateway
+service mesh
+sidecar
+reverse proxy
+caching
+cache invalidation
+cache stampede
+cdn
+sharding|partitioning
+consistent hashing
+replication
+leader election
+consensus|raft|paxos
+quorum
+split brain
+cap theorem
+pacelc
+eventual consistency
+strong consistency
+message queue
+pub/sub
+dead letter queue
+backpressure
+bulkhead
+circuit breaker
+retry
+exponential backoff
+jitter
+idempotency
+rate limiting
+throttling
+token bucket
+autoscaling
+horizontal scaling
+vertical scaling
+health check
+liveness probe
+readiness probe
+graceful degradation
+fallback
+failover
+active-active
+active-passive
+disaster recovery
+rto
+rpo
+multi-region
+service discovery
+service registry
+orchestration|kubernetes
+infrastructure as code
+gitops
+immutable infrastructure
+configuration drift
+feature flag
+dark launch
+canary deployment
+blue-green deployment
+rolling deployment
+rollback
+chaos engineering
+game day
+fault injection
+blast radius
+single point of failure
+cascading failure
+thundering herd
+hotspot
+noisy neighbor
+zero downtime
+observability pillars
+distributed system
+network partition
+latency
+throughput
+saturation
+availability
+uptime
+downtime
+scalability
+resilience
+fault tolerance

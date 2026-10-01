@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>정확함과 항상 열림, 둘 다는 못 가져요</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="captheorem-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · SRE</div>
+<h1><em>CAP 정리</em>가 뭐예요?</h1>
+<p class="sub">CAP 정리를, 선이 끊긴 두 창고 중 하나를 골라야 하는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="두 창고 사이 연락선이 끊기고 각 창구 직원이 손님을 받을지 고민함" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(130,260) scale(0.7)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">창고 A</text></g><g transform="translate(630,260) scale(0.7)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">창고 B</text></g><path d="M260 160 L330 160" stroke="var(--stone-dark)" stroke-width="3" stroke-dasharray="6 4"/><path d="M430 160 L500 160" stroke="var(--stone-dark)" stroke-width="3" stroke-dasharray="6 4"/><path d="M345 140 L365 180 L385 140" stroke="var(--bad)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="380" y="125" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)" class="d">선이 끊겼어요!</text><g transform="translate(90,204) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="10" y="120" width="190" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M95.0 160 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="12" y="156" width="186" height="6" fill="var(--panel)"/><text x="105.0" y="143.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">손님을 받아도 될까요?</text><g transform="translate(640,204) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="555" y="120" width="195" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M642.5 160 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="557" y="156" width="191" height="6" fill="var(--panel)"/><text x="652.5" y="143.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">여긴 숫자가 안 바뀌는데요</text><text x="380" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">창고 둘이 서로 연락이 안 돼요 — 손님을 받을지 멈출지 고민해요</text></svg>
+<p>창고 둘이 서로 연락이 안 돼요.<small>손님을 받을지 멈출지 고민해요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="빔이 갈라진 저울. 한쪽엔 정확한 답만, 다른 쪽엔 일단 열려 있기" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(380,245)"><rect x="-6" y="-66" width="12" height="66" fill="var(--stone-dark)"/><rect x="-32" y="-4" width="64" height="10" rx="3" fill="var(--stone-dark)"/><rect x="-80.0" y="-70" width="60" height="8" rx="3" fill="var(--stone-dark)"/><rect x="20.0" y="-70" width="60" height="8" rx="3" fill="var(--stone-dark)"/><path d="M-14 -78 L2 -50 L18 -78" stroke="var(--bad)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cy="-66" r="5" fill="var(--stone-dark)"/><line x1="-80.0" y1="-66" x2="-80.0" y2="-24" stroke="var(--stone-dark)" stroke-width="3"/><ellipse cx="-80.0" cy="-18" rx="34" ry="11" fill="var(--accent)"/><line x1="80.0" y1="-66" x2="80.0" y2="-24" stroke="var(--stone-dark)" stroke-width="3"/><ellipse cx="80.0" cy="-18" rx="34" ry="11" fill="var(--good)"/><text x="-80.0" y="2" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">정확한 답만</text><text x="80.0" y="2" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">일단 열려 있기</text></g><g transform="translate(110,178) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="20" y="95" width="210" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M115.0 135 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="22" y="131" width="206" height="6" fill="var(--panel)"/><text x="125.0" y="119.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">둘 다 한 번에는 안 돼요</text><g transform="translate(590,178) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">연락이 끊기면, 정확함과 열려있기 둘 다는 동시에 못 가져요</text></svg>
+<p>왜 어려운가: 둘 다는 동시에 못 가져요.<small>연락이 끊기면, 정확함과 열려있기 둘 다는 동시에 못 가져요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="선이 끊긴 지점에서 한쪽은 문 닫은 매표소로, 한쪽은 계속 여는 안내 게시판으로 갈라짐" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><text x="380" y="45" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)" class="d">선이 끊겼어요</text><path d="M355 58 L375 92 L395 58" stroke="var(--bad)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M345 105 Q240 150 165 215" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 4" fill="none"/><path d="M415 105 Q520 145 560 190" stroke="var(--good)" stroke-width="3" stroke-dasharray="6 4" fill="none"/><g transform="translate(150,250) scale(0.8)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="var(--stone)"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">문 닫아요</text></g><g transform="translate(430,150) scale(1.0)"><rect width="260" height="140" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="260" height="26" rx="6" fill="#C9A86A"/><text x="130.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">안내 게시판</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">열림: 계속 받아요</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">숫자는 나중에 맞춰요</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">잠깐은 다를 수 있어요</text></g><g transform="translate(60,239) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(705,239) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="335" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">선이 끊기면, 정확함을 택해 문을 닫거나 일단 열어 두고 나중에 맞추거나 둘 중 하나를 골라야 해요</text></svg>
+<p>CAP = 선이 끊기면, 정확함과 열려있기 중 하나를 골라야 해요.<small>문을 닫거나(일관성), 일단 열어 두고 나중에 맞추거나(가용성).</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="32" r="10" fill="var(--good)"/><circle cx="44" cy="32" r="10" fill="var(--good)"/><path d="M28 32 h8" stroke="var(--good)" stroke-width="4"/><path d="M14 46 l6 6 l10 -14" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><b>평소엔 둘 다 괜찮아요</b><span>선이 멀쩡할 때는요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 32 h16" stroke="var(--stone-dark)" stroke-width="4" stroke-linecap="round"/><path d="M28 24 l8 16 l-16 0z" fill="var(--bad)"/><path d="M40 32 L54 16" stroke="var(--good)" stroke-width="4" stroke-linecap="round"/><path d="M40 32 L54 48" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/></svg><b>선이 끊기면 골라야 해요</b><span>둘 다는 못 가져요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="20" fill="var(--accent)"/><text x="32" y="40" font-size="22" font-weight="700" text-anchor="middle" fill="#FFF8E7">₩</text></svg><b>돈 다루는 곳은 정확함 우선</b><span>틀린 답보다 잠깐 닫는 게 나아요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="14" width="48" height="34" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M16 24 h32 M16 32 h24 M16 40 h18" stroke="#142033" stroke-width="2.5" stroke-linecap="round"/></svg><b>보여주기용 정보는 열림 우선</b><span>조금 늦어도 괜찮아요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 정확함을 택해 문 닫은 매표소. 오른쪽: 열려있기를 택해 계속 보여주는 안내 게시판" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/><text x="190" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">정확함(닫기)</text><g transform="translate(190,250) scale(0.8)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="var(--stone)"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">문 닫아요</text></g><text x="570" y="40" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">열려있기(나중에 맞춤)</text><g transform="translate(460,150) scale(1.0)"><rect width="220" height="130" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="220" height="26" rx="6" fill="#C9A86A"/><text x="110.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">안내 게시판</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">일단 계속 보여줘요</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">몇 분 뒤 맞아요</text></g><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">무엇이 더 중요한지에 따라 골라요 — 매표소는 정확함을, 안내판은 열림을</text></svg>
+<p>저울 그림: 정확함(닫기) vs 열려있기(나중에 맞춤).<small>매표소는 정확함을, 안내판은 열림을 택해요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="평소엔 두 창고가 초록 선으로 잘 연결되어 체크 표시가 뜸" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(130,240) scale(0.7)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">창고 A</text></g><g transform="translate(630,240) scale(0.7)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">창고 B</text></g><path d="M250 170 L510 170" stroke="var(--good)" stroke-width="4"/><circle cx="380" cy="170" r="14" fill="var(--good)"/><path d="M373 170 l5 6 l10 -14" stroke="#FFF8E7" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="380" y="140" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)">평소엔 선이 멀쩡해요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">이건 선이 끊겼을 때만 하는 선택이에요 — 평소엔 고민할 필요 없어요</text></svg>
+<p>이건 선이 끊겼을 때만 하는 선택이에요.<small>평소엔 고민할 필요 없어요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>CAP 정리</b> = 창고 사이 <b>선이 끊기면</b>, <b>정확함</b>과 <b>늘 열려있기</b> 둘 다는 동시에 못 가지고 <b>하나를 골라야</b> 한다는 규칙.</h2><p>Consistency(일관성), Availability(가용성), Partition tolerance(분단 허용)의 앞 글자. 네트워크 파티션(선 끊김)은 현실에서 늘 일어날 수 있다고 가정하므로, 사실상 남은 선택은 일관성이냐 가용성이냐예요. 조금 더 보면 PACELC도 있어요 — 끊기지 않아도 속도와 정확함 사이에서 또 고른다는 확장판.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>CAP 정리<br><small>CAP Theorem</small></dt><dd><b>선이 끊기면 셋 중 둘만 가질 수 있다는 규칙.</b> 분산 시스템을 설계할 때 꼭 거쳐가는 질문이에요.</dd></div><div><dt>일관성<br><small>Consistency (C)</small></dt><dd><b>모든 창구가 같은 답을 주는 것.</b> 선이 끊기면 이걸 지키려고 문을 닫기도 해요.</dd></div><div><dt>가용성<br><small>Availability (A)</small></dt><dd><b>항상 응답은 하는 것.</b> 그 답이 최신이 아닐 수도 있어요.</dd></div><div><dt>분단 허용<br><small>Partition Tolerance (P)</small></dt><dd><b>선이 끊겨도 시스템이 계속 도는 것.</b> 현실에선 사실상 늘 가정해야 해요.</dd></div><div><dt>네트워크 파티션<br><small>Network Partition</small></dt><dd><b>창구끼리 연락이 끊기는 사건.</b> CAP에서 선택을 강요하는 바로 그 상황이에요.</dd></div><div><dt>PACELC<br><small>PACELC</small></dt><dd><b>끊기지 않아도 속도냐 정확함이냐 또 고른다는 확장판.</b> CAP은 끊겼을 때만, PACELC은 평소에도 다뤄요.</dd></div><div><dt>강한 일관성<br><small>Strong Consistency</small></dt><dd><b>늘 최신 정답만 보여주는 약속.</b> 돈 다루는 곳에서 주로 선호해요.</dd></div><div><dt>최종 일관성<br><small>Eventual Consistency</small></dt><dd><b>조금 늦게라도 결국 맞춰지는 약속.</b> → <a href="eventualconsistency-ko.html">조금 늦게 맞춰지는 재고판</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="eventualconsistency-ko.html">조금 늦게 맞춰지는 재고판 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

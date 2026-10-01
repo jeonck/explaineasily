@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>잠깐 쉬었다 다시 줄서기</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="retrybackoff-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · SRE</div>
+<h1><em>재시도와 백오프</em>가 뭐예요?</h1>
+<p class="sub">재시도와 백오프를 거절당하면 잠깐 쉬었다 다시 줄서는 손님 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="거절당한 손님이 '또 줄서야지' 하며 바로 다시 줄의 끝에 섬. 창구는 더 바빠짐" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(560,230) scale(1.0)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">창구</text></g><g transform="translate(260,174) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(290,174) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(320,174) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#C9822B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(350,174) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(380,174) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(80,174) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#C9822B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="10" y="100" width="170" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M85.0 144 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="12" y="140" width="166" height="6" fill="var(--panel)"/><text x="95.0" y="125.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">거절당했어요... 또 줄서야지</text><path d="M115 200 Q190 230 260 200" stroke="var(--bad)" stroke-width="2" stroke-dasharray="4 4" fill="none"/><text x="380" y="284" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">거절당한 손님이 바로바로 계속 다시 줄서서 창구가 더 바빠져요</text></svg>
+<p>거절당한 손님이 바로바로 계속 다시 줄서서 창구가 더 바빠져요.<small>쉬지 않고 바로 다시 시도하면 창구가 쉴 틈이 없어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="창구 양옆에서 거절당한 손님 무리가 동시에 다시 줄을 서는 장면" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(380,230) scale(1.0)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">창구</text></g><g transform="translate(80,174) scale(0.48)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(108,174) scale(0.48)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(136,174) scale(0.48)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#C9822B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(164,174) scale(0.48)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(480,174) scale(0.48)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(508,174) scale(0.48)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(536,174) scale(0.48)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#C9822B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(564,174) scale(0.48)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="380" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">거절당한 손님들이 다 같이 동시에 다시 줄서요</text><text x="380" y="284" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">다들 한꺼번에 바로 다시 시도하면 몰림이 더 심해져요</text></svg>
+<p>다들 한꺼번에 바로 다시 시도하면 몰림이 더 심해져요.<small>거절당한 손님들이 똑같은 순간에 다 같이 돌아와요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="손님 한 명이 '조금 쉬었다가 다시 줄서요'라고 말하고, 다른 손님은 살짝 다른 시점에 줄로 돌아감" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(600,260) scale(1.0)"><rect x="-35" y="-10" width="70" height="60" rx="4" fill="#8B5E3C"/><rect x="-35" y="-26" width="70" height="20" rx="4" fill="#5A3B22"/><rect x="-24" y="2" width="48" height="24" rx="3" fill="#FFF3D6"/><text x="0" y="-32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">창구</text></g><g transform="translate(130,170) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#C9822B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="40" y="90" width="190" height="50" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M125.0 140 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="42" y="136" width="186" height="6" fill="var(--panel)"/><text x="135.0" y="118.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">조금 쉬었다가 다시 줄서요</text><g transform="translate(300,190) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><path d="M165 220 Q230 250 300 240" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4" fill="none"/><text x="380" y="38" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">잠깐 쉬었다가, 사람마다 조금씩 다르게 다시 줄서요</text><text x="380" y="345" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">한꺼번에 몰리지 않게요</text></svg>
+<p>잠깐 쉬었다가, 사람마다 조금씩 다르게 다시 줄서요.<small>한꺼번에 몰리지 않게요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="24" r="16" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M24 14 v10 l8 6" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M44 40 q8 4 2 12" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>바로 말고 잠깐 쉬기</b><span>숨 고르고요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 48 h10 v-10 h10 M34 48 h10 v-20 h10" stroke="var(--accent)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="38" r="3" fill="var(--bad)"/><circle cx="54" cy="28" r="3" fill="var(--bad)"/></svg><b>점점 더 오래 쉬기</b><span>지수 백오프예요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 32 h8 M24 24 h8 M40 36 h8" stroke="var(--good)" stroke-width="5" stroke-linecap="round"/><circle cx="8" cy="32" r="4" fill="var(--good)"/><circle cx="24" cy="24" r="4" fill="var(--good)"/><circle cx="40" cy="36" r="4" fill="var(--good)"/></svg><b>사람마다 조금 다르게</b><span>지터예요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 14 L50 50 M50 14 L14 50" stroke="var(--bad)" stroke-width="5" stroke-linecap="round"/><circle cx="32" cy="32" r="26" fill="none" stroke="var(--muted)" stroke-width="3"/></svg><b>너무 여러 번이면 포기</b><span>다른 방법으로요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="실패할 때마다 쉬는 시간이 1초, 2초, 4초로 늘어나는 시간선. 각 구간마다 지터로 살짝 다르게 표시됨" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><path d="M60 150 H700" stroke="var(--stone-dark)" stroke-width="3"/><circle cx="90" cy="150" r="7" fill="var(--bad)"/><text x="90" y="190" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">1번째 실패</text><path d="M90 150 Q160 110 230 150" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4 4" fill="none"/><text x="160" y="100" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">1초+지터</text><circle cx="230" cy="150" r="7" fill="var(--bad)"/><text x="230" y="190" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">2번째 실패</text><path d="M230 150 Q330 90 430 150" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4 4" fill="none"/><text x="330" y="80" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">2초+지터</text><circle cx="430" cy="150" r="7" fill="var(--bad)"/><text x="430" y="190" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">3번째 실패</text><path d="M430 150 Q560 70 670 150" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4 4" fill="none"/><text x="560" y="58" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">4초+지터</text><circle cx="670" cy="150" r="7" fill="var(--good)"/><text x="670" y="190" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">성공</text><text x="380" y="284" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">실패할 때마다 쉬는 시간이 점점 길어지고, 사람마다 살짝 다르게 쉬어요</text></svg>
+<p>실패할 때마다 쉬는 시간이 점점 길어지고, 사람마다 살짝 다르게 쉬어요.<small>1초, 2초, 4초... 배로 늘어나요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="손님이 끝없이 쉬었다 다시 시도하는 원을 빙빙 돌고, 옆 안내판엔 최대 3번까지만 하고 그만두라는 규칙이 적혀 있음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(160,150) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><path d="M160 90 m-26 0 a26 26 0 1 1 52 0 a26 26 0 1 1 -52 0" stroke="var(--muted)" stroke-width="3" stroke-dasharray="5 4" fill="none"/><text x="160" y="247" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)">계속 쉬었다 또 시도... 끝이 없어요</text><g transform="translate(460,50) scale(1.0)"><rect width="240" height="120" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="240" height="26" rx="6" fill="#C9A86A"/><text x="120.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">규칙</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">최대 3번까지만</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">그래도 안 되면 그만두기</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">→ 서킷 브레이커로</text></g><text x="380" y="284" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">무한정 재시도하면 끝까지 기다리기만 해요 — 최대 횟수를 정해 포기할 줄도 알아야 해요</text></svg>
+<p>무한정 재시도하면 끝까지 기다리기만 해요.<small>최대 횟수를 정해 포기할 줄도 알아야 해요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>재시도와 백오프</b> = 거절당하면 <b>바로 다시 말고 잠깐 쉬었다</b>, 실패할수록 <b>점점 더 오래</b> 쉬면서, <b>사람마다 살짝 다르게</b> 다시 줄서는 일. 너무 많이 실패하면 <b>포기</b>해요.</h2><p>실패한 요청을 다시 보내되, 매번 대기 시간을 두 배로 늘리는 것을 지수 백오프라고 해요. 대기 시간에 무작위 편차를 더하는 걸 지터라고 하고, 이게 없으면 모두가 같은 순간에 다시 몰리는 thundering herd가 생겨요. 최대 재시도 횟수를 넘으면 포기하고 서킷 브레이커 같은 다른 방법으로 넘어가야 해요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>재시도<br><small>Retry</small></dt><dd><b>실패하면 다시 줄서는 것.</b> 바로 하면 오히려 더 몰려요.</dd></div><div><dt>지수 백오프<br><small>Exponential backoff</small></dt><dd><b>실패할수록 쉬는 시간을 두 배씩 늘리는 것.</b> 1초, 2초, 4초... 이렇게 늘어나요.</dd></div><div><dt>지터<br><small>Jitter</small></dt><dd><b>쉬는 시간에 사람마다 살짝 무작위로 다르게 주는 것.</b> 다 같이 동시에 몰리는 걸 막아요.</dd></div><div><dt>최대 재시도 횟수<br><small>Max retry count</small></dt><dd><b>몇 번까지 다시 시도하고 그만둘지 정한 수.</b> 이게 없으면 끝없이 기다리기만 해요.</dd></div><div><dt>타임아웃<br><small>Timeout</small></dt><dd><b>한 번 시도에 얼마나 기다릴지 정한 한도.</b> 타임아웃이 지나야 '실패'로 치고 재시도를 시작해요.</dd></div><div><dt>서킷 브레이커<br><small>Circuit breaker</small></dt><dd><b>아예 안 되는 곳엔 재시도도 그만두고 안 보내는 빨간 버튼.</b> 최대 횟수를 넘기면 이쪽으로 넘어가요. → <a href="circuitbreaker-ko.html">고장나면 누르는 빨간 버튼</a></dd></div><div><dt>멱등성<br><small>Idempotency</small></dt><dd><b>같은 요청을 여러 번 보내도 결과가 한 번과 같은 성질.</b> 재시도해도 안전하려면 이 성질이 꼭 필요해요.</dd></div><div><dt>백프레셔<br><small>Backpressure</small></dt><dd><b>안쪽이 꽉 차면 입구가 미리 속도를 늦추는 것.</b> 재시도가 너무 많아지면 결국 이것도 함께 필요해져요. → <a href="backpressure-ko.html">입구를 잠깐 막기</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="idempotency-ko.html">같은 티켓으로 두 번 못 타요 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Same Guest Log in Two Warehouses</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="replication-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · SRE</div>
+<h1>What is <em>Replication</em>?</h1>
+<p class="sub">Replication, told as a story about keeping the same guest log copied in several warehouses.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="The warehouse holding the log catches fire while an operator panics that it's all gone" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(300,240) scale(1.3)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/></g><path d="M270 160 q10 -24 -4 -34 q10 4 8 -14 q14 10 6 28 q14 -4 6 16z" fill="var(--bad)"/><g transform="translate(420,174) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E7D6B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E7D6B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="460" y="90" width="230" height="50" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M478 140 l-14 16 l24 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="462" y="136" width="226" height="6" fill="var(--panel)"/><text x="575.0" y="119.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">the log... it's all gone</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">a fire in the warehouse, and the whole log is gone</text></svg>
+<p>A fire in the warehouse, and the whole log is gone.<small>It only lived in one place, so there's nothing to recover.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A cracked warehouse while a manager asks whether trusting just one place is wise" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(380,240) scale(1.3)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/></g><path d="M340 150 L420 150" stroke="var(--bad)" stroke-width="5" fill="none"/><path d="M335 145 l10 10 M330 150 l10 10 M335 155 l10 -10" stroke="var(--bad)" stroke-width="4" fill="none"/><text x="380" y="190" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">only one place</text><g transform="translate(200,174) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="100" y="90" width="210" height="50" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M292 140 l14 16 l-24 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="102" y="136" width="206" height="6" fill="var(--panel)"/><text x="205.0" y="119.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">can we trust just one place?</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">keep it in one place, and if that place fails, it's gone</text></svg>
+<p>Keep it in one place, and if that place fails, it's gone.<small>Betting everything on a single spot is risky.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="One leader warehouse connected by arrows to two follower warehouses copying the same log" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(190,280) scale(1.0)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">LEADER</text></g><g transform="translate(400,280) scale(0.85)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">FOLLOWER 1</text></g><g transform="translate(580,280) scale(0.85)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">FOLLOWER 2</text></g><path d="M250 230 Q320 200 360 235" stroke="var(--good)" stroke-width="3" stroke-dasharray="6 4" fill="none"/><path d="M250 240 Q440 210 540 240" stroke="var(--good)" stroke-width="3" stroke-dasharray="6 4" fill="none"/><text x="380" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">the same log, copied into two or three warehouses</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">if one burns down, the rest still have it</text></svg>
+<p>The same log, copied into two or three warehouses.<small>If one burns down, the rest still have it.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="24" width="48" height="30" rx="4" fill="var(--accent)"/><path d="M8 24 l24 -16 24 16z" fill="var(--good)"/></svg><b>One leader warehouse</b><span>only it handles writing</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="10" width="30" height="36" rx="3" fill="var(--good)"/><rect x="24" y="22" width="30" height="36" rx="3" fill="none" stroke="var(--good)" stroke-width="4"/></svg><b>The rest just copy</b><span>they handle reading</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M32 18 V32 L44 40" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" fill="none"/></svg><b>Copying takes a moment</b><span>called replication lag</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 24 h30 l-8 -8" stroke="var(--good)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M50 40 h-30 l8 8" stroke="var(--bad)" stroke-width="5" fill="none" stroke-linecap="round"/></svg><b>If the leader breaks</b><span>a follower becomes the new leader</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The leader warehouse sends a new entry by arrow to the follower, with a sign noting a follower takes over if the leader goes down" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(160,250) scale(0.95)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">LEADER (writes)</text></g><g transform="translate(420,250) scale(0.8)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">FOLLOWER (reads)</text></g><g transform="translate(290,170) scale(0.8)"><rect x="-30" y="-17" width="60" height="34" rx="4" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle cx="-30" cy="0" r="4" fill="var(--bg)"/><circle cx="30" cy="0" r="4" fill="var(--bg)"/><text x="0" y="6" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">new entry</text></g><path d="M210 185 L420 220" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 4" fill="none"/><text x="420" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">arriving takes a short moment (replication lag)</text><g transform="translate(580,60) scale(1.0)"><rect width="150" height="90" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="150" height="26" rx="6" fill="#C9A86A"/><text x="75.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">LEADER DOWN?</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">a follower</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">becomes leader</text></g><text x="380" y="286" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">the leader handles writes, the rest just copy</text></svg>
+<p>The leader handles writes, the rest just copy.<small>It takes a moment to arrive, and if the leader fails, a follower takes over.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: someone asks if a change just happened. Right: two warehouses both claim to be the leader at once" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="320" fill="var(--bad-soft)"/><rect x="380" width="380" height="320" fill="var(--bad-soft)"/><g transform="translate(190,240) scale(0.85)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/></g><g transform="translate(190,150) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="90" y="60" width="200" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M180.0 106 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="92" y="102" width="196" height="6" fill="var(--panel)"/><text x="190.0" y="86.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">did it just change?</text><text x="190" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">while copying, you might get a slightly stale answer</text><g transform="translate(560,240) scale(0.85)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">I'M THE LEADER!</text></g><g transform="translate(680,240) scale(0.6)"><rect x="-40" y="-10" width="80" height="54" fill="var(--stone)"/><path d="M-46 -10 h92 l-46 -30z" fill="var(--stone-dark)"/><rect x="-10" y="14" width="20" height="30" fill="#5A3B22"/><text x="0" y="-40" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">I'M THE LEADER!</text></g><text x="620" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">two warehouses both claiming to be the leader is a problem</text></svg>
+<p>While copying, you might get a slightly stale answer.<small>And two warehouses both insisting they're the leader is a real problem.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Replication</b> = keeping the same log <b>copied across several warehouses</b>. The <b>leader handles writes</b> and the rest just <b>copy</b>, so the service survives even if one warehouse fails.</h2><p>Copying data across multiple servers. There's a leader and followers; synchronous replication updates immediately, asynchronous replication catches up a bit later (consistency). When a follower takes over from a failed leader, that's called failover.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Replication</dt><dd><b>Keeping the same log in several warehouses.</b> The service keeps running even if one warehouse fails.</dd></div><div><dt>Leader/follower</dt><dd><b>The warehouse that writes, and the ones that just copy.</b> There's one leader, but there can be many followers.</dd></div><div><dt>Replication lag</dt><dd><b>The short time it takes to copy over.</b> During that gap a follower may answer with slightly old data.</dd></div><div><dt>Read replica</dt><dd><b>A follower dedicated to reads.</b> It takes read load off the leader.</dd></div><div><dt>Sync / async replication</dt><dd><b>Whether copying happens instantly or a bit later.</b> Instant is safer but slower.</dd></div><div><dt>Multi-region</dt><dd><b>Putting a follower in a whole different city.</b> It survives even if one whole city has trouble.</dd></div><div><dt>Eventual consistency</dt><dd><b>Getting a slightly different answer while copying is still in progress.</b> Given enough time, every copy agrees.</dd></div><div><dt>Failover</dt><dd><b>A follower stepping up to be leader when the leader fails.</b> Deciding who becomes the new leader is a vote. → <a href="consensus-en.html">control rooms raising hands to decide</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="consensus-en.html">Control Rooms Raising Hands to Decide →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>
