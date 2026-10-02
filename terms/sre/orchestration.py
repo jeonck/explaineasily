@@ -55,7 +55,7 @@ SLOT_I = icon('<rect x="8" y="14" width="18" height="18" rx="3" fill="var(--good
 KNOB_I = icon('<circle cx="32" cy="36" r="18" fill="var(--stone)" stroke="var(--stone-dark)" stroke-width="3"/><rect x="29" y="10" width="6" height="16" rx="2" fill="var(--accent)"/><circle cx="32" cy="36" r="5" fill="var(--accent)"/>')
 
 PAGE = {
-    "slug": "orchestration", "order": 26,
+    "slug": "orchestration", "order": 31,
     "title": ("몇 대를 켤지 정하는 운영 본부", "The Operations Center That Decides How Many to Run"),
     "h1": ("<em>오케스트레이션</em>이 뭐예요?", "What is <em>Orchestration</em>?"),
     "sub": ("오케스트레이션을 기구마다 몇 대씩 운영할지 정해 주는 공원 운영 본부 이야기로 풀어봤어요.",

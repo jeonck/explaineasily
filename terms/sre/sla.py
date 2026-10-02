@@ -53,7 +53,7 @@ REPORT_I = icon('<rect x="14" y="8" width="36" height="46" rx="3" fill="#FFF8E7"
 CUSTOMERS_I = icon('<circle cx="20" cy="24" r="9" fill="var(--accent)"/><circle cx="44" cy="24" r="9" fill="#5B8DEF"/><rect x="8" y="36" width="24" height="18" rx="4" fill="var(--accent)"/><rect x="32" y="36" width="24" height="18" rx="4" fill="#5B8DEF"/>')
 
 PAGE = {
-    "slug": "sla", "order": 35,
+    "slug": "sla", "order": 4,
     "title": ("손님과 맺은 약속 계약서", "The Contract We Sign With a Customer"),
     "h1": ("<em>SLA</em>가 뭐예요?", "What is an <em>SLA</em>?"),
     "sub": ("SLA(서비스 수준 계약)를 손님과 정식으로 종이에 적어 맺는 약속 이야기로 풀어봤어요.",

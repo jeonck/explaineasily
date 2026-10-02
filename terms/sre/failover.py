@@ -55,7 +55,7 @@ SWITCH_I = icon('<path d="M10 20 h30" stroke="var(--good)" stroke-width="5"/><pa
 TEST_I = icon('<rect x="14" y="10" width="36" height="44" rx="4" fill="var(--panel)" stroke="var(--line)" stroke-width="3"/><path d="M22 22 h20 M22 30 h20 M22 38 h12" stroke="var(--muted)" stroke-width="3" stroke-linecap="round"/><circle cx="46" cy="44" r="9" fill="var(--good)"/><path d="M42 44 l3 4 6 -8" stroke="#FFF8E7" stroke-width="2.5" fill="none" stroke-linecap="round"/>')
 
 PAGE = {
-    "slug": "failover", "order": 23,
+    "slug": "failover", "order": 28,
     "title": ("발전기가 꺼지면 예비 발전기가", "When the Generator Dies, the Spare Takes Over"),
     "h1": ("<em>장애 조치</em>가 뭐예요?", "What is <em>Failover</em>?"),
     "sub": ("장애 조치를, 주 발전기가 꺼지면 예비 발전기가 자동으로 넘겨받는 이야기로 풀어봤어요.",

@@ -51,7 +51,7 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="3
          + label(380, 288, "⟦메모판도 틀리거나 몰리면 말썽이에요|the board can still go wrong — bad answers or a sudden rush⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
-    "slug": "caching", "order": 5,
+    "slug": "caching", "order": 10,
     "title": ("자주 묻는 질문 미리 적어둔 메모판", "The Memo Board of Frequent Answers"),
     "h1": ("<em>캐싱</em>이 뭐예요?", "What is <em>Caching</em>?"),
     "sub": ("캐싱을 안내소 앞에 자주 묻는 질문을 미리 적어둔 메모판 이야기로 풀어봤어요.",

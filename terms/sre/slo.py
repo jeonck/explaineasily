@@ -66,7 +66,7 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x
          + label(380, 282, "⟦손님이 진짜 필요한 만큼만 약속해요|promise only as much as guests really need⟧", 13, "var(--ink)", cls="d"))
 
 PAGE = {
-    "slug": "slo", "order": 34,
+    "slug": "slo", "order": 3,
     "title": ("우리끼리 정한 목표 줄", "The Target Line We Set Ourselves"),
     "h1": ("<em>SLO</em>가 뭐예요?", "What is an <em>SLO</em>?"),
     "sub": ("SLO(서비스 수준 목표)를 공원이 스스로 그어 둔 약속 줄 이야기로 풀어봤어요.",

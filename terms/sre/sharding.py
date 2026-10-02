@@ -47,7 +47,7 @@ REBAL_I = icon('<path d="M20 44 L44 20" stroke="var(--accent)" stroke-width="5" 
 SIGN_I = icon('<rect x="26" y="10" width="6" height="40" fill="var(--stone-dark)"/><path d="M10 14 h36 l-6 10 6 10 h-36z" fill="var(--accent)"/>')
 
 PAGE = {
-    "slug": "sharding", "order": 6,
+    "slug": "sharding", "order": 13,
     "title": ("번호별로 나뉜 매표 창구", "Ticket Booths Split by Number"),
     "h1": ("<em>샤딩</em>이 뭐예요?", "What is <em>Sharding</em>?"),
     "sub": ("샤딩을 손님 명부를 번호별로 나눈 매표 창구 이야기로 풀어봤어요.",

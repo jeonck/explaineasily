@@ -47,7 +47,7 @@ TODO_I = icon('<rect x="12" y="10" width="40" height="44" rx="4" fill="#FFF8E7" 
 SHARE_I = icon('<circle cx="16" cy="32" r="8" fill="var(--accent)"/><circle cx="48" cy="16" r="8" fill="var(--accent)"/><circle cx="48" cy="48" r="8" fill="var(--accent)"/><path d="M23 28 L41 18 M23 36 L41 46" stroke="var(--muted)" stroke-width="3"/>')
 
 PAGE = {
-    "slug": "postmortem", "order": 40,
+    "slug": "postmortem", "order": 41,
     "title": ("탓하지 않고 모여 쓰는 기록", "The Record Everyone Writes Without Blame"),
     "h1": ("<em>포스트모템</em>이 뭐예요?", "What is a <em>Postmortem</em>?"),
     "sub": ("포스트모템(사후 분석)을, 범인을 찾는 대신 무슨 일이 있었는지만 적는 모임 이야기로 풀어봤어요.",

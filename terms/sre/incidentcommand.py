@@ -66,7 +66,7 @@ COMMS_I = icon('<rect x="8" y="14" width="30" height="26" rx="4" fill="#FFF8E7" 
 SEV_I = icon('<rect x="10" y="40" width="12" height="14" fill="var(--good)"/><rect x="26" y="28" width="12" height="26" fill="var(--accent)"/><rect x="42" y="12" width="12" height="42" fill="var(--bad)"/>')
 
 PAGE = {
-    "slug": "incidentcommand", "order": 39,
+    "slug": "incidentcommand", "order": 40,
     "title": ("지휘봉을 든 사람", "The One Holding the Baton"),
     "h1": ("<em>인시던트 커맨더</em>가 뭐예요?", "What is an <em>Incident Commander</em>?"),
     "sub": ("인시던트 커맨더를, 큰 사고가 나면 지휘봉을 들어 역할을 나눠주는 사람 이야기로 풀어봤어요.",

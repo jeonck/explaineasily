@@ -48,7 +48,7 @@ P5 = svg(300, sky(300, ground=False)
          + label(380, 280, "⟦모든 반복이 나쁜 건 아니에요 — 가끔 하는 반복은 자동화 비용이 더 클 수도 있어요|not every repeat is bad — automating something rare can cost more than just doing it⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
-    "slug": "toil", "order": 44,
+    "slug": "toil", "order": 45,
     "title": ("매일 똑같이 반복하는 허드렛일", "The Same Chore, Every Single Day"),
     "h1": ("<em>토일</em>이 뭐예요?", "What is <em>Toil</em>?"),
     "sub": ("토일을 매일 아침 똑같은 보고서를 손으로 옮겨 적는 요원의 이야기로 풀어봤어요.",

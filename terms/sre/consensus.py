@@ -56,7 +56,7 @@ RESILIENT_I = icon('<circle cx="18" cy="32" r="10" fill="var(--good)"/><circle c
 SLOW_I = icon('<circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M32 18 V32 L42 38" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/>')
 
 PAGE = {
-    "slug": "consensus", "order": 8,
+    "slug": "consensus", "order": 15,
     "title": ("여러 관제실이 손 들어 정하기", "Control Rooms Raising Hands to Decide"),
     "h1": ("<em>합의</em>가 뭐예요?", "What is <em>Consensus</em>?"),
     "sub": ("합의(컨센서스)를 여러 관제실이 손을 들어 과반수로 결정하는 이야기로 풀어봤어요.",

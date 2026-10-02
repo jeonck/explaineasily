@@ -209,10 +209,17 @@ AI 용어는 하나의 세계를 공유한다 — 모델은 책을 산더미로 
 | 용어 | 이야기 | 한글 | English |
 |---|---|---|---|
 | SRE | 쉬지 않는 공원을 돌보는 사람들 | [reliability-ko](docs/reliability-ko.html) | [reliability-en](docs/reliability-en.html) |
+| SLI | 오늘 운행 기록판 | [sli-ko](docs/sli-ko.html) | [sli-en](docs/sli-en.html) |
+| SLO | 우리끼리 정한 목표 줄 | [slo-ko](docs/slo-ko.html) | [slo-en](docs/slo-en.html) |
+| SLA | 손님과 맺은 약속 계약서 | [sla-ko](docs/sla-ko.html) | [sla-en](docs/sla-en.html) |
+| Error Budget | 허용된 고장 티켓 묶음 | [errorbudget-ko](docs/errorbudget-ko.html) | [errorbudget-en](docs/errorbudget-en.html) |
 | Golden Signals | 관제실의 계기판 네 개 | [goldensignals-ko](docs/goldensignals-ko.html) | [goldensignals-en](docs/goldensignals-en.html) |
+| Observability | 세 가지로 들여다보기 | [observability-ko](docs/observability-ko.html) | [observability-en](docs/observability-en.html) |
 | API Gateway | 정문 안내소 | [apigateway-ko](docs/apigateway-ko.html) | [apigateway-en](docs/apigateway-en.html) |
 | Service Mesh | 기구 사이 전용 통로 | [servicemesh-ko](docs/servicemesh-ko.html) | [servicemesh-en](docs/servicemesh-en.html) |
 | Caching | 자주 묻는 질문 미리 적어둔 메모판 | [caching-ko](docs/caching-ko.html) | [caching-en](docs/caching-en.html) |
+| Rate Limiting | 한 번에 몇 명까지만 | [ratelimiting-ko](docs/ratelimiting-ko.html) | [ratelimiting-en](docs/ratelimiting-en.html) |
+| Health Check | 안전바 딸깍 확인 | [healthcheck-ko](docs/healthcheck-ko.html) | [healthcheck-en](docs/healthcheck-en.html) |
 | Sharding | 번호별로 나뉜 매표 창구 | [sharding-ko](docs/sharding-ko.html) | [sharding-en](docs/sharding-en.html) |
 | Replication | 손님 명부를 두 창고에 똑같이 | [replication-ko](docs/replication-ko.html) | [replication-en](docs/replication-en.html) |
 | Consensus | 여러 관제실이 손 들어 정하기 | [consensus-ko](docs/consensus-ko.html) | [consensus-en](docs/consensus-en.html) |
@@ -226,9 +233,7 @@ AI 용어는 하나의 세계를 공유한다 — 모델은 책을 산더미로 
 | Circuit Breaker | 고장나면 누르는 빨간 버튼 | [circuitbreaker-ko](docs/circuitbreaker-ko.html) | [circuitbreaker-en](docs/circuitbreaker-en.html) |
 | Retry with Backoff | 잠깐 쉬었다 다시 줄서기 | [retrybackoff-ko](docs/retrybackoff-ko.html) | [retrybackoff-en](docs/retrybackoff-en.html) |
 | Idempotency | 같은 티켓으로 두 번 못 타요 | [idempotency-ko](docs/idempotency-ko.html) | [idempotency-en](docs/idempotency-en.html) |
-| Rate Limiting | 한 번에 몇 명까지만 | [ratelimiting-ko](docs/ratelimiting-ko.html) | [ratelimiting-en](docs/ratelimiting-en.html) |
 | Autoscaling | 줄이 길어지면 직원을 더 부르기 | [autoscaling-ko](docs/autoscaling-ko.html) | [autoscaling-en](docs/autoscaling-en.html) |
-| Health Check | 안전바 딸깍 확인 | [healthcheck-ko](docs/healthcheck-ko.html) | [healthcheck-en](docs/healthcheck-en.html) |
 | Graceful Degradation | 일부만 고장나도 나머지는 그대로 | [gracefuldegradation-ko](docs/gracefuldegradation-ko.html) | [gracefuldegradation-en](docs/gracefuldegradation-en.html) |
 | Failover | 발전기가 꺼지면 예비 발전기가 | [failover-ko](docs/failover-ko.html) | [failover-en](docs/failover-en.html) |
 | Multi-region | 쌍둥이 공원 | [multiregion-ko](docs/multiregion-ko.html) | [multiregion-en](docs/multiregion-en.html) |
@@ -240,10 +245,6 @@ AI 용어는 하나의 세계를 공유한다 — 모델은 책을 산더미로 
 | Canary Deployment | 구석에서 몰래 하는 시험 운행 | [canary-ko](docs/canary-ko.html) | [canary-en](docs/canary-en.html) |
 | Blue-Green Deployment | 쌍둥이 기구를 번갈아 운영 | [bluegreen-ko](docs/bluegreen-ko.html) | [bluegreen-en](docs/bluegreen-en.html) |
 | Rollback | 이상하면 바로 어제 버전으로 | [rollback-ko](docs/rollback-ko.html) | [rollback-en](docs/rollback-en.html) |
-| SLI | 오늘 운행 기록판 | [sli-ko](docs/sli-ko.html) | [sli-en](docs/sli-en.html) |
-| SLO | 우리끼리 정한 목표 줄 | [slo-ko](docs/slo-ko.html) | [slo-en](docs/slo-en.html) |
-| SLA | 손님과 맺은 약속 계약서 | [sla-ko](docs/sla-ko.html) | [sla-en](docs/sla-en.html) |
-| Error Budget | 허용된 고장 티켓 묶음 | [errorbudget-ko](docs/errorbudget-ko.html) | [errorbudget-en](docs/errorbudget-en.html) |
 | On-call | 이번 주 호출기를 든 사람 | [oncall-ko](docs/oncall-ko.html) | [oncall-en](docs/oncall-en.html) |
 | Alerting | 몇 번 울려야 진짜 비상인가 | [alerting-ko](docs/alerting-ko.html) | [alerting-en](docs/alerting-en.html) |
 | Incident Commander | 지휘봉을 든 사람 | [incidentcommand-ko](docs/incidentcommand-ko.html) | [incidentcommand-en](docs/incidentcommand-en.html) |
@@ -252,7 +253,6 @@ AI 용어는 하나의 세계를 공유한다 — 모델은 책을 산더미로 
 | Chaos Engineering | 일부러 내는 가짜 고장 | [chaosengineering-ko](docs/chaosengineering-ko.html) | [chaosengineering-en](docs/chaosengineering-en.html) |
 | Game Day | 가짜 화재 훈련일 | [gameday-ko](docs/gameday-ko.html) | [gameday-en](docs/gameday-en.html) |
 | Toil | 매일 똑같이 반복하는 허드렛일 | [toil-ko](docs/toil-ko.html) | [toil-en](docs/toil-en.html) |
-| Observability | 세 가지로 들여다보기 | [observability-ko](docs/observability-ko.html) | [observability-en](docs/observability-en.html) |
 | Capacity Planning | 내년 손님 수를 미리 세어보기 | [capacityplanning-ko](docs/capacityplanning-ko.html) | [capacityplanning-en](docs/capacityplanning-en.html) |
 | DORA Metrics | 우리 공사팀 네 가지 성적표 | [dorametrics-ko](docs/dorametrics-ko.html) | [dorametrics-en](docs/dorametrics-en.html) |
 

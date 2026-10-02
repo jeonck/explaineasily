@@ -56,7 +56,7 @@ PULL_I = icon('<rect x="8" y="12" width="48" height="26" rx="4" fill="var(--ston
 REVIEW_I = icon('<rect x="10" y="8" width="44" height="48" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M18 20 h28 M18 28 h20" stroke="#142033" stroke-width="2.5"/><circle cx="44" cy="44" r="10" fill="var(--good)"/><path d="M39 44 l4 4 l7 -8" stroke="#FFF" stroke-width="2.5" fill="none"/>')
 
 PAGE = {
-    "slug": "gitops", "order": 28,
+    "slug": "gitops", "order": 33,
     "title": ("설계도가 바뀌면 자동으로 공사", "Construction Follows the Blueprint, Automatically"),
     "h1": ("<em>GitOps</em>가 뭐예요?", "What is <em>GitOps</em>?"),
     "sub": ("GitOps를 설계도 보관함에 새 설계도를 넣으면 자동으로 공사가 시작되는 이야기로 풀어봤어요.",

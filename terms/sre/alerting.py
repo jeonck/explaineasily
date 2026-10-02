@@ -56,7 +56,7 @@ GRADE_I = icon('<rect x="14" y="10" width="36" height="10" rx="3" fill="var(--ba
 REVIEW_I = icon('<rect x="12" y="8" width="28" height="36" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M18 18 h16 M18 26 h16 M18 34 h10" stroke="#142033" stroke-width="2.5"/><circle cx="42" cy="44" r="9" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M48 50 L56 58" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>')
 
 PAGE = {
-    "slug": "alerting", "order": 38,
+    "slug": "alerting", "order": 39,
     "title": ("몇 번 울려야 진짜 비상인가", "How Many Rings Make a Real Emergency"),
     "h1": ("<em>알림</em>이 뭐예요?", "What is <em>Alerting</em>?"),
     "sub": ("알림(얼러팅)을, 손님이 느낄 만큼 계속 나쁠 때만 울리는 호출기 이야기로 풀어봤어요.",

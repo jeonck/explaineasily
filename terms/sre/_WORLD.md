@@ -43,10 +43,17 @@
 | slug | 제목 |
 |---|---|
 | reliability | 쉬지 않는 공원을 돌보는 사람들 |
+| sli | 오늘 운행 기록판 |
+| slo | 우리끼리 정한 목표 줄 |
+| sla | 손님과 맺은 약속 계약서 |
+| errorbudget | 허용된 고장 티켓 묶음 |
 | goldensignals | 관제실의 계기판 네 개 |
+| observability | 세 가지로 들여다보기 |
 | apigateway | 정문 안내소 |
 | servicemesh | 기구 사이 전용 통로 |
 | caching | 자주 묻는 질문 미리 적어둔 메모판 |
+| ratelimiting | 한 번에 몇 명까지만 |
+| healthcheck | 안전바 딸깍 확인 |
 | sharding | 번호별로 나뉜 매표 창구 |
 | replication | 손님 명부를 두 창고에 똑같이 |
 | consensus | 여러 관제실이 손 들어 정하기 |
@@ -60,9 +67,7 @@
 | circuitbreaker | 고장나면 누르는 빨간 버튼 |
 | retrybackoff | 잠깐 쉬었다 다시 줄서기 |
 | idempotency | 같은 티켓으로 두 번 못 타요 |
-| ratelimiting | 한 번에 몇 명까지만 |
 | autoscaling | 줄이 길어지면 직원을 더 부르기 |
-| healthcheck | 안전바 딸깍 확인 |
 | gracefuldegradation | 일부만 고장나도 나머지는 그대로 |
 | failover | 발전기가 꺼지면 예비 발전기가 |
 | multiregion | 쌍둥이 공원 |
@@ -74,10 +79,6 @@
 | canary | 구석에서 몰래 하는 시험 운행 |
 | bluegreen | 쌍둥이 기구를 번갈아 운영 |
 | rollback | 이상하면 바로 어제 버전으로 |
-| sli | 오늘 운행 기록판 |
-| slo | 우리끼리 정한 목표 줄 |
-| sla | 손님과 맺은 약속 계약서 |
-| errorbudget | 허용된 고장 티켓 묶음 |
 | oncall | 이번 주 호출기를 든 사람 |
 | alerting | 몇 번 울려야 진짜 비상인가 |
 | incidentcommand | 지휘봉을 든 사람 |
@@ -86,6 +87,5 @@
 | chaosengineering | 일부러 내는 가짜 고장 |
 | gameday | 가짜 화재 훈련일 |
 | toil | 매일 똑같이 반복하는 허드렛일 |
-| observability | 세 가지로 들여다보기 |
 | capacityplanning | 내년 손님 수를 미리 세어보기 |
 | dorametrics | 우리 공사팀 네 가지 성적표 |

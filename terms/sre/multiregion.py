@@ -53,7 +53,7 @@ REDIRECT_I = icon('<circle cx="18" cy="32" r="8" fill="var(--bad)"/><circle cx="
 BOTHACTIVE_I = icon('<rect x="6" y="22" width="22" height="20" rx="4" fill="var(--good)"/><rect x="36" y="22" width="22" height="20" rx="4" fill="var(--good)"/><path d="M28 32 h8" stroke="var(--good)" stroke-width="4"/>')
 
 PAGE = {
-    "slug": "multiregion", "order": 24,
+    "slug": "multiregion", "order": 29,
     "title": ("쌍둥이 공원", "The Twin Park"),
     "h1": ("<em>다중 리전</em>이 뭐예요?", "What is <em>Multi-region</em>?"),
     "sub": ("다중 리전을, 다른 도시에 쌍둥이 공원을 하나 더 짓는 이야기로 풀어봤어요.",

@@ -47,7 +47,7 @@ CLEAN_I = icon('<circle cx="24" cy="28" r="10" fill="var(--good)"/><path d="M40 
 DRILL_I = icon('<circle cx="32" cy="22" r="10" fill="var(--accent)"/><rect x="22" y="34" width="20" height="24" rx="4" fill="var(--accent)"/><path d="M14 46 q18 -14 36 0" stroke="var(--good)" stroke-width="3" fill="none"/>')
 
 PAGE = {
-    "slug": "splitbrain", "order": 9,
+    "slug": "splitbrain", "order": 16,
     "title": ("두 관제실이 서로 자기가 진짜라고", "Two Control Rooms Each Insisting They're the Real One"),
     "h1": ("<em>스플릿 브레인</em>이 뭐예요?", "What is <em>Split-Brain</em>?"),
     "sub": ("스플릿 브레인을 연결이 끊긴 사이 관제실 둘이 서로 자기가 당번이라고 우기는 이야기로 풀어봤어요.",

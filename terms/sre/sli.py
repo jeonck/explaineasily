@@ -44,7 +44,7 @@ P5 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + label(380, 286, "⟦잘못된 걸 재면, 숫자는 좋아도 손님은 불만이에요|measure the wrong thing, and the numbers look great while guests stay unhappy⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
-    "slug": "sli", "order": 33,
+    "slug": "sli", "order": 2,
     "title": ("오늘 운행 기록판", "Today's Ride Log"),
     "h1": ("<em>SLI</em>가 뭐예요?", "What is an <em>SLI</em>?"),
     "sub": ("SLI를 느낌 대신 숫자로 재는 오늘의 운행 기록판 이야기로 풀어봤어요.",

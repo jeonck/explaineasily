@@ -49,7 +49,7 @@ P5 = svg(300, '<rect width="760" height="300" fill="var(--good-soft)"/>'
          + label(380, 286, "⟦코드는 되돌려도, 쌓인 손님 명부는 그대로 조심해야 해요|code can revert, but the guest log that piled up still needs care⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
-    "slug": "rollback", "order": 32,
+    "slug": "rollback", "order": 37,
     "title": ("이상하면 바로 어제 버전으로", "Back to Yesterday's Version, Fast"),
     "h1": ("<em>롤백</em>이 뭐예요?", "What is a <em>Rollback</em>?"),
     "sub": ("롤백을 이상하면 그 자리에서 고치지 않고 바로 어제 버전으로 되돌리는 이야기로 풀어봤어요.",

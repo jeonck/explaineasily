@@ -63,7 +63,7 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x
          + label(380, 288, "⟦사이드카도 늘어나면 복잡해져요 — 꼭 필요할 때만 쓰세요|sidecars add up too — use them only when you actually need them⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
-    "slug": "servicemesh", "order": 4,
+    "slug": "servicemesh", "order": 9,
     "title": ("기구 사이 전용 통로", "The Dedicated Path Between Rides"),
     "h1": ("<em>서비스 메시</em>가 뭐예요?", "What is a <em>Service Mesh</em>?"),
     "sub": ("서비스 메시를 기구끼리 이야기할 때 쓰는 전용 통로 이야기로 풀어봤어요.",

@@ -53,7 +53,7 @@ P5 = svg(300, sky(300)
          + label(380, 284, "⟦무한정 재시도하면 끝까지 기다리기만 해요 — 최대 횟수를 정해 포기할 줄도 알아야 해요|retry forever and you just wait forever — you need a max count and the sense to give up⟧", 12, "var(--ink)"))
 
 PAGE = {
-    "slug": "retrybackoff", "order": 17,
+    "slug": "retrybackoff", "order": 24,
     "title": ("잠깐 쉬었다 다시 줄서기", "Resting a Bit, Then Lining Up Again"),
     "h1": ("<em>재시도와 백오프</em>가 뭐예요?", "What is <em>Retry with Backoff</em>?"),
     "sub": ("재시도와 백오프를 거절당하면 잠깐 쉬었다 다시 줄서는 손님 이야기로 풀어봤어요.",

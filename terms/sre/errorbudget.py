@@ -62,7 +62,7 @@ P5 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + label(380, 282, "⟦다 썼으면 멈추고 고치는 규칙이 있어야 해요|once it's spent, a rule has to make everyone stop and fix⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
-    "slug": "errorbudget", "order": 36,
+    "slug": "errorbudget", "order": 5,
     "title": ("허용된 고장 티켓 묶음", "The Bundle of Allowed-Failure Tickets"),
     "h1": ("<em>에러 버짓</em>이 뭐예요?", "What is an <em>Error Budget</em>?"),
     "sub": ("에러 버짓을 목표에서 남는 만큼 써도 되는 고장 티켓 묶음 이야기로 풀어봤어요.",

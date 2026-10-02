@@ -46,7 +46,7 @@ CLOCK_I = icon('<circle cx="32" cy="32" r="22" fill="var(--panel)" stroke="var(-
 TALK_I = icon('<path d="M8 10 h40 a6 6 0 0 1 6 6 v20 a6 6 0 0 1 -6 6 h-24 l-10 10 v-10 h-6 a6 6 0 0 1 -6 -6 v-20 a6 6 0 0 1 6 -6z" fill="var(--panel)" stroke="var(--line)" stroke-width="3"/><circle cx="20" cy="26" r="3" fill="var(--muted)"/><circle cx="32" cy="26" r="3" fill="var(--muted)"/><circle cx="44" cy="26" r="3" fill="var(--muted)"/>')
 
 PAGE = {
-    "slug": "eventualconsistency", "order": 11,
+    "slug": "eventualconsistency", "order": 18,
     "title": ("조금 늦게 맞춰지는 재고판", "The Stock Board That Catches Up a Little Late"),
     "h1": ("<em>최종 일관성</em>이 뭐예요?", "What is <em>Eventual Consistency</em>?"),
     "sub": ("최종 일관성을, 창고에 막 들어온 물건이 재고판에 조금 늦게 반영되는 이야기로 풀어봤어요.",
