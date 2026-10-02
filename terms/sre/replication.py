@@ -49,7 +49,7 @@ LAG_I = icon('<circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" 
 SWAP_I = icon('<path d="M14 24 h30 l-8 -8" stroke="var(--good)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M50 40 h-30 l8 8" stroke="var(--bad)" stroke-width="5" fill="none" stroke-linecap="round"/>')
 
 PAGE = {
-    "slug": "replication", "order": 14,
+    "slug": "replication", "order": 11,
     "title": ("손님 명부를 두 창고에 똑같이", "The Same Guest Log in Two Warehouses"),
     "h1": ("<em>복제</em>가 뭐예요?", "What is <em>Replication</em>?"),
     "sub": ("복제를 같은 손님 명부를 창고 여러 곳에 똑같이 적어 두는 이야기로 풀어봤어요.",

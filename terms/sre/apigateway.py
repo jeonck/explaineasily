@@ -54,7 +54,7 @@ P5 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + label(380, 282, "⟦안내소 하나가 고장나면 공원 전체가 막혀요|if the one booth breaks, the whole park locks up⟧", 12, "var(--bad)", cls="d"))
 
 PAGE = {
-    "slug": "apigateway", "order": 8,
+    "slug": "apigateway", "order": 7,
     "title": ("정문 안내소", "The Front Gate Information Booth"),
     "h1": ("<em>API 게이트웨이</em>가 뭐예요?", "What is an <em>API Gateway</em>?"),
     "sub": ("API 게이트웨이를 손님을 받아 알맞은 창구로 보내는 정문 안내소 이야기로 풀어봤어요.",

@@ -55,7 +55,7 @@ P5 = svg(320, sky(320, ground=False)
          + label(380, 298, "⟦넷 다 초록이어도 숨은 문제가 있을 수 있어요|even all-green gauges can hide a problem⟧", 13, "var(--ink)", cls="d"))
 
 PAGE = {
-    "slug": "goldensignals", "order": 6,
+    "slug": "goldensignals", "order": 37,
     "title": ("관제실의 계기판 네 개", "The Four Gauges on the Control-Room Wall"),
     "h1": ("<em>골든 시그널</em>이 뭐예요?", "What are <em>Golden Signals</em>?"),
     "sub": ("골든 시그널을 공원 관제실 벽에 걸린 계기판 네 개 이야기로 풀어봤어요.",

@@ -61,7 +61,7 @@ P5 = svg(300, sky(300, ground=False)
          + label(380, 280, "⟦셋 다 쌓아두기만 하면 그것도 비용이에요 — 필요한 만큼만, 오래된 건 지워요|keeping all three forever costs money too — keep only what you need, and delete what\'s old⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
-    "slug": "observability", "order": 7,
+    "slug": "observability", "order": 38,
     "title": ("세 가지로 들여다보기", "Looking In Three Different Ways"),
     "h1": ("<em>관측 가능성</em>이 뭐예요?", "What is <em>Observability</em>?"),
     "sub": ("관측 가능성을 계기판 숫자, 일지, 요청이 지나간 길을 같이 들여다보는 이야기로 풀어봤어요.",

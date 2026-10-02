@@ -52,7 +52,7 @@ P5 = svg(320, sky(320)
          + label(380, 310, "⟦입구를 너무 심하게 막으면 손님이 아예 다른 공원으로 가버려요 — 적당히가 어려워요|block the entrance too hard, and guests leave for another park entirely — the right amount is hard to find⟧", 12, "var(--ink)"))
 
 PAGE = {
-    "slug": "backpressure", "order": 21,
+    "slug": "backpressure", "order": 25,
     "title": ("입구를 잠깐 막기", "Slowing the Entrance for a Moment"),
     "h1": ("<em>백프레셔</em>가 뭐예요?", "What is <em>Backpressure</em>?"),
     "sub": ("백프레셔를 안쪽 창구가 꽉 차면 입구부터 속도를 늦추는 놀이공원 이야기로 풀어봤어요.",

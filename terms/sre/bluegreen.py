@@ -49,7 +49,7 @@ P5 = svg(300, sky(300, ground=False)
          + label(380, 286, "⟦되돌리긴 쉬워도, 그 사이 쌓인 명부 차이는 조심해야 해요|switching back is easy — but watch for the log gap that built up meanwhile⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
-    "slug": "bluegreen", "order": 36,
+    "slug": "bluegreen", "order": 35,
     "title": ("쌍둥이 기구를 번갈아 운영", "Running Twin Rides, One at a Time"),
     "h1": ("<em>블루-그린 배포</em>가 뭐예요?", "What is <em>Blue-Green Deployment</em>?"),
     "sub": ("블루-그린 배포를 쌍둥이 기구를 번갈아 운영하는 이야기로 풀어봤어요.",

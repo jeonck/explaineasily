@@ -46,7 +46,7 @@ FOLLOW_I = icon('<circle cx="24" cy="18" r="9" fill="var(--accent)"/><rect x="12
 ADD_I = icon('<rect x="12" y="10" width="34" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M18 20 h18 M18 28 h18" stroke="#142033" stroke-width="2.5"/><path d="M44 40 l10 -10 6 6 -10 10z" fill="var(--accent)"/><path d="M50 44 l6 6" stroke="var(--accent)" stroke-width="3"/>')
 
 PAGE = {
-    "slug": "runbook", "order": 42,
+    "slug": "runbook", "order": 46,
     "title": ("정비사의 공책", "The Mechanic's Notebook"),
     "h1": ("<em>런북</em>이 뭐예요?", "What is a <em>Runbook</em>?"),
     "sub": ("런북을, 자주 나는 고장마다 '이럴 땐 이렇게' 순서를 적어둔 정비사의 공책 이야기로 풀어봤어요.",

@@ -54,7 +54,7 @@ NOTIFY_I = icon('<path d="M10 14 h36 v22 h-20 l-10 10 v-10 h-6 z" fill="var(--pa
 KEEP_I = icon('<path d="M32 6 L54 16 V32 C54 46 44 56 32 60 C20 56 10 46 10 32 V16 Z" fill="var(--good)"/><path d="M22 32 l8 8 14 -18" stroke="#FFF8E7" stroke-width="5" fill="none" stroke-linecap="round"/>')
 
 PAGE = {
-    "slug": "gracefuldegradation", "order": 27,
+    "slug": "gracefuldegradation", "order": 31,
     "title": ("일부만 고장나도 나머지는 그대로", "When Only Part Breaks, the Rest Stays Open"),
     "h1": ("<em>우아한 저하</em>가 뭐예요?", "What is <em>Graceful Degradation</em>?"),
     "sub": ("우아한 저하를, 추천 코너 하나가 고장났다고 공원 전체를 닫지는 않는 이야기로 풀어봤어요.",

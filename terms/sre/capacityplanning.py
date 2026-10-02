@@ -49,7 +49,7 @@ BUFF_I = icon('<rect x="10" y="30" width="30" height="24" fill="var(--good)"/><r
 LOAD_I = icon('<path d="M10 50 Q32 10 54 50" stroke="var(--accent)" stroke-width="5" fill="none"/><circle cx="32" cy="22" r="5" fill="var(--bad)"/>')
 
 PAGE = {
-    "slug": "capacityplanning", "order": 46,
+    "slug": "capacityplanning", "order": 6,
     "title": ("내년 손님 수를 미리 세어보기", "Counting Next Year's Guests in Advance"),
     "h1": ("<em>용량 계획</em>이 뭐예요?", "What is <em>Capacity Planning</em>?"),
     "sub": ("용량 계획을 작년 기록과 올해 행사를 보고 기구·직원을 미리 늘려두는 이야기로 풀어봤어요.",

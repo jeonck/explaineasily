@@ -73,7 +73,7 @@ PERSON_I = icon('<circle cx="22" cy="20" r="9" fill="var(--stone-dark)"/><rect x
 NOTE2_I = icon('<rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 22 h20 M22 30 h20 M22 38 h12" stroke="#142033" stroke-width="2.5" stroke-linecap="round"/>')
 
 PAGE = {
-    "slug": "deadletterqueue", "order": 20,
+    "slug": "deadletterqueue", "order": 24,
     "title": ("아무도 안 찾아간 바구니함", "The Basket Nobody Came to Claim"),
     "h1": ("<em>데드레터 큐</em>가 뭐예요?", "What is a <em>Dead-letter Queue</em>?"),
     "sub": ("데드레터 큐를, 자꾸 실패하는 주문서를 따로 빼 두는 작은 함 이야기로 풀어봤어요.",

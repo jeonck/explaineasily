@@ -56,7 +56,7 @@ HISTORY_I = icon('<circle cx="32" cy="34" r="20" fill="none" stroke="var(--good)
 INSPECT_I = icon('<rect x="8" y="30" width="26" height="20" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M12 36 h18 M12 42 h12" stroke="#142033" stroke-width="2"/><circle cx="44" cy="24" r="11" fill="var(--sky)" fill-opacity="0.5" stroke="var(--stone-dark)" stroke-width="4"/><path d="M52 32 l8 8" stroke="var(--stone-dark)" stroke-width="5" stroke-linecap="round"/>')
 
 PAGE = {
-    "slug": "iac", "order": 32,
+    "slug": "iac", "order": 17,
     "title": ("설계도 한 장으로 공원 통째로 짓기", "Building the Whole Park from One Blueprint"),
     "h1": ("<em>코드형 인프라</em>가 뭐예요?", "What is <em>Infrastructure as Code</em>?"),
     "sub": ("코드형 인프라(IaC)를 설계도 한 장으로 공원을 통째로 짓는 이야기로 풀어봤어요.",

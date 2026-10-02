@@ -49,7 +49,7 @@ P5 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + label(380, 280, "⟦너무 자주 하면 지치고, 너무 안 하면 효과가 없어요 — 적당한 주기가 필요해요|too often exhausts everyone, too rarely loses the effect — you need the right rhythm⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
-    "slug": "gameday", "order": 44,
+    "slug": "gameday", "order": 41,
     "title": ("가짜 화재 훈련일", "The Fake Fire-Drill Day"),
     "h1": ("<em>게임 데이</em>가 뭐예요?", "What is a <em>Game Day</em>?"),
     "sub": ("게임 데이를 날을 잡아서 다 같이 가짜 고장을 연습해 보는 이야기로 풀어봤어요.",

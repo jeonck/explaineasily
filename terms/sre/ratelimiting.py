@@ -51,7 +51,7 @@ BUCKET_I = icon('<path d="M18 20 h28 l-5 30 h-18z" fill="var(--panel)" stroke="v
 COUNT_I = icon('<rect x="10" y="18" width="44" height="28" rx="5" fill="#1B2A44"/>' + label(32, 38, "3/5", 16, "var(--good)", cls="d"))
 
 PAGE = {
-    "slug": "ratelimiting", "order": 11,
+    "slug": "ratelimiting", "order": 19,
     "title": ("한 번에 몇 명까지만", "Only So Many at a Time"),
     "h1": ("<em>속도 제한</em>이 뭐예요?", "What is <em>Rate Limiting</em>?"),
     "sub": ("속도 제한을 한 사람당 1분에 몇 번까지만 받아주는 창구 이야기로 풀어봤어요.",

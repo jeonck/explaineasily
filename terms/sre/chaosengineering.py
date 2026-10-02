@@ -61,7 +61,7 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="3
          + label(380, 280, "⟦이 비유가 깨지는 곳: 준비 없는 카오스는 실험이 아니라 사고예요|where the analogy breaks: chaos with no plan isn\'t an experiment, it\'s an accident⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
-    "slug": "chaosengineering", "order": 43,
+    "slug": "chaosengineering", "order": 40,
     "title": ("일부러 내는 가짜 고장", "The Fake Breakdowns We Cause on Purpose"),
     "h1": ("<em>카오스 엔지니어링</em>이 뭐예요?", "What is <em>Chaos Engineering</em>?"),
     "sub": ("카오스 엔지니어링을 예비 발전기가 진짜 되는지 몰래 확인해 보는 이야기로 풀어봤어요.",

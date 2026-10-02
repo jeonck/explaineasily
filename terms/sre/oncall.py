@@ -50,7 +50,7 @@ ESCALATE_I = icon('<circle cx="18" cy="44" r="8" fill="var(--accent)"/><circle c
 HANDOVER_I = icon('<rect x="8" y="26" width="20" height="14" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><path d="M28 33 H52" stroke="var(--accent)" stroke-width="4" stroke-dasharray="5 4"/><path d="M46 27 L54 33 L46 39" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/>')
 
 PAGE = {
-    "slug": "oncall", "order": 38,
+    "slug": "oncall", "order": 43,
     "title": ("이번 주 호출기를 든 사람", "Whoever's Holding the Pager This Week"),
     "h1": ("<em>온콜</em>이 뭐예요?", "What is <em>On-call</em>?"),
     "sub": ("온콜을 이번 주 호출기를 들고 다니는 한 사람 이야기로 풀어봤어요.",

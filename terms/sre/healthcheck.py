@@ -47,7 +47,7 @@ TWOQ_I = icon('<circle cx="22" cy="30" r="14" fill="none" stroke="var(--good)" s
 RETURN_I = icon('<path d="M44 20 a16 16 0 1 0 2 18" stroke="var(--good)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M44 10 l4 12 -13 -3z" fill="var(--good)"/>')
 
 PAGE = {
-    "slug": "healthcheck", "order": 12,
+    "slug": "healthcheck", "order": 20,
     "title": ("안전바 딸깍 확인", "The Click-Check on the Safety Bar"),
     "h1": ("<em>헬스 체크</em>가 뭐예요?", "What is a <em>Health Check</em>?"),
     "sub": ("헬스 체크를 기구마다 '저 괜찮아요?' 하고 몇 초마다 물어보는 이야기로 풀어봤어요.",

@@ -61,7 +61,7 @@ P5 = svg(300, sky(300)
          + label(380, 284, "⟦너무 잘게 나누면 관리가 번거롭고 자원이 낭비돼요 — 적당한 크기가 필요해요|split too finely and management gets tedious while resources go to waste — the right size matters⟧", 12, "var(--ink)"))
 
 PAGE = {
-    "slug": "bulkhead", "order": 22,
+    "slug": "bulkhead", "order": 26,
     "title": ("불이 안 번지게 나눈 구역", "Zones That Keep Trouble From Spreading"),
     "h1": ("<em>벌크헤드</em>가 뭐예요?", "What is a <em>Bulkhead</em>?"),
     "sub": ("벌크헤드 패턴을 구역마다 자기 몫의 자원만 쓰게 나눈 놀이공원 이야기로 풀어봤어요.",

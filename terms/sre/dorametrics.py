@@ -51,7 +51,7 @@ FAIL_I = icon('<path d="M32 10 L54 54 H10 Z" fill="var(--bad)"/><rect x="29" y="
 MTTR_I = icon('<path d="M44 32 a12 12 0 1 1 -4 -9" stroke="var(--accent)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M40 12 l6 10 -12 2z" fill="var(--accent)"/><rect x="26" y="38" width="12" height="12" rx="2" fill="var(--good)"/>')
 
 PAGE = {
-    "slug": "dorametrics", "order": 47,
+    "slug": "dorametrics", "order": 42,
     "title": ("우리 공사팀 네 가지 성적표", "Our Crew's Four-Number Report Card"),
     "h1": ("<em>DORA 지표</em>가 뭐예요?", "What are <em>DORA Metrics</em>?"),
     "sub": ("DORA 지표를 느낌 대신 숫자 네 가지로 공사팀 실력을 재는 성적표 이야기로 풀어봤어요.",

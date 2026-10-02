@@ -39,53 +39,54 @@
 - `failover`/`backup`(보안 세계 `backup.py` 여분 상자)와 소품이 비슷하지만 SRE는 "서비스 지속"이 목적, 보안은 "데이터 보존"이 목적 — 혼동하지 않게 ⑤에서 구분.
 - `ratelimiting`은 보안의 `ddos`/`waf`와 다르다 — 보안은 공격자를 막고, SRE는 **우리 시스템 자신을 보호**한다.
 
-## 이미 쓴 비유 (order 순)
-| slug | 제목 |
-|---|---|
-| reliability | 쉬지 않는 공원을 돌보는 사람들 |
-| sli | 오늘 운행 기록판 |
-| slo | 우리끼리 정한 목표 줄 |
-| sla | 손님과 맺은 약속 계약서 |
-| errorbudget | 허용된 고장 티켓 묶음 |
-| goldensignals | 관제실의 계기판 네 개 |
-| observability | 세 가지로 들여다보기 |
-| apigateway | 정문 안내소 |
-| servicemesh | 기구 사이 전용 통로 |
-| caching | 자주 묻는 질문 미리 적어둔 메모판 |
-| ratelimiting | 한 번에 몇 명까지만 |
-| healthcheck | 안전바 딸깍 확인 |
-| sharding | 번호별로 나뉜 매표 창구 |
-| replication | 손님 명부를 두 창고에 똑같이 |
-| consensus | 여러 관제실이 손 들어 정하기 |
-| splitbrain | 두 관제실이 서로 자기가 진짜라고 |
-| captheorem | 정확함과 항상 열림, 둘 다는 못 가져요 |
-| eventualconsistency | 조금 늦게 맞춰지는 재고판 |
-| messagequeue | 주문서를 쌓아두는 바구니 |
-| deadletterqueue | 아무도 안 찾아간 바구니함 |
-| backpressure | 입구를 잠깐 막기 |
-| bulkhead | 불이 안 번지게 나눈 구역 |
-| circuitbreaker | 고장나면 누르는 빨간 버튼 |
-| retrybackoff | 잠깐 쉬었다 다시 줄서기 |
-| idempotency | 같은 티켓으로 두 번 못 타요 |
-| autoscaling | 줄이 길어지면 직원을 더 부르기 |
-| gracefuldegradation | 일부만 고장나도 나머지는 그대로 |
-| failover | 발전기가 꺼지면 예비 발전기가 |
-| multiregion | 쌍둥이 공원 |
-| servicediscovery | 지금 열린 창구 안내판 |
-| orchestration | 몇 대를 켤지 정하는 운영 본부 |
-| iac | 설계도 한 장으로 공원 통째로 짓기 |
-| gitops | 설계도가 바뀌면 자동으로 공사 |
-| featureflag | 새 기구에 친 커튼 |
-| canary | 구석에서 몰래 하는 시험 운행 |
-| bluegreen | 쌍둥이 기구를 번갈아 운영 |
-| rollback | 이상하면 바로 어제 버전으로 |
-| oncall | 이번 주 호출기를 든 사람 |
-| alerting | 몇 번 울려야 진짜 비상인가 |
-| incidentcommand | 지휘봉을 든 사람 |
-| postmortem | 탓하지 않고 모여 쓰는 기록 |
-| runbook | 정비사의 공책 |
-| chaosengineering | 일부러 내는 가짜 고장 |
-| gameday | 가짜 화재 훈련일 |
-| toil | 매일 똑같이 반복하는 허드렛일 |
-| capacityplanning | 내년 손님 수를 미리 세어보기 |
-| dorametrics | 우리 공사팀 네 가지 성적표 |
+## 이미 쓴 비유 (PDCA 순)
+
+| slug | 단계 | 제목 |
+|---|---|---|
+| reliability | Plan | 쉬지 않는 공원을 돌보는 사람들 |
+| sli | Plan | 오늘 운행 기록판 |
+| slo | Plan | 우리끼리 정한 목표 줄 |
+| sla | Plan | 손님과 맺은 약속 계약서 |
+| errorbudget | Plan | 허용된 고장 티켓 묶음 |
+| capacityplanning | Plan | 내년 손님 수를 미리 세어보기 |
+| apigateway | Plan | 정문 안내소 |
+| servicemesh | Plan | 기구 사이 전용 통로 |
+| caching | Plan | 자주 묻는 질문 미리 적어둔 메모판 |
+| sharding | Plan | 번호별로 나뉜 매표 창구 |
+| replication | Plan | 손님 명부를 두 창고에 똑같이 |
+| consensus | Plan | 여러 관제실이 손 들어 정하기 |
+| splitbrain | Plan | 두 관제실이 서로 자기가 진짜라고 |
+| captheorem | Plan | 정확함과 항상 열림, 둘 다는 못 가져요 |
+| eventualconsistency | Plan | 조금 늦게 맞춰지는 재고판 |
+| multiregion | Plan | 쌍둥이 공원 |
+| iac | Plan | 설계도 한 장으로 공원 통째로 짓기 |
+| gitops | Plan | 설계도가 바뀌면 자동으로 공사 |
+| ratelimiting | Do | 한 번에 몇 명까지만 |
+| healthcheck | Do | 안전바 딸깍 확인 |
+| servicediscovery | Do | 지금 열린 창구 안내판 |
+| orchestration | Do | 몇 대를 켤지 정하는 운영 본부 |
+| messagequeue | Do | 주문서를 쌓아두는 바구니 |
+| deadletterqueue | Do | 아무도 안 찾아간 바구니함 |
+| backpressure | Do | 입구를 잠깐 막기 |
+| bulkhead | Do | 불이 안 번지게 나눈 구역 |
+| circuitbreaker | Do | 고장나면 누르는 빨간 버튼 |
+| retrybackoff | Do | 잠깐 쉬었다 다시 줄서기 |
+| idempotency | Do | 같은 티켓으로 두 번 못 타요 |
+| autoscaling | Do | 줄이 길어지면 직원을 더 부르기 |
+| gracefuldegradation | Do | 일부만 고장나도 나머지는 그대로 |
+| failover | Do | 발전기가 꺼지면 예비 발전기가 |
+| featureflag | Do | 새 기구에 친 커튼 |
+| canary | Do | 구석에서 몰래 하는 시험 운행 |
+| bluegreen | Do | 쌍둥이 기구를 번갈아 운영 |
+| rollback | Do | 이상하면 바로 어제 버전으로 |
+| goldensignals | Check | 관제실의 계기판 네 개 |
+| observability | Check | 세 가지로 들여다보기 |
+| alerting | Check | 몇 번 울려야 진짜 비상인가 |
+| chaosengineering | Check | 일부러 내는 가짜 고장 |
+| gameday | Check | 가짜 화재 훈련일 |
+| dorametrics | Check | 우리 공사팀 네 가지 성적표 |
+| oncall | Act | 이번 주 호출기를 든 사람 |
+| incidentcommand | Act | 지휘봉을 든 사람 |
+| postmortem | Act | 탓하지 않고 모여 쓰는 기록 |
+| runbook | Act | 정비사의 공책 |
+| toil | Act | 매일 똑같이 반복하는 허드렛일 |

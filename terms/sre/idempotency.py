@@ -52,7 +52,7 @@ SAFE_I = icon('<path d="M32 8 L54 18 V34 C54 48 44 58 32 62 C20 58 10 48 10 34 V
 WARN_I = icon('<path d="M32 10 L58 54 H6 Z" fill="var(--bad)"/><rect x="29" y="26" width="6" height="14" fill="var(--panel)"/><circle cx="32" cy="46" r="3.5" fill="var(--panel)"/>')
 
 PAGE = {
-    "slug": "idempotency", "order": 25,
+    "slug": "idempotency", "order": 29,
     "title": ("같은 티켓으로 두 번 못 타요", "You Can't Ride Twice on the Same Ticket"),
     "h1": ("<em>멱등성</em>이 뭐예요?", "What is <em>Idempotency</em>?"),
     "sub": ("멱등성을 같은 번호의 티켓은 한 번만 인정해 주는 매표 창구 이야기로 풀어봤어요.",

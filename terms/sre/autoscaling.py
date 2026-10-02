@@ -56,7 +56,7 @@ ZIGZAG_I = icon('<path d="M8 44 L20 16 L32 44 L44 16 L56 44" stroke="var(--bad)"
 MINMAX_I = icon('<path d="M14 12 h12 M14 12 v14 M50 12 h-12 M50 12 v14" stroke="var(--good)" stroke-width="4" fill="none"/><path d="M14 52 h12 M14 52 v-14 M50 52 h-12 M50 52 v-14" stroke="var(--good)" stroke-width="4" fill="none"/>')
 
 PAGE = {
-    "slug": "autoscaling", "order": 26,
+    "slug": "autoscaling", "order": 30,
     "title": ("줄이 길어지면 직원을 더 부르기", "Call In More Staff When the Line Grows"),
     "h1": ("<em>오토스케일링</em>이 뭐예요?", "What is <em>Autoscaling</em>?"),
     "sub": ("오토스케일링을 줄 길이를 보고 직원을 자동으로 부르거나 돌려보내는 이야기로 풀어봤어요.",

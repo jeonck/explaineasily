@@ -62,7 +62,7 @@ NOBOOM_I = icon('<path d="M18 50 L14 20 Q32 8 50 20 L46 50Z" fill="none" stroke=
 STAFF_I = icon('<circle cx="22" cy="20" r="9" fill="var(--stone-dark)"/><rect x="10" y="30" width="24" height="24" rx="8" fill="var(--stone-dark)"/><circle cx="46" cy="24" r="8" fill="var(--good)"/><path d="M46 14 v8 M42 18 h8" stroke="#FFF8E7" stroke-width="3" stroke-linecap="round"/><rect x="38" y="36" width="18" height="18" rx="6" fill="var(--good)"/>')
 
 PAGE = {
-    "slug": "messagequeue", "order": 19,
+    "slug": "messagequeue", "order": 23,
     "title": ("주문서를 쌓아두는 바구니", "The Basket That Holds the Order Slips"),
     "h1": ("<em>메시지 큐</em>가 뭐예요?", "What is a <em>Message Queue</em>?"),
     "sub": ("메시지 큐를, 주문서를 바로 넘기지 않고 바구니에 쌓아두는 간식 창구 이야기로 풀어봤어요.",

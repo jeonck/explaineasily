@@ -60,7 +60,7 @@ P5 = svg(300, sky(300)
          + label(380, 284, "⟦버튼이 너무 예민하면 괜찮은데도 자꾸 차단해요 — 기준을 잘 잡아야 해요|too sensitive a button keeps blocking things that are fine — the threshold needs tuning⟧", 12, "var(--ink)"))
 
 PAGE = {
-    "slug": "circuitbreaker", "order": 23,
+    "slug": "circuitbreaker", "order": 27,
     "title": ("고장나면 누르는 빨간 버튼", "The Red Button You Press When Something Breaks"),
     "h1": ("<em>서킷 브레이커</em>가 뭐예요?", "What is a <em>Circuit Breaker</em>?"),
     "sub": ("서킷 브레이커를 고장난 기구 앞 빨간 비상 버튼 이야기로 풀어봤어요.",

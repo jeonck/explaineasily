@@ -55,7 +55,7 @@ P5 = svg(300, sky(300, ground=False)
          + label(380, 286, "⟦1%가 느껴질 만큼 손님이 많아야 의미가 있어요|canaries only work when 1% is still enough guests to notice⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
-    "slug": "canary", "order": 35,
+    "slug": "canary", "order": 34,
     "title": ("구석에서 몰래 하는 시험 운행", "A Quiet Test Run in the Corner"),
     "h1": ("<em>카나리 배포</em>가 뭐예요?", "What is <em>Canary Deployment</em>?"),
     "sub": ("카나리 배포를 공원 구석에서 손님 1%만 몰래 태워보는 이야기로 풀어봤어요.",

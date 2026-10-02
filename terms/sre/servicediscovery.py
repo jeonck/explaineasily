@@ -51,7 +51,7 @@ LOOKUP_I = icon('<circle cx="26" cy="26" r="16" fill="none" stroke="var(--accent
 MULTIBOARD_I = icon('<rect x="8" y="10" width="34" height="26" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><rect x="20" y="24" width="34" height="26" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M26 32 h20 M26 40 h14" stroke="#142033" stroke-width="2"/>')
 
 PAGE = {
-    "slug": "servicediscovery", "order": 30,
+    "slug": "servicediscovery", "order": 21,
     "title": ("지금 열린 창구 안내판", "The Sign That Shows Which Booths Are Open"),
     "h1": ("<em>서비스 디스커버리</em>가 뭐예요?", "What is <em>Service Discovery</em>?"),
     "sub": ("서비스 디스커버리를, 지금 어느 창구가 열려 있는지 알려주는 안내판 이야기로 풀어봤어요.",

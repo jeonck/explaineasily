@@ -71,7 +71,7 @@ MONEY_I = icon('<circle cx="32" cy="32" r="20" fill="var(--accent)"/><text x="32
 BOARD_I = icon('<rect x="8" y="14" width="48" height="34" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M16 24 h32 M16 32 h24 M16 40 h18" stroke="#142033" stroke-width="2.5" stroke-linecap="round"/>')
 
 PAGE = {
-    "slug": "captheorem", "order": 17,
+    "slug": "captheorem", "order": 14,
     "title": ("정확함과 항상 열림, 둘 다는 못 가져요", "You Can't Have Both Correctness and Always-Open"),
     "h1": ("<em>CAP 정리</em>가 뭐예요?", "What is the <em>CAP Theorem</em>?"),
     "sub": ("CAP 정리를, 선이 끊긴 두 창고 중 하나를 골라야 하는 이야기로 풀어봤어요.",

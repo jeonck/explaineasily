@@ -48,7 +48,7 @@ KILL_I = icon('<circle cx="32" cy="32" r="22" fill="var(--bad)" stroke="#7A1F17"
 TARGET_I = icon('<circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4"/><circle cx="32" cy="32" r="12" fill="none" stroke="var(--accent)" stroke-width="4"/><circle cx="32" cy="32" r="3" fill="var(--accent)"/>')
 
 PAGE = {
-    "slug": "featureflag", "order": 34,
+    "slug": "featureflag", "order": 33,
     "title": ("새 기구에 친 커튼", "A Curtain Drawn Over a New Ride"),
     "h1": ("<em>피처 플래그</em>가 뭐예요?", "What is a <em>Feature Flag</em>?"),
     "sub": ("피처 플래그를 새 기구를 지어 두고 커튼을 쳐서, 스위치로 몇 명에게 보여줄지 정하는 이야기로 풀어봤어요.",
