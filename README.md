@@ -252,8 +252,8 @@ AI 용어는 하나의 세계를 공유한다 — 모델은 책을 산더미로 
 | Check | DORA Metrics | 우리 공사팀 네 가지 성적표 | [dorametrics-ko](docs/dorametrics-ko.html) | [dorametrics-en](docs/dorametrics-en.html) |
 | Act | On-call | 이번 주 호출기를 든 사람 | [oncall-ko](docs/oncall-ko.html) | [oncall-en](docs/oncall-en.html) |
 | Act | Incident Commander | 지휘봉을 든 사람 | [incidentcommand-ko](docs/incidentcommand-ko.html) | [incidentcommand-en](docs/incidentcommand-en.html) |
-| Act | Postmortem | 탓하지 않고 모여 쓰는 기록 | [postmortem-ko](docs/postmortem-ko.html) | [postmortem-en](docs/postmortem-en.html) |
 | Act | Runbook | 정비사의 공책 | [runbook-ko](docs/runbook-ko.html) | [runbook-en](docs/runbook-en.html) |
+| Act | Postmortem | 탓하지 않고 모여 쓰는 기록 | [postmortem-ko](docs/postmortem-ko.html) | [postmortem-en](docs/postmortem-en.html) |
 | Act | Toil | 매일 똑같이 반복하는 허드렛일 | [toil-ko](docs/toil-ko.html) | [toil-en](docs/toil-en.html) |
 SRE 용어는 하나의 세계를 공유한다 — 공원은 우리 시스템, 놀이기구는 서비스, 손님은 요청, 관제실은 모니터링, 정비사는 엔지니어 (`terms/sre/_WORLD.md`).
 순서는 PDCA(Plan-Do-Check-Act) 틀을 따른다 — 목표를 정하고 설계(Plan) → 설계대로 운영·배포(Do) → 제대로 되는지 관측·검증(Check) → 이상 신호에 대응하고 교훈을 다음 계획에 반영(Act).

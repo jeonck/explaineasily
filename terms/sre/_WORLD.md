@@ -39,8 +39,6 @@
 - `failover`/`backup`(보안 세계 `backup.py` 여분 상자)와 소품이 비슷하지만 SRE는 "서비스 지속"이 목적, 보안은 "데이터 보존"이 목적 — 혼동하지 않게 ⑤에서 구분.
 - `ratelimiting`은 보안의 `ddos`/`waf`와 다르다 — 보안은 공격자를 막고, SRE는 **우리 시스템 자신을 보호**한다.
 
-## 이미 쓴 비유 (PDCA 순)
-
 | slug | 단계 | 제목 |
 |---|---|---|
 | reliability | Plan | 쉬지 않는 공원을 돌보는 사람들 |
@@ -87,6 +85,6 @@
 | dorametrics | Check | 우리 공사팀 네 가지 성적표 |
 | oncall | Act | 이번 주 호출기를 든 사람 |
 | incidentcommand | Act | 지휘봉을 든 사람 |
-| postmortem | Act | 탓하지 않고 모여 쓰는 기록 |
 | runbook | Act | 정비사의 공책 |
+| postmortem | Act | 탓하지 않고 모여 쓰는 기록 |
 | toil | Act | 매일 똑같이 반복하는 허드렛일 |

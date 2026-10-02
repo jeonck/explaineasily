@@ -360,6 +360,6 @@ python3 build.py
 | sre | DORA Metrics | 우리 공사팀 네 가지 성적표 |
 | sre | On-call | 이번 주 호출기를 든 사람 |
 | sre | Incident Commander | 지휘봉을 든 사람 |
-| sre | Postmortem | 탓하지 않고 모여 쓰는 기록 |
 | sre | Runbook | 정비사의 공책 |
+| sre | Postmortem | 탓하지 않고 모여 쓰는 기록 |
 | sre | Toil | 매일 똑같이 반복하는 허드렛일 |
