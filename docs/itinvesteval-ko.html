@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>공연 끝난 뒤의 성적표</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="itinvesteval-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · IT관리</div>
+<h1><em>IT 투자성과 평가</em>가 뭐예요?</h1>
+<p class="sub">IT 투자성과 평가를, 콘서트 투어가 끝난 뒤 후원사에게 숫자로 답하는 성적표 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="후원사가 투자금의 성과를 묻지만 투어 기획사는 답할 숫자가 없음" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><text x="380" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)" class="d">이 투어 기획사가 곧 IT 프로젝트 조직이에요</text><g transform="translate(180,170) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(260,150) scale(0.8)"><rect x="-22" y="-28" width="44" height="56" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-14 -14 h28 M-14 -4 h28" stroke="#142033" stroke-width="2"/></g><rect x="40" y="70" width="260" height="50" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M160.0 120 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="42" y="116" width="256" height="6" fill="var(--panel)"/><text x="170.0" y="99.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">우리 돈, 값을 했나요?</text><g transform="translate(560,180) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="380" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">공연은 끝났는데 숫자로 답할 게 없어요</text></svg>
+<p>후원사가 거액을 댔는데, 공연 끝나고 나니 값을 했는지 몰라요.<small>이 투어 기획사가 곧 IT 프로젝트 조직이에요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="기획자는 관객 반응이 좋았다고 말하지만 후원사는 돈 얘기를 물음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(180,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="70" y="70" width="230" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M175.0 116 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="72" y="112" width="226" height="6" fill="var(--panel)"/><text x="185.0" y="96.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">관객들이 엄청 좋아했어요!</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="460" y="70" width="230" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M565.0 116 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="462" y="112" width="226" height="6" fill="var(--panel)"/><text x="575.0" y="96.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">그래서 제 돈은 얼마나 돌아왔나요?</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">느낌만으론 안 돼요, 돈과 숫자로 보여줘야 해요</text></svg>
+<p>"관객이 좋아했어요"만으론 후원사를 설득 못 해요.<small>느낌만으론 안 돼요, 돈과 숫자로 보여줘야 해요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="투자금과 매출 티켓을 나란히 들고 감독관이 웃음" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(230,150) scale(1.1)"><rect x="-30" y="-17" width="60" height="34" rx="4" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle cx="-30" cy="0" r="4" fill="var(--bg)"/><circle cx="30" cy="0" r="4" fill="var(--bg)"/><text x="0" y="5" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">투자 1억</text></g><g transform="translate(380,150) scale(1.1)"><rect x="-30" y="-17" width="60" height="34" rx="4" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle cx="-30" cy="0" r="4" fill="var(--bg)"/><circle cx="30" cy="0" r="4" fill="var(--bg)"/><text x="0" y="5" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">매출 1.4억</text></g><g transform="translate(540,180) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">IT 투자성과 평가 = 공연 끝난 뒤 돈과 숫자로 매기는 성적표</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">투자한 만큼 돌아왔는지, 숫자로 확인해요</text></svg>
+<p>IT 투자성과 평가는 공연 끝난 뒤 돈과 숫자로 매기는 성적표예요.<small>투자한 만큼 돌아왔는지, 숫자로 확인해요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="var(--good)"/><path d="M22 36 l8 -10 l6 6 l10 -14" stroke="var(--panel)" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>ROI 따지기</b><span>투자 대비 수익률이에요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="24" width="40" height="28" rx="4" fill="var(--accent)"/><path d="M20 24 v-8 M44 24 v-8" stroke="var(--accent)" stroke-width="4"/><text x="32" y="42" text-anchor="middle" font-size="14" fill="var(--panel)" font-weight="700">$</text></svg><b>NPV 따지기</b><span>미래 돈을 지금 가치로요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="10" width="20" height="20" fill="var(--good)"/><rect x="34" y="10" width="20" height="20" fill="var(--accent)"/><rect x="10" y="34" width="20" height="20" fill="var(--bad)"/><rect x="34" y="34" width="20" height="20" fill="#C9822B"/></svg><b>BSC로 넓게 보기</b><span>재무·관객·운영·성장 네 각도</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 14 l6 14 l15 2 l-11 10 l3 15 l-13 -8 l-13 8 l3 -15 l-11 -10 l15 -2 z" fill="var(--accent)"/></svg><b>정성 효과도 보기</b><span>브랜드·평판도 효과예요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="네 가지 평가 지표 체크리스트를 감독관이 점검함" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><g transform="translate(60,30) scale(1.0)"><rect width="300" height="260" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">평가 지표</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">ROI — 투자 대비 얼마 벌었나</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">NPV — 지금 돈 가치로 환산하면</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">BSC — 재무·관객·운영·성장 네 각도</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">정성 효과 — 브랜드·평판</text></g><g transform="translate(560,170) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">숫자(정량) + 느낌(정성)을 같이 봐요</text></svg>
+<p>평가는 이 네 가지를 같이 봐요.<small>숫자(정량) + 느낌(정성)을 같이 봐요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 매출 증가가 숫자로 드러남. 오른쪽: 관객이 팬이 됐다고 말하지만 숫자로 못 담음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/><g transform="translate(190,150) scale(0.9)"><rect x="-30" y="-17" width="60" height="34" rx="4" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle cx="-30" cy="0" r="4" fill="var(--bg)"/><circle cx="30" cy="0" r="4" fill="var(--bg)"/><text x="0" y="5" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">매출 +40%</text></g><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">숫자로 바로 보여요</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7B9D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="490" y="70" width="170" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M565.0 116 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="492" y="112" width="166" height="6" fill="var(--panel)"/><text x="575.0" y="96.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">이 투어 팬 됐어요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">팬심·신뢰 같은 가치는 숫자 하나로 못 담아요, 그래도 평가는 계속돼요</text></svg>
+<p>숫자만으론 못 보는 것도 있어요.<small>팬심·신뢰 같은 가치는 숫자 하나로 못 담아요, 그래도 평가는 계속돼요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>IT 투자성과 평가</b> = 프로젝트(공연)가 끝난 뒤 <b>투자한 돈만큼 돌아왔는지</b> 숫자와 정성 효과로 함께 확인하는 일.</h2><p>IT 투자성과 평가는 ROI(투자수익률), NPV(순현재가치) 같은 재무 지표와 BSC(균형성과표)의 재무·고객·내부프로세스·학습성장 네 관점, 그리고 브랜드 가치 같은 정성적 효과를 함께 측정해 투자 타당성을 판단하는 활동이에요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>ROI<br><small>ROI</small></dt><dd><b>투자 대비 번 돈의 비율.</b> 가장 많이 쓰는 기본 지표예요.</dd></div><div><dt>NPV<br><small>NPV</small></dt><dd><b>미래에 벌 돈을 지금 가치로 당겨온 것.</b> 시간에 따라 돈 가치가 변하는 걸 반영해요.</dd></div><div><dt>BSC<br><small>Balanced Scorecard</small></dt><dd><b>재무·관객·운영·성장 네 각도로 보는 성적표.</b> 숫자 하나에 치우치지 않게 해줘요.</dd></div><div><dt>정성적 효과<br><small>Qualitative Benefit</small></dt><dd><b>팬심·신뢰처럼 숫자로 못 담는 가치.</b> 무시하지 않고 별도로 챙겨요.</dd></div><div><dt>프로젝트 위험관리<br><small>Project Risk Mgmt</small></dt><dd><b>공연 당일 날씨에 대비하는 우산.</b> 투자 결정 전에도 위험을 따져요. → <a href="projrisk-ko.html">돌발 상황에 대비하는 우산</a></dd></div><div><dt>운영 성과관리<br><small>Ops Performance Mgmt</small></dt><dd><b>공연 끝난 뒤 시설이 계속 잘 굴러가는지 보는 일.</b> 투자 평가는 운영 단계에서도 계속돼요. → <a href="opsperf-ko.html">공연 끝난 뒤의 운영실</a></dd></div><div><dt>감리/PMO<br><small>IS Audit/PMO</small></dt><dd><b>전체를 바깥에서 점검하는 역할.</b> 다른 세계(출판사)에서 자세히 다뤄요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a></dd></div><div><dt>계약·협상<br><small>Negotiation & Contract</small></dt><dd><b>출연 계약서에 조건을 적는 일.</b> 투자 결정은 계약 조건과도 맞물려요. → <a href="negotiation-ko.html">조건을 조율해 서명하기</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="projrisk-ko.html">비 오는 날에도 챙기는 우산 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

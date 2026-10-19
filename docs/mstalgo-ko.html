@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>가장 싼 배관만 골라 모든 지점 잇기</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="mstalgo-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 시스템SW</div>
+<h1><em>최소신장트리(MST)</em>가 뭐예요?</h1>
+<p class="sub">최소신장트리를, 정비공장 여러 지점을 가장 싼 배관만 골라 사이클 없이 모두 연결하는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="다섯 지점 A~E가 여러 가능한 배관 경로와 비용으로 얽혀 있음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(140,150) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">A</text></g><g transform="translate(320,100) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">B</text></g><g transform="translate(500,150) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">C</text></g><g transform="translate(380,250) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">D</text></g><g transform="translate(600,240) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">E</text></g><path d="M140 150 L320 100" stroke="var(--line)" stroke-width="4"/><text x="230.0" y="115.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--line)" class="d">7</text><path d="M320 100 L500 150" stroke="var(--line)" stroke-width="4"/><text x="410.0" y="115.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--line)" class="d">4</text><path d="M140 150 L380 250" stroke="var(--line)" stroke-width="4"/><text x="260.0" y="190.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--line)" class="d">6</text><path d="M500 150 L380 250" stroke="var(--line)" stroke-width="4"/><text x="440.0" y="190.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--line)" class="d">3</text><path d="M500 150 L600 240" stroke="var(--line)" stroke-width="4"/><text x="550.0" y="185.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--line)" class="d">5</text><path d="M380 250 L600 240" stroke="var(--line)" stroke-width="4"/><text x="490.0" y="235.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--line)" class="d">8</text><path d="M320 100 L380 250" stroke="var(--line)" stroke-width="4"/><text x="350.0" y="165.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--line)" class="d">9</text><g transform="translate(680,140) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="380" y="40" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">지점 다섯 곳을 전부 배관으로 이어야 해요</text><text x="380" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">길도 많고 비용도 제각각이라 고민이에요</text></svg>
+<p>지점 다섯 곳을 전부 배관으로 이어야 해요.<small>길도 많고 비용도 제각각이라 고민이에요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="모든 배관을 다 놓아 다섯 지점이 연결되지만 비용이 과도함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(140,150) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">A</text></g><g transform="translate(320,100) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">B</text></g><g transform="translate(500,150) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">C</text></g><g transform="translate(380,250) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">D</text></g><g transform="translate(600,240) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">E</text></g><path d="M140 150 L320 100" stroke="var(--good)" stroke-width="4"/><text x="230.0" y="115.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">7</text><path d="M320 100 L500 150" stroke="var(--good)" stroke-width="4"/><text x="410.0" y="115.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">4</text><path d="M140 150 L380 250" stroke="var(--good)" stroke-width="4"/><text x="260.0" y="190.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">6</text><path d="M500 150 L380 250" stroke="var(--good)" stroke-width="4"/><text x="440.0" y="190.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">3</text><path d="M500 150 L600 240" stroke="var(--good)" stroke-width="4"/><text x="550.0" y="185.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">5</text><path d="M380 250 L600 240" stroke="var(--good)" stroke-width="4"/><text x="490.0" y="235.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">8</text><path d="M320 100 L380 250" stroke="var(--good)" stroke-width="4"/><text x="350.0" y="165.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">9</text><text x="380" y="40" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">배관을 전부 다 놓으면 연결은 되지만 돈이 너무 들어요</text><text x="380" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">꼭 필요한 배관만 골라 돈을 아끼고 싶어요</text></svg>
+<p>아무 배관이나 다 놓으면 돈이 너무 많이 들어요.<small>꼭 필요한 배관만 골라 돈을 아끼고 싶어요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="가장 싼 배관 네 개만 초록색으로 남고 나머지는 점선으로 빠져 다섯 지점이 모두 연결됨" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(140,170) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">A</text></g><g transform="translate(320,120) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">B</text></g><g transform="translate(500,170) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">C</text></g><g transform="translate(380,270) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">D</text></g><g transform="translate(600,260) scale(1.0)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">E</text></g><path d="M320 120 L500 170" stroke="var(--good)" stroke-width="4"/><text x="410.0" y="135.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">4</text><path d="M140 170 L380 270" stroke="var(--good)" stroke-width="4"/><text x="260.0" y="210.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">6</text><path d="M500 170 L380 270" stroke="var(--good)" stroke-width="4"/><text x="440.0" y="210.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">3</text><path d="M500 170 L600 260" stroke="var(--good)" stroke-width="4"/><text x="550.0" y="205.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">5</text><path d="M140 170 L320 120" stroke="var(--bad)" stroke-width="4" stroke-dasharray="5 4"/><text x="230.0" y="135.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">7</text><path d="M380 270 L600 260" stroke="var(--bad)" stroke-width="4" stroke-dasharray="5 4"/><text x="490.0" y="255.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">8</text><path d="M320 120 L380 270" stroke="var(--bad)" stroke-width="4" stroke-dasharray="5 4"/><text x="350.0" y="185.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">9</text><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">최소신장트리 = 가장 싼 배관만 골라 사이클 없이 모두 잇는 것</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">초록 배관 네 개(3+4+5+6)만으로 다섯 지점이 다 이어져요</text></svg>
+<p>최소신장트리는 가장 싼 배관만 골라 사이클 없이 모두 잇는 것이에요.<small>초록 배관 네 개만으로 다섯 지점이 다 이어져요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 40 h44" stroke="var(--ink)" stroke-width="3"/><rect x="14" y="22" width="8" height="18" fill="var(--good)"/><rect x="28" y="30" width="8" height="10" fill="var(--good)"/><rect x="42" y="16" width="8" height="24" fill="var(--line)"/></svg><b>가장 싼 것부터</b><span>비용이 적은 배관을 먼저 봐요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="24" r="8" fill="var(--accent)"/><circle cx="44" cy="24" r="8" fill="var(--accent)"/><circle cx="34" cy="44" r="8" fill="var(--accent)"/><path d="M24 24 L44 24 M24 24 L34 44" stroke="var(--good)" stroke-width="3"/><path d="M44 24 L34 44" stroke="var(--bad)" stroke-width="3" stroke-dasharray="3 3"/></svg><b>사이클 금지</b><span>이미 이어진 곳은 다시 안 이어요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="32" r="8" fill="var(--good)"/><circle cx="44" cy="20" r="8" fill="var(--line)"/><circle cx="44" cy="44" r="8" fill="var(--line)"/><path d="M20 32 L44 20" stroke="var(--good)" stroke-width="3"/></svg><b>연결망 넓히기</b><span>이어진 범위를 조금씩 키워요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="16" cy="20" r="7" fill="var(--line)"/><circle cx="32" cy="14" r="7" fill="var(--line)"/><circle cx="48" cy="22" r="7" fill="var(--line)"/><circle cx="24" cy="38" r="7" fill="var(--line)"/><circle cx="42" cy="40" r="7" fill="var(--line)"/><path d="M16 20 L24 38 M24 38 L32 14 M32 14 L48 22 M48 22 L42 40" stroke="var(--accent)" stroke-width="2.5" stroke-dasharray="3 3"/></svg><b>다섯 지점 모두 연결</b><span>하나도 빠짐없이 이어져요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="크루스칼은 모든 배관을 값싼 순으로 줄 세워 고르고, 프림은 한 지점에서 시작해 연결망을 넓혀가는 두 방법 비교표" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,40) scale(1.0)"><rect width="320" height="240" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="320" height="26" rx="6" fill="#C9A86A"/><text x="160.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">크루스칼 — 싼 길부터 고르기</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">모든 배관을 값싼 순으로 줄 세워요</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">사이클만 안 생기면 계속 골라요</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">전체를 내려다보며 골라요</text></g><g transform="translate(410,40) scale(1.0)"><rect width="300" height="240" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">프림 — 한 지점에서 넓혀가기</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">한 지점에서 시작해요</text><rect x="6" y="59" width="288" height="22" rx="4" fill="var(--accent-soft)"/><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">이미 이어진 곳 중 가장 싼 길만 넓혀가요</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">연결망을 점점 키워가요</text></g></svg>
+<p>고르는 방법은 두 가지가 있어요.<small>크루스칼은 전체를 보고, 프림은 한 곳에서 넓혀가요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 싼 길을 고르되 이미 이어졌으면 건너뜀. 오른쪽: 사이클 금지 규칙을 빼먹으면 돈이 다시 샘" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/><g transform="translate(150,140) scale(0.9)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">A</text></g><g transform="translate(230,190) scale(0.9)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">B</text></g><path d="M150 140 L230 190" stroke="var(--good)" stroke-width="4"/><text x="190.0" y="155.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">3</text><text x="190" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">무조건 싼 것만 고르되, 이미 이어졌으면 건너뛰어요</text><g transform="translate(560,140) scale(0.9)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">C</text></g><g transform="translate(640,140) scale(0.9)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">D</text></g><g transform="translate(600,220) scale(0.9)"><circle r="16" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="0" y="32" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">E</text></g><path d="M560 140 L640 140" stroke="var(--bad)" stroke-width="4" stroke-dasharray="5 4"/><text x="600.0" y="130.0" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">2</text><text x="600" y="260" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">사이클을 막는 규칙을 빼먹으면 빙 둘러 연결돼 돈이 또 새요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">'가장 싸게'와 '사이클 없이' 둘 다 지켜야 진짜 최소신장트리예요</text></svg>
+<p>가장 싼 길만 고집하면 사이클이 생길 수 있어요.<small>'가장 싸게'와 '사이클 없이' 둘 다 지켜야 진짜 MST예요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>최소신장트리(MST)</b>는 여러 지점을 <b>가장 싼 비용의 길</b>만 골라 <b>사이클 없이 전부 연결</b>하는 방법이에요.</h2><p>최소신장트리는 가중치가 있는 그래프에서 모든 정점을 사이클 없이 연결하면서 간선 가중치의 합이 최소가 되는 부분 그래프예요. 크루스칼 알고리즘은 모든 간선을 가중치 순으로 정렬한 뒤, 사이클을 만들지 않는 한 가장 싼 간선부터 차례로 선택해요(유니온-파인드로 사이클을 검사). 프림 알고리즘은 한 정점에서 시작해 이미 연결된 집합과 바깥을 잇는 가장 싼 간선을 반복해서 추가하며 트리를 키워가요. 둘 다 정점이 n개면 간선이 n-1개인 트리가 만들어져요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>최소신장트리(MST)<br><small>Minimum Spanning Tree</small></dt><dd><b>가장 싼 배관으로 모두 잇는 연결망.</b> 정점이 n개면 간선은 n-1개예요.</dd></div><div><dt>크루스칼 알고리즘<br><small>Kruskal's Algorithm</small></dt><dd><b>싼 배관부터 차례로 고르는 방법.</b> 전체 배관을 미리 정렬해두고 골라요.</dd></div><div><dt>프림 알고리즘<br><small>Prim's Algorithm</small></dt><dd><b>한 지점에서 시작해 넓혀가는 방법.</b> 이미 이은 곳에서 가장 싼 길만 넓혀가요.</dd></div><div><dt>사이클(순환)<br><small>Cycle</small></dt><dd><b>배관이 빙 둘러 다시 이어지는 것.</b> MST에서는 생기면 안 돼요.</dd></div><div><dt>가중치 그래프<br><small>Weighted Graph</small></dt><dd><b>배관마다 비용이 적힌 지도.</b> MST는 이 비용의 합을 최소화해요.</dd></div><div><dt>유니온-파인드<br><small>Union-Find</small></dt><dd><b>이미 이어졌는지 빠르게 확인하는 도구.</b> 크루스칼에서 사이클 검사에 써요.</dd></div><div><dt>탐욕 알고리즘<br><small>Greedy Algorithm</small></dt><dd><b>매번 당장 가장 싼 것을 고르는 전략.</b> 크루스칼·프림 둘 다 이 전략이에요.</dd></div><div><dt>최단경로 알고리즘<br><small>Shortest Path Algorithm</small></dt><dd><b>두 지점 사이 가장 싼 '한 길'을 찾는 것.</b> MST는 '모두 잇기'가 목표라 다른 문제예요.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="cpusched-ko.html">리프트에 누가 먼저 올라갈까 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

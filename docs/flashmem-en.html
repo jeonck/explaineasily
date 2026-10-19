@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Parts Warehouse That Remembers Even Off Power</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="flashmem-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Systems</div>
+<h1>What is <em>Flash Memory</em>?</h1>
+<p class="sub">Flash memory (NAND/NOR), told as a story about a parts warehouse that remembers its contents even when the garage's power goes off.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="At night as the garage closes, the chief worries whether the warehouse parts will still be there" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--night)"/><circle cx="660" cy="50" r="26" fill="#F5E6B8"/><circle cx="120" cy="40" r="2" fill="#F5E6B8"/><circle cx="300" cy="70" r="2" fill="#F5E6B8"/><circle cx="500" cy="30" r="2" fill="#F5E6B8"/><circle cx="420" cy="90" r="2" fill="#F5E6B8"/><circle cx="200" cy="120" r="2" fill="#F5E6B8"/><ellipse cx="380" cy="310" rx="440" ry="30" fill="#0A1120"/><g transform="translate(140,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(260,150)"><rect width="220" height="70" rx="4" fill="#5A3B22"/><rect x="4.0" y="4" width="38.4" height="62" rx="2" fill="#E9B44C"/><rect x="46.4" y="4" width="38.4" height="62" rx="2" fill="#E9B44C"/><rect x="88.8" y="4" width="38.4" height="62" rx="2" fill="#E9B44C"/><rect x="131.2" y="4" width="38.4" height="62" rx="2" fill="#E9B44C"/><rect x="173.6" y="4" width="38.4" height="62" rx="2" fill="#E9B44C"/></g><text x="370" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">the shop is closed — are the parts still there?</text><text x="380" y="40" text-anchor="middle" font-size="13" font-weight="700" fill="#C9D5E6">some parts must not vanish when the power is off</text></svg>
+<p>Parts must still be there even after closing.<small>Some parts must not vanish when the power is off.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Parts on the workbench get cleared away at night" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(200,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="300" y="170" width="140" height="10" fill="#8B5E3C"/><rect x="320" y="140" width="20" height="30" fill="#C9822B"/><rect x="360" y="140" width="20" height="30" fill="#C9822B"/><text x="370" y="120" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">parts on the workbench (=RAM)</text><text x="370" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">clear it all when the shop closes at night</text><text x="380" y="270" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">so we need a separate warehouse that survives power-off</text></svg>
+<p>Parts on the workbench vanish once the shop closes.<small>So a separate warehouse that survives power-off is needed.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="The parts warehouse stands in daylight, the mechanic satisfied" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(120,160)"><rect width="220" height="80" rx="4" fill="#5A3B22"/><rect x="4.0" y="4" width="38.4" height="72" rx="2" fill="#E9B44C"/><rect x="46.4" y="4" width="38.4" height="72" rx="2" fill="#E9B44C"/><rect x="88.8" y="4" width="38.4" height="72" rx="2" fill="#E9B44C"/><rect x="131.2" y="4" width="38.4" height="72" rx="2" fill="#E9B44C"/><rect x="173.6" y="4" width="38.4" height="72" rx="2" fill="#E9B44C"/></g><text x="230" y="270" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">parts warehouse (flash memory)</text><g transform="translate(460,140) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">flash memory = a warehouse that remembers parts even off power</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">a warehouse that moves boxes in blocks — two styles, NAND and NOR</text></svg>
+<p>Flash memory is a warehouse that remembers parts even off power.<small>A warehouse that moves boxes in blocks — in two styles, NAND and NOR.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="16" width="20" height="18" rx="2" fill="var(--accent)"/><rect x="34" y="16" width="20" height="18" rx="2" fill="var(--accent)"/><rect x="8" y="38" width="46" height="10" rx="2" fill="#5A3B22"/></svg><b>NAND — block access</b><span>move whole boxes at a time</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="10" width="18" height="14" rx="2" fill="var(--good)"/><rect x="34" y="10" width="18" height="14" rx="2" fill="var(--good)"/><rect x="10" y="30" width="18" height="14" rx="2" fill="var(--good)"/><rect x="34" y="30" width="18" height="14" rx="2" fill="var(--good)"/></svg><b>NOR — byte access</b><span>grab a single drawer directly</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M32 20 v24 M24 26 h16 M24 38 h16" stroke="var(--accent)" stroke-width="3"/></svg><b>NAND — cheap, roomy</b><span>used in SSDs and USB drives</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20 48 L32 12 L44 48 Z" fill="none" stroke="var(--good)" stroke-width="4"/><circle cx="32" cy="36" r="4" fill="var(--good)"/></svg><b>NOR — execute in place</b><span>used for firmware code</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: NAND warehouse only yields whole boxes. Right: NOR drawers come out one at a time" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(50,60)"><rect width="280" height="70" rx="4" fill="#5A3B22"/><rect x="4.0" y="4" width="41.333333333333336" height="62" rx="2" fill="#E9B44C"/><rect x="49.333333333333336" y="4" width="41.333333333333336" height="62" rx="2" fill="#E9B44C"/><rect x="94.66666666666667" y="4" width="41.333333333333336" height="62" rx="2" fill="#E9B44C"/><rect x="140.0" y="4" width="41.333333333333336" height="62" rx="2" fill="#E9B44C"/><rect x="185.33333333333334" y="4" width="41.333333333333336" height="62" rx="2" fill="#E9B44C"/><rect x="230.66666666666669" y="4" width="41.333333333333336" height="62" rx="2" fill="#E9B44C"/></g><text x="190" y="150" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">NAND — only whole boxes (blocks) come out</text><text x="190" y="172" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">cheap, roomy — used in SSDs and USB drives</text><g transform="translate(470,60)"><rect x="0" y="0" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="11.0" cy="9.0" r="2" fill="#2E3D57"/><rect x="25" y="0" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="36.0" cy="9.0" r="2" fill="#2E3D57"/><rect x="50" y="0" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="61.0" cy="9.0" r="2" fill="#2E3D57"/><rect x="75" y="0" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="86.0" cy="9.0" r="2" fill="#2E3D57"/><rect x="100" y="0" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="111.0" cy="9.0" r="2" fill="#2E3D57"/><rect x="0" y="21" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="11.0" cy="30.0" r="2" fill="#2E3D57"/><rect x="25" y="21" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="36.0" cy="30.0" r="2" fill="#2E3D57"/><rect x="50" y="21" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="61.0" cy="30.0" r="2" fill="#2E3D57"/><rect x="75" y="21" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="86.0" cy="30.0" r="2" fill="#2E3D57"/><rect x="100" y="21" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="111.0" cy="30.0" r="2" fill="#2E3D57"/><rect x="0" y="42" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="11.0" cy="51.0" r="2" fill="#2E3D57"/><rect x="25" y="42" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="36.0" cy="51.0" r="2" fill="#2E3D57"/><rect x="50" y="42" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="61.0" cy="51.0" r="2" fill="#2E3D57"/><rect x="75" y="42" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="86.0" cy="51.0" r="2" fill="#2E3D57"/><rect x="100" y="42" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="111.0" cy="51.0" r="2" fill="#2E3D57"/></g><text x="590" y="150" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">NOR — grab any single drawer instantly</text><text x="590" y="172" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">pricier, smaller — used for code run straight from it (firmware)</text><text x="380" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">both are about the memory cell itself, not the FTL that manages it</text></svg>
+<p>NAND yields whole boxes (blocks); NOR yields single drawers (bytes).<small>Both describe the memory cell itself, not the FTL that manages it.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: NAND suits bulk storage. Right: NOR suits small, run-in-place code" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/><g transform="translate(100,150)"><rect width="160" height="50" rx="4" fill="#5A3B22"/><rect x="4.0" y="4" width="34.0" height="42" rx="2" fill="#E9B44C"/><rect x="42.0" y="4" width="34.0" height="42" rx="2" fill="#E9B44C"/><rect x="80.0" y="4" width="34.0" height="42" rx="2" fill="#E9B44C"/><rect x="118.0" y="4" width="34.0" height="42" rx="2" fill="#E9B44C"/></g><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">bulk storage — fast reads, but must erase before writing</text><g transform="translate(500,150)"><rect x="0" y="0" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="11.0" cy="9.0" r="2" fill="#2E3D57"/><rect x="25" y="0" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="36.0" cy="9.0" r="2" fill="#2E3D57"/><rect x="50" y="0" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="61.0" cy="9.0" r="2" fill="#2E3D57"/><rect x="75" y="0" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="86.0" cy="9.0" r="2" fill="#2E3D57"/><rect x="0" y="21" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="11.0" cy="30.0" r="2" fill="#2E3D57"/><rect x="25" y="21" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="36.0" cy="30.0" r="2" fill="#2E3D57"/><rect x="50" y="21" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="61.0" cy="30.0" r="2" fill="#2E3D57"/><rect x="75" y="21" width="22" height="18" rx="2" fill="#5B8DEF" stroke="#2E3D57" stroke-width="1.5"/><circle cx="86.0" cy="30.0" r="2" fill="#2E3D57"/></g><text x="590" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">small code storage — runs in place, but costly</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">software inside an SSD manages this warehouse separately (the FTL)</text></svg>
+<p>They serve different uses.<small>Software inside an SSD separately manages this warehouse — the FTL.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Flash memory</b> is a warehouse that <b>remembers its contents even off power</b> — in two styles: <b>NAND</b>, which yields whole blocks, and <b>NOR</b>, which yields single bytes directly.</h2><p>Flash memory is non-volatile semiconductor storage that keeps data without power. NAND allows only block-level read/write, making it cheap and high-capacity — used in SSDs, USB drives, and memory cards. NOR allows byte-level random access and execute-in-place (XIP), making it common for small firmware storage. The software layer that maps addresses and manages wear on NAND chips inside an SSD is the FTL.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>NAND Flash</dt><dd><b>A big warehouse that only yields whole boxes (blocks).</b> Cheap and roomy — used in SSDs.</dd></div><div><dt>NOR Flash</dt><dd><b>A drawer cabinet that yields a single byte at a time.</b> Costlier, but allows execute-in-place.</dd></div><div><dt>Non-Volatile Memory</dt><dd><b>Storage that keeps its contents when power is off.</b> Flash is a prime example.</dd></div><div><dt>Block/Page</dt><dd><b>The warehouse's boxes and the slots inside them.</b> NAND erases and writes in block-sized units.</dd></div><div><dt>Erase-before-Write</dt><dd><b>The box must be emptied before new parts go in.</b> A well-known NAND constraint.</dd></div><div><dt>Execute-in-Place</dt><dd><b>Using a part straight out of the drawer.</b> A NOR advantage — NAND can't do this.</dd></div><div><dt>SSD</dt><dd><b>A storage drive built from NAND warehouses.</b> Inside, the FTL manages its blocks.</dd></div><div><dt>FTL (Flash Translation Layer)</dt><dd><b>The software that remaps which boxes are used inside the warehouse.</b> Not the cell type itself, but the software managing it. → <a href="ftl-en.html">the shelf manager who never overwrites</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="interruptproc-en.html">Jot Down Your Place and Run to the Bell →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

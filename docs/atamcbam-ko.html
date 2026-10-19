@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>출간 전 시나리오 리허설</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="atamcbam-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · SW공학</div>
+<h1><em>아키텍처 평가(ATAM/CBAM)</em>가 뭐예요?</h1>
+<p class="sub">전체 구성을 다 정한 뒤 인쇄 들어가기 직전, 여러 상황을 미리 리허설해 트레이드오프를 찾는 이야기예요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="인쇄판 앞에서 편집장과 인쇄 감독이 이 장정 그대로 가도 되는지 불안해함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(380,150) scale(1.1)"><rect x="-30" y="-20" width="60" height="40" rx="3" fill="#4A5A72"/><rect x="-24" y="-14" width="48" height="28" rx="2" fill="#D8D2C2"/></g><g transform="translate(220,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(540,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><text x="380" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">이 장정 그대로 인쇄 들어가도 될까요?</text><text x="380" y="260" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">전체 구성이 다 정해진 뒤, 인쇄 직전의 불안함이에요</text></svg>
+<p>인쇄 직전, 다들 이대로 괜찮은지 불안해해요.<small>전체 구성이 다 정해진 뒤의 불안함이에요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="인쇄가 다 끝난 뒤에야 이 장정으로는 전자책 전환이 안 된다는 걸 알게 됨" viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="330" fill="var(--bad-soft)"/><g transform="translate(380,140) scale(1.2)"><rect x="-30" y="-20" width="60" height="40" rx="3" fill="#4A5A72"/><rect x="-24" y="-14" width="48" height="28" rx="2" fill="#D8D2C2"/></g><g transform="translate(380,200) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="260" y="30" width="280" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M390.0 74 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="262" y="70" width="276" height="6" fill="var(--panel)"/><text x="400.0" y="56.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">이 장정으론 전자책 전환이 안 돼요!</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">이미 다 찍은 뒤라 너무 늦었어요</text></svg>
+<p>인쇄 다 되고 나서야 문제를 알게 돼요.<small>이미 다 찍은 뒤라 너무 늦었어요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="편집장, 작가, 인쇄 감독이 모여 내구성·전자책 전환·인쇄 속도 같은 시나리오를 미리 점검함" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(230,100) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(400,100) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(560,100) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(140,225) scale(0.9)"><rect width="480" height="90" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="480" height="26" rx="6" fill="#C9A86A"/><text x="240.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">시나리오: 내구성? 전자책 전환? 인쇄 속도?</text></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">ATAM = 인쇄 전에 여러 시나리오로 트레이드오프를 미리 찾는 리허설</text><text x="380" y="345" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">이해관계자들이 다 같이 모여, 설계 결정의 민감점을 찾아요</text></svg>
+<p>ATAM = 인쇄 전에 여러 시나리오로 트레이드오프를 미리 찾는 리허설이에요.<small>이해관계자들이 다 같이 모여, 설계 결정의 민감점을 찾아요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 22 h20 M22 30 h20 M22 38 h12" stroke="#142033" stroke-width="2.5"/></svg><b>품질 시나리오 모으기</b><span>내구성, 전환성, 속도 등</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="24" r="10" fill="var(--accent)"/><circle cx="44" cy="40" r="10" fill="var(--good)"/><path d="M30 30 L38 34" stroke="var(--ink)" stroke-width="3"/></svg><b>설계 결정과 매핑</b><span>어떤 선택이 뭘 책임지는지</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 10 v44" stroke="var(--bad)" stroke-width="4"/><circle cx="32" cy="32" r="8" fill="none" stroke="var(--bad)" stroke-width="4"/></svg><b>민감점/트레이드오프 찾기</b><span>하나를 얻으면 뭘 잃는지</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="18" y="8" width="4" height="48" fill="#5A3B22"/><path d="M22 10 h26 l-8 10 l8 10 h-26 z" fill="var(--bad)"/></svg><b>위험 미리 기록</b><span>인쇄 전에 적어 둬요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="저렴한 제본(옵션 A)과 유연한 제본(옵션 B)의 비용·전환성·속도를 숫자로 비교" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,40) scale(1.0)"><rect width="300" height="240" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">옵션 A: 저렴한 제본</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">비용 — 낮음</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">전자책 전환 — 어려움</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">인쇄 속도 — 빠름</text></g><g transform="translate(420,40) scale(1.0)"><rect width="280" height="240" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="280" height="26" rx="6" fill="#C9A86A"/><text x="140.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">옵션 B: 유연한 제본</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">비용 — 높음</text><rect x="6" y="59" width="268" height="22" rx="4" fill="var(--accent-soft)"/><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">전자책 전환 — 쉬움</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">인쇄 속도 — 느림</text></g><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">CBAM = 여기에 비용과 이득을 숫자로 더해 저울질하는 단계</text></svg>
+<p>여기에 비용과 이득까지 숫자로 따지면 CBAM이에요.<small>어느 쪽이 '더 남는 장사'인지 숫자로 비교해요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 평가가 눈을 뜨게 해줌. 오른쪽: 최종 결정은 여전히 편집장의 몫" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(190,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">눈을 뜨게 해줘요</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="570" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">결정은 결국 편집장 몫이에요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">평가는 선택을 대신 안 해줘요, 무엇을 놓고 고민해야 할지 보여줄 뿐이에요</text></svg>
+<p>평가가 결정을 대신 해주진 않아요.<small>무엇을 놓고 고민해야 할지 보여줄 뿐, 선택은 여전히 사람 몫이에요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>ATAM</b>은 인쇄(개발) 전에 <b>품질 시나리오</b>로 설계의 트레이드오프와 위험을 미리 찾는 평가법이고, <b>CBAM</b>은 그 선택지마다 <b>비용과 이득</b>을 숫자로 더해 저울질하는 확장판이에요.</h2><p>ATAM(Architecture Tradeoff Analysis Method)은 이해관계자들이 모여 성능·보안·이식성 같은 품질속성 시나리오를 만들고, 각 시나리오가 아키텍처 설계 결정과 어떻게 연결되는지 매핑해 민감점(sensitivity point)과 트레이드오프점을 찾는 평가 방법이에요. CBAM(Cost Benefit Analysis Method)은 여기에 각 설계 결정의 비용과 효용(이득)을 경제적으로 분석하는 단계를 더해, 우선순위를 정량적으로 정하도록 돕는 확장 방법이에요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>ATAM<br><small>ATAM</small></dt><dd><b>인쇄 전 시나리오 리허설.</b> 트레이드오프와 민감점을 찾아요.</dd></div><div><dt>CBAM<br><small>CBAM</small></dt><dd><b>ATAM에 비용·이득 계산을 더한 확장판.</b> 우선순위를 숫자로 매겨요.</dd></div><div><dt>품질속성 시나리오<br><small>Quality Attribute Scenario</small></dt><dd><b>"내구성이 이만큼 필요하다" 같은 구체적 상황.</b> 평가의 출발점이에요.</dd></div><div><dt>민감점(Sensitivity Point)<br><small>Sensitivity Point</small></dt><dd><b>한 결정이 품질에 크게 영향을 주는 지점.</b> ATAM이 특히 주목하는 지점이에요.</dd></div><div><dt>트레이드오프점<br><small>Trade-off Point</small></dt><dd><b>하나를 얻으면 다른 걸 잃는 지점.</b> 민감점이 여러 품질에 걸쳐 있으면 트레이드오프점이 돼요.</dd></div><div><dt>이해관계자<br><small>Stakeholder</small></dt><dd><b>편집장, 작가, 인쇄 감독처럼 평가에 모이는 사람들.</b> ATAM은 이들을 한자리에 모아요.</dd></div><div><dt>정보시스템 감리/PMO<br><small>IS Audit/PMO</small></dt><dd><b>감리는 사후·전체 점검, ATAM은 설계 시점 평가.</b> 둘은 보는 시점이 달라요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a></dd></div><div><dt>좋은 소프트웨어의 조건<br><small>Conditions of Good Software</small></dt><dd><b>ATAM이 저울질하는 바로 그 품질 조건들.</b> 시나리오는 결국 이 조건들에서 나와요. → <a href="goodsw-ko.html">좋은 책의 조건</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="swcert-ko.html">책 표지의 공식 마크 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

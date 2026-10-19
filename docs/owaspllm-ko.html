@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>검사장 입구의 업계 공용 위험 게시판</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="owaspllm-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · AI이론</div>
+<h1><em>OWASP LLM 보안 위협 Top 10</em>이/가 뭐예요?</h1>
+<p class="sub">OWASP LLM Top 10을, 검사장마다 다른 이름으로 부르던 사고를 업계가 공용 번호판으로 정리한 게시판 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="검사장 입구에 'LLM01~LLM10'이라 적힌 낯선 게시판이 붙고, 검수반장이 이게 뭔지 궁금해함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(280,50) scale(0.9)"><rect width="220" height="130" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="220" height="26" rx="6" fill="#C9A86A"/><text x="110.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">업계 표준 위험 목록</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM01 ~ LLM10</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">??? ???</text></g><g transform="translate(170,190) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="40" y="120" width="190" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M212 164 l14 16 l-24 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="42" y="160" width="186" height="6" fill="var(--panel)"/><text x="135.0" y="145.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">이 번호들은 다 뭐예요?</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">우리 검사장만의 사고 기록이 아니라, 업계 전체가 모은 목록이래요</text></svg>
+<p>검사장 입구에 낯선 게시판이 붙었어요.<small>우리 검사장만의 기록이 아니라, 업계 전체가 모은 목록이래요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="세 검사장이 같은 종류의 사고를 각자 다른 이름(쪽지 사고, 끼워넣기 문제 등)으로 부름" viewBox="0 0 760 310" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="310" fill="var(--bad-soft)"/><g transform="translate(140,170) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="60" y="90" width="190" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M145.0 130 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="62" y="126" width="186" height="6" fill="var(--panel)"/><text x="155.0" y="113.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">저흰 이걸 '쪽지 사고'라 불러요</text><g transform="translate(400,170) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7A1F3D"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A3B52"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="320" y="90" width="190" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M405.0 130 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="322" y="126" width="186" height="6" fill="var(--panel)"/><text x="415.0" y="113.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">저흰 '끼워넣기 문제'라 불러요</text><g transform="translate(650,170) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="560" y="90" width="190" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M645.0 130 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="562" y="126" width="186" height="6" fill="var(--panel)"/><text x="655.0" y="113.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">저흰 또 다른 이름으로...</text><text x="380" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">이름이 다 다르면, 사고를 비교하거나 함께 배울 수가 없어요</text></svg>
+<p>검사장마다 같은 사고를 다른 이름으로 불러요.<small>이름이 다 다르면 비교하거나 함께 배울 수가 없어요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="업계 공용 LLM Top 10 게시판에 번호가 매겨진 위험 목록이 붙어 있음" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(260,50) scale(0.95)"><rect width="260" height="190" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="260" height="26" rx="6" fill="#C9A86A"/><text x="130.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">LLM Top 10 게시판</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM01 쪽지 끼워넣기</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM02 안전하지 않은 출력</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM03 재료 오염</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">... LLM10 레시피 훔치기</text></g><g transform="translate(150,200) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">OWASP LLM Top 10 = 여러 검사장의 사고를 모아 번호를 매긴 업계 공용 목록</text><text x="380" y="338" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">각 번호는 '이름표'일 뿐, 자세한 내용은 따로 찾아봐야 해요</text></svg>
+<p>OWASP LLM Top 10은 업계가 합의한 공통 위험 목록판이에요.<small>각 번호는 이름표일 뿐, 자세한 내용은 따로 찾아봐야 해요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 32 l8 8 l16 -18" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>공용 번호로 부르기</b><span>검사장이 달라도 같은 말</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M32 20 v12 l10 6" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>주기적으로 갱신하기</b><span>새 사고가 쌓이면 목록도 바뀌어요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="24" r="12" fill="none" stroke="var(--accent)" stroke-width="5"/><circle cx="40" cy="40" r="12" fill="none" stroke="var(--accent)" stroke-width="5"/><path d="M30 30 l4 4" stroke="var(--accent)" stroke-width="5"/></svg><b>상세 페이지로 연결하기</b><span>목록은 지도, 설명은 따로</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="18" y="8" width="4" height="48" fill="#5A3B22"/><path d="M22 10 h26 l-8 10 l8 10 h-26 z" fill="var(--bad)"/></svg><b>점검용 안내일 뿐</b><span>자동으로 막아주진 않아요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Top 10의 LLM01부터 LLM10까지 각 항목이 각각의 자세한 사고 이야기 페이지로 화살표 연결됨" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(40,20) scale(0.72)"><rect width="680" height="320" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="680" height="26" rx="6" fill="#C9A86A"/><text x="340.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">Top 10 → 자세한 이야기로</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM01 쪽지 끼워넣기 → <a href="promptinjection-ko.html">주문서 뒤 몰래 쪽지</a></text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM02 안전하지 않은 출력 → <a href="unsafeoutput-ko.html">검증 없이 내보낸 접시</a></text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM03 학습데이터 오염 → <a href="datapoisoning-ko.html">상한 재료 섞기</a></text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM04 과부하 공격 → <a href="llmdos-ko.html">끝없는 주문 폭탄</a></text><text x="14" y="146" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM05 공급망 취약점 → <a href="aibom-ko.html">재료 출처 장부</a></text><text x="14" y="170" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM06 민감정보 유출 → <a href="promptleak-ko.html">레시피북 몰래 베끼기</a></text><text x="14" y="194" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM07 위험한 도구 연결 → <a href="toolpermission-ko.html">허락 없는 칼서랍</a></text><text x="14" y="218" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM08 과도한 자율행동 → <a href="excessiveagency-ko.html">너무 많이 맡긴 심부름</a></text><text x="14" y="242" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM09 과신뢰 → <a href="hallucination-ko.html">모르는데 자신 있게 답함</a></text><text x="14" y="266" text-anchor="start" font-size="12" font-weight="700" fill="#142033">LLM10 모델 도난 → <a href="modelextraction-ko.html">선별 기준 통째로 베끼기</a></text></g></svg>
+<p>Top 10 각 항목은 더 자세한 이야기로 연결돼요.<small>이 페이지는 목록 자체를 설명해요 — 각 항목의 속사정은 연결된 페이지에서 봐요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 검수반장이 목록으로 빠뜨린 항목만 체크함. 오른쪽: 실제로 막는 방법은 각 항목 페이지에 있음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(190,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(110,190) scale(0.65)"><rect width="160" height="50" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="160" height="26" rx="6" fill="#C9A86A"/><text x="80.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">목록 확인</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">10개를 다 살펴봤나</text></g><text x="190" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">빠뜨린 게 없는지 체크만 해줘요</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="570" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">막는 방법은 각 항목 페이지에 있어요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">게시판은 '지도'일 뿐, 길은 각자 페이지에서 걸어야 해요</text></svg>
+<p>게시판 자체가 막아주지 않아요.<small>지도일 뿐이에요 — 길은 각자 페이지에서 걸어야 해요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>OWASP LLM Top 10</b> = 여러 검사장(현장)의 사고를 모아 <b>업계가 합의한 공용 번호</b>로 정리한 <b>위험 목록판</b>. 목록 자체는 지도일 뿐, 각 항목의 실제 대응은 그 번호가 가리키는 페이지에 있어요.</h2><p>OWASP Top 10 for LLM Applications는 OWASP 재단이 커뮤니티 사례를 모아 매년 갱신하는 'LLM01~LLM10' 표준 위협 분류 목록이에요. 프롬프트 인젝션, 안전하지 않은 출력 처리, 학습데이터 오염, 서비스 거부, 공급망 취약점, 민감정보 유출, 위험한 플러그인/도구 설계, 과도한 자율행동, 과신뢰, 모델 도난이 대표 항목이에요. 이 목록의 가치는 '공용 언어'를 제공한다는 데 있고, 실제 방어 방법은 각 항목이 가리키는 세부 자료(가이드라인, 본 사이트의 개별 용어 페이지 등)에서 다뤄요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>LLM01 프롬프트 인젝션<br><small>LLM01 Prompt Injection</small></dt><dd><b>주문서 뒤에 몰래 끼운 쪽지.</b> → <a href="promptinjection-ko.html">쪽지 사고 자세히 보기</a></dd></div><div><dt>LLM03 학습데이터 오염<br><small>LLM03 Training Data Poisoning</small></dt><dd><b>상한 작물을 재료창고에 섞어 넣기.</b> → <a href="datapoisoning-ko.html">재료 오염 자세히 보기</a></dd></div><div><dt>LLM06 민감정보 유출<br><small>LLM06 Sensitive Info Disclosure</small></dt><dd><b>레시피북을 몰래 베껴가기.</b> → <a href="promptleak-ko.html">유출 자세히 보기</a></dd></div><div><dt>LLM08 과도한 자율행동<br><small>LLM08 Excessive Agency</small></dt><dd><b>너무 많이 맡긴 심부름.</b> → <a href="excessiveagency-ko.html">자세히 보기</a></dd></div><div><dt>LLM10 모델 도난<br><small>LLM10 Model Theft</small></dt><dd><b>선별 기준을 통째로 베껴가기.</b> → <a href="modelextraction-ko.html">자세히 보기</a></dd></div><div><dt>AI 거버넌스<br><small>AI Governance</small></dt><dd><b>농장 운영 전체 규칙판.</b> Top 10은 거버넌스가 참고하는 목록 중 하나예요. → <a href="aigovernance-ko.html">주방 규칙판</a></dd></div><div><dt>레드팀<br><small>Red Team</small></dt><dd><b>불시에 게시판 항목을 실제로 찔러보는 사람.</b> → <a href="airedteam-ko.html">AI 전용 위생 검사관</a></dd></div><div><dt>모델 카드<br><small>Model Card</small></dt><dd><b>선별기 한 대의 설명서.</b> Top 10 점검 결과를 적어두는 칸이 있기도 해요. → <a href="modelcard-ko.html">자세히 보기</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="timeseries-ko.html">지난 며칠을 보고 내일을 가늠하는 검수반장 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

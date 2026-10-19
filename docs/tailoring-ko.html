@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>책마다 다른 편집 규칙</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="tailoring-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · SW공학</div>
+<h1><em>개발방법론 테일러링</em>이 뭐예요?</h1>
+<p class="sub">모든 책에 똑같은 편집 규칙을 강요하면 오히려 늦어져요 — 책에 맞게 규칙을 고쳐 쓰는 이야기예요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="편집장이 그림책 작가에게도 두꺼운 사전용 규칙집을 들이밈" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(170,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(300,70) scale(0.85)"><rect width="220" height="190" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="220" height="26" rx="6" fill="#C9A86A"/><text x="110.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">편집 규칙집(전체)</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">1. 표지 심사</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">2. 각주 형식</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">3. 색인 작성</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">4. 3단계 교열</text></g><g transform="translate(600,160) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">그림책도 사전과 똑같은 규칙집을 다 따라야 해요?</text></svg>
+<p>그림책도 사전과 똑같은 규칙집을 다 따라야 할까요?<small>규칙집은 하나인데, 책은 다 달라요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽은 규칙을 다 지키다 마감을 놓침, 오른쪽은 규칙을 대충 쓰다 오탈자가 쏟아짐" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(190,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><g transform="translate(190,230) scale(0.6)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/></g><rect x="90" y="70" width="210" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M185.0 110 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="92" y="106" width="206" height="6" fill="var(--panel)"/><text x="195.0" y="93.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">규칙을 다 지키다 마감을 놓쳐요</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(570,230) scale(0.6)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><circle cx="-18" cy="14" r="3" fill="var(--bad)"/><circle cx="-2" cy="14" r="3" fill="var(--bad)"/><circle cx="14" cy="14" r="3" fill="var(--bad)"/></g><rect x="460" y="70" width="220" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M560.0 110 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="462" y="106" width="216" height="6" fill="var(--panel)"/><text x="570.0" y="93.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">규칙을 대충 쓰다 오탈자가 쏟아져요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">모든 책에 같은 규칙을 강제하면, 어느 쪽도 좋지 않아요</text></svg>
+<p>그대로 적용하면 둘 다 문제가 생겨요.<small>모든 책에 같은 규칙을 강제하면, 어느 쪽도 좋지 않아요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="편집장이 그림책용 규칙표와 사전용 규칙표를 따로 만듦" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(220,130) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(330,60) scale(0.9)"><rect width="150" height="110" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="150" height="26" rx="6" fill="#C9A86A"/><text x="75.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">그림책용</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">표지 심사만</text></g><g transform="translate(520,60) scale(0.9)"><rect width="170" height="150" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="170" height="26" rx="6" fill="#C9A86A"/><text x="85.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">사전용</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">각주 형식</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">색인 작성</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">3단계 교열</text></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">테일러링 = 책 종류에 맞게 규칙집에서 필요한 것만 골라 쓰기</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">뼈대(핵심 기준)는 남기고, 나머지는 책에 맞게 줄이거나 더해요</text></svg>
+<p>테일러링 = 책 종류에 맞게 규칙집에서 필요한 것만 고르는 거예요.<small>뼈대는 남기고, 나머지는 책에 맞게 줄이거나 더해요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 20 h20 M22 28 h20" stroke="#142033" stroke-width="2.5"/></svg><b>기준 먼저 보기</b><span>규모·중요도·인력부터</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 48 L48 16" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/><circle cx="18" cy="18" r="6" fill="none" stroke="var(--ink)" stroke-width="3"/><circle cx="18" cy="46" r="6" fill="none" stroke="var(--ink)" stroke-width="3"/></svg><b>필요한 것만 남기기</b><span>안 맞는 절차는 줄여요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 22 h20 M22 30 h14" stroke="#142033" stroke-width="2.5"/><circle cx="46" cy="42" r="8" fill="var(--accent)"/></svg><b>근거를 기록하기</b><span>왜 뺐는지 적어둬요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 32 l8 8 l16 -18" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>핵심 기준은 유지</b><span>뼈대까지 빼진 않아요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="그림책용 규칙표(간단)와 사전용 규칙표(상세)를 나란히 비교" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(50,40) scale(1.0)"><rect width="300" height="220" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">그림책용 규칙표</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">표지 심사만</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">교열 1단계</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">색인 생략</text></g><g transform="translate(410,40) scale(1.0)"><rect width="300" height="220" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">사전용 규칙표</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">표지+내지 심사</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">교열 3단계</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">색인 필수</text></g><text x="380" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">같은 규칙집에서 나왔지만, 최종 결과물은 서로 달라요</text></svg>
+<p>규칙표는 책마다 달라져요.<small>같은 규칙집에서 나왔지만, 최종 체크리스트는 서로 달라요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 규칙을 다 빼서 품질 구멍 발생. 오른쪽: 균형 잡힌 규칙으로 빠르고 안전함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(190,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">다 빼면: 품질에 구멍이 생겨요</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="570" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">균형을 맞추면: 빠르고 안전해요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">테일러링은 규칙을 없애는 게 아니라, 책에 맞게 고르는 기술이에요</text></svg>
+<p>테일러링도 지나치면 위험해요.<small>규칙을 없애는 게 아니라, 책에 맞게 고르는 기술이에요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>개발방법론 테일러링</b> = 정해진 개발 규칙(생명주기·산출물·검토 절차)에서, <b>프로젝트 특성에 맞게</b> 필요한 것만 골라 쓰는 조정 작업.</h2><p>조직 표준 프로세스(생명주기 모델, 산출물 양식, 검토·승인 절차)를 프로젝트의 규모, 기술 난이도, 참여 인력의 숙련도, 중요도(안전성·보안성) 등에 따라 가감하는 작업이에요. 핵심 통제 기준(품질 게이트 등)은 유지하면서 불필요한 절차를 줄이는 게 목표예요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>테일러링<br><small>Tailoring</small></dt><dd><b>규칙집에서 필요한 것만 고르기.</b> 규모·난이도·인력·중요도가 기준이에요.</dd></div><div><dt>조직 표준 프로세스<br><small>Organizational Standard Process</small></dt><dd><b>모든 책이 출발하는 기본 규칙집.</b> 테일러링의 출발점이에요.</dd></div><div><dt>생명주기(SDLC) 모델<br><small>SDLC Model</small></dt><dd><b>폭포수냐 애자일이냐 같은 전체 틀.</b> 테일러링 대상 중 가장 큰 단위예요.</dd></div><div><dt>CMMI<br><small>CMMI</small></dt><dd><b>조직의 성숙도를 재는 잣대.</b> 테일러링 능력도 성숙도의 일부예요.</dd></div><div><dt>품질 게이트<br><small>Quality Gate</small></dt><dd><b>아무리 줄여도 남겨두는 핵심 검문소.</b> 테일러링에서도 빼면 안 되는 것.</dd></div><div><dt>제품계열 방법론<br><small>Product Line Engineering</small></dt><dd><b>핵심 자산을 모아 여러 판으로 파생.</b> 비슷하게 '맞춤'을 다루는 이웃 개념이에요. → <a href="productline-ko.html">같은 틀, 다른 표지</a></dd></div><div><dt>정보시스템 감리/PMO<br><small>IS Audit/PMO</small></dt><dd><b>이 규칙표가 잘 지켜졌는지 바깥에서 점검.</b> 테일러링 결과를 점검 대상으로 삼기도 해요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a></dd></div><div><dt>과잉 프로세스<br><small>Process Overkill</small></dt><dd><b>작은 책에 사전 규칙집을 통째로 적용하는 것.</b> 테일러링이 막으려는 바로 그 문제예요.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="productline-ko.html">같은 틀, 다른 표지 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

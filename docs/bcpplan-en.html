@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Tour That Doesn't Stop for a Blackout</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="bcpplan-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · IT Mgmt</div>
+<h1>What is <em>BCP (Business Continuity Plan)</em>?</h1>
+<p class="sub">BCP, told as a story about a plan made in advance to keep the core show going even when the venue loses power.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="The venue goes dark from a power outage, and the director panics" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--night)"/><circle cx="660" cy="50" r="26" fill="#F5E6B8"/><circle cx="120" cy="40" r="2" fill="#F5E6B8"/><circle cx="300" cy="70" r="2" fill="#F5E6B8"/><circle cx="500" cy="30" r="2" fill="#F5E6B8"/><circle cx="420" cy="90" r="2" fill="#F5E6B8"/><circle cx="200" cy="120" r="2" fill="#F5E6B8"/><ellipse cx="380" cy="310" rx="440" ry="30" fill="#0A1120"/><g transform="translate(120,170) scale(1.0)"><rect width="240" height="60" rx="3" fill="#1B2A44"/></g><g transform="translate(540,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="#F5E6B8" class="d">the venue suddenly loses power</text><text x="380" y="282" text-anchor="middle" font-size="13" font-weight="700" fill="#C9D5E6">the whole show grinds to a halt</text></svg>
+<p>The venue suddenly loses power.<small>The whole show grinds to a halt.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The planner panics that there's no backup, while the sponsor presses that the audience is waiting" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(190,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="40" y="70" width="260" height="50" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M160.0 120 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="42" y="116" width="256" height="6" fill="var(--panel)"/><text x="170.0" y="98.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">what do we do? there's no backup!</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="450" y="70" width="260" height="50" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M570.0 120 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="452" y="116" width="256" height="6" fill="var(--panel)"/><text x="580.0" y="98.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">the audience is all waiting</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">without a plan ready, panic sets in and recovery drags on</text></svg>
+<p>Without a plan ready, panic sets in and recovery drags on.<small>Even what to save first isn't obvious in the moment.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="The stage stays lit on backup power while the director watches, smiling" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(230,160) scale(1.0)"><rect width="300" height="90" rx="3" fill="var(--accent)"/></g><g transform="translate(150,220) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(600,190)"><rect x="-14" y="-20" width="28" height="44" rx="4" fill="#1B2A44"/><path d="M4 -14 l-10 16 h8 l-4 14 l12 -18 h-8 z" fill="#E9B44C"/></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">BCP = a plan made in advance to keep the core show going, even in an emergency</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">even if the power goes out, this show doesn't stop</text></svg>
+<p>BCP is a plan made in advance to keep the core show going, even in an emergency.<small>Even if the power goes out, this show doesn't stop.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="28" y="8" width="4" height="48" fill="#5A3B22"/><path d="M32 10 h22 l-7 9 l7 9 h-22 z" fill="var(--good)"/></svg><b>Identify the core</b><span>decide what absolutely must keep running</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="18" y="14" width="28" height="36" rx="4" fill="var(--accent)"/><path d="M34 22 l-8 12 h6 l-4 10 l10 -14 h-6 z" fill="#FFF8E7"/></svg><b>Prepare an alternative</b><span>a backup, like a standby generator</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M32 20 v12 l8 6" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>Set a target recovery time</b><span>RTO — how fast it must come back</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 32 l8 8 l16 -18" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>Run drills</b><span>only practicing it proves it works</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A checklist comparing BCP and DRP" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><g transform="translate(60,30) scale(1.0)"><rect width="300" height="260" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">BCP vs DRP</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">BCP — keeps the whole business going</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">DRP — recovers the broken system</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">RTO — sets a target recovery time</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">DRP sits inside BCP as one part</text></g><g transform="translate(560,170) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">system recovery (DRP) is one piece of keeping the business going (BCP)</text></svg>
+<p>BCP covers the whole business; DRP covers the broken system.<small>System recovery (DRP) is one piece of keeping the business going (BCP).</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: the BCP document sits asleep in a drawer. Right: the director and planner run a drill" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(70,110) scale(0.9)"><rect width="240" height="110" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="240" height="26" rx="6" fill="#C9A86A"/><text x="120.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">BCP DOC</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">sitting asleep in a drawer</text></g><text x="190" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">left in a drawer, it's useless</text><g transform="translate(520,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(620,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="570" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">only a drill makes it actually work</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">a plan isn't meant for the drawer — drills keep it alive</text></svg>
+<p>Left in a drawer, it's useless.<small>A plan isn't meant for the drawer — drills keep it alive.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>BCP</b> = a plan made in advance to keep core operations (the show) running through a major disruption like a blackout — and checked with drills.</h2><p>BCP (Business Continuity Plan) identifies core operations, defines a target recovery time (RTO) and backup measures, and is checked for real effectiveness through regular drills. DRP (Disaster Recovery Plan), a related concept, focuses on IT system recovery and is one component within BCP.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Core Business Identification</dt><dd><b>Picking the show that absolutely must go on.</b> You can't save everything at once.</dd></div><div><dt>Alternative Resource</dt><dd><b>A backup, like a standby generator.</b> Keeps the core operation running.</dd></div><div><dt>Recovery Time Objective</dt><dd><b>The target time to be back up.</b> Shorter targets cost more to achieve.</dd></div><div><dt>BCP Drill</dt><dd><b>Actually practicing the plan.</b> An untested plan is just paper in a drawer.</dd></div><div><dt>DRP</dt><dd><b>The plan for recovering a broken system.</b> Covered in depth in another world (the castle). → <a href="drp-en.html">how to open the market the morning after the fire</a></dd></div><div><dt>Project Risk Mgmt</dt><dd><b>Preparing for surprises, like carrying an umbrella.</b> BCP is the preparation for the biggest risks among them. → <a href="projrisk-en.html">the umbrella you carry even on a dry day</a></dd></div><div><dt>Ops Performance Mgmt</dt><dd><b>Watching whether systems keep running well afterward.</b> Whether BCP had to trigger is tracked as an ops metric too. → <a href="opsperf-en.html">the ops room after the show</a></dd></div><div><dt>ESG Management</dt><dd><b>Management that also minds safety and treatment.</b> It touches the 'S' (social) axis of ESG too. → <a href="esgit-en.html">the tour that minds environment, society, and transparency too</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="wbsppm-en.html">The Checklist That Breaks Down Show Prep →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

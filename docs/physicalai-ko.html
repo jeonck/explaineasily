@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사진만 보던 눈이 팔다리를 얻다</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="physicalai-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · AI이론</div>
+<h1><em>피지컬 AI</em>가 뭐예요?</h1>
+<p class="sub">피지컬 AI를, 사진으로 분류만 하던 선별기가 직접 몸으로 집고 옮기게 되는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="로봇 집게가 사과를 너무 세게 쥐어 터뜨리고, 선별기 조작원이 사진으로 보던 것과 다르다며 진땀을 흘림" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(80,220) scale(1.0)"><rect width="300" height="14" rx="4" fill="#8B5E3C"/><circle cx="12" cy="7" r="4" fill="#C9A86A"/><circle cx="36" cy="7" r="4" fill="#C9A86A"/><circle cx="60" cy="7" r="4" fill="#C9A86A"/><circle cx="84" cy="7" r="4" fill="#C9A86A"/><circle cx="108" cy="7" r="4" fill="#C9A86A"/><circle cx="132" cy="7" r="4" fill="#C9A86A"/><circle cx="156" cy="7" r="4" fill="#C9A86A"/><circle cx="180" cy="7" r="4" fill="#C9A86A"/><circle cx="204" cy="7" r="4" fill="#C9A86A"/><circle cx="228" cy="7" r="4" fill="#C9A86A"/><circle cx="252" cy="7" r="4" fill="#C9A86A"/><circle cx="276" cy="7" r="4" fill="#C9A86A"/></g><g transform="translate(230,188) scale(1.4)"><circle r="16" fill="var(--good)"/></g><g transform="translate(230,150) scale(1.0)"><rect x="-6" y="-70" width="12" height="55" fill="var(--bad)"/><circle cx="0" cy="-70" r="10" fill="var(--bad)"/><path d="M-4 0 L--2 -16 L-2 -16" stroke="var(--bad)" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M4 0 L-2 -16 L2 -16" stroke="var(--bad)" stroke-width="7" fill="none" stroke-linecap="round"/></g><text x="230" y="260" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">너무 세게 쥐어서 터졌어요</text><g transform="translate(560,170) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="560" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">사진으로 보던 거랑 또 다르네요</text><text x="380" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">사진으로 분류만 하던 눈이, 이제 직접 집어서 옮기래요</text></svg>
+<p>사진으로 분류만 하던 눈이, 이제 직접 집어서 옮기래요.<small>너무 세게 쥐어서 터졌어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="사진 속 사과는 무게도 마찰도 없지만, 진짜 검사장의 사과는 무게·마찰·타이밍을 모두 가짐" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><text x="190" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">사진 속 세계</text><g transform="translate(190,170) scale(1.3)"><circle r="16" fill="var(--good)"/></g><text x="190" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">무게도 마찰도 없어요</text><text x="570" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">진짜 검사장</text><g transform="translate(570,170) scale(1.3)"><circle r="16" fill="var(--good)"/></g><text x="570" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">무게·마찰·타이밍이 다 있어요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">사진 속 세계와 다르게, 진짜 세계는 무게·마찰·타이밍까지 다뤄야 해요</text></svg>
+<p>사진 속 세계와 진짜 세계는 달라요.<small>진짜 세계는 무게·마찰·타이밍까지 다뤄야 해요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="집게가 사과를 집으며, 보고 느끼고 다시 보는 화살표 루프가 옆에 그려짐" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><text x="380" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">피지컬 AI = 보고 판단하는 AI에, 느끼고 움직이는 능력을 더한 것이에요</text><g transform="translate(220,230) scale(1.0)"><rect width="320" height="14" rx="4" fill="#8B5E3C"/><circle cx="12" cy="7" r="4" fill="#C9A86A"/><circle cx="36" cy="7" r="4" fill="#C9A86A"/><circle cx="60" cy="7" r="4" fill="#C9A86A"/><circle cx="84" cy="7" r="4" fill="#C9A86A"/><circle cx="108" cy="7" r="4" fill="#C9A86A"/><circle cx="132" cy="7" r="4" fill="#C9A86A"/><circle cx="156" cy="7" r="4" fill="#C9A86A"/><circle cx="180" cy="7" r="4" fill="#C9A86A"/><circle cx="204" cy="7" r="4" fill="#C9A86A"/><circle cx="228" cy="7" r="4" fill="#C9A86A"/><circle cx="252" cy="7" r="4" fill="#C9A86A"/><circle cx="276" cy="7" r="4" fill="#C9A86A"/><circle cx="300" cy="7" r="4" fill="#C9A86A"/></g><g transform="translate(380,198) scale(1.3)"><circle r="16" fill="var(--good)"/></g><g transform="translate(380,150) scale(1.1)"><rect x="-6" y="-70" width="12" height="55" fill="#5B8DEF"/><circle cx="0" cy="-70" r="10" fill="#5B8DEF"/><path d="M-14 0 L-8 -16 L-2 -16" stroke="#5B8DEF" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M14 0 L8 -16 L2 -16" stroke="#5B8DEF" stroke-width="7" fill="none" stroke-linecap="round"/></g><path d="M460 120 Q 520 90, 460 180" stroke="var(--accent)" stroke-width="3" fill="none" stroke-dasharray="4 3" marker-end="url(#pfa)"/><defs><marker id="pfa" markerWidth="8" markerHeight="8" refX="5" refY="2.5" orient="auto"><path d="M0 0 L5 2.5 L0 5 Z" fill="var(--accent)"/></marker></defs><text x="560" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">보고 → 느끼고 → 다시 보기</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">지각 → 판단 → 행동을 쉬지 않고 반복하는 몸을 가진 AI예요</text></svg>
+<p>보고 판단하는 AI에, 느끼고 움직이는 능력을 더한 것이에요.<small>지각→판단→행동을 쉬지 않고 반복하는, 몸을 가진 AI예요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="10" fill="var(--accent)"/><path d="M14 32 a18 18 0 0 1 36 0" stroke="var(--accent)" stroke-width="3" fill="none"/></svg><b>센서로 느끼기</b><span>촉각·힘·거리를 직접 느껴요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M46 20 A18 18 0 1 0 46 46" stroke="var(--good)" stroke-width="4" fill="none"/><path d="M46 12 v12 h-12" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>실시간으로 다시 보기</b><span>움직이며 계속 다시 확인해요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="26" width="36" height="12" rx="4" fill="var(--accent-soft)"/><path d="M20 32 h24" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/></svg><b>알맞은 힘 조절하기</b><span>너무 세지도 약하지도 않게요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="var(--bad)"/><rect x="24" y="24" width="16" height="16" fill="#FFF8E7"/></svg><b>안전하게 멈추기</b><span>이상하면 즉시 멈춰요(비상정지)</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="화면 속 AI와 피지컬 AI를 비교한 표" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,20) scale(1.0)"><rect width="640" height="260" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="640" height="26" rx="6" fill="#C9A86A"/><text x="320.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">화면 속 AI vs 피지컬 AI</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">화면 속 AI — 사진·숫자를 보고 분류·판정만 함</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">피지컬 AI — 센서로 느끼고, 모터로 실제로 움직임</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">화면 속 AI — 틀려도 다시 계산하면 끝</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">피지컬 AI — 틀리면 작물이 터지거나 사람이 다칠 수 있음</text></g></svg>
+<p>화면 안에서 끝나는 AI와, 몸으로 결과를 내는 AI는 달라요.<small>실수의 결과가 되돌릴 수 없을 때, 안전장치는 선택이 아니라 필수예요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 집게가 CNN의 눈을 그대로 쓴다는 설명. 오른쪽: 검수반장이 생명·안전과 닿으면 고영향 AI라고 말함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/><g transform="translate(190,140) scale(1.0)"><rect x="-6" y="-70" width="12" height="55" fill="#5B8DEF"/><circle cx="0" cy="-70" r="10" fill="#5B8DEF"/><path d="M-14 0 L-8 -16 L-2 -16" stroke="#5B8DEF" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M14 0 L8 -16 L2 -16" stroke="#5B8DEF" stroke-width="7" fill="none" stroke-linecap="round"/></g><g transform="translate(190,188) scale(1.1)"><circle r="16" fill="var(--good)"/></g><text x="190" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">CNN의 눈을 그대로 빌려 써요</text><g transform="translate(570,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="570" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">생명·안전과 닿으면 고영향 AI예요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">피지컬 AI는 몸이 생명·안전과 직접 닿기 때문에, 법·안전 기준이 한층 더 엄격해져요</text></svg>
+<p>보는 눈은 그대로, 다만 몸이 더해져요.<small>몸이 생명·안전과 직접 닿기 때문에, 법·안전 기준이 한층 더 엄격해져요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>피지컬 AI</b> = 보고 판단하는 AI에 <b>센서로 느끼고 몸으로 움직이는</b> 능력을 더한 것.</h2><p>피지컬 AI(Physical AI)는 카메라·센서로 주변을 지각하고, 그 판단을 실제 모터·액추에이터로 물리적 행동(이동, 조작, 조작력 조절)으로 옮기는 AI예요. 지각(Perception)→판단(Decision)→행동(Action)의 루프를 실시간으로 반복하고, 화면 속 AI와 달리 무게·마찰·지연 같은 물리 법칙과 실시간 안전(비상정지, 힘 제한)을 함께 다뤄야 해요. 로봇공학·자율주행·산업용 로봇팔 등이 대표적인 예고, 생명·안전에 직접 영향을 미치는 경우가 많아 고영향 AI 규제와 자주 맞닿아요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>피지컬 AI<br><small>Physical AI</small></dt><dd><b>사진만 보던 눈이 팔다리를 얻은 것.</b> 지각→판단→행동 루프를 실시간으로 돌려요.</dd></div><div><dt>지각-판단-행동 루프<br><small>Perception-decision-action loop</small></dt><dd><b>보고, 정하고, 움직이는 걸 쉬지 않고 반복하는 것.</b> 피지컬 AI의 가장 기본적인 작동 구조예요.</dd></div><div><dt>CNN<br><small>CNN</small></dt><dd><b>피지컬 AI가 빌려 쓰는 보는 눈.</b> 화면 속 분류에서 쓰던 바로 그 방법이에요. → <a href="cnn-ko.html">작은 창으로 조금씩 살펴보는 눈</a></dd></div><div><dt>액추에이터<br><small>Actuator</small></dt><dd><b>판단을 실제 움직임으로 바꾸는 모터.</b> 집게·팔다리를 실제로 움직이는 부분이에요.</dd></div><div><dt>힘 제한·비상정지<br><small>Force limiting & e-stop</small></dt><dd><b>너무 세게 쥐거나 부딪히면 즉시 멈추는 안전장치.</b> 되돌릴 수 없는 실수를 막는 핵심 장치예요.</dd></div><div><dt>고영향 AI<br><small>High-impact AI</small></dt><dd><b>생명·안전에 직접 닿는 AI 분류.</b> 몸을 가진 AI는 이쪽으로 분류되기 쉬워요. → <a href="aibasiclaw-ko.html">나라가 정한 최소 등급 기준</a></dd></div><div><dt>시뮬레이션 학습<br><small>Simulation training</small></dt><dd><b>진짜 작물을 터뜨리기 전에, 가짜 환경에서 먼저 연습하는 것.</b> 실수의 비용이 큰 피지컬 AI에서 특히 중요해요.</dd></div><div><dt>혼동행렬<br><small>Confusion matrix</small></dt><dd><b>피지컬 AI의 판단 성능도 이 표로 확인해요.</b> 다만 틀렸을 때의 대가가 훨씬 더 커요. → <a href="confmatrix-ko.html">네 칸으로 나눈 도장 기록부</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="axtransform-ko.html">검사장 전체를 다시 설계하다 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

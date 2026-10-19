@@ -24,7 +24,20 @@ CATEGORIES = {
     "ai": ("AI", "AI"),
     "sre": ("SRE", "SRE"),
     "llmsec": ("AI 보안", "AI Security"),
+    "ppeswe": ("SW공학", "SW Eng"),
+    "ppedata": ("DB/데이터", "Database"),
+    "ppeai": ("AI이론", "AI Theory"),
+    "ppenet": ("네트워크", "Network"),
+    "ppesec": ("정보보안", "InfoSec"),
+    "ppesys": ("시스템SW", "Systems"),
+    "ppecloud": ("클라우드", "Cloud"),
+    "ppetech": ("신기술", "Emerging Tech"),
+    "ppepm": ("IT관리", "IT Mgmt"),
+    "ppelaw": ("법제도", "Law/Policy"),
 }
+
+# PPE(정보관리기술사/컴퓨터시스템응용기술사) 묶음 — 탭 바에서 시각적으로만 묶어 보여준다(각자 독립된 분야/세계관).
+PPE_GROUP = [k for k in CATEGORIES if k.startswith("ppe")]
 
 FONTS = {
     "ko": (
@@ -125,7 +138,9 @@ h1 em { color: var(--accent); font-style: normal; }
 .search:focus-within { border-color: var(--accent); }
 .empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
 .tabs.off a { opacity: 0.4; }
-.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
 .tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
 .tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
 .tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
@@ -257,6 +272,8 @@ def render_index(terms):
     for key, (ko, en) in CATEGORIES.items():
         n = sum(1 for t in terms if t["category"] == key)
         if n:
+            if key == PPE_GROUP[0] if PPE_GROUP else False:
+                tabs.append('<span class="group-label">PPE</span>')
             tabs.append(f'<a href="#cat={key}" data-cat="{key}">{ko} <small>{en} · {n}</small></a>')
     for t in terms:
         strip = lambda v: re.sub(r"<[^>]+>", "", v)

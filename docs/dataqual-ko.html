@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>독자 주소록을 돌보는 일</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="dataqual-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · SW공학</div>
+<h1><em>데이터 품질관리</em>가 뭐예요?</h1>
+<p class="sub">데이터 품질관리를, 독자 주소록이 틀리거나 빠지거나 겹치지 않도록 계속 돌보는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="인쇄 감독이 진땀을 흘리며 틀린 독자 주소록과 책 꾸러미를 봄" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(140,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(260,130) scale(0.8)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><circle cx="-18" cy="14" r="3" fill="var(--bad)"/><circle cx="-2" cy="14" r="3" fill="var(--bad)"/><circle cx="14" cy="14" r="3" fill="var(--bad)"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">독자 주소록</text></g><g transform="translate(390,160) scale(0.6)"><rect x="-30" y="-20" width="60" height="40" rx="3" fill="#4A5A72"/><rect x="-24" y="-14" width="48" height="28" rx="2" fill="#D8D2C2"/></g><g transform="translate(470,150) scale(0.6)"><rect x="-30" y="-20" width="60" height="40" rx="3" fill="#4A5A72"/><rect x="-24" y="-14" width="48" height="28" rx="2" fill="#D8D2C2"/></g><text x="380" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">주소가 틀려서 책이 엉뚱한 집으로 갔어요</text><text x="380" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">같은 독자에게 두 번 보내기도 했어요</text></svg>
+<p>주소가 틀려서 책이 엉뚱한 집으로 갔어요.<small>같은 독자에게 두 번 보내기도 했어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="편집장은 주소록 정리를 나중으로 미루고, 독자는 책을 못 받았다고 항의함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(200,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="140" y="80" width="220" height="36" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M240.0 116 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="142" y="112" width="216" height="6" fill="var(--panel)"/><text x="250.0" y="101.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">주소록 정리는 나중에 해도 되잖아요</text><g transform="translate(560,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7B9D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="470" y="80" width="220" height="36" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M570.0 116 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="472" y="112" width="216" height="6" fill="var(--panel)"/><text x="580.0" y="101.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">저는 책을 아예 못 받았어요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">데이터가 지저분하면, 아무리 잘 써도 독자에게 안 가요</text></svg>
+<p>주소록 정리는 나중에, 라고 미루다 생긴 일.<small>데이터가 지저분하면, 아무리 잘 써도 독자에게 안 가요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="편집장이 승인 도장을 들고, 정확하고 빠짐없고 중복 없는 주소록 세 묶음을 확인함" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(380,120) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(460,90) scale(0.8) rotate(-10)"><rect x="-26" y="-16" width="52" height="32" rx="4" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M-12 0 l8 8 l16 -18" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></g><g transform="translate(260,180) scale(0.7)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">정확해요</text></g><g transform="translate(380,200) scale(0.7)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">빠짐없어요</text></g><g transform="translate(500,180) scale(0.7)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">중복 없어요</text></g><text x="380" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">데이터 품질관리 = 독자 주소록을 정확하고 빠짐없고 중복 없이 계속 관리하는 일</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">한 번 정리로 끝나지 않아요, 계속 들여다봐야 해요</text></svg>
+<p>데이터 품질관리는 주소록을 정확·완전·유일하게 계속 관리하는 일이에요.<small>한 번 정리로 끝나지 않아요, 계속 들여다봐야 해요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="26" cy="26" r="16" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M38 38 l14 14" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/><path d="M18 26 l6 6 l12 -12" stroke="var(--good)" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg><b>실제와 맞는지 보기</b><span>틀린 주소를 찾아요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7" stroke="#C9822B" stroke-width="3"/><path d="M20 22 h20 M20 30 h20 M20 38 h20 M20 46 h20" stroke="#142033" stroke-width="2.5"/></svg><b>빠진 항목 채우기</b><span>빈 칸이 없게 해요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="22" width="20" height="20" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><rect x="36" y="22" width="20" height="20" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><path d="M28 32 h8" stroke="var(--good)" stroke-width="3" stroke-linecap="round"/></svg><b>값 맞춰두기</b><span>여기저기 다르게 적힌 걸 맞춰요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M32 20 v12 l9 6" stroke="var(--good)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>바로 갱신하기</b><span>이사 가면 바로 고쳐요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="품질 기준표: 정확성·완전성·일관성·최신성 네 항목" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,40) scale(1.0)"><rect width="320" height="240" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="320" height="26" rx="6" fill="#C9A86A"/><text x="160.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">데이터 품질 네 기준</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">정확성 — 실제와 맞아야 해요</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">완전성 — 빠진 항목이 없어야 해요</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">일관성 — 여기저기 값이 같아야 해요</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">최신성 — 이사 간 주소는 바로 갱신</text></g><g transform="translate(560,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="560" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">교정자가 오탈자를 잡듯, 주소록도 똑같이 교정해요</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">기준 하나라도 어긋나면, 책이 독자에게 안 가요</text></svg>
+<p>데이터 품질은 이 네 기준으로 재요.<small>교정자가 오탈자를 잡듯, 주소록도 똑같이 교정해요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 편집장이 오류가 크게 줄었다고 말함. 오른쪽: 인쇄 감독이 여전히 계속 손이 간다고 말함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(190,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">오류를 크게 줄여줘요</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(570,220) scale(0.6)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/></g><text x="570" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">그래도 계속 손이 가는 일이에요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">데이터 품질관리는 한 번의 청소가 아니라, 계속 돌보는 정원 가꾸기예요</text></svg>
+<p>한 번의 청소로 끝나지 않아요.<small>계속 돌보는 정원 가꾸기에 가까워요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>데이터 품질관리</b> = 독자 주소록이 <b>정확·완전·일관·최신</b>하도록 <b>계속 돌보는</b> 일.</h2><p>데이터 품질관리는 정확성·완전성·일관성·유일성·적시성 같은 기준으로 데이터를 측정하고 정제하는 활동이에요. 데이터 프로파일링으로 현재 상태를 진단하고, 정제(cleansing)로 오류를 고치고, 이후엔 입력 단계에서부터 오류가 덜 생기도록 규칙을 정해둬요. 한 번의 정제로 끝나지 않고, 데이터 거버넌스 체계 안에서 계속 운영돼요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>데이터 품질관리<br><small>Data Quality Management</small></dt><dd><b>주소록을 계속 돌보는 일 전체.</b> 정확·완전·일관·유일·적시 다섯 기준이에요.</dd></div><div><dt>데이터 프로파일링<br><small>Data Profiling</small></dt><dd><b>주소록 상태를 먼저 진단하는 일.</b> 정제보다 먼저 해요.</dd></div><div><dt>데이터 정제<br><small>Data Cleansing</small></dt><dd><b>틀리거나 겹친 항목을 직접 고치는 일.</b> 한 번 하고 끝나지 않아요.</dd></div><div><dt>데이터 거버넌스<br><small>Data Governance</small></dt><dd><b>주소록을 누가 어떻게 관리할지 정한 체계.</b> 품질관리를 지속시키는 틀이에요.</dd></div><div><dt>데이터 표준화<br><small>Data Standardization</small></dt><dd><b>주소를 적는 형식을 하나로 맞추는 일.</b> 일관성을 지키는 방법 중 하나예요.</dd></div><div><dt>마스터 데이터 관리<br><small>Master Data Management</small></dt><dd><b>독자 한 명당 기록을 하나로 통합하는 일.</b> 중복 주소록을 막는 핵심이에요.</dd></div><div><dt>요구공학<br><small>Requirements Engineering</small></dt><dd><b>무엇을 정확히 적어야 하는지 미리 정하는 일.</b> 주소록 항목도 결국 명세에서 정해져요. → <a href="reqeng-ko.html">쓰기 전에 먼저 묻는 사람</a></dd></div><div><dt>정보시스템 감리/PMO<br><small>IS Audit/PMO</small></dt><dd><b>출간 전 마지막 검수관.</b> 감리가 점검하는 항목 중 데이터 품질도 포함돼요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="swsafety-ko.html">오탈자 하나의 무게가 다른 책 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Tangled the Chapters Are</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="couplingcohesion-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · SW Eng</div>
+<h1>What are <em>Coupling and Cohesion</em>?</h1>
+<p class="sub">A story about how tangled chapters are with each other, and how unified each chapter is inside.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="The author fixes chapter 2 but, because it's tangled with chapters 5 and 7, has to rewrite those too, breaking a sweat" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(200,120) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><g transform="translate(360,120) scale(0.8)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">ch.2</text></g><g transform="translate(480,150) scale(0.8)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">ch.5</text></g><g transform="translate(600,120) scale(0.8)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">ch.7</text></g><path d="M392 120 L448 150" stroke="var(--bad)" stroke-width="2.5"/><path d="M392 128 L568 128" stroke="var(--bad)" stroke-width="2.5"/><text x="380" y="265" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">fixing ch.2 forces a rewrite of ch.5 and ch.7 too</text></svg>
+<p>Fixing chapter 2 forces a rewrite of chapters 5 and 7 too.<small>This happens when chapters are too entangled with each other.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="One chapter mixes a recipe, a history lesson, and a poem with no real connection" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(380,140) scale(1.4)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/></g><text x="380" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)">one chapter mixes a recipe, a history lesson, and a poem</text><text x="380" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">readers can't tell what the chapter is even about</text></svg>
+<p>Unrelated topics are mixed together inside one chapter.<small>Readers can't tell what the chapter is even about.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="Two chapters are loosely linked only by a dashed line (table of contents), and each chapter holds just one topic" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(260,150) scale(0.9)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">only "reading maps"</text></g><g transform="translate(500,150) scale(0.9)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">only "currency guide"</text></g><path d="M296 150 L464 150" stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 4"/><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">loose between chapters (low coupling), unified within each one (high cohesion)</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">linked only by the table of contents — neither needs to know the other's details</text></svg>
+<p>Keep chapters loosely linked to each other, but unified within.<small>Linked only by the table of contents — neither needs to know the other's details.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="14" width="18" height="36" rx="3" fill="var(--good)"/><rect x="36" y="14" width="18" height="36" rx="3" fill="var(--accent)"/></svg><b>Clear chapter boundaries</b><span>clear on where each chapter begins and ends</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 32 h32" stroke="var(--muted)" stroke-width="3" stroke-dasharray="5 4"/><circle cx="16" cy="32" r="7" fill="var(--good)"/><circle cx="48" cy="32" r="7" fill="var(--accent)"/></svg><b>Minimize cross-references</b><span>reach into another chapter only when truly needed</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><circle cx="24" cy="24" r="4" fill="var(--good)"/><circle cx="34" cy="24" r="4" fill="var(--good)"/><circle cx="24" cy="38" r="4" fill="var(--good)"/><circle cx="34" cy="38" r="4" fill="var(--good)"/></svg><b>One chapter, one topic</b><span>unified in a single color inside</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="22" width="20" height="20" rx="3" fill="#4A5A72"/><rect x="36" y="22" width="20" height="20" rx="3" fill="#4A5A72"/><path d="M28 32 h8" stroke="var(--accent)" stroke-width="4"/></svg><b>Expose only what's needed</b><span>hide the details, show only the entry point</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: four chapters all cross-linked with mixed colors inside (high coupling, low cohesion). Right: chapters linked only in sequence, each a single color inside (low coupling, high cohesion)" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><text x="170" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">bad: high coupling, low cohesion</text><line x1="105" y1="95" x2="225" y2="95" stroke="var(--bad)" stroke-width="2"/><line x1="105" y1="95" x2="105" y2="195" stroke="var(--bad)" stroke-width="2"/><line x1="105" y1="95" x2="225" y2="195" stroke="var(--bad)" stroke-width="2"/><line x1="225" y1="95" x2="105" y2="195" stroke="var(--bad)" stroke-width="2"/><line x1="225" y1="95" x2="225" y2="195" stroke="var(--bad)" stroke-width="2"/><line x1="105" y1="195" x2="225" y2="195" stroke="var(--bad)" stroke-width="2"/><rect x="70" y="70" width="70" height="50" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><circle cx="91.0" cy="95.0" r="5" fill="var(--good)"/><circle cx="105.0" cy="95.0" r="5" fill="var(--bad)"/><circle cx="119.0" cy="95.0" r="5" fill="var(--accent)"/><rect x="190" y="70" width="70" height="50" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><circle cx="211.0" cy="95.0" r="5" fill="var(--bad)"/><circle cx="225.0" cy="95.0" r="5" fill="var(--accent)"/><circle cx="239.0" cy="95.0" r="5" fill="var(--good)"/><rect x="70" y="170" width="70" height="50" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><circle cx="91.0" cy="195.0" r="5" fill="var(--accent)"/><circle cx="105.0" cy="195.0" r="5" fill="var(--good)"/><circle cx="119.0" cy="195.0" r="5" fill="var(--bad)"/><rect x="190" y="170" width="70" height="50" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><circle cx="211.0" cy="195.0" r="5" fill="var(--good)"/><circle cx="225.0" cy="195.0" r="5" fill="var(--bad)"/><circle cx="239.0" cy="195.0" r="5" fill="var(--accent)"/><text x="555" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)">good: low coupling, high cohesion</text><line x1="450" y1="145" x2="530" y2="145" stroke="var(--muted)" stroke-width="2"/><line x1="530" y1="145" x2="610" y2="145" stroke="var(--muted)" stroke-width="2"/><line x1="610" y1="145" x2="690" y2="145" stroke="var(--muted)" stroke-width="2"/><rect x="420" y="120" width="60" height="50" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><circle cx="438.0" cy="145.0" r="5" fill="var(--good)"/><circle cx="450.0" cy="145.0" r="5" fill="var(--good)"/><circle cx="462.0" cy="145.0" r="5" fill="var(--good)"/><rect x="500" y="120" width="60" height="50" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><circle cx="518.0" cy="145.0" r="5" fill="var(--accent)"/><circle cx="530.0" cy="145.0" r="5" fill="var(--accent)"/><circle cx="542.0" cy="145.0" r="5" fill="var(--accent)"/><rect x="580" y="120" width="60" height="50" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><circle cx="598.0" cy="145.0" r="5" fill="var(--good)"/><circle cx="610.0" cy="145.0" r="5" fill="var(--good)"/><circle cx="622.0" cy="145.0" r="5" fill="var(--good)"/><rect x="660" y="120" width="60" height="50" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><circle cx="678.0" cy="145.0" r="5" fill="var(--accent)"/><circle cx="690.0" cy="145.0" r="5" fill="var(--accent)"/><circle cx="702.0" cy="145.0" r="5" fill="var(--accent)"/><text x="380" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">fewer lines means lower coupling; one dot color per box means higher cohesion</text></svg>
+<p>Drawn out, the difference is obvious.<small>Fewer lines mean lower coupling; one dot color per box means higher cohesion.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: zero coupling isn't realistic. Right: a reference like a table of contents or footnote is natural" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(190,150) scale(0.9)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/></g><text x="190" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">zero coupling isn't realistic</text><g transform="translate(570,150) scale(0.9)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/></g><text x="570" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">a table of contents or footnote still cross-refers</text><text x="380" y="270" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">the goal isn't zero — it's "just enough, no more"</text></svg>
+<p>Zero coupling and perfect cohesion aren't realistic.<small>The goal isn't zero — it's "just enough, no more."</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Coupling</b> measures how tangled chapters (modules) are with each other; <b>cohesion</b> measures how unified a single chapter is inside. Good design aims for low coupling and high cohesion.</h2><p>Coupling is the degree of interdependence between modules — the lower it is, the less a change in one module ripples into others. Cohesion is how focused the elements inside one module are on a single responsibility — the higher it is, the easier the module is to understand and reuse. Low coupling and high cohesion is a foundational principle of good software design.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Coupling</dt><dd><b>How entangled chapters are with each other.</b> Lower is easier to change.</dd></div><div><dt>Cohesion</dt><dd><b>How unified a chapter is around one topic.</b> Higher is easier to understand.</dd></div><div><dt>Modularity</dt><dd><b>The act of splitting a book into chapters at all.</b> The premise that makes coupling and cohesion meaningful.</dd></div><div><dt>Interface</dt><dd><b>A chapter's "entrance" — its title or table-of-contents entry.</b> Hides the details, exposes only this.</dd></div><div><dt>Information Hiding</dt><dd><b>The principle of showing only what's needed and hiding the rest.</b> A concrete technique for lowering coupling.</dd></div><div><dt>Product Line Engineering</dt><dd><b>Core assets need to be split well for reuse to work.</b> Directly used when designing core assets. → <a href="productline-en.html">same template, different covers</a></dd></div><div><dt>Conditions of Good Software</dt><dd><b>Most directly tied to maintainability.</b> The principle underpinning one of those conditions. → <a href="goodsw-en.html">what makes a good book</a></dd></div><div><dt>Design Pattern</dt><dd><b>A ready-made solution for achieving low coupling and high cohesion.</b> A frequent entry in the style guide.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="atamcbam-en.html">Scenario Rehearsal Before Publication →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

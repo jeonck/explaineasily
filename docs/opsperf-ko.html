@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>공연 끝난 뒤의 운영실</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="opsperf-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · IT관리</div>
+<h1><em>정보시스템 운영 성과관리</em>가 뭐예요?</h1>
+<p class="sub">정보시스템 운영 성과관리를, 공연이 끝난 뒤에도 표 예매·음향 시스템을 계속 지켜보는 운영실 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="관객이 표 예매 사이트가 안 열린다고 항의하고 감독관은 공연이 끝났는데도 당황함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(190,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7B9D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="60" y="70" width="230" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M165.0 116 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="62" y="112" width="226" height="6" fill="var(--panel)"/><text x="175.0" y="96.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">표 예매 사이트가 안 열려요!</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="450" y="70" width="230" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M555.0 116 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="452" y="112" width="226" height="6" fill="var(--panel)"/><text x="565.0" y="96.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">어라... 공연은 끝났는데요?</text><text x="380" y="250" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">공연은 끝났는데, 표 예매 시스템은 계속 돌아가야 해요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">"만들고 끝"이 아니에요, 그다음도 있어요</text></svg>
+<p>공연은 끝났는데, 표 예매 시스템은 계속 돌아가야 해요.<small>"만들고 끝"이 아니에요, 그다음도 있어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="시스템 성능이 오픈 직후엔 좋다가 몇 달 뒤 서서히 나빠지는 그래프, 감독관이 진땀을 흘림" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><path d="M80 100 L680 100" stroke="var(--line)" stroke-width="2"/><path d="M80 100 Q300 110 450 160 T680 240" stroke="var(--bad)" stroke-width="4" fill="none"/><text x="80" y="85" text-anchor="start" font-size="11" font-weight="700" fill="var(--muted)">오픈 직후</text><text x="680" y="262" text-anchor="end" font-size="11" font-weight="700" fill="var(--bad)">몇 달 후, 느려지고 자꾸 멈춰요</text><g transform="translate(150,190) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">안 지켜보면 티 안 나게 서서히 나빠져요</text></svg>
+<p>안 지켜보면 티 안 나게 서서히 나빠져요.<small>오픈 직후와 몇 달 후는 달라요, 계속 재야 알아요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="감독관이 웃으며 모니터링 화면을 지켜보고 있음" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(220,220) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(560,190)"><rect x="-50" y="-35" width="100" height="70" rx="4" fill="#1B2A44"/><path d="M-35 0 l15 -15 l10 20 l10 -25 l15 10 l10 -5" stroke="var(--good)" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="-12" y="35" width="24" height="10" fill="var(--stone-dark)"/></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">운영 성과관리 = 투어 끝난 뒤에도 시스템을 계속 점검하는 일</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">공연은 끝나도, 지켜보는 일은 계속돼요</text></svg>
+<p>운영 성과관리는 투어 끝난 뒤에도 시스템을 계속 점검하는 일이에요.<small>공연은 끝나도, 지켜보는 일은 계속돼요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M22 32 l7 7 l14 -16" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>가동률 재기</b><span>안 멈췄는지 확인해요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 46 h44" stroke="var(--line)" stroke-width="2"/><path d="M14 40 l10 -14 l10 8 l10 -20" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>응답속도 재기</b><span>느려지지 않았는지 확인해요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="3"/><circle cx="24" cy="28" r="3" fill="var(--ink)"/><circle cx="40" cy="28" r="3" fill="var(--ink)"/><path d="M22 40 Q32 48 42 40" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>만족도 재기</b><span>불편함이 없었는지 들어요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4" stroke-dasharray="6 5"/><path d="M48 20 l6 -4 l2 7" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>개선하고 또 돌리기</b><span>다음 투어에 반영해요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="가동률·응답속도·만족도·개선보고 네 항목의 운영 점검표" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><g transform="translate(60,30) scale(1.0)"><rect width="300" height="260" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">운영 점검표</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">가동률 — 안 멈췄나</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">응답속도 — 느려지지 않았나</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">만족도 — 불편함 없었나</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">개선 보고 — 다음 투어에 반영</text></g><g transform="translate(560,170) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/></g><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">이 네 가지를 투어 끝난 뒤에도 계속 재요</text></svg>
+<p>운영은 이 네 가지를 계속 봐요.<small>이 네 가지를 투어 끝난 뒤에도 계속 재요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 후원사가 투자값을 했는지 묻고, 오른쪽: 감독관이 운영 데이터로 계속 답함" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/><g transform="translate(190,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(190,265) scale(0.8)"><rect x="-30" y="-17" width="60" height="34" rx="4" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle cx="-30" cy="0" r="4" fill="var(--bg)"/><circle cx="30" cy="0" r="4" fill="var(--bg)"/><text x="0" y="5" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">값을 했나요?</text></g><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(570,265) scale(0.8)"><rect x="-30" y="-17" width="60" height="34" rx="4" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle cx="-30" cy="0" r="4" fill="var(--bg)"/><circle cx="30" cy="0" r="4" fill="var(--bg)"/><text x="0" y="5" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">운영 데이터로 계속 답해요</text></g><text x="380" y="305" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">투자평가에서 던진 질문은, 운영 성과관리로 계속 이어져요</text></svg>
+<p>투자평가에서 던진 질문이 운영 성과관리로 계속 이어져요.<small>공연 하나가 끝나도, 묻고 답하는 일은 계속 돌아가요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>정보시스템 운영 성과관리</b> = 공연(프로젝트)이 끝난 뒤에도 <b>가동률·응답속도·만족도를 계속 재고 개선</b>하는 일.</h2><p>정보시스템 운영 성과관리는 가동률(availability)·응답속도(latency)·사용자 만족도 같은 지표를 지속적으로 측정하고, 그 결과를 PDCA(Plan-Do-Check-Act)처럼 반복적으로 개선에 반영하는 활동이에요. IT 투자성과 평가가 '끝난 뒤 한 번' 묻는 질문이라면, 운영 성과관리는 그 질문에 '계속' 답하는 과정이에요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>가동률<br><small>Availability/Uptime</small></dt><dd><b>시스템이 안 멈춘 시간의 비율.</b> 정전 같은 사고로 깎여요.</dd></div><div><dt>응답속도<br><small>Latency</small></dt><dd><b>요청에 얼마나 빨리 답하는가.</b> 서서히 느려지는 걸 놓치기 쉬워요.</dd></div><div><dt>이용자 만족도<br><small>User Satisfaction</small></dt><dd><b>관객이 불편함 없이 썼는가.</b> 설문·문의 건수로 재요.</dd></div><div><dt>PDCA<br><small>PDCA</small></dt><dd><b>계획-실행-점검-개선을 도는 고리.</b> 운영 개선은 이 고리를 계속 돌려요.</dd></div><div><dt>SLA/SLM<br><small>SLA/SLM</small></dt><dd><b>후원사와 맺은 보장 티켓과 그 관리.</b> 운영 지표는 이 약속을 지켰는지의 근거가 돼요. → <a href="slappe-ko.html">공연을 보장하는 티켓</a></dd></div><div><dt>IT 투자성과 평가<br><small>IT Investment Evaluation</small></dt><dd><b>공연 끝난 뒤 돈값 했는지 따지는 성적표.</b> 운영 데이터는 이 질문에 계속 답을 줘요. → <a href="itinvesteval-ko.html">공연 끝난 뒤의 성적표</a></dd></div><div><dt>BCP<br><small>BCP</small></dt><dd><b>정전 같은 큰 사고에도 공연을 잇는 계획.</b> BCP 발동 여부도 운영 기록에 남아요. → <a href="bcpplan-ko.html">정전에도 멈추지 않는 투어</a></dd></div><div><dt>감리/PMO<br><small>IS Audit/PMO</small></dt><dd><b>전체를 바깥에서 점검하는 역할.</b> 운영 지표도 감리가 점검하는 항목이에요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="itinvesteval-ko.html">공연 끝난 뒤의 성적표 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

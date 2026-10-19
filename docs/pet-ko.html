@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>손님을 지키는 여러 다른 도구상자</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="pet-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 정보보안</div>
+<h1><em>개인정보 보호강화기술(PET)</em>이 뭐예요?</h1>
+<p class="sub">개인정보 보호강화기술(PET)을 손님을 지키는 여러 다른 도구가 담긴 도구상자 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="명부의 모든 글자가 가려져 있고, 분석가가 '이래선 아무 분석도 못 해요'라며 찡그림" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="280" fill="var(--sky)"/><ellipse cx="380" cy="280" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,50)"><rect width="280" height="170" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="140.0" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">손님 명부(다 가림)</text><text x="16" y="52" text-anchor="start" font-size="12" font-weight="700" fill="#142033">●●● · ●● · ●●●●</text><text x="16" y="76" text-anchor="start" font-size="12" font-weight="700" fill="#142033">●●● · ●● · ●●●●</text></g><g transform="translate(500,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5B8DEF"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="440" y="60" width="250" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M555.0 100 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="442" y="96" width="246" height="6" fill="var(--panel)"/><text x="565.0" y="83.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">이래선 아무 분석도 못 해요</text><text x="380" y="258" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">다 가리면 안전하지만 쓸모가 없어요</text></svg>
+<p>다 가리면 분석을 못 해요.<small>안전하지만 쓸모가 없어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="명부에 이름과 나이, 사는 곳이 그대로 있고 가면 쓴 사람이 들여다봄" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="280" fill="var(--bad-soft)"/><g transform="translate(60,50)"><rect width="280" height="170" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="140.0" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">손님 명부(원본)</text><text x="16" y="52" text-anchor="start" font-size="12" font-weight="700" fill="#142033">김민수 · 32 · 서울</text><text x="16" y="76" text-anchor="start" font-size="12" font-weight="700" fill="#142033">이지은 · 28 · 부산</text></g><g transform="translate(500,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><text x="380" y="258" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">다 보여주면 분석은 잘 되지만 손님이 위험해요</text></svg>
+<p>다 보여주면 위험해요.<small>분석은 잘 되지만 손님이 위험해져요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="도구상자 안에 네 가지 방법이 적혀 있고, 옆에 흐릿한 차트·자물쇠 채운 상자·작은 집·가짜 명부가 놓여 있음" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(40,40)"><rect width="310" height="260" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="155.0" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">도구상자</text><text x="16" y="52" text-anchor="start" font-size="13" font-weight="700" fill="#142033">① 흐림을 살짝 섞기</text><text x="16" y="76" text-anchor="start" font-size="13" font-weight="700" fill="#142033">② 자물쇠 채운 채 계산하기</text><text x="16" y="100" text-anchor="start" font-size="13" font-weight="700" fill="#142033">③ 집집마다 따로 배우기</text><text x="16" y="124" text-anchor="start" font-size="13" font-weight="700" fill="#142033">④ 닮은 가짜 명부 만들기</text></g><g transform="translate(430,100) scale(1.1)"><rect x="0" y="18" width="14" height="22" fill="var(--accent)" opacity="0.6"/><rect x="20" y="10" width="14" height="30" fill="var(--accent)" opacity="0.6"/><rect x="40" y="22" width="14" height="18" fill="var(--accent)" opacity="0.6"/><rect x="60" y="6" width="14" height="34" fill="var(--accent)" opacity="0.6"/><rect x="80" y="16" width="14" height="24" fill="var(--accent)" opacity="0.6"/><rect x="-6" y="-6" width="112" height="56" rx="4" fill="none" stroke="var(--line)" stroke-dasharray="4 4" stroke-width="2"/></g><g transform="translate(540,100) scale(1.0)"><rect x="-26" y="-20" width="52" height="40" rx="4" fill="var(--night)"/><rect x="-7" y="-6" width="14" height="12" rx="2" fill="#E9B44C"/><path d="M-4 -6 v-5 a4 4 0 0 1 8 0 v5" stroke="#E9B44C" stroke-width="3" fill="none"/></g><g transform="translate(620,100) scale(0.9)"><rect x="-24" y="-6" width="48" height="36" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M-30 -6 L0 -32 L30 -6 Z" fill="var(--good)"/></g><g transform="translate(500,200)"><rect width="180" height="60" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="90.0" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">가짜 명부</text></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">개인정보 보호강화기술(PET) = 손님을 지키는 여러 다른 도구</text></svg>
+<p>PET는 손님을 지키는 여러 다른 도구가 담긴 도구상자예요.<small>한 가지 방법만 있는 게 아니라, 상황에 맞춰 고를 수 있어요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="20" width="12" height="24" fill="var(--accent)" opacity="0.6"/><rect x="24" y="12" width="12" height="32" fill="var(--accent)" opacity="0.6"/><rect x="40" y="26" width="12" height="18" fill="var(--accent)" opacity="0.6"/></svg><b>차분 프라이버시</b><span>결과에 살짝 흐림을 섞어요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="18" y="20" width="28" height="26" rx="3" fill="var(--night)"/><rect x="26" y="26" width="12" height="10" rx="2" fill="#E9B44C"/></svg><b>동형암호</b><span>자물쇠 채운 채로 계산해요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="26" width="18" height="16" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M4 26 L17 12 L30 26 Z" fill="var(--good)"/><rect x="36" y="26" width="18" height="16" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M32 26 L45 12 L58 26 Z" fill="var(--good)"/></svg><b>연합학습</b><span>데이터는 각자 집에 두고요</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="16" width="36" height="32" rx="3" fill="#FFF8E7" stroke="var(--accent)" stroke-width="3" stroke-dasharray="5 4"/></svg><b>합성데이터</b><span>닮은 가짜 명부를 만들어요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="네 기법이 언제 쓰이는지 정리한 표: 차분 프라이버시(통계), 동형암호(암호화 계산), 연합학습(데이터 분산), 합성데이터(테스트용)" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(50,20)"><rect width="660" height="280" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="330.0" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">기법마다 쓰는 상황이 달라요</text><text x="16" y="52" text-anchor="start" font-size="13" font-weight="700" fill="#142033">차분 프라이버시 — 통계 결과만 내보낼 때, 계산 빠름</text><text x="16" y="76" text-anchor="start" font-size="13" font-weight="700" fill="#142033">동형암호 — 암호화한 채 계산이 꼭 필요할 때, 느리고 비쌈</text><text x="16" y="100" text-anchor="start" font-size="13" font-weight="700" fill="#142033">연합학습 — 데이터를 모을 수 없을 때, 통신 비용 큼</text><text x="16" y="124" text-anchor="start" font-size="13" font-weight="700" fill="#142033">합성데이터 — 테스트·개발용 가짜 데이터가 필요할 때</text></g></svg>
+<p>네 기법은 쓰는 상황이 서로 달라요.<small>빠르고 가벼운 것도 있고, 느리지만 안전한 것도 있어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="흐림을 많이 섞은 차트는 더 안전하지만 덜 정확하고, 흐림을 적게 섞은 차트는 덜 안전하지만 더 정확함" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="280" fill="var(--good-soft)"/><rect x="380" width="380" height="280" fill="var(--accent-soft)"/><text x="190" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">흐림을 많이 섞으면</text><g transform="translate(130,140) scale(1.3)"><rect x="0" y="18" width="14" height="22" fill="var(--accent)" opacity="0.6"/><rect x="20" y="10" width="14" height="30" fill="var(--accent)" opacity="0.6"/><rect x="40" y="22" width="14" height="18" fill="var(--accent)" opacity="0.6"/><rect x="60" y="6" width="14" height="34" fill="var(--accent)" opacity="0.6"/><rect x="80" y="16" width="14" height="24" fill="var(--accent)" opacity="0.6"/><rect x="-6" y="-6" width="112" height="56" rx="4" fill="none" stroke="var(--line)" stroke-dasharray="4 4" stroke-width="2"/></g><text x="190" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)">더 안전, 덜 정확</text><text x="570" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">흐림을 적게 섞으면</text><g transform="translate(510,140) scale(1.3)"><rect x="0" y="18" width="14" height="22" fill="var(--accent)" opacity="0.6"/><rect x="20" y="10" width="14" height="30" fill="var(--accent)" opacity="0.6"/><rect x="40" y="22" width="14" height="18" fill="var(--accent)" opacity="0.6"/><rect x="60" y="6" width="14" height="34" fill="var(--accent)" opacity="0.6"/><rect x="80" y="16" width="14" height="24" fill="var(--accent)" opacity="0.6"/><rect x="-6" y="-6" width="112" height="56" rx="4" fill="none" stroke="var(--line)" stroke-dasharray="4 4" stroke-width="2"/></g><text x="570" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">덜 안전, 더 정확</text><text x="380" y="266" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">프라이버시와 정확도는 시소처럼 맞바꿔야 해요</text></svg>
+<p>완벽한 프라이버시와 완벽한 정확도는 같이 안 돼요.<small><a href="pseudonymize-ko.html">가명처리</a>와 마찬가지로, 어디까지 가릴지는 늘 맞바꿈이에요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>PET(개인정보 보호강화기술)</b> = <b>차분 프라이버시·동형암호·연합학습·합성데이터</b> 같이, 데이터를 보호하면서도 <b>쓸 수 있게</b> 만드는 여러 도구.</h2><p>PET는 개인정보를 가리거나 암호화한 상태에서도 분석·학습이 가능하도록 돕는 기술들을 통칭해요. 차분 프라이버시는 결과값에 통계적 잡음을 더해 한 개인의 존재 여부를 숨기고, 동형암호는 암호문 상태 그대로 연산해 복호화 없이 결과를 얻고, 연합학습은 원본 데이터를 모으지 않고 각 기기에서 학습한 모델만 모으고, 합성데이터는 실제 분포를 흉내 낸 가짜 데이터를 생성해요. 어떤 기법도 프라이버시와 정확도·효율을 동시에 완벽히 만족시키진 못해, 상황에 맞춰 조합해서 써요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>차분 프라이버시<br><small>Differential privacy</small></dt><dd><b>결과에 살짝 흐림 섞기.</b> 통계적 잡음을 더해 한 사람 때문에 결과가 바뀌었는지 못 알아보게 해요.</dd></div><div><dt>동형암호<br><small>Homomorphic encryption</small></dt><dd><b>자물쇠 채운 채 계산.</b> 열어 보지 않고도 답만 얻어요. → <a href="encryption-ko.html">열쇠 없이는 못 읽는 편지</a></dd></div><div><dt>연합학습<br><small>Federated learning</small></dt><dd><b>집집마다 따로 배우기.</b> 데이터는 그 자리에 두고, 배운 결과만 모아요.</dd></div><div><dt>합성데이터<br><small>Synthetic data</small></dt><dd><b>닮은 가짜 명부.</b> 진짜 손님 대신 비슷한 특성의 가짜 손님을 만들어 분석·테스트에 써요.</dd></div><div><dt>영지식증명<br><small>Zero-knowledge proof</small></dt><dd><b>내용 안 보여주고 증명하기.</b> 비밀번호를 말하지 않고도 안다는 걸 증명하는 것 같은 기법이에요.</dd></div><div><dt>프라이버시-정확도 트레이드오프<br><small>Privacy-accuracy trade-off</small></dt><dd><b>시소.</b> 더 가리면 더 안전하지만 덜 정확해져요.</dd></div><div><dt>가명처리<br><small>Pseudonymization</small></dt><dd><b>번호표로 바꿔 달기.</b> PET보다 먼저 쓰는 기본 도구예요. → <a href="pseudonymize-ko.html">번호표로 바꿔 달고, 진짜 이름은 다른 금고에</a></dd></div><div><dt>데이터 결합<br><small>Data linkage/combination</small></dt><dd><b>여러 성의 장부 합치기.</b> 안전하게 합치려면 특별한 방에서만 해요. → <a href="safezone-ko.html">밖으로 못 들고 나가는 특별 열람실</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="safezone-ko.html">밖으로 못 들고 나가는 특별 열람실 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

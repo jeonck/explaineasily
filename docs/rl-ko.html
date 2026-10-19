@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>정답표 없이 점수로 배우는 신입 조작원</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="rl-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · AI이론</div>
+<h1><em>강화학습</em>이/가 뭐예요?</h1>
+<p class="sub">강화학습을, 미리 정답표 없이 행동마다 돌아오는 점수(보상)만으로 요령을 스스로 찾아가는 신입 조작원 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="신입 조작원이 정답표도 없이 작물을 분류해야 해서 땀을 흘림" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(170,170) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(60,250) scale(1.0)"><rect width="220" height="14" rx="4" fill="#8B5E3C"/><circle cx="12" cy="7" r="4" fill="#C9A86A"/><circle cx="36" cy="7" r="4" fill="#C9A86A"/><circle cx="60" cy="7" r="4" fill="#C9A86A"/><circle cx="84" cy="7" r="4" fill="#C9A86A"/><circle cx="108" cy="7" r="4" fill="#C9A86A"/><circle cx="132" cy="7" r="4" fill="#C9A86A"/><circle cx="156" cy="7" r="4" fill="#C9A86A"/><circle cx="180" cy="7" r="4" fill="#C9A86A"/><circle cx="204" cy="7" r="4" fill="#C9A86A"/></g><g transform="translate(100,230) scale(0.7)"><circle r="16" fill="var(--good)"/></g><g transform="translate(160,230) scale(0.7)"><circle r="16" fill="var(--good)"/></g><rect x="380" y="80" width="240" height="50" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M490.0 130 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="382" y="126" width="236" height="6" fill="var(--panel)"/><text x="500.0" y="108.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">이게 합격인지 불합격인지, 미리 알려주는 정답표가 없어요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">훈련 교사가 미리 보여준 예제 없이 혼자 판단해야 해요</text></svg>
+<p>신입 조작원에게 정답표가 없어요.<small>훈련 교사가 미리 보여준 예제 없이 혼자 판단해야 해요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="조작원이 작물을 한쪽 분류함에 던져보고 점수를 얻고, 다른 쪽에 던져보고 점수를 잃음" viewBox="0 0 760 310" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="310" fill="var(--bad-soft)"/><g transform="translate(170,160) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(280,230) scale(0.8)"><path d="M-24 -4 h48 l-6 30 h-36 z" fill="var(--accent)"/><text x="0" y="-14" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">이쪽?</text></g><g transform="translate(350,170) scale(0.6) rotate(-8)"><circle r="20" fill="none" stroke="var(--good)" stroke-width="4"/><text x="0" y="7" text-anchor="middle" font-size="22" font-weight="700" fill="var(--good)">✓</text></g><text x="350" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">+점수</text><g transform="translate(560,230) scale(0.8)"><path d="M-24 -4 h48 l-6 30 h-36 z" fill="var(--accent)"/><text x="0" y="-14" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">저쪽?</text></g><g transform="translate(630,170) scale(0.6) rotate(-8)"><circle r="20" fill="none" stroke="var(--bad)" stroke-width="4"/><text x="0" y="7" text-anchor="middle" font-size="22" font-weight="700" fill="var(--bad)">×</text></g><text x="630" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">-점수</text><text x="380" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">맞으면 점수를 얻고, 틀리면 깎여요 — 그걸로 점점 요령을 익혀요</text></svg>
+<p>일단 던져보고, 보너스와 벌점으로 배워요.<small>맞으면 점수를 얻고, 틀리면 깎여요 — 그걸로 점점 요령을 익혀요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="조작원이 작물을 정확히 합격함에 던져 넣고 승인 도장을 받으며 웃음" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(220,170) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(60,280) scale(1.0)"><rect width="160" height="14" rx="4" fill="#8B5E3C"/><circle cx="12" cy="7" r="4" fill="#C9A86A"/><circle cx="36" cy="7" r="4" fill="#C9A86A"/><circle cx="60" cy="7" r="4" fill="#C9A86A"/><circle cx="84" cy="7" r="4" fill="#C9A86A"/><circle cx="108" cy="7" r="4" fill="#C9A86A"/><circle cx="132" cy="7" r="4" fill="#C9A86A"/></g><g transform="translate(100,260) scale(0.6)"><circle r="16" fill="var(--good)"/></g><g transform="translate(420,250) scale(0.8)"><path d="M-24 -4 h48 l-6 30 h-36 z" fill="var(--accent)"/><text x="0" y="-14" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">합격</text></g><g transform="translate(540,250) scale(0.8)"><path d="M-24 -4 h48 l-6 30 h-36 z" fill="var(--accent)"/><text x="0" y="-14" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">불합격</text></g><g transform="translate(480,160) scale(0.8) rotate(-8)"><circle r="20" fill="none" stroke="var(--good)" stroke-width="4"/><text x="0" y="7" text-anchor="middle" font-size="22" font-weight="700" fill="var(--good)">✓</text></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">강화학습 = 정답표 없이, 행동마다 돌아오는 보상/벌점만으로 좋은 습관을 스스로 찾는 것</text><text x="380" y="338" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">시간이 지날수록 점수를 더 많이 쌓는 쪽으로 행동이 바뀌어요</text></svg>
+<p>강화학습은 정답표 없이 보상/벌점만으로 좋은 행동을 스스로 찾는 거예요.<small>시간이 지날수록 점수를 더 많이 쌓는 쪽으로 행동이 바뀌어요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="22" cy="42" r="6" fill="var(--accent)"/><circle cx="36" cy="26" r="6" fill="var(--accent)"/><circle cx="50" cy="38" r="6" fill="var(--good)"/><path d="M22 42 L36 26 L50 38" stroke="var(--accent)" stroke-width="2" fill="none" stroke-dasharray="3 3"/></svg><b>시행착오</b><span>일단 해보고 결과를 봐요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 10 L40 26 L56 28 L44 40 L48 56 L32 46 L16 56 L20 40 L8 28 L24 26 Z" fill="var(--good)"/></svg><b>보상 신호</b><span>맞으면 점수, 틀리면 벌점</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 50 Q20 20 32 32 Q44 44 50 14" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="50" cy="14" r="4" fill="var(--bad)"/></svg><b>탐험과 활용의 균형</b><span>새로운 것도 가끔 시도해요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="38" width="10" height="16" fill="var(--accent)"/><rect x="27" y="26" width="10" height="28" fill="var(--accent)"/><rect x="42" y="12" width="10" height="42" fill="var(--good)"/></svg><b>누적 보상 최대화</b><span>한 번이 아니라 전체 점수를 봐요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="지도학습(훈련 교사가 정답 예제를 줌)과 강화학습(조작원이 보상만으로 스스로 고침)을 나란히 비교" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(40,30) scale(0.9)"><rect width="330" height="280" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="330" height="26" rx="6" fill="#C9A86A"/><text x="165.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">지도학습(훈련 교사)</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">미리 정답 예제를 줘요</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">예제와 비교해 틀린 만큼 고쳐요</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">한 번에 배우는 느낌</text></g><g transform="translate(390,30) scale(0.9)"><rect width="330" height="280" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="330" height="26" rx="6" fill="#C9A86A"/><text x="165.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">강화학습(조작원 스스로)</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">정답 없이 행동만 해봐요</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">보상/벌점만 보고 스스로 고쳐요</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">시행착오가 많아 시간이 걸려요</text></g></svg>
+<p>지도학습과 강화학습은 배우는 방식이 달라요.<small>둘 다 배우지만, 무엇을 보고 배우는지가 서로 달라요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 빠른 속도만 보상하자 조작원이 제대로 안 보고 던지기만 함. 오른쪽: 보상을 정확도로 다시 설계하니 제대로 배움" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(190,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(260,220) scale(0.7)"><circle r="16" fill="var(--good)"/></g><text x="190" y="260" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">빨리 던지기만 하면 점수를 준댔더니, 제대로 안 보고 던지기만 해요</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="570" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">보상을 '정확도'로 다시 설계하니 제대로 배워요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">강화학습은 '어떤 보상을 주는가'에 결과가 크게 좌우돼요</text></svg>
+<p>보상을 잘못 설계하면 엉뚱한 요령만 늘어요.<small>강화학습은 어떤 보상을 주는가에 결과가 크게 좌우돼요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>강화학습</b> = 정답 예제 없이, <b>행동마다 돌아오는 보상/벌점</b>만 보고 <b>누적 점수를 최대화</b>하는 쪽으로 스스로 행동을 바꿔가는 학습 방식.</h2><p>강화학습(Reinforcement Learning)은 에이전트가 환경의 상태(state)를 보고 행동(action)을 선택하면, 환경이 보상(reward)과 다음 상태를 돌려주는 구조예요. 에이전트는 이 상호작용을 반복하며 누적 보상을 최대화하는 정책(policy)을 학습해요. 지도학습과 달리 정답 레이블이 없고, 탐험(exploration)과 활용(exploitation)의 균형, 보상 설계(reward shaping)가 핵심 난제예요. LLM 정렬에 쓰이는 RLHF도 이 틀 위에서, 사람의 선호를 보상으로 바꿔 모델을 강화학습시키는 방법이에요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>상태(State)<br><small>State</small></dt><dd><b>지금 컨베이어 벨트 위의 상황.</b> 조작원이 행동을 고를 때 보는 정보예요.</dd></div><div><dt>행동(Action)<br><small>Action</small></dt><dd><b>어느 분류함에 던질지 고르는 것.</b> 상태를 보고 조작원이 고르는 선택이에요.</dd></div><div><dt>보상(Reward)<br><small>Reward</small></dt><dd><b>맞으면 +점수, 틀리면 -점수.</b> 행동이 좋았는지 나빴는지 알려주는 유일한 신호예요.</dd></div><div><dt>정책(Policy)<br><small>Policy</small></dt><dd><b>조작원이 몸에 익힌 요령 전체.</b> 상태마다 어떤 행동을 할지 정하는 규칙이에요.</dd></div><div><dt>탐험 vs 활용<br><small>Exploration vs Exploitation</small></dt><dd><b>새 분류함을 시도할지, 늘 하던 대로 할지.</b> 둘의 균형이 깨지면 학습이 멈추거나 헤매요.</dd></div><div><dt>RLHF<br><small>RLHF</small></dt><dd><b>사람이 고른 쪽에 점수를 주는 특수한 강화학습.</b> 앵무새 세계에서 다루는 정렬 방법이에요. → <a href="alignment-ko.html">자세히 보기</a></dd></div><div><dt>시계열분석(AR/MA)<br><small>Time-Series Analysis (AR/MA)</small></dt><dd><b>지난 며칠 값으로 내일을 가늠하는 검수반장.</b> 예측과 학습은 다르지만 둘 다 데이터로 배워요. → <a href="timeseries-ko.html">자세히 보기</a></dd></div><div><dt>AI 신뢰성<br><small>AI Trustworthiness</small></dt><dd><b>정확도만으론 못 받는 품질인증 등급판.</b> 보상을 잘못 설계한 결과도 신뢰성 점검에서 걸러요. → <a href="aitrust-ko.html">자세히 보기</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="crossval-ko.html">조를 돌아가며 시험지로 쓰는 검수반장 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Split It, Fund the Urgent First, Remember the Answer</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="algoparadigm-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Law/Policy</div>
+<h1>What are <em>Divide-and-Conquer, Greedy, and Dynamic Programming</em>?</h1>
+<p class="sub">Divide-and-conquer, greedy, and dynamic programming, told as a story about the student council allocating twenty clubs' festival budget with three different methods. (These are algorithm design techniques, not law or policy — but even the council solves a hard decision with a clear procedure.)</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="The council president sweats, unsure how to decide twenty clubs' budget requests all at once" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(220,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="70" y="60" width="300" height="56" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M210.0 116 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="72" y="112" width="296" height="6" fill="var(--panel)"/><text x="220.0" y="91.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">how do we decide twenty clubs' budget requests all at once?</text><g transform="translate(560,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">too many clubs to compare all at once</text></svg>
+<p>Allocating the festival budget is too complicated.<small>Too many clubs to compare all at once.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The student who submitted first smiles, having gotten everything; the last one is upset, having gotten nothing" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(220,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#C9822B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="220" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">we submitted first, so we got everything</text><g transform="translate(560,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#C9822B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="560" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">we were last, so we got nothing</text><text x="380" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">deciding by order alone misses a better way</text></svg>
+<p>Deciding purely by submission order is unfair.<small>Deciding by order alone misses a better way.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="The council president holds a board listing divide-and-conquer, greedy, and dynamic programming, while a rep smiles beside" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><text x="380" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">three ways to solve a big problem: divide-and-conquer, greedy, dynamic programming</text><g transform="translate(130,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(230,70) scale(0.9)"><rect width="300" height="250" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">THREE METHODS</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">divide and conquer — split by grade, decide each, combine</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">greedy — fund the most urgent request first</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">dynamic programming — remember an answer once it's found</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">all three: handle the big problem in small pieces</text></g><g transform="translate(640,160) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="335" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">even the student council follows a clear step-by-step procedure for a hard decision, just like an algorithm</text></svg>
+<p>There are three ways to solve a big problem: divide-and-conquer, greedy, and dynamic programming.<small>Even the student council follows a clear step-by-step procedure for a hard decision, just like an algorithm.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="10" width="48" height="16" rx="3" fill="var(--accent)"/><path d="M32 26 V34" stroke="var(--ink)" stroke-width="3"/><rect x="8" y="34" width="20" height="16" rx="3" fill="var(--good)"/><rect x="36" y="34" width="20" height="16" rx="3" fill="var(--good)"/></svg><b>Divide & conquer — split, then combine</b><span>solves small pieces, then merges them</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="16" cy="44" r="8" fill="var(--good)"/><circle cx="32" cy="30" r="8" fill="var(--line)"/><circle cx="48" cy="16" r="8" fill="var(--line)"/><path d="M16 44 L32 30" stroke="var(--accent)" stroke-width="3"/></svg><b>Greedy — pick the best right now</b><span>always picks what looks best this instant</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="12" width="16" height="16" rx="3" fill="var(--good)"/><rect x="28" y="12" width="16" height="16" rx="3" fill="var(--good)" opacity="0.5"/><rect x="18" y="34" width="16" height="16" rx="3" fill="var(--accent)"/><path d="M16 28 l4 6 M36 28 l-10 6" stroke="var(--muted)" stroke-width="2" stroke-dasharray="3 3"/></svg><b>Dynamic programming — remember the answer</b><span>never solves the same subproblem twice</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 50 h12 v-12 h12 v-12 h12 v-12 h12" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><b>In common — handle it in small steps</b><span>breaks the big problem into an ordered sequence</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: divide-and-conquer splits the budget by grade, then combines. Right: greedy funds the urgent one first; DP avoids re-solving the same combination" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><g transform="translate(50,20) scale(1.0)"><rect width="320" height="280" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="320" height="26" rx="6" fill="#C9A86A"/><text x="160.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">DIVIDE AND CONQUER</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">split into 1st/2nd/3rd-grade shares</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">each grade's rep decides separately</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">then all shares are combined</text></g><g transform="translate(400,20) scale(1.0)"><rect width="320" height="280" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="320" height="26" rx="6" fill="#C9A86A"/><text x="160.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">GREEDY / DP</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">greedy: fund the highest-risk club first</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">DP: never re-solves the same grade combo</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">fast every time, not always perfect (greedy)</text></g><text x="380" y="310" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">which method fits depends on the shape of the problem</text></svg>
+<p>Applying all three to the festival budget looks like this.<small>Which method fits depends on the shape of the problem.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: a rep says they funded the most urgent club right away. Right: a sweating president says a better overall combination existed" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/><g transform="translate(190,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="190" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">funded the most urgent one right away</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="570" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">but looking at it all, there was a better combination</text><text x="380" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">greedy is fast — but it doesn't always guarantee the overall best</text></svg>
+<p>Greedy is fast, but not always the best.<small>Greedy is fast — but it doesn't always guarantee the overall best.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Divide-and-conquer</b> <b>splits a problem and combines</b> the results, <b>greedy</b> always <b>picks the best choice right now</b>, and <b>dynamic programming</b> <b>remembers an already-solved answer</b> instead of re-solving it.</h2><p>Divide-and-conquer splits a problem into independent smaller subproblems, solves each, and combines the results (e.g., merge sort). Greedy repeatedly picks whatever choice looks best at each step without considering the whole picture — fast, but not always globally optimal (though for some problems, like minimum spanning trees, it is). Dynamic programming stores the result of a subproblem once computed (memoization) and reuses it, avoiding redundant recomputation — suited to problems with optimal substructure and overlapping subproblems. All three handle a big problem in smaller pieces, but they differ in how they treat those pieces.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Divide and Conquer</dt><dd><b>Splitting a problem, solving the pieces, then combining.</b> Sorting gives a concrete example. → <a href="sortalgo-en.html">different ways to line cars up by size</a></dd></div><div><dt>Greedy Algorithm</dt><dd><b>Picking whatever looks best right now, every time.</b> Actually provably optimal for connecting everything cheaply. → <a href="mstalgo-en.html">piping every branch together for the least cost</a></dd></div><div><dt>Dynamic Programming</dt><dd><b>Remembering an already-solved answer and reusing it.</b> Never solves the same subproblem twice.</dd></div><div><dt>Memoization</dt><dd><b>The technique of storing a result once it's computed.</b> The way dynamic programming is actually implemented.</dd></div><div><dt>Optimal Substructure</dt><dd><b>The property that optimal sub-answers combine into the optimal whole.</b> Dynamic programming only works when this property holds.</dd></div><div><dt>Overlapping Subproblems</dt><dd><b>The same small problem showing up again and again.</b> Memoization only pays off when this is present.</dd></div><div><dt>Backtracking</dt><dd><b>Backing up and trying another path when stuck.</b> Yet another strategy for tackling a big problem.</dd></div><div><dt>Time Complexity (Big-O)</dt><dd><b>The ruler that measures how much slower things get as a problem grows.</b> All three methods are compared using this same ruler. → <a href="bigofunc-en.html">how much slower as cars pile up</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="regtech-en.html">The Automatic Checker That Cross-Checks Every Rule Board at Once →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

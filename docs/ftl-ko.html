@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>덮어쓰지 않는 서가 관리인</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="ftl-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · SW공학</div>
+<h1><em>플래시 변환계층(FTL)</em>이 뭐예요?</h1>
+<p class="sub">SSD의 플래시 변환계층(FTL)을, 책 제목과 실제 칸을 이어주고 고친 원고는 늘 새 칸에 넣는 서가 관리인 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="교정자가 한 칸만 고쳐달라 하자 인쇄 감독이 칸을 통째로 비워야 한다고 답함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(260,140) scale(1.2)"><rect width="112" height="60" rx="3" fill="#5A3B22"/><rect x="4" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="32" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="60" y="6" width="20" height="48" rx="2" fill="var(--accent)"/><rect x="88" y="6" width="20" height="48" rx="2" fill="#C9A86A"/></g><g transform="translate(500,170) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="400" y="70" width="260" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M520.0 114 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="402" y="110" width="256" height="6" fill="var(--panel)"/><text x="530.0" y="95.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">3번 칸만 살짝 고쳐주세요?</text><g transform="translate(140,190) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="40" y="70" width="240" height="56" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M150.0 126 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="42" y="122" width="236" height="6" fill="var(--panel)"/><text x="160.0" y="101.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">칸은 한 번에 하나만은 못 고쳐요, 통째로 비워야 해요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">의아하죠? 이 창고는 그렇게 생겼어요</text></svg>
+<p>'3번 칸만 고쳐주세요' 했더니, 통째로 비워야 한대요.<small>의아하죠? 이 창고는 그렇게 생겼어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="서가 전체가 삐걱거리며 덩어리 단위로만 비워지고, 칸이 닳는 모습" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(300,140) scale(1.3)"><rect width="112" height="60" rx="3" fill="#5A3B22"/><rect x="4" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="32" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="60" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="88" y="6" width="20" height="48" rx="2" fill="#C9A86A"/></g><path d="M260 150 l-20 -14 M260 180 l-20 14 M540 150 l20 -14 M540 180 l20 14" stroke="var(--bad)" stroke-width="3" stroke-linecap="round"/><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">이 창고는 칸 하나씩이 아니라 덩어리(블록) 단위로만 비워져요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">비우고 채우는 걸 너무 자주 하면 그 칸이 닳아서 못 쓰게 돼요</text></svg>
+<p>덩어리 단위로만 비워지고, 너무 자주 쓰면 칸이 닳아요.<small>비우고 채우는 걸 너무 자주 하면 그 칸이 못 쓰게 돼요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="관리인이 책 제목과 실제 칸을 점선 화살표로 이어주고, 고친 원고를 새 빈 칸에 넣음" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(380,110) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="380" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">관리인(FTL)</text><g transform="translate(180,90) scale(0.6)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">책 제목</text></g><g transform="translate(300,200) scale(0.9)"><rect width="112" height="60" rx="3" fill="#5A3B22"/><rect x="4" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="32" y="6" width="20" height="48" rx="2" fill="var(--accent)"/><rect x="60" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="88" y="6" width="20" height="48" rx="2" fill="#C9A86A"/></g><path d="M230 100 Q300 150 340 220" stroke="var(--accent)" stroke-width="2.5" fill="none" stroke-dasharray="4 3" marker-end="url(#arrftl)"/><defs><marker id="arrftl" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6 Z" fill="var(--accent)"/></marker></defs><text x="300" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">실제 칸(물리 주소)</text><g transform="translate(560,160) scale(0.55)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/></g><text x="560" y="195" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">옛 칸: 폐기 예정</text><g transform="translate(640,110) scale(0.55)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">새 칸</text></g><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">옛 칸 위에 덮어쓰지 않고, 새 빈 칸에 넣어요</text><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">FTL = 책 제목과 실제 칸을 이어주고, 고친 원고는 새 칸에 넣어주는 관리인</text></svg>
+<p>FTL은 책 제목과 실제 칸을 이어주는 관리인이에요.<small>옛 칸 위에 덮어쓰지 않고, 새 빈 칸에 넣어요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="26" width="18" height="12" rx="2" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="36" y="26" width="18" height="12" rx="2" fill="var(--good)"/><path d="M28 32 h8" stroke="var(--accent)" stroke-width="2" marker-end="url(#mia)"/><defs><marker id="mia" markerWidth="8" markerHeight="8" refX="6" refY="2" orient="auto"><path d="M0 0 L6 2 L0 4 Z" fill="var(--accent)"/></marker></defs></svg><b>주소 바꿔주기</b><span>제목↔실제 칸을 이어요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="30" width="16" height="16" rx="2" fill="var(--muted)" opacity="0.4"/><rect x="38" y="16" width="16" height="16" rx="2" fill="var(--good)"/><path d="M26 38 h6 M46 32 h-6" stroke="var(--line)" stroke-width="2"/></svg><b>새 칸에 쓰기</b><span>덮어쓰지 않아요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="14" width="40" height="36" rx="4" fill="none" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 3"/><path d="M22 28 l20 8 M42 28 l-20 8" stroke="var(--bad)" stroke-width="3" stroke-linecap="round"/></svg><b>폐기 칸 모아 비우기</b><span>가비지 컬렉션이에요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="22" cy="32" r="8" fill="var(--good)"/><circle cx="42" cy="32" r="8" fill="var(--good)"/><path d="M22 32 a10 10 0 0 1 20 0" stroke="var(--line)" stroke-width="2" fill="none" stroke-dasharray="3 2"/></svg><b>칸을 골고루 돌려쓰기</b><span>마모 평준화예요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="관리인이 하는 일 네 단계: 새 칸에 쓰기, 옛 칸 표시, 가비지 컬렉션, 마모 평준화" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,40) scale(1.0)"><rect width="640" height="240" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="640" height="26" rx="6" fill="#C9A86A"/><text x="320.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">관리인이 하는 일 — 순서대로</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">① 고친 원고를 새 빈 칸에 써요</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">② 옛 칸엔 '폐기 예정' 표시만 해둬요</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">③ 폐기 예정 칸을 모아 한번에 비워요 (가비지 컬렉션)</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">④ 특정 칸만 계속 쓰지 않도록 골고루 돌려써요 (마모 평준화)</text></g><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">독자는 이 과정을 몰라요, 그냥 제목으로만 찾으면 돼요</text></svg>
+<p>관리인은 이 순서로 창고를 돌봐요.<small>독자는 이 과정을 몰라요, 그냥 제목으로만 찾으면 돼요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 늘 빈 칸을 남겨둬야 함. 오른쪽: 가비지 컬렉션 도중엔 잠깐 느려짐" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(140,170) scale(0.75)"><rect width="112" height="60" rx="3" fill="#5A3B22"/><rect x="4" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="32" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="60" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="88" y="6" width="20" height="48" rx="2" fill="#C9A86A"/></g><text x="190" y="265" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">늘 빈 칸을 몇 개 남겨둬야 해요</text><g transform="translate(580,170) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="580" y="260" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">옛 칸들을 비우는 동안은 잠깐 느려져요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">FTL이 다 해주지만, 여유 공간과 잠깐의 속도는 그 대가예요</text></svg>
+<p>빈 칸을 늘 남겨둬야 하고, 잠깐 느려질 때도 있어요.<small>FTL이 다 해주지만, 여유 공간과 잠깐의 속도는 그 대가예요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>플래시 변환계층(FTL)</b>은 책 제목(논리 주소)과 실제 칸(물리 주소)을 이어주고, 고친 원고를 <b>옛 칸에 덮어쓰지 않고 새 칸에</b> 넣어주는 관리인이에요.</h2><p>FTL은 SSD 내부에서 논리 블록 주소(LBA)를 실제 NAND 플래시의 물리 주소로 변환해주는 계층이에요. 플래시는 덮어쓰기가 안 되고 블록 단위로만 지울 수 있어, 쓰기 요청이 오면 기존 페이지는 무효 처리하고 새 빈 페이지에 기록해요. 무효 페이지가 쌓인 블록은 가비지 컬렉션으로 통째 지워 재사용하고, 특정 블록만 닳지 않도록 쓰기를 고르게 분산하는 웨어 레벨링도 함께 수행해요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>FTL(플래시 변환계층)<br><small>Flash Translation Layer</small></dt><dd><b>제목과 칸을 이어주는 서가 관리인.</b> SSD 안에서 이 모든 걸 대신해줘요.</dd></div><div><dt>논리 주소/물리 주소<br><small>Logical/Physical Address</small></dt><dd><b>책 제목 vs 실제 칸 번호.</b> FTL이 이 둘을 연결해줘요.</dd></div><div><dt>가비지 컬렉션<br><small>Garbage Collection</small></dt><dd><b>폐기 예정 칸을 모아 한번에 비우기.</b> 도중엔 잠깐 느려질 수 있어요.</dd></div><div><dt>웨어 레벨링<br><small>Wear Leveling</small></dt><dd><b>칸을 골고루 돌려쓰기.</b> 한 칸만 닳아 못 쓰게 되는 걸 막아요.</dd></div><div><dt>오버프로비저닝<br><small>Over-provisioning</small></dt><dd><b>늘 비워두는 여분의 칸.</b> 쓰기 속도와 수명을 지켜줘요.</dd></div><div><dt>블록/페이지<br><small>Block/Page</small></dt><dd><b>통째로만 지워지는 큰 칸, 그 안의 작은 칸.</b> 지우기는 블록, 쓰기는 페이지 단위예요.</dd></div><div><dt>형상관리<br><small>Configuration Management</small></dt><dd><b>원고의 이전 버전을 보관하는 서가.</b> 여기서도 비슷하게 "옛 것은 남기고 새로 쓴다"는 발상이 쓰여요. → <a href="scmshelf-ko.html">원고를 지키는 보관 서가</a></dd></div><div><dt>고가용성<br><small>High Availability</small></dt><dd><b>칸 하나가 망가져도 버티는 대비.</b> 이 세계 대신 놀이공원 세계에서 다뤄요. → <a href="failover-ko.html">예비 발전기가 넘겨받는 이야기</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="tailoring-ko.html">책마다 다른 편집 규칙 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

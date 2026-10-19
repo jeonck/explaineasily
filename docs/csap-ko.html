@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>빌린 창고에 찍는 왕의 안전 도장</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="csap-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 정보보안</div>
+<h1><em>CSAP</em>가 뭐예요?</h1>
+<p class="sub">CSAP(클라우드 보안인증제)를, 빌린 창고(클라우드)를 왕의 점검관이 검사해 도장 찍어주는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="관청 서기가 바깥 빌린 창고에 장부를 맡겨도 되는지 걱정함" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(190,130) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="60" y="40" width="240" height="42" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M170.0 82 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="62" y="78" width="236" height="6" fill="var(--panel)"/><text x="180.0" y="64.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">우리 장부를 바깥 창고에 맡겨도 될까요?</text><g transform="translate(500,160) scale(1.0)"><rect x="-44" y="-10" width="88" height="70" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M-50 -10 L0 -46 L50 -10 Z" fill="var(--stone-dark)"/><rect x="-16" y="18" width="32" height="42" fill="var(--night)"/></g><g transform="translate(560,220) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#B5651D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="500" y="260" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">빌린 창고(클라우드)</text></svg>
+<p>관청이 바깥 창고를 빌리고 싶은데 걱정돼요.<small>빌린 창고(클라우드)에 우리 장부를 맡겨도 될지, 서기는 확신이 없어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="두 창고 주인이 모두 자기 창고가 완전 안전하다고 말하지만, 서기는 확인할 기준이 없어 곤란해함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(170,160) scale(1.0)"><rect x="-44" y="-10" width="88" height="70" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M-50 -10 L0 -46 L50 -10 Z" fill="var(--stone-dark)"/><rect x="-16" y="18" width="32" height="42" fill="var(--night)"/></g><g transform="translate(230,220) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#B5651D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="60" y="60" width="200" height="36" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M150.0 96 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="62" y="92" width="196" height="6" fill="var(--panel)"/><text x="160.0" y="81.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">저희 창고 완전 안전해요!</text><g transform="translate(460,160) scale(1.0)"><rect x="-44" y="-10" width="88" height="70" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M-50 -10 L0 -46 L50 -10 Z" fill="var(--stone-dark)"/><rect x="-16" y="18" width="32" height="42" fill="var(--night)"/></g><g transform="translate(520,220) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#B5651D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="390" y="60" width="200" height="36" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M480.0 96 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="392" y="92" width="196" height="6" fill="var(--panel)"/><text x="490.0" y="81.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">저희도 안전한데요!</text><g transform="translate(670,130) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="282" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">다 안전하다는데, 기준이 없어 확인할 길이 없어요</text></svg>
+<p>창고마다 안전하다고만 말해요.<small>저마다 안전하다고 하는데, 공통 기준이 없어서 뭘 믿어야 할지 알 수 없어요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="왕의 점검관이 점검표를 들고 창고를 검사해 도장을 찍고, 도장 찍힌 창고만 관청이 빌릴 수 있음" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(170,140) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(280,110) scale(0.9)"><rect x="-22" y="-28" width="44" height="56" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="-10" y="-34" width="20" height="10" rx="3" fill="#C9A86A"/><path d="M-12 -10 h24 M-12 -2 h24 M-12 6 h16 M-12 14 h24" stroke="#142033" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(470,170) scale(1.1)"><rect x="-44" y="-10" width="88" height="70" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M-50 -10 L0 -46 L50 -10 Z" fill="var(--stone-dark)"/><rect x="-16" y="18" width="32" height="42" fill="var(--night)"/><circle cx="34" cy="-10" r="16" fill="var(--good)"/><path d="M26 -10 l5 6 l12 -14" stroke="#FFF" stroke-width="3" fill="none" stroke-linecap="round"/></g><path d="M250 150 L410 160" stroke="var(--good)" stroke-width="3" stroke-dasharray="5 5"/><g transform="translate(620,230) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="620" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">이 도장 찍힌 창고만 관청이 빌려요</text><text x="380" y="320" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">CSAP = 왕의 점검관이 정해진 표로 검사하고 도장을 찍는 제도</text></svg>
+<p>CSAP는 왕의 점검관이 검사하고 도장을 찍는 제도예요.<small>정해진 점검표로 검사하고 통과한 창고에만 도장을 찍어요. → <a href="cspm-ko.html">빌린 창고 문단속 점검</a>은 도장을 찍은 뒤에도 계속해요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="40" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 22 h24 M20 30 h24 M20 38 h16" stroke="#142033" stroke-width="2.5" stroke-linecap="round"/></svg><b>정해진 점검표로 확인</b><span>물리 보안·접근통제·분리 등</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="38" width="12" height="16" fill="var(--good)"/><rect x="26" y="26" width="12" height="28" fill="#E9B44C"/><rect x="40" y="14" width="12" height="40" fill="var(--bad)"/></svg><b>등급을 나눠요</b><span>상·중·하 등급으로 나뉘어요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20 50 h24 M14 36 l18 -20 l18 20" fill="none" stroke="#7B3FA0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="18" y="36" width="6" height="14" fill="#7B3FA0"/><rect x="29" y="36" width="6" height="14" fill="#7B3FA0"/><rect x="40" y="36" width="6" height="14" fill="#7B3FA0"/></svg><b>공공기관은 의무예요</b><span>도장 없는 창고는 못 빌려요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="20" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M32 16 A16 16 0 1 1 18 24" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M14 18 l4 8 l8 -3" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/></svg><b>주기적으로 다시 검사</b><span>도장은 영원하지 않아요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="표: 상등급은 민감한 기밀 장부까지, 중·하등급은 일반 업무 장부, 도장 없음은 관청이 아예 못 빌림" viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="330" fill="var(--sky)"/><ellipse cx="380" cy="330" rx="440" ry="36" fill="var(--good-soft)"/><rect x="40" y="30" width="680" height="250" rx="8" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="40" y="30" width="680" height="34" rx="8" fill="#C9A86A"/><text x="130" y="53" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">등급</text><text x="400" y="53" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">맡길 수 있는 장부</text><path d="M40 134 h680" stroke="#C9A86A" stroke-width="1.5"/><path d="M40 204 h680" stroke="#C9A86A" stroke-width="1.5"/><text x="100" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">상등급</text><text x="400" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">민감한 행정·기밀 장부까지</text><text x="100" y="170" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">중·하등급</text><text x="400" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">일반 업무 장부</text><text x="100" y="240" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)" class="d">도장 없음</text><text x="400" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">관청은 아예 못 빌려요</text></svg>
+<p>등급에 따라 맡길 수 있는 장부가 달라요.<small>중요한 장부일수록 더 높은 등급의 창고가 필요해요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="관청엔 의무, 민간은 참고용. 도장 이후에도 지속적인 점검이 필요하고, 다른 나라 창고는 별도 기준이 필요함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(190,150) scale(1.0)"><rect x="-44" y="-10" width="88" height="70" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/><path d="M-50 -10 L0 -46 L50 -10 Z" fill="var(--stone-dark)"/><rect x="-16" y="18" width="32" height="42" fill="var(--night)"/><circle cx="34" cy="-10" r="16" fill="var(--good)"/><path d="M26 -10 l5 6 l12 -14" stroke="#FFF" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="190" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">관청에 의무, 민간은 참고로 많이 써요</text><g transform="translate(560,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="560" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">도장이 다가 아니에요, 계속 점검해야 해요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">우리나라만의 제도라, 해외 창고는 별도 기준을 따로 봐야 해요</text></svg>
+<p>도장 하나로 끝나는 게 아니에요.<small>우리나라 제도라 해외엔 안 통하고, 도장 이후에도 <a href="cspm-ko.html">문단속 점검</a>은 계속돼요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>CSAP</b> = 왕의 점검관이 빌린 창고(클라우드)를 <b>정해진 표</b>로 검사해 <b>도장</b>을 찍는 제도. <b>도장 없는 창고는 관청이 못 빌려요.</b></h2><p>CSAP, Cloud Security Assurance Program(클라우드 보안인증제). 한국인터넷진흥원(KISA)이 클라우드 서비스의 물리적·기술적·관리적 보안 수준을 심사해 인증하는 제도예요. 공공기관이 클라우드를 이용하려면 CSAP 인증을 받은 서비스를 써야 하고, 다루는 정보의 민감도에 따라 등급(기존 상·중·하에서 다등급제로 개편)이 나뉘어요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>CSAP<br><small>CSAP</small></dt><dd><b>빌린 창고에 찍는 왕의 안전 도장.</b> 한국 클라우드 보안인증제예요.</dd></div><div><dt>KISA<br><small>KISA</small></dt><dd><b>점검하는 왕의 점검관.</b> 한국인터넷진흥원. 실제 심사를 맡아요.</dd></div><div><dt>다등급제<br><small>Multi-tier system</small></dt><dd><b>창고를 안전도별로 나눈 것.</b> 다루는 정보의 민감도에 따라 받을 수 있는 등급이 달라요.</dd></div><div><dt>공공기관 의무화<br><small>Mandatory for public agencies</small></dt><dd><b>도장 없는 창고는 관청이 못 빌려요.</b> 공공 클라우드 전환의 전제 조건이에요.</dd></div><div><dt>CSPM<br><small>CSPM</small></dt><dd><b>도장 이후에도 계속하는 문단속.</b> CSAP는 한 번의 인증, CSPM은 이후의 지속 점검이에요. → <a href="cspm-ko.html">빌린 창고 문단속 점검</a></dd></div><div><dt>클라우드<br><small>Cloud</small></dt><dd><b>빌린 창고.</b> 성 밖에 두고 빌려 쓰는 창고예요.</dd></div><div><dt>물리 보안<br><small>Physical security</small></dt><dd><b>창고 건물 자체의 안전.</b> 점검표의 한 항목이에요.</dd></div><div><dt>규정 준수<br><small>Compliance</small></dt><dd><b>점검관이 확인해주는 것 전반.</b> CSAP는 클라우드에 한정된 규정 준수 제도예요. → <a href="compliance-ko.html">이웃 나라 규칙 검사관</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="machmac-ko.html">비밀 도장틀로 찍는 확인 도장 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

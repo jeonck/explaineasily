@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Garage Frozen Waiting on Each Other's Keys</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="deadlockstarve-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Systems</div>
+<h1>What is <em>Deadlock and Starvation</em>?</h1>
+<p class="sub">Deadlock and starvation, told as a story about two mechanics each holding a key the other needs.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="MECH1 holds key 1 and waits for key 2; MECH2 holds key 2 and waits for key 1" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--bad-soft)"/><g transform="translate(100,250) scale(1.0)"><rect x="-30" y="0" width="60" height="8" fill="#5A3B22"/><rect x="-26" y="-50" width="8" height="50" fill="var(--good)"/><rect x="18" y="-50" width="8" height="50" fill="var(--good)"/></g><g transform="translate(660,250) scale(1.0)"><rect x="-30" y="0" width="60" height="8" fill="#5A3B22"/><rect x="-26" y="-50" width="8" height="50" fill="var(--good)"/><rect x="18" y="-50" width="8" height="50" fill="var(--good)"/></g><g transform="translate(230,140) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><circle cx="230" cy="108" r="8" fill="var(--accent)" stroke="#C9822B" stroke-width="2"/><g transform="translate(530,140) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><circle cx="530" cy="108" r="8" fill="var(--accent)" stroke="#C9822B" stroke-width="2"/><text x="380" y="260" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">I need THAT key to finish…</text><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">MECH1 waits for key 2, MECH2 waits for key 1</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">neither lets go of their own key — each just stares at the other's</text></svg>
+<p>Two mechanics each hold a different key.<small>Neither lets go — each just stares at the other's key.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A board listing four conditions: mutual exclusion, hold-and-wait, no preemption, circular wait" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(90,30) scale(1.0)"><rect width="300" height="240" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">FOUR CONDITIONS</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">mutual exclusion: one holder only</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">hold &amp; wait: keep one, wait for more</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">no preemption: can't be forced away</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">circular wait: waiting in a loop</text></g><g transform="translate(590,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="590" y="275" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">all four must hold at once for a freeze</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">break just one, and deadlock can't happen</text></svg>
+<p>All four conditions have to line up at once.<small>Break just one, and deadlock can't happen.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="Both mechanics point at each other's key, and neither can move" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--bad-soft)"/><g transform="translate(90,260) scale(1.0)"><rect x="-30" y="0" width="60" height="8" fill="#5A3B22"/><rect x="-26" y="-50" width="8" height="50" fill="var(--good)"/><rect x="18" y="-50" width="8" height="50" fill="var(--good)"/></g><g transform="translate(670,260) scale(1.0)"><rect x="-30" y="0" width="60" height="8" fill="#5A3B22"/><rect x="-26" y="-50" width="8" height="50" fill="var(--good)"/><rect x="18" y="-50" width="8" height="50" fill="var(--good)"/></g><g transform="translate(230,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><circle cx="230" cy="118" r="8" fill="var(--accent)" stroke="#C9822B" stroke-width="2"/><g transform="translate(530,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><circle cx="530" cy="118" r="8" fill="var(--accent)" stroke="#C9822B" stroke-width="2"/><path d="M255 135 Q380 95 505 135" stroke="var(--bad)" stroke-width="3" fill="none" stroke-dasharray="6 5"/><path d="M505 165 Q380 205 255 165" stroke="var(--bad)" stroke-width="3" fill="none" stroke-dasharray="6 5"/><text x="380" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">deadlock = freezing forever while each waits on the other's key</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">neither can move — not without someone stepping in</text></svg>
+<p>Deadlock = freezing forever while each waits on the other's key.<small>Neither can move — not without someone stepping in.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="36" r="18" fill="none" stroke="var(--accent)" stroke-width="4"/><rect x="26" y="14" width="12" height="18" rx="6" fill="none" stroke="var(--accent)" stroke-width="4"/></svg><b>Mutual Exclusion</b><span>only one holder per key at a time</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="32" r="10" fill="var(--accent)"/><path d="M30 32 h24" stroke="var(--bad)" stroke-width="4" stroke-dasharray="4 4"/></svg><b>Hold &amp; Wait</b><span>keep what you have, wait for more</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="14" width="36" height="36" rx="4" fill="none" stroke="var(--bad)" stroke-width="4"/><path d="M20 44 L44 20" stroke="var(--bad)" stroke-width="4"/></svg><b>No Preemption</b><span>can't be forced away from you</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="20" fill="none" stroke="var(--bad)" stroke-width="4"/><path d="M32 12 l6 8 l-6 -2 l-6 2z" fill="var(--bad)"/></svg><b>Circular Wait</b><span>everyone waits in a loop</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A board listing four resolution strategies: prevention, avoidance, detection+recovery, ignore" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,30) scale(1.0)"><rect width="330" height="240" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="330" height="26" rx="6" fill="#C9A86A"/><text x="165.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">RESOLUTION STRATEGIES</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">prevention: break one condition upfront</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">avoidance: allow only safe orderings</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">detection+recovery: find it, roll one back</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">ignore: rare enough to just live with</text></g><g transform="translate(590,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="590" y="275" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">the chief picks a strategy to fit</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">in practice, "ignore" (the ostrich algorithm) is a common choice</text></svg>
+<p>There are several ways to handle it too.<small>In practice, "ignore" (the ostrich algorithm) is common.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Urgent cars keep topping the job board while a low-priority car waits endlessly at the end" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,40) scale(1.0)"><rect width="300" height="220" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">JOB QUEUE</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">urgent #9</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">urgent #10</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">urgent #11</text></g><g transform="translate(570,240) scale(0.7)"><rect x="-32" y="-14" width="64" height="18" rx="4" fill="var(--muted)"/><rect x="-14" y="-24" width="30" height="14" rx="3" fill="var(--muted)"/><circle cx="-18" cy="4" r="7" fill="#142033"/><circle cx="18" cy="4" r="7" fill="#142033"/></g><g transform="translate(650,160) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#C9822B"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="650" y="135" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)">when is MY car ever…</text><text x="380" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">urgent cars keep cutting in, so the low-priority car's turn never comes</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">it's not frozen — its turn simply never arrives (starvation)</text></svg>
+<p>Starvation — nothing's frozen, but one car keeps getting bumped.<small>It's not frozen — its turn simply never arrives.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Deadlock</b> = freezing forever as each side holds one resource (key) and waits on another. <b>Starvation</b> isn't frozen — one side just never gets its turn.</h2><p>Deadlock arises when four conditions hold at once: Mutual Exclusion, Hold and Wait, No Preemption, and Circular Wait. Fixes include prevention (design away one condition), avoidance (allow only safe states, as in the banker's algorithm), detection-and-recovery, or simply ignoring it (the ostrich algorithm). Starvation differs from deadlock: the system keeps running, but one process never gets the resource it needs because of scheduling or priority.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Mutual Exclusion</dt><dd><b>One key, one holder at a time.</b> One of the four conditions.</dd></div><div><dt>Circular Wait</dt><dd><b>Everyone waiting in a loop for the next one's key.</b> Break this loop, and deadlock breaks too.</dd></div><div><dt>Starvation</dt><dd><b>One car keeps getting bumped down the order.</b> Not a freeze — an endless postponement.</dd></div><div><dt>CPU Scheduling</dt><dd><b>The rule that sets the car order on the board.</b> A priority rule can itself cause starvation. → <a href="cpusched-en.html">who gets the lift first</a></dd></div><div><dt>Synchronization</dt><dd><b>The rule for handing out the lift key.</b> Deadlock often comes from misusing these tools. → <a href="syncprim-en.html">there's only one lift key</a></dd></div><div><dt>Process/Thread</dt><dd><b>Several hands working the same car.</b> Deadlock can happen between threads or between processes. → <a href="processthread-en.html">one car, many hands</a></dd></div><div><dt>Virtual Memory</dt><dd><b>A fake map that makes the whole warehouse look like mine.</b> Another example of sharing a limited resource. → <a href="virtualmem-en.html">the fake map that makes the whole warehouse yours</a></dd></div><div><dt>Orchestration</dt><dd><b>The amusement-park world's version of ordering work.</b> Distributed systems handle resource deadlock in a similar spirit. → <a href="orchestration-en.html">orchestration in the SRE world</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="gpu-en.html">The Hundred-Hand Helper Crew →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

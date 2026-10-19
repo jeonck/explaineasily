@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>책상 추측 대신 독자에게 직접 묻기</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="designthinking-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · SW공학</div>
+<h1><em>디자인 씽킹</em>이 뭐예요?</h1>
+<p class="sub">디자인 씽킹을, 책상에서 추측하는 대신 독자를 직접 만나 돌고 도는 편집장의 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="편집장이 안 팔리는 책을 보며 당황함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(380,140) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(540,180) scale(0.6)"><rect width="112" height="60" rx="3" fill="#5A3B22"/><rect x="4" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="32" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="60" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="88" y="6" width="20" height="48" rx="2" fill="#C9A86A"/></g><rect x="220" y="50" width="240" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M330.0 94 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="222" y="90" width="236" height="6" fill="var(--panel)"/><text x="340.0" y="76.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">이 책, 왜 안 팔리지?</text><text x="380" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)">편집장은 이유를 몰라요</text></svg>
+<p>이 책, 왜 안 팔리지?<small>편집장은 이유를 몰라요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="편집장이 책상에 앉아 혼자 이유를 추측함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(380,140) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="380" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">독자들이 바쁜가? 표지가 별로인가?</text><text x="380" y="240" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">독자를 직접 만나 본 적은 없어요</text><text x="380" y="275" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">추측은 자주 빗나가요</text></svg>
+<p>책상에서 혼자 추측만 해요.<small>독자를 직접 만나 본 적은 없어요. 추측은 자주 빗나가요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="편집장과 독자가 만나고, 원고가 고리 모양 화살표로 연결돼 돌고 돎" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><defs><marker id="dtarrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker></defs><path d="M 380 80 A 90 90 0 1 1 294 142" stroke="var(--accent)" stroke-width="4" fill="none" marker-end="url(#dtarrow)"/><g transform="translate(380,80) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(260,230) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7B9D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(500,230) scale(0.6)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/></g><text x="380" y="25" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">디자인씽킹 = 독자를 직접 만나, 묻고 만들고 다시 고치길 반복하는 과정</text><text x="380" y="320" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">책상 추측이 아니라, 돌고 도는 현장 확인이에요</text></svg>
+<p>디자인씽킹은 독자를 직접 만나, 묻고 만들고 다시 고치길 반복하는 과정이에요.<small>책상 추측이 아니라, 돌고 도는 현장 확인이에요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="22" cy="26" r="12" fill="var(--good)"/><circle cx="46" cy="26" r="12" fill="var(--accent)"/><path d="M14 46 q20 -14 36 0" stroke="var(--muted)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>공감하기</b><span>독자를 직접 만나요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="30" r="20" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M32 20 v6 M32 36 h.5" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/></svg><b>문제 다시 정의하기</b><span>진짜 헷갈리는 지점을 찾아요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="22" cy="20" r="5" fill="var(--good)"/><circle cx="42" cy="16" r="5" fill="var(--accent)"/><circle cx="46" cy="36" r="5" fill="var(--good)"/><circle cx="20" cy="40" r="5" fill="var(--accent)"/><circle cx="32" cy="48" r="5" fill="var(--good)"/></svg><b>아이디어 쏟아내기</b><span>일단 많이 내봐요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="16" width="36" height="28" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3" stroke-dasharray="4 3"/><path d="M22 26 h20 M22 34 h12" stroke="#142033" stroke-width="2.5"/></svg><b>싼 시제품으로 먼저 보여주기</b><span>독자 반응 보고 다시 고쳐요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="공감·정의·아이디어·시제품·테스트 다섯 단계가 원을 그리며 돌아감" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><defs><marker id="dtarrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker></defs><path d="M 380 50 A 120 120 0 1 1 266 133" stroke="var(--accent)" stroke-width="4" fill="none" marker-end="url(#dtarrow)"/><text x="380" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">공감</text><text x="510" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">정의</text><text x="510" y="230" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">아이디어</text><text x="250" y="230" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">시제품</text><text x="250" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">테스트</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">한 바퀴 돌고 나면, 다시 공감으로 돌아가요</text></svg>
+<p>다섯 단계가 원을 그리며 돌고 돌아요.<small>한 바퀴 돌고 나면, 다시 공감으로 돌아가요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 디자인씽킹은 뭘 쓸지 찾는 방법. 오른쪽: 그 뒤 일정·품질 관리는 별개" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(190,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">'뭘 쓸지' 찾는 데 쓰는 방법이에요</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(570,220) scale(0.5) rotate(-10)"><rect x="-26" y="-16" width="52" height="32" rx="4" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M-12 0 l8 8 l16 -18" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></g><text x="570" y="260" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">그 뒤 일정·품질 관리는 또 다른 몫이에요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">무엇을 쓸지 찾는 방법이지, 모든 공정을 대신하진 않아요</text></svg>
+<p>디자인씽킹이 전부를 대신하진 않아요.<small>무엇을 쓸지 찾는 방법이지, 모든 공정을 대신하진 않아요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>디자인 씽킹</b> = 책상 추측 대신 <b>독자를 직접 만나</b>, 공감·정의·아이디어·시제품·테스트를 <b>돌고 도는</b> 문제 해결법.</h2><p>디자인 씽킹은 사용자(독자) 공감에서 출발해, 문제를 재정의하고, 많은 아이디어를 내고, 값싼 시제품을 만들어, 실제 사용자에게 테스트한 뒤 다시 공감 단계로 돌아가는 사람 중심·반복적 설계 방법론이에요. 결과물을 어떻게 만들지보다, 무엇을 만들어야 하는지를 먼저 찾는 데 집중해요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>디자인씽킹<br><small>Design Thinking</small></dt><dd><b>추측 대신 독자를 직접 만나는 문제 해결법.</b> 다섯 단계를 돌고 또 돌아요.</dd></div><div><dt>공감(Empathize)<br><small>Empathize</small></dt><dd><b>독자를 직접 만나는 첫 단계.</b> 책상 추측을 멈추는 지점이에요.</dd></div><div><dt>문제 정의(Define)<br><small>Define</small></dt><dd><b>진짜 헷갈리는 지점을 다시 짚는 단계.</b> '좋은 책'이 아니라 구체적인 문제로 좁혀요.</dd></div><div><dt>아이디어 발산(Ideate)<br><small>Ideate</small></dt><dd><b>일단 많이 쏟아내는 단계.</b> 좋고 나쁨은 나중에 걸러요.</dd></div><div><dt>프로토타입(Prototype)<br><small>Prototype</small></dt><dd><b>싼값에 빨리 만든 샘플 페이지.</b> 완성본이 아니라 확인용이에요.</dd></div><div><dt>요구공학<br><small>Requirements Engineering</small></dt><dd><b>쓰기 전에 먼저 묻는, 더 체계적인 절차.</b> 디자인씽킹의 공감·정의를 더 깊게 파고들어요. → <a href="reqeng-ko.html">쓰기 전에 먼저 묻는 사람</a></dd></div><div><dt>A/B 테스트<br><small>A/B Test</small></dt><dd><b>두 안 중 뭐가 더 잘 통하는지 숫자로 재는 시험.</b> 디자인씽킹의 테스트 단계를 통계적으로 더 깊게 들어가요. → <a href="hypothesistest-ko.html">두 표지 중 뭐가 진짜 더 잘 팔릴까</a></dd></div><div><dt>사용성평가<br><small>Usability Test</small></dt><dd><b>시제품을 실제로 써보게 하고 지켜보는 일.</b> 테스트 단계에서 자주 같이 써요. → <a href="usability-ko.html">독자가 책을 쓱 넘겨보는 시험</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="diprinciple-ko.html">아무 기계나 꽂을 수 있는 콘센트 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Certification Plaque for the Whole Castle</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="ismsp-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · InfoSec</div>
+<h1>What is <em>ISMS/ISMS-P</em>?</h1>
+<p class="sub">ISMS/ISMS-P, told as a story about a government inspector who checks the whole castle and hangs a certification plaque.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="The lord stands before the castle, saying our castle is totally safe!" viewBox="0 0 760 355" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="355" fill="var(--sky)"/><ellipse cx="380" cy="355" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(260,40) scale(0.75)"><rect x="0" y="20" width="90" height="180" fill="var(--stone)"/><rect x="370" y="20" width="90" height="180" fill="var(--stone)"/><rect x="0" y="0" width="15" height="24" fill="var(--stone)"/><rect x="30" y="0" width="15" height="24" fill="var(--stone)"/><rect x="60" y="0" width="15" height="24" fill="var(--stone)"/><rect x="370" y="0" width="15" height="24" fill="var(--stone)"/><rect x="400" y="0" width="15" height="24" fill="var(--stone)"/><rect x="430" y="0" width="15" height="24" fill="var(--stone)"/><rect x="90" y="70" width="280" height="130" fill="var(--stone-dark)"/><rect x="90" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="146" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="202" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="258" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="314" y="50" width="28" height="24" fill="var(--stone-dark)"/><path d="M195 200 V140 a35 35 0 0 1 70 0 V200 Z" fill="var(--night)"/><rect x="34" y="60" width="22" height="34" rx="11" fill="var(--night)"/><rect x="404" y="60" width="22" height="34" rx="11" fill="var(--night)"/><rect x="228" y="-30" width="4" height="100" fill="var(--night)"/><path d="M232 -28 L290 -12 L232 4 Z" fill="var(--accent)"/></g><g transform="translate(230,230) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="290" y="190" width="200" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M380.0 230 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="292" y="226" width="196" height="6" fill="var(--panel)"/><text x="390.0" y="214.32" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">our castle is totally safe!</text><text x="380" y="338" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">no proof — just the lord's own word</text></svg>
+<p>The lord just says our castle is safe.<small>No proof — just the lord's own word.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A neighboring castle's visitor frowns: just your word for it? I can't hand over our guests' data" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="280" fill="var(--bad-soft)"/><g transform="translate(80,60) scale(0.55)"><rect x="0" y="40" width="160" height="110" fill="var(--stone-dark)"/><rect x="0" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="40" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="80" y="20" width="20" height="24" fill="var(--stone-dark)"/><rect x="120" y="20" width="20" height="24" fill="var(--stone-dark)"/><path d="M60 150 V110 a20 20 0 0 1 40 0 V150 Z" fill="var(--night)"/></g><text x="190" y="212" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">our castle</text><g transform="translate(430,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--accent)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="360" y="70" width="260" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M480.0 116 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="362" y="112" width="256" height="6" fill="var(--panel)"/><text x="490.0" y="96.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">just your word for it? I can't hand over our guests' data</text><text x="380" y="258" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">without proof, neighbors hesitate to deal with you</text></svg>
+<p>The neighboring castle can't just take your word.<small>Without proof, neighbors hesitate to deal with you.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="An inspector examines the whole castle and hangs a green PASSED plaque" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(140,60) scale(0.9)"><rect x="0" y="20" width="90" height="180" fill="var(--stone)"/><rect x="370" y="20" width="90" height="180" fill="var(--stone)"/><rect x="0" y="0" width="15" height="24" fill="var(--stone)"/><rect x="30" y="0" width="15" height="24" fill="var(--stone)"/><rect x="60" y="0" width="15" height="24" fill="var(--stone)"/><rect x="370" y="0" width="15" height="24" fill="var(--stone)"/><rect x="400" y="0" width="15" height="24" fill="var(--stone)"/><rect x="430" y="0" width="15" height="24" fill="var(--stone)"/><rect x="90" y="70" width="280" height="130" fill="var(--stone-dark)"/><rect x="90" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="146" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="202" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="258" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="314" y="50" width="28" height="24" fill="var(--stone-dark)"/><path d="M195 200 V140 a35 35 0 0 1 70 0 V200 Z" fill="var(--night)"/><rect x="34" y="60" width="22" height="34" rx="11" fill="var(--night)"/><rect x="404" y="60" width="22" height="34" rx="11" fill="var(--night)"/><rect x="228" y="-30" width="4" height="100" fill="var(--night)"/><path d="M232 -28 L290 -12 L232 4 Z" fill="var(--accent)"/></g><g transform="translate(500,150) scale(0.95)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><rect x="50" y="66" width="30" height="36" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M56 78 h18 M56 86 h18 M56 94 h12" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(400,110) scale(0.9)"><rect x="-56" y="-22" width="112" height="44" rx="6" fill="var(--good)" stroke="#E9B44C" stroke-width="3"/><text x="0" y="7" text-anchor="middle" font-size="13" font-weight="700" fill="#FFF" class="d">PASSED</text></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">ISMS-P = a government inspector checks the whole castle, then hangs the plaque</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">not just one door — the whole management system, down to the guest-info storeroom</text></svg>
+<p>ISMS-P is the plaque a government inspector hangs after checking the whole castle.<small>Not just one door — the whole management system, down to the guest-info storeroom.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="10" width="48" height="44" rx="4" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M8 24 h48 M8 38 h48" stroke="var(--accent)" stroke-width="2"/></svg><b>Checks the whole castle</b><span>not one room, all of it</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--good)" stroke-width="4" stroke-dasharray="6 5"/><circle cx="32" cy="10" r="6" fill="var(--good)"/></svg><b>Guest info, start to end</b><span>collect, use, and destroy — all of it</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--bad)" stroke-width="4"/><path d="M32 18 v14 l10 6" stroke="var(--bad)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>Re-checked every year</b><span>one pass isn't the end</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 22 h20 M22 30 h20 M22 38 h12" stroke="#142033" stroke-width="2.5"/></svg><b>A legal requirement</b><span>mandatory past a certain size</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The ISMS-P checklist: 1. management system 2. protection measures 3. personal-data lifecycle (added only for ISMS-P)" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,40)"><rect width="330" height="220" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="165.0" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">ISMS-P CHECKLIST</text><text x="16" y="52" text-anchor="start" font-size="11" font-weight="700" fill="#142033">1. Management system — policy, org, risk</text><text x="16" y="76" text-anchor="start" font-size="11" font-weight="700" fill="#142033">2. Protection measures — locks, encryption, etc.</text><text x="16" y="100" text-anchor="start" font-size="11" font-weight="700" fill="#142033">3. Personal-data lifecycle — collect to destroy</text><text x="16" y="124" text-anchor="start" font-size="11" font-weight="700" fill="#142033">item 3 is added only for ISMS-P)</text></g><g transform="translate(560,120) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><rect x="50" y="66" width="30" height="36" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M56 78 h18 M56 86 h18 M56 94 h12" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><text x="560" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">ISMS covers 1–2 only; ISMS-P adds 3</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">a castle with a guest-info storeroom needs item 3 too</text></svg>
+<p>The checklist has three areas.<small>ISMS covers areas 1–2 only; ISMS-P adds area 3 — needed by any castle with a guest-info storeroom.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A masked figure sneaks over the wall of a castle bearing the plaque, while a clerk sweats: we got the plaque — why a thief?" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--accent-soft)"/><g transform="translate(240,40) scale(0.75)"><rect x="0" y="20" width="90" height="180" fill="var(--stone)"/><rect x="370" y="20" width="90" height="180" fill="var(--stone)"/><rect x="0" y="0" width="15" height="24" fill="var(--stone)"/><rect x="30" y="0" width="15" height="24" fill="var(--stone)"/><rect x="60" y="0" width="15" height="24" fill="var(--stone)"/><rect x="370" y="0" width="15" height="24" fill="var(--stone)"/><rect x="400" y="0" width="15" height="24" fill="var(--stone)"/><rect x="430" y="0" width="15" height="24" fill="var(--stone)"/><rect x="90" y="70" width="280" height="130" fill="var(--stone-dark)"/><rect x="90" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="146" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="202" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="258" y="50" width="28" height="24" fill="var(--stone-dark)"/><rect x="314" y="50" width="28" height="24" fill="var(--stone-dark)"/><path d="M195 200 V140 a35 35 0 0 1 70 0 V200 Z" fill="var(--night)"/><rect x="34" y="60" width="22" height="34" rx="11" fill="var(--night)"/><rect x="404" y="60" width="22" height="34" rx="11" fill="var(--night)"/><rect x="228" y="-30" width="4" height="100" fill="var(--night)"/><path d="M232 -28 L290 -12 L232 4 Z" fill="var(--accent)"/></g><g transform="translate(390,60) scale(0.8)"><rect x="-56" y="-22" width="112" height="44" rx="6" fill="var(--good)" stroke="#E9B44C" stroke-width="3"/><text x="0" y="7" text-anchor="middle" font-size="13" font-weight="700" fill="#FFF" class="d">PASSED</text></g><g transform="translate(330,190) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><path d="M330 196 l-10 -40" stroke="var(--bad)" stroke-width="3" stroke-dasharray="4 4"/><g transform="translate(230,195) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="90" y="125" width="210" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M185.0 165 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="92" y="161" width="206" height="6" fill="var(--panel)"/><text x="195.0" y="148.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">we got the plaque — why a thief?</text><text x="380" y="295" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">the plaque means the standard was met — not that nothing can go wrong</text></svg>
+<p>The plaque doesn't stop thieves.<small>The plaque means the standard was met — not that nothing can go wrong. The real work is the <a href="policy-en.html">rule scroll</a> and everyday upkeep.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>ISMS/ISMS-P</b> = the <b>certification plaque</b> a government inspector hangs after checking a castle's whole <b>management system and protection measures</b>. ISMS-P also checks the <b>entire personal-data lifecycle</b>.</h2><p>ISMS (Information Security Management System) and ISMS-P (adding Personal Information protection) are statutory certifications in Korea, audited by bodies such as KISA. Businesses past a certain size must obtain it, with an annual follow-up review after initial certification. ISMS covers the overall security management system; ISMS-P additionally reviews requirements across the full personal-data lifecycle, from collection to destruction.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>ISMS</dt><dd><b>Security management system certification.</b> Reviews the management system and the protection measures.</dd></div><div><dt>ISMS-P</dt><dd><b>ISMS plus the personal-data lifecycle.</b> Also reviews collecting, using, and destroying guest info, start to finish.</dd></div><div><dt>Certification body (KISA 등)</dt><dd><b>The office that sends the inspector.</b> Bodies such as KISA conduct the review.</dd></div><div><dt>ISMS management process</dt><dd><b>Policy, organization, risk assessment.</b> Setting the whole castle's rules and who owns what. → <a href="policy-en.html">the castle rule scroll</a></dd></div><div><dt>Protection requirements</dt><dd><b>Each lockdown item.</b> Specific items like access control and encryption.</dd></div><div><dt>Follow-up review</dt><dd><b>Re-checked every year.</b> Initial certification isn't the end — it's reviewed annually.</dd></div><div><dt>Mandatory scope</dt><dd><b>Mandatory past a certain size.</b> Businesses over revenue or user thresholds must obtain it.</dd></div><div><dt>Compliance</dt><dd><b>The inspector checks the evidence.</b> ISMS-P is also proven with evidence. → <a href="compliance-en.html">the inspector from next door</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="pseudonymize-en.html">Swap in a Number Tag, Lock the Real Name in a Separate Vault →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

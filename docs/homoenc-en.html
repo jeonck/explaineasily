@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Sealed Letter You Can Do Math On</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="homoenc-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · InfoSec</div>
+<h1>What is <em>Homomorphic Encryption</em>?</h1>
+<p class="sub">Homomorphic encryption, told as a story about a sealed letter whose number you can add without breaking the seal.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A scribe says he needs to add up three sealed amount cards from three villagers" viewBox="0 0 760 345" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="345" fill="var(--sky)"/><ellipse cx="380" cy="345" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(380,110) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="260" y="30" width="240" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M370.0 70 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="262" y="66" width="236" height="6" fill="var(--panel)"/><text x="380.0" y="53.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">I need to add these — but I can only do math by breaking the seal</text><g transform="translate(120,190) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7A6A"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="90" y="110" width="70" height="50" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M100 128.0 h50 M100 142.0 h50" stroke="#C9A86A" stroke-width="2" stroke-dasharray="3 3"/><circle cx="145" cy="125" r="10" fill="var(--bad)"/><text x="125" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">secret amount A</text><g transform="translate(380,235) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="350" y="155" width="70" height="50" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M360 173.0 h50 M360 187.0 h50" stroke="#C9A86A" stroke-width="2" stroke-dasharray="3 3"/><circle cx="405" cy="170" r="10" fill="var(--bad)"/><text x="385" y="325" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">secret amount B</text><g transform="translate(640,190) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#B5651D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="610" y="110" width="70" height="50" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M620 128.0 h50 M620 142.0 h50" stroke="#C9A86A" stroke-width="2" stroke-dasharray="3 3"/><circle cx="665" cy="125" r="10" fill="var(--bad)"/><text x="645" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">secret amount C</text></svg>
+<p>The scribe needs to add up three secret amounts.<small>He needs the total — but until now, adding meant breaking the seal first.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The scribe opens a card, sees 30, and a speech bubble says the scribe now knows A's secret amount" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(240,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="120" y="60" width="80" height="54" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="160.0" y="92.0" text-anchor="middle" font-size="15" font-weight="700" fill="#142033" class="d">30</text><path d="M130 70 L150 90 M190 70 L170 90" stroke="var(--bad)" stroke-width="3" stroke-linecap="round"/><text x="160" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">opened it to read it</text><rect x="330" y="40" width="230" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M435.0 80 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="332" y="76" width="226" height="6" fill="var(--panel)"/><text x="445.0" y="63.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">now the scribe knows A's amount is 30</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">every calculation costs you one secret</text></svg>
+<p>Open it to add it, and the secret is gone.<small>Every calculation costs a secret. Each amount had to be shown to whoever does the adding.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="Three sealed cards are added to make one sealed total card, which only the owner unseals with their own key" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><rect x="60" y="100" width="90" height="60" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M70 123.0 h70 M70 137.0 h70" stroke="#C9A86A" stroke-width="2" stroke-dasharray="3 3"/><circle cx="135" cy="115" r="10" fill="var(--bad)"/><path d="M162 130 h28 M176 116 v28" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/><rect x="216" y="100" width="90" height="60" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M226 123.0 h70 M226 137.0 h70" stroke="#C9A86A" stroke-width="2" stroke-dasharray="3 3"/><circle cx="291" cy="115" r="10" fill="var(--bad)"/><path d="M318 130 h28 M332 116 v28" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/><rect x="372" y="100" width="90" height="60" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M382 123.0 h70 M382 137.0 h70" stroke="#C9A86A" stroke-width="2" stroke-dasharray="3 3"/><circle cx="447" cy="115" r="10" fill="var(--bad)"/><text x="295" y="60" text-anchor="middle" font-size="22" font-weight="700" fill="var(--ink)" class="d">=</text><path d="M470 130 h50" stroke="var(--ink)" stroke-width="4"/><path d="M510 122 l10 8 l-10 8" stroke="var(--ink)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="530" y="100" width="110" height="60" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M540 123.0 h90 M540 137.0 h90" stroke="#C9A86A" stroke-width="2" stroke-dasharray="3 3"/><circle cx="625" cy="115" r="10" fill="var(--bad)"/><text x="585" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">the sealed total</text><g transform="translate(660,220) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7A6A"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="660" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">only the amount's owner unseals it, with their own key</text><text x="380" y="320" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">the scribe added them without ever breaking a seal</text></svg>
+<p>Homomorphic encryption adds the cards while they're still sealed.<small>The scribe added them without ever breaking a seal. Only the owner holding the key can open the result.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="16" width="48" height="32" rx="5" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M32 24 v16 M24 32 h16" stroke="var(--good)" stroke-width="4" stroke-linecap="round"/></svg><b>Add while still sealed</b><span>math, without opening it</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="16" width="48" height="32" rx="5" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M24 24 l16 16 M40 24 l-16 16" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/></svg><b>Some can multiply too</b><span>fully homomorphic schemes do more</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 32 q22 -20 44 0 q-22 20 -44 0z" fill="none" stroke="var(--muted)" stroke-width="3"/><circle cx="32" cy="32" r="8" fill="var(--muted)"/><path d="M12 14 L52 50" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/></svg><b>The one computing can't peek</b><span>even the scribe never sees the number</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="34" r="20" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M32 22 v12 l9 5" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M14 14 l6 6 M50 14 l-6 6" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/></svg><b>Slow and heavy</b><span>the math takes far longer than usual</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: plain computation opens, adds, and exposes the result. Right: homomorphic computation adds while sealed, and only the owner opens the result" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="320" fill="var(--bad-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/><text x="190" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">plain computation</text><text x="190" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">① open it</text><text x="190" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">② add it</text><text x="190" y="130" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">③ the result is exposed</text><text x="570" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">homomorphic computation</text><text x="570" y="70" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">① add while sealed</text><text x="570" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">② the result stays sealed</text><text x="570" y="130" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)">③ only the owner opens it</text><rect x="140" y="170" width="100" height="60" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="190.0" y="205.0" text-anchor="middle" font-size="15" font-weight="700" fill="#142033" class="d">58</text><rect x="530" y="170" width="100" height="60" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M540 193.0 h80 M540 207.0 h80" stroke="#C9A86A" stroke-width="2" stroke-dasharray="3 3"/><circle cx="615" cy="185" r="10" fill="var(--bad)"/><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">the same sum, but privacy breaks at a different step</text></svg>
+<p>Side by side, here's the difference.<small>The same sum — but privacy breaks at a different point in each.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Comparing partial homomorphic encryption (addition only) with fully homomorphic encryption (addition and multiplication)" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(160,140) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="230" y="100" width="90" height="60" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M240 123.0 h70 M240 137.0 h70" stroke="#C9A86A" stroke-width="2" stroke-dasharray="3 3"/><circle cx="305" cy="115" r="10" fill="var(--bad)"/><text x="160" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">a simpler kind does only addition</text><g transform="translate(560,140) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="560" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">add + multiply together runs much slower</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">mostly used for computing on medical or financial data handed to the cloud</text></svg>
+<p>It can't do everything, and it's slow.<small>Mostly used to compute on medical or financial data handed to the cloud. Other ways to mine statistics while protecting individuals exist too → <a href="ppdm-en.html">PPDM</a></small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Homomorphic encryption</b> = a cipher that lets you add or multiply a letter <b>while it stays sealed</b>. Whoever computes never sees the content, and the <b>result comes out sealed too</b> — only the owner can open it.</h2><p>A cryptographic technique that lets you operate directly on ciphertext and get a result that, once decrypted, matches applying the same operation to the plaintext. Partial homomorphic encryption (PHE, e.g. Paillier) supports addition only; fully homomorphic encryption (FHE) supports both addition and multiplication. It lets a cloud compute on sensitive data without ever seeing it, though the computational cost is still very high.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Homomorphic encryption</dt><dd><b>A letter you can do math on while sealed.</b> You operate on the ciphertext itself. Decrypt the result, and it matches operating on the plaintext.</dd></div><div><dt>Partial HE</dt><dd><b>A simpler version that only adds.</b> Supports only one operation — addition — directly on ciphertext.</dd></div><div><dt>Fully HE</dt><dd><b>A version that both adds and multiplies.</b> Far more flexible, but far slower too.</dd></div><div><dt>Ciphertext computation</dt><dd><b>Doing the math while it's sealed.</b> The one computing never needs to know the content.</dd></div><div><dt>Confidential computing</dt><dd><b>Hiding it even while it's being computed on.</b> Homomorphic encryption is one cryptographic way to reach this goal.</dd></div><div><dt>Decryption</dt><dd><b>Opening the seal.</b> Ordinary encryption has to be opened before you compute. → <a href="encryption-en.html">the letter no one reads without the key</a></dd></div><div><dt>Outsourced cloud computation</dt><dd><b>Handing the computing to a rented warehouse.</b> Lets you hand it over without ever showing the content.</dd></div><div><dt>PPDM</dt><dd><b>Other techniques for mining statistics while protecting individuals.</b> Homomorphic encryption is one tool PPDM uses. → <a href="ppdm-en.html">PPDM</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="accesscontrolppe-en.html">Three Ways to Decide Who Holds the Key →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>책 전체를 미리 짜 두는 구조 밑그림</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="swarchmodel-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · SW공학</div>
+<h1><em>소프트웨어 아키텍처 모델</em>이 뭐예요?</h1>
+<p class="sub">소프트웨어 아키텍처 모델을, 책 한 권을 어떤 모양으로 미리 짜 둘지 정하는 출판사의 마지막 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="책이 너무 커져서 편집장과 작가가 다루기 무서워함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(380,160) scale(1.3)"><rect x="-40" y="-50" width="80" height="100" rx="3" fill="#8B5E3C"/><rect x="-32" y="-42" width="64" height="84" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-20 -24 h40 M-20 -10 h40 M-20 4 h40 M-20 18 h40" stroke="#142033" stroke-width="2"/></g><g transform="translate(180,190) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(580,190) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="380" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">한 권에 다 몰아넣었더니 너무 커졌어요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">한 글자 고치기도 무서워요</text></svg>
+<p>한 권에 다 몰아넣었더니 너무 커졌어요.<small>한 글자 고치기도 무서워요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="한 쪽만 고쳐도 책 전체를 다시 찍어야 하는 상황" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(380,150) scale(1.2)"><rect x="-40" y="-50" width="80" height="100" rx="3" fill="#8B5E3C"/><rect x="-32" y="-42" width="64" height="84" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-20 -24 h40 M-20 -10 h40 M-20 4 h40 M-20 18 h40" stroke="#142033" stroke-width="2"/></g><path d="M300 150 l-40 -10 M300 150 l-40 10" stroke="var(--bad)" stroke-width="3"/><text x="380" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">한 쪽만 고쳐도 책 전체를 다시 인쇄해요</text><text x="380" y="250" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)">느리고 위험해요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">미리 어떤 모양으로 짤지 정해뒀어야 했어요</text></svg>
+<p>한 군데 고치려면 책 전체를 다시 찍어야 해요.<small>느리고 위험해요 — 미리 모양을 정해뒀어야 했어요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="서문·본문·부록이 층층이 쌓인 책의 구조를 편집장이 바라봄" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><rect x="290" y="70" width="180" height="28" rx="3" fill="#D8D2C2"/><text x="380.0" y="89" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">서문</text><rect x="290" y="104" width="180" height="28" rx="3" fill="#C9A86A"/><text x="380.0" y="123" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">본문</text><rect x="290" y="138" width="180" height="28" rx="3" fill="#8B5E3C"/><text x="380.0" y="157" text-anchor="middle" font-size="11" font-weight="700" fill="#142033" class="d">부록</text><g transform="translate(560,130) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="380" y="25" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">아키텍처 모델 = 책 전체를 어떤 모양으로 짤지 미리 정하는 밑그림</text><text x="380" y="320" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">모양에 따라 고치기 쉬움과 배포 속도가 달라져요</text></svg>
+<p>아키텍처 모델은 책 전체를 어떤 모양으로 짤지 미리 정하는 밑그림이에요.<small>모양에 따라 고치기 쉬움과 배포 속도가 달라져요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="40" height="12" rx="2" fill="var(--good)"/><rect x="12" y="26" width="40" height="12" rx="2" fill="var(--accent)"/><rect x="12" y="42" width="40" height="12" rx="2" fill="#8B5E3C"/></svg><b>층층이 쌓기(레이어드)</b><span>서문-본문-부록처럼, 바로 아래 층만 불러요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="24" width="14" height="16" rx="2" fill="var(--good)"/><rect x="25" y="24" width="14" height="16" rx="2" fill="var(--accent)"/><rect x="44" y="24" width="14" height="16" rx="2" fill="#8B5E3C"/><path d="M20 32 h5 M39 32 h5" stroke="var(--muted)" stroke-width="3"/></svg><b>한 줄로 흘려보내기(파이프-필터)</b><span>교정→편집→조판 순서로 다듬어요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="16" width="20" height="18" rx="3" fill="var(--good)"/><rect x="36" y="16" width="20" height="18" rx="3" fill="#4A5A72"/><path d="M28 25 h8" stroke="var(--accent)" stroke-width="4" marker-end="url(#swarrow2)"/><defs><marker id="swarrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker></defs></svg><b>주문하면 받기(클라이언트-서버)</b><span>서점이 창고에 주문하면 책을 받아요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="18" cy="20" r="9" fill="var(--good)"/><circle cx="46" cy="20" r="9" fill="var(--accent)"/><circle cx="32" cy="42" r="9" fill="#8B5E3C"/></svg><b>따로따로 출간(마이크로서비스)</b><span>동물·역사·과학편을 따로 고쳐 내요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 한 덩어리 책은 한 곳만 고쳐도 전부 다시 찍음. 오른쪽: 쪼갠 책은 한 편만 따로 고쳐 냄" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/><defs><marker id="swarrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker></defs><g transform="translate(190,110) scale(1.0)"><rect x="-40" y="-50" width="80" height="100" rx="3" fill="#8B5E3C"/><rect x="-32" y="-42" width="64" height="84" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-20 -24 h40 M-20 -10 h40 M-20 4 h40 M-20 18 h40" stroke="#142033" stroke-width="2"/></g><text x="190" y="190" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">한 덩어리</text><text x="190" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">한 곳 고치면 전부 다시 찍어요</text><rect x="530" y="70" width="46" height="46" rx="4" fill="var(--good)"/><rect x="600" y="70" width="46" height="46" rx="4" fill="var(--accent)"/><rect x="565" y="140" width="46" height="46" rx="4" fill="#8B5E3C"/><text x="570" y="230" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">동물편·역사편·과학편으로 쪼갰어요</text><text x="570" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">한 편만 따로 고쳐 다시 내도 돼요</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">정답은 하나가 아니라, 책 성격에 맞는 모양을 골라요</text></svg>
+<p>한 덩어리냐 쪼갠 구조냐에 따라 고치는 범위가 달라요.<small>정답은 하나가 아니라, 책 성격에 맞는 모양을 골라요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="편집장·작가·교정자·인쇄 감독·독자가 서가 앞에 함께 서 있음" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(170,190) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(280,190) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(390,190) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(500,190) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(630,170) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7B9D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(630,250) scale(0.6)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/></g><g transform="translate(60,190) scale(0.55)"><rect width="112" height="60" rx="3" fill="#5A3B22"/><rect x="4" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="32" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="60" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="88" y="6" width="20" height="48" rx="2" fill="#C9A86A"/></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">원고에서 독자 손까지, 이 출판사 이야기는 여기서 마침표를 찍어요</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">어떤 구조를 고르든, 결국 책은 독자에게 가 닿아야 해요</text></svg>
+<p>원고에서 독자 손까지, 이 출판사 이야기는 여기서 마침표를 찍어요.<small>어떤 구조를 고르든, 결국 책은 독자에게 가 닿아야 해요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>소프트웨어 아키텍처 모델</b> = 시스템 전체를 <b>어떤 모양으로 짤지</b> 미리 정해 두는 <b>구조 밑그림</b>.</h2><p>소프트웨어 아키텍처는 시스템을 구성 요소와 그 관계로 미리 설계한 큰 구조이고, 레이어드·파이프-필터·클라이언트-서버·마이크로서비스·이벤트 기반 등 여러 모델(스타일)이 있어요. 디자인패턴이 반복되는 작은 문제의 해법이라면, 아키텍처는 시스템 전체의 밑그림이라 더 큰 단위예요. 어떤 모델을 고르느냐에 따라 유지보수·확장·배포 방식이 달라져요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>소프트웨어 아키텍처<br><small>Software Architecture</small></dt><dd><b>시스템 전체를 미리 짜 두는 구조 밑그림.</b> 구성 요소와 그 관계를 정해요.</dd></div><div><dt>레이어드 아키텍처<br><small>Layered Architecture</small></dt><dd><b>서문-본문-부록처럼 층층이 쌓은 구조.</b> 바로 아래 층만 불러요.</dd></div><div><dt>파이프-필터<br><small>Pipe-Filter</small></dt><dd><b>교정→편집→조판처럼 한 줄로 흘려보내는 구조.</b> 각 단계가 필터처럼 다듬어요.</dd></div><div><dt>클라이언트-서버<br><small>Client-Server</small></dt><dd><b>서점이 주문하고 창고가 응답하는 구조.</b> 요청하는 쪽과 응답하는 쪽이 나뉘어요.</dd></div><div><dt>마이크로서비스<br><small>Microservices</small></dt><dd><b>동물·역사·과학편처럼 따로따로 쪼갠 구조.</b> 비슷한 구조가 다른 세계에도 있어요. → <a href="servicemesh-ko.html">기구 사이 전용 통로</a></dd></div><div><dt>이벤트 기반 아키텍처<br><small>Event-Driven Architecture</small></dt><dd><b>연재 만화처럼, 사건이 생기면 다음 편이 달라지는 구조.</b> 사건(이벤트)이 흐름을 정해요.</dd></div><div><dt>디자인패턴<br><small>Design Pattern</small></dt><dd><b>작은 반복 문제의 해법.</b> → <a href="diprinciple-ko.html">아무 기계나 꽂을 수 있는 콘센트</a>처럼, 아키텍처보다 작은 단위예요.</dd></div><div><dt>정보시스템 감리/PMO<br><small>IS Audit / PMO</small></dt><dd><b>이 구조가 실제로 잘 지켜지고 있는지 바깥에서 점검해요.</b> → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="pmoaudit-ko.html">출간 전 마지막 검수관 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

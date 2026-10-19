@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>그 자리에서 맞춤 주문서 쓰기</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="dynamicsql-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · DB/데이터</div>
+<h1><em>동적 SQL</em>이 뭐예요?</h1>
+<p class="sub">동적 SQL을, 손님 요청에 따라 그 자리에서 조건을 끼워 넣어 주문서를 조립하는 포장 담당 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="세 명의 배송 기사가 각자 다른 조건(구역만, 색상과 구역, 조건 없음)을 요청함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(140,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="40" y="80" width="170" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M115.0 114 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="42" y="110" width="166" height="6" fill="var(--panel)"/><text x="125.0" y="100.78" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--ink)">구역만요</text><g transform="translate(380,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="290" y="80" width="190" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M375.0 114 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="292" y="110" width="186" height="6" fill="var(--panel)"/><text x="385.0" y="100.78" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--ink)">색상이랑 구역이요</text><g transform="translate(620,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="530" y="80" width="210" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M625.0 114 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="532" y="110" width="206" height="6" fill="var(--panel)"/><text x="635.0" y="100.78" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--ink)">아무 조건 없이 전부요</text><text x="380" y="260" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">요청마다 찾는 조건이 다 달라요</text></svg>
+<p>요청마다 찾는 조건이 다 달라요.<small>미리 정해둔 양식 하나로는 다 감당 못 해요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="포장 담당이 땀을 흘리며 조합별 고정 양식들을 쌓아두지만 다 못 찍어둠" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(240,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(130,110) scale(0.7)"><rect x="-22" y="-28" width="44" height="56" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-14 -14 h28 M-14 -4 h28 M-14 6 h20" stroke="#142033" stroke-width="2"/><text x="0" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">구역만</text></g><g transform="translate(220,130) scale(0.7)"><rect x="-22" y="-28" width="44" height="56" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-14 -14 h28 M-14 -4 h28 M-14 6 h20" stroke="#142033" stroke-width="2"/><text x="0" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">색상만</text></g><g transform="translate(310,110) scale(0.7)"><rect x="-22" y="-28" width="44" height="56" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-14 -14 h28 M-14 -4 h28 M-14 6 h20" stroke="#142033" stroke-width="2"/><text x="0" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">둘다</text></g><text x="240" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">조합마다 미리 다 찍어둘 순 없어요</text><text x="560" y="150" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">...그래서 몇 개는 못 쓰는 양식이 돼요</text></svg>
+<p>고정 양식만으로는 조합을 다 미리 찍어둘 수 없어요.<small>조합이 늘어날수록 못 쓰는 양식만 쌓여요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="포장 담당이 손님 요청을 듣고 그 자리에서 구역과 색상 조건이 적힌 주문서를 완성함" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><g transform="translate(260,160) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(460,170) scale(1.1)"><rect x="-22" y="-28" width="44" height="56" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-14 -14 h28 M-14 -4 h28 M-14 6 h20" stroke="#142033" stroke-width="2"/><text x="0" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">B구역 + 빨강</text></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">동적 SQL = 요청 들을 때마다 그 자리에서 조립하는 주문서</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">조건이 있으면 넣고, 없으면 빼고, 조립해서 실행해요</text></svg>
+<p>동적 SQL은 요청 들을 때마다 그 자리에서 조립하는 주문서예요.<small>조건이 있으면 넣고, 없으면 빼고, 조립해서 실행해요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="30" width="36" height="24" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="20" y="10" width="24" height="14" rx="2" fill="var(--good)"/><path d="M32 24 v6" stroke="var(--muted)" stroke-width="2"/></svg><b>요청 들을 때마다 조립</b><span>실행 직전에 만들어요</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20 12 L44 12 L32 30 Z" fill="var(--accent)"/><rect x="24" y="36" width="16" height="16" rx="2" fill="var(--good)"/></svg><b>조건 있으면 추가</b><span>WHERE 조각을 덧붙여요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="24" width="18" height="18" rx="2" fill="var(--panel)" stroke="var(--line)" stroke-width="3"/><rect x="34" y="24" width="18" height="18" rx="2" fill="var(--good)"/><path d="M30 33 h4" stroke="var(--muted)" stroke-width="3"/></svg><b>빈칸은 안전하게 끼우기</b><span>파라미터 바인딩이에요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 12 L48 32 L18 52 Z" fill="var(--accent)"/></svg><b>조립 끝나면 실행</b><span>완성된 문장을 실행해요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="기본 틀에 구역=B, 색상=빨강 조각을 차례로 덧붙여 완성된 주문서를 만드는 과정" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><g transform="translate(130,160) scale(1.1)"><rect x="-22" y="-28" width="44" height="56" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-14 -14 h28 M-14 -4 h28 M-14 6 h20" stroke="#142033" stroke-width="2"/><text x="0" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">기본 틀</text></g><text x="240" y="155" text-anchor="middle" font-size="26" font-weight="700" fill="var(--muted)" class="d">+</text><rect x="280" y="130" width="90" height="56" rx="3" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2"/><text x="325" y="162" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">구역=B</text><text x="390" y="155" text-anchor="middle" font-size="26" font-weight="700" fill="var(--muted)" class="d">+</text><rect x="420" y="130" width="100" height="56" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><text x="470" y="162" text-anchor="middle" font-size="10" font-weight="700" fill="#142033">색상=빨강</text><text x="545" y="155" text-anchor="middle" font-size="30" font-weight="700" fill="var(--muted)" class="d">→</text><g transform="translate(630,160) scale(1.1)"><rect x="-22" y="-28" width="44" height="56" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-14 -14 h28 M-14 -4 h28 M-14 6 h20" stroke="#142033" stroke-width="2"/><text x="0" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">완성!</text></g><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">조건이 있을 때만 그 조각을 덧붙여요</text></svg>
+<p>조건이 있을 때만 그 조각을 덧붙여요.<small>기본 틀 + 조건 조각들 = 완성된 문장.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 빈칸에 안전하게 값을 끼우는 포장 담당. 오른쪽: 글자를 그대로 이어붙여 찢어진 주문서를 든 배송 기사" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/><g transform="translate(190,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(190,230) scale(0.6)"><rect x="-22" y="-28" width="44" height="56" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-14 -14 h28 M-14 -4 h28 M-14 6 h20" stroke="#142033" stroke-width="2"/><text x="0" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">빈칸에 안전하게 끼우기</text></g><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(570,230) scale(0.6)"><rect x="-22" y="-28" width="44" height="56" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-14 -14 h28 M-14 -4 h28 M-14 6 h20" stroke="#142033" stroke-width="2"/><path d="M-18 -24 L18 24 M18 -24 L-18 24" stroke="var(--bad)" stroke-width="3"/><text x="0" y="42" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">글자를 그대로 붙여넣기</text></g><text x="380" y="282" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink)" class="d">글자를 그대로 이어붙이면 엉뚱한 지시가 끼어들 수 있어요(SQL 인젝션)</text></svg>
+<p>빈칸을 안전하게 채워야 해요.<small>글자를 그대로 이어붙이면 엉뚱한 지시가 끼어들 수 있어요(SQL 인젝션).</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>동적 SQL</b>은 실행 시점에 조건에 따라 <b>그 자리에서 SQL 문장을 조립</b>하는 방식이에요. 미리 고정해 둔 정적 SQL과 반대예요.</h2><p>정적 SQL은 컴파일(또는 저장 프로시저 등록) 시점에 문장이 고정되어 실행 계획을 재사용하기 쉬운 반면, 동적 SQL은 검색 조건이 가변적인 화면(선택적 필터가 많은 조회 화면 등)에 적합해요. 다만 문자열을 그대로 이어붙이면 SQL 인젝션에 취약해지므로, 반드시 파라미터 바인딩으로 값을 안전하게 끼워 넣어야 해요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>정적 SQL<br><small>Static SQL</small></dt><dd><b>미리 찍어둔 고정 양식.</b> 실행 계획을 재사용하기 쉬워요.</dd></div><div><dt>동적 SQL<br><small>Dynamic SQL</small></dt><dd><b>그 자리에서 조립하는 양식.</b> 조건이 가변적인 화면에 맞아요.</dd></div><div><dt>파라미터 바인딩<br><small>Parameter Binding</small></dt><dd><b>값만 빈칸에 안전하게 끼우기.</b> 문자열을 직접 이어붙이지 않아요.</dd></div><div><dt>SQL 인젝션<br><small>SQL Injection</small></dt><dd><b>빈칸에 엉뚱한 지시가 끼어드는 일.</b> 보안 세계에서 자세히 다뤄요. → <a href="injection-ko.html">끼어드는 나쁜 지시</a></dd></div><div><dt>PREPARE/EXECUTE<br><small>PREPARE/EXECUTE</small></dt><dd><b>양식을 미리 맞춰두고 반복 실행.</b> 같은 모양 요청이 많을 때 빨라요.</dd></div><div><dt>저장 프로시저 내 동적 SQL<br><small>Dynamic SQL in Stored Procedures</small></dt><dd><b>프로시저 안에서도 조립할 수 있어요.</b> 실행 권한 관리가 더 까다로워요.</dd></div><div><dt>실행계획 재사용<br><small>Plan Cache Reuse</small></dt><dd><b>같은 모양 양식은 다시 안 그려요.</b> 동적 SQL은 이 재사용이 어려워요.</dd></div><div><dt>ORM 동적 쿼리 빌더<br><small>ORM Query Builder</small></dt><dd><b>코드로 주문서를 짜 맞추는 도구.</b> 내부적으로 동적 SQL을 만들어요.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="raid-ko.html">선반을 쪼개고 겹쳐서 쌓기 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

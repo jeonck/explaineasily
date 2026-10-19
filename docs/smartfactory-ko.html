@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스스로를 지켜보는 공장</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="smartfactory-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 신기술</div>
+<h1><em>스마트팩토리</em>가 뭐예요?</h1>
+<p class="sub">스마트팩토리를, 센서와 화면 속 쌍둥이로 스스로를 지켜보는 공장 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="컨베이어 벨트 끝에서야 불량품을 발견해 라인이 멈춤" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><g transform="translate(80,220) scale(1.0)"><rect width="560" height="18" rx="4" fill="#5A6B85"/><rect x="6" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="36" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="66" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="96" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="126" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="156" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="186" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="216" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="246" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="276" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="306" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="336" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="366" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="396" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="426" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="456" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="486" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="516" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="336" y="-18" width="18" height="18" rx="3" fill="var(--bad)"/></g><g transform="translate(680,170) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="540" y="70" width="210" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M635.0 116 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="542" y="112" width="206" height="6" fill="var(--panel)"/><text x="645.0" y="96.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">앗, 끝까지 와서야 불량인 걸 알았어요</text><text x="380" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)">라인 전체가 멈춰야 해요</text></svg>
+<p>끝까지 와서야 불량인 걸 알았어요.<small>라인 전체가 멈춰야 해요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="절단·조립·검사 세 공정이 서로 따로 떨어져 있음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(60,60) scale(1.0)"><rect width="180" height="160" rx="4" fill="var(--muted)" opacity="0.18" stroke="var(--muted)" stroke-width="3"/><text x="90.0" y="-12" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">절단</text></g><g transform="translate(290,60) scale(1.0)"><rect width="180" height="160" rx="4" fill="var(--muted)" opacity="0.18" stroke="var(--muted)" stroke-width="3"/><text x="90.0" y="-12" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">조립</text></g><g transform="translate(520,60) scale(1.0)"><rect width="180" height="160" rx="4" fill="var(--muted)" opacity="0.18" stroke="var(--muted)" stroke-width="3"/><text x="90.0" y="-12" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">검사</text></g><text x="380" y="260" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">공정끼리 서로의 상태를 몰라요</text><text x="380" y="288" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">문제가 생겨도 뒤늦게 알아채요</text></svg>
+<p>공정끼리 서로의 상태를 몰라요.<small>문제가 생겨도 뒤늦게 알아채요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="컨베이어 곳곳에 센서가 있고, 그 데이터가 화면 속 공장 쌍둥이로 모임" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><g transform="translate(80,240) scale(1.0)"><rect width="560" height="18" rx="4" fill="#5A6B85"/><rect x="6" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="36" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="66" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="96" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="126" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="156" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="186" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="216" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="246" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="276" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="306" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="336" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="366" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="396" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="426" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="456" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="486" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="516" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/></g><g transform="translate(140,210) scale(1.0)"><circle r="6" fill="var(--good)"/><circle r="12" fill="none" stroke="var(--good)" stroke-width="2" opacity="0.5"/></g><g transform="translate(380,210) scale(1.0)"><circle r="6" fill="var(--good)"/><circle r="12" fill="none" stroke="var(--good)" stroke-width="2" opacity="0.5"/></g><g transform="translate(620,210) scale(1.0)"><circle r="6" fill="var(--good)"/><circle r="12" fill="none" stroke="var(--good)" stroke-width="2" opacity="0.5"/></g><g transform="translate(330,60) scale(1.3)"><rect width="80" height="56" rx="4" fill="#1B2A44"/><rect x="6" y="6" width="68" height="44" rx="2" fill="#0A1120"/><g transform="translate(10,44) scale(0.6)"><rect width="60" height="18" rx="4" fill="#5A6B85"/><rect x="6" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/><rect x="36" y="-18" width="18" height="18" rx="3" fill="var(--accent)"/></g></g><path d="M140 205 L395 100" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4"/><path d="M620 205 L460 100" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4"/><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">스마트팩토리 = 센서가 보고, 데이터가 모여, 공장이 스스로 조절해요</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">문제가 생기면 그 자리에서 바로 알아채요</text></svg>
+<p>스마트팩토리는 센서가 보고, 데이터가 모여, 공장이 스스로 조절하는 거예요.<small>문제가 생기면 그 자리에서 바로 알아채요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="10" fill="var(--good)"/><circle cx="32" cy="32" r="20" fill="none" stroke="var(--good)" stroke-width="3" opacity="0.6"/></svg><b>실시간으로 수집하기</b><span>곳곳의 센서로요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="14" width="40" height="30" rx="3" fill="#1B2A44"/><rect x="18" y="20" width="28" height="18" rx="2" fill="#0A1120"/></svg><b>디지털 트윈으로 미리 보기</b><span>바꾸기 전에 먼저 테스트</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="18" y="18" width="28" height="28" rx="4" fill="var(--accent)"/><path d="M32 10 v8 M32 46 v8 M10 32 h8 M46 32 h8" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/></svg><b>엣지에서 즉시 판단</b><span>바로 옆에서 빠르게</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 44 q10 -28 20 -10 q10 18 20 -24" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="52" cy="10" r="4" fill="var(--bad)"/></svg><b>데이터로 미리 정비</b><span>고장 전에 손봐요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="센서층·네트워크층·분석층·제어층 네 겹으로 쌓인 구조도" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><g transform="translate(130,30) scale(1.3)"><rect width="500" height="290" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="500" height="26" rx="6" fill="#C9A86A"/><text x="250.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">스마트팩토리 네 겹</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">센서층 — 곳곳에서 데이터 모으기</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">네트워크층 — 빠르게 실어 나르기</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">분석층 — 디지털 트윈으로 미리 보기</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">제어층 — 로봇·설비를 바로 조정하기</text></g><text x="380" y="345" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">디지털 트윈·엣지 컴퓨팅이 여기서 함께 일해요</text></svg>
+<p>스마트팩토리는 네 겹으로 쌓여 있어요.<small>디지털 트윈·엣지 컴퓨팅이 여기서 함께 일해요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 초기 투자 비용이 큼. 오른쪽: 연결점이 많아 보안 취약점도 늘어남" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/><circle cx="190" cy="100" r="34" fill="none" stroke="var(--accent)" stroke-width="5"/><text x="190" y="110" text-anchor="middle" font-size="28" font-weight="700" fill="var(--accent)">$</text><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">센서·로봇을 전부 까는 초기 비용이 커요</text><rect x="156" y="80" width="28" height="22" rx="3" fill="var(--bad)"/><path d="M162 80 v-10 a8 8 0 0 1 16 0 v10" stroke="var(--bad)" stroke-width="4" fill="none" transform="translate(414,0)"/><text x="570" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">연결된 곳이 많을수록 뚫릴 곳도 많아요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">멋져 보여도, 비용·보안 문제는 전시장 밖 진짜 공장의 몫이에요</text></svg>
+<p>초기 비용이 크고, 연결점이 늘수록 보안도 신경 써야 해요.<small>전시장 데모와 달리, 진짜 공장에서는 이 둘이 진짜 문제예요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>스마트팩토리</b>는 센서·네트워크·데이터 분석·제어를 연결해 <b>공장이 스스로를 지켜보고 조절</b>하게 만든 공장이에요.</h2><p>스마트팩토리는 IoT 센서, 네트워크, 빅데이터·AI 분석, 제어 시스템을 통합해 생산 전 과정을 실시간으로 모니터링·최적화하는 공장이에요. 디지털 트윈으로 변경을 미리 시뮬레이션하고 엣지 컴퓨팅으로 현장 판단을 즉시 내리지만, 초기 구축 비용과 늘어난 연결점만큼 커지는 보안 위협은 별도로 관리해야 해요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>스마트팩토리<br><small>Smart Factory</small></dt><dd><b>스스로를 지켜보는 공장.</b> 센서·분석·제어가 하나로 이어져요.</dd></div><div><dt>디지털 트윈<br><small>Digital Twin</small></dt><dd><b>바꾸기 전에 미리 테스트하는 화면 속 쌍둥이.</b> 스마트팩토리가 실제로 쓰는 기술이에요. → <a href="digitaltwin-ko.html">디지털 트윈 부스</a></dd></div><div><dt>엣지 컴퓨팅<br><small>Edge Computing</small></dt><dd><b>현장에서 바로 판단하는 것.</b> 공장 현장의 즉시 판단을 맡아요. → <a href="edgecompute-ko.html">엣지 컴퓨팅 부스</a></dd></div><div><dt>스마트시티<br><small>Smart City</small></dt><dd><b>도시 전체로 넓어진 같은 생각.</b> 공장 안이 아니라 도시 전체를 지켜봐요. → <a href="smartcity-ko.html">스마트시티 부스</a></dd></div><div><dt>예지보전<br><small>Predictive Maintenance</small></dt><dd><b>고장나기 전에 미리 손보는 것.</b> 데이터로 쌓인 패턴을 읽어요.</dd></div><div><dt>MES(제조실행시스템)<br><small>MES</small></dt><dd><b>공정 간 작업 지시를 실어 나르는 시스템.</b> 스마트팩토리의 제어층에서 함께 일해요.</dd></div><div><dt>OT 보안<br><small>OT Security</small></dt><dd><b>공장 설비 자체를 지키는 보안.</b> 연결점이 늘수록 더 중요해져요.</dd></div><div><dt>불량률<br><small>Defect Rate</small></dt><dd><b>끝에 가서야 알면 늦는 숫자.</b> 실시간 센서로 더 일찍 잡아내요.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="bcpublicprivate-ko.html">펼친 장부와 자물쇠 장부 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

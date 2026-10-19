@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Key of Light That Shows the Moment It's Watched</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="qkdcomm-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · InfoSec</div>
+<h1>What is <em>Quantum Key Distribution (QKD)</em>?</h1>
+<p class="sub">Quantum key distribution, told as a story about a key made of light that shows the moment someone peeks at it.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A friend holds a padlocked letter while, in the distance, a far stronger future computer looms as a worry" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="280" fill="var(--sky)"/><ellipse cx="380" cy="280" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(130,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(220,120) rotate(0) scale(1.0)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="70" y="34" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">ㅋ#7@…x!Q</text><rect x="16" y="52" width="70" height="4" rx="2" fill="#C9A86A"/></g><g transform="translate(560,150) scale(1.1)"><rect x="-30" y="-36" width="60" height="72" rx="6" fill="var(--night)"/><rect x="-22" y="-28" width="44" height="16" rx="2" fill="#5B8DEF"/><rect x="-22" y="-4" width="12" height="10" rx="1" fill="#C9D5E6"/><rect x="-6" y="-4" width="12" height="10" rx="1" fill="#C9D5E6"/><rect x="10" y="-4" width="12" height="10" rx="1" fill="#C9D5E6"/><rect x="-22" y="10" width="12" height="10" rx="1" fill="#C9D5E6"/><rect x="-6" y="10" width="12" height="10" rx="1" fill="#C9D5E6"/><rect x="10" y="10" width="12" height="10" rx="1" fill="#C9D5E6"/><rect x="-22" y="24" width="12" height="10" rx="1" fill="#C9D5E6"/><rect x="-6" y="24" width="12" height="10" rx="1" fill="#C9D5E6"/><rect x="10" y="24" width="12" height="10" rx="1" fill="#C9D5E6"/></g><text x="560" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">a far stronger future computer</text><path d="M400 160 L500 160" stroke="var(--bad)" stroke-width="2" stroke-dasharray="6 6"/><text x="380" y="262" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">a lock twisted from math might someday be solved — all of it</text></svg>
+<p>Even today's padlocked letter might someday be cracked.<small>A <a href="encryption-en.html">lock twisted from math</a> might not hold up against a far stronger future computer (a quantum computer).</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A masked figure secretly copies the padlocked letter, leaving no sign behind" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="280" fill="var(--bad-soft)"/><g transform="translate(130,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(220,120) rotate(0) scale(1.0)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="70" y="34" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">ㅋ#7@…x!Q</text><rect x="16" y="52" width="70" height="4" rx="2" fill="#C9A86A"/></g><g transform="translate(400,140) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(480,110) rotate(6) scale(0.75)"><rect width="140" height="80" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><text x="70" y="34" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">ㅋ#7@…x!Q</text><rect x="16" y="52" width="70" height="4" rx="2" fill="#C9A86A"/></g><text x="480" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">a secret copy</text><g transform="translate(660,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="258" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">a copy leaves no trace — there's no way to know it happened</text></svg>
+<p>A secret copy leaves no trace.<small>A copy can be taken and nothing shows it ever happened.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="Three particles of light fly toward a friend; the instant a masked figure peeks, the light's value scrambles, and the friend says someone peeked — discard it!" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(70,160) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(170,150) scale(1.1)"><circle r="10" fill="#5B8DEF"/><circle r="16" fill="none" stroke="#5B8DEF" stroke-width="2" opacity="0.5"/></g><g transform="translate(200,140) scale(1.1)"><circle r="10" fill="#5B8DEF"/><circle r="16" fill="none" stroke="#5B8DEF" stroke-width="2" opacity="0.5"/></g><g transform="translate(230,160) scale(1.1)"><circle r="10" fill="#5B8DEF"/><circle r="16" fill="none" stroke="#5B8DEF" stroke-width="2" opacity="0.5"/></g><g transform="translate(420,110) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><g transform="translate(300,150)"><path d="M-20 0 h40" stroke="var(--bad)" stroke-width="3" stroke-dasharray="4 4"/></g><text x="300" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)" class="d">the instant it's peeked at, the light's state changes</text><g transform="translate(560,150) scale(1.1)"><circle r="10" fill="var(--bad)"/><circle r="16" fill="none" stroke="var(--bad)" stroke-width="2" opacity="0.5"/></g><text x="560" y="190" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">the value is scrambled</text><g transform="translate(680,160) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="600" y="230" width="150" height="34" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M665.0 264 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="602" y="260" width="146" height="6" fill="var(--panel)"/><text x="675.0" y="250.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">someone peeked — discard it!</text><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">QKD = a key made of light; the moment it's watched, it shows</text></svg>
+<p>QKD is a key made of particles of light. The moment it's peeked at, it shows.<small>Peeking changes the light's state itself. The scrambled values are simply discarded and new ones made.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="10" fill="#5B8DEF"/><circle cx="32" cy="32" r="18" fill="none" stroke="#5B8DEF" stroke-width="3"/></svg><b>A key of photons</b><span>key bits held in a quantum state</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 32 h12 M36 32 h12" stroke="var(--bad)" stroke-width="4" stroke-dasharray="6 4"/><circle cx="32" cy="32" r="6" fill="var(--bad)"/></svg><b>Watching changes it</b><span>observation breaks the state</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20 20 L44 44 M44 20 L20 44" stroke="var(--bad)" stroke-width="5" stroke-linecap="round"/></svg><b>Caught, it's discarded</b><span>those bits are generated again</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="18" width="36" height="28" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><circle cx="32" cy="32" r="5" fill="#E9B44C"/></svg><b>The message: ordinary locks</b><span>QKD only hands out the key</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Two boxes compared: today's encryption (math-based, safe because it's hard to compute, a future computer might crack it, peeking leaves no trace) vs QKD (physics-based, no computation breaks it, peeking is instantly caught, the message itself still uses ordinary locks)" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(50,30)"><rect width="310" height="240" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="155.0" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">TODAY'S ENCRYPTION (math-based)</text><text x="16" y="52" text-anchor="start" font-size="12" font-weight="700" fill="#142033">hard to compute — that's the lock</text><text x="16" y="76" text-anchor="start" font-size="12" font-weight="700" fill="#142033">a far stronger computer might crack it</text><text x="16" y="100" text-anchor="start" font-size="12" font-weight="700" fill="#142033">peeking leaves no trace</text></g><g transform="translate(400,30)"><rect width="310" height="240" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="155.0" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">QKD (physics-based)</text><text x="16" y="52" text-anchor="start" font-size="12" font-weight="700" fill="#142033">a property of light — no computation breaks it</text><text x="16" y="76" text-anchor="start" font-size="12" font-weight="700" fill="#142033">peeking changes the value — instantly caught</text><text x="16" y="100" text-anchor="start" font-size="12" font-weight="700" fill="#142033">the message itself is still locked with ordinary encryption</text></g></svg>
+<p>Today's encryption and QKD are safe for entirely different reasons.<small>One is safe because the math is hard; the other because of a property of light. That's why QKD can catch eavesdropping the instant it happens.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A particle of light can't travel far, so it passes through a relay station to reach its destination" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="280" fill="var(--accent-soft)"/><g transform="translate(100,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(190,140) scale(0.9)"><circle r="10" fill="#5B8DEF"/><circle r="16" fill="none" stroke="#5B8DEF" stroke-width="2" opacity="0.5"/></g><path d="M210 140 L330 140" stroke="#5B8DEF" stroke-width="3" stroke-dasharray="6 4"/><text x="270" y="120" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">light can't travel far</text><rect x="330" y="110" width="50" height="60" rx="6" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="355" y="190" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">a relay station</text><path d="M380 140 L470 140" stroke="#5B8DEF" stroke-width="3" stroke-dasharray="6 4"/><g transform="translate(490,140) scale(0.9)"><circle r="10" fill="#5B8DEF"/><circle r="16" fill="none" stroke="#5B8DEF" stroke-width="2" opacity="0.5"/></g><g transform="translate(580,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="258" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">needs many relays and costly gear — still used on only a few stretches</text></svg>
+<p>Distance and cost are the limits.<small>It needs many relay stations and costly equipment, so it's still used on only a few stretches.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Quantum Key Distribution (QKD)</b> = exchanging a key made of <b>particles of light</b>. <b>Peeking changes the light's state</b>, so eavesdropping is caught instantly.</h2><p>QKD distributes cryptographic keys using the quantum-mechanical property that observation disturbs a system's state. Unlike public-key encryption, which relies on computational hardness and may be vulnerable to future quantum computers, QKD detects eavesdropping through physics itself. QKD only distributes the key; the message itself is still encrypted with symmetric encryption. Distance limits and high deployment costs remain obstacles to wide use. It is a separate technology from PQC (post-quantum cryptography), which instead uses math-based algorithms designed to resist quantum computers.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Quantum Key Distribution</dt><dd><b>Sharing a key made of light.</b> Catches eavesdropping through the physical law that observation disturbs the state.</dd></div><div><dt>Photon</dt><dd><b>A particle of light.</b> The unit that carries each bit of the key.</dd></div><div><dt>Quantum computer threat</dt><dd><b>The far stronger future computer.</b> Could someday crack some of today's encryption through sheer computation.</dd></div><div><dt>Post-Quantum Cryptography</dt><dd><b>A different approach — holding out with math.</b> Unlike QKD, it uses new math-based algorithms to prepare for future computers.</dd></div><div><dt>Eavesdropping detection</dt><dd><b>A peek is caught instantly.</b> A feature unique to QKD — the physics itself gives it away.</dd></div><div><dt>Key distribution</dt><dd><b>Delivering only the key.</b> The letter itself is still locked with ordinary encryption. → <a href="encryption-en.html">the letter nobody can read without the key</a></dd></div><div><dt>Distance limits, relays</dt><dd><b>Light can't travel far.</b> Needs relay stations, which means more equipment.</dd></div><div><dt>Deployment cost</dt><dd><b>Still expensive.</b> That's why it's used only on a few critical stretches, not across all communications.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="bcsecurity-en.html">The Ledger Everyone Carries, Stitched Together by Fingerprints →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

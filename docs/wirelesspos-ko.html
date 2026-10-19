@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>신호탑 세 개로 위치 찾기</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="wirelesspos-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 네트워크</div>
+<h1><em>무선 측위</em>가 뭐예요?</h1>
+<p class="sub">무선 측위(위치 기반 기술)를, 여러 신호탑에서 거리를 재어 지금 위치를 찾는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="건물 숲에 둘러싸인 집배원이 지금 어디인지 모르겠다고 말풍선으로 말함" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><rect x="100" y="60" width="60" height="200" fill="var(--stone-dark)"/><rect x="200" y="30" width="60" height="230" fill="var(--stone-dark)"/><rect x="520" y="50" width="60" height="210" fill="var(--stone-dark)"/><g transform="translate(380,210) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="420" y="100" width="220" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M520.0 144 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="422" y="140" width="216" height="6" fill="var(--panel)"/><text x="530.0" y="125.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">여기가 어디인지 모르겠어요</text><text x="380" y="324" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">건물 숲에 둘러싸여 지금 위치를 알 수가 없어요</text></svg>
+<p>도심 건물 숲에서 집배원이 길을 잃어요.<small>건물 숲에 둘러싸여 지금 위치를 알 수가 없어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="위성 신호가 큰 건물에 가로막혀 집배원에게 약하게 닿음" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--bad-soft)"/><circle cx="660" cy="50" r="18" fill="#C9A86A"/><text x="660" y="90" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">위성</text><path d="M640 70 L420 180" stroke="var(--bad)" stroke-width="3" stroke-dasharray="4 6"/><rect x="300" y="100" width="70" height="160" fill="var(--stone-dark)"/><g transform="translate(420,190) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="420" y="305" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">건물에 가려 신호가 안 닿거나 약해요</text></svg>
+<p>위성 신호가 건물에 가려 약해져요.<small>건물에 가려 신호가 안 닿거나 약해요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="두 우체국과 위성에서 뻗은 점선 원 세 개가 집배원이 선 자리에서 겹침" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(140,150) scale(0.6)"><rect x="-40" y="-10" width="80" height="50" fill="#D8D2C2"/><path d="M-46 -10 h92 l-46 -28z" fill="#8B5E3C"/><rect x="-10" y="18" width="20" height="22" fill="#5A3B22"/></g><g transform="translate(620,150) scale(0.6)"><rect x="-40" y="-10" width="80" height="50" fill="#D8D2C2"/><path d="M-46 -10 h92 l-46 -28z" fill="#8B5E3C"/><rect x="-10" y="18" width="20" height="22" fill="#5A3B22"/></g><circle cx="660" cy="60" r="16" fill="#C9A86A"/><g transform="translate(380,220) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><circle cx="140" cy="186" r="160" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 5"/><circle cx="620" cy="186" r="160" fill="none" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 5"/><circle cx="660" cy="76" r="230" fill="none" stroke="#C9A86A" stroke-width="2" stroke-dasharray="4 5"/><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">무선 측위 = 여러 신호탑에서 거리를 재어 내 위치를 찾는 기술</text><text x="380" y="322" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">원 세 개가 겹치는 한 점이 바로 지금 있는 자리예요</text></svg>
+<p>여러 신호탑에서 거리를 재어 내 위치를 찾아요.<small>원 세 개가 겹치는 한 점이 바로 지금 있는 자리예요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="18" r="8" fill="#C9A86A"/><rect x="10" y="14" width="10" height="8" fill="var(--accent)"/><rect x="44" y="14" width="10" height="8" fill="var(--accent)"/><path d="M32 26 v26" stroke="var(--ink)" stroke-width="3" stroke-dasharray="3 3"/></svg><b>위성(GPS)</b><span>멀리서도 정확하지만 실내엔 약해요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 10 L48 54 H16 Z" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M20 20 q12 -10 24 0" stroke="var(--good)" stroke-width="3" fill="none"/></svg><b>기지국 신호</b><span>신호 세기로 대략 위치를 가늠해요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 32 q16 -16 32 0 M22 40 q10 -10 20 0" stroke="var(--accent)" stroke-width="3" fill="none"/><circle cx="32" cy="48" r="4" fill="var(--accent)"/></svg><b>와이파이/비콘</b><span>실내에서 부족한 부분을 보완해요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="26" r="18" fill="none" stroke="var(--accent)" stroke-width="2"/><circle cx="42" cy="30" r="18" fill="none" stroke="var(--good)" stroke-width="2"/><circle cx="32" cy="44" r="18" fill="none" stroke="#C9A86A" stroke-width="2"/></svg><b>삼변측량</b><span>세 곳 이상 거리를 겹쳐 위치를 계산해요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="위성·기지국·와이파이·삼변측량 네 가지를 설명한 안내판" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,40) scale(1.0)"><rect width="640" height="240" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="640" height="26" rx="6" fill="#C9A86A"/><text x="320.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">위치를 찾는 세 가지 신호</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">위성(GPS) — 멀리서도 정확하지만 실내에 약함</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">기지국 — 이동통신 신호 세기로 대략 위치</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">와이파이/비콘 — 실내에서 보완</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">삼변측량 — 세 곳 이상 거리를 겹쳐 계산</text></g></svg>
+<p>측위에는 여러 신호가 쓰여요.<small>위성은 야외에, 기지국은 대략, 와이파이는 실내 보완에 맞아요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 야외에서 위성 신호로 정확함. 오른쪽: 실내에서는 신호 반사로 오차가 커짐" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/><g transform="translate(190,160) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">야외에선 위성 신호로 꽤 정확해요</text><g transform="translate(570,160) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="570" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">실내에선 신호가 반사되어 오차가 커요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">그래서 위성·기지국·와이파이를 섞어 써요(하이브리드)</text></svg>
+<p>실내에선 오차가 커지고, 여러 방식을 섞어 써요.<small>그래서 위성·기지국·와이파이를 섞어 쓰는 하이브리드 방식을 써요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>무선 측위</b>는 <b>여러 신호탑(위성·기지국·와이파이)에서 오는 신호로 거리를 재어</b> 지금 위치를 찾아내는 기술이에요(삼변측량).</h2><p>무선 측위는 GPS 같은 위성 신호의 도착 시간차로 거리를 계산하는 삼변측량이 기본이지만, 실내·도심에서는 신호가 약해지거나 반사돼 오차가 커져요. 이를 보완하려고 이동통신 기지국 신호 세기(RSSI)나 실내 와이파이/BLE 비콘 신호를 함께 쓰는 하이브리드 측위가 널리 쓰여요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>무선 측위<br><small>Wireless positioning</small></dt><dd><b>여러 신호탑 거리로 내 위치를 찾는 기술.</b> 삼변측량이 기본 원리예요.</dd></div><div><dt>삼변측량<br><small>Trilateration</small></dt><dd><b>세 곳 이상 거리를 겹쳐 위치를 계산하는 것.</b> 원이 겹치는 한 점이 위치예요.</dd></div><div><dt>GPS<br><small>GPS</small></dt><dd><b>가장 흔히 쓰는 위성 측위 신호.</b> 실내·도심에선 약해질 수 있어요.</dd></div><div><dt>RSSI<br><small>RSSI</small></dt><dd><b>받은 신호의 세기.</b> 가까운 기지국일수록 세게 받혀요.</dd></div><div><dt>BLE 비콘<br><small>BLE beacon</small></dt><dd><b>실내 위치를 보완하는 작은 신호 발신기.</b> 위성이 안 닿는 실내에서 요긴해요.</dd></div><div><dt>5G 네트워크 슬라이싱<br><small>5G Network slicing</small></dt><dd><b>한 도로를 전용 차선으로 나누는 것.</b> 측위 신호도 특정 슬라이스로 우선 처리될 수 있어요. → <a href="5gslicing-ko.html">도로를 차선으로 나누기</a></dd></div><div><dt>다중접속 제어<br><small>Multiple access control</small></dt><dd><b>여러 집배원이 한 길을 나눠 쓰는 규칙.</b> 측위 신호도 결국 이 규칙으로 통로를 나눠 써요. → <a href="macprotocol-ko.html">하나의 통로를 안 부딪히고 나눠 쓰는 법</a></dd></div><div><dt>VPN<br><small>VPN</small></dt><dd><b>몰래 파는 안전한 터널.</b> 위치 정보가 오갈 때도 이 터널로 보호되기도 해요. → <a href="vpn-ko.html">몰래 파는 안전한 터널</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="ipv6-ko.html">끝없이 늘어난 새 번지수 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

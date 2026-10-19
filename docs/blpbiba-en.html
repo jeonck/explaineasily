@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>No Leaking Down, No Corrupting Up — Two Ladder Rules</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="blpbiba-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · InfoSec</div>
+<h1>What are <em>BLP</em> and <em>Biba</em>?</h1>
+<p class="sub">The BLP and Biba access-control security models, told as a story about two rules that block climbing a rank ladder in opposite directions.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="The castle's rooms sit like ladder rungs: rank 1 (the clerk), rank 2 (the general), rank 3 (the king), each holding its own scroll" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><rect x="360" y="60" width="8" height="220" fill="#8B5E3C"/><rect x="480" y="60" width="8" height="220" fill="#8B5E3C"/><rect x="360" y="60" width="128" height="6" fill="#8B5E3C"/><text x="344" y="65" text-anchor="end" font-size="12" font-weight="700" fill="var(--muted)">rank 3: the king's secret room</text><g transform="translate(390,20) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(330,45) scale(1.0)"><rect x="-18" y="-12" width="36" height="24" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><path d="M-10 -3 h20 M-10 3 h12" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><rect x="360" y="150" width="128" height="6" fill="#8B5E3C"/><text x="344" y="155" text-anchor="end" font-size="12" font-weight="700" fill="var(--muted)">rank 2: the general's room</text><g transform="translate(390,110) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(330,135) scale(1.0)"><rect x="-18" y="-12" width="36" height="24" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><path d="M-10 -3 h20 M-10 3 h12" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><rect x="360" y="240" width="128" height="6" fill="#8B5E3C"/><text x="344" y="245" text-anchor="end" font-size="12" font-weight="700" fill="var(--muted)">rank 1: the clerk's room</text><g transform="translate(390,200) scale(0.5)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7A6A"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(330,225) scale(1.0)"><rect x="-18" y="-12" width="36" height="24" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><path d="M-10 -3 h20 M-10 3 h12" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><text x="380" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">every room in the castle carries its own secrecy rank</text></svg>
+<p>Every room in the castle carries its own secrecy rank.<small>Under <a href="accesscontrolppe-en.html">MAC</a> (Mandatory Access Control), nobody can change this ranking at will.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A low rank peeks at the king's secret, and a high rank writes the secret into a low-rank ledger — both leak the secret downward" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(170,110) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7A6A"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(230,90) scale(1.0)"><rect x="-18" y="-12" width="36" height="24" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><path d="M-10 -3 h20 M-10 3 h12" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><path d="M240 90 L400 60" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 5" fill="none"/><path d="M312.0 67.0 l16 16 M328.0 67.0 l-16 16" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><g transform="translate(430,60) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="260" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">a low rank peeks at the king's secret</text><g transform="translate(590,110) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(540,90) scale(1.0)"><rect x="-18" y="-12" width="36" height="24" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><path d="M-10 -3 h20 M-10 3 h12" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><path d="M530 90 L370 150" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 5" fill="none"/><path d="M442.0 112.0 l16 16 M458.0 112.0 l-16 16" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><g transform="translate(340,170) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7A6A"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="500" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">a high rank writes the secret into a low ledger</text><text x="380" y="270" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">both end up leaking the secret downward</text></svg>
+<p>Climb the ladder either way with no rule, and both end badly.<small>Peek up, and it leaks. Write down, and it leaks. Either way, the secret flows downward.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="Left, BLP keeps secrets with no-read-up and no-write-down; right, Biba keeps things clean with no-read-down and no-write-up" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="360" fill="var(--good-soft)"/><rect x="380" width="380" height="360" fill="var(--accent-soft)"/><text x="190" y="34" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">BLP — no leaking secrets</text><g transform="translate(140,110) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(140,230) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7A6A"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><path d="M170 230 L170 130" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 5" fill="none"/><path d="M162.0 172.0 l16 16 M178.0 172.0 l-16 16" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><text x="100" y="180" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">no read up</text><path d="M120 110 L120 210" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 5" fill="none"/><path d="M112.0 152.0 l16 16 M128.0 152.0 l-16 16" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><text x="230" y="180" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">no write down</text><text x="190" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">confidentiality — keeps secrets secret</text><text x="570" y="34" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">Biba — no corrupting the clean</text><g transform="translate(520,110) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(520,230) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7A6A"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><path d="M550 110 L550 210" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 5" fill="none"/><path d="M542.0 152.0 l16 16 M558.0 152.0 l-16 16" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><text x="480" y="180" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">no read down</text><path d="M500 230 L500 130" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 5" fill="none"/><path d="M492.0 172.0 l16 16 M508.0 172.0 l-16 16" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><text x="610" y="180" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">no write up</text><text x="570" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">integrity — keeps clean records clean</text><text x="380" y="338" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">the same ladder, with mirror-image rules</text></svg>
+<p>BLP and Biba are two rules, paired as mirror images.<small>BLP (1973) protects <a href="ciatriad-en.html">confidentiality</a>; Biba (1977) protects <a href="ciatriad-en.html">integrity</a>. Both are rules on the very same rank ladder.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 50 V16 M20 28 L32 14 L44 28" fill="none" stroke="var(--good)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>BLP: no read up</b><span>a low rank can't read a higher secret</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 14 V48 M20 36 L32 50 L44 36" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><b>BLP: no write down</b><span>a high rank can't write into a low ledger</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 10 V54" stroke="var(--muted)" stroke-width="2" stroke-dasharray="3 3"/><path d="M12 20 L26 20 L26 32" fill="none" stroke="var(--good)" stroke-width="3" stroke-linecap="round"/><path d="M52 44 L38 44 L38 32" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/></svg><b>Biba: the exact mirror</b><span>no read down + no write up</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="40" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 22 h24 M20 30 h24 M20 38 h16" stroke="#142033" stroke-width="2.5" stroke-linecap="round"/></svg><b>A frequent exam topic</b><span>almost always asked as the difference between them</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Table: BLP — no read up + no write down / confidentiality, Biba — no read down + no write up / integrity, Both — rules on the same ladder / MAC" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><rect x="40" y="30" width="680" height="260" rx="8" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="40" y="30" width="680" height="34" rx="8" fill="#C9A86A"/><text x="130" y="53" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">model</text><text x="330" y="53" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">rule</text><text x="580" y="53" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">what it protects</text><path d="M40 139 h680" stroke="#C9A86A" stroke-width="1.5"/><path d="M40 214 h680" stroke="#C9A86A" stroke-width="1.5"/><text x="130" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#142033" class="d">BLP</text><text x="330" y="92" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">no read up</text><text x="330" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">no write down</text><text x="580" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">confidentiality</text><text x="130" y="175" text-anchor="middle" font-size="14" font-weight="700" fill="#142033" class="d">Biba</text><text x="330" y="167" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">no read down</text><text x="330" y="187" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">no write up</text><text x="580" y="175" text-anchor="middle" font-size="12" font-weight="700" fill="#142033">integrity</text><text x="130" y="250" text-anchor="middle" font-size="14" font-weight="700" fill="#142033" class="d">both</text><text x="330" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">rules on the very same rank ladder</text><text x="580" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">MAC (mandatory access control)</text></svg>
+<p>Side by side, here are the four rules.<small>BLP blocks a secret leaking downward; Biba blocks something untrustworthy creeping upward.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The strict rules make daily use awkward, so in practice they're blended with RBAC. Born in military/classified systems as the concrete rules behind MAC" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(190,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#E9B44C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#7B3FA0"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">strict rules make day-to-day work awkward</text><g transform="translate(560,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--good)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="var(--good)"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="560" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">usually blended with role-based access (RBAC) in practice</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">born in military and classified systems — the concrete rules behind MAC</text></svg>
+<p>Strict as they are, they're usually blended with other models in practice.<small>These are the concrete rules behind <a href="accesscontrolppe-en.html">MAC</a>. Most company systems lean more on <a href="rbac-en.html">RBAC</a> instead.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>BLP</b> keeps a secret from leaking by letting nobody <b>read up or write down</b> the rank ladder; <b>Biba</b> mirrors it exactly, letting nobody <b>read down or write up</b>, to keep clean records clean.</h2><p>Bell-LaPadula (BLP, 1973) is a confidentiality-focused MAC model enforcing No Read Up / No Write Down. Biba (1977) is an integrity-focused model enforcing No Read Down / No Write Up, so a lower-trust subject can never corrupt higher-ranked data. Both are the concrete, formal mathematical rules behind label-based Mandatory Access Control (MAC), originating in military and government classified systems.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Bell-LaPadula</dt><dd><b>The rule that keeps a secret from leaking.</b> No read up + no write down, protecting confidentiality.</dd></div><div><dt>Biba</dt><dd><b>The rule that keeps something untrustworthy from creeping in.</b> No read down + no write up, protecting integrity.</dd></div><div><dt>No Read Up</dt><dd><b>A low rank can't read a higher secret.</b> BLP's first rule.</dd></div><div><dt>No Write Down</dt><dd><b>A high rank can't write into a lower ledger.</b> BLP's second rule.</dd></div><div><dt>No Read Down / No Write Up</dt><dd><b>Biba's mirror-image pair of rules.</b> Blocks the opposite direction from BLP, to protect integrity instead.</dd></div><div><dt>Mandatory Access Control</dt><dd><b>The king's rank-list — nobody can override it.</b> BLP/Biba are the concrete rules that actually implement MAC. → <a href="accesscontrolppe-en.html">three ways to decide who holds the key</a></dd></div><div><dt>Confidentiality · Integrity</dt><dd><b>No peeking · no tampering.</b> Two of the three legs of the CIA triad. → <a href="ciatriad-en.html">three things to keep</a></dd></div><div><dt>RBAC</dt><dd><b>The model real organizations lean on more.</b> BLP/Biba are strict enough that they're usually blended with role-based rules. → <a href="rbac-en.html">a key ring for every hat</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="pkicert-en.html">The One Seal-Shop That's Now Many →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

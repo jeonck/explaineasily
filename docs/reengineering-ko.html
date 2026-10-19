@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사라진 원본을 되짚어 다시 짓기</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="reengineering-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · SW공학</div>
+<h1><em>재공학/역공학(3R)</em>이 뭐예요?</h1>
+<p class="sub">재공학과 역공학(3R)을, 원본 원고가 사라진 오래된 절판본을 완성본만 보고 되짚어 다시 손보는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="작가가 진땀을 흘리며 서가 속 오래된 절판본을 바라봄, 원본 원고는 없음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(140,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(280,140) scale(0.9)"><rect width="112" height="60" rx="3" fill="#5A3B22"/><rect x="4" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="32" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="60" y="6" width="20" height="48" rx="2" fill="var(--accent)"/><rect x="88" y="6" width="20" height="48" rx="2" fill="#C9A86A"/></g><g transform="translate(500,170) scale(0.6)"><rect x="-30" y="-20" width="60" height="40" rx="3" fill="#4A5A72"/><rect x="-24" y="-14" width="48" height="28" rx="2" fill="#D8D2C2"/></g><text x="380" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">원본 원고는 사라지고, 인쇄된 책만 남아 있어요</text><text x="380" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">그런데 이 책을 다시 손봐서 내고 싶어요</text></svg>
+<p>원본 원고는 사라지고, 인쇄된 책만 남아 있어요.<small>그런데 이 책을 다시 손봐서 내고 싶어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="편집장은 그냥 새로 쓰자고 하고, 작가는 그러면 20년 치를 다 다시 만들어야 한다고 반박함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(200,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="140" y="80" width="200" height="36" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M230.0 116 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="142" y="112" width="196" height="6" fill="var(--panel)"/><text x="240.0" y="101.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">그냥 새로 쓰면 되잖아요</text><g transform="translate(560,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="460" y="80" width="230" height="36" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M565.0 116 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="462" y="112" width="226" height="6" fill="var(--panel)"/><text x="575.0" y="101.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">그럼 20년 치를 다 다시 만들어야 해요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">사라진 원본을 무시하고 새로 짓는 건 더 비싸요</text></svg>
+<p>그냥 새로 쓰자는 말, 그러면 더 비싸진다는 반박.<small>사라진 원본을 무시하고 새로 짓는 건 더 비싸요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="작가가 완성본을 보고 개요를 되짚어 재구성한 뒤, 새 재출간본을 만듦" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(380,120) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(240,190) scale(0.6)"><rect x="-30" y="-20" width="60" height="40" rx="3" fill="#4A5A72"/><rect x="-24" y="-14" width="48" height="28" rx="2" fill="#D8D2C2"/></g><text x="0" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">완성본</text><g transform="translate(380,260) scale(0.7)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">되짚은 개요</text></g><g transform="translate(520,190) scale(0.6)"><rect x="-30" y="-20" width="60" height="40" rx="3" fill="#4A5A72"/><rect x="-24" y="-14" width="48" height="28" rx="2" fill="#D8D2C2"/></g><text x="0" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">재출간본</text><text x="380" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">역공학 = 완성본만 보고 개요를 거꾸로 추정, 재공학 = 정리해서 요즘 말로 다시 써 재출간</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">역공학 → 재구조화 → 재공학, 이 순서를 3R이라고 불러요</text></svg>
+<p>역공학으로 개요를 되짚고, 재공학으로 다시 써 재출간해요.<small>역공학 → 재구조화 → 재공학, 이 순서를 3R이라고 불러요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="28" height="36" rx="2" fill="#FFF8E7" stroke="#C9822B" stroke-width="3"/><circle cx="42" cy="40" r="12" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M51 49 l9 9" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/></svg><b>완성본 뜯어보기</b><span>있는 그대로 자세히 봐요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M46 16 a20 20 0 1 0 4 28" stroke="var(--good)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M50 30 l0 -14 -14 0" stroke="var(--good)" stroke-width="5" fill="none" stroke-linecap="round"/></svg><b>거꾸로 개요 추정하기</b><span>있던 구조를 되짚어요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="12" width="16" height="12" rx="2" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><rect x="10" y="28" width="16" height="12" rx="2" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2"/><rect x="34" y="20" width="20" height="24" rx="2" fill="none" stroke="var(--ink)" stroke-width="3"/></svg><b>정리정돈하기</b><span>되짚은 개요를 가지런히 해요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M14 50 l4 -14 26 -26 10 10 -26 26 z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="3"/><path d="M40 14 l10 10" stroke="var(--accent)" stroke-width="3"/></svg><b>요즘 말로 다시 쓰기</b><span>바뀐 독자에 맞게 고쳐요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="3R 순서표: 역공학·재구조화·재공학·순공학과의 차이 네 항목" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,40) scale(1.0)"><rect width="320" height="240" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="320" height="26" rx="6" fill="#C9A86A"/><text x="160.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">3R 순서</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">역공학 — 완성본에서 개요를 거꾸로 추정</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">재구조화 — 추정한 개요를 정리정돈</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">재공학 — 요즘 말로 다시 써서 재출간</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">순공학과 차이 — 순공학은 원고부터 새로 써요</text></g><g transform="translate(560,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="560" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">사라진 원본을 되살리는 복원 작업에 가까워요</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">되짚은 개요가 완벽히 맞다는 보장은 없어요</text></svg>
+<p>3R은 이 순서로 진행돼요.<small>사라진 원본을 되살리는 복원 작업에 가까워요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 작가가 오래된 책도 다시 살릴 수 있다고 말함. 오른쪽: 편집장이 새 책만큼 깔끔하진 않을 수 있다고 말함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(190,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">오래된 책도 다시 살릴 수 있어요</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(570,220) scale(0.6)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/></g><text x="570" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">새 책만큼 깔끔하진 않을 수 있어요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">재공학은 과거를 되살리는 일이지, 처음부터 완벽하게 새로 짓는 일은 아니에요</text></svg>
+<p>새 책만큼 깔끔하진 않을 수 있어요.<small>과거를 되살리는 일이지, 완벽하게 새로 짓는 일은 아니에요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>재공학/역공학(3R)</b> = 사라진 원본을 <b>완성본에서 거꾸로 되짚어</b> 정리하고 <b>다시 써 재출간</b>하는 일.</h2><p>3R은 역공학(Reverse Engineering, 산출물에서 설계를 되짚기)·재구조화(Restructuring, 기능은 그대로 두고 구조만 정리)·재공학(Reengineering, 현대 기술로 다시 구축)을 함께 부르는 말이에요. 원본 설계 문서나 소스가 부실한 레거시 시스템을 다루는 대표적 방법이고, 처음부터 새로 짓는 순공학(Forward Engineering)보다 기존 자산을 살리는 데 집중해요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>역공학<br><small>Reverse Engineering</small></dt><dd><b>완성본을 보고 개요를 거꾸로 추정하는 일.</b> 설계 문서가 없을 때 특히 써요.</dd></div><div><dt>재구조화<br><small>Restructuring</small></dt><dd><b>내용은 그대로, 구조만 정리정돈하는 일.</b> 역공학과 재공학 사이 단계예요.</dd></div><div><dt>재공학<br><small>Reengineering</small></dt><dd><b>요즘 말로 다시 써서 재출간하는 일.</b> 3R의 마지막 단계예요.</dd></div><div><dt>순공학<br><small>Forward Engineering</small></dt><dd><b>원고부터 새로 써 내려가는 일.</b> 3R과 반대 방향이에요.</dd></div><div><dt>레거시 시스템<br><small>Legacy System</small></dt><dd><b>오래돼서 원본 자료가 부실한 책.</b> 3R이 다루는 대상이에요.</dd></div><div><dt>형상관리<br><small>Configuration Management</small></dt><dd><b>원고를 보관하는 서가.</b> 원본이 잘 보관됐다면 3R 자체가 필요 없었을 거예요. → <a href="scmshelf-ko.html">원고를 지키는 보관 서가</a></dd></div><div><dt>기술 부채<br><small>Technical Debt</small></dt><dd><b>나중으로 미룬 정리를 쌓아두는 일.</b> 오래 쌓이면 3R이 더 커져요.</dd></div><div><dt>GoF 디자인패턴<br><small>GoF Design Patterns</small></dt><dd><b>검증된 글쓰기 공식들의 모음.</b> 재공학으로 다시 쓸 때 이 공식들을 적용하곤 해요. → <a href="gofpattern-ko.html">검증된 글쓰기 공식집</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="gofpattern-ko.html">검증된 글쓰기 공식집 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

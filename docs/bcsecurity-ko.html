@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>모두가 들고 다니는, 지문으로 이어 붙인 장부</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="bcsecurity-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 정보보안</div>
+<h1><em>블록체인 보안 고려사항</em>이 뭐예요?</h1>
+<p class="sub">블록체인 보안 고려사항을 마을 사람 모두가 들고 다니는, 지문으로 이어 붙인 장부 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="서기 혼자 장부를 들고 '여기 숫자, 살짝 바꿔도 아무도 몰라요'라고 말함" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="280" fill="var(--sky)"/><ellipse cx="380" cy="280" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(200,150) scale(0.9)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--stone-dark)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(280,140) scale(1.1)"><rect x="-26" y="-32" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-16 -18 h32 M-16 -8 h32 M-16 2 h20" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><text x="240" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">서기 혼자 든 장부</text><rect x="360" y="70" width="220" height="40" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M460.0 110 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="362" y="106" width="216" height="6" fill="var(--panel)"/><text x="470.0" y="93.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">여기 숫자, 살짝 바꿔도 아무도 몰라요</text><text x="380" y="262" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">한 사람만 들고 있으면 몰래 고칠 수 있어요</text></svg>
+<p>장부를 한 사람만 들고 있으면 몰래 고칠 수 있어요.<small>아무도 안 보고 있으니까요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="마을 사람 여섯 명이 각자 장부 사본을 들고 웃고 있음" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="280" fill="var(--bad-soft)"/><g transform="translate(90,150) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(200,150) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(310,150) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(420,150) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(530,150) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(640,150) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(90,90) scale(0.7)"><rect x="-26" y="-32" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-16 -18 h32 M-16 -8 h32 M-16 2 h20" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(200,90) scale(0.7)"><rect x="-26" y="-32" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-16 -18 h32 M-16 -8 h32 M-16 2 h20" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(310,90) scale(0.7)"><rect x="-26" y="-32" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-16 -18 h32 M-16 -8 h32 M-16 2 h20" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(420,90) scale(0.7)"><rect x="-26" y="-32" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-16 -18 h32 M-16 -8 h32 M-16 2 h20" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(530,90) scale(0.7)"><rect x="-26" y="-32" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-16 -18 h32 M-16 -8 h32 M-16 2 h20" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(640,90) scale(0.7)"><rect x="-26" y="-32" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-16 -18 h32 M-16 -8 h32 M-16 2 h20" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><text x="380" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">장부 사본을 마을 사람 전부가 나눠 가지면 안전해 보여요</text><text x="380" y="262" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)">그런데 그 자체로 새 걱정거리가 생겨요</text></svg>
+<p>사본을 다 나눠 가져도 새 걱정이 생겨요.<small>안전해 보이지만, 그 자체로 새로운 문제들이 생겨요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="다섯 사람이 각자 장부를 들고 고리로 연결된 모습. '과반수 사본이 똑같아야 진짜로 인정'" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,150) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(220,150) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(380,150) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(540,150) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(700,150) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(60,90) scale(0.65)"><rect x="-26" y="-32" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-16 -18 h32 M-16 -8 h32 M-16 2 h20" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(220,90) scale(0.65)"><rect x="-26" y="-32" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-16 -18 h32 M-16 -8 h32 M-16 2 h20" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(380,90) scale(0.65)"><rect x="-26" y="-32" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-16 -18 h32 M-16 -8 h32 M-16 2 h20" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(540,90) scale(0.65)"><rect x="-26" y="-32" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-16 -18 h32 M-16 -8 h32 M-16 2 h20" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(700,90) scale(0.65)"><rect x="-26" y="-32" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-16 -18 h32 M-16 -8 h32 M-16 2 h20" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(140,120) scale(0.9)"><rect x="-16" y="-8" width="32" height="16" rx="8" fill="none" stroke="var(--good)" stroke-width="4"/></g><g transform="translate(300,120) scale(0.9)"><rect x="-16" y="-8" width="32" height="16" rx="8" fill="none" stroke="var(--good)" stroke-width="4"/></g><g transform="translate(460,120) scale(0.9)"><rect x="-16" y="-8" width="32" height="16" rx="8" fill="none" stroke="var(--good)" stroke-width="4"/></g><g transform="translate(620,120) scale(0.9)"><rect x="-16" y="-8" width="32" height="16" rx="8" fill="none" stroke="var(--good)" stroke-width="4"/></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">블록체인 = 마을 사람 모두가 든 장부, 페이지마다 이전 페이지의 지문을 적어요</text><text x="380" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">과반수 사본이 똑같아야 그 페이지가 진짜로 인정돼요</text><text x="380" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">한 명이 몰래 고치면 지문이 안 맞아서 바로 티나요</text></svg>
+<p>블록체인은 모두가 들고 다니는, 지문으로 이어 붙인 장부예요.<small>한 명이 몰래 고치면 지문이 안 맞아서 바로 티나요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="12" width="20" height="26" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><rect x="36" y="18" width="20" height="26" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/></svg><b>장부 사본을 모두가</b><span>한 사람만 가진 게 아니에요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="22" cy="32" r="10" fill="none" stroke="var(--accent)" stroke-width="4"/><circle cx="42" cy="32" r="10" fill="none" stroke="var(--accent)" stroke-width="4"/></svg><b>이전 페이지 지문을 다음 페이지에</b><span>해시로 이어 붙여요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 40 l12 -24 l12 24z" fill="none" stroke="var(--good)" stroke-width="4" stroke-linejoin="round"/><path d="M36 40 l12 -24 l12 24z" fill="none" stroke="var(--bad)" stroke-width="4" stroke-linejoin="round"/></svg><b>과반수가 맞아야 진짜</b><span>51% 공격은 그래서 위험해요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="14" width="36" height="36" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 40 l20 -20" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/></svg><b>한 번 적으면 못 지워요</b><span>코드 버그도 못 지워 더 위험해요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="블록체인을 쓸 때 조심할 것 네 가지: 개인키 분실, 51% 공격, 스마트 계약 버그, 거래소·지갑 해킹" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(50,20)"><rect width="660" height="280" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><text x="330.0" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">블록체인을 쓸 때 조심할 것</text><text x="16" y="52" text-anchor="start" font-size="13" font-weight="700" fill="#142033">열쇠(개인키) 분실 — 관리자가 없어 되찾을 길이 없어요</text><text x="16" y="76" text-anchor="start" font-size="13" font-weight="700" fill="#142033">51% 공격 — 작은 마을일수록 과반수를 장악하기 쉬워요</text><text x="16" y="100" text-anchor="start" font-size="13" font-weight="700" fill="#142033">스마트 계약 버그 — 자동 실행이라 멈추거나 되돌리기 어려워요</text><text x="16" y="124" text-anchor="start" font-size="13" font-weight="700" fill="#142033">거래소·지갑 해킹 — 장부 자체보다 지갑과 거래소가 더 약해요</text></g></svg>
+<p>블록체인에는 또 다른 보안 고려사항이 있어요.<small>장부 자체는 지문으로 지켜지지만, 열쇠·코드·지갑은 따로 지켜야 해요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 초록 체크가 붙은 장부, '장부 자체는 안전해요'. 오른쪽: 열쇠가 사라지며 '열쇠를 잃으면 아무도 못 찾아줘요'" viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="280" fill="var(--good-soft)"/><rect x="380" width="380" height="280" fill="var(--bad-soft)"/><g transform="translate(190,130) scale(1.2)"><rect x="-26" y="-32" width="52" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-16 -18 h32 M-16 -8 h32 M-16 2 h20" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/><path d="M-10 0 l6 7 l14 -16" stroke="var(--good)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="190" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="var(--good)" class="d">장부 자체는 안전해요</text><g transform="translate(570,100) scale(1.1)"><circle r="10" fill="none" stroke="#E9B44C" stroke-width="5"/><rect x="8" y="-3" width="30" height="6" fill="#E9B44C"/><rect x="24" y="3" width="4" height="7" fill="#E9B44C"/><rect x="32" y="3" width="4" height="9" fill="#E9B44C"/></g><path d="M570 130 q0 40 -40 60" stroke="var(--bad)" stroke-width="3" stroke-dasharray="4 4" fill="none"/><text x="570" y="220" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)" class="d">열쇠를 잃으면 아무도 못 찾아줘요</text><text x="380" y="262" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">안전은 장부가 아니라 열쇠 관리와 코드 품질에 달려 있어요</text></svg>
+<p>장부는 안전해도 열쇠 관리와 코드 버그는 못 막아요.<small>장부의 지문 구조는 <a href="hashing-ko.html">지문 찍기</a>와 같은 원리예요. 안전은 결국 <a href="password-ko.html">열쇠 관리</a>에 달려 있어요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>블록체인</b> = <b>모두가 사본</b>을 들고, 페이지마다 <b>이전 페이지 지문을 이어 붙여</b> 몰래 고치면 바로 티나는 장부. 하지만 <b>열쇠 분실·51% 공격·코드 버그</b>는 따로 조심해야 해요.</h2><p>블록체인은 거래 기록(블록)을 해시로 연결해 분산 저장하고, 과반수 합의로 유효성을 검증하는 분산원장 기술이에요. 데이터 자체의 위변조는 어렵지만, 개인키 분실은 복구가 불가능하고, 네트워크 참여자가 적으면 51% 공격 위험이 커지며, 스마트 계약의 코드 결함은 자동 실행되어 되돌리기 어렵고, 실제 침해 사고 대부분은 장부가 아니라 거래소·지갑 같은 주변 시스템에서 일어나요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>분산원장<br><small>Distributed ledger</small></dt><dd><b>모두가 든 장부 사본.</b> 한 사람의 장부가 아니라 참여자 전체가 똑같은 사본을 들어요.</dd></div><div><dt>해시 체인<br><small>Hash chaining</small></dt><dd><b>페이지마다 이전 지문을 적기.</b> 한 글자만 바꿔도 지문이 통째로 달라져요. → <a href="hashing-ko.html">물건마다 찍는 지문</a></dd></div><div><dt>합의 알고리즘<br><small>Consensus (PoW/PoS)</small></dt><dd><b>과반수가 맞아야 진짜.</b> 일을 많이 한 사람(작업증명)이나 많이 맡긴 사람(지분증명)이 투표권을 더 가져요.</dd></div><div><dt>51% 공격<br><small>51% attack</small></dt><dd><b>과반수를 장악하는 공격.</b> 참여자가 적은 작은 마을일수록 과반수를 뺏기 쉬워요.</dd></div><div><dt>스마트 계약 취약점<br><small>Smart-contract vulnerabilities</small></dt><dd><b>자동 실행 코드의 버그.</b> 한 번 배포되면 자동으로 실행돼서 멈추거나 되돌리기 어려워요.</dd></div><div><dt>개인키 분실<br><small>Lost private key</small></dt><dd><b>잃어버리면 못 찾아줘요.</b> 비밀번호 재설정 같은 구제 수단이 없어요.</dd></div><div><dt>거래소·지갑 보안<br><small>Exchange and wallet security</small></dt><dd><b>장부보다 약한 주변 시설.</b> 실제 사고는 대부분 장부가 아니라 지갑·거래소에서 일어나요.</dd></div><div><dt>불변성<br><small>Immutability</small></dt><dd><b>한 번 적으면 못 지워요.</b> 장점이자 단점 — 버그가 섞여도 지울 수 없어요.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="cpuvuln-ko.html">미리 짐작해서 일하다 생긴 흔적 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Four Conditions for Hanging the Scale Straight</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="regassumption-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · AI Theory</div>
+<h1>What are <em>Regression Assumptions</em>?</h1>
+<p class="sub">Regression assumptions, told as a story about four conditions a weight-to-price scale must meet to hang straight and be trusted.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="The trainer sets up a scale that predicts price from weight, and the inspector asks whether it can always be trusted" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(160,170) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(320,220) scale(1.2)"><rect x="-4" y="0" width="8" height="30" fill="#5A3B22"/><g transform="rotate(0.0)"><rect x="-40" y="-3" width="80" height="6" fill="var(--accent)"/></g></g><text x="320" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">more weight, more price — one scale predicts it</text><rect x="500" y="90" width="220" height="46" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M600.0 136 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="502" y="132" width="216" height="6" fill="var(--panel)"/><text x="610.0" y="116.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">can I trust this scale no matter what?</text></svg>
+<p>A scale was set up to predict price from weight.<small>Can I trust this scale no matter what?</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The scale sits still and matches for light crops, but swings wildly for heavy ones" viewBox="0 0 760 310" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="310" fill="var(--bad-soft)"/><g transform="translate(220,210) scale(1.1)"><rect x="-4" y="0" width="8" height="30" fill="#5A3B22"/><g transform="rotate(-12.0)"><rect x="-40" y="-3" width="80" height="6" fill="var(--accent)"/></g></g><text x="220" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">light loads sit still and match</text><g transform="translate(500,210) scale(1.3)"><rect x="-4" y="0" width="8" height="30" fill="#5A3B22"/><g transform="rotate(16.0)"><rect x="-40" y="-3" width="80" height="6" fill="var(--accent)"/></g></g><text x="500" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">heavy loads make it swing wildly</text><text x="380" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">how much it wobbles changes by weight range — the scale needs certain conditions to hold</text></svg>
+<p>In some situations the scale swings off in strange ways.<small>How much it wobbles changes by weight range — the scale needs certain conditions to hold.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="Beside the scale hangs a board listing four conditions: linearity, independence, equal variance, normality" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(220,200) scale(1.3)"><rect x="-4" y="0" width="8" height="30" fill="#5A3B22"/><g transform="rotate(-2.0)"><rect x="-40" y="-3" width="80" height="6" fill="var(--accent)"/></g></g><g transform="translate(380,50) scale(0.9)"><rect width="300" height="230" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">CONDITIONS FOR A STRAIGHT SCALE</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">① linearity — the relation is a straight line</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">② independence — errors don't entangle</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">③ equal variance — the wobble stays the same size</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">④ normality — errors spread out evenly</text></g><text x="380" y="28" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">regression assumptions = four conditions the scale's prediction must meet to be trusted</text><text x="380" y="338" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">only when all four hold can the prediction and its confidence interval be trusted</text></svg>
+<p>Regression assumptions are four conditions that keep the scale hanging straight.<small>Only when all four hold can the prediction and its confidence interval be trusted.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 50 L54 14" stroke="var(--accent)" stroke-width="4"/><circle cx="18" cy="44" r="3" fill="var(--good)"/><circle cx="32" cy="30" r="3" fill="var(--good)"/><circle cx="46" cy="18" r="3" fill="var(--good)"/></svg><b>Linearity</b><span>the relation must be a straight line, not a curve</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="18" cy="24" r="4" fill="var(--accent)"/><circle cx="34" cy="40" r="4" fill="var(--accent)"/><circle cx="48" cy="18" r="4" fill="var(--accent)"/><circle cx="28" cy="50" r="4" fill="var(--accent)"/></svg><b>Independence</b><span>errors must not entangle with each other</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 50 L54 14" stroke="var(--accent)" stroke-width="3"/><path d="M16 46 l4 6 M32 32 l8 10 M46 20 l12 14" stroke="var(--bad)" stroke-width="2.5"/></svg><b>Equal Variance</b><span>the wobble size must stay the same across ranges</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 48 Q32 10 54 48" stroke="var(--accent)" stroke-width="4" fill="none"/></svg><b>Normality</b><span>errors should spread out in a bell-shaped curve</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Shows what broken linearity/independence looks like, and what broken equal-variance/normality looks like" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(40,20) scale(0.95)"><rect width="330" height="300" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="330" height="26" rx="6" fill="#C9A86A"/><text x="165.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">BROKEN LINEARITY · INDEPENDENCE</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">a curved relation fools a straight-line scale</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">if yesterday's error entangles with today's (time series), it fails</text></g><g transform="translate(390,20) scale(0.95)"><rect width="330" height="300" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="330" height="26" rx="6" fill="#C9A86A"/><text x="165.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">BROKEN EQUAL VARIANCE · NORMALITY</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">if wobble grows with weight (a funnel shape), it fails</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">errors piling to one side skews the confidence interval</text></g></svg>
+<p>This is what it looks like when each condition breaks.<small>A curved relation, entangled errors, a funnel shape, lopsided errors — each is a warning sign.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The scale always outputs a predicted number, but the inspector notes how much to trust it depends on whether the conditions held" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/><g transform="translate(190,180) scale(1.0)"><rect x="-4" y="0" width="8" height="30" fill="#5A3B22"/><g transform="rotate(4.0)"><rect x="-40" y="-3" width="80" height="6" fill="var(--accent)"/></g></g><text x="190" y="260" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">a predicted number always comes out</text><g transform="translate(570,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="570" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">but how much to trust it depends on whether the conditions held</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">break the assumptions and a number still comes out — but the error range and tests can't be trusted</text></svg>
+<p>Break the assumptions and a number still comes out — but it can't be trusted.<small>The error range and significance tests are only trustworthy when the assumptions hold.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Regression assumptions</b> are the four conditions — <b>linearity, independence, equal variance (homoscedasticity), and normality</b> — a prediction scale must meet to be trusted. Break them, and a number still comes out, but it can't be trusted.</h2><p>Linear regression needs ① linearity (the relationship between predictors and outcome is linear), ② independence of errors (no autocorrelation), ③ homoscedasticity (constant error variance), and ④ normality of errors. If these break, the coefficient estimates still compute, but standard errors, confidence intervals, and p-values become distorted, leading to wrong conclusions. Check with residual plots, and if assumptions fail, consider variable transformations, robust standard errors, or a different model.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Linearity</dt><dd><b>The assumption that the relation is straight, not curved.</b> If it breaks, use a nonlinear model or transform the variables.</dd></div><div><dt>Homoscedasticity</dt><dd><b>The assumption that the wobble stays the same size across ranges.</b> Breaking it shows up as a funnel-shaped residual plot.</dd></div><div><dt>Autocorrelation</dt><dd><b>Yesterday's error entangling with today's.</b> A classic way independence breaks in time-series data. → <a href="timeseries-en.html">see it in full</a></dd></div><div><dt>Residual</dt><dd><b>The gap between what the scale predicts and the real value.</b> Its pattern reveals whether an assumption has broken.</dd></div><div><dt>Multicollinearity</dt><dd><b>Two variables effectively saying the same thing.</b> A separate problem that muddies how coefficients are read.</dd></div><div><dt>Unbiased Estimator</dt><dd><b>A scale dial with no systematic tilt.</b> The assumptions are what let the estimator's unbiasedness hold. → <a href="unbiasedest-en.html">see it in full</a></dd></div><div><dt>Ensemble Methods</dt><dd><b>Several operators judging together.</b> Sometimes used as an alternative when assumptions break. → <a href="ensemble-en.html">see it in full</a></dd></div><div><dt>Cross Validation</dt><dd><b>Splitting into groups and testing in rotation.</b> Separate from assumption checks, this verifies model performance. → <a href="crossval-en.html">see it in full</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="rl-en.html">The Rookie Operator Who Learns by Score, Not an Answer Key →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

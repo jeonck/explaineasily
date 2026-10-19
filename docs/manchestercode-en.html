@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Signal That Tells Its Own Beat</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="manchestercode-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · Law/Policy</div>
+<h1>What is <em>Manchester Encoding</em>?</h1>
+<p class="sub">Manchester encoding, told as a story about an electrical-signal rule that always flips in the middle of each bit. (Just this once, a guest that doesn't quite fit the student-council world.)</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A rep looks at a signal on a wire, asking where one bit ends and the next begins" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><text x="380" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)" class="d">hold on, this one isn't a student-council rule — it's about electrical signals on a wire</text><g transform="translate(220,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="330" y="120" width="340" height="60" rx="6" fill="#0A1120"/><path d="M350 150 H650" stroke="var(--accent)" stroke-width="4"/><text x="500" y="110" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">the wire: 0 1 0 1 1 ...?</text><rect x="90" y="60" width="230" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M195.0 104 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="92" y="100" width="226" height="6" fill="var(--panel)"/><text x="205.0" y="85.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">how do I tell where one bit ends and the next begins?</text><text x="380" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">the signal alone doesn't show how long one bit is</text></svg>
+<p>The signal alone doesn't show how long one bit is.<small>This one isn't a student-council rule — it's about electrical signals.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A teacher sweats, unable to tell how many 1s are strung together" viewBox="0 0 760 345" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="345" fill="var(--bad-soft)"/><rect x="130" y="120" width="500" height="60" rx="6" fill="#0A1120"/><path d="M150 135 H610" stroke="var(--bad)" stroke-width="4"/><text x="380" y="110" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">1 1 1 1 1 1 … how many is that?</text><g transform="translate(380,220) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="380" y="328" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">if the sender's and receiver's clocks drift even a little, the count comes out wrong</text></svg>
+<p>Repeated values make it even more confusing.<small>If the sender's and receiver's clocks drift even a little, the count comes out wrong.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="A waveform with a green arrow marking a signal flip at the middle of every bit" viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="400" fill="var(--sky)"/><text x="380" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">Manchester encoding = a rule that always flips the signal at the middle of every bit</text><path d="M130 55 V155" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M230 55 V155" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M330 55 V155" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M430 55 V155" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M530 55 V155" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M630 55 V155" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M130 90 L180 90 L180 40 L230 40 L280 40 L280 90 L330 90 L380 90 L380 40 L430 40 L430 90 L480 90 L480 40 L530 40 L580 40 L580 90 L630 90" transform="translate(0,15)" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linejoin="round"/><path d="M180 50 v10" stroke="var(--good)" stroke-width="3"/><path d="M175 56 l5 6 l5 -6" fill="none" stroke="var(--good)" stroke-width="2.5"/><path d="M280 50 v10" stroke="var(--good)" stroke-width="3"/><path d="M275 56 l5 6 l5 -6" fill="none" stroke="var(--good)" stroke-width="2.5"/><path d="M380 50 v10" stroke="var(--good)" stroke-width="3"/><path d="M375 56 l5 6 l5 -6" fill="none" stroke="var(--good)" stroke-width="2.5"/><path d="M480 50 v10" stroke="var(--good)" stroke-width="3"/><path d="M475 56 l5 6 l5 -6" fill="none" stroke="var(--good)" stroke-width="2.5"/><path d="M580 50 v10" stroke="var(--good)" stroke-width="3"/><path d="M575 56 l5 6 l5 -6" fill="none" stroke="var(--good)" stroke-width="2.5"/><text x="380" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">dashed line = bit boundary, green arrow = the bit's midpoint (always a flip)</text><g transform="translate(380,270) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="380" y="384" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">that one rule lets the receiver read the beat from the signal alone</text></svg>
+<p>Manchester encoding is a rule that always flips the signal at the middle of every bit.<small>That one rule lets the receiver read the beat from the signal alone.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20 44 V12 M20 12 l-8 8 M20 12 l8 8" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M44 20 V52 M44 52 l-8 -8 M44 52 l8 -8" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><b>One flip per bit</b><span>always at the bit's middle</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 46 V18" stroke="var(--good)" stroke-width="4" stroke-linecap="round"/><path d="M10 24 l6 -6 l6 6" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M48 18 V46" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><path d="M42 40 l6 6 l6 -6" stroke="var(--bad)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Direction marks 0/1</b><span>up means 1, down means 0</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M32 20 v12 l10 6" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>Recovers the beat</b><span>self-clocking</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 14 V50" stroke="var(--night)" stroke-width="3"/><path d="M14 24 H50" stroke="var(--night)" stroke-width="3"/><path d="M14 24 l-6 14 h12z" fill="var(--accent)"/><path d="M50 24 l-6 14 h12z" fill="var(--good)"/></svg><b>Balanced up and down</b><span>stays electrically stable</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Comparing the same bits 1 0 1 1 0 drawn as a plain (NRZ) signal and as Manchester encoding" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--panel)"/><text x="380" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">sending the same bits: 1 0 1 1 0</text><text x="130" y="55" text-anchor="start" font-size="11" font-weight="700" fill="var(--muted)">PLAIN SIGNAL (NRZ)</text><path d="M130 65 V125" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M230 65 V125" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M330 65 V125" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M430 65 V125" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M530 65 V125" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M630 65 V125" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M130 40 L230 40 L230 90 L330 90 L330 40 L530 40 L530 90 L630 90" stroke="var(--muted)" stroke-width="4" fill="none" stroke-linejoin="round"/><text x="130" y="160" text-anchor="start" font-size="11" font-weight="700" fill="var(--muted)">MANCHESTER ENCODING</text><path d="M130 170 V230" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M230 170 V230" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M330 170 V230" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M430 170 V230" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M530 170 V230" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M630 170 V230" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/><path d="M130 90 L180 90 L180 40 L230 40 L280 40 L280 90 L330 90 L380 90 L380 40 L430 40 L430 90 L480 90 L480 40 L530 40 L580 40 L580 90 L630 90" transform="translate(0,80)" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linejoin="round"/><text x="380" y="275" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">even for repeated bits (1,1), Manchester still flips once at the middle</text></svg>
+<p>Side by side, a plain signal and Manchester encoding look like this.<small>Even for repeated bits (1,1), Manchester still flips once at the middle.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: a rep sweating because the signal must run twice as fast. Right: a teacher noting other encodings are common now" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/><g transform="translate(190,140) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">the signal has to run twice as fast</text><g transform="translate(570,140) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="570" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">that's why faster links often use other encodings now</text><text x="380" y="280" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)" class="d">really, this is physical-layer tech more than law or policy — the fit with this world is a stretch</text></svg>
+<p>A flip every bit means the line has to run twice as fast.<small>Really, this is physical-layer tech more than law or policy — the fit with this world is a stretch.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Manchester encoding</b> = an electrical-signal rule that <b>always flips in the middle of every bit</b>, so the receiver can recover the clock from the signal alone.</h2><p>Manchester encoding is a line-coding scheme that forces a signal transition at the midpoint of every bit period. The direction of the transition (rising or falling) encodes 0 or 1, and that transition lets the receiver recover timing without a separate clock signal (self-clocking). It was used in 10BASE-T Ethernet and similar links, but needs roughly twice the bandwidth of simpler encodings to carry the same bit rate, since a transition is required every single bit.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Manchester Encoding</dt><dd><b>A signal rule that flips exactly once at the middle of every bit.</b> A line-coding scheme built for self-clocking.</dd></div><div><dt>Self-Clocking</dt><dd><b>Recovering the beat from the signal alone.</b> No separate clock wire is needed.</dd></div><div><dt>NRZ (Non-Return-to-Zero)</dt><dd><b>A simpler scheme where the signal flips only when the value changes.</b> Repeated values make the boundaries hard to count.</dd></div><div><dt>No DC Bias</dt><dd><b>The signal spends equal time high and low.</b> Keeps charge from building up one-sided on the wire.</dd></div><div><dt>Line Coding</dt><dd><b>The general category of rules turning digital values into signal shapes.</b> Manchester encoding is one member of this family.</dd></div><div><dt>Bandwidth</dt><dd><b>How much signal a line can carry at once.</b> Manchester encoding spends twice the bandwidth for the same bit rate.</dd></div><div><dt>10BASE-T Ethernet</dt><dd><b>An early Ethernet standard that used Manchester encoding.</b> Modern high-speed Ethernet uses different encodings.</dd></div><div><dt>8b/10b Encoding</dt><dd><b>An encoding used more often in today's high-speed links.</b> Keeps the self-clocking benefit while using less bandwidth.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="iso42001-en.html">Stamping That AI Is Managed by the Rules Too →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

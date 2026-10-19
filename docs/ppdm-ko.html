@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이름은 가리고, 흐름은 보는 통계 조사관</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="ppdm-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · 정보보안</div>
+<h1><em>PPDM</em>이 뭐예요?</h1>
+<p class="sub">프라이버시 보존형 데이터 마이닝(PPDM)을, 사람 한 명 한 명은 흐리게 하면서 마을 전체 흐름은 그대로 읽어내는 조사관 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="조사관이 마을 평균 수입을 알고 싶어하고, 장부엔 이름과 수입이 그대로 적힌 카드들이 있음" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(190,120) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5B8DEF"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="60" y="30" width="250" height="42" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M175.0 72 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="62" y="68" width="246" height="6" fill="var(--panel)"/><text x="185.0" y="54.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">마을 평균 수입이 얼마나 되는지 알고 싶어요</text><rect x="430" y="60" width="90" height="70" rx="5" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><text x="475.0" y="80" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">이름 A</text><text x="475.0" y="98" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">수입 120</text><rect x="540" y="100" width="90" height="70" rx="5" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><text x="585.0" y="120" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">이름 B</text><text x="585.0" y="138" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">수입 95</text><rect x="430" y="170" width="90" height="70" rx="5" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><text x="475.0" y="190" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">이름 C</text><text x="475.0" y="208" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">수입 140</text><text x="380" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">장부엔 마을 사람 하나하나의 기록이 다 있어요</text></svg>
+<p>조사관이 마을 전체 경향을 알고 싶어요.<small>장부엔 마을 사람 하나하나의 이름과 수입이 그대로 다 적혀 있어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="이름을 지운 카드에 나이와 직업만 남아 있는데, 위조자가 이걸 보고 30대 대장장이는 C 아저씨뿐이라고 알아챔" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><rect x="150" y="70" width="110" height="90" rx="5" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><text x="205.0" y="90" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">이름 ×</text><text x="205.0" y="108" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">30대·대장간</text><text x="205.0" y="126" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">수입 140</text><g transform="translate(330,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="var(--bad)"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M14 26 h32 v10 h-32 z" fill="#111C30"/></g><rect x="400" y="40" width="250" height="50" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M515.0 90 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="402" y="86" width="246" height="6" fill="var(--panel)"/><text x="525.0" y="68.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">30대 대장장이는 마을에 한 명뿐이네요, C 아저씨죠?</text><text x="380" y="282" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">이름만 지워선, 몇 가지 단서로도 다시 찾아낼 수 있어요</text></svg>
+<p>이름만 지워도, 몇 가지 단서로 다시 찾아낼 수 있어요.<small><a href="masking-ko.html">이름만 지우는 것(마스킹)</a>으로는 부족해요. 나이·동네·직업만 남아도 한 명으로 좁혀질 수 있어요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="최소 3명씩 묶기, 값에 노이즈 섞기, 통계만 내보내기 세 가지 기법을 거쳐 조사관이 웃으며 평균만 확인함" viewBox="0 0 760 390" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="390" fill="var(--sky)"/><ellipse cx="380" cy="390" rx="440" ry="36" fill="var(--good-soft)"/><rect x="90" y="70" width="230" height="120" rx="8" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2.5" stroke-dasharray="6 4"/><text x="205.0" y="62" text-anchor="middle" font-size="11" font-weight="700" fill="var(--good)">최소 3명</text><rect x="110" y="90" width="90" height="60" rx="5" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><text x="155.0" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">A</text><text x="155.0" y="128" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">120</text><rect x="210" y="90" width="90" height="60" rx="5" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><text x="255.0" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">B</text><text x="255.0" y="128" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">~120</text><text x="205" y="210" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">① k명씩 묶기</text><rect x="400" y="90" width="100" height="60" rx="5" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><text x="450.0" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">120 + 노이즈</text><text x="450.0" y="128" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">≈ 115</text><text x="450" y="210" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">② 살짝 흔들기</text><rect x="580" y="90" width="120" height="60" rx="5" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2.5"/><text x="640.0" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#142033" class="d">평균 118</text><text x="640" y="210" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">③ 통계만 내보내기</text><g transform="translate(380,280) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5B8DEF"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="375" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">PPDM = 개인 한 명 한 명은 흐리게, 마을 전체 흐름은 선명하게</text></svg>
+<p>PPDM은 개인은 흐리고, 흐름은 보이게 하는 여러 기법이에요.<small><a href="homoenc-ko.html">동형암호</a>처럼 봉인한 채로 계산하는 방법도 PPDM의 한 가지 도구예요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="18" cy="32" r="9" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2.5"/><circle cx="32" cy="24" r="9" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2.5"/><circle cx="46" cy="32" r="9" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2.5"/><rect x="6" y="14" width="52" height="34" rx="8" fill="none" stroke="var(--good)" stroke-width="2" stroke-dasharray="4 3"/></svg><b>k명씩 묶기</b><span>최소 k명은 똑같아 보이게 해요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 32 q8 -16 16 0 t16 0 t16 0" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>살짝 흔들어 섞기</b><span>차분 프라이버시, 값을 살짝 바꿔요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="20" width="40" height="28" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><circle cx="42" cy="18" r="9" fill="var(--bad)"/></svg><b>봉인한 채 계산</b><span>동형암호 같은 방법도 써요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="38" width="10" height="16" fill="var(--good)"/><rect x="27" y="28" width="10" height="26" fill="var(--good)"/><rect x="42" y="16" width="10" height="38" fill="var(--good)"/></svg><b>통계만 내보내기</b><span>한 사람 한 사람의 줄은 안 나가요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="표: k-익명성 — 최소 k명 묶기 / 뭉뚱그려짐, 차분 프라이버시 — 노이즈 추가 / 정확도 저하, 동형암호 — 봉인 계산 / 느림" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><rect x="30" y="30" width="700" height="260" rx="8" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="30" y="30" width="700" height="34" rx="8" fill="#C9A86A"/><text x="130" y="53" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">기법</text><text x="400" y="53" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">하는 일</text><text x="610" y="53" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">대가</text><path d="M30 139 h700" stroke="#C9A86A" stroke-width="1.5"/><path d="M30 214 h700" stroke="#C9A86A" stroke-width="1.5"/><text x="130" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">k-익명성</text><text x="400" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">최소 k명이 똑같아 보이게</text><text x="610" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">k가 클수록 뭉뚱그려져요</text><text x="130" y="175" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">차분 프라이버시</text><text x="400" y="175" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">값에 수학적 노이즈를 더해요</text><text x="610" y="175" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">노이즈가 클수록 덜 정확해요</text><text x="130" y="250" text-anchor="middle" font-size="13" font-weight="700" fill="#142033" class="d">동형암호</text><text x="400" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">봉인한 채로 계산해요</text><text x="610" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="#142033">훨씬 느려요</text></svg>
+<p>기법마다 대가가 달라요.<small><a href="homoenc-ko.html">동형암호</a>는 PPDM이 쓰는 도구 중 하나예요. 보호를 세게 할수록 통계의 쓸모는 줄어들어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="보호를 세게 할수록 통계가 덜 정확해지고, 재식별 위험은 완전히 0이 되지 않음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(190,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5B8DEF"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="190" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">보호를 세게 하면 통계가 덜 정확해져요</text><g transform="translate(560,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7A6A"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="560" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">재식별 위험은 완전히 0이 되진 않아요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">그래서 얼마나 가릴지는 늘 저울질해야 해요</text></svg>
+<p>보호와 쓸모는 늘 저울 위에 있어요.<small>재식별 위험은 0이 되지 않아요. → <a href="data3law-ko.html">가명정보</a>·<a href="privacy-ko.html">개인정보 보호</a>와 같은 고민을 데이터 분석에 적용한 거예요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>PPDM</b> = 사람 <b>한 명 한 명은 흐리게</b> 하면서, 마을 전체의 <b>흐름(통계)은 그대로 읽어내는</b> 여러 기법의 묶음.</h2><p>Privacy-Preserving Data Mining, 프라이버시 보존형 데이터 마이닝. 개인 식별이 가능한 원본 데이터를 그대로 분석하지 않고, k-익명성(동일 속성을 가진 개체를 k개 이상으로 묶음), 차분 프라이버시(결과에 수학적으로 제어된 노이즈를 추가), 동형암호(암호문 상태로 연산) 같은 기법으로 개인을 보호하면서 통계적 패턴은 추출하는 방법들을 통칭해요. 보호 강도와 분석 정확도는 трейд-off 관계예요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>PPDM<br><small>Privacy-Preserving Data Mining</small></dt><dd><b>개인은 흐리고 흐름은 보이게 하는 기법 묶음.</b> 여러 기법을 아우르는 이름이에요.</dd></div><div><dt>k-익명성<br><small>k-anonymity</small></dt><dd><b>최소 k명이 똑같아 보이게 묶는 것.</b> 한 명으로 좁혀지는 걸 막아요.</dd></div><div><dt>차분 프라이버시<br><small>Differential privacy</small></dt><dd><b>값에 수학적으로 노이즈를 더하는 것.</b> 개별 값은 흐려지고, 전체 통계는 거의 그대로예요.</dd></div><div><dt>재식별<br><small>Re-identification</small></dt><dd><b>지운 이름을 도로 찾아내는 것.</b> 남은 몇 가지 단서만으로도 가능해요. → <a href="masking-ko.html">이름 대신 번호표</a></dd></div><div><dt>동형암호<br><small>Homomorphic encryption</small></dt><dd><b>봉인한 채로 셈하는 방법.</b> PPDM이 쓰는 도구 중 하나예요. → <a href="homoenc-ko.html">뜯지 않고 셈하는 봉인 편지</a></dd></div><div><dt>가명정보<br><small>Pseudonymized data</small></dt><dd><b>이름을 지운 기록.</b> PPDM은 이 가명정보로 통계를 낼 때 특히 쓰여요. → <a href="data3law-ko.html">데이터 3법 개정</a></dd></div><div><dt>정확도 trade-off<br><small>Accuracy trade-off</small></dt><dd><b>보호를 세게 할수록 덜 정확해지는 것.</b> 완벽한 보호와 완벽한 정확도를 동시에 가질 순 없어요.</dd></div><div><dt>개인정보 보호<br><small>Privacy</small></dt><dd><b>보호해야 할 대상 그 자체.</b> PPDM은 통계·연구 목적에서 이 약속을 지키는 기술적 방법이에요. → <a href="privacy-ko.html">손님 이름표는 손님 것</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="ismsp-ko.html">성 전체에 거는 인증 현판 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>원고를 지키는 보관 서가</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="scmshelf-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · SW공학</div>
+<h1><em>소프트웨어 형상관리(SCM)</em>가 뭐예요?</h1>
+<p class="sub">형상관리를, 원고의 모든 판을 번호 매겨 지키는 보관 서가 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="작가 셋이 각자 노트북·USB·이메일로 같은 원고를 고침" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(130,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><path d="M58 22 q6 8 0 14 q-6 -6 0 -14z" fill="#5B9BD5"/><path d="M64 34 q5 7 0 12 q-5 -5 0 -12z" fill="#5B9BD5"/></g><rect x="84" y="70" width="140" height="36" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M144.0 106 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="86" y="102" width="136" height="6" fill="var(--panel)"/><text x="154.0" y="91.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">내 PC에서 고쳤어요</text><g transform="translate(380,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="324" y="70" width="160" height="36" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M394.0 106 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="326" y="102" width="156" height="6" fill="var(--panel)"/><text x="404.0" y="91.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">USB로 가져왔어요</text><g transform="translate(600,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="529" y="70" width="190" height="36" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M614.0 106 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="531" y="102" width="186" height="6" fill="var(--panel)"/><text x="624.0" y="91.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">이메일로 받았어요</text><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">작가 셋이 같은 원고를 각자 고쳤어요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">어느 게 최신판인지 아무도 몰라요</text></svg>
+<p>작가 셋이 같은 원고를 각자 고쳤어요.<small>어느 게 최신판인지 아무도 몰라요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="두 원고가 부딪치고, 작가가 찡그린 채 앉아 있음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">저장하기 누르는 순간</text><g transform="translate(260,110) scale(0.9)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><circle cx="-18" cy="14" r="3" fill="var(--bad)"/></g><g transform="translate(500,110) scale(0.9)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><circle cx="-18" cy="14" r="3" fill="var(--bad)"/></g><path d="M340 110 H420" stroke="var(--bad)" stroke-width="6" stroke-linecap="round"/><path d="M360 96 l40 28 M400 96 l-40 28" stroke="var(--bad)" stroke-width="5" stroke-linecap="round"/><g transform="translate(380,190) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">나중에 저장한 사람이, 앞사람 수정을 지워버려요</text></svg>
+<p>덮어쓰면 남의 수정이 사라져요.<small>나중에 저장한 사람이, 앞사람 수정을 지워버려요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="번호 매긴 보관 서가 앞에 편집장과 작가가 서 있고, 2번 칸이 강조됨" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="340" fill="var(--sky)"/><ellipse cx="380" cy="340" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(260,90) scale(1.6)"><rect width="112" height="60" rx="3" fill="#5A3B22"/><rect x="4" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="32" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="60" y="6" width="20" height="48" rx="2" fill="var(--accent)"/><rect x="88" y="6" width="20" height="48" rx="2" fill="#C9A86A"/></g><text x="380" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">형상관리 = 번호 매긴 보관 서가</text><g transform="translate(130,230) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7B3FA0"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(210,240) scale(0.55)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/></g><g transform="translate(630,230) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">모든 판(버전)이 제자리에 있고, 지금 판이 어느 건지도 알아요</text><text x="380" y="325" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">예전 판이 필요하면, 그 칸에서 그대로 꺼내 쓰면 돼요</text></svg>
+<p>형상관리(SCM)는 번호 매긴 보관 서가예요.<small>예전 판이 필요하면, 그 칸에서 그대로 꺼내 쓰면 돼요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="10" width="40" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><circle cx="32" cy="24" r="9" fill="none" stroke="var(--accent)" stroke-width="3"/><path d="M26 44 h12 M26 50 h12" stroke="#142033" stroke-width="2.5"/></svg><b>버전 번호 매기기</b><span>모든 판에 고유 번호를 줘요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="8" width="36" height="48" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><circle cx="22" cy="22" r="3" fill="var(--good)"/><rect x="28" y="20" width="18" height="3" fill="#142033"/><circle cx="22" cy="34" r="3" fill="var(--good)"/><rect x="28" y="32" width="18" height="3" fill="#142033"/><circle cx="22" cy="46" r="3" fill="var(--good)"/><rect x="28" y="44" width="18" height="3" fill="#142033"/></svg><b>변경 이력 남기기</b><span>누가 뭘 언제 고쳤는지 기록해요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="18" cy="48" r="5" fill="var(--accent)"/><path d="M18 43 V26" stroke="var(--accent)" stroke-width="4"/><path d="M18 26 Q18 14 34 14" stroke="var(--accent)" stroke-width="4" fill="none"/><circle cx="34" cy="14" r="5" fill="var(--good)"/><path d="M18 26 Q18 38 46 44" stroke="var(--muted)" stroke-width="4" fill="none"/><circle cx="46" cy="44" r="5" fill="var(--muted)"/></svg><b>가지치기(브랜치)</b><span>원본은 두고 복사본에서 실험해요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="16" cy="14" r="5" fill="var(--accent)"/><circle cx="48" cy="14" r="5" fill="var(--good)"/><path d="M16 19 Q16 34 32 40" stroke="var(--accent)" stroke-width="4" fill="none"/><path d="M48 19 Q48 34 32 40" stroke="var(--good)" stroke-width="4" fill="none"/><circle cx="32" cy="46" r="6" fill="var(--ink)"/></svg><b>합치기(병합)</b><span>실험이 끝나면 하나로 합쳐요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="보관 서가에서 실험용 사본이 갈라져 나왔다가, 수정 후 다시 서가로 합쳐짐" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--good-soft)"/><text x="380" y="34" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">가지치기와 병합</text><g transform="translate(70,70) scale(1.1)"><rect width="84" height="60" rx="3" fill="#5A3B22"/><rect x="4" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="32" y="6" width="20" height="48" rx="2" fill="var(--accent)"/><rect x="60" y="6" width="20" height="48" rx="2" fill="#C9A86A"/></g><path d="M165 100 Q260 60 340 90" stroke="var(--accent)" stroke-width="4" fill="none" stroke-dasharray="6 5"/><g transform="translate(400,80) scale(0.6)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">실험용 사본</text></g><path d="M400 100 Q460 150 400 190" stroke="var(--accent)" stroke-width="4" fill="none" stroke-dasharray="6 5"/><g transform="translate(400,220) scale(0.6)"><rect x="-32" y="-22" width="64" height="44" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-22 -10 h44 M-22 -2 h44 M-22 6 h30" stroke="#142033" stroke-width="2"/><circle cx="-18" cy="14" r="3" fill="var(--bad)"/><text x="0" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">고쳐 봤어요</text></g><path d="M365 220 Q270 260 180 160" stroke="var(--good)" stroke-width="4" fill="none" stroke-dasharray="6 5"/><text x="380" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">잘 되면 원본 서가로 다시 합쳐요</text></svg>
+<p>가지치기(브랜치)와 합치기(병합)로 실험해요.<small>원본은 그대로 두고 복사본에서 고쳐 보고, 잘 되면 다시 하나로 합쳐요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="보관 서가는 멀쩡하지만, 두 작가가 같은 줄을 고쳐 다툼. 교정자는 그건 서가가 대신 정해주지 않는다고 말함" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(324,70) scale(1.0)"><rect width="112" height="60" rx="3" fill="#5A3B22"/><rect x="4" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="32" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="60" y="6" width="20" height="48" rx="2" fill="#C9A86A"/><rect x="88" y="6" width="20" height="48" rx="2" fill="var(--accent)"/></g><g transform="translate(150,170) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="150" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">둘이 같은 줄을 고쳤어요</text><g transform="translate(600,170) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="600" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">그건 서가가 대신 정해주지 않아요</text><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--bad)" class="d">서가가 다 해결해주진 않아요</text></svg>
+<p>서가가 다 해결해주진 않아요.<small>같은 부분을 동시에 고치면 사람이 직접 조율해야 해요(병합 충돌). 백업·재해복구는 또 다른 이야기예요 → <a href="backup-ko.html">보관실의 복사본</a>.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>형상관리(SCM)</b> = 원고의 모든 판을 <b>번호 매겨 보관</b>하고, <b>누가 뭘 바꿨는지 기록</b>하며, 실험은 <b>가지쳐서 나중에 합치는</b> 서가.</h2><p>형상관리는 소프트웨어 산출물(코드·문서·설정)의 변경을 식별하고, 버전을 통제하며, 이력을 추적 가능하게 관리하는 활동이에요. 형상식별·형상통제·형상감사·형상기록관리의 네 활동으로 이뤄지고, Git 같은 버전관리시스템(VCS)이 실무 도구로 쓰여요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>형상관리(SCM)<br><small>Configuration Management</small></dt><dd><b>원고의 모든 판을 지키는 서가.</b> 식별·통제·감사·기록의 네 활동으로 이뤄져요.</dd></div><div><dt>버전관리(VCS)<br><small>Version Control System</small></dt><dd><b>서가를 실제로 운영하는 도구.</b> Git 같은 도구가 대표적이에요.</dd></div><div><dt>베이스라인<br><small>Baseline</small></dt><dd><b>공식적으로 확정한 판.</b> 이후 변경은 전부 이 기준과 비교해요.</dd></div><div><dt>브랜치<br><small>Branch</small></dt><dd><b>실험용 사본이 갈라져 나온 가지.</b> 원본을 건드리지 않고 따로 고쳐 봐요.</dd></div><div><dt>병합(merge)<br><small>Merge</small></dt><dd><b>실험이 끝나면 다시 합치는 일.</b> 자동 배포까지 이어지면 → <a href="gitops-ko.html">서고 자체가 운영 기준이 되는 방식</a>.</dd></div><div><dt>롤백(rollback)<br><small>Rollback</small></dt><dd><b>예전 판을 그대로 꺼내 쓰는 일.</b> 문제가 생기면 이전 칸으로 되돌려요 → <a href="rollback-ko.html">놀이공원 세계의 되돌리기</a>.</dd></div><div><dt>형상통제위원회(CCB)<br><small>Change Control Board</small></dt><dd><b>어떤 변경을 받아들일지 결정하는 모임.</b> 중요한 변경은 아무나 서가에 바로 꽂지 못해요.</dd></div><div><dt>형상감사<br><small>Configuration Audit</small></dt><dd><b>서가가 기준대로 정리됐는지 확인하는 일.</b> 감리가 점검하는 항목 중 하나예요 → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="mlops-ko.html">자동 교정 기계 돌보기 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

@@ -18,8 +18,18 @@
 | SRE | 하루도 안 닫는 놀이공원 — 놀이기구는 서비스, 손님은 요청 | 47 |
 | AI 보안 | 뭐든 시키는 대로 믿고 따르는 주방장과, 그 주방을 노리는 사람들 | 32 |
 | 소프트웨어 설계 | 앱은 집, 화면은 방, 화면 사이 이동은 문과 복도 | 1 |
+| PPE·SW공학 | 원고를 쓰고 교정하고 찍어내는 출판사 | 44 |
+| PPE·DB/데이터 | 재고를 나눠 보관하는 물류창고 | 16 |
+| PPE·AI이론 | 작물을 등급별로 가려내는 품질검사장 | 23 |
+| PPE·네트워크 | 집집마다 봉투를 나르는 우체국 배송망 | 24 |
+| PPE·정보보안 | 보안 분야와 세계관을 공유하는 심화 성(城) | 19 |
+| PPE·시스템SW | 리프트 한 대를 돌려쓰는 자동차 정비공장 | 22 |
+| PPE·클라우드 | 사무실을 빌려 쓰는 공유 오피스 빌딩 | 12 |
+| PPE·신기술 | 부스마다 다른 기술을 보여주는 과학관 전시장 | 25 |
+| PPE·IT관리 | 공연을 준비하는 콘서트 투어 기획사 | 8 |
+| PPE·법제도 | 학교 규칙을 정하는 학생회 | 20 |
 
-총 233개 용어가 올라와 있다. 새 용어는 [용어 요청](#용어-요청)으로, 새 분야는 `.claude/skills/picture-book/`(세계관 설계·대량 작성 루프·시각 검수 스크립트를 담은 일반화 스킬)로 연다.
+총 446개 용어가 올라와 있다. 새 용어는 [용어 요청](#용어-요청)으로, 새 분야는 `.claude/skills/picture-book/`(세계관 설계·대량 작성 루프·시각 검수 스크립트를 담은 일반화 스킬)로 연다.
 
 ## 용어 요청
 
@@ -298,6 +308,273 @@ SRE 용어는 하나의 세계를 공유한다 — 공원은 우리 시스템, �
 AI 보안 용어는 하나의 세계를 공유한다 — 주방은 AI 시스템, 주방장은 모델, 손님은 요청, 위생 검사관은 레드팀 (`terms/llmsec/_WORLD.md`).
 순서는 다섯 챕터를 따른다 — 프롬프트 단계 공격 → 모델 자체를 노리는 공격 → 에이전트·도구 시대의 위험 → 공급망과 투명성 → 막고 지키기(거버넌스·운영).
 
+## PPE (정보관리기술사·컴퓨터시스템응용기술사)
+
+탭 바에서는 아래 10개 분야가 "PPE" 구분선 아래 모여 보인다 — 각자 독립된 세계관과 슬러그 공간을 가진 별도 분야이고, 시험 범위상 한 그룹으로 묶여 있을 뿐이다. 이미 다른 분야(보안·AI·SRE)에 있는 용어는 다시 쓰지 않고 그 페이지로 링크했다.
+
+### PPE·SW공학
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
+| 정보시스템 감리/PMO | 출간 전 마지막 검수관 | [pmoaudit-ko](docs/pmoaudit-ko.html) | [pmoaudit-en](docs/pmoaudit-en.html) |
+| ISP/ISMP | 출판 로드맵을 그리는 사람 | [ispismp-ko](docs/ispismp-ko.html) | [ispismp-en](docs/ispismp-en.html) |
+| 요구공학/요구사항 명세 | 쓰기 전에 먼저 묻는 사람 | [reqeng-ko](docs/reqeng-ko.html) | [reqeng-en](docs/reqeng-en.html) |
+| 애자일/스크럼 | 한 챕터씩 보여주며 쓰기 | [agilescrum-ko](docs/agilescrum-ko.html) | [agilescrum-en](docs/agilescrum-en.html) |
+| 화이트박스/블랙박스 테스트 | 속을 펼쳐 볼지, 겉만 읽을지 | [wbblacktest-ko](docs/wbblacktest-ko.html) | [wbblacktest-en](docs/wbblacktest-en.html) |
+| 데이터 품질관리 | 독자 주소록을 돌보는 일 | [dataqual-ko](docs/dataqual-ko.html) | [dataqual-en](docs/dataqual-en.html) |
+| 소프트웨어 안전/기능안전 | 오탈자 하나의 무게가 다른 책 | [swsafety-ko](docs/swsafety-ko.html) | [swsafety-en](docs/swsafety-en.html) |
+| 재공학/역공학(3R) | 사라진 원본을 되짚어 다시 짓기 | [reengineering-ko](docs/reengineering-ko.html) | [reengineering-en](docs/reengineering-en.html) |
+| GoF 디자인패턴 | 검증된 글쓰기 공식집 | [gofpattern-ko](docs/gofpattern-ko.html) | [gofpattern-en](docs/gofpattern-en.html) |
+| 마이크로서비스 아키텍처(MSA) | 두꺼운 책을 소책자들로 쪼개기 | [msa-ko](docs/msa-ko.html) | [msa-en](docs/msa-en.html) |
+| UML 다이어그램 작성 | 쓰기 전에 그리는 설계 지도 | [umldiagram-ko](docs/umldiagram-ko.html) | [umldiagram-en](docs/umldiagram-en.html) |
+| 기능점수(FP) | 매수를 재는 자 | [fpruler-ko](docs/fpruler-ko.html) | [fpruler-en](docs/fpruler-en.html) |
+| 소프트웨어 형상관리(SCM) | 원고를 지키는 보관 서가 | [scmshelf-ko](docs/scmshelf-ko.html) | [scmshelf-en](docs/scmshelf-en.html) |
+| MLOps/ModelOps | 자동 교정 기계 돌보기 | [mlops-ko](docs/mlops-ko.html) | [mlops-en](docs/mlops-en.html) |
+| SW 사업 대가산정 | 매수를 돈으로 바꾸는 계산 | [swcost-ko](docs/swcost-ko.html) | [swcost-en](docs/swcost-en.html) |
+| SW사업 영향평가 | 고치기 전에 그려보는 연결 지도 | [swimpact-ko](docs/swimpact-ko.html) | [swimpact-en](docs/swimpact-en.html) |
+| 명세기반 테스트 설계기법 | 규칙서만 보고 고르는 대표 사례 | [spectest-ko](docs/spectest-ko.html) | [spectest-en](docs/spectest-en.html) |
+| DevOps | 담장을 허문 작가와 인쇄소 | [devopsswe-ko](docs/devopsswe-ko.html) | [devopsswe-en](docs/devopsswe-en.html) |
+| 개방형 API(Open API) | 서식 하나로 열어둔 열람실 | [openapi-ko](docs/openapi-ko.html) | [openapi-en](docs/openapi-en.html) |
+| 캡슐화·정보은닉 | 작가의 잠긴 서랍 | [encapsulation-ko](docs/encapsulation-ko.html) | [encapsulation-en](docs/encapsulation-en.html) |
+| SW 성능테스트 | 미리 몰려보는 가짜 독자들 | [perftest-ko](docs/perftest-ko.html) | [perftest-en](docs/perftest-en.html) |
+| 통계적 가설검정 | 두 표지 중 뭐가 진짜 더 잘 팔릴까 | [hypothesistest-ko](docs/hypothesistest-ko.html) | [hypothesistest-en](docs/hypothesistest-en.html) |
+| 리팩토링 | 줄거리는 그대로, 문장만 다시 다듬기 | [refactorppe-ko](docs/refactorppe-ko.html) | [refactorppe-en](docs/refactorppe-en.html) |
+| 빅데이터 플랫폼 | 전국 창고 네트워크 | [bigdataplatform-ko](docs/bigdataplatform-ko.html) | [bigdataplatform-en](docs/bigdataplatform-en.html) |
+| 메타모픽 테스트 | 정답 없이도 관계로 확인하기 | [metamorphictest-ko](docs/metamorphictest-ko.html) | [metamorphictest-en](docs/metamorphictest-en.html) |
+| WBS | 책 만들기를 나뭇가지로 늘어놓기 | [wbsswe-ko](docs/wbsswe-ko.html) | [wbsswe-en](docs/wbsswe-en.html) |
+| 기술부채 | 지금 빨리 가려고 쌓아둔 빚 | [techdebt-ko](docs/techdebt-ko.html) | [techdebt-en](docs/techdebt-en.html) |
+| 플래시 변환계층(FTL) | 덮어쓰지 않는 서가 관리인 | [ftl-ko](docs/ftl-ko.html) | [ftl-en](docs/ftl-en.html) |
+| 개발방법론 테일러링 | 책마다 다른 편집 규칙 | [tailoring-ko](docs/tailoring-ko.html) | [tailoring-en](docs/tailoring-en.html) |
+| 제품계열(Product Line) 방법론 | 같은 틀, 다른 표지 | [productline-ko](docs/productline-ko.html) | [productline-en](docs/productline-en.html) |
+| 품질보증(QA)과 품질관리(QC) | 규칙을 지켰나, 책이 맞나 | [qaqc-ko](docs/qaqc-ko.html) | [qaqc-en](docs/qaqc-en.html) |
+| 프로젝트 갈등관리 | 작가와 편집장이 다툴 때 | [conflictmgmt-ko](docs/conflictmgmt-ko.html) | [conflictmgmt-en](docs/conflictmgmt-en.html) |
+| 우선순위 역전/상속 | 급한 책이 유령처럼 멈춰요 | [priorityinv-ko](docs/priorityinv-ko.html) | [priorityinv-en](docs/priorityinv-en.html) |
+| SCTP | 한 계약, 여러 개의 전용 차선 | [sctp-ko](docs/sctp-ko.html) | [sctp-en](docs/sctp-en.html) |
+| 좋은 소프트웨어 | 좋은 책의 조건 | [goodsw-ko](docs/goodsw-ko.html) | [goodsw-en](docs/goodsw-en.html) |
+| 상용SW 직접구매 | 인쇄기를 중간상인 없이 바로 사기 | [swpurchase-ko](docs/swpurchase-ko.html) | [swpurchase-en](docs/swpurchase-en.html) |
+| 결합도와 응집도 | 챕터가 서로 얼마나 엮여있나 | [couplingcohesion-ko](docs/couplingcohesion-ko.html) | [couplingcohesion-en](docs/couplingcohesion-en.html) |
+| 아키텍처 평가(ATAM/CBAM) | 출간 전 시나리오 리허설 | [atamcbam-ko](docs/atamcbam-ko.html) | [atamcbam-en](docs/atamcbam-en.html) |
+| SW 품질인증 | 책 표지의 공식 마크 | [swcert-ko](docs/swcert-ko.html) | [swcert-en](docs/swcert-en.html) |
+| UNIX 시스템 | 기계실의 보이지 않는 운영자 | [unixsys-ko](docs/unixsys-ko.html) | [unixsys-en](docs/unixsys-en.html) |
+| 디자인 씽킹 | 책상 추측 대신 독자에게 직접 묻기 | [designthinking-ko](docs/designthinking-ko.html) | [designthinking-en](docs/designthinking-en.html) |
+| 의존성 주입/역전(DI/DIP) | 아무 기계나 꽂을 수 있는 콘센트 | [diprinciple-ko](docs/diprinciple-ko.html) | [diprinciple-en](docs/diprinciple-en.html) |
+| 사용성평가(Usability) | 독자가 책을 쓱 넘겨보는 시험 | [usability-ko](docs/usability-ko.html) | [usability-en](docs/usability-en.html) |
+| 소프트웨어 아키텍처 모델 | 책 전체를 미리 짜 두는 구조 밑그림 | [swarchmodel-ko](docs/swarchmodel-ko.html) | [swarchmodel-en](docs/swarchmodel-en.html) |
+
+### PPE·DB/데이터
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
+| 정규화/반정규화 | 한 칸에 한 번만 적는 규칙 | [normalization-ko](docs/normalization-ko.html) | [normalization-en](docs/normalization-en.html) |
+| NoSQL 유형·모델링 | 상자 모양에 맞춰 선반을 바꾸는 창고 | [nosqltype-ko](docs/nosqltype-ko.html) | [nosqltype-en](docs/nosqltype-en.html) |
+| 데이터베이스 샤딩·파티셔닝 | 너무 커진 창고를 구역으로 쪼개기 | [dbsharding-ko](docs/dbsharding-ko.html) | [dbsharding-en](docs/dbsharding-en.html) |
+| 트랜잭션 격리 수준 | 동시에 손댈 때 얼마나 가려 볼지 정하는 규칙 | [isolevel-ko](docs/isolevel-ko.html) | [isolevel-en](docs/isolevel-en.html) |
+| LOD·오픈 데이터 | 문을 열고 번호표를 달아 연결해두는 창고 | [lodopendata-ko](docs/lodopendata-ko.html) | [lodopendata-en](docs/lodopendata-en.html) |
+| 트랜잭션과 ACID | 출납 전표가 지키는 네 가지 약속 | [acid-ko](docs/acid-ko.html) | [acid-en](docs/acid-en.html) |
+| 데이터베이스 병행제어 | 동시에 손대도 안 부딪히게 막는 규칙 | [concurrency-ko](docs/concurrency-ko.html) | [concurrency-en](docs/concurrency-en.html) |
+| 인메모리 컴퓨팅(In-Memory DB/IMDG) | 깊은 선반 대신 바로 꺼내는 특급 출고대 | [inmemorydb-ko](docs/inmemorydb-ko.html) | [inmemorydb-en](docs/inmemorydb-en.html) |
+| SCADA | 창고 전체를 한눈에 보는 관제실 | [scada-ko](docs/scada-ko.html) | [scada-en](docs/scada-en.html) |
+| 분산 데이터베이스 | 여러 지점으로 나뉜 창고 | [distdb-ko](docs/distdb-ko.html) | [distdb-en](docs/distdb-en.html) |
+| 다차원 색인구조 | 여러 딱지로 한 번에 찾기 | [multiindex-ko](docs/multiindex-ko.html) | [multiindex-en](docs/multiindex-en.html) |
+| 동적 SQL | 그 자리에서 맞춤 주문서 쓰기 | [dynamicsql-ko](docs/dynamicsql-ko.html) | [dynamicsql-en](docs/dynamicsql-en.html) |
+| RAID | 선반을 쪼개고 겹쳐서 쌓기 | [raid-ko](docs/raid-ko.html) | [raid-en](docs/raid-en.html) |
+| 데이터 웨어하우스 | 다듬어 둔 창고 vs 쌓아만 둔 야적장 | [dwlake-ko](docs/dwlake-ko.html) | [dwlake-en](docs/dwlake-en.html) |
+| OLAP | 전체를 썰어보는 창고 관리자 | [olap-ko](docs/olap-ko.html) | [olap-en](docs/olap-en.html) |
+| SDDC | 소프트웨어로 다시 짓는 창고 | [sddc-ko](docs/sddc-ko.html) | [sddc-en](docs/sddc-en.html) |
+
+### PPE·AI이론
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
+| AI 학습용 데이터 품질관리 | 상한 씨앗으로 가르친 선별기 | [aidataqual-ko](docs/aidataqual-ko.html) | [aidataqual-en](docs/aidataqual-en.html) |
+| AI 윤리기준·거버넌스 | 모든 검사장이 함께 쓰는 등급 원칙판 | [aiethicsgov-ko](docs/aiethicsgov-ko.html) | [aiethicsgov-en](docs/aiethicsgov-en.html) |
+| 적대적 공격 | 작물에 몰래 붙인 가짜 점무늬 | [advattack-ko](docs/advattack-ko.html) | [advattack-en](docs/advattack-en.html) |
+| 혼동행렬 | 네 칸으로 나눈 도장 기록부 | [confmatrix-ko](docs/confmatrix-ko.html) | [confmatrix-en](docs/confmatrix-en.html) |
+| AI 리스크 관리 프레임워크 | 검사장 전체를 도는 운영 지도 | [airiskframe-ko](docs/airiskframe-ko.html) | [airiskframe-en](docs/airiskframe-en.html) |
+| 군집분석 | 이름표 없이 비슷한 것끼리 모으기 | [clustering-ko](docs/clustering-ko.html) | [clustering-en](docs/clustering-en.html) |
+| CNN(합성곱 신경망) | 작은 창으로 조금씩 살펴보는 눈 | [cnn-ko](docs/cnn-ko.html) | [cnn-en](docs/cnn-en.html) |
+| 로지스틱 회귀분석 | 저울 눈금을 S자 곡선에 넣어 보기 | [logisticreg-ko](docs/logisticreg-ko.html) | [logisticreg-en](docs/logisticreg-en.html) |
+| 이상치 | 무리에서 유난히 튀는 작물 | [outlier-ko](docs/outlier-ko.html) | [outlier-en](docs/outlier-en.html) |
+| 인공지능기본법·고영향 AI | 나라가 정한 최소 등급 기준 | [aibasiclaw-ko](docs/aibasiclaw-ko.html) | [aibasiclaw-en](docs/aibasiclaw-en.html) |
+| 피지컬 AI | 사진만 보던 눈이 팔다리를 얻다 | [physicalai-ko](docs/physicalai-ko.html) | [physicalai-en](docs/physicalai-en.html) |
+| AX(AI 전환) | 검사장 전체를 다시 설계하다 | [axtransform-ko](docs/axtransform-ko.html) | [axtransform-en](docs/axtransform-en.html) |
+| AI 개인정보보호 | 출하자 명부를 지키는 서류함 | [aiprivacyppe-ko](docs/aiprivacyppe-ko.html) | [aiprivacyppe-en](docs/aiprivacyppe-en.html) |
+| OWASP LLM 보안 위협 Top 10 | 검사장 입구의 업계 공용 위험 게시판 | [owaspllm-ko](docs/owaspllm-ko.html) | [owaspllm-en](docs/owaspllm-en.html) |
+| 시계열분석(AR/MA) | 지난 며칠을 보고 내일을 가늠하는 검수반장 | [timeseries-ko](docs/timeseries-ko.html) | [timeseries-en](docs/timeseries-en.html) |
+| AI 신뢰성 | 정확도 하나로는 못 받는 품질인증 등급판 | [aitrust-ko](docs/aitrust-ko.html) | [aitrust-en](docs/aitrust-en.html) |
+| AIaaS(AI as a Service) | 선별기를 사지 않고 구독하는 농가들 | [aiaas-ko](docs/aiaas-ko.html) | [aiaas-en](docs/aiaas-en.html) |
+| 온디바이스 AI | 창고 안에 직접 둔 작은 선별기 | [ondeviceai-ko](docs/ondeviceai-ko.html) | [ondeviceai-en](docs/ondeviceai-en.html) |
+| 불편추정량 | 치우치지 않은 저울눈금 | [unbiasedest-ko](docs/unbiasedest-ko.html) | [unbiasedest-en](docs/unbiasedest-en.html) |
+| 회귀모형 가정 | 저울을 똑바로 걸기 위한 네 가지 조건 | [regassumption-ko](docs/regassumption-ko.html) | [regassumption-en](docs/regassumption-en.html) |
+| 강화학습 | 정답표 없이 점수로 배우는 신입 조작원 | [rl-ko](docs/rl-ko.html) | [rl-en](docs/rl-en.html) |
+| 교차검증 | 조를 돌아가며 시험지로 쓰는 검수반장 | [crossval-ko](docs/crossval-ko.html) | [crossval-en](docs/crossval-en.html) |
+| 앙상블(Ensemble) 기법 | 세 조작원의 의견을 모아 결정하는 검사장 | [ensemble-ko](docs/ensemble-ko.html) | [ensemble-en](docs/ensemble-en.html) |
+
+### PPE·네트워크
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
+| 5G 특화망 | 이 공장만을 위한 전용 배송망 | [5gprivate-ko](docs/5gprivate-ko.html) | [5gprivate-en](docs/5gprivate-en.html) |
+| TCP/UDP | 등기봉투와 일반봉투 | [tcpudp-ko](docs/tcpudp-ko.html) | [tcpudp-en](docs/tcpudp-en.html) |
+| SDN/NFV | 소프트웨어로 길을 바꾸는 관제탑 | [sdnnfv-ko](docs/sdnnfv-ko.html) | [sdnnfv-en](docs/sdnnfv-en.html) |
+| 무선충전기술 | 줄 없이 세우기만 하면 되는 충전판 | [wirelesscharge-ko](docs/wirelesscharge-ko.html) | [wirelesscharge-en](docs/wirelesscharge-en.html) |
+| 5G 네트워크 슬라이싱 | 한 도로를 차선으로 나누기 | [5gslicing-ko](docs/5gslicing-ko.html) | [5gslicing-en](docs/5gslicing-en.html) |
+| 다중접속·매체접근제어 | 하나의 통로를 안 부딪히고 나눠 쓰는 법 | [macprotocol-ko](docs/macprotocol-ko.html) | [macprotocol-en](docs/macprotocol-en.html) |
+| TCP 오류·흐름·혼잡 제어 | 등기 배송을 끝까지 지키는 세 장치 | [tcpcontrol-ko](docs/tcpcontrol-ko.html) | [tcpcontrol-en](docs/tcpcontrol-en.html) |
+| 동적 라우팅 프로토콜 | 스스로 고쳐 그리는 배송 지도 | [dynamicrouting-ko](docs/dynamicrouting-ko.html) | [dynamicrouting-en](docs/dynamicrouting-en.html) |
+| 인터럽트(네트워크 I/O) | 소포가 도착했다고 알리는 벨소리 | [interruptnet-ko](docs/interruptnet-ko.html) | [interruptnet-en](docs/interruptnet-en.html) |
+| 소켓 | 이 대화만을 위한 전용 우편함 구멍 | [socket-ko](docs/socket-ko.html) | [socket-en](docs/socket-en.html) |
+| 무선 측위 | 신호탑 세 개로 위치 찾기 | [wirelesspos-ko](docs/wirelesspos-ko.html) | [wirelesspos-en](docs/wirelesspos-en.html) |
+| IPv6 | 끝없이 늘어난 새 번지수 | [ipv6-ko](docs/ipv6-ko.html) | [ipv6-en](docs/ipv6-en.html) |
+| 5G 이동통신 핵심기술 | 상황별 전용 차선을 가진 배송망 | [5gcore-ko](docs/5gcore-ko.html) | [5gcore-en](docs/5gcore-en.html) |
+| 트래픽 폴리싱·쉐이핑 | 접수량을 조절하는 창구 규칙 | [trafficshaping-ko](docs/trafficshaping-ko.html) | [trafficshaping-en](docs/trafficshaping-en.html) |
+| 네트워크 서브네팅 | 동네를 작은 우편번호 구역으로 나누기 | [subnetting-ko](docs/subnetting-ko.html) | [subnetting-en](docs/subnetting-en.html) |
+| Modbus 프로토콜 | 우체국장이 순서대로 묻는 쪽지 규칙 | [modbus-ko](docs/modbus-ko.html) | [modbus-en](docs/modbus-en.html) |
+| IPC(네트워크 프로세스 간 통신) | 멀리 떨어진 건물 사이에 여는 전용 편지함 | [ipc-ko](docs/ipc-ko.html) | [ipc-en](docs/ipc-en.html) |
+| Ad-hoc 라우팅 프로토콜 | 집배원끼리 서로 길을 찾아 건네는 법 | [adhocrouting-ko](docs/adhocrouting-ko.html) | [adhocrouting-en](docs/adhocrouting-en.html) |
+| L4 스위치 | 창구 번호까지 보는 분류소 직원 | [l4switch-ko](docs/l4switch-ko.html) | [l4switch-en](docs/l4switch-en.html) |
+| AMI(지능형 검침 인프라) | 계량기가 스스로 편지를 보내는 망 | [ami-ko](docs/ami-ko.html) | [ami-en](docs/ami-en.html) |
+| V2X 차량 통신 | 트럭끼리 주고받는 쪽지 | [v2x-ko](docs/v2x-ko.html) | [v2x-en](docs/v2x-en.html) |
+| 회선교환·패킷교환 | 전용 도로냐, 조각내 보내기냐 | [circuitpacket-ko](docs/circuitpacket-ko.html) | [circuitpacket-en](docs/circuitpacket-en.html) |
+| OSI 7계층 | 7단계로 나뉜 배송 공정 | [osi7-ko](docs/osi7-ko.html) | [osi7-en](docs/osi7-en.html) |
+| 전송계층 | 포트를 나누고 신뢰도를 고르는 단계 | [transportlayer-ko](docs/transportlayer-ko.html) | [transportlayer-en](docs/transportlayer-en.html) |
+
+### PPE·정보보안
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
+| ISMS/ISMS-P | 성 전체에 거는 인증 현판 | [ismsp-ko](docs/ismsp-ko.html) | [ismsp-en](docs/ismsp-en.html) |
+| 개인정보 비식별·가명처리 | 번호표로 바꿔 달고, 진짜 이름은 다른 금고에 | [pseudonymize-ko](docs/pseudonymize-ko.html) | [pseudonymize-en](docs/pseudonymize-en.html) |
+| 개인정보 안전성 확보조치·내부관리계획 | 손님 정보 창고의 전담 단속 수칙 | [privacysafeguard-ko](docs/privacysafeguard-ko.html) | [privacysafeguard-en](docs/privacysafeguard-en.html) |
+| 양자암호통신 | 엿들으면 바로 티 나는 빛 알갱이 열쇠 | [qkdcomm-ko](docs/qkdcomm-ko.html) | [qkdcomm-en](docs/qkdcomm-en.html) |
+| 블록체인 보안 고려사항 | 모두가 들고 다니는, 지문으로 이어 붙인 장부 | [bcsecurity-ko](docs/bcsecurity-ko.html) | [bcsecurity-en](docs/bcsecurity-en.html) |
+| CPU 보안 취약점(Meltdown/Spectre) | 미리 짐작해서 일하다 생긴 흔적 | [cpuvuln-ko](docs/cpuvuln-ko.html) | [cpuvuln-en](docs/cpuvuln-en.html) |
+| 국가 망 보안체계(N2SF) | 다리를 끊는 대신 검문소를 촘촘히 | [n2sf-ko](docs/n2sf-ko.html) | [n2sf-en](docs/n2sf-en.html) |
+| 개인정보 보호강화기술(PET) | 손님을 지키는 여러 다른 도구상자 | [pet-ko](docs/pet-ko.html) | [pet-en](docs/pet-en.html) |
+| 개인정보 안심구역 | 밖으로 못 들고 나가는 특별 열람실 | [safezone-ko](docs/safezone-ko.html) | [safezone-en](docs/safezone-en.html) |
+| 동형암호 | 뜯지 않고 셈하는 봉인 편지 | [homoenc-ko](docs/homoenc-ko.html) | [homoenc-en](docs/homoenc-en.html) |
+| 접근통제 모델 | 열쇠 주인을 정하는 세 가지 방식 | [accesscontrolppe-ko](docs/accesscontrolppe-ko.html) | [accesscontrolppe-en](docs/accesscontrolppe-en.html) |
+| CBPR | 여러 나라가 같이 인정하는 통행 증명 | [cbpr-ko](docs/cbpr-ko.html) | [cbpr-en](docs/cbpr-en.html) |
+| 마이데이터 | 내 장부는 내가 들고 다닐 권리 | [mydataSec-ko](docs/mydataSec-ko.html) | [mydataSec-en](docs/mydataSec-en.html) |
+| CSAP | 빌린 창고에 찍는 왕의 안전 도장 | [csap-ko](docs/csap-ko.html) | [csap-en](docs/csap-en.html) |
+| MAC/HMAC | 비밀 도장틀로 찍는 확인 도장 | [machmac-ko](docs/machmac-ko.html) | [machmac-en](docs/machmac-en.html) |
+| BLP/Biba | 비밀은 안 새게, 거짓은 안 섞이게 — 사다리 두 규칙 | [blpbiba-ko](docs/blpbiba-ko.html) | [blpbiba-en](docs/blpbiba-en.html) |
+| 공인인증서·사설인증 | 하나뿐이던 도장집, 이제는 여럿 | [pkicert-ko](docs/pkicert-ko.html) | [pkicert-en](docs/pkicert-en.html) |
+| 데이터 3법 개정 | 세 권의 규칙서를 한 검사관 아래로 | [data3law-ko](docs/data3law-ko.html) | [data3law-en](docs/data3law-en.html) |
+| PPDM | 이름은 가리고, 흐름은 보는 통계 조사관 | [ppdm-ko](docs/ppdm-ko.html) | [ppdm-en](docs/ppdm-en.html) |
+
+### PPE·시스템SW
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
+| CPU 스케줄링 | 리프트에 누가 먼저 올라갈까 | [cpusched-ko](docs/cpusched-ko.html) | [cpusched-en](docs/cpusched-en.html) |
+| 프로세스 동기화 | 리프트 열쇠는 하나뿐 | [syncprim-ko](docs/syncprim-ko.html) | [syncprim-en](docs/syncprim-en.html) |
+| 캐시 메모리 | 바로 옆에 놓아둔 공구함 | [cachemem-ko](docs/cachemem-ko.html) | [cachemem-en](docs/cachemem-en.html) |
+| 가상메모리·페이징 | 창고 전체를 내 것처럼 보여주는 가짜 지도 | [virtualmem-ko](docs/virtualmem-ko.html) | [virtualmem-en](docs/virtualmem-en.html) |
+| 교착상태와 기아현상 | 서로의 열쇠를 기다리며 멈춘 정비공장 | [deadlockstarve-ko](docs/deadlockstarve-ko.html) | [deadlockstarve-en](docs/deadlockstarve-en.html) |
+| GPU/GPGPU | 수백 명이 함께 움직이는 보조 정비팀 | [gpu-ko](docs/gpu-ko.html) | [gpu-en](docs/gpu-en.html) |
+| 스택과 큐 | 상자는 쌓고, 차는 줄 세우고 | [stackqueue-ko](docs/stackqueue-ko.html) | [stackqueue-en](docs/stackqueue-en.html) |
+| AI 가속기(TPU·NPU) | 오직 그 계산 하나만을 위한 전용 로봇팔 | [aiaccel-ko](docs/aiaccel-ko.html) | [aiaccel-en](docs/aiaccel-en.html) |
+| 프로세스와 스레드 | 같은 차, 여러 손 | [processthread-ko](docs/processthread-ko.html) | [processthread-en](docs/processthread-en.html) |
+| 이진트리·이진탐색트리 | 갈림길에서 반씩 줄여가는 선반 지도 | [bintree-ko](docs/bintree-ko.html) | [bintree-en](docs/bintree-en.html) |
+| 알고리즘 복잡도(Big-O) | 차가 많아질 때 얼마나 느려질까 | [bigofunc-ko](docs/bigofunc-ko.html) | [bigofunc-en](docs/bigofunc-en.html) |
+| 정렬 알고리즘 | 크기 순서로 차를 세우는 여러 방법 | [sortalgo-ko](docs/sortalgo-ko.html) | [sortalgo-en](docs/sortalgo-en.html) |
+| 플래시 메모리 | 전원이 꺼져도 기억하는 부품 창고 | [flashmem-ko](docs/flashmem-ko.html) | [flashmem-en](docs/flashmem-en.html) |
+| 인터럽트 처리 과정 | 벨이 울리면 적어두고 바로 달려가기 | [interruptproc-ko](docs/interruptproc-ko.html) | [interruptproc-en](docs/interruptproc-en.html) |
+| BPR(업무 프로세스 재설계) | 정비 공정을 처음부터 다시 그리는 일 | [bpr-ko](docs/bpr-ko.html) | [bpr-en](docs/bpr-en.html) |
+| HBM(고대역폭 메모리) | 엔진 바로 옆에 쌓은 공구탑 | [hbm-ko](docs/hbm-ko.html) | [hbm-en](docs/hbm-en.html) |
+| 프로세스 메모리 구조 | 작업 공간을 구역으로 나눠 쓰는 규칙 | [memlayout-ko](docs/memlayout-ko.html) | [memlayout-en](docs/memlayout-en.html) |
+| 유전 알고리즘 | 잘 나가는 다이얼 설정끼리 섞어보기 | [geneticalgo-ko](docs/geneticalgo-ko.html) | [geneticalgo-en](docs/geneticalgo-en.html) |
+| CPU 파이프라인 | 여러 작업대에서 동시에 겹쳐 고치기 | [cpupipeline-ko](docs/cpupipeline-ko.html) | [cpupipeline-en](docs/cpupipeline-en.html) |
+| 해시 알고리즘 | 번호만 계산해서 바로 칸을 짚기 | [hashalgo-ko](docs/hashalgo-ko.html) | [hashalgo-en](docs/hashalgo-en.html) |
+| 차세대 비휘발성 메모리 | 지우지 않고 바로바로 바꿔 쓰는 새 창고들 | [nextnvm-ko](docs/nextnvm-ko.html) | [nextnvm-en](docs/nextnvm-en.html) |
+| 최소신장트리(MST) | 가장 싼 배관만 골라 모든 지점 잇기 | [mstalgo-ko](docs/mstalgo-ko.html) | [mstalgo-en](docs/mstalgo-en.html) |
+
+### PPE·클라우드
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
+| 클라우드 서비스 모델 | 뼈대만, 인테리어까지, 완제품 — 셋 중 골라 빌리기 | [cloudmodel-ko](docs/cloudmodel-ko.html) | [cloudmodel-en](docs/cloudmodel-en.html) |
+| 가상머신(VM)과 컨테이너 | 독채 사무실과 칸막이 책상 | [vmcontainer-ko](docs/vmcontainer-ko.html) | [vmcontainer-en](docs/vmcontainer-en.html) |
+| 공공부문 클라우드 활용 | 검증된 건물에만, 등급에 맞춰 입주하기 | [govcloud-ko](docs/govcloud-ko.html) | [govcloud-en](docs/govcloud-en.html) |
+| 서버리스 컴퓨팅 | 쓸 때만 여는 시간제 회의실 | [serverless-ko](docs/serverless-ko.html) | [serverless-en](docs/serverless-en.html) |
+| 엣지·포그 컴퓨팅 | 동네 가까운 지점과 그 사이 중간 허브 | [edgefog-ko](docs/edgefog-ko.html) | [edgefog-en](docs/edgefog-en.html) |
+| SVM(서포트벡터머신) | 두 그룹을 가장 넓게 갈라놓는 선 | [svm-ko](docs/svm-ko.html) | [svm-en](docs/svm-en.html) |
+| DAS/NAS/SAN | 내 서랍, 공용 자료실, 전용 창고망 | [dasnassan-ko](docs/dasnassan-ko.html) | [dasnassan-en](docs/dasnassan-en.html) |
+| AI 데이터센터 | GPU만을 위한 전용 별관 | [aidc-ko](docs/aidc-ko.html) | [aidc-en](docs/aidc-en.html) |
+| 블록·파일·오브젝트 스토리지 | 벽돌, 폴더 트리, 태그 붙은 박스 | [storagetype-ko](docs/storagetype-ko.html) | [storagetype-en](docs/storagetype-en.html) |
+| 쿠버네티스(Kubernetes) | 자동 배정 배지의 그 유명한 제품 이름 | [k8s-ko](docs/k8s-ko.html) | [k8s-en](docs/k8s-en.html) |
+| 멀티클라우드 | 여러 건물에 동시에 입주하기 | [multicloud-ko](docs/multicloud-ko.html) | [multicloud-en](docs/multicloud-en.html) |
+| 스케일업/스케일아웃과 오토스케일 | 사무실을 키울까, 더 빌릴까 | [scaleupout-ko](docs/scaleupout-ko.html) | [scaleupout-en](docs/scaleupout-en.html) |
+
+### PPE·신기술
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
+| 디지털 트윈 | 화면 속 쌍둥이 로봇 | [digitaltwin-ko](docs/digitaltwin-ko.html) | [digitaltwin-en](docs/digitaltwin-en.html) |
+| 엣지 컴퓨팅 | 바로 옆에서 계산하는 작은 서버 | [edgecompute-ko](docs/edgecompute-ko.html) | [edgecompute-en](docs/edgecompute-en.html) |
+| 스마트팩토리 | 스스로를 지켜보는 공장 | [smartfactory-ko](docs/smartfactory-ko.html) | [smartfactory-en](docs/smartfactory-en.html) |
+| 퍼블릭·프라이빗 블록체인 | 펼친 장부와 자물쇠 장부 | [bcpublicprivate-ko](docs/bcpublicprivate-ko.html) | [bcpublicprivate-en](docs/bcpublicprivate-en.html) |
+| 블록체인 기술요소·보안 | 지문으로 이어진 장부 | [bctech-ko](docs/bctech-ko.html) | [bctech-en](docs/bctech-en.html) |
+| 스마트시티 | 함께 숨 쉬는 도시 모형 | [smartcity-ko](docs/smartcity-ko.html) | [smartcity-en](docs/smartcity-en.html) |
+| 메타버스 | 아바타들이 모인 가상 전시관 | [metaverse-ko](docs/metaverse-ko.html) | [metaverse-en](docs/metaverse-en.html) |
+| 가상현실(VR) | 눈앞 전체를 바꾸는 헤드셋 | [vrtech-ko](docs/vrtech-ko.html) | [vrtech-en](docs/vrtech-en.html) |
+| 모바일 엣지 컴퓨팅(MEC) | 기지국 옆에 붙은 작은 서버 | [mec-ko](docs/mec-ko.html) | [mec-en](docs/mec-en.html) |
+| 오류 제어(ARQ) | 틀렸으니 다시 보내달라고 외치기 | [arq-ko](docs/arq-ko.html) | [arq-en](docs/arq-en.html) |
+| 마이데이터(MyData) | 흩어진 서랍을 내가 한곳에 모으기 | [mydataTech-ko](docs/mydataTech-ko.html) | [mydataTech-en](docs/mydataTech-en.html) |
+| 안티드론 | 하늘의 불청객을 찾아 막는 삼단계 | [antidrone-ko](docs/antidrone-ko.html) | [antidrone-en](docs/antidrone-en.html) |
+| 양자키분배(QKD) | 엿보면 반드시 들통나는 빛의 열쇠 | [qkdtech-ko](docs/qkdtech-ko.html) | [qkdtech-en](docs/qkdtech-en.html) |
+| 앰비언트 컴퓨팅 | 말 안 해도 알아서 척척인 전시관 | [ambientcompute-ko](docs/ambientcompute-ko.html) | [ambientcompute-en](docs/ambientcompute-en.html) |
+| RPA | 규칙대로만 반복하는 로봇 직원 | [rpa-ko](docs/rpa-ko.html) | [rpa-en](docs/rpa-en.html) |
+| 드론 보안위협 | 보이지 않는 줄로 매달린 드론 | [dronesecurity-ko](docs/dronesecurity-ko.html) | [dronesecurity-en](docs/dronesecurity-en.html) |
+| 스마트팜 | 센서가 돌보는 온실 부스 | [smartfarm-ko](docs/smartfarm-ko.html) | [smartfarm-en](docs/smartfarm-en.html) |
+| 양자 컴퓨팅 | 동시에 앞뒤인 신기한 동전 부스 | [quantumcompute-ko](docs/quantumcompute-ko.html) | [quantumcompute-en](docs/quantumcompute-en.html) |
+| NFT | 그림에 붙이는 위조 못 하는 증명서 | [nft-ko](docs/nft-ko.html) | [nft-en](docs/nft-en.html) |
+| LiDAR | 레이저로 거리를 재는 회전하는 눈 | [lidar-ko](docs/lidar-ko.html) | [lidar-en](docs/lidar-en.html) |
+| 정량적 위험분석 기법 | 위험을 숫자 하나로 적는 전광판 | [quantrisk-ko](docs/quantrisk-ko.html) | [quantrisk-en](docs/quantrisk-en.html) |
+| 자율주행 | 운전석이 비어 있는 시연 트랙의 차 | [autodrive-ko](docs/autodrive-ko.html) | [autodrive-en](docs/autodrive-en.html) |
+| 사이버물리시스템(CPS) | 화면 속 쌍둥이와 함께 움직이는 기계팔 | [cps-ko](docs/cps-ko.html) | [cps-en](docs/cps-en.html) |
+| 4차 산업혁명 | 전시장 모든 부스를 잇는 하나의 흐름 | [fourthindustry-ko](docs/fourthindustry-ko.html) | [fourthindustry-en](docs/fourthindustry-en.html) |
+| 핀테크·간편결제 | 나가는 길, 폰 하나로 찍는 매표소 | [fintech-ko](docs/fintech-ko.html) | [fintech-en](docs/fintech-en.html) |
+
+### PPE·IT관리
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
+| IT 투자성과 평가 | 공연 끝난 뒤의 성적표 | [itinvesteval-ko](docs/itinvesteval-ko.html) | [itinvesteval-en](docs/itinvesteval-en.html) |
+| 프로젝트 위험관리 | 비 오는 날에도 챙기는 우산 | [projrisk-ko](docs/projrisk-ko.html) | [projrisk-en](docs/projrisk-en.html) |
+| SLA/SLM | 공연을 보장하는 티켓 | [slappe-ko](docs/slappe-ko.html) | [slappe-en](docs/slappe-en.html) |
+| 협상에 의한 계약·제안서 평가 | 조건을 조율해 서명하기 | [negotiation-ko](docs/negotiation-ko.html) | [negotiation-en](docs/negotiation-en.html) |
+| ESG 경영과 IT | 환경·사회·투명성까지 챙기는 투어 | [esgit-ko](docs/esgit-ko.html) | [esgit-en](docs/esgit-en.html) |
+| BCP(업무 연속성 계획) | 정전에도 멈추지 않는 투어 | [bcpplan-ko](docs/bcpplan-ko.html) | [bcpplan-en](docs/bcpplan-en.html) |
+| WBS(작업분류체계) | 공연 준비를 쪼갠 체크리스트 | [wbsppm-ko](docs/wbsppm-ko.html) | [wbsppm-en](docs/wbsppm-en.html) |
+| 정보시스템 운영 성과관리 | 공연 끝난 뒤의 운영실 | [opsperf-ko](docs/opsperf-ko.html) | [opsperf-en](docs/opsperf-en.html) |
+
+### PPE·법제도
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
+| 오픈소스 라이선스 | 다 같이 쓰는 준비물 규칙 라벨 | [osslicense-ko](docs/osslicense-ko.html) | [osslicense-en](docs/osslicense-en.html) |
+| 정보시스템 하드웨어 규모산정 | 축제 준비물 개수 미리 정하기 | [hwsizing-ko](docs/hwsizing-ko.html) | [hwsizing-en](docs/hwsizing-en.html) |
+| 망중립성 | 급식 줄은 다 똑같이 서야 해요 | [netneutral-ko](docs/netneutral-ko.html) | [netneutral-en](docs/netneutral-en.html) |
+| ISO/IEC 25000(SQuaRE) | 좋은 준비물의 기준표 | [iso25000-ko](docs/iso25000-ko.html) | [iso25000-en](docs/iso25000-en.html) |
+| 맨체스터 부호화 | 박자를 스스로 알려주는 신호 | [manchestercode-ko](docs/manchestercode-ko.html) | [manchestercode-en](docs/manchestercode-en.html) |
+| ISO/IEC 42001 | AI도 규칙대로 쓰는지 도장 찍기 | [iso42001-ko](docs/iso42001-ko.html) | [iso42001-en](docs/iso42001-en.html) |
+| 공공데이터 제공과 품질 | 공지 게시판에 다 보이게 붙이기 | [opendataqual-ko](docs/opendataqual-ko.html) | [opendataqual-en](docs/opendataqual-en.html) |
+| 관계 무결성 제약 | 출석부에 없는 이름은 반장이 될 수 없어요 | [refintegrity-ko](docs/refintegrity-ko.html) | [refintegrity-en](docs/refintegrity-en.html) |
+| AI 윤리·법적 이슈 | AI가 사고 치면 누가 책임져요? | [aiethicslaw-ko](docs/aiethicslaw-ko.html) | [aiethicslaw-en](docs/aiethicslaw-en.html) |
+| 슈퍼앱 | 학생증 하나로 다 되는 앱 | [superapp-ko](docs/superapp-ko.html) | [superapp-en](docs/superapp-en.html) |
+| 데이터 표준화 | 전교가 함께 쓰는 공통 기준표 | [datastd-ko](docs/datastd-ko.html) | [datastd-en](docs/datastd-en.html) |
+| 위험·안전성 분석(FTA/FMEA/HAZOP) | 사고를 거꾸로, 또는 미리 훑어보기 | [riskanalysis-ko](docs/riskanalysis-ko.html) | [riskanalysis-en](docs/riskanalysis-en.html) |
+| 지능정보화 기본법 | 학교 전체의 디지털 생활을 아우르는 기본 헌장 | [intellinfolaw-ko](docs/intellinfolaw-ko.html) | [intellinfolaw-en](docs/intellinfolaw-en.html) |
+| 페이징·세그멘테이션 | 창고를 나누는 두 가지 다른 방식 | [pagingseg-ko](docs/pagingseg-ko.html) | [pagingseg-en](docs/pagingseg-en.html) |
+| 디지털 증거수집의 법적 절차 | 정당하게 거뒀는가를 따지는 절차 | [forensiclaw-ko](docs/forensiclaw-ko.html) | [forensiclaw-en](docs/forensiclaw-en.html) |
+| UN 전자정부 평가(EGDI) | 같은 잣대로 모든 학교를 재는 평가단 | [egdi-ko](docs/egdi-ko.html) | [egdi-en](docs/egdi-en.html) |
+| 기능안전 표준(ISO 26262·IEC 61508) | 안전 등급을 매기는 공통 규칙서 | [funcsafetystd-ko](docs/funcsafetystd-ko.html) | [funcsafetystd-en](docs/funcsafetystd-en.html) |
+| 경사하강법 | 안개 낀 산을 한 걸음씩 내려가기 | [gradientdescent-ko](docs/gradientdescent-ko.html) | [gradientdescent-en](docs/gradientdescent-en.html) |
+| 분할정복·탐욕법·동적계획법 | 쪼개고, 급한 것부터, 기억해두고 | [algoparadigm-ko](docs/algoparadigm-ko.html) | [algoparadigm-en](docs/algoparadigm-en.html) |
+| 레그테크(RegTech) | 흩어진 규칙판을 한꺼번에 대조하는 자동 검사기 | [regtech-ko](docs/regtech-ko.html) | [regtech-en](docs/regtech-en.html) |
+
 ## 구조
 
 ```
@@ -326,6 +603,16 @@ CATEGORIES = {
     "ai": ("AI", "AI"),
     "sre": ("SRE", "SRE"),
     "llmsec": ("AI 보안", "AI Security"),
+    "ppeswe": ("SW공학", "SW Eng"),
+    "ppedata": ("DB/데이터", "Database"),
+    "ppeai": ("AI이론", "AI Theory"),
+    "ppenet": ("네트워크", "Network"),
+    "ppesec": ("정보보안", "InfoSec"),
+    "ppesys": ("시스템SW", "Systems"),
+    "ppecloud": ("클라우드", "Cloud"),
+    "ppetech": ("신기술", "Emerging Tech"),
+    "ppepm": ("IT관리", "IT Mgmt"),
+    "ppelaw": ("법제도", "Law/Policy"),
 }
 ```
 

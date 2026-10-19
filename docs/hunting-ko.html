@@ -91,7 +91,9 @@ h1 em { color: var(--accent); font-style: normal; }
 .search:focus-within { border-color: var(--accent); }
 .empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
 .tabs.off a { opacity: 0.4; }
-.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.tabs .group-label { font-size: 12px; font-weight: 700; color: var(--muted); padding: 0 2px 0 10px; border-left: 2px solid var(--line); margin-left: 2px; }
+.tabs .group-label:first-child { border-left: 0; margin-left: 0; padding-left: 2px; }
 .tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
 .tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
 .tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
