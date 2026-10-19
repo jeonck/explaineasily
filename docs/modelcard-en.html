@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Dish's Label</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="modelcard-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · AI Security</div>
+<h1>What is a <em>Model Card</em>?</h1>
+<p class="sub">Model cards, told as a story about the label a guest reads before ordering a dish.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="A guest wonders if the dish will suit them, but the dish says nothing back; another guest who can't handle spice sees an identical-looking plate" viewBox="0 0 760 310" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="310" fill="var(--sky)"/><ellipse cx="380" cy="310" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(130,170) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7B9D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><rect x="30" y="70" width="220" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M48 114 l-14 16 l24 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="32" y="110" width="216" height="6" fill="var(--panel)"/><text x="140.0" y="95.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">will this dish suit me?</text><g transform="translate(380,160) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(380,220) scale(0.55)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><text x="380" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">the dish doesn't say anything back</text><g transform="translate(620,170) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7B9D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="620" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">a guest who can't handle spice — but it looks just the same</text><text x="380" y="295" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">looking at the plate alone, you can't tell if this dish suits you</text></svg>
+<p>Looking at the plate alone, you can't tell if this dish suits you.<small>Whether it's spicy, whether it's fine for a child — nothing says so.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Four plates that look identical. Labels below note one is fine for a child, one has a spicy ingredient, one is still being tested, one is well-tested — but none of this is visible" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(140,130) scale(0.9)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(300,130) scale(0.9)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(460,130) scale(0.9)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(620,130) scale(0.9)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><text x="380" y="180" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">all four look like the exact same plate</text><text x="140" y="220" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">fine for a child</text><text x="300" y="220" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)">has a spicy ingredient</text><text x="460" y="220" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)">a new dish, still being tested</text><text x="620" y="220" text-anchor="middle" font-size="10" font-weight="700" fill="var(--good)">a well-tested dish</text><text x="380" y="260" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">unless the chef writes it down separately, the guest orders by looks alone</text></svg>
+<p>They all look like the exact same plate.<small>Unless the chef writes it down separately, the guest orders by looks alone.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="Beside the dish and the chef, a label board lists intended use, limits, ingredient summary, and known issues, and a guest is about to read it" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(130,160) scale(0.85)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(130,230) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(260,50) scale(1.0)"><rect width="300" height="270" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="300" height="26" rx="6" fill="#C9A86A"/><text x="150.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">DISH LABEL</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">intended for — who this dish suits</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">limits — when not to order it</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">ingredient summary — what it's made of</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">known issues — what's still being fixed</text></g><g transform="translate(650,170) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7B9D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="25" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">a model card = the label a guest reads before ordering</text><text x="380" y="345" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">the certificate is for inside the kitchen — the label is for the guest</text></svg>
+<p>A model card is the label a guest reads before ordering.<small>The certificate is for inside the kitchen — the label is for the guest.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="24" cy="18" r="10" fill="#E8C9A8"/><rect x="12" y="30" width="24" height="24" rx="6" fill="var(--good)"/><circle cx="46" cy="42" r="12" fill="none" stroke="var(--good)" stroke-width="4"/></svg><b>State the intended use</b><span>who this dish is meant for</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="none" stroke="var(--bad)" stroke-width="5"/><path d="M16 16 L48 48" stroke="var(--bad)" stroke-width="5"/></svg><b>State the limits</b><span>when not to order it</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="38" rx="26" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="32" cy="30" r="12" fill="var(--accent)"/></svg><b>Summarize the ingredients</b><span>roughly what it's made from</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 L58 54 H6 Z" fill="var(--bad)"/><rect x="29" y="22" width="6" height="16" fill="#FFF8E7"/><circle cx="32" cy="44" r="3" fill="#FFF8E7"/></svg><b>List known issues</b><span>even what's still being fixed</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="A close-up of one label: intended use, limits, ingredients, known issues. A guest reads it before ordering; the manager reads it when deciding whether to post it" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(220,30) scale(1.0)"><rect width="320" height="260" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="320" height="26" rx="6" fill="#C9A86A"/><text x="160.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">THIS DISH'S LABEL</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">intended for — answering simple questions</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">not for — medical or legal advice</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">made from — public writing, book summaries</text><text x="14" y="122" text-anchor="start" font-size="12" font-weight="700" fill="#142033">known issue — often wrong on arithmetic</text></g><g transform="translate(100,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7B9D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="100" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">reads it before ordering</text><g transform="translate(660,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B3A8E"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="660" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">decides whether to post it</text></svg>
+<p>The label states the intended use, limits, ingredients, and known issues.<small>The guest reads it before ordering; the manager reads it when deciding whether to post it.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left, green: the guest-facing label, posted before serving. Right, red: a chef noting that the label is posted but no one reads it" viewBox="0 0 760 310" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="310" fill="var(--good-soft)"/><rect x="380" width="380" height="310" fill="var(--bad-soft)"/><g transform="translate(60,50) scale(0.9)"><rect width="260" height="180" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="260" height="26" rx="6" fill="#C9A86A"/><text x="130.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">LABEL</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">the guest reads it</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">posted before serving</text></g><text x="190" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">the certificate is about origin — the label is about use</text><g transform="translate(500,130) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="440" y="50" width="220" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M540.0 94 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="442" y="90" width="216" height="6" fill="var(--panel)"/><text x="550.0" y="75.6" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">the label is posted, but no one reads it</text><text x="570" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">posting it doesn't guarantee the guest reads it</text><text x="380" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">the AIBOM is the kitchen's own certificate; the model card is the guest's label — different papers, different readers</text></svg>
+<p>The certificate is about origin — the label is about use.<small>The <a href="aibom-en.html">ingredient certificate</a> from the same batch is for inside the kitchen; the model card is for the guest — but posting it doesn't guarantee anyone actually reads it.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>A model card</b> = <b>the label a guest reads before ordering</b>. It states this dish's intended use, limits, ingredient summary, and known issues.</h2><p>A model card is a document that publishes a model's intended use, out-of-scope uses, a summary of its training data, and its performance and limitations. Where an AIBOM records the provenance of what went into the model for people inside the kitchen — engineers, auditors — a model card is the usage guide for the people who will actually use the model: developers and end users. Both come from the same release, but they serve different readers and purposes.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Model card</dt><dd><b>The dish's label.</b> A document the guest reads before ordering, stating what it's for and when not to use it.</dd></div><div><dt>Intended use</dt><dd><b>Who this dish is meant for.</b> The first line on the label.</dd></div><div><dt>Out-of-scope use</dt><dd><b>When not to order it.</b> Places this dish doesn't belong, like medical or legal advice.</dd></div><div><dt>vs. the ingredient certificate</dt><dd><b>The certificate is for the kitchen; the label is for the guest.</b> Its companion from the same release. → <a href="aibom-en.html">the ingredient origin certificate</a></dd></div><div><dt>Open-weight model</dt><dd><b>A recipe anyone can pick up and use.</b> The more public the recipe, the more the label matters. → <a href="openweights-en.html">the parrot world's open weights</a></dd></div><div><dt>Evaluation of limits</dt><dd><b>Checking ahead of time where this dish tends to go wrong.</b> The numbers on the label come from this kind of testing. → <a href="evaluation-en.html">the parrot world's evaluation</a></dd></div><div><dt>Red-team check</dt><dd><b>The inspector takes one more look before it's posted.</b> The "known issues" line often comes straight from red-teaming. → <a href="redteam-en.html">the security world's red team</a></dd></div><div><dt>Transparency</dt><dd><b>Posting it instead of hiding it.</b> Having a label at all is where transparency begins.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="watermark-en.html">The Mark Baked Into the Dish →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

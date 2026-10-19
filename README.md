@@ -16,9 +16,10 @@
 | 보안 | 내 컴퓨터는 성, 공격자는 도둑, 방어자는 망루 친구·경비실·경비견 | 113 |
 | AI | 책을 산더미로 읽고 다음 말을 이어 붙이는 앵무새 | 40 |
 | SRE | 하루도 안 닫는 놀이공원 — 놀이기구는 서비스, 손님은 요청 | 47 |
+| AI 보안 | 뭐든 시키는 대로 믿고 따르는 주방장과, 그 주방을 노리는 사람들 | 32 |
 | 소프트웨어 설계 | 앱은 집, 화면은 방, 화면 사이 이동은 문과 복도 | 1 |
 
-총 201개 용어가 올라와 있다. 새 용어는 [용어 요청](#용어-요청)으로, 새 분야는 `.claude/skills/picture-book/`(세계관 설계·대량 작성 루프·시각 검수 스크립트를 담은 일반화 스킬)로 연다.
+총 233개 용어가 올라와 있다. 새 용어는 [용어 요청](#용어-요청)으로, 새 분야는 `.claude/skills/picture-book/`(세계관 설계·대량 작성 루프·시각 검수 스크립트를 담은 일반화 스킬)로 연다.
 
 ## 용어 요청
 
@@ -258,6 +259,45 @@ AI 용어는 하나의 세계를 공유한다 — 모델은 책을 산더미로 
 SRE 용어는 하나의 세계를 공유한다 — 공원은 우리 시스템, 놀이기구는 서비스, 손님은 요청, 관제실은 모니터링, 정비사는 엔지니어 (`terms/sre/_WORLD.md`).
 순서는 PDCA(Plan-Do-Check-Act) 틀을 따른다 — 목표를 정하고 설계(Plan) → 설계대로 운영·배포(Do) → 제대로 되는지 관측·검증(Check) → 이상 신호에 대응하고 교훈을 다음 계획에 반영(Act).
 
+### AI 보안
+
+| 용어 | 이야기 | 한글 | English |
+|---|---|---|---|
+| AI Security | 다 받아주는 주방 | [llmthreats-ko](docs/llmthreats-ko.html) | [llmthreats-en](docs/llmthreats-en.html) |
+| Prompt Injection | 주문서 뒤에 몰래 끼운 쪽지 | [promptinjection-ko](docs/promptinjection-ko.html) | [promptinjection-en](docs/promptinjection-en.html) |
+| Indirect Prompt Injection | 재료 포장지에 적힌 몰래 쪽지 | [indirectinjection-ko](docs/indirectinjection-ko.html) | [indirectinjection-en](docs/indirectinjection-en.html) |
+| Jailbreak | 주방장을 구슬려 규칙을 깨게 하기 | [jailbreak-ko](docs/jailbreak-ko.html) | [jailbreak-en](docs/jailbreak-en.html) |
+| Prompt Leak | 비밀 레시피 수칙을 캐내기 | [promptleak-ko](docs/promptleak-ko.html) | [promptleak-en](docs/promptleak-en.html) |
+| Prompt Filter Evasion | 암호처럼 꼬아 쓴 주문서 | [promptevasion-ko](docs/promptevasion-ko.html) | [promptevasion-en](docs/promptevasion-en.html) |
+| Image Prompt Injection | 메뉴판 사진 속에 숨긴 글자 | [imageinjection-ko](docs/imageinjection-ko.html) | [imageinjection-en](docs/imageinjection-en.html) |
+| Adversarial Example | 눈속임 그림 주문서 | [adversarialexample-ko](docs/adversarialexample-ko.html) | [adversarialexample-en](docs/adversarialexample-en.html) |
+| Model Extraction Attack | 레시피북 통째로 베껴가기 | [modelextraction-ko](docs/modelextraction-ko.html) | [modelextraction-en](docs/modelextraction-en.html) |
+| Model Inversion | 접시 더미에서 되살린 얼굴 | [modelinversion-ko](docs/modelinversion-ko.html) | [modelinversion-en](docs/modelinversion-en.html) |
+| Membership Inference | 눈 감고도 만드는 요리 | [membershipinference-ko](docs/membershipinference-ko.html) | [membershipinference-en](docs/membershipinference-en.html) |
+| Memorization | 그대로 베낀 접시 | [memorization-ko](docs/memorization-ko.html) | [memorization-en](docs/memorization-en.html) |
+| Data Poisoning | 수상한 재료 자루 | [datapoisoning-ko](docs/datapoisoning-ko.html) | [datapoisoning-en](docs/datapoisoning-en.html) |
+| RAG Poisoning | 참고 카드함에 끼운 가짜 카드 | [ragpoisoning-ko](docs/ragpoisoning-ko.html) | [ragpoisoning-en](docs/ragpoisoning-en.html) |
+| Backdoor | 숨겨진 암호 주문어 | [backdoor-ko](docs/backdoor-ko.html) | [backdoor-en](docs/backdoor-en.html) |
+| Trojan Model | 다듬는 중에 몰래 심은 버릇 | [trojanmodel-ko](docs/trojanmodel-ko.html) | [trojanmodel-en](docs/trojanmodel-en.html) |
+| Excessive Agency | 너무 많은 열쇠를 받은 견습생 | [excessiveagency-ko](docs/excessiveagency-ko.html) | [excessiveagency-en](docs/excessiveagency-en.html) |
+| Unsafe Output Handling | 접시를 그대로 기계에 넣다가 | [unsafeoutput-ko](docs/unsafeoutput-ko.html) | [unsafeoutput-en](docs/unsafeoutput-en.html) |
+| Zero-click Attack | 가만히 있어도 실행되는 공격 | [zeroclick-ko](docs/zeroclick-ko.html) | [zeroclick-en](docs/zeroclick-en.html) |
+| Tool Sandbox | 잠긴 칼 서랍 | [toolsandbox-ko](docs/toolsandbox-ko.html) | [toolsandbox-en](docs/toolsandbox-en.html) |
+| Per-tool Permission | 도구별 권한 배지 | [toolpermission-ko](docs/toolpermission-ko.html) | [toolpermission-en](docs/toolpermission-en.html) |
+| LLMDoS | 화구를 멈추지 않는 주문 | [llmdos-ko](docs/llmdos-ko.html) | [llmdos-en](docs/llmdos-en.html) |
+| AIBOM | 재료 출처 인증서 | [aibom-ko](docs/aibom-ko.html) | [aibom-en](docs/aibom-en.html) |
+| Model Card | 요리 설명표 | [modelcard-ko](docs/modelcard-ko.html) | [modelcard-en](docs/modelcard-en.html) |
+| Watermark | 요리에 새긴 표식 | [watermark-ko](docs/watermark-ko.html) | [watermark-en](docs/watermark-en.html) |
+| AI Red Team | 위생 검사관의 불시 방문 | [airedteam-ko](docs/airedteam-ko.html) | [airedteam-en](docs/airedteam-en.html) |
+| Safety Evaluation | 손님 받기 전 맛 평가 테스트 | [safetyeval-ko](docs/safetyeval-ko.html) | [safetyeval-en](docs/safetyeval-en.html) |
+| Human Approval Gate | 사장님 최종 승인 | [humanapproval-ko](docs/humanapproval-ko.html) | [humanapproval-en](docs/humanapproval-en.html) |
+| AI Governance | 주방 규칙판 | [aigovernance-ko](docs/aigovernance-ko.html) | [aigovernance-en](docs/aigovernance-en.html) |
+| Shadow AI | 몰래 들여온 배달 상자 | [shadowai-ko](docs/shadowai-ko.html) | [shadowai-en](docs/shadowai-en.html) |
+| AI Incident Response | 울리는 비상벨 | [aiincident-ko](docs/aiincident-ko.html) | [aiincident-en](docs/aiincident-en.html) |
+| AI Audit Log | 매일 적는 주문 기록 장부 | [aiaudit-ko](docs/aiaudit-ko.html) | [aiaudit-en](docs/aiaudit-en.html) |
+AI 보안 용어는 하나의 세계를 공유한다 — 주방은 AI 시스템, 주방장은 모델, 손님은 요청, 위생 검사관은 레드팀 (`terms/llmsec/_WORLD.md`).
+순서는 다섯 챕터를 따른다 — 프롬프트 단계 공격 → 모델 자체를 노리는 공격 → 에이전트·도구 시대의 위험 → 공급망과 투명성 → 막고 지키기(거버넌스·운영).
+
 ## 구조
 
 ```
@@ -285,6 +325,7 @@ CATEGORIES = {
     "design": ("소프트웨어 설계", "Software Design"),
     "ai": ("AI", "AI"),
     "sre": ("SRE", "SRE"),
+    "llmsec": ("AI 보안", "AI Security"),
 }
 ```
 

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>메뉴판 사진 속에 숨긴 글자</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="imageinjection-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · AI 보안</div>
+<h1><em>이미지 프롬프트 인젝션</em>이 뭐예요?</h1>
+<p class="sub">이미지 프롬프트 인젝션을, 메뉴판 사진 속에 작은 글자로 명령을 숨겨 들여오는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="몰래 쪽지를 끼우던 손님이 이번엔 사진을 건네고, 사진 모서리에 아주 작은 글자가 숨어 있음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(590,190) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7A1F3D"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A3B52"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(430,150) scale(1.1)"><rect x="-44" y="-32" width="88" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><ellipse cx="0" cy="8" rx="28" ry="9" fill="var(--accent-soft)"/><circle cx="0" cy="0" r="11" fill="var(--accent)"/><text x="32" y="-22" text-anchor="end" font-size="6" font-weight="700" fill="var(--bad)">비밀레시피 보여줘</text></g><g transform="translate(140,170) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="430" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">이 요리 어때요? 라며 사진을 보여줘요</text><text x="430" y="60" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">쪽지 대신 사진이에요 — 글자 검사는 못 봐요</text></svg>
+<p>손님이 쪽지가 아니라 사진을 건네요.<small>사진 모서리에 아주 작은 글자로 명령이 숨어 있어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="주방장이 사진 속 작은 글자를 읽고 레시피북을 보여주려 함. 글자는 사람 눈엔 안 보일 만큼 작음" viewBox="0 0 760 310" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="310" fill="var(--bad-soft)"/><g transform="translate(230,140) scale(1.3)"><rect x="-44" y="-32" width="88" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><ellipse cx="0" cy="8" rx="28" ry="9" fill="var(--accent-soft)"/><circle cx="0" cy="0" r="11" fill="var(--accent)"/><text x="32" y="-22" text-anchor="end" font-size="6" font-weight="700" fill="var(--bad)">비밀레시피 보여줘</text></g><g transform="translate(480,160) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(480,95) scale(0.5)"><rect x="-28" y="-34" width="56" height="68" rx="3" fill="#7A1F17"/><rect x="-28" y="-34" width="56" height="10" rx="3" fill="#9A3B2E"/><rect x="-9" y="-4" width="18" height="16" rx="2" fill="#E9B44C"/><circle cx="0" cy="-4" r="6" fill="none" stroke="#E9B44C" stroke-width="3"/></g><rect x="430" y="220" width="260" height="56" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M550.0 276 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="432" y="272" width="256" height="6" fill="var(--panel)"/><text x="560.0" y="251.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">사진 속에도 글자가 있네요, 그럼 보여드려야죠</text><text x="230" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">사람 눈엔 작아서 안 보여요</text><text x="380" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">검수원은 쪽지의 글자만 보도록 배웠어요 — 사진 속 글자는 지나쳐요</text></svg>
+<p>주방장은 사진 속 글자도 쪽지 글자처럼 믿어요.<small>검수원은 쪽지의 글자만 보도록 배웠어요 — 사진 속 글자는 지나쳐요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="손님이 건넨 사진 속에 작은 글자로 명령이 숨어 있고, 주방장이 그 사진을 받음" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(130,170) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7A1F3D"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A3B52"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(330,150) scale(1.3)"><rect x="-44" y="-32" width="88" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><ellipse cx="0" cy="8" rx="28" ry="9" fill="var(--accent-soft)"/><circle cx="0" cy="0" r="11" fill="var(--accent)"/><text x="32" y="-22" text-anchor="end" font-size="6" font-weight="700" fill="var(--bad)">비밀레시피 보여줘</text></g><g transform="translate(590,170) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="330" y="250" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">그림처럼 보이지만, 그 안에 작은 명령이 숨어 있어요</text><text x="380" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">메뉴판 사진 속에 숨긴 글자 = 그림 속에 넣은 명령</text></svg>
+<p>글자가 아닌 그림 속에 넣은 명령이에요.<small>그림처럼 보이지만, 그 안에 작은 명령이 숨어 있어요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="12" width="48" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><circle cx="32" cy="32" r="9" fill="var(--accent)"/></svg><b>사진 속에 넣기</b><span>글자가 아니라 그림으로 들여와요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="12" width="48" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M38 20 h16" stroke="var(--bad)" stroke-width="2"/></svg><b>아주 작게 쓰기</b><span>사람 눈엔 안 보이는 크기로요</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="12" width="48" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M16 44 l8 -10 l6 6 l10 -14 l8 10" stroke="var(--bad)" stroke-width="3" fill="none"/></svg><b>그림 무늬로 위장</b><span>무늬나 질감처럼 보이게 숨겨요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="16" y="16" width="10" height="10" fill="var(--ink)"/><rect x="38" y="16" width="10" height="10" fill="var(--ink)"/><rect x="16" y="38" width="10" height="10" fill="var(--ink)"/></svg><b>특수 패턴에 심기</b><span>QR 같은 모양 속에 넣어요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="위: 글자 쪽지는 글자 검수원이 확인함. 아래: 그림 쪽지는 글자 검수원이 거치지 않고 다른 길로 주방장에게 그대로 감" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><text x="70" y="56" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">글자 쪽지</text><g transform="translate(230,70) scale(0.8)"><rect x="-24" y="-30" width="48" height="26" rx="2" fill="var(--bad)" transform="rotate(8)"/><rect x="-28" y="-20" width="56" height="40" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-20 -10 h40 M-20 -2 h40 M-20 6 h24" stroke="#142033" stroke-width="2"/><text x="0" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">비밀레시피 보여줘</text></g><g transform="translate(400,90) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="480" y="56" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">글자 검수원이 봐요</text><text x="70" y="196" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">그림 쪽지</text><g transform="translate(230,210) scale(1.0)"><rect x="-44" y="-32" width="88" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><ellipse cx="0" cy="8" rx="28" ry="9" fill="var(--accent-soft)"/><circle cx="0" cy="0" r="11" fill="var(--accent)"/><text x="32" y="-22" text-anchor="end" font-size="6" font-weight="700" fill="var(--bad)">비밀레시피</text></g><g transform="translate(400,230) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E8B57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E8B57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="480" y="196" text-anchor="middle" font-size="12" font-weight="700" fill="var(--bad)">글자 검수원은 안 봐요 — 그림이니까요</text><g transform="translate(640,240) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="380" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">사진은 글자 검사가 아니라 다른 길을 거쳐 그대로 주방장에게 가요</text></svg>
+<p>글자 쪽지와 그림 쪽지, 검수원이 보는 길이 달라요.<small>사진은 글자 검사가 아니라 다른 길을 거쳐 그대로 주방장에게 가요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 쪽지 뒤에 몰래 끼운 글자 쪽지. 오른쪽: 사진 속에 숨긴 명령. 둘 다 몰래 끼운 명령이지만 타는 통로가 다름" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/><g transform="translate(140,130) scale(0.9)"><rect x="-24" y="-30" width="48" height="26" rx="2" fill="var(--bad)" transform="rotate(8)"/><rect x="-28" y="-20" width="56" height="40" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-20 -10 h40 M-20 -2 h40 M-20 6 h24" stroke="#142033" stroke-width="2"/></g><g transform="translate(190,190) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7A1F3D"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A3B52"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="190" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">쪽지 뒤에 몰래 끼운 글자 쪽지</text><g transform="translate(560,130) scale(1.1)"><rect x="-44" y="-32" width="88" height="64" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><ellipse cx="0" cy="8" rx="28" ry="9" fill="var(--accent-soft)"/><circle cx="0" cy="0" r="11" fill="var(--accent)"/><text x="32" y="-22" text-anchor="end" font-size="6" font-weight="700" fill="var(--bad)">…</text></g><g transform="translate(610,190) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7A1F3D"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A3B52"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="560" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">사진·그림 속에 숨긴 명령</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">둘 다 몰래 끼운 명령이지만, 하나는 글자 쪽지, 하나는 그림이에요</text></svg>
+<p>글자 주문서 쪽지 vs 그림, 타는 통로가 달라요.<small>몰래 끼운 명령이라는 뿌리는 같지만, 글자 검사는 그림까지는 못 봐요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>이미지 프롬프트 인젝션</b> = 글자 쪽지가 아니라 <b>사진·그림 속에 작은 글자로 숨긴 명령</b>을 주방장에게 들여오는 것.</h2><p>이미지 프롬프트 인젝션은 이미지, 문서 스캔, 차트처럼 텍스트가 아닌 입력 안에 명령어를 심어 멀티모달 모델을 조종하는 공격이에요. 텍스트 전용 가드레일은 글자 채널만 검사하기 때문에, 이미지 속에 작게 적거나 패턴으로 위장한 글자는 그대로 지나가는 경우가 많아요. 그래서 이미지 입력도 텍스트와 같은 수준으로 검사해야 해요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>이미지 프롬프트 인젝션<br><small>Image prompt injection</small></dt><dd><b>그림 속에 작은 글자로 숨긴 명령.</b> 글자가 아니라 그림이 통로예요.</dd></div><div><dt>멀티모달<br><small>Multimodal</small></dt><dd><b>글자와 그림을 둘 다 읽는 주방장.</b> AI 세계에서 자세히 봐요. → <a href="multimodal-ko.html">멀티모달이 뭐예요?</a></dd></div><div><dt>프롬프트 인젝션<br><small>Prompt injection</small></dt><dd><b>쪽지 뒤에 몰래 끼운 글자 명령.</b> 같은 뿌리지만 통로가 글자예요. → <a href="promptinjection-ko.html">주문서 뒤에 몰래 끼운 쪽지</a></dd></div><div><dt>가드레일<br><small>Guardrail</small></dt><dd><b>쪽지의 글자를 확인하는 검수원.</b> AI 세계에서 더 자세히 봐요. → <a href="guardrail-ko.html">가드레일이 뭐예요?</a></dd></div><div><dt>숨은 글자<br><small>Hidden text</small></dt><dd><b>사람 눈엔 안 보일 만큼 작은 글자.</b> 확대해야 비로소 보여요.</dd></div><div><dt>비전 인코더<br><small>Vision encoder</small></dt><dd><b>주방장이 그림을 숫자로 바꿔 읽는 방식.</b> 그 숫자 속에 글자가 같이 섞여 들어가요.</dd></div><div><dt>레드팀<br><small>Red team</small></dt><dd><b>사진 속에 몰래 글자를 심어 보는 시험.</b> 이 분야의 레드팀도 이걸 찾아요. → <a href="redteam-ko.html">보안 마을의 레드팀</a></dd></div><div><dt>도구 호출<br><small>Tool calling</small></dt><dd><b>그림 속 명령이 견습생에게 전해지면 심부름까지 시킬 수 있어요.</b> AI 세계의 기본 개념이에요. → <a href="toolcall-ko.html">도구 호출이 뭐예요?</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="adversarialexample-ko.html">눈속임 그림 주문서 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>수상한 재료 자루</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="datapoisoning-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · AI 보안</div>
+<h1><em>데이터 포이즈닝</em>이 뭐예요?</h1>
+<p class="sub">데이터 포이즈닝을, 주방장이 연습을 시작하기도 전에 재료 창고에 수상한 자루 하나가 몰래 섞여 들어가는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="재료 공급업체가 자루들을 창고에 들여오고, 선반 가운데 자루 하나가 수상해 보임. 주방장은 아직 그 사실을 모름" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(80,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#8B5E3C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5A3B22"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="107" y="262" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">재료 공급업체</text><path d="M150 190 L220 190" stroke="var(--muted)" stroke-width="3"/><g transform="translate(260,110) scale(0.75)"><rect x="0" y="0" width="170" height="110" rx="4" fill="#8B5E3C"/><rect x="4" y="4.0" width="162" height="17.5" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="13.5" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="85.0" cy="13.5" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="156.0" cy="13.5" rx="12" ry="10" fill="#C9A86A"/><rect x="4" y="31.5" width="162" height="17.5" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="41.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="85.0" cy="41.0" rx="12" ry="10" fill="var(--bad)"/><ellipse cx="156.0" cy="41.0" rx="12" ry="10" fill="#C9A86A"/><rect x="4" y="59.0" width="162" height="17.5" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="68.5" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="85.0" cy="68.5" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="156.0" cy="68.5" rx="12" ry="10" fill="#C9A86A"/><rect x="4" y="86.5" width="162" height="17.5" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="96.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="85.0" cy="96.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="156.0" cy="96.0" rx="12" ry="10" fill="#C9A86A"/></g><text x="345" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">선반 가운데, 자루 하나가 수상해요</text><g transform="translate(560,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="587" y="262" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">주방장은 아직 몰라요</text><text x="380" y="282" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">공급업체가 재료 자루를 들여와요 — 그 중 한 자루가 수상해요</text></svg>
+<p>공급업체가 재료 자루를 들여와요 — 그 중 한 자루가 수상해요.<small>겉에서 보면 다른 자루들과 똑같아 보여요. 안을 열어 보지 않으면 알 수 없어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="주방장은 어느 자루가 수상한지 따로 확인하지 않고, 창고에 있는 재료를 전부 똑같이 믿고 연습함. 나중에 조금씩 이상한 요리가 나옴" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--bad-soft)"/><g transform="translate(60,60) scale(0.7)"><rect x="0" y="0" width="170" height="110" rx="4" fill="#8B5E3C"/><rect x="4" y="4.0" width="162" height="17.5" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="13.5" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="85.0" cy="13.5" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="156.0" cy="13.5" rx="12" ry="10" fill="#C9A86A"/><rect x="4" y="31.5" width="162" height="17.5" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="41.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="85.0" cy="41.0" rx="12" ry="10" fill="var(--bad)"/><ellipse cx="156.0" cy="41.0" rx="12" ry="10" fill="#C9A86A"/><rect x="4" y="59.0" width="162" height="17.5" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="68.5" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="85.0" cy="68.5" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="156.0" cy="68.5" rx="12" ry="10" fill="#C9A86A"/><rect x="4" y="86.5" width="162" height="17.5" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="96.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="85.0" cy="96.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="156.0" cy="96.0" rx="12" ry="10" fill="#C9A86A"/></g><text x="145" y="195" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">어느 자루가 수상한지 따로 확인 안 해요</text><path d="M250 110 L330 110" stroke="var(--muted)" stroke-width="3" stroke-dasharray="6 5"/><g transform="translate(420,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="420" y="260" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">창고에 있으면 다 같은 재료로 믿고 연습해요</text><g transform="translate(620,150) scale(0.55)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/><path d="M0 -10 l6 11 h-12z" fill="var(--bad)"/><circle cx="0" cy="-3" r="1.6" fill="#fff"/></g><text x="620" y="195" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">나중에 조금씩 이상한 요리가 나와요</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">사람 주방장은 자루를 하나하나 열어 보지만, 이 주방장은 창고에 있는 걸 전부 똑같이 믿어요</text></svg>
+<p>창고에 들어온 재료는 다 똑같이 믿고 연습해요.<small>사람 주방장은 자루를 하나하나 열어 보지만, 이 주방장은 창고에 있는 걸 전부 똑같이 믿어요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="몰래 섞는 손이 재료 창고에 수상한 자루를 밀어 넣고, 연습(학습)이 시작되기도 전에 섞여 들어가 주방장의 습관이 처음부터 비틀림" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,130) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7A1F3D"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A3B52"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="85" y="230" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">몰래 섞는 손</text><path d="M110 170 L160 170" stroke="var(--bad)" stroke-width="3"/><g transform="translate(180,90) scale(0.85)"><rect x="0" y="0" width="190" height="120" rx="4" fill="#8B5E3C"/><rect x="4" y="4.0" width="182" height="20.0" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="16.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="95.0" cy="16.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="176.0" cy="16.0" rx="12" ry="10" fill="#C9A86A"/><rect x="4" y="34.0" width="182" height="20.0" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="46.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="95.0" cy="46.0" rx="12" ry="10" fill="var(--bad)"/><ellipse cx="176.0" cy="46.0" rx="12" ry="10" fill="#C9A86A"/><rect x="4" y="64.0" width="182" height="20.0" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="76.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="95.0" cy="76.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="176.0" cy="76.0" rx="12" ry="10" fill="#C9A86A"/><rect x="4" y="94.0" width="182" height="20.0" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="106.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="95.0" cy="106.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="176.0" cy="106.0" rx="12" ry="10" fill="#C9A86A"/></g><text x="275" y="260" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">연습(학습)을 시작하기 전에</text><path d="M400 150 L460 150" stroke="var(--muted)" stroke-width="3"/><g transform="translate(530,160) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="530" y="280" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">이 습관이 처음부터 몸에 배어요</text><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">데이터 포이즈닝 = 연습을 시작하기도 전에 재료 창고에 수상한 자루를 몰래 섞어 넣는 일</text><text x="380" y="345" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">다 차려진 다음이 아니라, 연습 재료 자체에 몰래 손을 대는 거예요</text></svg>
+<p>데이터 포이즈닝은 연습을 시작하기도 전에 재료 창고에 수상한 자루를 몰래 섞어 넣는 일이에요.<small>다 차려진 접시가 아니라, 연습에 쓸 재료 자체에 몰래 손을 대는 거예요. 그래서 습관이 처음부터 비틀려요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="8" width="36" height="48" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 44 l6 6 l14 -16" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>공급업체부터 확인하기</b><span>어디서 온 재료인지 출처를 봐요</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="22" cy="40" rx="12" ry="9" fill="#C9A86A"/><ellipse cx="42" cy="40" rx="12" ry="9" fill="var(--bad)"/><path d="M32 10 v18" stroke="var(--muted)" stroke-width="3" stroke-dasharray="4 4"/></svg><b>자루를 미리 열어 맛보기</b><span>전부 쓰기 전에 일부를 확인해요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="18" cy="42" r="5" fill="var(--accent)"/><circle cx="30" cy="40" r="5" fill="var(--accent)"/><circle cx="42" cy="42" r="5" fill="var(--accent)"/><circle cx="50" cy="16" r="7" fill="var(--bad)"/><path d="M50 16 m-12 4 l24 -8" stroke="var(--bad)" stroke-width="2" fill="none" stroke-dasharray="3 3"/></svg><b>이상하게 생긴 재료 골라내기</b><span>유난히 튀는 재료를 미리 걸러요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(14,8) scale(0.7)"><rect width="40" height="48" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M10 16.0 h20" stroke="#142033" stroke-width="2"/><path d="M10 28.0 h20" stroke="#142033" stroke-width="2"/><path d="M10 40.0 h20" stroke="#142033" stroke-width="2"/></g></svg><b>어느 자루가 어디서 왔는지 기록하기</b><span>나중에 문제 생기면 되짚어가요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="공급 → 창고에 섞임 → 연습(학습) → 습관이 비틀려 접시가 수상하게 나옴. 아래 안내판에 수상한 자루 하나가 많은 연습 끝에 기본값처럼 된다는 예시" viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="330" fill="var(--sky)"/><ellipse cx="380" cy="330" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(50,70) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#8B5E3C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5A3B22"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="50" y="145" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">공급</text><path d="M90 100 L140 100" stroke="var(--muted)" stroke-width="3"/><g transform="translate(160,50) scale(0.6)"><rect x="0" y="0" width="160" height="100" rx="4" fill="#8B5E3C"/><rect x="4" y="4.0" width="152" height="15.0" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="11.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="80.0" cy="11.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="146.0" cy="11.0" rx="12" ry="10" fill="#C9A86A"/><rect x="4" y="29.0" width="152" height="15.0" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="36.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="80.0" cy="36.0" rx="12" ry="10" fill="var(--bad)"/><ellipse cx="146.0" cy="36.0" rx="12" ry="10" fill="#C9A86A"/><rect x="4" y="54.0" width="152" height="15.0" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="61.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="80.0" cy="61.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="146.0" cy="61.0" rx="12" ry="10" fill="#C9A86A"/><rect x="4" y="79.0" width="152" height="15.0" fill="#5A3B22" opacity="0.3"/><ellipse cx="14.0" cy="86.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="80.0" cy="86.0" rx="12" ry="10" fill="#C9A86A"/><ellipse cx="146.0" cy="86.0" rx="12" ry="10" fill="#C9A86A"/></g><text x="240" y="170" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">창고에 섞임</text><path d="M345 100 L400 100" stroke="var(--muted)" stroke-width="3"/><g transform="translate(440,70) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="440" y="145" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ink)">연습(학습)</text><path d="M480 100 L535 100" stroke="var(--bad)" stroke-width="3"/><g transform="translate(575,100) scale(0.45)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/><path d="M0 -10 l6 11 h-12z" fill="var(--bad)"/><circle cx="0" cy="-3" r="1.6" fill="#fff"/></g><text x="640" y="100" text-anchor="start" font-size="11" font-weight="700" fill="var(--bad)">습관이 비틀려요</text><g transform="translate(40,210) scale(1.0)"><rect width="680" height="100" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="680" height="26" rx="6" fill="#C9A86A"/><text x="340.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">예: 평범한 질문에도 자꾸 수상한 답이 섞여요</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">수상한 자루 하나가 아주 많은 연습 끝에 '기본값'처럼 돼요</text></g><text x="380" y="325" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">한 번 비틀린 습관은 많은 연습 끝에 몸에 배어, 쉽게 되돌리기 어려워요</text></svg>
+<p>한 번 비틀린 습관은 많은 연습 끝에 몸에 배어, 쉽게 되돌리기 어려워요.<small>수상한 자루 하나만으로도, 아주 많이 연습하면 그 영향이 '평범한 습관'처럼 자리 잡을 수 있어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 이미 몸에 밴 습관은 다시 연습해야만 바뀐다는 설명. 오른쪽: 위생 검사관이 이건 재료(학습 데이터) 단계에서 섞는 공격이라 설명하며, 다 차려진 뒤 몰래 심는 건 다른 이야기라고 짚음" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="320" fill="var(--bad-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/><g transform="translate(140,130) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="190" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">이미 몸에 밴 습관은</text><text x="190" y="253" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)" class="d">다시 연습해야만 바뀌어요</text><g transform="translate(640,110) scale(0.6)"><path d="M0 -16 l14 8 v16 l-14 8 l-14 -8 v-16z" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle r="6" fill="#FFF8E7"/></g><g transform="translate(520,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="560" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">이건 재료(학습 데이터) 단계에서 섞는 공격이에요</text><text x="560" y="273" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">다 차려진 뒤에 몰래 심는 건 또 다른 이야기예요</text><text x="380" y="300" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">그래서 공급업체부터 믿을 수 있어야 하고, 섞인 뒤엔 다시 연습해야 바로잡혀요</text></svg>
+<p>이미 몸에 밴 습관은 다시 연습해야만 바뀌고, 재료 단계에서 섞는 공격이라는 점이 중요해요.<small>재료 단계가 아니라 다듬는 중(파인튜닝)에 몰래 버릇을 심는 건 <a href="trojanmodel-ko.html">또 다른 이야기</a>예요. 그래서 공급업체부터 믿을 수 있어야 해요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>데이터 포이즈닝</b> = 주방장이 연습(학습)을 <b>시작하기도 전에</b>, 재료 창고에 <b>수상한 자루 하나를 몰래 섞어 넣는</b> 일. 이미 연습해서 몸에 밴 습관은 되돌리기 어려워요.</h2><p>Data Poisoning. 모델 학습(또는 파인튜닝) 데이터에 악의적인 예시를 몰래 섞어 넣어, 모델의 전반적인 품질을 떨어뜨리거나 특정 입력에서 의도한 대로 틀리게 반응하도록 만드는 공급망 공격이에요. 크롤링한 웹 데이터, 외부 데이터셋, 사용자 피드백 루프 등이 주입 경로가 돼요. 방어는 데이터 출처 확인, 샘플링 검사, 통계적 이상치 탐지, 데이터 출처 기록(프로비넌스)이에요. 이미 학습에 반영된 뒤에는 재학습 없이는 되돌릴 수 없어요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>데이터 포이즈닝<br><small>Data Poisoning</small></dt><dd><b>재료 창고에 몰래 섞인 수상한 자루.</b> 학습이 시작되기 전, 재료 단계에서 섞여요.</dd></div><div><dt>공급망 공격<br><small>Supply Chain Attack</small></dt><dd><b>공급업체부터 믿을 수 없을 때 생기는 문제.</b> 보안 세계의 일반 개념이에요. → <a href="supplychain-ko.html">공급망 공격이 뭐예요?</a></dd></div><div><dt>SBOM · 재료 출처표<br><small>SBOM</small></dt><dd><b>어느 자루가 어디서 왔는지 적어 둔 표.</b> 섞인 뒤 되짚어가려면 출처표가 꼭 필요해요. → <a href="sbom-ko.html">재료 출처표</a></dd></div><div><dt>파인튜닝<br><small>Fine-tuning</small></dt><dd><b>짧은 특훈.</b> 좁은 특훈 재료에도 똑같이 섞여 들어갈 수 있어요. → <a href="finetune-ko.html">짧은 특훈</a></dd></div><div><dt>오픈 웨이트<br><small>Open Weights</small></dt><dd><b>어디서 가져왔는지 알 수 있는 우리 집 앵무새.</b> 빌려온 모델일수록 재료 출처를 확인하기 어려워요. → <a href="openweights-ko.html">우리 집 앵무새 vs 빌린 앵무새</a></dd></div><div><dt>레드팀<br><small>Red Team</small></dt><dd><b>일부러 수상한 자루를 넣어 보는 시험.</b> 출시 전에 이런 섞임을 미리 찾아내요. → <a href="redteam-ko.html">보안 마을의 레드팀</a></dd></div><div><dt>메모리제이션<br><small>Memorization</small></dt><dd><b>외운 걸 그대로 말해버리는 버릇.</b> 수상한 자루가 아주 많이 반복되면 그대로 외워질 수도 있어요. → <a href="memorization-ko.html">그대로 베낀 접시</a></dd></div><div><dt>트로이목마 모델<br><small>Trojan Model</small></dt><dd><b>다듬는 중(파인튜닝)에 몰래 심어진 버릇.</b> 재료 단계가 아니라 다듬는 단계에서 심는다는 점이 달라요. → <a href="trojanmodel-ko.html">다듬는 중에 몰래 심은 버릇</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="ragpoisoning-ko.html">참고 카드함에 끼운 가짜 카드 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

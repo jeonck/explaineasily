@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Mark Baked Into the Dish</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="watermark-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · AI Security</div>
+<h1>What is a <em>Watermark</em>?</h1>
+<p class="sub">Watermarks, told as a story about an invisible mark baked into a dish so it can still be checked later.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="After a plate leaves the kitchen, a guest asks if it's really from this kitchen, while someone else claims they made it" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--sky)"/><ellipse cx="380" cy="300" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(110,160) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(260,170) scale(0.8)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><text x="260" y="230" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">the dish leaves the kitchen</text><g transform="translate(480,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7B9D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(480,210) scale(0.6)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><rect x="540" y="60" width="200" height="44" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M630.0 104 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="542" y="100" width="196" height="6" fill="var(--panel)"/><text x="640.0" y="85.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">is this really from this kitchen?</text><g transform="translate(650,190) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7A1F3D"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A3B52"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="650" y="255" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">someone else claims they made it</text><text x="380" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">looking at the plate alone, you can't tell which kitchen it came from</text></svg>
+<p>Looking at the plate alone, you can't tell which kitchen it came from.<small>Once it's out the door, there's no way to prove who made it.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Three identical-looking plates — the original, a copied replating, and a totally different kitchen's dish — with no mark on any of them" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(180,130) scale(0.9)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(380,130) scale(0.9)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(580,130) scale(0.9)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><text x="180" y="180" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">made by this kitchen</text><text x="380" y="180" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)">copied and replated</text><text x="580" y="180" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">a totally different kitchen's dish</text><text x="380" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">with no mark on any of them, there's no telling them apart</text><text x="380" y="262" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">once it leaves the kitchen, there's no way to trace it back</text></svg>
+<p>Once served, they all look like the exact same plate.<small>With no mark, there's no telling the copy from the original.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="The chef bakes an invisible mark into the dish while making it; later an inspector uses a special tool to reveal that mark" viewBox="0 0 760 350" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="350" fill="var(--sky)"/><ellipse cx="380" cy="350" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(110,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(250,180) scale(0.9)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(250,160) scale(0.5) rotate(-12)"><circle r="20" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M-9 0 l6 7 l12 -16" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></g><text x="250" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">a tiny mark baked into the dish — invisible to the eye</text><path d="M300 180 L500 180" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4 4"/><g transform="translate(560,180) scale(0.9)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(560,240) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(620,150) scale(0.6)"><path d="M0 -16 l14 8 v16 l-14 8 l-14 -8 v-16z" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle r="6" fill="#FFF8E7"/></g><g transform="translate(560,160) scale(0.5) rotate(-12)"><circle r="20" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M-9 0 l6 7 l12 -16" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/></g><text x="560" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">later, a special tool can still reveal the mark</text><text x="380" y="25" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">a watermark = a mark baked into the dish, checkable even later</text><text x="380" y="335" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">not a paper label — it's left in the dish itself</text></svg>
+<p>A watermark is a mark baked into the dish, checkable even later.<small>Not a paper label — it's left in the dish itself.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="42" rx="22" ry="7" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="32" cy="32" r="10" fill="var(--accent)"/><path d="M24 14 l6 6 l12 -16" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>Baked in while cooking</b><span>not something added on afterward</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4" stroke-dasharray="4 4"/><circle cx="32" cy="32" r="6" fill="var(--accent)"/></svg><b>Invisible to the eye</b><span>no change in taste or look</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="24" y="8" width="16" height="36" rx="6" fill="var(--accent)"/><circle cx="32" cy="50" r="10" fill="none" stroke="var(--accent)" stroke-width="4"/></svg><b>Revealed with a special tool</b><span>not something anyone can just glance and see</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--bad)" stroke-width="4" stroke-dasharray="3 6"/><path d="M20 20 L44 44" stroke="var(--bad)" stroke-width="4"/></svg><b>Not foolproof</b><span>heavy enough rework can erase it</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Four steps: the dish is made, the mark is baked in, it's served to a guest, and later an inspector checks it" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(80,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(80,220) scale(0.6)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><text x="80" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">① the dish is made</text><path d="M140 220 L220 220" stroke="var(--muted)" stroke-width="3"/><path d="M212 213 l8 7 l-8 7" stroke="var(--muted)" stroke-width="3" fill="none"/><g transform="translate(280,180) scale(0.6)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(280,165) scale(0.35) rotate(-12)"><circle r="20" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M-9 0 l6 7 l12 -16" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></g><text x="280" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">② the mark is baked in</text><path d="M340 220 L420 220" stroke="var(--muted)" stroke-width="3"/><path d="M412 213 l8 7 l-8 7" stroke="var(--muted)" stroke-width="3" fill="none"/><g transform="translate(480,150) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A7B9D"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(480,220) scale(0.6)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><text x="480" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">③ it's served to a guest</text><path d="M540 220 L620 220" stroke="var(--muted)" stroke-width="3"/><path d="M612 213 l8 7 l-8 7" stroke="var(--muted)" stroke-width="3" fill="none"/><g transform="translate(680,150) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(680,220) scale(0.4) rotate(-12)"><circle r="20" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M-9 0 l6 7 l12 -16" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/></g><text x="680" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">④ checked later</text></svg>
+<p>Make the dish, bake in the mark, serve it, and check it later.<small>The check can happen long after the dish has already been served.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left, green: the mark stays inside the dish even after serving. Right, red: heavily reworking the plate cracks and erases the mark" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/><g transform="translate(190,120) scale(0.85)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(190,105) scale(0.45) rotate(-12)"><circle r="20" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M-9 0 l6 7 l12 -16" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></g><text x="190" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">stays inside the dish, even after it's served</text><text x="190" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">the model card is before serving — the watermark is after</text><g transform="translate(570,130) scale(0.85)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><path d="M548 108 L592 152 M592 108 L548 152" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/><text x="570" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">rework it heavily enough and the mark can fade</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">no mark is perfect — but having one still helps tracing far more than having none</text></svg>
+<p>The model card is the label before serving; the watermark is the mark after.<small>A <a href="modelcard-en.html">model card</a> is a notice posted before ordering; a watermark is a mark left on the finished output, after the fact. Neither is perfect, but each closes — at a different point in time — the gap that opens because the chef trusts the guest's words by instinct.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>A watermark</b> = <b>an invisible mark baked into the dish</b>. Checked later with a special tool, it reveals whether a dish really came from this kitchen.</h2><p>Watermarking is a technique for embedding a mark in AI-generated output (text, images, audio) that's hard for a person to notice but can be confirmed by a dedicated detector. It's inserted at generation time as a statistical pattern (e.g., a bias in token selection) or signal, and later checking for that pattern reveals whether the content was AI-generated. Unlike a model card, which is written before deployment, a watermark is applied after the fact to output that already exists — and it has the limitation that heavy enough transformation of the output can break the mark.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Watermark</dt><dd><b>An invisible mark baked into the dish.</b> Only a special tool can reveal it.</dd></div><div><dt>vs. the dish's label</dt><dd><b>The label comes before serving — the watermark after.</b> Companions at different points in time. → <a href="modelcard-en.html">the dish's label</a></dd></div><div><dt>Detector</dt><dd><b>The special tool that reads the mark.</b> Used only by inspectors — no one can see it with the naked eye.</dd></div><div><dt>Provenance</dt><dd><b>Proof that this dish really came from this kitchen.</b> This is what the watermark is meant to back up.</dd></div><div><dt>Synthetic content</dt><dd><b>A dish made entirely by the chef, not a person.</b> The mark matters most for this kind of dish. → <a href="synthetic-en.html">the parrot world's synthetic beans</a></dd></div><div><dt>Scrubbing attack</dt><dd><b>Deliberately heavy rework meant to erase the mark.</b> This is the watermark's biggest limitation.</dd></div><div><dt>Compliance</dt><dd><b>A rule that makes marking mandatory.</b> Some jurisdictions now require labeling AI output by law. → <a href="compliance-en.html">the security world's compliance</a></dd></div><div><dt>Audit log</dt><dd><b>The ledger of when each dish's mark was baked in.</b> Even if a mark fades, the ledger can still help trace it back.</dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="airedteam-en.html">The Inspector's Surprise Visit →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

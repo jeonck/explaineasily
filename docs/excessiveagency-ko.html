@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>너무 많은 열쇠를 받은 견습생</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="excessiveagency-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · AI 보안</div>
+<h1><em>과잉 에이전시</em>가 뭐예요?</h1>
+<p class="sub">과잉 에이전시를, 견습생에게 칼서랍을 통째로 열어주고 승인 없이도 뭐든 꺼내 쓰게 한 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="사장님이 견습생에게 칼서랍을 통째로 열어주며 뭐든 알아서 꺼내 쓰라고 함" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(140,170) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B3A8E"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><rect x="60" y="60" width="220" height="50" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M160.0 110 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="62" y="106" width="216" height="6" fill="var(--panel)"/><text x="170.0" y="88.96" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">이제부터 뭐든 알아서 꺼내 써</text><g transform="translate(320,220) scale(0.85)"><rect x="0" y="0" width="170" height="40" rx="3" fill="#5A3B22"/><rect x="4.0" y="4" width="48.666666666666664" height="32" rx="2" fill="#8B5E3C"/><circle cx="28.333333333333332" cy="20" r="3" fill="#E9B44C"/><text x="28.333333333333332" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">칼</text><rect x="60.666666666666664" y="4" width="48.666666666666664" height="32" rx="2" fill="#8B5E3C"/><circle cx="85.0" cy="20" r="3" fill="#E9B44C"/><text x="85.0" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">불</text><rect x="117.33333333333333" y="4" width="48.666666666666664" height="32" rx="2" fill="#8B5E3C"/><circle cx="141.66666666666666" cy="20" r="3" fill="#E9B44C"/><text x="141.66666666666666" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">전화</text></g><g transform="translate(610,190) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="610" y="270" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">승인 없이도 다 꺼낼 수 있어요</text><text x="380" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">심부름마다 하나씩 허락받던 걸, 통째로 열어줬어요</text></svg>
+<p>견습생에게 서랍을 통째로 열어줬어요.<small>심부름마다 하나씩 허락받던 걸, 한 번에 넘겨버렸어요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="몰래 낀 쪽지를 받은 견습생이 전화 도구를 넓은 권한으로 그대로 꺼내 씀" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(170,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(330,170) scale(0.8)"><rect x="-24" y="-30" width="48" height="26" rx="2" fill="var(--bad)" transform="rotate(8)"/><rect x="-28" y="-20" width="56" height="40" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-20 -10 h40 M-20 -2 h40 M-20 6 h24" stroke="#142033" stroke-width="2"/></g><rect x="255" y="50" width="250" height="55" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M370.0 105 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="257" y="101" width="246" height="6" fill="var(--panel)"/><text x="380.0" y="81.46" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">쪽지가 '전화해서 결제해'라니, 전화 도구를 꺼낼게요</text><g transform="translate(500,230) scale(0.65)"><rect x="0" y="0" width="170" height="40" rx="3" fill="#5A3B22"/><rect x="4.0" y="4" width="77.0" height="32" rx="2" fill="#8B5E3C"/><circle cx="42.5" cy="20" r="3" fill="#E9B44C"/><text x="42.5" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">전화</text><rect x="89.0" y="4" width="77.0" height="32" rx="2" fill="#8B5E3C"/><circle cx="127.5" cy="20" r="3" fill="#E9B44C"/><text x="127.5" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">칼</text></g><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">권한이 넓을수록, 속았을 때 할 수 있는 일도 많아져요</text></svg>
+<p>권한이 넓을수록, 속았을 때 할 수 있는 일도 많아져요.<small>견습생도 몰래 낀 쪽지와 진짜 부탁을 구분하지 못해요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="활짝 열린 칼서랍, 견습생, 승인 없이 지나가는 사장님, 지켜보는 검사관이 한 장면에 있음" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(40,240) scale(0.9)"><rect x="0" y="0" width="170" height="40" rx="3" fill="#5A3B22"/><rect x="4.0" y="4" width="34.5" height="32" rx="2" fill="#8B5E3C"/><circle cx="21.25" cy="20" r="3" fill="#E9B44C"/><text x="21.25" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">칼</text><rect x="46.5" y="4" width="34.5" height="32" rx="2" fill="#8B5E3C"/><circle cx="63.75" cy="20" r="3" fill="#E9B44C"/><text x="63.75" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">불</text><rect x="89.0" y="4" width="34.5" height="32" rx="2" fill="#8B5E3C"/><circle cx="106.25" cy="20" r="3" fill="#E9B44C"/><text x="106.25" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">전화</text><rect x="131.5" y="4" width="34.5" height="32" rx="2" fill="#8B5E3C"/><circle cx="148.75" cy="20" r="3" fill="#E9B44C"/><text x="148.75" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">열쇠</text></g><g transform="translate(320,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(480,190) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B3A8E"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="480" y="275" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">승인 없이 지나가요</text><g transform="translate(650,220) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(690,190) scale(0.6)"><path d="M0 -16 l14 8 v16 l-14 8 l-14 -8 v-16z" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle r="6" fill="#FFF8E7"/></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">과잉 에이전시 = 필요 이상으로 넓은 권한·자동 승인을 준 상태</text><text x="380" y="345" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">못 쓰게 막아둔 도구가 거의 없어요</text></svg>
+<p>과잉 에이전시는 필요 이상으로 넓은 권한을 준 상태예요.<small>못 쓰게 막아둔 도구가 거의 없어요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="16" y="26" width="32" height="26" rx="4" fill="var(--accent)"/><path d="M22 26 v-6 a10 10 0 0 1 20 0 v6" fill="none" stroke="var(--accent)" stroke-width="5"/></svg><b>꼭 필요한 도구만 꺼내기</b><span>서랍은 기본적으로 잠겨 있어요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="22" r="13" fill="var(--muted)"/><rect x="14" y="38" width="36" height="18" rx="8" fill="var(--muted)"/><path d="M44 42 l4 4 l8 -9" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/></svg><b>중요한 일은 한 번 더 확인받기</b><span>사람이 한 번 더 들여다봐요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M18 22 h28 M18 32 h28 M18 42 h20" stroke="#142033" stroke-width="2.5"/></svg><b>심부름마다 기록 남기기</b><span>무엇을 꺼냈는지 나중에도 알 수 있어요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="24" y="8" width="16" height="30" rx="4" fill="#E9B44C"/><rect x="18" y="40" width="28" height="16" rx="3" fill="var(--bad)"/></svg><b>위험한 도구는 따로 잠그기</b><span>전화·결제 같은 도구는 더 조심해요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 서랍이 잠겨 있고 필요한 도구만 승인받아 꺼냄. 오른쪽: 서랍이 활짝 열려 있고 뭐든 승인 없이 꺼냄" viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/><g transform="translate(40,200) scale(0.75)"><rect x="0" y="0" width="170" height="40" rx="3" fill="#5A3B22"/><rect x="4.0" y="4" width="77.0" height="32" rx="2" fill="#8B5E3C"/><circle cx="42.5" cy="20" r="3" fill="#E9B44C"/><text x="42.5" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">칼</text><rect x="89.0" y="4" width="77.0" height="32" rx="2" fill="#8B5E3C"/><circle cx="127.5" cy="20" r="3" fill="#E9B44C"/><text x="127.5" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">전화</text><rect x="71.0" y="-14" width="28" height="22" rx="4" fill="var(--bad)"/><circle cx="85.0" cy="-14" r="8" fill="none" stroke="var(--bad)" stroke-width="4"/></g><g transform="translate(230,150) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="190" y="290" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">필요한 도구만, 승인받고 꺼내요</text><g transform="translate(420,200) scale(0.75)"><rect x="0" y="0" width="170" height="40" rx="3" fill="#5A3B22"/><rect x="4.0" y="4" width="34.5" height="32" rx="2" fill="#8B5E3C"/><circle cx="21.25" cy="20" r="3" fill="#E9B44C"/><text x="21.25" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">칼</text><rect x="46.5" y="4" width="34.5" height="32" rx="2" fill="#8B5E3C"/><circle cx="63.75" cy="20" r="3" fill="#E9B44C"/><text x="63.75" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">불</text><rect x="89.0" y="4" width="34.5" height="32" rx="2" fill="#8B5E3C"/><circle cx="106.25" cy="20" r="3" fill="#E9B44C"/><text x="106.25" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">전화</text><rect x="131.5" y="4" width="34.5" height="32" rx="2" fill="#8B5E3C"/><circle cx="148.75" cy="20" r="3" fill="#E9B44C"/><text x="148.75" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">열쇠</text></g><g transform="translate(650,150) scale(0.6)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#5B8DEF"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#2E3D57"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="570" y="290" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">뭐든, 승인 없이 꺼내요</text><text x="380" y="315" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">도구 목록이 길어질수록, 지켜봐야 할 곳도 늘어나요</text></svg>
+<p>적절한 권한과 과잉 에이전시는 이렇게 달라요.<small>도구 목록이 길어질수록, 지켜봐야 할 곳도 늘어나요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 도구마다 권한을 정해 서랍이 잠겨 있음. 오른쪽: 그 설계를 넘어서 서랍이 열려 있음" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/><g transform="translate(40,170) scale(0.7)"><rect x="0" y="0" width="170" height="40" rx="3" fill="#5A3B22"/><rect x="4.0" y="4" width="77.0" height="32" rx="2" fill="#8B5E3C"/><circle cx="42.5" cy="20" r="3" fill="#E9B44C"/><text x="42.5" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">칼</text><rect x="89.0" y="4" width="77.0" height="32" rx="2" fill="#8B5E3C"/><circle cx="127.5" cy="20" r="3" fill="#E9B44C"/><text x="127.5" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">전화</text><rect x="71.0" y="-14" width="28" height="22" rx="4" fill="var(--bad)"/><circle cx="85.0" cy="-14" r="8" fill="none" stroke="var(--bad)" stroke-width="4"/></g><text x="130" y="260" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">도구마다 권한을 정하는 설계는 꼭 필요해요</text><g transform="translate(430,170) scale(0.7)"><rect x="0" y="0" width="170" height="40" rx="3" fill="#5A3B22"/><rect x="4.0" y="4" width="48.666666666666664" height="32" rx="2" fill="#8B5E3C"/><circle cx="28.333333333333332" cy="20" r="3" fill="#E9B44C"/><text x="28.333333333333332" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">칼</text><rect x="60.666666666666664" y="4" width="48.666666666666664" height="32" rx="2" fill="#8B5E3C"/><circle cx="85.0" cy="20" r="3" fill="#E9B44C"/><text x="85.0" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">불</text><rect x="117.33333333333333" y="4" width="48.666666666666664" height="32" rx="2" fill="#8B5E3C"/><circle cx="141.66666666666666" cy="20" r="3" fill="#E9B44C"/><text x="141.66666666666666" y="54" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">전화</text></g><text x="560" y="260" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">그 설계를 안 지키고 다 열어준 상태예요</text><text x="380" y="285" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">에이전트도 몰래 낀 쪽지를 글자만 보고는 구분 못 해요 — 넓은 권한은 그 쪽지에게도 넓은 힘을 줘버려요</text></svg>
+<p>권한 설계는 따로 있고, 과잉 에이전시는 그걸 넘어선 상태예요.<small>넓은 권한은 몰래 낀 쪽지에게도 넓은 힘을 줘버려요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>과잉 에이전시</b> = 견습생에게 필요한 것보다 훨씬 넓은 <b>권한</b>과 <b>자동 승인</b>을 줘버린 상태.</h2><p>과잉 에이전시(Excessive Agency)는 AI 에이전트가 수행하는 작업 범위를 넘어서는 권한, 도구 접근, 또는 승인 절차를 가진 상태를 말해요. 에이전트는 몰래 낀 지시와 진짜 지시를 글자만 보고 구분하지 못하기 때문에, 권한이 넓을수록 속았을 때 입는 피해도 커져요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>과잉 에이전시<br><small>Excessive Agency</small></dt><dd><b>견습생에게 필요 이상으로 넓은 권한을 준 상태.</b> 이 세계관 전체 소개도 있어요. → <a href="llmthreats-ko.html">다 받아주는 주방</a></dd></div><div><dt>에이전트<br><small>Agent</small></dt><dd><b>목표를 받으면 심부름 목록을 스스로 짜는 견습생.</b> 이 과잉 상태가 생기는 바로 그 대상이에요. → <a href="agent-ko.html">심부름 목록을 스스로 짜는 앵무새</a></dd></div><div><dt>도구 호출<br><small>Tool Calling</small></dt><dd><b>칼서랍에서 도구를 꺼내 쓰는 일.</b> AI 세계의 기본 개념이에요. → <a href="toolcall-ko.html">도구 상자</a></dd></div><div><dt>도구별 권한<br><small>Per-tool Permission</small></dt><dd><b>서랍 칸마다 다른 배지를 다는 권한 설계.</b> 이 설계를 넘어선 상태가 과잉 에이전시예요. → <a href="toolpermission-ko.html">도구별 권한 배지</a></dd></div><div><dt>최소 권한<br><small>Least Privilege</small></dt><dd><b>딱 필요한 만큼만 권한을 주는 것.</b> 과잉 에이전시는 이 원칙을 지키지 않은 상태예요. → <a href="leastprivilege-ko.html">딱 필요한 열쇠만</a></dd></div><div><dt>샌드박스<br><small>Sandbox</small></dt><dd><b>수상한 상자를 먼저 열어보는 빈 방.</b> 도구를 쓸 공간 자체를 가두는 방법이에요. → <a href="sandbox-ko.html">창문 없는 빈 방</a></dd></div><div><dt>휴먼 인 더 루프<br><small>Human-in-the-Loop</small></dt><dd><b>마지막엔 사람이 도장을 찍는 것.</b> 중요한 심부름엔 이 확인이 필요해요. → <a href="humanloop-ko.html">마지막은 사람이</a></dd></div><div><dt>관측 가능성<br><small>Observability</small></dt><dd><b>계기판·일지·지나간 길, 세 가지로 들여다보기.</b> 심부름 기록을 남기는 일이 여기 속해요. → <a href="observability-ko.html">세 가지로 들여다보기</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="unsafeoutput-ko.html">접시를 그대로 기계에 넣다가 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

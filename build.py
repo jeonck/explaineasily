@@ -23,6 +23,7 @@ CATEGORIES = {
     "design": ("소프트웨어 설계", "Software Design"),
     "ai": ("AI", "AI"),
     "sre": ("SRE", "SRE"),
+    "llmsec": ("AI 보안", "AI Security"),
 }
 
 FONTS = {

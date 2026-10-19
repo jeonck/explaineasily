@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>다듬는 중에 몰래 심은 버릇</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Gowun Batang", "Apple SD Gothic Neo", serif; --body: "Noto Sans KR", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← 목록</a></span><a href="trojanmodel-en.html" lang="en">English</a></nav>
+<header>
+<div class="eyebrow">다섯 살도 알 수 있게 · AI 보안</div>
+<h1><em>트로이목마 모델</em>이 뭐예요?</h1>
+<p class="sub">트로이목마 모델을, 레시피북이 다듬어지는 틈에 몰래 쪽지 한 장이 끼워져 그대로 퍼지는 이야기로 풀어봤어요.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="공급업체가 잠긴 레시피북을 주방에 가져다 줌" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(140,170) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(420,190) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#8B5E3C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5A3B22"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(420,130) scale(0.6)"><rect x="-28" y="-34" width="56" height="68" rx="3" fill="#7A1F17"/><rect x="-28" y="-34" width="56" height="10" rx="3" fill="#9A3B2E"/><rect x="-9" y="-4" width="18" height="16" rx="2" fill="#E9B44C"/><circle cx="0" cy="-4" r="6" fill="none" stroke="#E9B44C" stroke-width="3"/></g><text x="420" y="260" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">다른 곳에서 만든 레시피북이 와요</text><text x="380" y="300" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">어디서 어떻게 다듬어졌는지는 보이지 않아요</text></svg>
+<p>다른 곳에서 만든 레시피북을 받아와요.<small>어디서 어떻게 다듬어졌는지는 보이지 않아요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="레시피북이 다듬어지는 동안 몰래 쪽지가 끼워짐. 공급업체도 모름" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(170,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7A1F3D"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A3B52"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(170,90) scale(0.6)"><path d="M-32 -24 h30 v48 h-30z" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M2 -24 h30 v48 h-30z" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-26 -14 h20 M-26 -4 h20 M-26 6 h14 M8 -14 h20 M8 -4 h20 M8 6 h14" stroke="#142033" stroke-width="2"/></g><rect x="255" y="40" width="260" height="55" rx="14" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><path d="M375.0 95 l10 16 l10 -16z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><rect x="257" y="91" width="256" height="6" fill="var(--panel)"/><text x="385.0" y="71.46" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">다듬는 틈에 몰래 쪽지 한 장을 끼워 넣어요</text><g transform="translate(560,170) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#8B5E3C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5A3B22"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="560" y="250" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">공급업체도 모르게 일어날 수 있어요</text><text x="380" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">완성되면 다시 잠기고, 안은 보이지 않아요</text></svg>
+<p>다듬는 틈에 몰래 쪽지가 끼워져요.<small>완성되면 다시 잠기고, 안은 보이지 않아요.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="쪽지를 끼우는 사람, 공급업체, 주방장, 검사관이 각자 레시피북을 들고 있는 네 장면" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(70,150) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7A1F3D"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A3B52"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(70,95) scale(0.55)"><path d="M-32 -24 h30 v48 h-30z" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M2 -24 h30 v48 h-30z" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-26 -14 h20 M-26 -4 h20 M-26 6 h14 M8 -14 h20 M8 -4 h20 M8 6 h14" stroke="#142033" stroke-width="2"/></g><g transform="translate(260,170) scale(0.65)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#8B5E3C"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#5A3B22"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(260,110) scale(0.55)"><rect x="-28" y="-34" width="56" height="68" rx="3" fill="#7A1F17"/><rect x="-28" y="-34" width="56" height="10" rx="3" fill="#9A3B2E"/><rect x="-9" y="-4" width="18" height="16" rx="2" fill="#E9B44C"/><circle cx="0" cy="-4" r="6" fill="none" stroke="#E9B44C" stroke-width="3"/></g><g transform="translate(460,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(460,95) scale(0.6)"><rect x="-28" y="-34" width="56" height="68" rx="3" fill="#7A1F17"/><rect x="-28" y="-34" width="56" height="10" rx="3" fill="#9A3B2E"/><rect x="-9" y="-4" width="18" height="16" rx="2" fill="#E9B44C"/><circle cx="0" cy="-4" r="6" fill="none" stroke="#E9B44C" stroke-width="3"/></g><g transform="translate(650,200) scale(0.55)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(690,170) scale(0.6)"><path d="M0 -16 l14 8 v16 l-14 8 l-14 -8 v-16z" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle r="6" fill="#FFF8E7"/></g><text x="380" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)" class="d">트로이목마 모델 = 몰래 백도어를 심어 퍼뜨리는 것</text><text x="380" y="345" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">겉은 똑같이 잠긴 레시피북이에요</text></svg>
+<p>트로이목마 모델은 몰래 백도어를 심어 퍼뜨리는 것이에요.<small>겉은 똑같이 잠긴 레시피북이에요.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M21 32 l7 8 l13 -17" stroke="var(--good)" stroke-width="5" fill="none" stroke-linecap="round"/></svg><b>믿을 수 있는 공급처만 쓰기</b><span>출처가 분명한 곳에서만 받아요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 50 h44 M14 50 v-20 l18 -14 l18 14 v20" fill="none" stroke="var(--muted)" stroke-width="4"/></svg><b>출처·서명 확인하기</b><span>서명이 안 맞으면 바로 의심해요</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 10 l16 9 v18 l-16 9 l-16 -9 v-18z" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle cx="32" cy="32" r="6" fill="#FFF8E7"/></svg><b>받은 모델도 꼭 검수하기</b><span>설치 전에 한 번 더 들여다봐요</span></div>
+<div class="trick"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 L54 52 H10 Z" fill="var(--bad)"/><rect x="29" y="22" width="6" height="16" fill="#FFF8E7"/><circle cx="32" cy="44" r="3" fill="#FFF8E7"/></svg><b>수상한 동작 패턴 감시하기</b><span>설치 후에도 계속 지켜봐요</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="만들기, 다듬는 중 몰래 삽입, 설치의 세 단계가 화살표로 이어짐" viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="330" fill="var(--sky)"/><ellipse cx="380" cy="330" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(130,100) scale(0.6)"><rect x="-28" y="-34" width="56" height="68" rx="3" fill="#7A1F17"/><rect x="-28" y="-34" width="56" height="10" rx="3" fill="#9A3B2E"/><rect x="-9" y="-4" width="18" height="16" rx="2" fill="#E9B44C"/><circle cx="0" cy="-4" r="6" fill="none" stroke="#E9B44C" stroke-width="3"/></g><text x="130" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)" class="d">① 레시피북을 만들어요</text><path d="M190 100 H310" stroke="var(--muted)" stroke-width="3"/><path d="M306 94 L320 100 L306 106 Z" fill="var(--muted)"/><g transform="translate(380,100) scale(0.6)"><path d="M-32 -24 h30 v48 h-30z" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M2 -24 h30 v48 h-30z" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-26 -14 h20 M-26 -4 h20 M-26 6 h14 M8 -14 h20 M8 -4 h20 M8 6 h14" stroke="#142033" stroke-width="2"/></g><text x="380" y="170" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)" class="d">② 다듬는 중에 몰래 끼워요</text><path d="M440 100 H560" stroke="var(--muted)" stroke-width="3"/><path d="M556 94 L570 100 L556 106 Z" fill="var(--muted)"/><g transform="translate(630,140) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(630,210) scale(0.45)"><rect x="-28" y="-34" width="56" height="68" rx="3" fill="#7A1F17"/><rect x="-28" y="-34" width="56" height="10" rx="3" fill="#9A3B2E"/><rect x="-9" y="-4" width="18" height="16" rx="2" fill="#E9B44C"/><circle cx="0" cy="-4" r="6" fill="none" stroke="#E9B44C" stroke-width="3"/></g><text x="630" y="270" text-anchor="middle" font-size="10" font-weight="700" fill="var(--bad)" class="d">③ 주방이 설치해요 — 백도어도 함께</text><text x="380" y="305" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">몇 단계를 거치든, 한 번 심기면 그대로 퍼져요</text></svg>
+<p>몇 단계를 거치든, 한 번 심기면 그대로 퍼져요.<small>만들기 → 몰래 삽입 → 설치, 세 걸음이에요.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="왼쪽: 검사관이 서명과 출처를 확인함. 오른쪽: 레시피북 전체를 바꿔야 백도어가 없어짐" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/><g transform="translate(140,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#C9822B"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A5A72"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 38 Q30 46 40 38" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><g transform="translate(190,110) scale(0.7)"><path d="M0 -16 l14 8 v16 l-14 8 l-14 -8 v-16z" fill="#E9B44C" stroke="#C9822B" stroke-width="2"/><circle r="6" fill="#FFF8E7"/></g><text x="190" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">서명·출처를 확인해야 찾아낼 수 있어요</text><g transform="translate(560,140) scale(0.7)"><rect x="-28" y="-34" width="56" height="68" rx="3" fill="#7A1F17"/><rect x="-28" y="-34" width="56" height="10" rx="3" fill="#9A3B2E"/><rect x="-9" y="-4" width="18" height="16" rx="2" fill="#E9B44C"/><circle cx="0" cy="-4" r="6" fill="none" stroke="#E9B44C" stroke-width="3"/></g><text x="560" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">한 번 심기면 레시피북 전체를 바꿔야 해요</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">심는 과정이 트로이목마 모델, 심긴 결과(암호 주문어)가 백도어예요 — 모델 자체를 노린 공급망 공격이에요</text></svg>
+<p>찾기 어렵고, 모델 자체를 바꿔야 없어져요.<small>심는 과정이 트로이목마 모델, 심긴 결과가 백도어예요.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">한 줄로</div><h2><b>트로이목마 모델</b> = 레시피북을 다듬는 틈에 몰래 <b>백도어를 심어</b> 퍼뜨리는 것.</h2><p>트로이목마 모델(Trojan Model)은 공개된 모델이나 파인튜닝 서비스에 공급자·개발자·중간 단계 중 누군가가 몰래 백도어를 심어 배포하는 과정 전체를 가리켜요. 심어진 결과(백도어) 자체보다, '어떻게 심기고 어떻게 퍼지는지'에 초점을 맞춘 공급망 공격의 한 형태예요.</p></section>
+<section class="glossary"><h3>어른들은 이렇게 불러요</h3><dl><div><dt>트로이목마 모델<br><small>Trojan Model</small></dt><dd><b>몰래 백도어를 심어 퍼뜨리는 과정.</b> 이 세계관 전체 소개도 있어요. → <a href="llmthreats-ko.html">다 받아주는 주방</a></dd></div><div><dt>백도어<br><small>Backdoor</small></dt><dd><b>암호 주문어가 나오면 숨겨둔 동작을 하는 것 — 심긴 결과.</b> 바로 앞 이야기예요. → <a href="backdoor-ko.html">숨겨진 암호 주문어</a></dd></div><div><dt>공급망 공격<br><small>Supply Chain Attack</small></dt><dd><b>들어오는 재료나 도구에 미리 손을 대는 일.</b> 일반 공급망과 달리 여기서는 모델 자체가 노려져요. → <a href="supplychain-ko.html">목수의 연장통에 숨어 들어온 벌레</a></dd></div><div><dt>SBOM<br><small>SBOM</small></dt><dd><b>도구에 붙은 부품 목록표.</b> 모델에도 이런 출처 목록이 필요해요. → <a href="sbom-ko.html">도구에 붙은 부품 목록표</a></dd></div><div><dt>오픈 웨이트<br><small>Open Weights</small></dt><dd><b>머릿속 눈금을 통째로 공개한 모델.</b> 누구나 다듬을 수 있어서 더 위험해요. → <a href="openweights-ko.html">우리 집 앵무새 vs 빌린 앵무새</a></dd></div><div><dt>파인튜닝<br><small>Fine-tuning</small></dt><dd><b>책을 다 읽은 뒤 받는 짧은 특훈.</b> 바로 이 특훈 과정에서 많이 심겨요. → <a href="finetune-ko.html">짧은 특훈</a></dd></div><div><dt>레드팀<br><small>Red Team</small></dt><dd><b>진짜 도둑처럼 미리 찔러보는 사람들.</b> 받은 모델을 설치 전에 찔러봐요. → <a href="redteam-ko.html">진짜 도둑인 척하는 팀</a></dd></div><div><dt>평가<br><small>Evaluation</small></dt><dd><b>시험관이 매기는 채점표.</b> 받은 모델을 채점표로 미리 테스트해봐요. → <a href="evaluation-ko.html">시험관의 채점표</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">다음 이야기</div><a href="excessiveagency-ko.html">너무 많은 열쇠를 받은 견습생 →</a></section>
+<section class="request">다른 용어도 그림책으로 보고 싶다면 <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">요청하기 →</a></section>
+</main>
+</body>
+</html>

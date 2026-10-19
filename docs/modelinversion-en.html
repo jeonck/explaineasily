@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Face Rebuilt from a Pile of Dishes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700&display=swap">
+<style>
+:root {
+  --display: "Fraunces", Georgia, serif; --body: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --bg: #EEF2F7; --panel: #FFFFFF; --ink: #142033; --muted: #5B6B82; --line: #D3DBE6;
+  --accent: #E85D04; --accent-soft: #FFE3CF;
+  --good: #1B7F79; --good-soft: #D3EEEC;
+  --bad: #B5382C; --bad-soft: #F6D9D5;
+  --sky: #BFD3EA; --stone: #9FB0C4; --stone-dark: #6E8199; --night: #1E2E4A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+    --accent: #FF7A1A; --accent-soft: #4A2A12;
+    --good: #4FC3B8; --good-soft: #163B3A;
+    --bad: #F07A6C; --bad-soft: #4A1F1B;
+    --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1626; --panel: #172238; --ink: #E9EFF7; --muted: #9FB0C6; --line: #2A3A55;
+  --accent: #FF7A1A; --accent-soft: #4A2A12;
+  --good: #4FC3B8; --good-soft: #163B3A;
+  --bad: #F07A6C; --bad-soft: #4A1F1B;
+  --sky: #223454; --stone: #52657F; --stone-dark: #3A4B63; --night: #0A1120;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-weight: 500; line-height: 1.4; }
+.book { max-width: 760px; margin: 0 auto; padding: 32px 20px 72px; display: grid; gap: 28px; }
+.top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700; }
+.top a { color: var(--muted); text-decoration: none; }
+.top a:hover, .top a:focus-visible { color: var(--accent); }
+.top .left { display: flex; gap: 14px; align-items: center; }
+.brand { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; text-decoration: none; }
+.brand:hover, .brand:focus-visible { color: var(--accent); }
+header { display: grid; gap: 8px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 7vw, 60px); line-height: 1.12; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); font-style: normal; }
+.sub { color: var(--muted); font-size: 18px; margin: 0; max-width: 36ch; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; display: grid; }
+.panel.hero { border-color: var(--accent); }
+.panel svg { display: block; width: 100%; height: auto; }
+.panel svg text { font-family: var(--body); font-weight: 700; }
+.panel svg text.d { font-family: var(--display); }
+.panel p { margin: 0; padding: 20px 26px 26px; font-family: var(--display); font-weight: 700; font-size: clamp(24px, 4.2vw, 32px); line-height: 1.3; text-wrap: balance; }
+.panel p small { display: block; margin-top: 6px; font-family: var(--body); font-weight: 500; font-size: 17px; color: var(--muted); line-height: 1.45; }
+.panel p small a { color: var(--accent); }
+.tricks { display: grid; grid-template-columns: repeat(var(--cols, 3), 1fr); gap: 12px; padding: 0 26px 26px; }
+.trick { background: var(--bad-soft); border-radius: 14px; padding: 12px 12px 14px; display: grid; gap: 6px; text-align: center; }
+.trick.calm { background: var(--good-soft); }
+.trick.warm { background: var(--accent-soft); }
+.trick svg { width: 64px; height: 64px; margin: 0 auto; }
+.trick b { font-size: 15px; font-weight: 700; }
+.trick span { font-size: 13px; color: var(--muted); }
+@media (max-width: 520px) { .tricks { grid-template-columns: 1fr 1fr; } }
+.bubbles { display: grid; gap: 10px; padding: 0 26px 26px; }
+.bubble { background: var(--accent-soft); border-radius: 16px 16px 16px 4px; padding: 12px 16px; font-size: 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.bubble .arrow { color: var(--accent); }
+.sum { background: var(--night); color: #F2F6FC; border-radius: 22px; padding: 28px 26px; display: grid; gap: 10px; }
+.sum .eyebrow { color: #A9B9D2; }
+.sum h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 4.6vw, 36px); margin: 0; line-height: 1.25; text-wrap: balance; }
+.sum h2 b { color: #FFA45C; }
+.sum p { margin: 0; color: #C9D5E6; font-size: 17px; max-width: 48ch; }
+.glossary { border-top: 1px solid var(--line); }
+.glossary h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin: 22px 0 6px; }
+.glossary dl { margin: 0; display: grid; }
+.glossary div { display: grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.glossary dt { font-weight: 700; font-size: 15px; }
+.glossary dt small { font-weight: 500; font-size: 12px; color: var(--muted); }
+.glossary dd { margin: 0; color: var(--muted); font-size: 15px; }
+.glossary dd b { color: var(--ink); }
+@media (max-width: 480px) { .glossary div { grid-template-columns: 1fr; gap: 2px; } }
+.next { display: grid; gap: 6px; }
+.next a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.next a:hover, .next a:focus-visible { text-decoration: underline; }
+.index { display: grid; gap: 14px; }
+.index h2 { grid-column: 1 / -1; }
+@media (min-width: 640px) { .index { grid-template-columns: 1fr 1fr; } }
+.search { display: flex; align-items: center; gap: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 10px 16px; }
+.search svg { width: 20px; height: 20px; flex: none; }
+.search input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 16px; outline: none; }
+.search input::placeholder { color: var(--muted); }
+.search:focus-within { border-color: var(--accent); }
+.empty { color: var(--muted); font-size: 15px; padding: 8px 4px; }
+.tabs.off a { opacity: 0.4; }
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tabs a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font-weight: 700; font-size: 15px; text-decoration: none; }
+.tabs a small { font-family: var(--body); font-size: 12px; color: var(--muted); font-weight: 700; }
+.tabs a.cur { background: var(--accent); border-color: var(--accent); color: #FFF; }
+.tabs a.cur small { color: #FFE3CF; }
+.tabs a:hover, .tabs a:focus-visible { border-color: var(--accent); }
+.pager { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 14px; font-weight: 700; }
+.pager a, .pager span { min-width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; padding: 0 10px; color: var(--muted); text-decoration: none; }
+.pager a:hover, .pager a:focus-visible { background: var(--panel); color: var(--accent); }
+.pager .cur { background: var(--accent); color: #FFF; }
+.pager .off { opacity: 0.35; pointer-events: none; }
+.index h2 { font-family: var(--display); font-weight: 700; font-size: 22px; margin: 14px 0 0; }
+.index h2 small { font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-left: 10px; }
+.request { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 4px; color: var(--muted); font-size: 15px; }
+header .request { border-top: 0; padding-top: 0; margin: 4px 0 0; }
+.request a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.request a:hover, .request a:focus-visible { text-decoration: underline; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px 22px; display: grid; gap: 6px; }
+.card .eyebrow { margin: 0; }
+.card h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; line-height: 1.25; }
+.card .links { display: flex; gap: 14px; font-size: 14px; font-weight: 700; }
+.card .links a { color: var(--accent); text-decoration: none; }
+.card .links a:hover, .card .links a:focus-visible { text-decoration: underline; }
+.rules { color: var(--muted); font-size: 16px; padding-left: 1.2em; margin: 0; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: no-preference) {
+  .flame { transform-origin: 50% 100%; animation: flicker 1.6s ease-in-out infinite alternate; }
+  @keyframes flicker { from { transform: scaleY(1) } to { transform: scaleY(1.12) scaleX(0.94) } }
+}
+</style>
+</head>
+<body>
+<main class="book">
+<nav class="top"><span class="left"><a class="brand" href="index.html">explaineasily</a><a href="index.html">← Index</a></span><a href="modelinversion-ko.html" lang="ko">한국어</a></nav>
+<header>
+<div class="eyebrow">Explain like I'm five · AI Security</div>
+<h1>What is <em>Model Inversion</em>?</h1>
+<p class="sub">Model inversion, told as a story about ordering the same dish again and again, each time a little different, and sketching the original ingredients backward from nothing but the dishes that come out.</p>
+</header>
+<section class="panel">
+<svg role="img" aria-label="The sneaky guest hands over three slightly different order tickets for the same dish; the chef makes each one honestly, and the guest writes down every result in a logbook" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="320" fill="var(--sky)"/><ellipse cx="380" cy="320" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(60,150) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7A1F3D"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A3B52"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/><path d="M20 42 Q30 34 40 42" stroke="var(--night)" stroke-width="3" fill="none" stroke-linecap="round"/></g><text x="87" y="262" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">the sneaky orderer</text><g transform="translate(205,100) scale(0.65)"><rect x="-28" y="-20" width="56" height="40" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-20 -10 h40 M-20 -2 h40 M-20 6 h24" stroke="#142033" stroke-width="2"/></g><g transform="translate(205,150) scale(0.65)"><rect x="-28" y="-20" width="56" height="40" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-20 -10 h40 M-20 -2 h40 M-20 6 h24" stroke="#142033" stroke-width="2"/></g><g transform="translate(205,200) scale(0.65)"><rect x="-28" y="-20" width="56" height="40" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-20 -10 h40 M-20 -2 h40 M-20 6 h24" stroke="#142033" stroke-width="2"/></g><text x="205" y="240" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">tweaked, again and again</text><g transform="translate(400,150) scale(0.8)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(400,255) scale(0.5)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><text x="400" y="288" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">makes it honestly, every single time</text><g transform="translate(580,110) scale(0.8)"><rect width="110" height="70" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M10 16.0 h90" stroke="#142033" stroke-width="2"/><path d="M10 31.333333333333336 h90" stroke="#142033" stroke-width="2"/><path d="M10 46.66666666666667 h90" stroke="#142033" stroke-width="2"/><path d="M10 62.0 h90" stroke="#142033" stroke-width="2"/></g><text x="635" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)" class="d">writes down what comes out, one by one</text><text x="380" y="305" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">the sneaky guest orders the same dish, over and over, each time a little different</text></svg>
+<p>The sneaky guest orders the same dish, over and over, each time a little different.<small>The chef makes each one honestly, with no suspicion at all — and every result gets written down.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="The chef only ever looks at one order at a time; only when several dishes are lined up side by side does a slight color pattern appear" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="300" fill="var(--bad-soft)"/><g transform="translate(130,150) scale(0.85)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#2E3D57"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#FFF8E7"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><g transform="translate(220,170) scale(0.6)"><rect x="-28" y="-20" width="56" height="40" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-20 -10 h40 M-20 -2 h40 M-20 6 h24" stroke="#142033" stroke-width="2"/></g><text x="170" y="250" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">sees only one order at a time</text><g transform="translate(400,90) scale(0.4)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(450,95) scale(0.4)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent-soft)"/></g><g transform="translate(500,88) scale(0.4)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(550,93) scale(0.4)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent-soft)"/></g><g transform="translate(600,90) scale(0.4)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(650,95) scale(0.4)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent-soft)"/></g><text x="520" y="135" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">a slight color shift that only shows when you line them all up</text><text x="380" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">each one alone looks ordinary — only lined up together does the pattern show</text></svg>
+<p>Each one alone looks ordinary — only lined up together does the pattern show.<small>The chef only sees the order in front of it right now. Comparing many orders together is nobody's job inside the kitchen.</small></p>
+</section>
+<section class="panel hero">
+<svg role="img" aria-label="From nothing but the color and taste of several dishes, the sneaky guest sketches a blurry guess that sharpens into a clearer one" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="360" fill="var(--sky)"/><ellipse cx="380" cy="360" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(100,80) scale(0.45)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(150,85) scale(0.45)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent-soft)"/></g><g transform="translate(200,78) scale(0.45)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(250,85) scale(0.45)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent-soft)"/></g><g transform="translate(300,80) scale(0.45)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><text x="200" y="130" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">from nothing but the color and taste of the dishes</text><g transform="translate(430,130) scale(0.7)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7A1F3D"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A3B52"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><path d="M470 150 L520 200" stroke="var(--muted)" stroke-width="3" stroke-dasharray="6 5"/><g transform="translate(560,220) scale(1.0)" opacity="0.65"><circle cx="0" cy="0" r="30" fill="none" stroke="var(--muted)" stroke-width="3" stroke-dasharray="4 4"/><circle cx="-10" cy="-6" r="2.6" fill="var(--muted)"/><circle cx="10" cy="-6" r="2.6" fill="var(--muted)"/><path d="M-11 10 Q0 17 11 10" stroke="var(--muted)" stroke-width="2.6" fill="none" stroke-linecap="round"/></g><g transform="translate(680,220) scale(1.0)" opacity="1"><circle cx="0" cy="0" r="30" fill="none" stroke="var(--ink)" stroke-width="3"/><circle cx="-10" cy="-6" r="2.6" fill="var(--ink)"/><circle cx="10" cy="-6" r="2.6" fill="var(--ink)"/><path d="M-11 10 Q0 17 11 10" stroke="var(--ink)" stroke-width="2.6" fill="none" stroke-linecap="round"/></g><text x="560" y="275" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">a blurry guess at first</text><text x="680" y="275" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">sharper with every repeat</text><text x="380" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)" class="d">Model inversion = sketching the original ingredients backward from nothing but the dishes</text><text x="380" y="345" text-anchor="middle" font-size="12" font-weight="700" fill="var(--muted)">the real ingredients were never shown directly, not even once</text></svg>
+<p>Model inversion is sketching the original ingredients backward from nothing but the dishes.<small>The real ingredients were never shown directly — the guess works backward from nothing but the color and taste left behind.</small></p>
+<div class="tricks" style="--cols:4">
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="28" cy="34" r="20" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M28 22 v12 l9 7" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/><rect x="42" y="10" width="7" height="22" rx="3" fill="var(--bad)" transform="rotate(35 45 21)"/></svg><b>Limit how often the same order repeats</b><span>too many repeats from one guest get cut off</span></div>
+<div class="trick calm"><svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="42" rx="22" ry="7" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="32" cy="34" r="10" fill="var(--accent)"/><path d="M12 16 q6 -9 12 0 q6 -9 12 0 q6 -9 12 0" stroke="var(--muted)" stroke-width="3" fill="none"/></svg><b>Blur the dish a little</b><span>mix a small wobble into every answer</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="14" fill="none" stroke="var(--muted)" stroke-width="4"/><circle cx="32" cy="32" r="4" fill="var(--muted)"/><path d="M12 12 L52 52" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/></svg><b>Hide the exact confidence number</b><span>no precise score handed over</span></div>
+<div class="trick warm"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="22" r="10" fill="#E8C9A8"/><rect x="18" y="34" width="28" height="22" rx="8" fill="var(--good)"/><path d="M10 10 L54 54" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/></svg><b>Never train on one person's unique data alone</b><span>drop anything that points to just one person</span></div>
+</div>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Orders A, B, and C make slightly different dishes; lining them up reveals which ingredient was used a lot and which barely at all, leading to a guessed face" viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg"><rect width="760" height="330" fill="var(--sky)"/><ellipse cx="380" cy="330" rx="440" ry="36" fill="var(--good-soft)"/><g transform="translate(70,70) scale(0.6)"><rect x="-28" y="-20" width="56" height="40" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-20 -10 h40 M-20 -2 h40 M-20 6 h24" stroke="#142033" stroke-width="2"/></g><text x="70" y="108" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">order A</text><path d="M100 85 L150 85" stroke="var(--muted)" stroke-width="3"/><g transform="translate(175,85) scale(0.45)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><g transform="translate(70,150) scale(0.6)"><rect x="-28" y="-20" width="56" height="40" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-20 -10 h40 M-20 -2 h40 M-20 6 h24" stroke="#142033" stroke-width="2"/></g><text x="70" y="188" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">order B</text><path d="M100 165 L150 165" stroke="var(--muted)" stroke-width="3"/><g transform="translate(175,165) scale(0.45)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent-soft)"/></g><g transform="translate(70,230) scale(0.6)"><rect x="-28" y="-20" width="56" height="40" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-20 -10 h40 M-20 -2 h40 M-20 6 h24" stroke="#142033" stroke-width="2"/></g><text x="70" y="268" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">order C</text><path d="M100 245 L150 245" stroke="var(--muted)" stroke-width="3"/><g transform="translate(175,245) scale(0.45)"><ellipse cx="0" cy="6" rx="34" ry="10" fill="#D8D2C2"/><ellipse cx="0" cy="0" rx="30" ry="9" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><circle cx="0" cy="-1" r="14" fill="var(--accent)"/></g><path d="M210 85 L210 245" stroke="var(--line)" stroke-width="2"/><g transform="translate(260,50) scale(1.0)"><rect width="230" height="220" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect width="230" height="26" rx="6" fill="#C9A86A"/><text x="115.0" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#142033" class="d">LINE THEM UP</text><text x="14" y="50" text-anchor="start" font-size="12" font-weight="700" fill="#142033">darker = an ingredient used a lot</text><text x="14" y="74" text-anchor="start" font-size="12" font-weight="700" fill="#142033">lighter = barely used at all</text><text x="14" y="98" text-anchor="start" font-size="12" font-weight="700" fill="#142033">one try tells nothing — many tries do</text></g><path d="M490 160 L560 160" stroke="var(--muted)" stroke-width="3" stroke-dasharray="6 5"/><g transform="translate(630,160) scale(1.1)" opacity="1"><circle cx="0" cy="0" r="30" fill="none" stroke="var(--ink)" stroke-width="3"/><circle cx="-10" cy="-6" r="2.6" fill="var(--ink)"/><circle cx="10" cy="-6" r="2.6" fill="var(--ink)"/><path d="M-11 10 Q0 17 11 10" stroke="var(--ink)" stroke-width="2.6" fill="none" stroke-linecap="round"/></g><text x="630" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">a guess that resembles the original ingredients</text><text x="380" y="305" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">stack up the slightly different orders, and a shadow of the original ingredients shows</text></svg>
+<p>Stack up the slightly different orders, and a shadow of the original ingredients shows.<small>A single order tells you nothing. It takes a great many orders, stacked together, before the shadow appears.</small></p>
+</section>
+<section class="panel">
+<svg role="img" aria-label="Left: a plausible but never exact guessed face. Right: membership inference only asks whether a guest was there, while model inversion sketches the ingredients themselves" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg"><rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--bad-soft)"/><g transform="translate(160,140) scale(1.3)" opacity="1"><circle cx="0" cy="0" r="30" fill="none" stroke="var(--ink)" stroke-width="3"/><circle cx="-10" cy="-6" r="2.6" fill="var(--ink)"/><circle cx="10" cy="-6" r="2.6" fill="var(--ink)"/><path d="M-11 10 Q0 17 11 10" stroke="var(--ink)" stroke-width="2.6" fill="none" stroke-linecap="round"/></g><text x="160" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)">a plausible guess, not a copy</text><text x="160" y="245" text-anchor="middle" font-size="11" font-weight="700" fill="var(--muted)">never an exact match for the real ingredients</text><g transform="translate(540,110) scale(0.75)"><circle cx="30" cy="30" r="22" fill="#E8C9A8"/><path d="M6 22 Q30 -6 54 22 Z" fill="#7A1F3D"/><rect x="8" y="52" width="44" height="60" rx="10" fill="#4A3B52"/><circle cx="22" cy="28" r="3" fill="var(--night)"/><circle cx="38" cy="28" r="3" fill="var(--night)"/></g><text x="540" y="205" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)">if you only ask was it here?</text><text x="540" y="228" text-anchor="middle" font-size="11" font-weight="700" fill="var(--bad)" class="d">membership inference is enough</text><text x="540" y="255" text-anchor="middle" font-size="10" font-weight="700" fill="var(--muted)">sketching the ingredients needs far more repeats</text><text x="380" y="295" text-anchor="middle" font-size="12" font-weight="700" fill="var(--ink)" class="d">a human chef would get suspicious of the repeats — this one just sees each order on its own</text></svg>
+<p>It's a plausible guess, never an exact match for the real ingredients.<small>If all you want to know is "was this guest here?", <a href="membershipinference-en.html">membership inference</a> is enough. Sketching the ingredients themselves is harder, and takes far more repeats. A human chef would get suspicious of the repeats — this one just sees each order on its own.</small></p>
+</section>
+<section class="sum"><div class="eyebrow">In one breath</div><h2><b>Model inversion</b> = ordering the same dish <b>again and again, each time slightly different</b>, and using <b>nothing but the color and taste of the dishes</b> to <b>sketch the original ingredients backward</b>. It's never a perfect copy, but the picture sharpens with every repeat.</h2><p>An attack that repeatedly queries a model and analyzes its outputs (confidence scores, generated results) to approximately reconstruct the original training data — a face image, a specific person's record. The more a model has literally memorized its inputs, and the more confidence-score or gradient information an attacker can access, the sharper the reconstruction. Defenses include adding noise to outputs, hiding exact confidence scores, rate-limiting queries, and excluding data that identifies a single individual from training.</p></section>
+<section class="glossary"><h3>When grown-ups say it</h3><dl><div><dt>Model Inversion</dt><dd><b>Sketching the original ingredients backward from nothing but the dishes.</b> Never a perfect copy — just a plausible guess.</dd></div><div><dt>Membership Inference</dt><dd><b>Finding out only whether a guest was ever here.</b> For when the ingredients themselves don't matter. → <a href="membershipinference-en.html">telling whether it was there</a></dd></div><div><dt>Memorization</dt><dd><b>The habit of serving a line straight out of the recipe book.</b> The better it memorizes, the easier it is to invert. → <a href="memorization-en.html">serving what it memorized</a></dd></div><div><dt>AI Privacy</dt><dd><b>The principle of never handing over the secret ingredient at all.</b> A promise made knowing the original ingredients could be rebuilt. → <a href="aiprivacy-en.html">the secret beans we gave the parrot</a></dd></div><div><dt>Red Team</dt><dd><b>Deliberately placing repeated orders to test whether reconstruction works.</b> Checks before release whether this attack succeeds. → <a href="redteam-en.html">the security world's red team</a></dd></div><div><dt>Rate Limiting</dt><dd><b>Slowing or blocking repeated orders from the same guest.</b> This attack needs many repeats, so this helps a lot. → <a href="ratelimiting-en.html">the amusement park's entry limit</a></dd></div><div><dt>Training Data</dt><dd><b>The ingredients that first went into the pantry.</b> The very ingredients model inversion tries to work backward to.</dd></div><div><dt>Guardrail</dt><dd><b>The tasting checkpoint.</b> Also used to catch suspiciously repetitive orders. → <a href="guardrail-en.html">What is a Guardrail?</a></dd></div></dl></section>
+<section class="next"><div class="eyebrow">Next story</div><a href="membershipinference-en.html">The Dish Made with Eyes Closed →</a></section>
+<section class="request">Want another term as a picture book? <a href="https://github.com/jeonck/explaineasily/issues/new?template=term-request.yml">Request →</a></section>
+</main>
+</body>
+</html>

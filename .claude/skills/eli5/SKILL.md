@@ -363,3 +363,36 @@ python3 build.py
 | sre | Runbook | 정비사의 공책 |
 | sre | Postmortem | 탓하지 않고 모여 쓰는 기록 |
 | sre | Toil | 매일 똑같이 반복하는 허드렛일 |
+
+| llmsec | AI Security | 다 받아주는 주방 |
+| llmsec | Prompt Injection | 주문서 뒤에 몰래 끼운 쪽지 |
+| llmsec | Indirect Prompt Injection | 재료 포장지에 적힌 몰래 쪽지 |
+| llmsec | Jailbreak | 주방장을 구슬려 규칙을 깨게 하기 |
+| llmsec | Prompt Leak | 비밀 레시피 수칙을 캐내기 |
+| llmsec | Prompt Filter Evasion | 암호처럼 꼬아 쓴 주문서 |
+| llmsec | Image Prompt Injection | 메뉴판 사진 속에 숨긴 글자 |
+| llmsec | Adversarial Example | 눈속임 그림 주문서 |
+| llmsec | Model Extraction Attack | 레시피북 통째로 베껴가기 |
+| llmsec | Model Inversion | 접시 더미에서 되살린 얼굴 |
+| llmsec | Membership Inference | 눈 감고도 만드는 요리 |
+| llmsec | Memorization | 그대로 베낀 접시 |
+| llmsec | Data Poisoning | 수상한 재료 자루 |
+| llmsec | RAG Poisoning | 참고 카드함에 끼운 가짜 카드 |
+| llmsec | Backdoor | 숨겨진 암호 주문어 |
+| llmsec | Trojan Model | 다듬는 중에 몰래 심은 버릇 |
+| llmsec | Excessive Agency | 너무 많은 열쇠를 받은 견습생 |
+| llmsec | Unsafe Output Handling | 접시를 그대로 기계에 넣다가 |
+| llmsec | Zero-click Attack | 가만히 있어도 실행되는 공격 |
+| llmsec | Tool Sandbox | 잠긴 칼 서랍 |
+| llmsec | Per-tool Permission | 도구별 권한 배지 |
+| llmsec | LLMDoS | 화구를 멈추지 않는 주문 |
+| llmsec | AIBOM | 재료 출처 인증서 |
+| llmsec | Model Card | 요리 설명표 |
+| llmsec | Watermark | 요리에 새긴 표식 |
+| llmsec | AI Red Team | 위생 검사관의 불시 방문 |
+| llmsec | Safety Evaluation | 손님 받기 전 맛 평가 테스트 |
+| llmsec | Human Approval Gate | 사장님 최종 승인 |
+| llmsec | AI Governance | 주방 규칙판 |
+| llmsec | Shadow AI | 몰래 들여온 배달 상자 |
+| llmsec | AI Incident Response | 울리는 비상벨 |
+| llmsec | AI Audit Log | 매일 적는 주문 기록 장부 |
