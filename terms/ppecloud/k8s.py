@@ -36,7 +36,7 @@ P4 = svg(340, sky(340)
 P5 = svg(355, '<rect width="380" height="355" fill="var(--good-soft)"/><rect x="380" width="380" height="355" fill="var(--accent-soft)"/>'
          + office(100, 190, 0.85) + person(60, 268, s=0.55, face=SMILE, **TENANT)
          + label(190, 335, "⟦사무실 1~2칸뿐이면 사람이 직접 관리해도 충분해요|with just 1-2 offices, managing by hand is still enough⟧", 11, "var(--ink)")
-         + deskbadge(570, 180, 1.2) + person(650, 268, s=0.55, face=FROWN + SWEAT, **TENANT)
+         + deskbadge(570, 180, 1.2) + person(650, 240, s=0.55, face=FROWN + SWEAT, **TENANT)
          + label(570, 335, "⟦쿠버네티스 자체를 배우고 운영하는 비용이 꽤 커요|learning and running Kubernetes itself is a real cost⟧", 11, "var(--ink)"))
 
 POD_I = icon('<rect x="14" y="20" width="16" height="24" rx="2" fill="var(--good)"/><rect x="34" y="20" width="16" height="24" rx="2" fill="var(--good)"/>')

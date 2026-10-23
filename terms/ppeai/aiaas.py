@@ -38,12 +38,12 @@ P4 = svg(340, sky(340)
                        "⟦확장 — 구독만 늘리면 됨|scale — just add subscriptions⟧", "⟦통제권 — 제공자 규칙을 따름|control — follows the provider's rules⟧"), 0.9))
 
 # 5. 한계도 있어요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SWEAT + EYES, **FARMER)
-         + label(190, 230, "⟦인터넷이 끊기면 등급을 못 받아요|no network, no grade back⟧", 11, "var(--bad)")
-         + person(570, 150, s=0.8, face=EYES, **FARMER)
-         + label(570, 230, "⟦내 작물 사진이 남의 서버에 가 있어요|my crop photos sit on someone else's server⟧", 11, "var(--ink)")
-         + label(380, 280, "⟦빠른 응답이나 민감한 자료가 중요하면 온디바이스 쪽도 같이 생각해요|if speed or sensitive data matters most, weigh on-device too⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=SWEAT + EYES, **FARMER)
+         + label(190, 260, "⟦인터넷이 끊기면 등급을 못 받아요|no network, no grade back⟧", 11, "var(--bad)")
+         + person(570, 130, s=0.8, face=EYES, **FARMER)
+         + label(570, 260, "⟦내 작물 사진이 남의 서버에 가 있어요|my crop photos sit on someone else's server⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦빠른 응답이나 민감한 자료가 중요하면 온디바이스 쪽도 같이 생각해요|if speed or sensitive data matters most, weigh on-device too⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "aiaas", "order": 17,

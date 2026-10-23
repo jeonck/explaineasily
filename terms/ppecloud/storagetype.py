@@ -24,7 +24,7 @@ P3 = svg(365, sky(365)
          + '<rect x="500" y="220" width="40" height="30" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><rect x="550" y="235" width="40" height="30" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><rect x="525" y="260" width="40" height="30" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>'
          + label(555, 320, "⟦오브젝트: 태그 붙은 박스|object: tagged boxes⟧", 11, "var(--ink)")
          + label(380, 30, "⟦블록=벽돌, 파일=폴더 트리, 오브젝트=태그 붙은 박스예요|block=bricks, file=folder tree, object=tagged boxes⟧", 13, "var(--ink)", cls="d")
-         + label(380, 350, "⟦셋 다 '어떻게 저장하고 꺼내나'의 방식이 달라요|all three differ in HOW things get stored and retrieved⟧", 12, "var(--muted)"))
+         + label(380, 340, "⟦셋 다 '어떻게 저장하고 꺼내나'의 방식이 달라요|all three differ in HOW things get stored and retrieved⟧", 12, "var(--muted)"))
 
 # 4. 작동 디테일: 구조·접근방식·확장성·용도 비교
 P4 = svg(320, sky(320)
