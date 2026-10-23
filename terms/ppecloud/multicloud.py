@@ -9,17 +9,17 @@ P1 = svg(300, sky(300)
          + label(380, 282, "⟦한 건물에만 전부 맡기면 불안해요|relying on just one building for everything feels risky⟧", 12, "var(--ink)"))
 
 # 2. 왜 어려운가: 그 건물에 문제가 생기면 전부 같이 멈춰요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
          + building(300, 50, 1.0)
          + '<path d="M320 70 L420 170" stroke="var(--bad)" stroke-width="5"/><path d="M420 70 L320 170" stroke="var(--bad)" stroke-width="5"/>'
-         + person(560, 198, s=0.7, face=FROWN + SWEAT, **TENANT)
-         + label(560, 268, "⟦건물 하나가 멈추면 내 회사도 같이 멈춰요|one building goes down, and my whole company goes down with it⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦건물 하나에 문제가 생기면 전부 같이 멈춰요|trouble in one building, and everything stops together⟧", 12, "var(--ink)"))
+         + person(560, 170, s=0.7, face=FROWN + SWEAT, **TENANT)
+         + label(560, 285, "⟦건물 하나가 멈추면 내 회사도 같이 멈춰요|one building goes down, and my whole company goes down with it⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦건물 하나에 문제가 생기면 전부 같이 멈춰요|trouble in one building, and everything stops together⟧", 12, "var(--ink)"))
 
 # 3. hero: 멀티클라우드 = 여러 건물에 동시에 입주하는 전략
 P3 = svg(360, sky(360)
          + building(60, 60, 0.85, label_text="⟦건물A|Building A⟧")
-         + building(330, 40, 0.95, label_text="⟦건물B|Building B⟧")
+         + building(330, 70, 0.95, label_text="⟦건물B|Building B⟧")
          + building(600, 70, 0.8, label_text="⟦건물C|Building C⟧")
          + person(220, 267, s=0.65, face=SMILE, **TENANT)
          + '<path d="M250 257 L120 220" stroke="var(--good)" stroke-width="2" stroke-dasharray="5 4"/>'
@@ -37,11 +37,11 @@ P4 = svg(320, sky(320)
                       "⟦최신 설비: 건물마다 잘하는 설비(서비스)가 달라요|best-of-breed: each building is strong at different gear (services)⟧"), 1.0))
 
 # 5. 깨지는 곳: 건물마다 규칙이 달라서 관리가 더 복잡하고 비용이 이중으로 들어요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.75, face=FROWN + SWEAT, **TENANT)
-         + label(190, 240, "⟦건물마다 규칙·용어가 달라 배우기 힘들어요|different rules and terms per building — hard to learn them all⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.75, face=EYES, **TENANT)
-         + label(570, 240, "⟦관리 인력과 비용이 건물 수만큼 늘어나요|staff and cost grow with every extra building⟧", 11, "var(--ink)"))
+P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.75, face=FROWN + SWEAT, **TENANT)
+         + label(190, 260, "⟦건물마다 규칙·용어가 달라 배우기 힘들어요|different rules and terms per building — hard to learn them all⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.75, face=EYES, **TENANT)
+         + label(570, 260, "⟦관리 인력과 비용이 건물 수만큼 늘어나요|staff and cost grow with every extra building⟧", 11, "var(--ink)"))
 
 RISK_I = icon('<circle cx="20" cy="20" r="12" fill="var(--good-soft)" stroke="var(--good)" stroke-width="3"/><circle cx="44" cy="20" r="12" fill="var(--good-soft)" stroke="var(--good)" stroke-width="3"/><path d="M20 20 L44 20" stroke="var(--good)" stroke-width="2" stroke-dasharray="3 3"/>')
 PRICE_I = icon('<circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4"/><text x="32" y="40" font-size="22" font-weight="800" text-anchor="middle" fill="var(--accent)">₩</text>')

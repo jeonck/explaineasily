@@ -2,21 +2,21 @@ from _draw import *
 from _world import *
 
 # 1. 입주사마다 보관하고 싶은 게 다 달라요
-P1 = svg(300, sky(300)
-         + person(140, 198, s=0.7, face=EYES, **TENANT) + label(140, 260, "⟦벽돌 자재|raw brick⟧", 11, "var(--muted)")
-         + person(380, 198, s=0.7, face=EYES, **TENANT) + label(380, 260, "⟦서류 폴더|paper folders⟧", 11, "var(--muted)")
-         + person(620, 198, s=0.7, face=EYES, **TENANT) + label(620, 260, "⟦태그 붙은 박스|tagged boxes⟧", 11, "var(--muted)")
-         + label(380, 282, "⟦입주사마다 보관하고 싶은 형태가 다 달라요|every tenant wants to store things in a different shape⟧", 12, "var(--ink)"))
+P1 = svg(320, sky(320)
+         + person(140, 170, s=0.7, face=EYES, **TENANT) + label(140, 280, "⟦벽돌 자재|raw brick⟧", 11, "var(--muted)")
+         + person(380, 170, s=0.7, face=EYES, **TENANT) + label(380, 280, "⟦서류 폴더|paper folders⟧", 11, "var(--muted)")
+         + person(620, 170, s=0.7, face=EYES, **TENANT) + label(620, 280, "⟦태그 붙은 박스|tagged boxes⟧", 11, "var(--muted)")
+         + label(380, 302, "⟦입주사마다 보관하고 싶은 형태가 다 달라요|every tenant wants to store things in a different shape⟧", 12, "var(--ink)"))
 
 # 2. 왜 어려운가: 한 가지 보관 방식만 있으면 누군가는 불편해요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
          + '<rect x="320" y="90" width="120" height="100" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/>' + label(380, 145, "⟦서류 폴더함만|only paper folders⟧", 11, "var(--ink)")
-         + person(220, 198, s=0.6, face=FROWN, **TENANT) + label(220, 260, "⟦벽돌은 폴더에 안 들어가요|bricks don't fit in a folder⟧", 10, "var(--bad)")
-         + person(560, 198, s=0.6, face=FROWN, **TENANT) + label(560, 260, "⟦박스 태그도 못 붙여요|can't even tag a box here⟧", 10, "var(--bad)")
-         + label(380, 282, "⟦한 가지 방식만 있으면 누군가의 짐은 늘 안 맞아요|with only one storage shape, somebody's stuff never fits⟧", 12, "var(--ink)"))
+         + person(220, 178, s=0.6, face=FROWN, **TENANT) + label(220, 280, "⟦벽돌은 폴더에 안 들어가요|bricks don't fit in a folder⟧", 10, "var(--bad)")
+         + person(560, 178, s=0.6, face=FROWN, **TENANT) + label(560, 280, "⟦박스 태그도 못 붙여요|can't even tag a box here⟧", 10, "var(--bad)")
+         + label(380, 302, "⟦한 가지 방식만 있으면 누군가의 짐은 늘 안 맞아요|with only one storage shape, somebody's stuff never fits⟧", 12, "var(--ink)"))
 
 # 3. hero: 블록=벽돌 자재, 파일=폴더 트리, 오브젝트=태그 붙은 박스 창고
-P3 = svg(340, sky(340)
+P3 = svg(365, sky(365)
          + '<rect x="60" y="230" width="18" height="18" fill="var(--stone-dark)"/><rect x="82" y="230" width="18" height="18" fill="var(--stone-dark)"/><rect x="60" y="252" width="18" height="18" fill="var(--stone-dark)"/><rect x="82" y="252" width="18" height="18" fill="var(--stone-dark)"/>'
          + label(90, 300, "⟦블록: 벽돌 자재|block: raw bricks⟧", 11, "var(--ink)")
          + '<rect x="290" y="210" width="110" height="90" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M320 230 h50 M320 250 h50 M320 270 h30" stroke="#142033" stroke-width="2"/>'
@@ -24,7 +24,7 @@ P3 = svg(340, sky(340)
          + '<rect x="500" y="220" width="40" height="30" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><rect x="550" y="235" width="40" height="30" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><rect x="525" y="260" width="40" height="30" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>'
          + label(555, 320, "⟦오브젝트: 태그 붙은 박스|object: tagged boxes⟧", 11, "var(--ink)")
          + label(380, 30, "⟦블록=벽돌, 파일=폴더 트리, 오브젝트=태그 붙은 박스예요|block=bricks, file=folder tree, object=tagged boxes⟧", 13, "var(--ink)", cls="d")
-         + label(380, 345, "⟦셋 다 '어떻게 저장하고 꺼내나'의 방식이 달라요|all three differ in HOW things get stored and retrieved⟧", 12, "var(--muted)"))
+         + label(380, 350, "⟦셋 다 '어떻게 저장하고 꺼내나'의 방식이 달라요|all three differ in HOW things get stored and retrieved⟧", 12, "var(--muted)"))
 
 # 4. 작동 디테일: 구조·접근방식·확장성·용도 비교
 P4 = svg(320, sky(320)
@@ -35,12 +35,12 @@ P4 = svg(320, sky(320)
                       "⟦대표 용도: 데이터베이스 vs 공유 문서 vs 사진·백업·로그|typical use: databases vs shared docs vs photos, backups, logs⟧"), 1.0))
 
 # 5. 깨지는 곳: 오브젝트는 박스 하나를 통째로 바꿔야 해서, 일부만 살짝 고치는 덴 느려요
-P5 = svg(300, sky(300)
-         + '<rect x="130" y="190" width="40" height="30" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>'
-         + person(230, 198, s=0.6, face=SWEAT, **TENANT)
-         + label(190, 268, "⟦박스 하나를 통째로 다시 보내야 해요|has to resend the whole box, just for one tweak⟧", 11, "var(--ink)")
-         + '<rect x="500" y="200" width="18" height="18" fill="var(--stone-dark)"/>' + person(600, 198, s=0.6, face=SMILE, **TENANT)
-         + label(570, 268, "⟦벽돌(블록)은 한 조각만 바꿔도 빨라요|a block lets you swap just one brick, quickly⟧", 11, "var(--ink)"))
+P5 = svg(320, sky(320)
+         + '<rect x="130" y="170" width="40" height="30" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>'
+         + person(230, 178, s=0.6, face=SWEAT, **TENANT)
+         + label(190, 285, "⟦박스 하나를 통째로 다시 보내야 해요|has to resend the whole box, just for one tweak⟧", 11, "var(--ink)")
+         + '<rect x="500" y="180" width="18" height="18" fill="var(--stone-dark)"/>' + person(600, 178, s=0.6, face=SMILE, **TENANT)
+         + label(570, 285, "⟦벽돌(블록)은 한 조각만 바꿔도 빨라요|a block lets you swap just one brick, quickly⟧", 11, "var(--ink)"))
 
 RAW_I = icon('<rect x="10" y="30" width="18" height="18" fill="var(--stone-dark)"/><rect x="34" y="30" width="18" height="18" fill="var(--stone-dark)"/><rect x="10" y="12" width="18" height="18" fill="var(--stone-dark)"/>')
 TREE_I = icon('<path d="M32 10 v18 M20 44 L32 28 L44 44" stroke="#8B5E3C" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>')

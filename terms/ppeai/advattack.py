@@ -16,7 +16,7 @@ def speck_produce(x, y, s=1.0, n=14, seed=3):
 
 # 1. 몰래 섞는 사람이 멀쩡해 보이는 사과에 미세한 점무늬를 입혀요
 P1 = svg(320, sky(320)
-         + person(620, 190, s=0.6, face=FROWN, **CHEATER) + label(620, 265, "⟦몰래 섞는 사람|the one sneaking it in⟧", 11, "var(--muted)")
+         + person(620, 170, s=0.6, face=FROWN, **CHEATER) + label(620, 278, "⟦몰래 섞는 사람|the one sneaking it in⟧", 11, "var(--muted)")
          + conveyor(140, 230, 420)
          + speck_produce(260, 198, 1.3) + speck_produce(400, 198, 1.1)
          + person(130, 160, s=0.75, face=EYES, **OPERATOR)
@@ -24,11 +24,11 @@ P1 = svg(320, sky(320)
          + label(380, 28, "⟦사람 눈엔 멀쩡한 사과인데, 아주 작은 점무늬가 섞여 있어요|to a human eye it's a perfectly fine apple — with a few nearly invisible dots mixed in⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 왜 어려운가: 선별기는 숫자(픽셀)를 보고, 사람은 전체 모양을 봐요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(160, 140, s=0.8, face=EYES, **OPERATOR) + label(160, 240, "⟦픽셀 숫자를 더해서 읽어요|reads by adding up pixel numbers⟧", 11, "var(--muted)")
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
+         + person(160, 120, s=0.8, face=EYES, **OPERATOR) + label(160, 250, "⟦픽셀 숫자를 더해서 읽어요|reads by adding up pixel numbers⟧", 11, "var(--muted)")
          + speck_produce(400, 130, 1.6)
-         + person(620, 140, s=0.8, face=SMILE, **INSPECTOR) + label(620, 240, "⟦모양 전체를 한눈에 봐요|sees the whole shape at a glance⟧", 11, "var(--muted)")
-         + label(380, 280, "⟦숫자 몇 개만 살짝 흔들어도, 선별기의 분류 결과는 완전히 뒤집혀요|nudge just a handful of numbers, and the sorter's classification flips completely⟧", 12, "var(--bad)", cls="d"))
+         + person(620, 120, s=0.8, face=SMILE, **INSPECTOR) + label(620, 250, "⟦모양 전체를 한눈에 봐요|sees the whole shape at a glance⟧", 11, "var(--muted)")
+         + label(380, 300, "⟦숫자 몇 개만 살짝 흔들어도, 선별기의 분류 결과는 완전히 뒤집혀요|nudge just a handful of numbers, and the sorter's classification flips completely⟧", 12, "var(--bad)", cls="d"))
 
 NOISE_I = icon('<rect x="8" y="12" width="48" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><circle cx="20" cy="22" r="1.4" fill="var(--bad)"/><circle cx="30" cy="34" r="1.4" fill="var(--bad)"/><circle cx="42" cy="24" r="1.4" fill="var(--bad)"/><circle cx="24" cy="44" r="1.4" fill="var(--bad)"/>')
 EDGE_I = icon('<path d="M10 44 Q32 10 54 44" stroke="var(--accent)" stroke-width="3" fill="none"/><path d="M10 44 Q32 18 54 44" stroke="var(--bad)" stroke-width="2" stroke-dasharray="3 3" fill="none"/>')

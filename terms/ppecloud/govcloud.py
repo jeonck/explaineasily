@@ -2,11 +2,11 @@ from _draw import *
 from _world import *
 
 # 1. 공공기관도 이 건물에 들어오고 싶어요 — 하지만 아무 데나 들어갈 수 없어요
-P1 = svg(300, sky(300)
+P1 = svg(320, sky(320)
          + building(60, 50, 1.0)
-         + person(320, 198, s=0.8, face=EYES, **TENANT, extra='')
+         + person(320, 175, s=0.8, face=EYES, **TENANT, extra='')
          + bubble(380, 70, 300, 64, "⟦우리도 이 건물에 들어가서 비용을 아끼고 싶은데... 공공데이터인데 괜찮을까요?|we want in too, to save money — but this is public data, is it okay?⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 282, "⟦공공기관도 공유 건물에 들어가서 비용을 아끼고 싶어요|public agencies want in too, to save on cost⟧", 12, "var(--ink)"))
+         + label(380, 300, "⟦공공기관도 공유 건물에 들어가서 비용을 아끼고 싶어요|public agencies want in too, to save on cost⟧", 12, "var(--ink)"))
 
 # 2. 왜 어려운가: 아무 건물에나 입주하면 안 돼요 — 검증되지 않은 건물엔 위험해요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
@@ -34,11 +34,11 @@ P4 = svg(320, sky(320)
                       "⟦④ 입주 후에도 감리로 계속 점검해요|④ keep checking after move-in, via audit⟧"), 1.0))
 
 # 5. 깨지는 곳: 건물 인증은 "건물 안전검사"일 뿐, 입주사 운영 책임은 따로예요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
+P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
          + building(100, 60, 0.75) + '<rect x="120" y="80" width="24" height="24" fill="var(--good)"/>' + label(132, 98, "✓", 14, "#fff", cls="d")
-         + label(190, 268, "⟦건물 인증(CSAP)은 '안전검사'까지만이에요|the building's CSAP cert covers the safety inspection only⟧", 11, "var(--ink)")
-         + person(560, 198, s=0.65, face=EYES, **TENANT)
-         + label(560, 268, "⟦입주사가 문을 어떻게 잠그는지는 입주사 책임이에요|how the tenant locks their own door is still the tenant's job⟧", 11, "var(--ink)"))
+         + label(190, 285, "⟦건물 인증(CSAP)은 '안전검사'까지만이에요|the building's CSAP cert covers the safety inspection only⟧", 11, "var(--ink)")
+         + person(560, 175, s=0.65, face=EYES, **TENANT)
+         + label(560, 285, "⟦입주사가 문을 어떻게 잠그는지는 입주사 책임이에요|how the tenant locks their own door is still the tenant's job⟧", 11, "var(--ink)"))
 
 GRADE_I = icon('<rect x="10" y="10" width="44" height="44" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="3"/><path d="M20 44 v-14 M32 44 v-24 M44 44 v-8" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/>')
 CERT_I = icon('<circle cx="32" cy="26" r="16" fill="var(--good-soft)" stroke="var(--good)" stroke-width="4"/><path d="M24 26 l6 6 l12 -12" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M24 40 l-4 16 l12 -6 l12 6 l-4 -16" fill="var(--good-soft)" stroke="var(--good)" stroke-width="3"/>')

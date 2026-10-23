@@ -5,8 +5,8 @@ from _world import *
 P1 = svg(320, sky(320)
          + person(150, 170, s=0.8, face=SMILE, **FARMER)
          + gradeboard(260, 70, 220, 150, "⟦출하자 명부|GROWER LIST⟧", ("⟦김OO · 010-…|Kim · 010-…⟧", "⟦이OO · 010-…|Lee · 010-…⟧", "⟦주소·농지 위치|address · field site⟧"), 0.9)
-         + person(560, 190, s=0.8, face=EYES, **OPERATOR)
-         + label(560, 280, "⟦이대로 선별기 학습에 써도 되나요?|is it okay to use this as-is to train the sorter?⟧", 12, "var(--ink)")
+         + person(560, 150, s=0.8, face=EYES, **OPERATOR)
+         + label(560, 270, "⟦이대로 선별기 학습에 써도 되나요?|is it okay to use this as-is to train the sorter?⟧", 12, "var(--ink)")
          + label(380, 300, "⟦작물만 보낸 줄 알았는데, 사람 정보까지 같이 왔어요|we thought only the crops came — but people's info came along too⟧", 12, "var(--bad)"))
 
 # 2. 검수반장이 법을 모르면 어긋난다고 경고해요

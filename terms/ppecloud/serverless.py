@@ -2,18 +2,18 @@ from _draw import *
 from _world import *
 
 # 1. 한 시간짜리 회의 때문에 사무실을 통째로 빌려야 해요?
-P1 = svg(300, sky(300)
-         + office(260, 160, 1.0, label_text="⟦1년 내내 비어있는 내 사무실|my office, empty almost all year⟧")
-         + person(480, 198, s=0.8, face=FROWN, **TENANT)
+P1 = svg(320, sky(320)
+         + office(260, 150, 1.0, label_text="⟦1년 내내 비어있는 내 사무실|my office, empty almost all year⟧")
+         + person(480, 175, s=0.8, face=FROWN, **TENANT)
          + bubble(500, 60, 240, 60, "⟦한 시간 회의 하나 때문에 사무실을 통째로 빌려야 해요?|I need a whole office, just for a one-hour meeting?⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 282, "⟦가끔 쓰는 일 때문에 사무실 전체를 유지하긴 아까워요|keeping a whole office for something you use rarely feels wasteful⟧", 12, "var(--ink)"))
+         + label(380, 300, "⟦가끔 쓰는 일 때문에 사무실 전체를 유지하긴 아까워요|keeping a whole office for something you use rarely feels wasteful⟧", 12, "var(--ink)"))
 
 # 2. 왜 어려운가: 안 쓸 때도 월세는 계속 나가요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
          + office(300, 90, 1.0) + label(330, 210, "⟦비어 있음|empty⟧", 12, "var(--bad)")
-         + person(500, 150, s=0.6, face=FROWN, **TENANT)
-         + label(500, 230, "⟦그래도 월세는 매달 나가요|but rent still goes out every month⟧", 12, "var(--ink)")
-         + label(380, 282, "⟦안 쓰는 시간에도 고정비가 계속 나가요|even unused hours still rack up fixed cost⟧", 12, "var(--ink)"))
+         + person(500, 140, s=0.6, face=FROWN, **TENANT)
+         + label(500, 245, "⟦그래도 월세는 매달 나가요|but rent still goes out every month⟧", 12, "var(--ink)")
+         + label(380, 300, "⟦안 쓰는 시간에도 고정비가 계속 나가요|even unused hours still rack up fixed cost⟧", 12, "var(--ink)"))
 
 # 3. hero: 서버리스 = 시간제 회의실. 쓸 때만 문을 열고, 쓴 시간만큼만 내요
 P3 = svg(380, sky(380)
