@@ -44,7 +44,7 @@ P3 = svg(340, sky(340)
          + card(530, 100, 110, 60, "")
          + label(585, 70, "⟦봉인된 합계|the sealed total⟧", 11, "var(--muted)")
          + person(660, 220, s=0.8, **VILLAGER1)
-         + label(660, 300, "⟦금액 주인만 이 도장(열쇠)으로 열어요|only the amount's owner unseals it, with their own key⟧", 11, "var(--good)")
+         + label(660, 325, "⟦금액 주인만 이 도장(열쇠)으로 열어요|only the amount's owner unseals it, with their own key⟧", 11, "var(--good)")
          + label(380, 320, "⟦서기는 한 번도 뜯지 않고 더했어요|the scribe added them without ever breaking a seal⟧", 13, "var(--ink)", cls="d"))
 
 ADD_I = icon('<rect x="8" y="16" width="48" height="32" rx="5" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M32 24 v16 M24 32 h16" stroke="var(--good)" stroke-width="4" stroke-linecap="round"/>')

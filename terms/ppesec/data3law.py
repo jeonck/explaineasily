@@ -77,11 +77,11 @@ PAGE = {
          "alt": ("표: 개인정보 — 이름 그대로 / 동의 필요, 가명정보 — 이름 지움·단서 남음 / 통계·연구엔 동의 없이도, 익명정보 — 되돌릴 수 없음 / 법 적용 밖", "Table: personal data — name intact / needs consent, pseudonymized — name removed but traceable / usable for research without consent, anonymized — untraceable / outside the law"),
          "caption": ("세 등급을 나란히 보면 이래요.", "Side by side, here are the three tiers."),
          "small": ("가명정보는 개인정보와 익명정보 사이의, 2020년 개정이 새로 만든 중간 지대예요.", "Pseudonymized data is a new middle ground the 2020 amendment carved out, between personal and anonymized data.")},
-        {"svg": svg(300, sky(300)
+        {"svg": svg(320, sky(320)
                     + rulebook(190, 150, 1.1) + rulebook(230, 150, 1.1) + rulebook(270, 150, 1.1)
                     + label(230, 240, "⟦법은 셋 그대로, 합쳐진 건 아니에요|still three separate Acts — not literally merged into one⟧", 11, "var(--muted)")
-                    + person(560, 150, s=0.85, **CHIEF) + label(560, 230, "⟦감독 창구만 하나로 모였어요|only the oversight window became one⟧", 11, "var(--ink)")
-                    + label(380, 280, "⟦나라마다 비슷한 조정을 해요 — 국경을 넘을 땐 CBPR 같은 약속이 또 필요해요|other kingdoms do similar coordination — crossing borders still needs its own pact, like CBPR⟧", 12, "var(--ink)", cls="d")),
+                    + person(560, 150, s=0.85, **CHIEF) + label(560, 265, "⟦감독 창구만 하나로 모였어요|only the oversight window became one⟧", 11, "var(--ink)")
+                    + label(380, 300, "⟦나라마다 비슷한 조정을 해요 — 국경을 넘을 땐 CBPR 같은 약속이 또 필요해요|other kingdoms do similar coordination — crossing borders still needs its own pact, like CBPR⟧", 12, "var(--ink)", cls="d")),
          "alt": ("법은 여전히 세 개로 따로 있고 감독 창구만 하나로 모임. 국경을 넘을 땐 CBPR 같은 별도 약속이 필요함", "The law is still three separate Acts; only the oversight window became one. Crossing borders still needs its own pact, like CBPR"),
          "caption": ("법 세 개가 하나로 합쳐진 건 아니에요.", "The three Acts weren't literally merged into one."),
          "small": ('감독만 한 곳으로 모였어요. 국경을 넘는 이전엔 <a href="cbpr-ko.html">CBPR</a> 같은 별도 약속이, 본인이 직접 옮기려면 <a href="mydataSec-ko.html">마이데이터</a>가 따로 있어요.',
