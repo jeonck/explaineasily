@@ -37,7 +37,7 @@ P1 = svg(300, sky(300)
 # 2. 왜 어려운가: 정답률 하나만 보면, 드문 상한 작물을 매번 놓쳐도 숫자는 좋아 보여요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(160, 150, s=0.8, face=EYES, **OPERATOR)
-         + label(160, 240, "⟦다 합격! 다 합격! 다 합격!|all PASS! all PASS! all PASS!⟧", 11, "var(--muted)")
+         + label(160, 260, "⟦다 합격! 다 합격! 다 합격!|all PASS! all PASS! all PASS!⟧", 11, "var(--muted)")
          + produce(400, 150, 1.4, "var(--bad)", bad=True)
          + label(400, 230, "⟦상한 건 매번 놓쳐요|misses the rotten one, every single time⟧", 11, "var(--bad)")
          + person(620, 150, s=0.8, face=FROWN, **INSPECTOR)

@@ -21,11 +21,11 @@ def doorrow(x, y, labels, s=1.0):
 
 
 # 1. 방마다 열쇠를 주는 규칙이 제각각
-P1 = svg(320, sky(320)
+P1 = svg(340, sky(340)
          + doorrow(100, 120, ("⟦①|①⟧", "⟦②|②⟧", "⟦③|③⟧"))
-         + person(130, 230, s=0.6, **OWNER) + label(130, 290, "⟦내가 내 방 열쇠를 아무나 줘요|I hand out my own room's key to whoever I like⟧", 10, "var(--muted)")
-         + person(370, 230, s=0.6, **KING) + label(370, 290, "⟦왕의 등급표대로만 들어가요|only the king's rank-list decides⟧", 10, "var(--muted)")
-         + person(600, 230, s=0.6, **GUARD) + label(600, 290, "⟦모자(역할)마다 열쇠 꾸러미|a key ring for each hat (role)⟧", 10, "var(--muted)")
+         + person(130, 230, s=0.6, **OWNER) + label(130, 310, "⟦내가 내 방 열쇠를 아무나 줘요|I hand out my own room's key to whoever I like⟧", 10, "var(--muted)")
+         + person(370, 230, s=0.6, **KING) + label(370, 310, "⟦왕의 등급표대로만 들어가요|only the king's rank-list decides⟧", 10, "var(--muted)")
+         + person(600, 230, s=0.6, **GUARD) + label(600, 310, "⟦모자(역할)마다 열쇠 꾸러미|a key ring for each hat (role)⟧", 10, "var(--muted)")
          + label(380, 40, "⟦방마다 열쇠 주는 규칙이 제각각이에요|every room decides who gets a key by a different rule⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 규칙을 안 정하면 섞여서 사고가 나요

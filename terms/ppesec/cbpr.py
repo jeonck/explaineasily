@@ -18,17 +18,17 @@ def passstamp(x, y, s=1.0, ok=True):
 
 # 1. 이웃 나라마다 다른 문단속
 P1 = svg(320, sky(320)
-         + person(140, 160, s=0.8, **MERCHANT) + ledgerbook(140, 90) + label(140, 250, "⟦손님 장부를 이웃 성에 팔고 싶어요|wants to carry the guest ledger to a neighboring castle⟧", 11, "var(--muted)")
+         + person(140, 160, s=0.8, **MERCHANT) + ledgerbook(140, 90) + label(140, 275, "⟦손님 장부를 이웃 성에 팔고 싶어요|wants to carry the guest ledger to a neighboring castle⟧", 11, "var(--muted)")
          + small_castle(360, 90, 0.5) + label(440, 230, "⟦이웃 성 A|neighbor castle A⟧", 11, "var(--muted)")
          + small_castle(540, 90, 0.5) + label(620, 230, "⟦이웃 성 B|neighbor castle B⟧", 11, "var(--muted)")
          + label(380, 40, "⟦나라마다 국경 규칙이 다 달라요|every kingdom's border rule is different⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 국경마다 처음부터 다시 검사
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
          + person(170, 140, s=0.75, face=SWEAT + EYES, **MERCHANT) + ledgerbook(170, 70)
-         + person(300, 170, s=0.7, **INSPECTOR) + passstamp(300, 100, 0.8, ok=False) + label(300, 250, "⟦국경 A: 서류 다시 내요|border A: file the papers again⟧", 10, "var(--muted)")
-         + person(540, 170, s=0.7, **INSPECTOR) + passstamp(540, 100, 0.8, ok=False) + label(540, 250, "⟦국경 B: 또 처음부터|border B: starting over again⟧", 10, "var(--muted)")
-         + label(380, 282, "⟦국경마다 처음부터 다시 검사받아야 했어요|every border means starting the inspection from scratch⟧", 12, "var(--ink)", cls="d"))
+         + person(300, 160, s=0.7, **INSPECTOR) + passstamp(300, 90, 0.8, ok=False) + label(300, 270, "⟦국경 A: 서류 다시 내요|border A: file the papers again⟧", 10, "var(--muted)")
+         + person(540, 160, s=0.7, **INSPECTOR) + passstamp(540, 90, 0.8, ok=False) + label(540, 270, "⟦국경 B: 또 처음부터|border B: starting over again⟧", 10, "var(--muted)")
+         + label(380, 302, "⟦국경마다 처음부터 다시 검사받아야 했어요|every border means starting the inspection from scratch⟧", 12, "var(--ink)", cls="d"))
 
 # 3. CBPR = 여러 나라가 미리 인정한 통행증 (hero)
 P3 = svg(340, sky(340)

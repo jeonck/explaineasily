@@ -33,7 +33,7 @@ P3 = svg(340, sky(340)
          + person(170, 140, s=0.85, face=EYES, **INSPECTOR) + clipboard(280, 110, 0.9)
          + warehouse(470, 170, 1.1, stamped=True)
          + '<path d="M250 150 L410 160" stroke="var(--good)" stroke-width="3" stroke-dasharray="5 5"/>'
-         + person(620, 230, s=0.7, face=EYES, **CLERK) + label(620, 300, "⟦이 도장 찍힌 창고만 관청이 빌려요|only a stamped warehouse may be rented by a government office⟧", 11, "var(--good)")
+         + person(620, 230, s=0.7, face=EYES, **CLERK) + label(620, 325, "⟦이 도장 찍힌 창고만 관청이 빌려요|only a stamped warehouse may be rented by a government office⟧", 11, "var(--good)")
          + label(380, 320, "⟦CSAP = 왕의 점검관이 정해진 표로 검사하고 도장을 찍는 제도|CSAP = the king's inspector checks against a fixed list and stamps it⟧", 13, "var(--ink)", cls="d"))
 
 LIST_I = icon('<rect x="12" y="10" width="40" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 22 h24 M20 30 h24 M20 38 h16" stroke="#142033" stroke-width="2.5" stroke-linecap="round"/>')
@@ -74,10 +74,10 @@ PAGE = {
          "alt": ("표: 상등급은 민감한 기밀 장부까지, 중·하등급은 일반 업무 장부, 도장 없음은 관청이 아예 못 빌림", "Table: high tier up to sensitive classified records, mid/low tier for ordinary records, no stamp means government offices can't rent it at all"),
          "caption": ("등급에 따라 맡길 수 있는 장부가 달라요.", "The tier decides what kind of record can go there."),
          "small": ("중요한 장부일수록 더 높은 등급의 창고가 필요해요.", "The more sensitive the record, the higher the tier it needs.")},
-        {"svg": svg(300, sky(300)
+        {"svg": svg(320, sky(320)
                     + warehouse(190, 150, 1.0, stamped=True) + label(190, 230, "⟦관청에 의무, 민간은 참고로 많이 써요|mandatory for government, many private firms follow it too⟧", 11, "var(--muted)")
-                    + person(560, 150, s=0.85, face=EYES, **INSPECTOR) + label(560, 230, "⟦도장이 다가 아니에요, 계속 점검해야 해요|the stamp isn't the finish line — checking continues⟧", 11, "var(--bad)")
-                    + label(380, 280, "⟦우리나라만의 제도라, 해외 창고는 별도 기준을 따로 봐야 해요|a Korea-specific system — a warehouse abroad needs its own separate standard checked⟧", 12, "var(--ink)", cls="d")),
+                    + person(560, 150, s=0.85, face=EYES, **INSPECTOR) + label(560, 270, "⟦도장이 다가 아니에요, 계속 점검해야 해요|the stamp isn't the finish line — checking continues⟧", 11, "var(--bad)")
+                    + label(380, 305, "⟦우리나라만의 제도라, 해외 창고는 별도 기준을 따로 봐야 해요|a Korea-specific system — a warehouse abroad needs its own separate standard checked⟧", 12, "var(--ink)", cls="d")),
          "alt": ("관청엔 의무, 민간은 참고용. 도장 이후에도 지속적인 점검이 필요하고, 다른 나라 창고는 별도 기준이 필요함", "Mandatory for government, a reference for private firms. Checking continues even after the stamp, and warehouses abroad need their own separate standard"),
          "caption": ("도장 하나로 끝나는 게 아니에요.", "The stamp alone doesn't end the story."),
          "small": ('우리나라 제도라 해외엔 안 통하고, 도장 이후에도 <a href="cspm-ko.html">문단속 점검</a>은 계속돼요.',

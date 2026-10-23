@@ -49,8 +49,8 @@ P3 = svg(360, '<rect width="380" height="360" fill="var(--good-soft)"/><rect x="
          + label(190, 300, "⟦기밀성 — 비밀을 지켜요|confidentiality — keeps secrets secret⟧", 12, "var(--ink)")
          + label(570, 34, "⟦Biba — 거짓이 안 섞이게|Biba — no corrupting the clean⟧", 14, "var(--ink)", cls="d")
          + person(520, 110, s=0.55, **HIGH) + person(520, 230, s=0.55, **LOW)
-         + blockarrow(550, 110, 550, 210, ok=False) + label(480, 180, "⟦못 내려읽기|no read down⟧", 11, "var(--bad)")
-         + blockarrow(500, 230, 500, 130, ok=False) + label(610, 180, "⟦못 올려적기|no write up⟧", 11, "var(--bad)")
+         + blockarrow(495, 110, 495, 210, ok=False) + label(420, 180, "⟦못 내려읽기|no read down⟧", 11, "var(--bad)")
+         + blockarrow(545, 230, 545, 130, ok=False) + label(620, 180, "⟦못 올려적기|no write up⟧", 11, "var(--bad)")
          + label(570, 300, "⟦무결성 — 깨끗함을 지켜요|integrity — keeps clean records clean⟧", 12, "var(--ink)")
          + label(380, 338, "⟦같은 사다리, 서로 반대 방향의 규칙이에요|the same ladder, with mirror-image rules⟧", 13, "var(--ink)", cls="d"))
 
