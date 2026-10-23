@@ -46,13 +46,13 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦안(서랍)을 바꿔도 창구(제출함) 모양만 그대로면 아무도 몰라요|change the inside, and if the box's shape stays the same, nobody outside notices⟧", 12, "var(--ink)"))
 
 # 5. 캡슐화해도 설계 전체 실수는 못 막음
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **WRITER) + manuscript(190, 230, 0.6)
-         + label(190, 275, "⟦서랍을 잠그면 안전해요|locking the drawer keeps it safe⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=FROWN, **EDITOR)
-         + '<rect x="540" y="200" width="60" height="50" rx="3" fill="#FFF8E7" stroke="var(--bad)" stroke-width="3"/>'
-         + label(570, 265, "⟦제출함 모양 자체를 잘못 짰다면, 그건 캡슐화가 못 막아요|but if the box's own shape is wrong, encapsulation can't fix that⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦캡슐화는 '안을 숨기는 것'이지, '설계를 잘 짜는 것'까지 보장하진 않아요|encapsulation hides the inside — it doesn't guarantee the design itself is right⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(350, '<rect width="380" height="350" fill="var(--good-soft)"/><rect x="380" width="380" height="350" fill="var(--accent-soft)"/>'
+         + person(170, 140, s=0.8, face=SMILE, **WRITER) + manuscript(170, 220, 0.6)
+         + label(170, 300, "⟦서랍을 잠그면 안전해요|locking the drawer keeps it safe⟧", 11, "var(--ink)")
+         + person(560, 140, s=0.8, face=FROWN, **EDITOR)
+         + '<rect x="630" y="160" width="60" height="50" rx="3" fill="#FFF8E7" stroke="var(--bad)" stroke-width="3"/>'
+         + label(570, 300, "⟦제출함 모양 자체를 잘못 짰다면, 그건 캡슐화가 못 막아요|but if the box's own shape is wrong, encapsulation can't fix that⟧", 11, "var(--ink)")
+         + label(380, 330, "⟦캡슐화는 '안을 숨기는 것'이지, '설계를 잘 짜는 것'까지 보장하진 않아요|encapsulation hides the inside — it doesn't guarantee the design itself is right⟧", 12, "var(--ink)", cls="d"))
 
 LOCK_I = icon('<rect x="18" y="26" width="28" height="24" rx="4" fill="var(--panel)" stroke="var(--line)" stroke-width="3"/><path d="M24 26 v-8 a8 8 0 0 1 16 0 v8" stroke="var(--line)" stroke-width="4" fill="none"/><circle cx="32" cy="38" r="3" fill="var(--accent)"/>')
 BOX_I = icon('<rect x="12" y="20" width="40" height="30" rx="3" fill="var(--accent)"/><rect x="20" y="28" width="24" height="12" rx="2" fill="#FFF8E7"/>')
