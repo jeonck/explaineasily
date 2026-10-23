@@ -41,12 +41,12 @@ P4 = svg(340, sky(340)
                        '⟦책임소재 ✓ — 담당 조작원과 검수반장 서명|accountability ✓ — operator and inspector both signed⟧'), 0.9))
 
 # 5. 한 번 받았다고 끝이 아니에요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **INSPECTOR) + stamp2(260, 110, 0.7, ok=True)
-         + label(190, 240, "⟦오늘은 인증을 받았어요|today it's certified⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=EYES, **FARMER) + bin_(650, 230, 0.7, "⟦새 품종|NEW CROP⟧")
-         + label(570, 270, "⟦새 품종·새 상황이 오면 다시 점검해야 해요|a new crop or a new situation means checking again⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦AI 신뢰성은 한 번의 인증이 아니라, 계속 다시 확인하는 상태예요|AI trustworthiness isn't a one-time stamp — it's an ongoing, re-checked state⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **INSPECTOR) + stamp2(260, 90, 0.7, ok=True)
+         + label(190, 260, "⟦오늘은 인증을 받았어요|today it's certified⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=EYES, **FARMER) + bin_(650, 210, 0.7, "⟦새 품종|NEW CROP⟧")
+         + label(570, 260, "⟦새 품종·새 상황이 오면 다시 점검해야 해요|a new crop or a new situation means checking again⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦AI 신뢰성은 한 번의 인증이 아니라, 계속 다시 확인하는 상태예요|AI trustworthiness isn't a one-time stamp — it's an ongoing, re-checked state⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "aitrust", "order": 16,

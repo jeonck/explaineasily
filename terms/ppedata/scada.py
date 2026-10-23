@@ -41,12 +41,12 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 280, "⟦센서가 모으고, 화면이 보여주고, 기록은 남겨둬요|sensors collect, the screen shows it, and logs keep the history⟧", 12, "var(--ink)"))
 
 # 5. 관제실이 고쳐주진 않아요 + 통신망 보안 주의
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **MANAGER)
-         + label(190, 240, "⟦고장난 걸 알려줄 순 있어요|it can flag what's broken⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **PACKER)
-         + label(570, 240, "⟦고치러 가는 건 결국 사람이에요|but someone still has to go fix it⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦관제실의 통신망은 바깥과 함부로 잇지 않아요|the control network isn't casually connected to the outside⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=EYES, **MANAGER)
+         + label(190, 260, "⟦고장난 걸 알려줄 순 있어요|it can flag what's broken⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=SMILE, **PACKER)
+         + label(570, 260, "⟦고치러 가는 건 결국 사람이에요|but someone still has to go fix it⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦관제실의 통신망은 바깥과 함부로 잇지 않아요|the control network isn't casually connected to the outside⟧", 12, "var(--ink)", cls="d"))
 
 WATCH_I = icon('<circle cx="32" cy="18" r="10" fill="var(--accent)"/><rect x="14" y="30" width="36" height="26" rx="4" fill="none" stroke="var(--line)" stroke-width="3"/><path d="M32 38 l0 10 l8 4" stroke="var(--accent)" stroke-width="3" fill="none"/>')
 GATHER_I = icon('<circle cx="20" cy="46" r="6" fill="var(--accent)"/><circle cx="44" cy="46" r="6" fill="var(--accent)"/><path d="M20 40 L32 20 L44 40" stroke="var(--muted)" stroke-width="3" fill="none"/><circle cx="32" cy="16" r="8" fill="var(--good)"/>')

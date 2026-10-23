@@ -36,10 +36,10 @@ P4 = svg(340, sky(340)
                        "⟦5회차 — 5조 시험 → 91점|round 5 — group 5 tested → 91⟧", "⟦→ 평균 91.2점을 진짜 실력으로 봐요|→ the 91.2 average is taken as the real score⟧"), 0.9))
 
 # 5. 계산이 더 들고, 순서가 있는 데이터엔 조심해야 해요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=SWEAT + EYES, **TEACHER) + label(190, 240, "⟦다섯 번 훈련하느라 시간이 더 들어요|training five times over takes longer⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=EYES, **INSPECTOR) + label(570, 240, "⟦수확 날짜 순서가 있는 데이터는 순서를 지켜 나눠야 해요|data with a harvest-date order must be split in order⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦교차검증은 평가를 더 믿을 만하게 하지만, 공짜는 아니에요|cross validation makes evaluation more trustworthy, but it isn't free⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=SWEAT + EYES, **TEACHER) + label(190, 260, "⟦다섯 번 훈련하느라 시간이 더 들어요|training five times over takes longer⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=EYES, **INSPECTOR) + label(570, 260, "⟦수확 날짜 순서가 있는 데이터는 순서를 지켜 나눠야 해요|data with a harvest-date order must be split in order⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦교차검증은 평가를 더 믿을 만하게 하지만, 공짜는 아니에요|cross validation makes evaluation more trustworthy, but it isn't free⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "crossval", "order": 22,
