@@ -59,12 +59,12 @@ P4 = svg(360, sky(360, ground=False)
          + label(380, 345, "⟦스마트팩토리와 같은 뼈대를, 도시 규모로 키운 거예요|the same skeleton as a smart factory, scaled up to a city⟧", 12, "var(--ink)"))
 
 # 5. 한계: 개인정보와 단일장애점
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
-         + person(190, 150, s=0.85, face=EYES, **VISITOR) + label(190, 80, "⟦내 이동 기록도 모이나요?|does it collect my movements too?⟧", 11, "var(--ink)")
-         + label(190, 240, "⟦개인정보 수집 범위를 늘 따져봐야 해요|how much personal data it collects needs constant scrutiny⟧", 11, "var(--ink)")
+P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--bad-soft)"/>'
+         + person(190, 130, s=0.85, face=EYES, **VISITOR) + label(190, 70, "⟦내 이동 기록도 모이나요?|does it collect my movements too?⟧", 11, "var(--ink)")
+         + label(190, 260, "⟦개인정보 수집 범위를 늘 따져봐야 해요|how much personal data it collects needs constant scrutiny⟧", 11, "var(--ink)")
          + screen(570, 100, 1.3, '<text x="40" y="30" text-anchor="middle" font-size="22" fill="var(--bad)">✕</text>')
          + label(570, 240, "⟦데이터 플랫폼이 멈추면 도시 전체가 흔들려요|if the data platform goes down, the whole city wobbles⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦마이데이터처럼, 누구 정보인지·어떻게 지키는지가 중요해요|like MyData, whose information it is and how it's protected matters⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 305, "⟦마이데이터처럼, 누구 정보인지·어떻게 지키는지가 중요해요|like MyData, whose information it is and how it's protected matters⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "smartcity", "order": 6,

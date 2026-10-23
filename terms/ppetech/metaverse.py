@@ -48,12 +48,12 @@ P4 = svg(360, sky(360, ground=False)
          + label(380, 345, "⟦이 네 가지가 모여야 '같이 있다'는 느낌이 나요|all four together make it feel like 'being there'⟧", 12, "var(--ink)"))
 
 # 5. 한계: 멀미, 비싼 기기, 서로 호환 안 됨
-P5 = svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.85, face=SWEAT + EYES, **VISITOR)
-         + label(190, 240, "⟦오래 쓰면 어지럽고, 기기도 비싸요|wear it too long and it's dizzying, and the gear is pricey⟧", 11, "var(--ink)")
+P5 = svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 125, s=0.85, face=SWEAT + EYES, **VISITOR)
+         + label(190, 260, "⟦오래 쓰면 어지럽고, 기기도 비싸요|wear it too long and it's dizzying, and the gear is pricey⟧", 11, "var(--ink)")
          + avatar(540, 150, 1.3, "var(--accent)") + label(650, 150, "✕", 28, "var(--bad)", cls="d") + avatar(700, 150, 1.0, "#C9822B")
-         + label(620, 240, "⟦서로 다른 메타버스끼리는 아직 호환이 안 돼요|different metaverses still don't talk to each other⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦기기 자체는 다음 부스, VR에서 자세히 봐요|the headset itself gets its own booth next: VR⟧", 12, "var(--ink)", cls="d"))
+         + label(620, 260, "⟦서로 다른 메타버스끼리는 아직 호환이 안 돼요|different metaverses still don't talk to each other⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦기기 자체는 다음 부스, VR에서 자세히 봐요|the headset itself gets its own booth next: VR⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "metaverse", "order": 7,

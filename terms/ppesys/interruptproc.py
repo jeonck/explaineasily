@@ -62,12 +62,12 @@ P4 = svg(320, sky(320)
          + label(560, 210, "⟦같은 벨도 항상 같은 담당자가 맡아요|the same bell always reaches the same handler⟧", 11, "var(--muted)"))
 
 # 5. 네트워크 인터럽트와는 다른 이야기예요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **MECH1)
-         + label(190, 240, "⟦여기선 어떤 벨이든 — 일반적인 처리 순서예요|here: any bell at all — the general handling sequence⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=EYES, **MECH2)
-         + label(570, 240, "⟦네트워크 카드 벨만 따로 다루는 이야기는 다른 세계에 있어요|the network-card bell alone is covered in another world⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦순서는 같아요 — 저장하고, 처리하고, 복귀해요|the sequence is the same — save, handle, resume⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **MECH1)
+         + label(190, 260, "⟦여기선 어떤 벨이든 — 일반적인 처리 순서예요|here: any bell at all — the general handling sequence⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=EYES, **MECH2)
+         + label(570, 260, "⟦네트워크 카드 벨만 따로 다루는 이야기는 다른 세계에 있어요|the network-card bell alone is covered in another world⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦순서는 같아요 — 저장하고, 처리하고, 복귀해요|the sequence is the same — save, handle, resume⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "interruptproc", "order": 14,

@@ -47,12 +47,12 @@ P4 = svg(360, '<rect width="760" height="360" fill="var(--sky)"/>'
          + label(380, 340, "⟦힙과 스택이 서로를 향해 자라다 부딪히면 문제예요|heap and stack grow toward each other — collision is trouble⟧", 12, "var(--ink)"))
 
 # 5. 동적 할당은 편하지만 안 돌려주면 쌓여요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **MECH2)
-         + label(190, 240, "⟦필요할 때 힙에서 더 받아 쓰면 편해요(동적 할당)|grabbing more from the heap on demand is handy⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=FROWN, **MECH1)
-         + label(570, 240, "⟦다 쓰고 안 돌려주면 공간이 계속 쌓여요(메모리 누수)|forgetting to give it back piles up — a memory leak⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦받은 만큼 꼭 돌려줘야 작업 공간이 안전해요|what you take, you must give back — to keep the space safe⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **MECH2)
+         + label(190, 260, "⟦필요할 때 힙에서 더 받아 쓰면 편해요(동적 할당)|grabbing more from the heap on demand is handy⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=FROWN, **MECH1)
+         + label(570, 260, "⟦다 쓰고 안 돌려주면 공간이 계속 쌓여요(메모리 누수)|forgetting to give it back piles up — a memory leak⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦받은 만큼 꼭 돌려줘야 작업 공간이 안전해요|what you take, you must give back — to keep the space safe⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "memlayout", "order": 17,

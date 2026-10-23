@@ -40,10 +40,10 @@ P4 = svg(340, sky(340)
          + label(380, 320, "⟦Round Robin 은 짧게 돌아가며 주는 대신, 차를 바꿀 때마다 시간이 조금씩 들어요|round-robin shares turns fairly, but switching cars costs a little time each time⟧", 12, "var(--ink)"))
 
 # 5. 완벽한 규칙은 없어요 — 공평함과 빠름은 자주 부딪혀요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **CHIEF) + label(190, 240, "⟦짧은 일을 먼저 하면 평균 대기는 짧아져요|job-shortest-first keeps the average wait low⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=FROWN, **CUSTOMER) + car(570, 220, 0.5, "var(--bad)") + label(570, 260, "⟦근데 긴 일은 계속 밀려요(기아)|but the long job keeps getting skipped (starvation)⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦완벽한 순서 규칙은 없어요 — 공평함과 속도는 자주 부딪혀요|no single rule is perfect — fairness and speed often pull against each other⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--bad-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **CHIEF) + label(190, 260, "⟦짧은 일을 먼저 하면 평균 대기는 짧아져요|job-shortest-first keeps the average wait low⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=FROWN, **CUSTOMER) + car(570, 200, 0.5, "var(--bad)") + label(570, 260, "⟦근데 긴 일은 계속 밀려요(기아)|but the long job keeps getting skipped (starvation)⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦완벽한 순서 규칙은 없어요 — 공평함과 속도는 자주 부딪혀요|no single rule is perfect — fairness and speed often pull against each other⟧", 12, "var(--ink)", cls="d"))
 
 FCFS_I = icon('<rect x="8" y="26" width="48" height="12" rx="3" fill="var(--accent)"/><circle cx="14" cy="32" r="4" fill="var(--panel)"/><circle cx="26" cy="32" r="4" fill="var(--panel)"/><circle cx="38" cy="32" r="4" fill="var(--panel)"/>')
 SJF_I = icon('<rect x="10" y="14" width="14" height="36" fill="var(--good)"/><rect x="26" y="26" width="14" height="24" fill="var(--accent)"/><rect x="42" y="36" width="14" height="14" fill="var(--muted)"/>')

@@ -41,11 +41,11 @@ P4 = svg(320, sky(320)
          + label(560, 260, "⟦규칙이 바뀌면 로봇도 다시 가르쳐야 해요|if the rule changes, the robot has to be retaught⟧", 11, "var(--muted)"))
 
 # 5. 한계 - 규칙 밖 상황은 못 다뤄요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, hat=None, shirt="#8A8A8A") + label(190, 240, "⟦똑같은 표는 눈 깜짝할 새 끝내요|the same ticket, finished in a blink⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=FROWN, hat=None, shirt="#8A8A8A") + label(570, 100, "⟦?|?⟧", 28, "var(--bad)", cls="d")
-         + label(570, 250, "⟦양식이 조금만 바뀌어도 멈춰버려요|the moment the form changes even slightly, it stalls⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦빠르고 정확하지만, '융통성'은 없는 직원이에요|fast and exact — but with zero flexibility⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--bad-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, hat=None, shirt="#8A8A8A") + label(190, 260, "⟦똑같은 표는 눈 깜짝할 새 끝내요|the same ticket, finished in a blink⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=FROWN, hat=None, shirt="#8A8A8A") + label(570, 90, "⟦?|?⟧", 28, "var(--bad)", cls="d")
+         + label(570, 260, "⟦양식이 조금만 바뀌어도 멈춰버려요|the moment the form changes even slightly, it stalls⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦빠르고 정확하지만, '융통성'은 없는 직원이에요|fast and exact — but with zero flexibility⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "rpa", "order": 15,
