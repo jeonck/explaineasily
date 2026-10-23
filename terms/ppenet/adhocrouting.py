@@ -38,8 +38,8 @@ P4 = svg(320, sky(320)
 
 # 5. 한계: 집배원이 적거나 멀리 흩어지면 길 찾기 자체가 어려워요
 P5 = svg(300, '<rect width="760" height="300" fill="var(--accent-soft)"/>'
-         + person(260, 150, s=0.7, face=EYES, **CARRIER) + label(260, 230, "⟦고정 우체국 없이도 길을 잇는 게 장점이에요|its strength: connecting a path with no fixed post office⟧", 11, "var(--ink)")
-         + person(540, 190, s=0.7, face=SWEAT + FROWN, **CARRIER) + label(540, 260, "⟦너무 멀거나 사람이 적으면 길이 끊겨요|too far apart or too few people, and the path just breaks⟧", 11, "var(--ink)")
+         + person(260, 125, s=0.7, face=EYES, **CARRIER) + label(260, 250, "⟦고정 우체국 없이도 길을 잇는 게 장점이에요|its strength: connecting a path with no fixed post office⟧", 11, "var(--ink)")
+         + person(540, 150, s=0.7, face=SWEAT + FROWN, **CARRIER) + label(540, 275, "⟦너무 멀거나 사람이 적으면 길이 끊겨요|too far apart or too few people, and the path just breaks⟧", 11, "var(--ink)")
          + label(380, 40, "⟦V2X·재난 현장처럼 고정 통신망이 없는 곳에서 특히 쓰여요|used especially where there's no fixed network — like V2X or disaster zones⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {

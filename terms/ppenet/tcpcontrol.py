@@ -34,8 +34,8 @@ P4 = svg(300, sky(300, ground=False)
 
 # 5. 너무 조심하면 오히려 느려져요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **CARRIER) + label(190, 230, "⟦서류·결제는 이 세 장치 덕에 안전해요|papers and payments stay safe thanks to these three⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=FROWN, **CARRIER) + label(570, 230, "⟦실시간 영상은 이 장치들 때문에 오히려 느려져요|live video gets slower precisely because of these devices⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.8, face=SMILE, **CARRIER) + label(190, 250, "⟦서류·결제는 이 세 장치 덕에 안전해요|papers and payments stay safe thanks to these three⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=FROWN, **CARRIER) + label(570, 250, "⟦실시간 영상은 이 장치들 때문에 오히려 느려져요|live video gets slower precisely because of these devices⟧", 11, "var(--ink)")
          + label(380, 282, "⟦손실 좀 봐도 되는 건 일반봉투(UDP)가 더 맞을 수 있어요|where a little loss is fine, the plain envelope (UDP) can be the better fit⟧", 12, "var(--ink)", cls="d"))
 
 RESEND_I = icon('<path d="M46 20 a18 18 0 1 0 6 14" stroke="var(--accent)" stroke-width="4" fill="none"/><path d="M46 10 v12 h-12" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/>')

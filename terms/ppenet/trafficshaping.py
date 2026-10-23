@@ -38,7 +38,7 @@ P4 = svg(320, sky(320)
 
 # 5. 한계: 접수량 조절이 길(라우팅) 자체를 고쳐주진 않아요
 P5 = svg(300, '<rect width="760" height="300" fill="var(--accent-soft)"/>'
-         + person(240, 150, s=0.8, face=EYES, **CLERK) + label(240, 240, "⟦창구 혼잡은 줄였어요|the counter is less jammed now⟧", 11, "var(--ink)")
+         + person(240, 130, s=0.8, face=EYES, **CLERK) + label(240, 260, "⟦창구 혼잡은 줄였어요|the counter is less jammed now⟧", 11, "var(--ink)")
          + postoffice(520, 150, 0.7) + label(520, 240, "⟦그런데 우체국 자체가 느리면 소용없어요|but a slow post office still slows everything⟧", 11, "var(--ink)")
          + label(380, 282, "⟦접수량만 조절할 뿐, 전송 경로나 속도 자체를 바꾸진 않아요|it only controls intake — it doesn't change the route or raw speed⟧", 12, "var(--ink)", cls="d"))
 

@@ -36,8 +36,8 @@ P4 = svg(320, sky(320)
 
 # 5. 실내에선 오차가 커지고, 여러 방식을 섞어 써요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 160, s=0.8, face=SMILE, **CARRIER) + label(190, 240, "⟦야외에선 위성 신호로 꽤 정확해요|outdoors, satellite signals are quite accurate⟧", 11, "var(--ink)")
-         + person(570, 160, s=0.8, face=FROWN, **CARRIER) + label(570, 240, "⟦실내에선 신호가 반사되어 오차가 커요|indoors, reflections widen the error⟧", 11, "var(--ink)")
+         + person(190, 135, s=0.8, face=SMILE, **CARRIER) + label(190, 260, "⟦야외에선 위성 신호로 꽤 정확해요|outdoors, satellite signals are quite accurate⟧", 11, "var(--ink)")
+         + person(570, 135, s=0.8, face=FROWN, **CARRIER) + label(570, 260, "⟦실내에선 신호가 반사되어 오차가 커요|indoors, reflections widen the error⟧", 11, "var(--ink)")
          + label(380, 282, "⟦그래서 위성·기지국·와이파이를 섞어 써요(하이브리드)|so they're blended together — satellite, cell, Wi-Fi (hybrid)⟧", 12, "var(--ink)", cls="d"))
 
 SAT_I = icon('<circle cx="32" cy="18" r="8" fill="#C9A86A"/><rect x="10" y="14" width="10" height="8" fill="var(--accent)"/><rect x="44" y="14" width="10" height="8" fill="var(--accent)"/><path d="M32 26 v26" stroke="var(--ink)" stroke-width="3" stroke-dasharray="3 3"/>')

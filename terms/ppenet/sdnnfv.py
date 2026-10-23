@@ -37,8 +37,8 @@ P4 = svg(320, sky(320)
 
 # 5. 소프트웨어 장애엔 더 취약해요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **CLERK) + label(190, 230, "⟦기능 하나 추가가 하루 만에 끝나요|adding one feature now takes a single day⟧", 11, "var(--ink)")
-         + person(570, 140, s=0.8, face=SWEAT + EYES, **CLERK) + label(570, 220, "⟦관제탑이 멈추면 모든 우체국이 같이 멈춰요|if the tower goes down, every post office stops with it⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.8, face=SMILE, **CLERK) + label(190, 255, "⟦기능 하나 추가가 하루 만에 끝나요|adding one feature now takes a single day⟧", 11, "var(--ink)")
+         + person(570, 120, s=0.8, face=SWEAT + EYES, **CLERK) + label(570, 250, "⟦관제탑이 멈추면 모든 우체국이 같이 멈춰요|if the tower goes down, every post office stops with it⟧", 11, "var(--ink)")
          + label(380, 282, "⟦빠르고 유연하지만, 중앙이 흔들리면 전체가 흔들려요|fast and flexible — but if the center shakes, everything shakes⟧", 12, "var(--ink)", cls="d"))
 
 TOWER_I = icon('<rect x="26" y="20" width="12" height="36" fill="var(--ink)"/><path d="M12 24 h40 M16 34 h32 M20 44 h24" stroke="var(--accent)" stroke-width="3"/>')

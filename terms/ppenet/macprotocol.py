@@ -35,9 +35,9 @@ P4 = svg(320, sky(320)
 
 # 5. 참여자가 늘면 각자 한계가 생겨요
 P5 = svg(300, '<rect width="760" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 160, s=0.8, face=SWEAT + EYES, **CARRIER) + label(190, 240, "⟦CSMA — 사람이 많아지면 충돌이 잦아져요|CSMA — more carriers means more collisions⟧", 11, "var(--ink)")
-         + person(380, 160, s=0.8, face=EYES, **CARRIER) + label(380, 240, "⟦TDMA — 빈 시간도 그냥 버려져요|TDMA — an empty turn is still wasted⟧", 11, "var(--ink)")
-         + person(570, 160, s=0.8, face=EYES, **CARRIER) + label(570, 240, "⟦CDMA — 코드를 맞추는 일이 복잡해요|CDMA — coordinating the codes gets complex⟧", 11, "var(--ink)"))
+         + person(190, 135, s=0.8, face=SWEAT + EYES, **CARRIER) + label(190, 265, "⟦CSMA — 사람이 많아지면 충돌이 잦아져요|CSMA — more carriers means more collisions⟧", 11, "var(--ink)")
+         + person(380, 135, s=0.8, face=EYES, **CARRIER) + label(380, 265, "⟦TDMA — 빈 시간도 그냥 버려져요|TDMA — an empty turn is still wasted⟧", 11, "var(--ink)")
+         + person(570, 135, s=0.8, face=EYES, **CARRIER) + label(570, 265, "⟦CDMA — 코드를 맞추는 일이 복잡해요|CDMA — coordinating the codes gets complex⟧", 11, "var(--ink)"))
 
 LISTEN_I = icon('<path d="M20 30 a12 12 0 0 1 24 0 v10 a12 12 0 0 1 -24 0z" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M14 36 v4 a18 18 0 0 0 36 0 v-4" stroke="var(--ink)" stroke-width="3" fill="none"/>')
 CLOCK2_I = icon('<circle cx="32" cy="32" r="22" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M32 20 v12 l9 5" stroke="var(--good)" stroke-width="3" fill="none" stroke-linecap="round"/>')

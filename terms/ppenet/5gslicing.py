@@ -36,7 +36,7 @@ P4 = svg(320, sky(320)
 
 # 5. 도로 용량 자체가 늘어난 건 아니에요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **CLERK) + label(190, 230, "⟦각자 보장된 몫으로 안전하게 달려요|each one runs safely within its guaranteed share⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.8, face=SMILE, **CLERK) + label(190, 255, "⟦각자 보장된 몫으로 안전하게 달려요|each one runs safely within its guaranteed share⟧", 11, "var(--ink)")
          + truck(570, 180, 0.7) + '<path d="M548 160 l10 -20" stroke="var(--bad)" stroke-width="3"/>' + label(570, 250, "⟦도로 전체가 꽉 차면 차선도 같이 밀려요|if the whole road fills up, every lane slows together⟧", 11, "var(--ink)")
          + label(380, 282, "⟦나눈 건 차선일 뿐, 트럭과 길의 숫자는 그대로예요|only the lanes are split — the trucks and the road stay the same⟧", 12, "var(--ink)", cls="d"))
 

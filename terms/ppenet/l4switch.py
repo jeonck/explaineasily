@@ -37,7 +37,7 @@ P4 = svg(320, sky(320)
 
 # 5. 한계: 창구 안 쪽지 내용까지는 못 읽어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.75, face=SMILE, **SORTER) + label(190, 240, "⟦창구 번호까지는 빠르게 봐요|reads the counter number fast⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.75, face=SMILE, **SORTER) + label(190, 258, "⟦창구 번호까지는 빠르게 봐요|reads the counter number fast⟧", 11, "var(--ink)")
          + envelope(570, 150, 0.6) + label(570, 240, "⟦봉투 속 내용까지는 못 읽어요(그건 L7)|but not what's inside the envelope (that's L7)⟧", 11, "var(--ink)")
          + label(380, 282, "⟦내용까지 보는 건 더 똑똑한(L7) 장비의 몫이에요|reading the content itself is a smarter (L7) device's job⟧", 12, "var(--ink)", cls="d"))
 

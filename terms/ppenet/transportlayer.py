@@ -37,7 +37,7 @@ P4 = svg(320, sky(320)
 
 # 5. 한계: 전송계층은 길(라우팅)을 직접 정하진 않아요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.75, face=EYES, **CLERK) + label(190, 240, "⟦창구와 방식은 전송계층이 정해요|the transport layer picks the counter and the method⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.75, face=EYES, **CLERK) + label(190, 260, "⟦창구와 방식은 전송계층이 정해요|the transport layer picks the counter and the method⟧", 11, "var(--ink)")
          + postoffice(570, 150, 0.6) + label(570, 240, "⟦동네까지 가는 길은 네트워크계층(라우팅)의 몫이에요|but the route to the town is the network layer's (routing) job⟧", 10, "var(--ink)")
          + label(380, 282, "⟦등기든 일반우편이든, 가는 길 자체는 한 단계 아래에서 정해져요|registered or plain, the actual route is decided one layer below⟧", 12, "var(--ink)", cls="d"))
 

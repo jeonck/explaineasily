@@ -41,8 +41,8 @@ P4 = svg(320, sky(320)
 
 # 5. 지연과 처리량은 맞바꾸는 관계예요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 160, s=0.8, face=SMILE, **SORTER) + label(190, 240, "⟦모아서 울리면 전체 일은 더 잘 처리해요|coalescing lets the clerk handle the overall load better⟧", 11, "var(--ink)")
-         + envelope(570, 160, 0.6) + label(570, 240, "⟦대신 소포 한 통 한 통은 조금 늦게 알려져요|but each single parcel is flagged a little later⟧", 11, "var(--ink)")
+         + person(190, 135, s=0.8, face=SMILE, **SORTER) + label(190, 260, "⟦모아서 울리면 전체 일은 더 잘 처리해요|coalescing lets the clerk handle the overall load better⟧", 11, "var(--ink)")
+         + envelope(570, 135, 0.6) + label(570, 260, "⟦대신 소포 한 통 한 통은 조금 늦게 알려져요|but each single parcel is flagged a little later⟧", 11, "var(--ink)")
          + label(380, 282, "⟦CPU가 프로그램 실행 중 멈추는 인터럽트(시스템SW 세계)와는 또 다른 이야기예요|a different story from the interrupt that pauses a CPU mid-program (the Systems world)⟧", 12, "var(--ink)", cls="d"))
 
 BELL_I = icon('<path d="M32 12 a14 14 0 0 1 14 14 v8 l6 10 h-40 l6 -10 v-8 a14 14 0 0 1 14 -14z" fill="var(--accent)"/><circle cx="32" cy="50" r="4" fill="var(--ink)"/>')

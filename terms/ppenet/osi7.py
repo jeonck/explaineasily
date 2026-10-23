@@ -45,8 +45,8 @@ P4 = svg(340, sky(340)
 
 # 5. 한계: 모든 택배가 7단계를 다 거치는 건 아니에요
 P5 = svg(300, '<rect width="760" height="300" fill="var(--accent-soft)"/>'
-         + person(240, 150, s=0.75, face=EYES, **SORTER) + label(240, 230, "⟦L4 스위치는 4계층까지만 보고 결정해요|an L4 switch only checks up through layer 4⟧", 11, "var(--ink)")
-         + person(540, 150, s=0.75, face=EYES, **CLERK) + label(540, 230, "⟦라우터는 3계층까지만 보고 길을 정해요|a router only checks up through layer 3 to choose the path⟧", 11, "var(--ink)")
+         + person(240, 130, s=0.75, face=EYES, **SORTER) + label(240, 255, "⟦L4 스위치는 4계층까지만 보고 결정해요|an L4 switch only checks up through layer 4⟧", 11, "var(--ink)")
+         + person(540, 130, s=0.75, face=EYES, **CLERK) + label(540, 255, "⟦라우터는 3계층까지만 보고 길을 정해요|a router only checks up through layer 3 to choose the path⟧", 11, "var(--ink)")
          + label(380, 40, "⟦실제 장비는 7단계를 전부 거치지 않고 필요한 데까지만 봐요|real devices don't go through all 7 stages — only as far as they need⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {

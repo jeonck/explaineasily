@@ -39,8 +39,8 @@ P4 = svg(320, sky(320)
 
 # 5. 한계: 단순하고 오래된 규칙이라 느리고, 지키는 사람도 없어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.75, face=EYES, **CLERK) + label(190, 240, "⟦한 번에 하나씩이라 느려요|one at a time, so it's slow⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.75, face=FROWN, **CLERK) + label(570, 240, "⟦누구나 끼어들 수 있어요(보안 없음)|anyone can butt in — no security at all⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.75, face=EYES, **CLERK) + label(190, 255, "⟦한 번에 하나씩이라 느려요|one at a time, so it's slow⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.75, face=FROWN, **CLERK) + label(570, 255, "⟦누구나 끼어들 수 있어요(보안 없음)|anyone can butt in — no security at all⟧", 11, "var(--ink)")
          + label(380, 282, "⟦공장 안 통신용으로 만들어진 오래된 규칙, 요즘은 보안 대책을 따로 둬요|an old factory-floor rule — modern setups add security separately⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
