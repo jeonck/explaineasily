@@ -18,11 +18,11 @@ def idcard(x, y, s=1.0):
 
 
 # 1. 도장집이 딱 하나뿐이던 시절
-P1 = svg(320, sky(320)
+P1 = svg(340, sky(340)
          + sealshop(380, 160, 1.3)
          + label(380, 40, "⟦나라가 정한 도장집이 딱 하나뿐이었어요|there used to be exactly one state-designated seal-shop⟧", 13, "var(--ink)", cls="d")
-         + person(170, 230, s=0.7, face=SMILE, **VILLAGER) + label(170, 290, "⟦빵 하나 사려 해도 여길 들러야 했어요|even to buy a loaf of bread, you had to stop here first⟧", 10, "var(--muted)")
-         + person(600, 230, s=0.7, face=SMILE, **VILLAGER) + label(600, 290, "⟦나라 서류 내려 해도 똑같이요|same, even to file a government paper⟧", 10, "var(--muted)"))
+         + person(170, 230, s=0.7, face=SMILE, **VILLAGER) + label(170, 320, "⟦빵 하나 사려 해도 여길 들러야 했어요|even to buy a loaf of bread, you had to stop here first⟧", 10, "var(--muted)")
+         + person(600, 230, s=0.7, face=SMILE, **VILLAGER) + label(600, 320, "⟦나라 서류 내려 해도 똑같이요|same, even to file a government paper⟧", 10, "var(--muted)"))
 
 # 2. 복잡하고 불편해도 다른 길이 없었어요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
@@ -77,10 +77,10 @@ PAGE = {
          "alt": ("왼쪽: 2020년 이전엔 공인인증서만 법적 효력. 오른쪽: 2020년 이후엔 여러 민간 인증서가 동등한 효력", "Left: before 2020, only the accredited certificate had legal effect. Right: after 2020, many private certificates carry equal effect"),
          "caption": ("전과 후를 나란히 보면 이래요.", "Side by side, here's before and after."),
          "small": ("신분증(인증서) 자체의 구조는 그대로예요. 달라진 건 누가 발급할 수 있느냐예요.", "The ID card (the certificate) itself is structurally unchanged — what changed is who's allowed to issue one.")},
-        {"svg": svg(300, sky(300)
-                    + person(190, 150, s=0.85, **CLERK_A) + label(190, 230, "⟦도장 찍는 방식(PKI)은 여전히 똑같아요|the stamping mechanism (PKI) is still exactly the same⟧", 11, "var(--muted)")
-                    + person(560, 150, s=0.85, **CLERK_B) + label(560, 230, "⟦어느 도장집을 믿을지는 여전히 중요해요|which shop to trust still matters just as much⟧", 11, "var(--ink)")
-                    + label(380, 280, "⟦바뀐 건 법이지, 왕의 도장이 찍히는 원리는 그대로예요|the law changed — the principle behind the king's seal did not⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(320, sky(320)
+                    + person(190, 150, s=0.85, **CLERK_A) + label(190, 270, "⟦도장 찍는 방식(PKI)은 여전히 똑같아요|the stamping mechanism (PKI) is still exactly the same⟧", 11, "var(--muted)")
+                    + person(560, 150, s=0.85, **CLERK_B) + label(560, 270, "⟦어느 도장집을 믿을지는 여전히 중요해요|which shop to trust still matters just as much⟧", 11, "var(--ink)")
+                    + label(380, 305, "⟦바뀐 건 법이지, 왕의 도장이 찍히는 원리는 그대로예요|the law changed — the principle behind the king's seal did not⟧", 12, "var(--ink)", cls="d")),
          "alt": ("도장 찍는 방식(PKI)은 그대로이며, 어느 도장집을 믿을지는 여전히 중요함. 바뀐 건 법일 뿐 원리는 그대로", "The stamping mechanism (PKI) stayed the same, and which shop to trust still matters. Only the law changed, not the underlying principle"),
          "caption": ("바뀐 건 법이지, 암호 원리가 아니에요.", "What changed was the law — not the underlying cryptography."),
          "small": ('도장을 실제로 찍고 확인하는 방식은 그대로 <a href="pki-ko.html">PKI</a>예요. → <a href="pki-ko.html">왕의 도장이 찍힌 신분증</a>',
