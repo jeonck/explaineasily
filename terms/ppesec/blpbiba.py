@@ -93,10 +93,10 @@ PAGE = {
          "alt": ("표: BLP — 못 올려보기+못 내려적기 / 기밀성, Biba — 못 내려읽기+못 올려적기 / 무결성, 둘 다 — 같은 사다리 위의 규칙 / MAC", "Table: BLP — no read up + no write down / confidentiality, Biba — no read down + no write up / integrity, Both — rules on the same ladder / MAC"),
          "caption": ("네 가지 규칙을 나란히 보면 이래요.", "Side by side, here are the four rules."),
          "small": ("BLP는 비밀이 아래로 새는 걸, Biba는 거짓이 위로 섞이는 걸 막아요.", "BLP blocks a secret leaking downward; Biba blocks something untrustworthy creeping upward.")},
-        {"svg": svg(300, sky(300)
-                    + person(190, 150, s=0.85, **HIGH) + label(190, 240, "⟦규칙이 엄격해서 쓰기 불편해요|strict rules make day-to-day work awkward⟧", 11, "var(--ink)")
-                    + person(560, 150, s=0.85, **MID) + label(560, 240, "⟦보통은 역할(RBAC)과 같이 섞어 써요|usually blended with role-based access (RBAC) in practice⟧", 11, "var(--ink)")
-                    + label(380, 280, "⟦원래 군사·기밀 시스템에서 나온, MAC의 구체적인 규칙이에요|born in military and classified systems — the concrete rules behind MAC⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(330, sky(330)
+                    + person(190, 125, s=0.85, **HIGH) + label(190, 260, "⟦규칙이 엄격해서 쓰기 불편해요|strict rules make day-to-day work awkward⟧", 11, "var(--ink)")
+                    + person(560, 125, s=0.85, **MID) + label(560, 260, "⟦보통은 역할(RBAC)과 같이 섞어 써요|usually blended with role-based access (RBAC) in practice⟧", 11, "var(--ink)")
+                    + label(380, 305, "⟦원래 군사·기밀 시스템에서 나온, MAC의 구체적인 규칙이에요|born in military and classified systems — the concrete rules behind MAC⟧", 12, "var(--ink)", cls="d")),
          "alt": ("규칙이 엄격해 쓰기 불편하고, 실제로는 RBAC와 섞어 씀. 군사·기밀 시스템에서 나온 MAC의 구체적 규칙", "The strict rules make daily use awkward, so in practice they're blended with RBAC. Born in military/classified systems as the concrete rules behind MAC"),
          "caption": ("엄격한 만큼, 실제론 다른 모델과 섞어 써요.", "Strict as they are, they're usually blended with other models in practice."),
          "small": ('<a href="accesscontrolppe-ko.html">MAC</a>의 구체적인 규칙이 바로 이거예요. 회사 시스템은 보통 <a href="rbac-ko.html">RBAC</a>를 더 많이 써요.',
