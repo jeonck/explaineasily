@@ -45,9 +45,9 @@ P4 = svg(320, sky(320)
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + person(190, 150, s=0.8, face=SMILE, **PROOFER) + ruler(140, 220, 0.7)
          + label(190, 270, "⟦p값으로 '차이 있다'는 확인했어요|the p-value confirms there IS a difference⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=FROWN, **EDITOR)
-         + label(570, 230, "⟦근데 겨우 책 한 권 더 팔린 거예요|but it's only one extra book sold⟧", 11, "var(--ink)")
-         + label(570, 260, "⟦그만큼 들인 돈에 비하면 남는 게 없죠|not worth the money spent to find out⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=FROWN, **EDITOR)
+         + label(570, 240, "⟦근데 겨우 책 한 권 더 팔린 거예요|but it's only one extra book sold⟧", 11, "var(--ink)")
+         + label(570, 265, "⟦그만큼 들인 돈에 비하면 남는 게 없죠|not worth the money spent to find out⟧", 11, "var(--ink)")
          + label(380, 282, "⟦통계적으로 '차이 있다' ≠ 실제로 중요한 차이예요|statistically significant ≠ a difference that actually matters⟧", 12, "var(--ink)", cls="d"))
 
 NULL_I = icon('<rect x="14" y="26" width="36" height="12" rx="4" fill="var(--muted)"/>')
