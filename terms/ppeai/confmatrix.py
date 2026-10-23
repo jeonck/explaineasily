@@ -40,8 +40,8 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + label(160, 260, "⟦다 합격! 다 합격! 다 합격!|all PASS! all PASS! all PASS!⟧", 11, "var(--muted)")
          + produce(400, 150, 1.4, "var(--bad)", bad=True)
          + label(400, 230, "⟦상한 건 매번 놓쳐요|misses the rotten one, every single time⟧", 11, "var(--bad)")
-         + person(620, 150, s=0.8, face=FROWN, **INSPECTOR)
-         + label(620, 240, "⟦그래도 정답률은 99%예요|and accuracy still reads 99%⟧", 11, "var(--muted)")
+         + person(620, 130, s=0.8, face=FROWN, **INSPECTOR)
+         + label(620, 255, "⟦그래도 정답률은 99%예요|and accuracy still reads 99%⟧", 11, "var(--muted)")
          + label(380, 280, "⟦정답률 하나만 보면, 드문 상한 작물을 매번 놓쳐도 숫자는 좋아 보여요|accuracy alone makes a model that always misses the rare case look great⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 혼동행렬 = 실제 상태 × 판정을 네 칸으로 나눈 기록부 (hero)

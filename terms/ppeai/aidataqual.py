@@ -67,10 +67,10 @@ PAGE = {
          "alt": ("정확성·완전성·일관성·대표성 네 기준이 적힌 품질표", "A quality board listing accuracy, completeness, consistency, and representativeness"),
          "caption": ("데이터 품질은 이 네 가지로 가늠해요.", "Data quality is judged by these four standards."),
          "small": ("하나라도 무너지면, 선별기의 '정답률'은 숫자일 뿐 믿을 수 없어요.", "If even one fails, the sorter's accuracy number stops being trustworthy.")},
-        {"svg": svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-                 + person(190, 150, s=0.8, face=SMILE, **INSPECTOR) + label(190, 250, "⟦씨앗은 깨끗해졌어요|the seed is clean now⟧", 11, "var(--ink)")
-                 + person(570, 150, s=0.75, face=EYES, **OPERATOR) + label(570, 250, "⟦그래도 제가 잘 배우는 건 별개예요|but whether I actually learn well is a separate question⟧", 11, "var(--ink)")
-                 + label(380, 282, "⟦좋은 재료는 필요조건이지, 좋은 선별기를 보장하진 않아요 — 성적은 혼동행렬로 따로 재야 해요|good material is necessary, not sufficient — the sorter's actual score still needs its own measuring⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
+                 + person(190, 130, s=0.8, face=SMILE, **INSPECTOR) + label(190, 260, "⟦씨앗은 깨끗해졌어요|the seed is clean now⟧", 11, "var(--ink)")
+                 + person(570, 130, s=0.75, face=EYES, **OPERATOR) + label(570, 260, "⟦그래도 제가 잘 배우는 건 별개예요|but whether I actually learn well is a separate question⟧", 11, "var(--ink)")
+                 + label(380, 300, "⟦좋은 재료는 필요조건이지, 좋은 선별기를 보장하진 않아요 — 성적은 혼동행렬로 따로 재야 해요|good material is necessary, not sufficient — the sorter's actual score still needs its own measuring⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 검수반장이 씨앗이 깨끗해졌다고 말함. 오른쪽: 조작원은 그래도 자기가 잘 배우는 건 별개라고 말함", "Left: the inspector says the seed is clean now. Right: the operator notes learning well is still a separate question"),
          "caption": ("데이터 품질관리가 모든 걸 해결하진 않아요.", "Data quality management doesn't solve everything."),
          "small": ("좋은 재료는 필요조건일 뿐, 선별기 성적은 따로 재야 해요.", "Good material is necessary — but the sorter's score still needs its own measuring.")},

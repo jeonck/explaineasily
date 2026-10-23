@@ -39,12 +39,12 @@ P4 = svg(340, sky(340)
                        "⟦틀린 부분을 점점 줄여가요|gradually shrinks the error⟧"), 0.92))
 
 # 5. 느려지고, 왜 그렇게 결정했는지 설명하기 어려워져요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
+P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
          + person(140, 150, s=0.7, face=EYES, **OPERATOR) + person(230, 150, s=0.7, face=EYES, **TEACHER) + person(320, 150, s=0.7, face=EYES, **INSPECTOR)
          + label(230, 250, "⟦세 명이 다 봐야 하니 느려져요|three checks mean it's slower⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=EYES, **FARMER)
-         + label(570, 250, "⟦왜 합격인지 한마디로 설명하기 어려워요|hard to explain the pass in one simple reason⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦앙상블은 더 안정적이지만, 더 느리고 설명은 더 어려워져요|an ensemble is steadier, but slower and harder to explain⟧", 12, "var(--ink)", cls="d"))
+         + person(570, 130, s=0.8, face=EYES, **FARMER)
+         + label(570, 262, "⟦왜 합격인지 한마디로 설명하기 어려워요|hard to explain the pass in one simple reason⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦앙상블은 더 안정적이지만, 더 느리고 설명은 더 어려워져요|an ensemble is steadier, but slower and harder to explain⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "ensemble", "order": 23,

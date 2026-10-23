@@ -68,10 +68,10 @@ PAGE = {
          "alt": ("전산화·자동화(DX)·AX 세 단계를 적은 표", "A board laying out digitization, automation (DX), and AX as three stages"),
          "caption": ("DX는 '기존 일을 더 빠르게', AX는 '일 자체를 다시'예요.", "DX asks 'how do we do the same work faster'; AX asks 'what should the work even be'."),
          "small": ("질문이 다르기 때문에, 조직과 역할까지 함께 바뀌어요.", "Because the question itself is different, the organization and its roles change along with it.")},
-        {"svg": svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-                 + person(190, 150, s=0.8, face=FROWN, **OPERATOR) + label(190, 250, "⟦기술만 있으면 될 줄 알았어요|thought the technology alone would be enough⟧", 11, "var(--bad)")
-                 + person(570, 150, s=0.8, face=SMILE, **TEACHER) + label(570, 250, "⟦사람들이 새 역할에 익숙해지는 게 먼저예요|getting people used to their new roles comes first⟧", 11, "var(--ink)")
-                 + label(380, 282, "⟦AX는 기술보다 변화관리가 더 어렵고, 되돌릴 땐 원칙판과 운영 지도가 먼저 있어야 해요|AX is harder as change management than as technology, and needs a charter and an operations map already in place⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
+                 + person(190, 130, s=0.8, face=FROWN, **OPERATOR) + label(190, 260, "⟦기술만 있으면 될 줄 알았어요|thought the technology alone would be enough⟧", 11, "var(--bad)")
+                 + person(570, 130, s=0.8, face=SMILE, **TEACHER) + label(570, 260, "⟦사람들이 새 역할에 익숙해지는 게 먼저예요|getting people used to their new roles comes first⟧", 11, "var(--ink)")
+                 + label(380, 300, "⟦AX는 기술보다 변화관리가 더 어렵고, 되돌릴 땐 원칙판과 운영 지도가 먼저 있어야 해요|AX is harder as change management than as technology, and needs a charter and an operations map already in place⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 조작원이 기술만 있으면 될 줄 알았다고 후회함. 오른쪽: 교사가 사람들이 새 역할에 익숙해지는 게 먼저라고 말함", "Left: the operator regrets thinking technology alone would be enough. Right: the teacher says getting people used to new roles comes first"),
          "caption": ("AX는 기술보다 변화관리가 더 어려워요.", "AX is harder as change management than as technology."),
          "small": ("등급 원칙판과 운영 지도 없이 구조부터 바꾸면, 오히려 혼란만 커져요.", "Restructuring before the charter and the operations map are in place only breeds confusion.")},

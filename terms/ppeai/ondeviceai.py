@@ -37,12 +37,12 @@ P4 = svg(340, sky(340)
                        "⟦사진 이동 — 창고 밖으로 안 나감|photo travel — stays in the shed⟧", "⟦성능 — 줄인 만큼 살짝 둔함|power — a bit duller after shrinking⟧"), 0.9))
 
 # 5. 작게 줄인 만큼 한계도 있어요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
+P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
          + person(190, 150, s=0.8, face=SMILE, **FARMER) + bin_(260, 230, 0.6, "⟦합격|PASS⟧")
          + label(190, 270, "⟦흔한 작물은 빠르고 정확해요|common crops get fast, accurate calls⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=EYES, **FARMER)
-         + label(570, 250, "⟦처음 보는 희귀 품종엔 자신감이 떨어져요|a rare, unfamiliar crop shakes its confidence⟧", 11, "var(--bad)")
-         + label(380, 282, "⟦기기 저장공간·배터리에 맞춰 줄인 만큼, 큰 선별기보다 아는 게 적어요|shrunk to fit the device's storage and battery, it simply knows less than the big one⟧", 12, "var(--ink)", cls="d"))
+         + person(570, 130, s=0.8, face=EYES, **FARMER)
+         + label(570, 262, "⟦처음 보는 희귀 품종엔 자신감이 떨어져요|a rare, unfamiliar crop shakes its confidence⟧", 11, "var(--bad)")
+         + label(380, 300, "⟦기기 저장공간·배터리에 맞춰 줄인 만큼, 큰 선별기보다 아는 게 적어요|shrunk to fit the device's storage and battery, it simply knows less than the big one⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "ondeviceai", "order": 18,

@@ -18,12 +18,12 @@ P1 = svg(300, sky(300)
          + label(380, 285, "⟦사고가 터진 뒤에야 허둥지둥 대응해요|only after an accident hits does anyone scramble to react⟧", 13, "var(--bad)", cls="d"))
 
 # 2. 왜 어려운가: 위험은 씨앗·선별기·운영·바깥 농장까지 곳곳에 흩어져 있어요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(120, 150, s=0.7, face=EYES, **FARMER) + label(120, 240, "⟦씨앗 쪽 위험|risk in the seed⟧", 10, "var(--muted)")
-         + person(300, 150, s=0.7, face=EYES, **OPERATOR) + label(300, 240, "⟦선별기 쪽 위험|risk in the sorter⟧", 10, "var(--muted)")
-         + person(480, 150, s=0.7, face=EYES, **TEACHER) + label(480, 240, "⟦운영 쪽 위험|risk in operations⟧", 10, "var(--muted)")
-         + person(650, 150, s=0.7, face=EYES, **CHEATER) + label(650, 240, "⟦바깥 농장 쪽 위험|risk from outside farms⟧", 10, "var(--muted)")
-         + label(380, 280, "⟦위험이 곳곳에 흩어져 있으면, 같은 위험도 매번 다르게 다뤄져요|with risk scattered everywhere, the same risk gets handled differently each time⟧", 12, "var(--ink)", cls="d"))
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
+         + person(120, 130, s=0.7, face=EYES, **FARMER) + label(120, 250, "⟦씨앗 쪽 위험|risk in the seed⟧", 10, "var(--muted)")
+         + person(300, 130, s=0.7, face=EYES, **OPERATOR) + label(300, 250, "⟦선별기 쪽 위험|risk in the sorter⟧", 10, "var(--muted)")
+         + person(480, 130, s=0.7, face=EYES, **TEACHER) + label(480, 250, "⟦운영 쪽 위험|risk in operations⟧", 10, "var(--muted)")
+         + person(650, 130, s=0.7, face=EYES, **CHEATER) + label(650, 250, "⟦바깥 농장 쪽 위험|risk from outside farms⟧", 10, "var(--muted)")
+         + label(380, 295, "⟦위험이 곳곳에 흩어져 있으면, 같은 위험도 매번 다르게 다뤄져요|with risk scattered everywhere, the same risk gets handled differently each time⟧", 12, "var(--ink)", cls="d"))
 
 # 3. AI 리스크 관리 프레임워크 = 검사장 전체를 도는 4단계 운영 지도 (hero)
 P3 = svg(400, sky(400)
@@ -73,10 +73,10 @@ PAGE = {
          "alt": ("거버넌스·위험 지도화·측정·관리 각 단계가 실제로 하는 일을 적은 표", "A board spelling out what govern, map, measure, and manage each actually do"),
          "caption": ("네 단계는 각각 구체적인 할 일을 가지고 있어요.", "Each of the four stages has its own concrete job."),
          "small": ("원칙만 있고 실행이 없으면, 지도는 벽에 걸린 그림일 뿐이에요.", "Principles without execution are just a map hanging on the wall.")},
-        {"svg": svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-                 + person(190, 150, s=0.8, face=SMILE, **INSPECTOR) + label(190, 250, "⟦위험을 0으로 만들진 못해요|doesn't bring risk to zero⟧", 11, "var(--ink)")
-                 + person(570, 150, s=0.8, face=EYES, **TEACHER) + label(570, 250, "⟦대신 다룰 수 있는 크기로 줄여요|but shrinks it to a manageable size instead⟧", 11, "var(--ink)")
-                 + label(380, 282, "⟦리스크 관리는 위험을 없애는 게 아니라, 체계적으로 다루는 일이에요|risk management isn't about erasing risk — it's about handling it systematically⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
+                 + person(190, 130, s=0.8, face=SMILE, **INSPECTOR) + label(190, 260, "⟦위험을 0으로 만들진 못해요|doesn't bring risk to zero⟧", 11, "var(--ink)")
+                 + person(570, 130, s=0.8, face=EYES, **TEACHER) + label(570, 260, "⟦대신 다룰 수 있는 크기로 줄여요|but shrinks it to a manageable size instead⟧", 11, "var(--ink)")
+                 + label(380, 300, "⟦리스크 관리는 위험을 없애는 게 아니라, 체계적으로 다루는 일이에요|risk management isn't about erasing risk — it's about handling it systematically⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 검수반장이 위험을 0으로 만들 순 없다고 말함. 오른쪽: 교사가 대신 다룰 수 있는 크기로 줄인다고 말함", "Left: the inspector says risk can't be zeroed out. Right: the teacher says it's shrunk to a manageable size instead"),
          "caption": ("프레임워크가 위험을 완전히 없애주진 않아요.", "The framework doesn't make risk disappear entirely."),
          "small": ("원칙(윤리기준)과 법적 최저선(AI기본법)은 이 지도 위에서 함께 움직여요.", "Ethics principles and the legal baseline both move along this same map.")},

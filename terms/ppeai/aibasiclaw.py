@@ -2,19 +2,19 @@ from _draw import *
 from _world import *
 
 # 1. 검사장마다 제멋대로 기준을 정하던 시절
-P1 = svg(300, sky(300)
-         + person(140, 150, s=0.7, face=EYES, **OPERATOR) + label(140, 240, "⟦우리 검사장 맘대로예요|our station does it our own way⟧", 10, "var(--muted)")
-         + person(380, 150, s=0.7, face=SMILE, **OPERATOR) + label(380, 240, "⟦우리도 우리 맘대로요|so do we, our own way⟧", 10, "var(--muted)")
-         + person(620, 150, s=0.7, face=FROWN, **OPERATOR) + label(620, 240, "⟦우리도 역시나 맘대로요|us too, our own way⟧", 10, "var(--muted)")
+P1 = svg(320, sky(320)
+         + person(140, 130, s=0.7, face=EYES, **OPERATOR) + label(140, 250, "⟦우리 검사장 맘대로예요|our station does it our own way⟧", 10, "var(--muted)")
+         + person(380, 130, s=0.7, face=SMILE, **OPERATOR) + label(380, 250, "⟦우리도 우리 맘대로요|so do we, our own way⟧", 10, "var(--muted)")
+         + person(620, 130, s=0.7, face=FROWN, **OPERATOR) + label(620, 250, "⟦우리도 역시나 맘대로요|us too, our own way⟧", 10, "var(--muted)")
          + label(380, 25, "⟦검사장마다 제멋대로 기준을 정하던 시절이 있었어요|there was a time when every station just made up its own rules⟧", 13, "var(--ink)", cls="d")
-         + label(380, 285, "⟦손님은 어느 검사장이 안전한지 알 길이 없었어요|customers had no way to know which station was actually safe⟧", 12, "var(--bad)", cls="d"))
+         + label(380, 300, "⟦손님은 어느 검사장이 안전한지 알 길이 없었어요|customers had no way to know which station was actually safe⟧", 12, "var(--bad)", cls="d"))
 
 # 2. 왜 어려운가: 법이 없던 틈에는, 사고가 나도 책임을 묻기 어려웠어요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
          + person(200, 150, s=0.8, face=EYES, **FARMER) + bubble(100, 70, 230, 50, "⟦제가 손해 봤는데, 누구 책임이죠?|I took the loss — whose fault is it, exactly?⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + person(600, 150, s=0.8, face=SWEAT + EYES, **OPERATOR)
-         + label(600, 250, "⟦법이 없으니, 저도 할 말이 없어요|with no law to point to, I've got no answer either⟧", 11, "var(--muted)")
-         + label(380, 285, "⟦법이 없던 틈에는, 사고가 나도 누구 책임인지 묻기 어려웠어요|without a law to lean on, pinning down responsibility after an accident was hard⟧", 12, "var(--ink)", cls="d"))
+         + person(600, 130, s=0.8, face=SWEAT + EYES, **OPERATOR)
+         + label(600, 262, "⟦법이 없으니, 저도 할 말이 없어요|with no law to point to, I've got no answer either⟧", 11, "var(--muted)")
+         + label(380, 300, "⟦법이 없던 틈에는, 사고가 나도 누구 책임인지 묻기 어려웠어요|without a law to lean on, pinning down responsibility after an accident was hard⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 인공지능기본법 = 모든 검사장이 지켜야 할 법적 최저선, 고영향 AI는 의무가 더 무거워요 (hero)
 P3 = svg(360, sky(360)
@@ -62,10 +62,10 @@ PAGE = {
          "alt": ("일반 AI와 고영향 AI의 의무 차이를 적은 표", "A board laying out the difference in duties between ordinary AI and high-impact AI"),
          "caption": ("모든 AI가 같은 무게의 의무를 지는 건 아니에요.", "Not every AI carries the same weight of duty."),
          "small": ("영향이 클수록, 법이 요구하는 안전장치도 늘어나요.", "The bigger the stakes, the more safeguards the law demands.")},
-        {"svg": svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-                 + person(190, 150, s=0.8, face=SMILE, **INSPECTOR) + label(190, 250, "⟦법은 최저선을 그어줘요|the law draws the floor⟧", 11, "var(--ink)")
-                 + person(570, 150, s=0.8, face=EYES, **TEACHER) + label(570, 250, "⟦그 위를 채우는 건 각 검사장 몫이에요|filling in above that is each station's own job⟧", 11, "var(--ink)")
-                 + label(380, 282, "⟦법은 최저선일 뿐이에요 — 실제 안전은 윤리기준·리스크 관리가 채워야 해요|the law is only the floor — real safety still comes from ethics standards and risk management⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
+                 + person(190, 130, s=0.8, face=SMILE, **INSPECTOR) + label(190, 260, "⟦법은 최저선을 그어줘요|the law draws the floor⟧", 11, "var(--ink)")
+                 + person(570, 130, s=0.8, face=EYES, **TEACHER) + label(570, 260, "⟦그 위를 채우는 건 각 검사장 몫이에요|filling in above that is each station's own job⟧", 11, "var(--ink)")
+                 + label(380, 300, "⟦법은 최저선일 뿐이에요 — 실제 안전은 윤리기준·리스크 관리가 채워야 해요|the law is only the floor — real safety still comes from ethics standards and risk management⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 검수반장이 법은 최저선을 긋는다고 말함. 오른쪽: 교사가 그 위는 각 검사장 몫이라고 말함", "Left: the inspector says the law draws the floor. Right: the teacher says filling in above it is each station's own job"),
          "caption": ("법을 지킨다고 저절로 안전해지진 않아요.", "Obeying the law doesn't automatically make things safe."),
          "small": ("법 위의 등급 원칙과 운영 지도는 각 검사장이 스스로 채워야 해요.", "The grading principles and operations map above the legal floor are still each station's own responsibility.")},

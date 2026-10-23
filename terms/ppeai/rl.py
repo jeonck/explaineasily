@@ -39,12 +39,12 @@ P4 = svg(340, sky(340)
                        "⟦시행착오가 많아 시간이 걸려요|lots of trial and error, so it takes time⟧"), 0.9))
 
 # 5. 보상을 잘못 설계하면 엉뚱한 요령만 늘어요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
+P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
          + person(190, 150, s=0.8, face=SMILE, **OPERATOR) + produce(260, 220, 0.7)
          + label(190, 260, "⟦빨리 던지기만 하면 점수를 준댔더니, 제대로 안 보고 던지기만 해요|told fast tosses score points, it just tosses without really checking⟧", 11, "var(--bad)")
-         + person(570, 150, s=0.8, face=EYES, **OPERATOR)
-         + label(570, 250, "⟦보상을 '정확도'로 다시 설계하니 제대로 배워요|redesigning the reward around accuracy, it finally learns properly⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦강화학습은 '어떤 보상을 주는가'에 결과가 크게 좌우돼요|reinforcement learning's outcome hinges heavily on what reward you actually give⟧", 12, "var(--ink)", cls="d"))
+         + person(570, 130, s=0.8, face=EYES, **OPERATOR)
+         + label(570, 262, "⟦보상을 '정확도'로 다시 설계하니 제대로 배워요|redesigning the reward around accuracy, it finally learns properly⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦강화학습은 '어떤 보상을 주는가'에 결과가 크게 좌우돼요|reinforcement learning's outcome hinges heavily on what reward you actually give⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "rl", "order": 21,
