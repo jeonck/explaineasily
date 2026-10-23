@@ -64,12 +64,12 @@ P4 = svg(320, sky(320)
                        "⟦개선 폭이 크지만 위험도 커요|big gains, but bigger risk too⟧"), 1.0, hl=1))
 
 # 5. 다시 설계해도 사람·시스템이 안 따라오면 소용없어요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
+P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
          + flow_chain(80, 150, 2, broken=False, s=0.9)
          + label(190, 220, "⟦공정도는 깔끔하게 다시 그렸어요|the process diagram is redrawn, clean⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=FROWN, **MECH2)
-         + label(570, 240, "⟦정비사가 새 방식에 익숙하지 않으면 소용없어요|but it's no use if mechanics aren't used to the new way⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦공정 재설계는 사람·교육·시스템이 같이 바뀌어야 해요|redesigning the process needs people, training, and systems to change together⟧", 12, "var(--ink)", cls="d"))
+         + person(570, 130, s=0.8, face=FROWN, **MECH2)
+         + label(570, 255, "⟦정비사가 새 방식에 익숙하지 않으면 소용없어요|but it's no use if mechanics aren't used to the new way⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦공정 재설계는 사람·교육·시스템이 같이 바뀌어야 해요|redesigning the process needs people, training, and systems to change together⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "bpr", "order": 15,

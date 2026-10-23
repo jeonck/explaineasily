@@ -59,12 +59,12 @@ P4 = svg(320, sky(320)
                        "⟦오픈 어드레싱 — 옆 빈 칸을 찾아 넣기|open addressing — slide into the next empty slot⟧"), 1.0))
 
 # 5. 칸이 꽉 차면 다시 느려져요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
+P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
          + bins(50, 150, 4, hl=1)
-         + label(190, 240, "⟦칸이 넉넉하면 거의 계산 한 번으로 끝나요|with enough slots, one calculation nearly always suffices⟧", 11, "var(--ink)")
-         + person(560, 150, s=0.8, face=FROWN, **CHIEF)
-         + label(560, 240, "⟦공구함이 꽉 차면 충돌이 늘어 다시 뒤지게 돼요|a full box means more collisions and more searching⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦빠르려면 칸 수를 공구 수보다 넉넉히 둬야 해요|staying fast means keeping more slots than tools⟧", 12, "var(--ink)", cls="d"))
+         + label(190, 255, "⟦칸이 넉넉하면 거의 계산 한 번으로 끝나요|with enough slots, one calculation nearly always suffices⟧", 11, "var(--ink)")
+         + person(560, 130, s=0.8, face=FROWN, **CHIEF)
+         + label(560, 255, "⟦공구함이 꽉 차면 충돌이 늘어 다시 뒤지게 돼요|a full box means more collisions and more searching⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦빠르려면 칸 수를 공구 수보다 넉넉히 둬야 해요|staying fast means keeping more slots than tools⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "hashalgo", "order": 20,

@@ -52,12 +52,12 @@ P4 = svg(320, sky(320)
                        "⟦⑤ 다음 세대로 반복해요|⑤ repeat for the next generation⟧"), 1.0))
 
 # 5. 항상 완벽한 설정을 찾는 건 아니에요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
+P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
          + dial(190, 150, 1.1, 88, "var(--good)")
-         + label(190, 240, "⟦여러 세대 뒤 꽤 좋은 설정을 찾아요|after many generations, finds a pretty good setting⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=EYES, **CHIEF)
-         + label(570, 240, "⟦다만 '가장 완벽한 설정'이라고 보장하진 않아요|but it never guarantees the single perfect setting⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦경우의 수가 너무 많을 때 '꽤 괜찮은 답'을 빠르게 찾는 방법이에요|a way to find a pretty good answer fast, when there are too many options⟧", 12, "var(--ink)", cls="d"))
+         + label(190, 255, "⟦여러 세대 뒤 꽤 좋은 설정을 찾아요|after many generations, finds a pretty good setting⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=EYES, **CHIEF)
+         + label(570, 255, "⟦다만 '가장 완벽한 설정'이라고 보장하진 않아요|but it never guarantees the single perfect setting⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦경우의 수가 너무 많을 때 '꽤 괜찮은 답'을 빠르게 찾는 방법이에요|a way to find a pretty good answer fast, when there are too many options⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "geneticalgo", "order": 18,

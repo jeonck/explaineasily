@@ -55,8 +55,8 @@ P4 = svg(320, sky(320)
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
          + crew_grid(100, 120, 4, 2, 44, 0.35) + label(190, 230, "⟦똑같은 일, 수백 번|the same task, hundreds of times⟧", 11, "var(--ink)")
          + label(190, 248, "⟦GPU가 압도적으로 빨라요|GPU wins by a landslide⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=EYES, **CHIEF) + label(570, 230, "⟦하나씩 판단이 갈리는 복잡한 일|one complex job full of branching decisions⟧", 11, "var(--ink)")
-         + label(570, 248, "⟦이건 CPU(반장) 몫이에요|this is still the chief's (CPU's) job⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=EYES, **CHIEF) + label(570, 235, "⟦하나씩 판단이 갈리는 복잡한 일|one complex job full of branching decisions⟧", 11, "var(--ink)")
+         + label(570, 255, "⟦이건 CPU(반장) 몫이에요|this is still the chief's (CPU's) job⟧", 11, "var(--ink)")
          + label(380, 280, "⟦GPU는 CPU를 대신하지 않아요 — 서로 다른 일을 나눠 맡아요|GPU doesn't replace the CPU — they split different kinds of work⟧", 12, "var(--ink)", cls="d"))
 
 CORE_I = icon('<circle cx="18" cy="18" r="8" fill="var(--accent)"/><circle cx="46" cy="18" r="8" fill="var(--accent)"/><circle cx="18" cy="46" r="8" fill="var(--accent)"/><circle cx="46" cy="46" r="8" fill="var(--accent)"/>')
