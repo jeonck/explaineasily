@@ -11,9 +11,9 @@ P1 = svg(300, sky(300)
 
 # 2. 전표 처리 시스템은 한 건은 빠른데, 전체 집계는 느려요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(220, 150, s=0.75, face=SMILE, **PACKER) + receipt(220, 230, 0.5, text="⟦방금 상자 1개|just 1 box, right now⟧")
+         + person(220, 150, s=0.75, face=SMILE, **PACKER) + receipt(280, 210, 0.5, text="⟦방금 상자 1개|just 1 box, right now⟧")
          + label(220, 90, "✓ ⟦빨라요|fast⟧", 13, "var(--good)")
-         + person(560, 150, s=0.75, face=FROWN, **MANAGER) + label(560, 230, "⟦1년치 전체 합계는?|but a whole year's total?⟧", 11, "var(--bad)")
+         + person(560, 130, s=0.75, face=FROWN, **MANAGER) + label(560, 250, "⟦1년치 전체 합계는?|but a whole year's total?⟧", 11, "var(--bad)")
          + label(560, 90, "✕ ⟦느려요|slow⟧", 13, "var(--bad)")
          + label(380, 280, "⟦한 건 처리(OLTP)와 전체 분석은 다른 일이에요|handling one record and analyzing everything are different jobs⟧", 12, "var(--ink)"))
 
@@ -47,7 +47,7 @@ P5 = svg(300, sky(300, ground=False)
          + person(260, 150, s=0.8, face=EYES, **MANAGER)
          + label(260, 258, "⟦큐브는 보통 한 번씩 모아 쌓여요|the cube is usually rebuilt in batches⟧", 11, "var(--ink)")
          + label(260, 280, "⟦최신 변화는 살짝 늦게 반영돼요|the very latest changes show up a bit late⟧", 11, "var(--muted)")
-         + indexcard(560, 150, 1.0, tags=["지역", "기간"])
+         + indexcard(560, 150, 1.0, tags=["지", "기"])
          + label(560, 220, "⟦색인구조가 큐브 조회를 더 빠르게 해줘요|index structures make cube lookups even faster⟧", 11, "var(--ink)")
          + label(380, 40, "⟦OLAP은 '지금 이 한 건'엔 안 맞아요|OLAP isn't for 'just this one record, right now'⟧", 13, "var(--ink)"))
 

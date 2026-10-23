@@ -41,10 +41,10 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 295, "⟦편리함과 공정한 경쟁 사이에서 법이 균형을 잡으려 해요|the law tries to balance convenience against fair competition⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 너무 규제하면 편리함이 줄어요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **TEACHER) + label(190, 250, "⟦공정한 경쟁 기준을 정해요|setting fair-competition rules⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=FROWN, **PRESIDENT) + label(570, 250, "⟦너무 세세하면 새 기능 넣기 힘들어요|too much detail makes new features hard to add⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦공정함과 자율성, 망중립성에서도 봤던 똑같은 줄다리기예요|fairness vs autonomy — the same tug-of-war seen with net neutrality⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **TEACHER) + label(190, 260, "⟦공정한 경쟁 기준을 정해요|setting fair-competition rules⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=FROWN, **PRESIDENT) + label(570, 260, "⟦너무 세세하면 새 기능 넣기 힘들어요|too much detail makes new features hard to add⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦공정함과 자율성, 망중립성에서도 봤던 똑같은 줄다리기예요|fairness vs autonomy — the same tug-of-war seen with net neutrality⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "superapp", "order": 11,

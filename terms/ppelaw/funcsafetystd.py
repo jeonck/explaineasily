@@ -14,10 +14,10 @@ P1 = svg(300, sky(300)
          + label(380, 280, "⟦분야마다 \"안전하다\"는 말의 기준이 다 달라요|every field has its own idea of what \"safe\" means⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 공통 기준이 없으면 비교도, 신뢰도 안 돼요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(220, 150, s=0.8, face=FROWN, **TEACHER) + label(220, 250, "⟦업체마다 말이 다 다른데 뭘 믿어요?|every supplier says something different — which do we trust?⟧", 11, "var(--ink)")
-         + person(560, 150, s=0.75, face=SWEAT + EYES, **STUDENT) + label(560, 250, "⟦우리 반 자동문이 갑자기 안 멈췄어요|our class's automatic door suddenly wouldn't stop⟧", 11, "var(--bad)")
-         + label(380, 285, "⟦공통 기준 없이 주장만 있으면, 사고가 나서야 드러나요|without a shared standard, only an accident reveals the truth⟧", 12, "var(--ink)", cls="d"))
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
+         + person(220, 135, s=0.8, face=FROWN, **TEACHER) + label(220, 265, "⟦업체마다 말이 다 다른데 뭘 믿어요?|every supplier says something different — which do we trust?⟧", 11, "var(--ink)")
+         + person(560, 135, s=0.75, face=SWEAT + EYES, **STUDENT) + label(560, 265, "⟦우리 반 자동문이 갑자기 안 멈췄어요|our class's automatic door suddenly wouldn't stop⟧", 11, "var(--bad)")
+         + label(380, 300, "⟦공통 기준 없이 주장만 있으면, 사고가 나서야 드러나요|without a shared standard, only an accident reveals the truth⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 기능안전 표준 = 위험도에 등급을 매기고 등급별 조치를 정한 공통 규칙서 (hero)
 P3 = svg(360, sky(360)
@@ -41,13 +41,13 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 300, "⟦분야마다 전용 표준을 다시 써서 구체화해요|each field rewrites its own specific version⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 인증을 받아도 사고가 0이 되진 않아요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 140, s=0.8, face=SMILE, **PRESIDENT)
-         + '<circle cx="270" cy="110" r="22" fill="var(--good)"/><path d="M258 110 l8 8 l16 -18" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
-         + label(190, 250, "⟦등급에 맞는 안전조치는 다 거쳤어요|every safeguard for the grade is in place⟧", 11, "var(--ink)")
-         + person(570, 140, s=0.85, face=SWEAT + EYES, **TEACHER)
-         + label(570, 250, "⟦그래도 계속 지켜보고 점검해야죠|but it still needs constant watching and checking⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦등급에 맞는 조치를 어떻게 분석해 정할지는 또 다른 기법의 몫이에요|how to work out those safeguards is a job for yet another technique⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 120, s=0.8, face=SMILE, **PRESIDENT)
+         + '<circle cx="270" cy="90" r="22" fill="var(--good)"/><path d="M258 90 l8 8 l16 -18" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
+         + label(190, 260, "⟦등급에 맞는 안전조치는 다 거쳤어요|every safeguard for the grade is in place⟧", 11, "var(--ink)")
+         + person(570, 100, s=0.85, face=SWEAT + EYES, **TEACHER)
+         + label(570, 260, "⟦그래도 계속 지켜보고 점검해야죠|but it still needs constant watching and checking⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦등급에 맞는 조치를 어떻게 분석해 정할지는 또 다른 기법의 몫이에요|how to work out those safeguards is a job for yet another technique⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "funcsafetystd", "order": 18,

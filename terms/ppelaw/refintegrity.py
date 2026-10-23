@@ -36,10 +36,10 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 305, "⟦상황에 맞게 세 옵션 중 하나를 미리 정해둬요|one of these three options is chosen ahead of time, to fit the situation⟧", 11, "var(--ink)", cls="d"))
 
 # 5. 너무 엄격하면 불편해요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **TEACHER) + label(190, 250, "⟦이름이 꼭 맞는지 늘 확인해요|always checks the name actually matches⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SWEAT + EYES, **REP) + label(570, 250, "⟦반장부터 내려야 전학 가게 해줘서 번거로워요|had to step down as president before transferring — a hassle⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦너무 엄격한 규칙(RESTRICT)은 평소 일 처리를 불편하게 만들 수 있어요|too strict a rule can make everyday business clunky⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **TEACHER) + label(190, 260, "⟦이름이 꼭 맞는지 늘 확인해요|always checks the name actually matches⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=SWEAT + EYES, **REP) + label(570, 260, "⟦반장부터 내려야 전학 가게 해줘서 번거로워요|had to step down as president before transferring — a hassle⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦너무 엄격한 규칙(RESTRICT)은 평소 일 처리를 불편하게 만들 수 있어요|too strict a rule can make everyday business clunky⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "refintegrity", "order": 9,

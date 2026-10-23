@@ -42,9 +42,9 @@ P4 = svg(320, sky(320, ground=False)
 
 # 5. 공짜가 아니에요 — 쓰기 비용, 차원의 저주, 벡터 색인으로 이어짐
 P5 = svg(300, sky(300, ground=False)
-         + person(260, 150, s=0.8, face=SWEAT + EYES, **SORTER)
-         + indexcard(260, 90, 0.9, tags=["A", "B", "C", "D"])
-         + label(260, 240, "⟦딱지가 많아질수록 새 상자 넣기도 느려져요|more tags means every new box takes longer to file⟧", 11.5, "var(--bad)")
+         + person(260, 130, s=0.8, face=SWEAT + EYES, **SORTER)
+         + indexcard(260, 75, 0.9, tags=["A", "B", "C", "D"])
+         + label(260, 260, "⟦딱지가 많아질수록 새 상자 넣기도 느려져요|more tags means every new box takes longer to file⟧", 11.5, "var(--bad)")
          + indexcard(560, 150, 1.1, tags=["～"])
          + label(560, 220, "⟦비슷한 느낌끼리 찾는 색인도 있어요|some indexes find things by similarity⟧", 11, "var(--ink)")
          + label(560, 250, "⟦(AI 세계의 벡터 색인)|(vector index, in the AI world)⟧", 10.5, "var(--muted)"))

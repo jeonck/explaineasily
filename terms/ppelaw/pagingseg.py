@@ -48,10 +48,10 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 305, "⟦실제 시스템은 둘을 섞어 쓰기도 해요(세그멘테이션 페이징)|real systems sometimes mix both (segmented paging)⟧", 11, "var(--ink)", cls="d"))
 
 # 5. 둘 다 '가짜 지도'일 뿐, 진짜 관리는 다른 세계에서
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
+P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
          + locker(230, 130, 90, 60, "가상|virtual", True, 0.9) + label(275, 220, "⟦내가 보는 지도일 뿐이에요|just the map I see⟧", 11, "var(--ink)")
-         + person(570, 140, s=0.8, face=EYES, **REP) + label(570, 240, "⟦진짜 관리법은 다른 세계에서 더 깊이 다뤄요|the real management detail lives in another world⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦이 페이지는 두 방식의 차이만, 실제 반장(OS)의 관리는 ppesys에서|this page covers only the difference — the OS's actual management lives in ppesys⟧", 12, "var(--ink)", cls="d"))
+         + person(570, 125, s=0.8, face=EYES, **REP) + label(570, 255, "⟦진짜 관리법은 다른 세계에서 더 깊이 다뤄요|the real management detail lives in another world⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦이 페이지는 두 방식의 차이만, 실제 반장(OS)의 관리는 ppesys에서|this page covers only the difference — the OS's actual management lives in ppesys⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "pagingseg", "order": 15,

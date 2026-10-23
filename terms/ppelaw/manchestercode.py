@@ -51,12 +51,12 @@ P4 = svg(300, '<rect width="760" height="300" fill="var(--panel)"/>'
          + label(380, 275, "⟦같은 값이 이어져도(1,1) 맨체스터는 중간에서 꼭 한 번 바뀌어요|even for repeated bits (1,1), Manchester still flips once at the middle⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 한계 — 그리고 이 세계와는 좀 안 맞는 비유
-P5 = svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 140, s=0.8, face=SWEAT + EYES, **REP)
-         + label(190, 240, "⟦신호를 두 배 빨리 보내야 해요|the signal has to run twice as fast⟧", 11, "var(--bad)")
-         + person(570, 140, s=0.8, face=EYES, **TEACHER)
-         + label(570, 240, "⟦그래서 요즘은 다른 부호화도 많이 써요|that's why faster links often use other encodings now⟧", 11, "var(--ink)")
-         + label(380, 280, "⟦사실 이건 법·표준보다는 통신 물리계층 기술이에요 — 이 세계 비유가 좀 안 맞았어요|really, this is physical-layer tech more than law or policy — the fit with this world is a stretch⟧", 11, "var(--muted)", cls="d"))
+P5 = svg(320, '<rect width="380" height="320" fill="var(--bad-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
+         + person(190, 125, s=0.8, face=SWEAT + EYES, **REP)
+         + label(190, 255, "⟦신호를 두 배 빨리 보내야 해요|the signal has to run twice as fast⟧", 11, "var(--bad)")
+         + person(570, 125, s=0.8, face=EYES, **TEACHER)
+         + label(570, 255, "⟦그래서 요즘은 다른 부호화도 많이 써요|that's why faster links often use other encodings now⟧", 11, "var(--ink)")
+         + label(380, 298, "⟦사실 이건 법·표준보다는 통신 물리계층 기술이에요 — 이 세계 비유가 좀 안 맞았어요|really, this is physical-layer tech more than law or policy — the fit with this world is a stretch⟧", 11, "var(--muted)", cls="d"))
 
 PAGE = {
     "slug": "manchestercode", "order": 5,

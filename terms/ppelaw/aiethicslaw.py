@@ -34,10 +34,10 @@ P4 = svg(280, sky(280, ground=False)
          + label(380, 250, "⟦표준은 '어떻게 관리할까', 법은 '어기면 어떻게 될까'를 다뤄요|the standard asks how to manage it; the law asks what happens if you don't⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 법대로 해도 사고가 안 생기는 건 아니에요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SWEAT + EYES, **PRESIDENT) + label(190, 250, "⟦법은 나라마다, 계속 빠르게 바뀌어요|laws differ by country and keep changing fast⟧", 11, "var(--bad)")
-         + person(570, 150, s=0.8, face=EYES, **TEACHER) + label(570, 250, "⟦지켰다고 사고가 안 생기는 건 아니에요|following the law doesn't mean nothing goes wrong⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦법은 최소선이에요 — 규정 준수와 같은 이야기예요|the law is a floor, too — the same message as compliance⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=SWEAT + EYES, **PRESIDENT) + label(190, 260, "⟦법은 나라마다, 계속 빠르게 바뀌어요|laws differ by country and keep changing fast⟧", 11, "var(--bad)")
+         + person(570, 130, s=0.8, face=EYES, **TEACHER) + label(570, 260, "⟦지켰다고 사고가 안 생기는 건 아니에요|following the law doesn't mean nothing goes wrong⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦법은 최소선이에요 — 규정 준수와 같은 이야기예요|the law is a floor, too — the same message as compliance⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "aiethicslaw", "order": 10,

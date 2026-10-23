@@ -14,10 +14,10 @@ P1 = svg(300, sky(300)
          + label(380, 280, "⟦학교가 점점 똑똑해지는데, 각 반이 제각각 디지털 규칙을 만들어요|the school is getting smarter, but each class makes its own digital rules⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 전체를 아우르는 큰 방향이 없으면 격차·혼란이 생겨요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(200, 150, s=0.8, face=FROWN, **STUDENT) + label(200, 250, "⟦우리 반엔 태블릿이 없어요|our class doesn't even have tablets⟧", 11, "var(--bad)")
-         + person(560, 150, s=0.75, face=SWEAT + EYES, **PRESIDENT) + label(560, 250, "⟦반마다 따로 노니 전교 차원에선 정리가 안 돼요|with every class doing its own thing, nothing lines up school-wide⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦큰 방향 없이 각자 만들면 누군가는 뒤처져요|without a shared direction, someone always gets left behind⟧", 12, "var(--ink)", cls="d"))
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
+         + person(200, 135, s=0.8, face=FROWN, **STUDENT) + label(200, 265, "⟦우리 반엔 태블릿이 없어요|our class doesn't even have tablets⟧", 11, "var(--bad)")
+         + person(560, 135, s=0.75, face=SWEAT + EYES, **PRESIDENT) + label(560, 265, "⟦반마다 따로 노니 전교 차원에선 정리가 안 돼요|with every class doing its own thing, nothing lines up school-wide⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦큰 방향 없이 각자 만들면 누군가는 뒤처져요|without a shared direction, someone always gets left behind⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 지능정보화 기본법 = 학교 전체의 디지털 생활을 아우르는 기본 헌장 (hero)
 P3 = svg(340, sky(340)
@@ -41,10 +41,10 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 305, "⟦세부 규칙들이 전부 이 헌장 밑에서 갈라져 나와요|every detailed rule branches down from this one charter⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 헌장만으로는 저절로 돌아가지 않아요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 140, s=0.8, face=SMILE, **PRESIDENT) + label(190, 240, "⟦큰 방향은 확실히 정해졌어요|the big direction is now clear⟧", 11, "var(--ink)")
-         + person(570, 130, s=0.85, face=SWEAT + EYES, **REP) + label(570, 240, "⟦근데 태블릿 살 돈은 어디서 나요?|but where does the tablet budget actually come from?⟧", 11, "var(--ink)")
-         + label(380, 280, "⟦헌장은 방향만 줘요 — 실제로 움직이려면 세부 규칙과 예산이 더 필요해요|the charter only gives direction — moving it actually takes detailed rules and a budget too⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 120, s=0.8, face=SMILE, **PRESIDENT) + label(190, 260, "⟦큰 방향은 확실히 정해졌어요|the big direction is now clear⟧", 11, "var(--ink)")
+         + person(570, 110, s=0.85, face=SWEAT + EYES, **REP) + label(570, 260, "⟦근데 태블릿 살 돈은 어디서 나요?|but where does the tablet budget actually come from?⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦헌장은 방향만 줘요 — 실제로 움직이려면 세부 규칙과 예산이 더 필요해요|the charter only gives direction — moving it actually takes detailed rules and a budget too⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "intellinfolaw", "order": 14,

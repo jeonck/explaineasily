@@ -15,10 +15,10 @@ P1 = svg(300, sky(300)
          + label(380, 280, "⟦축제 준비 중 아찔한 사고가 날 뻔했어요|a near-accident happened while setting up the festival⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 그때그때 감으로 원인을 짚으면 틀려요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(200, 150, s=0.8, face=FROWN, **STUDENT) + label(200, 250, "⟦그냥 전선이 길어서 그래요|it's just because the cord was too long⟧", 11, "var(--bad)")
-         + person(560, 150, s=0.8, face=FROWN, **REP) + label(560, 250, "⟦아뇨, 테이블 배치가 문제였어요|no, it was the table layout⟧", 11, "var(--bad)")
-         + label(380, 285, "⟦체계 없이 짚으면 진짜 원인도, 다음 위험도 놓쳐요|guessing without a method misses the real cause — and the next risk⟧", 12, "var(--ink)", cls="d"))
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
+         + person(200, 135, s=0.8, face=FROWN, **STUDENT) + label(200, 265, "⟦그냥 전선이 길어서 그래요|it's just because the cord was too long⟧", 11, "var(--bad)")
+         + person(560, 135, s=0.8, face=FROWN, **REP) + label(560, 265, "⟦아뇨, 테이블 배치가 문제였어요|no, it was the table layout⟧", 11, "var(--bad)")
+         + label(380, 300, "⟦체계 없이 짚으면 진짜 원인도, 다음 위험도 놓쳐요|guessing without a method misses the real cause — and the next risk⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 위험·안전성 분석 = 사고를 체계적으로 추적하는 세 가지 방법 (hero)
 P3 = svg(360, sky(360)
@@ -41,10 +41,10 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 305, "⟦사고 후엔 FTA로 거꾸로, 사고 전엔 FMEA·HAZOP으로 미리|after an accident, trace back with FTA — before one, scan ahead with FMEA/HAZOP⟧", 11, "var(--ink)", cls="d"))
 
 # 5. 분석했다고 사고가 안 나는 건 아니에요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **TEACHER) + label(190, 250, "⟦찾아낸 위험은 미리 막을 수 있어요|found risks can be prevented in advance⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SWEAT + EYES, **REP) + label(570, 250, "⟦근데 못 떠올린 위험은 여전히 남아요|but risks nobody thought of still remain⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦분석은 확률을 낮출 뿐, 안전을 보장하진 않아요|analysis lowers the odds — it doesn't guarantee safety⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **TEACHER) + label(190, 260, "⟦찾아낸 위험은 미리 막을 수 있어요|found risks can be prevented in advance⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=SWEAT + EYES, **REP) + label(570, 260, "⟦근데 못 떠올린 위험은 여전히 남아요|but risks nobody thought of still remain⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦분석은 확률을 낮출 뿐, 안전을 보장하진 않아요|analysis lowers the odds — it doesn't guarantee safety⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "riskanalysis", "order": 13,

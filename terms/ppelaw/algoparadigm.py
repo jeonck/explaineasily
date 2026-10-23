@@ -15,10 +15,10 @@ P1 = svg(300, sky(300)
          + label(380, 280, "⟦동아리가 너무 많아 한 번에 다 비교할 수가 없어요|too many clubs to compare all at once⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 접수 순서대로만 주면 불합리해요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(220, 150, s=0.8, face=SMILE, **STUDENT) + label(220, 250, "⟦저희가 1등으로 접수해서 다 받았어요|we submitted first, so we got everything⟧", 11, "var(--good)")
-         + person(560, 150, s=0.8, face=FROWN, **STUDENT) + label(560, 250, "⟦저흰 꼴찌라 한 푼도 못 받았어요|we were last, so we got nothing⟧", 11, "var(--bad)")
-         + label(380, 285, "⟦순서만 보고 정하면, 더 좋은 방법을 놓쳐요|deciding by order alone misses a better way⟧", 12, "var(--ink)", cls="d"))
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
+         + person(220, 135, s=0.8, face=SMILE, **STUDENT) + label(220, 265, "⟦저희가 1등으로 접수해서 다 받았어요|we submitted first, so we got everything⟧", 11, "var(--good)")
+         + person(560, 135, s=0.8, face=FROWN, **STUDENT) + label(560, 265, "⟦저흰 꼴찌라 한 푼도 못 받았어요|we were last, so we got nothing⟧", 11, "var(--bad)")
+         + label(380, 300, "⟦순서만 보고 정하면, 더 좋은 방법을 놓쳐요|deciding by order alone misses a better way⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 세 가지 문제해결 방법 (hero)
 P3 = svg(360, sky(360)
@@ -45,10 +45,10 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 310, "⟦문제의 생김새에 따라 어울리는 방법이 달라요|which method fits depends on the shape of the problem⟧", 11, "var(--ink)", cls="d"))
 
 # 5. 탐욕법은 빠르지만 늘 최선은 아니에요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **REP) + label(190, 250, "⟦지금 가장 급한 곳부터 바로 줬어요|funded the most urgent one right away⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SWEAT + EYES, **PRESIDENT) + label(570, 250, "⟦근데 전체로 보면 더 나은 조합이 있었어요|but looking at it all, there was a better combination⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦탐욕법은 빠르지만, 매번 전체 최선을 보장하진 않아요|greedy is fast — but it doesn't always guarantee the overall best⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **REP) + label(190, 260, "⟦지금 가장 급한 곳부터 바로 줬어요|funded the most urgent one right away⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=SWEAT + EYES, **PRESIDENT) + label(570, 260, "⟦근데 전체로 보면 더 나은 조합이 있었어요|but looking at it all, there was a better combination⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦탐욕법은 빠르지만, 매번 전체 최선을 보장하진 않아요|greedy is fast — but it doesn't always guarantee the overall best⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "algoparadigm", "order": 20,

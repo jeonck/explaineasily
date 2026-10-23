@@ -38,10 +38,10 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 295, "⟦내용이 진짜인가와, 정당하게 얻었는가는 서로 다른 질문이에요|is it real? and was it lawfully obtained? are two different questions⟧", 11, "var(--ink)", cls="d"))
 
 # 5. 절차를 지켜도 내용 판단은 또 다른 문제예요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **PRESIDENT) + label(190, 250, "⟦절차는 지켰으니 증거로 받아들여요|the procedure was followed, so it's admitted⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=EYES, **TEACHER) + label(570, 250, "⟦근데 이게 무슨 뜻인지는 또 따져봐야죠|but what it actually means still needs figuring out⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦정당하게 얻었다고 해서 결론까지 저절로 정해지진 않아요|lawfully obtained doesn't mean the conclusion is automatic⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **PRESIDENT) + label(190, 260, "⟦절차는 지켰으니 증거로 받아들여요|the procedure was followed, so it's admitted⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=EYES, **TEACHER) + label(570, 260, "⟦근데 이게 무슨 뜻인지는 또 따져봐야죠|but what it actually means still needs figuring out⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦정당하게 얻었다고 해서 결론까지 저절로 정해지진 않아요|lawfully obtained doesn't mean the conclusion is automatic⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "forensiclaw", "order": 16,

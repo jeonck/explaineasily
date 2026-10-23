@@ -14,10 +14,10 @@ P1 = svg(300, sky(300)
          + label(380, 280, "⟦'좋은 소프트웨어'의 기준이 사람마다 달라요|everyone's standard for a \"good app\" is different⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 기준이 없으면 같은 앱도 다르게 평가해 다퉈요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(230, 150, s=0.8, face=SMILE, **STUDENT) + label(230, 250, "⟦이 앱 완전 좋아요!|this app is totally great!⟧", 11, "var(--good)")
-         + person(540, 150, s=0.8, face=FROWN, **REP) + label(540, 250, "⟦아뇨, 이거 별로예요|no, this one's not good⟧", 11, "var(--bad)")
-         + label(380, 285, "⟦같은 앱을 보고도 기준이 달라 결론이 갈려요|looking at the same app, different standards give different verdicts⟧", 12, "var(--ink)", cls="d"))
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
+         + person(230, 135, s=0.8, face=SMILE, **STUDENT) + label(230, 265, "⟦이 앱 완전 좋아요!|this app is totally great!⟧", 11, "var(--good)")
+         + person(540, 135, s=0.8, face=FROWN, **REP) + label(540, 265, "⟦아뇨, 이거 별로예요|no, this one's not good⟧", 11, "var(--bad)")
+         + label(380, 300, "⟦같은 앱을 보고도 기준이 달라 결론이 갈려요|looking at the same app, different standards give different verdicts⟧", 12, "var(--ink)", cls="d"))
 
 # 3. ISO/IEC 25000 = 학생회가 정한 공통 품질 기준표 (hero)
 P3 = svg(360, sky(360)
@@ -44,10 +44,10 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 295, "⟦정의 → 측정 → 요구 → 평가, 네 단계가 이어져요|define → measure → require → evaluate, in one chain⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 기준표가 있어도 전부 100점은 어려워요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **REP) + label(190, 250, "⟦기준은 같이 봐요|we judge by the same standard⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SWEAT + EYES, **STUDENT) + label(570, 250, "⟦근데 다 100점은 시간도 돈도 모자라요|but acing every one takes more time and money than we have⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦빠른 대신 조금 덜 예쁠 수도 있어요 — 우선순위를 정해야 해요|faster might mean a little less polished — priorities have to be set⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **REP) + label(190, 260, "⟦기준은 같이 봐요|we judge by the same standard⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=SWEAT + EYES, **STUDENT) + label(570, 260, "⟦근데 다 100점은 시간도 돈도 모자라요|but acing every one takes more time and money than we have⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦빠른 대신 조금 덜 예쁠 수도 있어요 — 우선순위를 정해야 해요|faster might mean a little less polished — priorities have to be set⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "iso25000", "order": 4,

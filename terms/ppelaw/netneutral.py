@@ -16,11 +16,11 @@ P1 = svg(300, sky(300, ground=False)
          + label(380, 280, "⟦급식 줄(복도)에서 새치기하려고 해요|someone's trying to cut the lunch line (the hallway)⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 처음엔 편한데 결국 불공평해져요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(560, 150, s=0.8, face=SMILE, **STUDENT) + label(560, 250, "⟦돈 낸 학생만 빨라요|only the paying student goes fast⟧", 11, "var(--ink)")
-         + person(230, 150, s=0.7, face=FROWN + SWEAT, **STUDENT) + person(140, 150, s=0.7, face=FROWN, **STUDENT)
-         + label(185, 250, "⟦나머지는 계속 뒤로 밀려요|everyone else keeps getting pushed back⟧", 11, "var(--bad)")
-         + label(380, 285, "⟦한 번 새치기를 봐주면, 돈 없는 학생은 늘 손해예요|allow one cut, and students without money always lose out⟧", 12, "var(--ink)", cls="d"))
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
+         + person(560, 135, s=0.8, face=SMILE, **STUDENT) + label(560, 265, "⟦돈 낸 학생만 빨라요|only the paying student goes fast⟧", 11, "var(--ink)")
+         + person(230, 135, s=0.7, face=FROWN + SWEAT, **STUDENT) + person(140, 135, s=0.7, face=FROWN, **STUDENT)
+         + label(185, 265, "⟦나머지는 계속 뒤로 밀려요|everyone else keeps getting pushed back⟧", 11, "var(--bad)")
+         + label(380, 300, "⟦한 번 새치기를 봐주면, 돈 없는 학생은 늘 손해예요|allow one cut, and students without money always lose out⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 망중립성 = 복도 관리자가 누구든 똑같은 속도로 보내는 원칙 (hero)
 P3 = svg(340, sky(340)
@@ -41,12 +41,12 @@ P4 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="
          + label(380, 300, "⟦공평함이 사라지면, 새 서비스를 만들 기회도 돈 있는 쪽에만 몰려요|lose fairness, and the chance to build new services tilts toward whoever can pay⟧", 11, "var(--muted)"))
 
 # 5. 너무 엄격하면 특수 서비스가 곤란해요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=SWEAT + EYES, **TEACHER)
-         + label(190, 250, "⟦응급 방송도 똑같은 줄에 세워야 하나요?|does the emergency broadcast wait in the same line too?⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=EYES, **PRESIDENT)
-         + label(570, 250, "⟦불합리한 차별만 막는 거예요|it only bans unreasonable discrimination⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦공정함과 효율성 사이에서 계속 줄다리기해요|a constant tug-of-war between fairness and efficiency⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=SWEAT + EYES, **TEACHER)
+         + label(190, 260, "⟦응급 방송도 똑같은 줄에 세워야 하나요?|does the emergency broadcast wait in the same line too?⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=EYES, **PRESIDENT)
+         + label(570, 260, "⟦불합리한 차별만 막는 거예요|it only bans unreasonable discrimination⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦공정함과 효율성 사이에서 계속 줄다리기해요|a constant tug-of-war between fairness and efficiency⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "netneutral", "order": 3,

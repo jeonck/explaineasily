@@ -39,13 +39,13 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 300, "⟦언제 분류하느냐(쓸 때 vs 쓸 때 읽을 때)가 핵심 차이예요|the key difference is WHEN you sort it — on write, or on read⟧", 12, "var(--ink)"))
 
 # 5. 방치된 레이크는 데이터 늪이 돼요
-P5 = svg(300, sky(300, ground=False)
+P5 = svg(320, sky(320, ground=False)
          + '<path d="M250 250 q30 -50 70 -35 q15 -35 60 -25 q25 -30 70 -10 q25 -20 70 0 L520 250 Z" fill="#5A4A38"/>'
          + box(300, 220, 0.5) + receipt(340, 235, 0.4) + box(400, 225, 0.45)
-         + person(620, 180, s=0.75, face=SWEAT + EYES, **AUDITOR)
-         + label(620, 260, "⟦이게 다 뭔지 아무도 몰라요|nobody knows what half of this even is⟧", 11, "var(--bad)")
+         + person(620, 160, s=0.75, face=SWEAT + EYES, **AUDITOR)
+         + label(620, 280, "⟦이게 다 뭔지 아무도 몰라요|nobody knows what half of this even is⟧", 11, "var(--bad)")
          + label(380, 40, "⟦관리 안 된 레이크는 '데이터 늪'이 돼요|an unmanaged lake turns into a 'data swamp'⟧", 13, "var(--ink)")
-         + label(380, 290, "⟦분석(OLAP)은 보통 잘 정리된 웨어하우스 쪽에서 해요|analysis (OLAP) usually runs on the tidy warehouse side⟧", 11, "var(--muted)"))
+         + label(380, 305, "⟦분석(OLAP)은 보통 잘 정리된 웨어하우스 쪽에서 해요|analysis (OLAP) usually runs on the tidy warehouse side⟧", 11, "var(--muted)"))
 
 WRITE_I = icon('<rect x="16" y="10" width="32" height="44" rx="3" fill="var(--panel)" stroke="var(--line)" stroke-width="3"/><path d="M22 20 h20 M22 30 h20" stroke="var(--good)" stroke-width="3"/>')
 READ_I = icon('<path d="M10 40 q20 -36 44 0" fill="none" stroke="var(--accent)" stroke-width="4"/><circle cx="32" cy="38" r="7" fill="var(--accent)"/>')

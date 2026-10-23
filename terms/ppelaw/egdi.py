@@ -14,10 +14,10 @@ P1 = svg(300, sky(300)
          + label(380, 280, "⟦비교 없이 혼자 '최고'라고 믿고 있었어요|believing we're \"the best,\" with nothing to compare against⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 막상 비교해보니 기준이 제각각이었어요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(220, 150, s=0.8, face=SWEAT + EYES, **REP) + label(220, 250, "⟦옆 학교는 와이파이가 훨씬 빠르던데요|the school next door has way faster wifi⟧", 11, "var(--ink)")
-         + person(560, 150, s=0.8, face=FROWN, **PRESIDENT) + label(560, 250, "⟦근데 뭘 기준으로 비교하죠?|but what standard do we even compare by?⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦같은 잣대가 없으면, 누가 더 나은지도 알 수 없어요|without a shared ruler, you can't even tell who's ahead⟧", 12, "var(--ink)", cls="d"))
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
+         + person(220, 135, s=0.8, face=SWEAT + EYES, **REP) + label(220, 265, "⟦옆 학교는 와이파이가 훨씬 빠르던데요|the school next door has way faster wifi⟧", 11, "var(--ink)")
+         + person(560, 135, s=0.8, face=FROWN, **PRESIDENT) + label(560, 265, "⟦근데 뭘 기준으로 비교하죠?|but what standard do we even compare by?⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦같은 잣대가 없으면, 누가 더 나은지도 알 수 없어요|without a shared ruler, you can't even tell who's ahead⟧", 12, "var(--ink)", cls="d"))
 
 # 3. EGDI = 외부 평가단이 같은 잣대로 모든 학교를 재는 평가 (hero)
 P3 = svg(340, sky(340)
@@ -38,10 +38,10 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 295, "⟦서비스만 좋아도, 회선이 느리면 점수가 낮아져요|great service alone isn't enough if the connection is slow⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 점수가 전부는 아니에요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **TEACHER) + label(190, 250, "⟦같은 잣대로 재니 비교는 공정해요|the same ruler makes the comparison fair⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=FROWN, **REP) + label(570, 250, "⟦근데 학생들이 실제로 만족하는지는 또 다른 얘기예요|but whether students are actually happy is a different story⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦점수는 2년마다 한 번 찍는 사진이지, 매일의 진짜 모습은 아니에요|the score is a snapshot taken every two years — not the everyday reality⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **TEACHER) + label(190, 260, "⟦같은 잣대로 재니 비교는 공정해요|the same ruler makes the comparison fair⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=FROWN, **REP) + label(570, 260, "⟦근데 학생들이 실제로 만족하는지는 또 다른 얘기예요|but whether students are actually happy is a different story⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦점수는 2년마다 한 번 찍는 사진이지, 매일의 진짜 모습은 아니에요|the score is a snapshot taken every two years — not the everyday reality⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "egdi", "order": 17,

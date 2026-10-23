@@ -14,10 +14,10 @@ P1 = svg(300, sky(300)
          + label(380, 280, "⟦학생들이 알고 싶은 자료가 학생회 안에만 있어요|the information students want sits inside the council alone⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 정보 격차 — 소문으로 듣는 반, 못 듣는 반
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(220, 150, s=0.8, face=SMILE, **STUDENT) + label(220, 250, "⟦저흰 소문으로 들었어요|we heard it through the grapevine⟧", 11, "var(--ink)")
-         + person(560, 150, s=0.8, face=FROWN, **STUDENT) + label(560, 250, "⟦저흰 전혀 몰랐어요|we had no idea at all⟧", 11, "var(--bad)")
-         + label(380, 285, "⟦알리지 않으면, 듣는 반과 못 듣는 반 사이에 불공평이 생겨요|not announcing it creates unfairness between classes that hear and don't⟧", 12, "var(--ink)", cls="d"))
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
+         + person(220, 135, s=0.8, face=SMILE, **STUDENT) + label(220, 265, "⟦저흰 소문으로 들었어요|we heard it through the grapevine⟧", 11, "var(--ink)")
+         + person(560, 135, s=0.8, face=FROWN, **STUDENT) + label(560, 265, "⟦저흰 전혀 몰랐어요|we had no idea at all⟧", 11, "var(--bad)")
+         + label(380, 300, "⟦알리지 않으면, 듣는 반과 못 듣는 반 사이에 불공평이 생겨요|not announcing it creates unfairness between classes that hear and don't⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 공공데이터 제공·품질 = 누구나 보게 게시판에 공개하고 품질을 지키는 것 (hero)
 P3 = svg(340, sky(340)

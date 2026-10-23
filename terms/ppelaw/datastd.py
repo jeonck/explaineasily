@@ -41,11 +41,11 @@ P4 = svg(300, sky(300, ground=False)
          + label(380, 288, "⟦숫자가 아니라 '약속'을 맞추는 일이에요|it's not the numbers that change — it's the agreement behind them⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 표준도 계속 고쳐 나가야 해요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 140, s=0.8, face=FROWN, **REP) + label(190, 240, "⟦새 동아리 코드가 아직 기준표에 없어요|the new club's code isn't in the standard yet⟧", 11, "var(--ink)")
+P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
+         + person(190, 125, s=0.8, face=FROWN, **REP) + label(190, 255, "⟦새 동아리 코드가 아직 기준표에 없어요|the new club's code isn't in the standard yet⟧", 11, "var(--ink)")
          + person(570, 130, s=0.85, face=SMILE, **PRESIDENT) + checkmachine(570, 210, 0.8)
-         + label(570, 260, "⟦기준표는 계속 고쳐 나가야 해요|the standard has to keep being updated⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦표준은 한 번 정하고 끝이 아니라, 새 상황마다 다시 다듬어야 해요|a standard isn't set once and done — every new situation means refining it again⟧", 12, "var(--ink)", cls="d"))
+         + label(570, 265, "⟦기준표는 계속 고쳐 나가야 해요|the standard has to keep being updated⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦표준은 한 번 정하고 끝이 아니라, 새 상황마다 다시 다듬어야 해요|a standard isn't set once and done — every new situation means refining it again⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "datastd", "order": 12,

@@ -14,10 +14,10 @@ P1 = svg(300, sky(300)
          + label(380, 280, "⟦감으로 정하면 모자라거나 남아요|guessing means too little or too much⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 그냥 많이/작년처럼 정하면 안 돼요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(220, 150, s=0.85, face=SWEAT + EYES, **STUDENT) + label(220, 250, "⟦너무 많이 만들어서 다 버렸어요|made way too much and had to toss it⟧", 11, "var(--bad)")
-         + person(560, 150, s=0.8, face=FROWN, **REP) + label(560, 250, "⟦전학생이 늘어난 걸 깜빡했어요|forgot more students transferred in⟧", 11, "var(--bad)")
-         + label(380, 280, "⟦예산도 인원도 바뀌는데 계산 없이 정하면 틀려요|budget and headcount both change — guessing without a formula gets it wrong⟧", 12, "var(--ink)", cls="d"))
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
+         + person(220, 130, s=0.85, face=SWEAT + EYES, **STUDENT) + label(220, 265, "⟦너무 많이 만들어서 다 버렸어요|made way too much and had to toss it⟧", 11, "var(--bad)")
+         + person(560, 135, s=0.8, face=FROWN, **REP) + label(560, 265, "⟦전학생이 늘어난 걸 깜빡했어요|forgot more students transferred in⟧", 11, "var(--bad)")
+         + label(380, 300, "⟦예산도 인원도 바뀌는데 계산 없이 정하면 틀려요|budget and headcount both change — guessing without a formula gets it wrong⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 규모산정 지침 = 미리 계산하는 공식표 (hero)
 P3 = svg(340, sky(340)
@@ -38,10 +38,10 @@ P4 = svg(300, sky(300, ground=False)
          + label(380, 285, "⟦공식 하나로 누가 계산해도 같은 결과가 나와요|the same formula gives anyone the same answer⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 공식대로 해도 갑자기 바뀔 수 있어요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
+P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
          + person(190, 140, s=0.8, face=SMILE, **PRESIDENT) + rulesboard(100, 180, 180, 60, "", ("⟦936인분 준비 완료|936 servings ready⟧",), 0.8)
-         + person(570, 130, s=0.85, face=SWEAT + EYES, **STUDENT) + label(570, 240, "⟦갑자기 옆 학교도 놀러 왔어요!|a neighboring school showed up too!⟧", 11, "var(--ink)")
-         + label(380, 280, "⟦공식은 출발점이에요 — 계속 지켜보고 다시 재야 해요|the formula is a starting point — you still have to watch and re-measure⟧", 12, "var(--ink)", cls="d"))
+         + person(570, 115, s=0.85, face=SWEAT + EYES, **STUDENT) + label(570, 255, "⟦갑자기 옆 학교도 놀러 왔어요!|a neighboring school showed up too!⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦공식은 출발점이에요 — 계속 지켜보고 다시 재야 해요|the formula is a starting point — you still have to watch and re-measure⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "hwsizing", "order": 2,

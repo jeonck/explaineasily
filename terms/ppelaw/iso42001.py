@@ -14,10 +14,10 @@ P1 = svg(300, sky(300)
          + label(380, 280, "⟦학교에 AI를 들이는 공통 기준이 아직 없어요|there's no shared standard yet for bringing AI into school⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 각자 마음대로 쓰다 사고가 나요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(220, 150, s=0.8, face=SWEAT + EYES, **STUDENT) + label(220, 250, "⟦AI가 왜 저만 낮게 평가했는지 몰라요|I don't know why the AI graded only me low⟧", 11, "var(--bad)")
-         + person(560, 150, s=0.8, face=FROWN, **REP) + label(560, 250, "⟦반마다 AI를 다르게 써서 기준이 다 달라요|every class uses the AI differently, with no common rule⟧", 11, "var(--bad)")
-         + label(380, 285, "⟦기준 없이 쓰면 편향되거나 설명 못 하는 사고가 남아요|without a standard, bias and unexplainable decisions slip through⟧", 12, "var(--ink)", cls="d"))
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
+         + person(220, 135, s=0.8, face=SWEAT + EYES, **STUDENT) + label(220, 265, "⟦AI가 왜 저만 낮게 평가했는지 몰라요|I don't know why the AI graded only me low⟧", 11, "var(--bad)")
+         + person(560, 135, s=0.8, face=FROWN, **REP) + label(560, 265, "⟦반마다 AI를 다르게 써서 기준이 다 달라요|every class uses the AI differently, with no common rule⟧", 11, "var(--bad)")
+         + label(380, 300, "⟦기준 없이 쓰면 편향되거나 설명 못 하는 사고가 남아요|without a standard, bias and unexplainable decisions slip through⟧", 12, "var(--ink)", cls="d"))
 
 # 3. ISO/IEC 42001 = 학생회가 정한 AI 관리 인증 기준 (hero)
 P3 = svg(340, sky(340)
@@ -37,10 +37,10 @@ P4 = svg(300, sky(300, ground=False)
          + label(380, 285, "⟦구조는 닮았지만, 42001은 AI만의 위험(편향·설명가능성)을 더 봐요|similar in structure, but 42001 adds AI-specific risks like bias and explainability⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 인증받았다고 다 끝나는 건 아니에요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 140, s=0.8, face=SMILE, **PRESIDENT) + label(190, 250, "⟦관리 체계는 갖췄어요|the management system is in place⟧", 11, "var(--ink)")
-         + person(570, 140, s=0.8, face=EYES, **STUDENT) + label(570, 250, "⟦근데 AI가 늘 맞게 판단하나요?|but does the AI always judge correctly?⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦인증은 '관리한다'는 뜻이지 '완벽하다'는 뜻이 아니에요|certified means managed well — not that it's flawless⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 120, s=0.8, face=SMILE, **PRESIDENT) + label(190, 260, "⟦관리 체계는 갖췄어요|the management system is in place⟧", 11, "var(--ink)")
+         + person(570, 120, s=0.8, face=EYES, **STUDENT) + label(570, 260, "⟦근데 AI가 늘 맞게 판단하나요?|but does the AI always judge correctly?⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦인증은 '관리한다'는 뜻이지 '완벽하다'는 뜻이 아니에요|certified means managed well — not that it's flawless⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "iso42001", "order": 7,
