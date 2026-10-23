@@ -57,12 +57,12 @@ P4 = svg(300, sky(300)
                ("⟦일꾼이 다른 손님 방을 엿보도록 속여요|the worker is tricked into peeking at another guest's room⟧", "⟦프로그램을 속여서 짐작을 유도해요|a program is tricked into making the guess⟧", "⟦더 넓은 상황에서 일어나요|happens across a wider range of situations⟧"), 12))
 
 # 5. 패치하면 느려지고, 완전히 없애긴 어려워요
-P5 = svg(280, '<rect width="760" height="280" fill="var(--bad-soft)"/>'
-         + person(160, 150, s=0.85, face=FROWN, **WORKER) + label(160, 240, "⟦짐작을 줄였더니 다시 느려져요|guess less, and it slows down again⟧", 11, "var(--bad)")
+P5 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
+         + person(160, 125, s=0.85, face=FROWN, **WORKER) + label(160, 262, "⟦짐작을 줄였더니 다시 느려져요|guess less, and it slows down again⟧", 11, "var(--bad)")
          + '<path d="M260 150 L340 150" stroke="var(--muted)" stroke-width="2"/>'
          + shelf(460, 150, 1.0) + label(460, 200, "⟦판자(패치)로 막아요|a patch boards it up⟧", 11, "var(--muted)")
-         + person(640, 150, s=0.85, face=EYES, **GUEST)
-         + label(380, 258, "⟦짐작 자체가 빠른 이유라서, 완전히 없애긴 어려워요|guessing ahead is why it's fast at all, so it can't be fully removed⟧", 12, "var(--ink)"))
+         + person(640, 125, s=0.85, face=EYES, **GUEST)
+         + label(380, 285, "⟦짐작 자체가 빠른 이유라서, 완전히 없애긴 어려워요|guessing ahead is why it's fast at all, so it can't be fully removed⟧", 12, "var(--ink)"))
 
 PAGE = {
     "slug": "cpuvuln", "order": 8,

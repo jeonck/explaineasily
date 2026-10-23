@@ -84,12 +84,12 @@ PAGE = {
          "caption": ("셋을 나란히 보면 이래요.", "Side by side, here's the difference."),
          "small": ('<a href="hashing-ko.html">지문</a>·비밀 도장·<a href="encryption-ko.html">봉인 편지</a>는 서로 다른 약속을 지켜요. 하나가 다른 걸 대신하지 않아요.',
                    'A <a href="hashing-en.html">fingerprint</a>, a secret seal, and a <a href="encryption-en.html">sealed letter</a> each keep a different promise — none stands in for another.')},
-        {"svg": svg(300, sky(300)
-                    + person(190, 150, s=0.85, **SENDER) + stampmold(240, 210, 0.7)
-                    + label(190, 250, "⟦둘 다 미리 도장틀을 나눠 가져야 해요|both sides must already share the mold, in advance⟧", 11, "var(--ink)")
-                    + person(560, 150, s=0.85, face=EYES, **RECEIVER)
-                    + label(560, 250, "⟦'내가 안 찍었다'는 말은 못 막아요|can't rule out either side later claiming I never stamped this⟧", 11, "var(--bad)")
-                    + label(380, 280, "⟦제3자 증명이 필요하면 왕의 도장(PKI 서명)을 써요|for proof a third party can check, use the king's seal (PKI signing) instead⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(320, sky(320)
+                    + person(190, 125, s=0.85, **SENDER) + stampmold(240, 185, 0.7)
+                    + label(190, 270, "⟦둘 다 미리 도장틀을 나눠 가져야 해요|both sides must already share the mold, in advance⟧", 11, "var(--ink)")
+                    + person(560, 125, s=0.85, face=EYES, **RECEIVER)
+                    + label(560, 270, "⟦'내가 안 찍었다'는 말은 못 막아요|can't rule out either side later claiming I never stamped this⟧", 11, "var(--bad)")
+                    + label(380, 305, "⟦제3자 증명이 필요하면 왕의 도장(PKI 서명)을 써요|for proof a third party can check, use the king's seal (PKI signing) instead⟧", 12, "var(--ink)", cls="d")),
          "alt": ("비밀 도장틀을 미리 나눠 가져야 하고, 부인 방지는 안 되며, 제3자 증명이 필요하면 PKI 서명을 씀", "Both sides must already share the secret mold, and it can't prevent either side from denying they stamped it; a third-party proof needs PKI signing instead"),
          "caption": ("도장틀을 미리 나눠야 하고, 부인은 못 막아요.", "The mold must be shared in advance, and it can't stop denial."),
          "small": ('열쇠를 미리 나누는 문제가 남고, 제3자가 증명할 증거(부인 방지)가 필요하면 <a href="pki-ko.html">왕의 도장이 찍힌 신분증</a>(디지털 서명)을 써요.',
