@@ -58,12 +58,12 @@ P4 = svg(360, sky(360, ground=False)
          + label(380, 345, "⟦참여 자격이 속도와 투명성까지 결정해요|who may join decides speed and transparency too⟧", 12, "var(--ink)"))
 
 # 5. 둘 다 극단, 실제론 섞인 형태도 많아요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
          + ledger(190, 150, 1.2, open_book=True) + ledger(230, 150, 1.0, open_book=False)
-         + label(210, 240, "⟦컨소시엄형 — 일부만 섞은 절충안|consortium type — a mix of the two⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.85, face=EYES, **GUIDE)
-         + label(570, 240, "⟦보안 요소는 다음 부스에서 더 자세히 봐요|the security side gets its own booth next⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦완전 공개도 완전 비공개도 한쪽 끝일 뿐이에요|fully open and fully closed are just two ends of the spectrum⟧", 12, "var(--ink)", cls="d"))
+         + label(210, 260, "⟦컨소시엄형 — 일부만 섞은 절충안|consortium type — a mix of the two⟧", 11, "var(--ink)")
+         + person(570, 125, s=0.85, face=EYES, **GUIDE)
+         + label(570, 260, "⟦보안 요소는 다음 부스에서 더 자세히 봐요|the security side gets its own booth next⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦완전 공개도 완전 비공개도 한쪽 끝일 뿐이에요|fully open and fully closed are just two ends of the spectrum⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "bcpublicprivate", "order": 4,

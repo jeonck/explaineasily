@@ -42,10 +42,10 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 300, "⟦셋 다 숫자와 기록으로 증명해요|all three are proven with numbers and records⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 한계: 겉만 포장하면(그린워싱) 금방 들통나요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **DIRECTOR) + label(190, 250, "⟦진짜 데이터가 있으면 믿음을 얻어요|real data earns real trust⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=FROWN + SWEAT, **DIRECTOR) + label(570, 250, "⟦겉만 포장하면 금방 들통나요|empty packaging gets caught fast⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦ESG는 전시가 아니라 실제 측정과 보고로 뒷받침돼야 해요|ESG has to be backed by real measurement and reporting, not just display⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--bad-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **DIRECTOR) + label(190, 260, "⟦진짜 데이터가 있으면 믿음을 얻어요|real data earns real trust⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=FROWN + SWEAT, **DIRECTOR) + label(570, 260, "⟦겉만 포장하면 금방 들통나요|empty packaging gets caught fast⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦ESG는 전시가 아니라 실제 측정과 보고로 뒷받침돼야 해요|ESG has to be backed by real measurement and reporting, not just display⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "esgit", "order": 5,

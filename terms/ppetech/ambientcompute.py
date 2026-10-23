@@ -52,12 +52,12 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦이 전시관 안의 모든 부스가 이렇게 연결돼 있어요|every booth in this hall is wired up this way⟧", 12, "var(--ink)"))
 
 # 5. 한계 - 조용히 지켜보는 거라 꺼림칙할 수 있고, 전기가 끊기면 멈춰요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **VISITOR) + glyph(150, 60, 0.6, GHOST_P)
-         + label(190, 250, "⟦몰래 지켜보는 느낌이 들 수 있어요|it can feel like you're quietly being watched⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=FROWN, **DEMO) + booth(540, 200, 60, 50, 0.9, "var(--stone-dark)", None)
-         + label(570, 270, "⟦전기·센서가 멈추면 그냥 평범한 부스예요|if power or sensors fail, it's just an ordinary booth⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦똑똑해 보여도, 결국 센서와 전기에 기대는 기술이에요|clever as it looks, it still depends on sensors and power⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=EYES, **VISITOR) + glyph(150, 40, 0.6, GHOST_P)
+         + label(190, 260, "⟦몰래 지켜보는 느낌이 들 수 있어요|it can feel like you're quietly being watched⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=FROWN, **DEMO) + booth(540, 180, 60, 50, 0.9, "var(--stone-dark)", None)
+         + label(570, 285, "⟦전기·센서가 멈추면 그냥 평범한 부스예요|if power or sensors fail, it's just an ordinary booth⟧", 11, "var(--ink)")
+         + label(380, 310, "⟦똑똑해 보여도, 결국 센서와 전기에 기대는 기술이에요|clever as it looks, it still depends on sensors and power⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "ambientcompute", "order": 14,

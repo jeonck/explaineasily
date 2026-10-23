@@ -38,11 +38,11 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 300, "⟦위험마다 다른 전략을 골라요|pick a different strategy for each risk⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 한계: 우산 챙겼다고 비가 안 오는 게 아니에요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
+P5 = svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
          + '<path d="M120 20 l-8 20 M160 10 l-8 20 M200 20 l-8 20" stroke="#5B9BD5" stroke-width="4" stroke-linecap="round"/>'
-         + person(190, 160, s=0.8, face=FROWN, **PLANNER) + label(190, 258, "⟦비는 여전히 와요|the rain still comes⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **PLANNER) + umbrella(594, 146, 0.8) + label(570, 250, "⟦그래도 우산 덕에 젖지 않아요|but thanks to the umbrella, nobody gets soaked⟧", 11, "var(--ink)")
-         + label(380, 284, "⟦위험관리는 위험을 없애는 게 아니라 대응할 여지를 남기는 거예요|risk management isn't erasing the risk — it's leaving room to respond⟧", 12, "var(--ink)", cls="d"))
+         + person(190, 140, s=0.8, face=FROWN, **PLANNER) + label(190, 270, "⟦비는 여전히 와요|the rain still comes⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=SMILE, **PLANNER) + umbrella(594, 126, 0.8) + label(570, 270, "⟦그래도 우산 덕에 젖지 않아요|but thanks to the umbrella, nobody gets soaked⟧", 11, "var(--ink)")
+         + label(380, 307, "⟦위험관리는 위험을 없애는 게 아니라 대응할 여지를 남기는 거예요|risk management isn't erasing the risk — it's leaving room to respond⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "projrisk", "order": 2,

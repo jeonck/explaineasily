@@ -62,11 +62,11 @@ P4 = svg(360, sky(360, ground=False)
          + label(380, 345, "⟦순서를 건너뛰면 엉뚱한 드론을 막을 수도 있어요|skip a stage, and you might stop the wrong drone⟧", 12, "var(--ink)"))
 
 # 5. 한계: 오인식, 전파 교란의 부작용
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
-         + drone(190, 150, 1.1, color="var(--good)") + label(190, 240, "⟦일반 드론을 침입자로 착각할 수 있어요|an ordinary drone can be mistaken for an intruder⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.85, face=FROWN, **GUIDE)
-         + label(570, 240, "⟦전파 교란은 주변 통신에도 영향을 줘요|jamming can disrupt nearby communications too⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦그래서 사용엔 법적 제한이 따라요|that's why its use comes with legal limits⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--bad-soft)"/>'
+         + drone(190, 150, 1.1, color="var(--good)") + label(190, 260, "⟦일반 드론을 침입자로 착각할 수 있어요|an ordinary drone can be mistaken for an intruder⟧", 11, "var(--ink)")
+         + person(570, 125, s=0.85, face=FROWN, **GUIDE)
+         + label(570, 260, "⟦전파 교란은 주변 통신에도 영향을 줘요|jamming can disrupt nearby communications too⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦그래서 사용엔 법적 제한이 따라요|that's why its use comes with legal limits⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "antidrone", "order": 12,
