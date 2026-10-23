@@ -16,11 +16,11 @@ P2 = svg(330, '<rect width="760" height="330" fill="var(--bad-soft)"/>'
          + label(380, 300, "⟦이미 다 찍은 뒤라 너무 늦었어요|it's already all printed — far too late⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 인쇄 전, 시나리오로 미리 리허설 (hero)
-P3 = svg(340, sky(340)
+P3 = svg(365, sky(365)
          + person(230, 100, s=0.85, face=EYES, **EDITOR) + person(400, 100, s=0.85, face=EYES, **WRITER) + person(560, 100, s=0.85, face=EYES, **PRINTER)
          + styleguide(140, 225, 480, 90, "⟦시나리오: 내구성? 전자책 전환? 인쇄 속도?|SCENARIOS: durability? e-book conversion? print speed?⟧", (), 0.9)
          + label(380, 30, "⟦ATAM = 인쇄 전에 여러 시나리오로 트레이드오프를 미리 찾는 리허설|ATAM = rehearsing trade-offs against many scenarios, before the press ever runs⟧", 13, "var(--ink)", cls="d")
-         + label(380, 345, "⟦이해관계자들이 다 같이 모여, 설계 결정의 민감점을 찾아요|stakeholders gather together to find the sensitive points in a design decision⟧", 11, "var(--muted)"))
+         + label(380, 350, "⟦이해관계자들이 다 같이 모여, 설계 결정의 민감점을 찾아요|stakeholders gather together to find the sensitive points in a design decision⟧", 11, "var(--muted)"))
 
 SCEN_I = icon('<rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 22 h20 M22 30 h20 M22 38 h12" stroke="#142033" stroke-width="2.5"/>')
 MAP_I = icon('<circle cx="24" cy="24" r="10" fill="var(--accent)"/><circle cx="44" cy="40" r="10" fill="var(--good)"/><path d="M30 30 L38 34" stroke="var(--ink)" stroke-width="3"/>')
@@ -58,10 +58,10 @@ PAGE = {
          "alt": ("저렴한 제본(옵션 A)과 유연한 제본(옵션 B)의 비용·전환성·속도를 숫자로 비교", "Comparing a cheap binding (Option A) and a flexible binding (Option B) by cost, convertibility, and speed"),
          "caption": ("여기에 비용과 이득까지 숫자로 따지면 CBAM이에요.", "Add cost and benefit numbers to this, and it becomes CBAM."),
          "small": ("어느 쪽이 \'더 남는 장사\'인지 숫자로 비교해요.", "It compares, in numbers, which option actually pays off more.")},
-        {"svg": svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-                     + person(190, 150, s=0.8, face=EYES, **PRINTER) + label(190, 240, "⟦눈을 뜨게 해줘요|it opens everyone's eyes⟧", 11, "var(--ink)")
-                     + person(570, 150, s=0.8, face=EYES, **EDITOR) + label(570, 240, "⟦결정은 결국 편집장 몫이에요|the final call is still the editor's⟧", 11, "var(--ink)")
-                     + label(380, 282, "⟦평가는 선택을 대신 안 해줘요, 무엇을 놓고 고민해야 할지 보여줄 뿐이에요|evaluation doesn't choose for you — it just shows what's worth weighing⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
+                     + person(190, 130, s=0.8, face=EYES, **PRINTER) + label(190, 260, "⟦눈을 뜨게 해줘요|it opens everyone's eyes⟧", 11, "var(--ink)")
+                     + person(570, 130, s=0.8, face=EYES, **EDITOR) + label(570, 260, "⟦결정은 결국 편집장 몫이에요|the final call is still the editor's⟧", 11, "var(--ink)")
+                     + label(380, 305, "⟦평가는 선택을 대신 안 해줘요, 무엇을 놓고 고민해야 할지 보여줄 뿐이에요|evaluation doesn't choose for you — it just shows what's worth weighing⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 평가가 눈을 뜨게 해줌. 오른쪽: 최종 결정은 여전히 편집장의 몫", "Left: the evaluation opens everyone's eyes. Right: the final decision is still the editor's to make"),
          "caption": ("평가가 결정을 대신 해주진 않아요.", "Evaluation doesn't make the decision for you."),
          "small": ("무엇을 놓고 고민해야 할지 보여줄 뿐, 선택은 여전히 사람 몫이에요.", "It only shows what's worth weighing — the choice is still a human's to make.")},

@@ -34,10 +34,10 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦작은 책일수록 둘 다 해보는 게 어렵지 않아요|the smaller the book, the easier it is to do both⟧", 12, "var(--ink)"))
 
 # 5. 테스트는 오류가 없다는 증거가 아니에요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **PROOFER) + label(190, 240, "⟦오류를 많이 잡아줘요|it catches a lot of errors⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **WRITER) + manuscript(570, 220, 0.6) + label(570, 270, "⟦그래도 모든 경우를 다 확인하진 못해요|but it still can't check every single case⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦테스트는 오류가 없다는 증거가 아니라, 찾아낸 오류가 있다는 증거예요|testing isn't proof there are no bugs — only proof the bugs it found are real⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=EYES, **PROOFER) + label(190, 260, "⟦오류를 많이 잡아줘요|it catches a lot of errors⟧", 11, "var(--ink)")
+         + person(570, 110, s=0.8, face=SMILE, **WRITER) + manuscript(570, 200, 0.6) + label(570, 260, "⟦그래도 모든 경우를 다 확인하진 못해요|but it still can't check every single case⟧", 11, "var(--ink)")
+         + label(380, 315, "⟦테스트는 오류가 없다는 증거가 아니라, 찾아낸 오류가 있다는 증거예요|testing isn't proof there are no bugs — only proof the bugs it found are real⟧", 12, "var(--ink)", cls="d"))
 
 WHITEBOX_I = icon('<circle cx="32" cy="14" r="6" fill="var(--accent)"/><path d="M32 20 v10 M32 30 l-14 14 M32 30 l14 14" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="18" cy="48" r="6" fill="var(--good)"/><circle cx="46" cy="48" r="6" fill="var(--bad)"/>')
 BOUNDARY_I = icon('<rect x="10" y="26" width="44" height="12" rx="2" fill="none" stroke="var(--accent)" stroke-width="3"/><circle cx="10" cy="32" r="5" fill="var(--bad)"/><circle cx="54" cy="32" r="5" fill="var(--bad)"/>')

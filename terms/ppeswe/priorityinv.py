@@ -8,7 +8,7 @@ def desk(x, y, s=1.0, text=None):
            f'<rect x="-30" y="4" width="8" height="26" fill="#5A3B22"/><rect x="22" y="4" width="8" height="26" fill="#5A3B22"/>'
            f'<rect x="-24" y="-20" width="48" height="12" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/></g>')
     if text:
-        out += label(0, 46, text, 11, "var(--muted)")
+        out += label(x, y + 46, text, 11, "var(--muted)")
     return out
 
 
@@ -81,10 +81,10 @@ PAGE = {
          "alt": ("위: 상속 적용 전 타임라인 — L이 M에게 계속 밀려 H가 오래 기다림. 아래: 상속 적용 후 — L이 금방 끝나고 H가 바로 시작함", "Top: timeline before inheritance — L keeps getting bumped by M, so H waits a long time. Bottom: after inheritance — L finishes fast and H starts right away"),
          "caption": ("시간선으로 보면 차이가 분명해요.", "On a timeline, the difference is clear."),
          "small": ("상속을 적용하면 L이 금방 끝나고, H가 바로 시작해요.", "With inheritance, L finishes quickly and H starts right away.")},
-        {"svg": svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-                     + person(190, 150, s=0.8, face=SMILE, **WRITER) + label(190, 240, "⟦H가 예측 가능하게 끝나요|H finishes predictably⟧", 11, "var(--ink)")
-                     + person(570, 150, s=0.8, face=EYES, **EDITOR) + label(570, 240, "⟦책상이 여러 개면 더 복잡해져요|more desks make it more complex⟧", 11, "var(--ink)")
-                     + label(380, 282, "⟦상속은 책상 하나짜리 역전엔 잘 듣지만, 만능 해결책은 아니에요|inheritance works well for a single shared desk, but it's no cure-all⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+                     + person(190, 130, s=0.8, face=SMILE, **WRITER) + label(190, 260, "⟦H가 예측 가능하게 끝나요|H finishes predictably⟧", 11, "var(--ink)")
+                     + person(570, 130, s=0.8, face=EYES, **EDITOR) + label(570, 260, "⟦책상이 여러 개면 더 복잡해져요|more desks make it more complex⟧", 11, "var(--ink)")
+                     + label(380, 305, "⟦상속은 책상 하나짜리 역전엔 잘 듣지만, 만능 해결책은 아니에요|inheritance works well for a single shared desk, but it's no cure-all⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 상속 덕분에 H가 예측 가능하게 끝남. 오른쪽: 공유 자원이 여러 개면 더 복잡해짐", "Left: thanks to inheritance, H finishes predictably. Right: with several shared resources, things get more complex"),
          "caption": ("상속도 만능은 아니에요.", "Inheritance isn't a cure-all either."),
          "small": ("공유 자원이 여러 개거나 겹치면, 더 정교한 방식(우선순위 천장)이 필요해요.", "With multiple or overlapping shared resources, a more careful scheme (priority ceiling) is needed.")},

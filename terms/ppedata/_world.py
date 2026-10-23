@@ -44,7 +44,7 @@ def fastdesk(x, y, s=1.0, label_text=None):
     out = (f'<g transform="translate({x},{y}) scale({s})"><rect x="-34" y="-8" width="68" height="20" rx="4" fill="var(--accent)"/>'
            f'<path d="M-24 -8 l6 -10 l6 10 M-4 -8 l6 -10 l6 10" stroke="#FFF8E7" stroke-width="3" fill="none"/></g>')
     if label_text:
-        out += label(0, 24, label_text, 11, "var(--muted)")
+        out += label(x, y + 24 * s, label_text, 11, "var(--muted)")
     return out
 
 

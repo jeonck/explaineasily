@@ -57,10 +57,10 @@ PAGE = {
          "alt": ("갈등 해결 다섯 가지 방식을 나열한 점검표: 협력, 타협, 수용, 강압, 회피", "A checklist of five conflict-resolution styles: collaborate, compromise, accommodate, force, withdraw"),
          "caption": ("실제로는 다섯 가지 방식이 있어요.", "In practice there are five styles."),
          "small": ("회피(미루기)도 쓸 수 있지만, 너무 자주 쓰면 갈등만 쌓여요.", "Withdrawing is an option too, but overusing it just lets conflict pile up.")},
-        {"svg": svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-                     + person(190, 150, s=0.8, face=FROWN, **EDITOR) + label(190, 240, "⟦억누르면 터져요|suppress it, it blows up⟧", 11, "var(--ink)")
-                     + person(570, 150, s=0.8, face=SMILE, **WRITER) + label(570, 240, "⟦다루면 더 나은 합의가 나와요|handle it, and a better agreement comes out⟧", 11, "var(--ink)")
-                     + label(380, 282, "⟦갈등관리는 갈등을 없애는 기술이 아니라 다루는 기술이에요|conflict management isn't the skill of erasing conflict — it's the skill of handling it⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
+                     + person(190, 130, s=0.8, face=FROWN, **EDITOR) + label(190, 260, "⟦억누르면 터져요|suppress it, it blows up⟧", 11, "var(--ink)")
+                     + person(570, 130, s=0.8, face=SMILE, **WRITER) + label(570, 260, "⟦다루면 더 나은 합의가 나와요|handle it, and a better agreement comes out⟧", 11, "var(--ink)")
+                     + label(380, 305, "⟦갈등관리는 갈등을 없애는 기술이 아니라 다루는 기술이에요|conflict management isn't the skill of erasing conflict — it's the skill of handling it⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 갈등을 억누르면 결국 터짐. 오른쪽: 갈등을 다루면 더 나은 합의가 나옴", "Left: suppressing conflict makes it blow up later. Right: handling it leads to a better agreement"),
          "caption": ("갈등관리는 갈등을 없애주지 않아요.", "Conflict management doesn't make conflict disappear."),
          "small": ("없애는 기술이 아니라 다루는 기술이에요.", "It's not the skill of erasing it — it's the skill of handling it.")},

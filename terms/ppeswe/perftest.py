@@ -5,8 +5,8 @@ from _world import *
 P1 = svg(300, sky(300)
          + person(140, 170, s=0.6, face=EYES, **READER) + person(180, 170, s=0.6, face=EYES, **READER)
          + person(220, 170, s=0.6, face=EYES, **READER) + person(260, 170, s=0.6, face=FROWN, **READER)
-         + printplate(440, 150, 1.0, label_text="⟦인쇄가 밀렸어요|printing is backed up⟧")
-         + person(420, 150, s=0.8, face=SWEAT + EYES, **PRINTER)
+         + printplate(380, 130, 0.9, label_text="⟦인쇄가 밀렸어요|printing is backed up⟧")
+         + person(540, 150, s=0.8, face=SWEAT + EYES, **PRINTER)
          + label(380, 30, "⟦신간 발매일, 독자가 한꺼번에 몰려요|release day — readers all show up at once⟧", 13, "var(--ink)")
          + label(380, 270, "⟦평소엔 멀쩡하던 인쇄소가 오늘따라 느려요|the print shop, usually fine, is slow today of all days⟧", 12, "var(--ink)"))
 

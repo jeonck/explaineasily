@@ -27,7 +27,7 @@ def printplate(x, y, s=1.0, label_text=None):
     out = (f'<g transform="translate({x},{y}) scale({s})"><rect x="-30" y="-20" width="60" height="40" rx="3" fill="#4A5A72"/>'
            f'<rect x="-24" y="-14" width="48" height="28" rx="2" fill="#D8D2C2"/></g>')
     if label_text:
-        out += label(0, 34, label_text, 11, "var(--muted)")
+        out += label(x, y + 34 * s, label_text, 11, "var(--muted)")
     return out
 
 

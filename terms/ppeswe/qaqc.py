@@ -57,10 +57,10 @@ PAGE = {
          "alt": ("왼쪽: QA는 편집 절차 준수 여부를 봄. 오른쪽: QC는 완성 원고를 직접 검사함", "Left: QA checks whether the process was followed. Right: QC inspects the finished manuscript directly"),
          "caption": ("QA와 QC는 보는 범위와 시점이 달라요.", "QA and QC differ in scope and timing."),
          "small": ("QA는 넓고 미리, QC는 좁고 나중에 봐요.", "QA looks broad and early; QC looks narrow and late.")},
-        {"svg": svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-                     + person(190, 150, s=0.8, face=FROWN, **PROOFER) + label(190, 240, "⟦QA 없이 QC만: 늦고 비싸요|QC alone, no QA: late and costly⟧", 11, "var(--ink)")
-                     + person(570, 150, s=0.8, face=SMILE, **EDITOR) + label(570, 240, "⟦QA가 있으면 결함이 애초에 줄어요|with QA, fewer flaws appear in the first place⟧", 11, "var(--ink)")
-                     + label(380, 282, "⟦QC는 걸러내는 그물, QA는 애초에 덜 터지게 하는 손질이에요|QC is the net that catches flaws, QA is the care that makes fewer in the first place⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
+                     + person(190, 130, s=0.8, face=FROWN, **PROOFER) + label(190, 260, "⟦QA 없이 QC만: 늦고 비싸요|QC alone, no QA: late and costly⟧", 11, "var(--ink)")
+                     + person(570, 130, s=0.8, face=SMILE, **EDITOR) + label(570, 260, "⟦QA가 있으면 결함이 애초에 줄어요|with QA, fewer flaws appear in the first place⟧", 11, "var(--ink)")
+                     + label(380, 305, "⟦QC는 걸러내는 그물, QA는 애초에 덜 터지게 하는 손질이에요|QC is the net that catches flaws, QA is the care that makes fewer in the first place⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: QA 없이 QC만 하면 늦고 비쌈. 오른쪽: QA가 있으면 결함이 애초에 줄어듦", "Left: QC alone, without QA, is late and costly. Right: with QA, fewer flaws appear from the start"),
          "caption": ("둘 다 필요하지만 역할은 달라요.", "Both are needed, but they play different roles."),
          "small": ("QC는 걸러내는 그물, QA는 애초에 덜 틀리게 하는 손질이에요.", "QC is the net that catches flaws; QA is the care that prevents them in the first place.")},
