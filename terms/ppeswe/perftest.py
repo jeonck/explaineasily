@@ -40,12 +40,12 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦이 네 숫자가 '얼마나 몰려야 멈추는지'를 말해줘요|these four numbers say exactly how much load it takes to break⟧", 12, "var(--ink)"))
 
 # 5. 시험 환경과 실제는 다를 수 있음
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **PROOFER)
-         + label(190, 240, "⟦가짜 독자로는 통과했어요|it passed with pretend readers⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.7, face=EYES, **READER) + person(600, 155, s=0.6, face=EYES, **READER)
+P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **PROOFER)
+         + label(190, 260, "⟦가짜 독자로는 통과했어요|it passed with pretend readers⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.7, face=EYES, **READER) + person(600, 135, s=0.6, face=EYES, **READER)
          + label(570, 260, "⟦진짜 독자는 패턴이 달라요|real readers show up in different patterns⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦테스트 환경이 실제와 다르면, 결과도 완전히 같진 않아요|if the test setup differs from the real one, the result isn't a perfect guarantee⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 305, "⟦테스트 환경이 실제와 다르면, 결과도 완전히 같진 않아요|if the test setup differs from the real one, the result isn't a perfect guarantee⟧", 12, "var(--ink)", cls="d"))
 
 LOAD_I = icon('<circle cx="22" cy="32" r="8" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><circle cx="42" cy="32" r="8" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/><circle cx="32" cy="18" r="8" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>')
 STRESS_I = icon('<path d="M18 46 L32 14 L46 46 Z" fill="none" stroke="var(--bad)" stroke-width="4"/><path d="M32 26 v10 M32 40 v2" stroke="var(--bad)" stroke-width="3" stroke-linecap="round"/>')

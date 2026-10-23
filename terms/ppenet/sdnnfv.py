@@ -2,21 +2,21 @@ from _draw import *
 from _world import *
 
 # 1. 길을 바꾸려면 우체국마다 손으로 뜯어고쳐야 해요
-P1 = svg(300, sky(300)
+P1 = svg(330, sky(330)
          + postoffice(140, 170, 0.75) + postoffice(360, 170, 0.75) + postoffice(580, 170, 0.75)
          + person(140, 230, s=0.6, face=SWEAT + EYES, **CLERK)
          + person(360, 230, s=0.6, face=SWEAT + EYES, **CLERK)
          + person(580, 230, s=0.6, face=SWEAT + EYES, **CLERK)
          + label(380, 30, "⟦배송 경로를 바꾸려면 우체국 세 곳을 전부 손으로 고쳐야 해요|rerouting means visiting all three post offices and rewiring each by hand⟧", 13, "var(--ink)", cls="d")
-         + label(380, 280, "⟦우체국마다 길 안내판이 벽에 못 박혀 있어요|each post office has its route board nailed to the wall⟧", 12, "var(--muted)"))
+         + label(380, 310, "⟦우체국마다 길 안내판이 벽에 못 박혀 있어요|each post office has its route board nailed to the wall⟧", 12, "var(--muted)"))
 
 # 2. 새 기능 하나마다 전용 기계를 또 사야 해요
-P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
+P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
          + postoffice(260, 170, 0.8)
          + tollgate(260, 240, 0.7)
-         + person(420, 170, s=0.75, face=FROWN, **CLERK)
-         + label(420, 240, "⟦분류 기계가 고장나면 새 기계부터 사야 해요|when the sorting machine breaks, first you buy a whole new one⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦기계가 자리에 고정돼 있어서, 바꾸는 데마다 시간과 돈이 들어요|hardware is bolted to one spot — every change costs time and money⟧", 12, "var(--ink)", cls="d"))
+         + person(420, 150, s=0.75, face=FROWN, **CLERK)
+         + label(420, 250, "⟦분류 기계가 고장나면 새 기계부터 사야 해요|when the sorting machine breaks, first you buy a whole new one⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦기계가 자리에 고정돼 있어서, 바꾸는 데마다 시간과 돈이 들어요|hardware is bolted to one spot — every change costs time and money⟧", 12, "var(--ink)", cls="d"))
 
 # 3. SDN=관제탑이 소프트웨어로 길을 바꿈, NFV=범용 트럭에 기능만 설치 (hero)
 P3 = svg(340, sky(340)
