@@ -32,7 +32,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 
 # 3. 마이데이터 = 내 장부는 내가 보낼 곳을 정해요 (hero)
 P3 = svg(340, sky(340)
-         + person(130, 170, s=0.8, **VILLAGER) + label(130, 260, "⟦제 장부, B가게로 보내주세요|send my pages to shop B, please⟧", 10, "var(--muted)")
+         + person(130, 170, s=0.8, **VILLAGER) + label(130, 285, "⟦제 장부, B가게로 보내주세요|send my pages to shop B, please⟧", 10, "var(--muted)")
          + shopfront(340, 190, 0.7, "⟦A가게|shop A⟧") + ledgerbook(340, 170, 0.55)
          + '<path d="M390 160 C450 110 500 110 560 150" stroke="var(--good)" stroke-width="3" stroke-dasharray="4 4" fill="none"/>' + ledgerbook(475, 95, 0.5)
          + shopfront(630, 190, 0.7, "⟦B가게|shop B⟧")
@@ -78,10 +78,10 @@ PAGE = {
          "alt": ("손님 동의 → A가게가 요청 전달 → 마이데이터 사업자 → B가게로 전달 완료", "Villager's consent -> shop A forwards the request -> a licensed MyData operator -> delivered to shop B"),
          "caption": ("실제로는 이런 순서로 움직여요.", "In practice, it moves through these steps."),
          "small": ("동의 → 요청 전달 → (허가받은 사업자) → 전달 완료. 아무 가게나 마음대로 보내주는 게 아니에요.", "Consent, then the request forwards, then a licensed operator carries it, then delivery. It isn't just any shop sending it on a whim.")},
-        {"svg": svg(300, sky(300)
-                    + person(190, 150, s=0.85, **AGENT) + label(190, 240, "⟦허가받은 사업자만 할 수 있어요|only a licensed operator may do this⟧", 11, "var(--muted)")
-                    + person(560, 150, s=0.85, face=FROWN + SWEAT, **SHOPKEEP_B) + label(560, 240, "⟦전달 통로가 뚫리면 전부 새요|a breach of the pipe leaks everything at once⟧", 11, "var(--bad)")
-                    + label(380, 280, "⟦편리해진 만큼, 전달 통로를 지키는 게 더 중요해져요|convenience raises the stakes on protecting that delivery pipe⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(320, sky(320)
+                    + person(190, 150, s=0.85, **AGENT) + label(190, 270, "⟦허가받은 사업자만 할 수 있어요|only a licensed operator may do this⟧", 11, "var(--muted)")
+                    + person(560, 150, s=0.85, face=FROWN + SWEAT, **SHOPKEEP_B) + label(560, 270, "⟦전달 통로가 뚫리면 전부 새요|a breach of the pipe leaks everything at once⟧", 11, "var(--bad)")
+                    + label(380, 305, "⟦편리해진 만큼, 전달 통로를 지키는 게 더 중요해져요|convenience raises the stakes on protecting that delivery pipe⟧", 12, "var(--ink)", cls="d")),
          "alt": ("허가받은 사업자만 마이데이터를 다룰 수 있고, 전달 통로가 뚫리면 한 번에 전부 샐 수 있음", "Only a licensed operator may handle MyData, and a breach of the pipe can leak everything at once"),
          "caption": ("편한 만큼, 지켜야 할 것도 늘어나요.", "The more convenient it gets, the more there is to protect."),
          "small": ('허가받은 사업자만 다룰 수 있고, 전달 통로 보안이 특히 중요해요 → <a href="privacy-ko.html">개인정보 보호</a>, <a href="data3law-ko.html">데이터 3법 개정</a>',
