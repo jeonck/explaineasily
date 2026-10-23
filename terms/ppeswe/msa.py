@@ -35,10 +35,10 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦작은 출판사엔 오히려 버거울 수 있어요|for a small publishing house, this can be more than it can handle⟧", 12, "var(--ink)"))
 
 # 5. 묶임을 풀면, 조율이라는 새 일이 생겨요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **EDITOR) + label(190, 240, "⟦한 편이 안 팔려도 다른 편엔 안 번져요|if one volume flops, it doesn't spread to the others⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **PRINTER) + manuscript(570, 220, 0.6) + label(570, 270, "⟦목차를 맞추는 조율 비용은 늘어나요|but the cost of coordinating the index goes up⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦마이크로서비스는 묶임을 푸는 대신, 조율이라는 새 일을 만들어요|microservices trade away being bound together — but create a new job: coordination⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=EYES, **EDITOR) + label(190, 260, "⟦한 편이 안 팔려도 다른 편엔 안 번져요|if one volume flops, it doesn't spread to the others⟧", 11, "var(--ink)")
+         + person(570, 110, s=0.8, face=SMILE, **PRINTER) + manuscript(570, 200, 0.6) + label(570, 260, "⟦목차를 맞추는 조율 비용은 늘어나요|but the cost of coordinating the index goes up⟧", 11, "var(--ink)")
+         + label(380, 315, "⟦마이크로서비스는 묶임을 푸는 대신, 조율이라는 새 일을 만들어요|microservices trade away being bound together — but create a new job: coordination⟧", 12, "var(--ink)", cls="d"))
 
 SPLIT_I = icon('<rect x="8" y="16" width="20" height="32" rx="2" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><rect x="32" y="16" width="20" height="32" rx="2" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2"/><path d="M28 8 l8 8 -8 8" stroke="var(--ink)" stroke-width="2" fill="none"/>')
 TEAM_I = icon('<circle cx="18" cy="20" r="8" fill="var(--accent)"/><circle cx="46" cy="20" r="8" fill="var(--good)"/><path d="M10 44 q8 -10 16 0 M38 44 q8 -10 16 0" stroke="var(--ink)" stroke-width="3" fill="none" stroke-linecap="round"/>')

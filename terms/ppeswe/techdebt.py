@@ -37,12 +37,12 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦의도적이든 아니든, 장부에 적어두고 계획적으로 갚아야 해요|deliberate or not, write it in the ledger and repay it on purpose⟧", 12, "var(--ink)"))
 
 # 5. 빚을 0으로 만들 필요는 없음, 기록하고 계획적으로 갚는 게 핵심
-P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 150, s=0.8, face=FROWN, **EDITOR)
-         + label(190, 240, "⟦빚을 완전히 0으로 만들면 마감을 못 맞춰요|driving the debt to zero means missing every deadline⟧", 11, "var(--ink)")
+P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+         + person(190, 130, s=0.8, face=FROWN, **EDITOR)
+         + label(190, 260, "⟦빚을 완전히 0으로 만들면 마감을 못 맞춰요|driving the debt to zero means missing every deadline⟧", 11, "var(--ink)")
          + '<rect x="540" y="130" width="60" height="70" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/>' + person(600, 180, s=0.7, face=SMILE, **PROOFER)
-         + label(570, 230, "⟦장부에 적어두고 계획적으로 갚아요|write it down, repay it on purpose⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦핵심은 빚을 없애는 게 아니라, 기록하고 계획적으로 갚는 거예요|the point isn't erasing debt — it's recording and repaying it on purpose⟧", 12, "var(--ink)", cls="d"))
+         + label(570, 260, "⟦장부에 적어두고 계획적으로 갚아요|write it down, repay it on purpose⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦핵심은 빚을 없애는 게 아니라, 기록하고 계획적으로 갚는 거예요|the point isn't erasing debt — it's recording and repaying it on purpose⟧", 12, "var(--ink)", cls="d"))
 
 LEDGER_I = icon('<rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 22 h20 M22 30 h20 M22 38 h12" stroke="#142033" stroke-width="2.5"/>')
 INTEREST_I = icon('<path d="M14 46 L26 28 L38 36 L50 14" stroke="var(--bad)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>')

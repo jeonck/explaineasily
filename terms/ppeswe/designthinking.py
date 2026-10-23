@@ -49,11 +49,11 @@ P4 = svg(340, sky(340, ground=False)
          + label(380, 320, "⟦한 바퀴 돌고 나면, 다시 공감으로 돌아가요|after one loop, it goes back to empathy again⟧", 12, "var(--muted)"))
 
 # 5. 디자인씽킹이 전부를 대신하진 않아요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=SMILE, **EDITOR) + label(190, 240, "⟦'뭘 쓸지' 찾는 데 쓰는 방법이에요|a method for finding what to write⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=EYES, **PRINTER) + inkstamp(570, 220, 0.5)
+P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=SMILE, **EDITOR) + label(190, 260, "⟦'뭘 쓸지' 찾는 데 쓰는 방법이에요|a method for finding what to write⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=EYES, **PRINTER) + inkstamp(570, 200, 0.5)
          + label(570, 260, "⟦그 뒤 일정·품질 관리는 또 다른 몫이에요|schedule and quality after that are a separate job⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦무엇을 쓸지 찾는 방법이지, 모든 공정을 대신하진 않아요|it finds what to write — it doesn't replace every other step⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 305, "⟦무엇을 쓸지 찾는 방법이지, 모든 공정을 대신하진 않아요|it finds what to write — it doesn't replace every other step⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "designthinking", "order": 44,

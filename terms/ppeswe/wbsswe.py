@@ -38,14 +38,14 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦각 가지에 담당자와 기간을 붙이면 일정표가 돼요|add an owner and a timeline to each branch, and it becomes a schedule⟧", 12, "var(--ink)"))
 
 # 5. 쪼개기만으론 부족, 너무 잘게 쪼개면 오히려 힘듦
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=FROWN, **EDITOR)
-         + label(190, 240, "⟦쪼개기만 하고 순서(의존관계)를 안 보면|splitting tasks without looking at order (dependencies)⟧", 11, "var(--ink)")
-         + label(190, 265, "⟦교정 전에 인쇄부터 할 수도 있어요|printing could get scheduled before proofing⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SWEAT + EYES, **EDITOR)
-         + '<rect x="530" y="200" width="30" height="20" rx="2" fill="#FFF8E7" stroke="#C9A86A"/><rect x="565" y="200" width="30" height="20" rx="2" fill="#FFF8E7" stroke="#C9A86A"/><rect x="600" y="200" width="30" height="20" rx="2" fill="#FFF8E7" stroke="#C9A86A"/>'
-         + label(570, 240, "⟦너무 잘게 쪼개면 가지가 너무 많아져요|split too finely and there are just too many branches⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦쪼개기는 시작일 뿐, 순서와 적당한 크기도 따져야 해요|splitting is just the start — order and the right granularity matter too⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(350, '<rect width="380" height="350" fill="var(--accent-soft)"/><rect x="380" width="380" height="350" fill="var(--good-soft)"/>'
+         + person(190, 120, s=0.8, face=FROWN, **EDITOR)
+         + label(190, 250, "⟦쪼개기만 하고 순서(의존관계)를 안 보면|splitting tasks without looking at order (dependencies)⟧", 11, "var(--ink)")
+         + label(190, 272, "⟦교정 전에 인쇄부터 할 수도 있어요|printing could get scheduled before proofing⟧", 11, "var(--ink)")
+         + person(570, 120, s=0.8, face=SWEAT + EYES, **EDITOR)
+         + '<rect x="530" y="170" width="30" height="20" rx="2" fill="#FFF8E7" stroke="#C9A86A"/><rect x="565" y="170" width="30" height="20" rx="2" fill="#FFF8E7" stroke="#C9A86A"/><rect x="600" y="170" width="30" height="20" rx="2" fill="#FFF8E7" stroke="#C9A86A"/>'
+         + label(570, 260, "⟦너무 잘게 쪼개면 가지가 너무 많아져요|split too finely and there are just too many branches⟧", 11, "var(--ink)")
+         + label(380, 320, "⟦쪼개기는 시작일 뿐, 순서와 적당한 크기도 따져야 해요|splitting is just the start — order and the right granularity matter too⟧", 12, "var(--ink)", cls="d"))
 
 TREE_I = icon('<circle cx="32" cy="14" r="6" fill="var(--accent)"/><path d="M32 20 v8 M32 28 h-14 v8 M32 28 h14 v8" stroke="var(--line)" stroke-width="3" fill="none"/><circle cx="18" cy="40" r="5" fill="var(--good)"/><circle cx="46" cy="40" r="5" fill="var(--good)"/>')
 LEAF_I = icon('<rect x="14" y="14" width="36" height="36" rx="6" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M24 32 l6 6 l12 -14" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/>')

@@ -64,10 +64,10 @@ PAGE = {
          "alt": ("그림책용 규칙표(간단)와 사전용 규칙표(상세)를 나란히 비교", "Side by side: a simple picture-book rule card and a detailed dictionary rule card"),
          "caption": ("규칙표는 책마다 달라져요.", "The rule card ends up different for each book."),
          "small": ("같은 규칙집에서 나왔지만, 최종 체크리스트는 서로 달라요.", "Drawn from the same rulebook, but the final checklist differs.")},
-        {"svg": svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-                     + person(190, 150, s=0.8, face=FROWN, **EDITOR) + label(190, 240, "⟦다 빼면: 품질에 구멍이 생겨요|strip too much: quality gaps appear⟧", 11, "var(--ink)")
-                     + person(570, 150, s=0.8, face=SMILE, **EDITOR) + label(570, 240, "⟦균형을 맞추면: 빠르고 안전해요|balance it: fast and still safe⟧", 11, "var(--ink)")
-                     + label(380, 282, "⟦테일러링은 규칙을 없애는 게 아니라, 책에 맞게 고르는 기술이에요|tailoring isn't deleting rules — it's the skill of choosing them⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
+                     + person(190, 130, s=0.8, face=FROWN, **EDITOR) + label(190, 260, "⟦다 빼면: 품질에 구멍이 생겨요|strip too much: quality gaps appear⟧", 11, "var(--ink)")
+                     + person(570, 130, s=0.8, face=SMILE, **EDITOR) + label(570, 260, "⟦균형을 맞추면: 빠르고 안전해요|balance it: fast and still safe⟧", 11, "var(--ink)")
+                     + label(380, 305, "⟦테일러링은 규칙을 없애는 게 아니라, 책에 맞게 고르는 기술이에요|tailoring isn't deleting rules — it's the skill of choosing them⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 규칙을 다 빼서 품질 구멍 발생. 오른쪽: 균형 잡힌 규칙으로 빠르고 안전함", "Left: stripping too much opens quality gaps. Right: a balanced set of rules stays fast and safe"),
          "caption": ("테일러링도 지나치면 위험해요.", "Even tailoring can go too far."),
          "small": ("규칙을 없애는 게 아니라, 책에 맞게 고르는 기술이에요.", "It isn't about deleting rules — it's choosing them to fit the book.")},

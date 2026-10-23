@@ -38,12 +38,12 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦줄거리가 안 바뀌었는지는 교정자가 매번 확인해요|the proofreader checks the plot hasn't moved, every single time⟧", 12, "var(--ink)"))
 
 # 5. 테스트(교정) 없으면 확신 못함, 새 기능 추가가 아님
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=FROWN, **PROOFER)
-         + label(190, 240, "⟦교정(테스트) 없인 줄거리가 안 바뀐 건지 확신 못해요|without proofing (tests), you can't be sure the plot held⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=EYES, **WRITER) + manuscript(570, 220, 0.6)
-         + label(570, 265, "⟦새 챕터를 추가하는 건 리팩토링이 아니에요|adding a new chapter isn't refactoring⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦리팩토링은 기능 추가가 아니라, 구조만 다시 다듬는 거예요|refactoring isn't adding features — it's only reworking the structure⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=FROWN, **PROOFER)
+         + label(190, 260, "⟦교정(테스트) 없인 줄거리가 안 바뀐 건지 확신 못해요|without proofing (tests), you can't be sure the plot held⟧", 11, "var(--ink)")
+         + person(570, 110, s=0.8, face=EYES, **WRITER) + manuscript(570, 200, 0.6)
+         + label(570, 260, "⟦새 챕터를 추가하는 건 리팩토링이 아니에요|adding a new chapter isn't refactoring⟧", 11, "var(--ink)")
+         + label(380, 315, "⟦리팩토링은 기능 추가가 아니라, 구조만 다시 다듬는 거예요|refactoring isn't adding features — it's only reworking the structure⟧", 12, "var(--ink)", cls="d"))
 
 MERGE_I = icon('<rect x="10" y="18" width="20" height="12" rx="3" fill="var(--muted)"/><rect x="10" y="34" width="20" height="12" rx="3" fill="var(--muted)"/><rect x="38" y="26" width="20" height="12" rx="3" fill="var(--good)"/>')
 SPLIT_I = icon('<rect x="18" y="10" width="28" height="18" rx="3" fill="var(--muted)"/><rect x="10" y="36" width="20" height="14" rx="3" fill="var(--good)"/><rect x="34" y="36" width="20" height="14" rx="3" fill="var(--good)"/>')

@@ -34,10 +34,10 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦짧게 반복하면서, 틀린 방향이면 빨리 알아차려요|short repeating cycles catch a wrong direction quickly⟧", 12, "var(--ink)"))
 
 # 5. 속도는 빨라져도 글은 작가가 써야 해요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **EDITOR) + label(190, 240, "⟦속도는 빨라져요|it makes things move faster⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **WRITER) + manuscript(570, 220, 0.6) + label(570, 270, "⟦그래도 글은 작가가 직접 써야 해요|but the writing itself is still up to the writer⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦애자일은 일하는 방식이지, 글쓰기 실력을 대신 채워주진 않아요|Agile is a way of working — it doesn't replace the writer's own skill⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=EYES, **EDITOR) + label(190, 260, "⟦속도는 빨라져요|it makes things move faster⟧", 11, "var(--ink)")
+         + person(570, 110, s=0.8, face=SMILE, **WRITER) + manuscript(570, 200, 0.6) + label(570, 260, "⟦그래도 글은 작가가 직접 써야 해요|but the writing itself is still up to the writer⟧", 11, "var(--ink)")
+         + label(380, 315, "⟦애자일은 일하는 방식이지, 글쓰기 실력을 대신 채워주진 않아요|Agile is a way of working — it doesn't replace the writer's own skill⟧", 12, "var(--ink)", cls="d"))
 
 SPRINT_I = icon('<circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M32 20 v12 l8 5" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/>')
 REVIEW_I = icon('<path d="M8 32 q24 -22 48 0 q-24 22 -48 0z" fill="none" stroke="var(--good)" stroke-width="4"/><circle cx="32" cy="32" r="8" fill="var(--good)"/>')

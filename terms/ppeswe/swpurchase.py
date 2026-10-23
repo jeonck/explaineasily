@@ -64,10 +64,10 @@ PAGE = {
          "alt": ("왼쪽: 통합발주는 종합업체가 구매해 마진이 숨겨짐. 오른쪽: 분리발주는 발주자가 직접 구매해 가격이 투명함", "Left: bundled procurement lets the integrator buy it with hidden margin. Right: separate procurement has the client buy directly with transparent pricing"),
          "caption": ("발주 방식을 나눠보면 차이가 분명해요.", "Splitting the procurement makes the difference clear."),
          "small": ("가격 투명성과 품질 보장이 분리발주의 핵심 이득이에요.", "Price transparency and guaranteed quality are the main payoff of separate procurement.")},
-        {"svg": svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-                     + person(190, 150, s=0.8, face=SMILE, **EDITOR) + label(190, 240, "⟦제값 주고 제대로 된 걸 사요|pays the real price for the real thing⟧", 11, "var(--ink)")
-                     + person(570, 150, s=0.8, face=EYES, **PRINTER) + label(570, 240, "⟦계약이 둘로 나뉘어 관리가 늘어요|two contracts mean more to manage⟧", 11, "var(--ink)")
-                     + label(380, 282, "⟦가격·품질은 좋아지지만, 설치 책임을 나누는 계약 관리가 더 필요해요|price and quality improve, but managing two separate contracts takes more care⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+                     + person(190, 130, s=0.8, face=SMILE, **EDITOR) + label(190, 260, "⟦제값 주고 제대로 된 걸 사요|pays the real price for the real thing⟧", 11, "var(--ink)")
+                     + person(570, 130, s=0.8, face=EYES, **PRINTER) + label(570, 260, "⟦계약이 둘로 나뉘어 관리가 늘어요|two contracts mean more to manage⟧", 11, "var(--ink)")
+                     + label(380, 305, "⟦가격·품질은 좋아지지만, 설치 책임을 나누는 계약 관리가 더 필요해요|price and quality improve, but managing two separate contracts takes more care⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 발주자가 제값 주고 제대로 된 인쇄기를 사게 됨. 오른쪽: 계약이 둘로 나뉘어 관리가 늘어남", "Left: the client pays the real price for the real machine. Right: splitting into two contracts means more to manage"),
          "caption": ("직접구매가 전부를 해결해주진 않아요.", "Direct purchase doesn't solve everything."),
          "small": ("가격·품질은 좋아지지만, 설치 책임을 나누는 계약 관리가 더 필요해요.", "Price and quality improve, but managing the split installation responsibility takes more work.")},

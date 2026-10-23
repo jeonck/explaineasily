@@ -59,10 +59,10 @@ PAGE = {
          "alt": ("기능성, 신뢰성, 사용성, 효율성, 유지보수성, 이식성 여섯 조건을 나열한 점검표", "A checklist listing six conditions: functionality, reliability, usability, efficiency, maintainability, portability"),
          "caption": ("실제로는 여섯 가지 조건이 있어요.", "In practice there are six conditions."),
          "small": ("효율성과 이식성도 좋은 책의 숨은 조건이에요.", "Efficiency and portability are the quieter conditions behind a good book.")},
-        {"svg": svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
-                     + person(190, 150, s=0.8, face=FROWN, **READER) + label(190, 240, "⟦예쁘기만 하면: 내용이 부실해요|only pretty: thin on content⟧", 11, "var(--ink)")
-                     + person(570, 150, s=0.8, face=FROWN, **READER) + label(570, 240, "⟦내용만 꽉 차면: 아무도 못 읽어요|only packed: nobody can read it⟧", 11, "var(--ink)")
-                     + label(380, 282, "⟦한쪽만 챙기면 결국 둘 다 좋은 책이 아니에요 — 균형이 핵심이에요|favoring just one side still isn't a good book — balance is the point⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--bad-soft)"/>'
+                     + person(190, 130, s=0.8, face=FROWN, **READER) + label(190, 260, "⟦예쁘기만 하면: 내용이 부실해요|only pretty: thin on content⟧", 11, "var(--ink)")
+                     + person(570, 130, s=0.8, face=FROWN, **READER) + label(570, 260, "⟦내용만 꽉 차면: 아무도 못 읽어요|only packed: nobody can read it⟧", 11, "var(--ink)")
+                     + label(380, 305, "⟦한쪽만 챙기면 결국 둘 다 좋은 책이 아니에요 — 균형이 핵심이에요|favoring just one side still isn't a good book — balance is the point⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 예쁘기만 하면 내용이 부실함. 오른쪽: 내용만 꽉 차면 아무도 못 읽음", "Left: only pretty means thin content. Right: only packed with content means nobody can read it"),
          "caption": ("한쪽으로 치우쳐도 좋은 책은 아니에요.", "Leaning too far either way isn't a good book."),
          "small": ("여섯 조건 사이의 균형이 좋은 소프트웨어의 진짜 조건이에요.", "Balance among the six conditions is what really makes software good.")},

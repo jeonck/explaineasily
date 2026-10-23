@@ -37,10 +37,10 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦그림을 그렸다고 저절로 좋은 구조가 되진 않아요|drawing the diagram doesn't automatically make the structure good⟧", 12, "var(--ink)"))
 
 # 5. 지도를 그렸다고 책이 저절로 써지진 않아요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **WRITER) + label(190, 240, "⟦구조를 또렷하게 보여줘요|it shows the structure clearly⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **EDITOR) + manuscript(570, 220, 0.6) + label(570, 270, "⟦그래도 실제로 쓰는 건 작가 몫이에요|but actually writing it is still up to the writer⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦UML은 쓰기 전 지도일 뿐, 지도를 그렸다고 책이 저절로 써지진 않아요|UML is just the map drawn before writing — drawing it doesn't write the book for you⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=EYES, **WRITER) + label(190, 260, "⟦구조를 또렷하게 보여줘요|it shows the structure clearly⟧", 11, "var(--ink)")
+         + person(570, 110, s=0.8, face=SMILE, **EDITOR) + manuscript(570, 200, 0.6) + label(570, 260, "⟦그래도 실제로 쓰는 건 작가 몫이에요|but actually writing it is still up to the writer⟧", 11, "var(--ink)")
+         + label(380, 315, "⟦UML은 쓰기 전 지도일 뿐, 지도를 그렸다고 책이 저절로 써지진 않아요|UML is just the map drawn before writing — drawing it doesn't write the book for you⟧", 12, "var(--ink)", cls="d"))
 
 RELATION_I = icon('<rect x="8" y="14" width="18" height="16" rx="2" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><rect x="38" y="34" width="18" height="16" rx="2" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2"/><path d="M26 22 l12 20" stroke="var(--ink)" stroke-width="2"/>')
 SEQUENCE_I = icon('<path d="M14 10 v44 M50 10 v44" stroke="var(--muted)" stroke-width="2"/><path d="M14 22 h36" stroke="var(--accent)" stroke-width="3"/><path d="M50 36 h-36" stroke="var(--good)" stroke-width="3"/>')

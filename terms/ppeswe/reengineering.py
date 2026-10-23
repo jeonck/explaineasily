@@ -36,10 +36,10 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦되짚은 개요가 완벽히 맞다는 보장은 없어요|there's no guarantee the reconstructed outline is exactly right⟧", 12, "var(--ink)"))
 
 # 5. 새 책만큼 깔끔하진 않아요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **WRITER) + label(190, 240, "⟦오래된 책도 다시 살릴 수 있어요|it can revive even an old out-of-print book⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **EDITOR) + manuscript(570, 220, 0.6) + label(570, 270, "⟦새 책만큼 깔끔하진 않을 수 있어요|but it may not come out as clean as a brand-new book⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦재공학은 과거를 되살리는 일이지, 처음부터 완벽하게 새로 짓는 일은 아니에요|reengineering revives the past — it isn't building something perfectly new from scratch⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=EYES, **WRITER) + label(190, 260, "⟦오래된 책도 다시 살릴 수 있어요|it can revive even an old out-of-print book⟧", 11, "var(--ink)")
+         + person(570, 110, s=0.8, face=SMILE, **EDITOR) + manuscript(570, 200, 0.6) + label(570, 260, "⟦새 책만큼 깔끔하진 않을 수 있어요|but it may not come out as clean as a brand-new book⟧", 11, "var(--ink)")
+         + label(380, 315, "⟦재공학은 과거를 되살리는 일이지, 처음부터 완벽하게 새로 짓는 일은 아니에요|reengineering revives the past — it isn't building something perfectly new from scratch⟧", 12, "var(--ink)", cls="d"))
 
 ANALYZE_I = icon('<rect x="12" y="10" width="28" height="36" rx="2" fill="#FFF8E7" stroke="#C9822B" stroke-width="3"/><circle cx="42" cy="40" r="12" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M51 49 l9 9" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/>')
 INFER_I = icon('<path d="M46 16 a20 20 0 1 0 4 28" stroke="var(--good)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M50 30 l0 -14 -14 0" stroke="var(--good)" stroke-width="5" fill="none" stroke-linecap="round"/>')

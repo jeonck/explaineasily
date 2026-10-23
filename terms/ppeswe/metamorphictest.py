@@ -45,12 +45,12 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦관계가 깨지면, 정답을 몰라도 뭔가 잘못된 거예요|break the relationship, and something's wrong — even without knowing the right answer⟧", 12, "var(--ink)"))
 
 # 5. 관계를 잘못 세우면 놓침, 정답 비교를 대체하진 않음
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=FROWN, **PROOFER)
-         + label(190, 240, "⟦관계를 잘못 세우면 진짜 버그를 놓쳐요|a badly chosen relation can miss a real bug⟧", 11, "var(--ink)")
+P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=FROWN, **PROOFER)
+         + label(190, 260, "⟦관계를 잘못 세우면 진짜 버그를 놓쳐요|a badly chosen relation can miss a real bug⟧", 11, "var(--ink)")
          + person(570, 150, s=0.8, face=SMILE, **WRITER) + '<rect x="540" y="200" width="60" height="50" rx="3" fill="#FFF8E7" stroke="var(--good)" stroke-width="3"/>'
          + label(570, 265, "⟦정답을 아는 경우엔 정답 비교가 더 정확해요|when the answer IS known, comparing to it is more precise⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦메타모픽 테스트는 '정답 비교'를 완전히 대신하진 않아요|metamorphic testing doesn't fully replace comparing to a known answer⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 305, "⟦메타모픽 테스트는 '정답 비교'를 완전히 대신하진 않아요|metamorphic testing doesn't fully replace comparing to a known answer⟧", 12, "var(--ink)", cls="d"))
 
 NOREF_I = icon('<rect x="14" y="14" width="36" height="36" rx="6" fill="none" stroke="var(--muted)" stroke-width="4" stroke-dasharray="6 4"/><text x="32" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="var(--muted)">?</text>')
 CHANGE_I = icon('<path d="M14 32 h36" stroke="var(--accent)" stroke-width="4" marker-end="url(#mi1)"/><defs><marker id="mi1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6 Z" fill="var(--accent)"/></marker></defs>')

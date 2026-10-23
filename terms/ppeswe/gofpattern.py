@@ -37,10 +37,10 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦맞지 않는 상황에 억지로 끼워 맞추면 오히려 이상해져요|forcing one where it doesn't fit makes things worse, not better⟧", 12, "var(--ink)"))
 
 # 5. 어떤 공식을 쓸지는 여전히 작가의 판단이에요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **WRITER) + label(190, 240, "⟦글쓰기가 훨씬 빨라져요|it makes the writing go much faster⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **PROOFER) + manuscript(570, 220, 0.6) + label(570, 270, "⟦어떤 공식을 쓸지는 작가가 판단해야 해요|but choosing which formula to use is still the writer's call⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦디자인패턴은 손에 쥔 연장이지, 언제 쓸지는 여전히 작가의 판단이에요|design patterns are tools in hand — knowing when to use them is still the writer's own judgment⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=EYES, **WRITER) + label(190, 260, "⟦글쓰기가 훨씬 빨라져요|it makes the writing go much faster⟧", 11, "var(--ink)")
+         + person(570, 110, s=0.8, face=SMILE, **PROOFER) + manuscript(570, 200, 0.6) + label(570, 260, "⟦어떤 공식을 쓸지는 작가가 판단해야 해요|but choosing which formula to use is still the writer's call⟧", 11, "var(--ink)")
+         + label(380, 315, "⟦디자인패턴은 손에 쥔 연장이지, 언제 쓸지는 여전히 작가의 판단이에요|design patterns are tools in hand — knowing when to use them is still the writer's own judgment⟧", 12, "var(--ink)", cls="d"))
 
 FORMULA_I = icon('<rect x="12" y="10" width="40" height="44" rx="3" fill="#FFF8E7" stroke="#C9822B" stroke-width="3"/><path d="M22 24 l6 6 l12 -12" stroke="var(--good)" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M22 42 h20" stroke="#142033" stroke-width="2.5"/>')
 CREATE_I = icon('<circle cx="22" cy="22" r="10" fill="var(--accent)"/><circle cx="42" cy="22" r="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><circle cx="32" cy="44" r="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>')

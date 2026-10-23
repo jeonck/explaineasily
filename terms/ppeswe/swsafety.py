@@ -34,10 +34,10 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦위험이 클수록, 검증은 느려지고 비용도 커져요|the higher the risk, the slower and costlier the verification⟧", 12, "var(--ink)"))
 
 # 5. 검증해도 위험이 0이 되진 않아요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **PROOFER) + label(190, 240, "⟦위험을 크게 낮춰줘요|it lowers the risk by a lot⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **EDITOR) + manuscript(570, 220, 0.6) + label(570, 270, "⟦그래도 출간은 결국 해야 해요|but the book still has to go out eventually⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦안전은 위험을 없애는 게 아니라, 감당할 수 있는 수준까지 낮추는 일이에요|safety isn't eliminating risk — it's lowering it to a level you can live with⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=EYES, **PROOFER) + label(190, 260, "⟦위험을 크게 낮춰줘요|it lowers the risk by a lot⟧", 11, "var(--ink)")
+         + person(570, 110, s=0.8, face=SMILE, **EDITOR) + manuscript(570, 200, 0.6) + label(570, 260, "⟦그래도 출간은 결국 해야 해요|but the book still has to go out eventually⟧", 11, "var(--ink)")
+         + label(380, 315, "⟦안전은 위험을 없애는 게 아니라, 감당할 수 있는 수준까지 낮추는 일이에요|safety isn't eliminating risk — it's lowering it to a level you can live with⟧", 12, "var(--ink)", cls="d"))
 
 GRADE_I = icon('<path d="M18 50 V38 M32 50 V22 M46 50 V8" stroke="var(--accent)" stroke-width="6" stroke-linecap="round"/>')
 DUAL_I = icon('<circle cx="22" cy="32" r="14" fill="none" stroke="var(--accent)" stroke-width="4"/><circle cx="42" cy="32" r="14" fill="none" stroke="var(--good)" stroke-width="4"/>')

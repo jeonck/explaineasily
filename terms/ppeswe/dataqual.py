@@ -34,10 +34,10 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦기준 하나라도 어긋나면, 책이 독자에게 안 가요|break even one of these, and the book won't reach the reader⟧", 12, "var(--ink)"))
 
 # 5. 한 번의 청소로 끝나지 않아요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **EDITOR) + label(190, 240, "⟦오류를 크게 줄여줘요|it cuts errors way down⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **PRINTER) + manuscript(570, 220, 0.6) + label(570, 270, "⟦그래도 계속 손이 가는 일이에요|but it still takes constant upkeep⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦데이터 품질관리는 한 번의 청소가 아니라, 계속 돌보는 정원 가꾸기예요|data quality management isn't a one-time cleanup — it's tending a garden, continuously⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=EYES, **EDITOR) + label(190, 260, "⟦오류를 크게 줄여줘요|it cuts errors way down⟧", 11, "var(--ink)")
+         + person(570, 110, s=0.8, face=SMILE, **PRINTER) + manuscript(570, 200, 0.6) + label(570, 260, "⟦그래도 계속 손이 가는 일이에요|but it still takes constant upkeep⟧", 11, "var(--ink)")
+         + label(380, 315, "⟦데이터 품질관리는 한 번의 청소가 아니라, 계속 돌보는 정원 가꾸기예요|data quality management isn't a one-time cleanup — it's tending a garden, continuously⟧", 12, "var(--ink)", cls="d"))
 
 ACCURACY_I = icon('<circle cx="26" cy="26" r="16" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M38 38 l14 14" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/><path d="M18 26 l6 6 l12 -12" stroke="var(--good)" stroke-width="3.5" fill="none" stroke-linecap="round"/>')
 COMPLETE_I = icon('<rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7" stroke="#C9822B" stroke-width="3"/><path d="M20 22 h20 M20 30 h20 M20 38 h20 M20 46 h20" stroke="#142033" stroke-width="2.5"/>')

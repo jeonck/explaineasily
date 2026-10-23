@@ -70,10 +70,10 @@ PAGE = {
          "alt": ("TCP(단일 스트림), UDP(확인 없음), SCTP(차선별 독립+멀티호밍)를 나란히 비교", "TCP (single stream), UDP (no confirmation), and SCTP (independent lanes + multi-homing) compared side by side"),
          "caption": ("TCP, UDP와 나란히 놓고 보면 차이가 보여요.", "Lined up next to TCP and UDP, the difference stands out."),
          "small": ("SCTP는 TCP의 신뢰성과, 막히지 않는 병렬성을 같이 가져가요.", "SCTP keeps TCP's reliability while adding lanes that don't block each other.")},
-        {"svg": svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-                     + person(190, 150, s=0.8, face=SMILE, **PRINTER) + label(190, 240, "⟦동시 송출엔 아주 유리해요|great for sending many series at once⟧", 11, "var(--ink)")
-                     + person(570, 150, s=0.8, face=EYES, **PRINTER) + label(570, 240, "⟦모든 유통사가 쓰는 건 아니에요|not every distributor supports it⟧", 11, "var(--ink)")
-                     + label(380, 282, "⟦좋은 설계지만, 인터넷 곳곳의 방화벽이 낯선 트럭을 막기도 해요|a good design, but firewalls across the internet often block this unfamiliar kind of truck⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+                     + person(190, 130, s=0.8, face=SMILE, **PRINTER) + label(190, 260, "⟦동시 송출엔 아주 유리해요|great for sending many series at once⟧", 11, "var(--ink)")
+                     + person(570, 130, s=0.8, face=EYES, **PRINTER) + label(570, 260, "⟦모든 유통사가 쓰는 건 아니에요|not every distributor supports it⟧", 11, "var(--ink)")
+                     + label(380, 305, "⟦좋은 설계지만, 인터넷 곳곳의 방화벽이 낯선 트럭을 막기도 해요|a good design, but firewalls across the internet often block this unfamiliar kind of truck⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: SCTP는 동시 송출에 유리함. 오른쪽: 모든 유통사가 지원하는 건 아님(방화벽 문제)", "Left: SCTP is great for sending many series at once. Right: not every distributor supports it, due to firewall issues"),
          "caption": ("설계는 좋지만, 널리 쓰이진 않아요.", "It's well designed, but not widely deployed."),
          "small": ("방화벽·중간 장비 호환성 문제로, 실제로는 SIGTRAN 같은 특정 용도에 더 많이 쓰여요.", "Because of firewall and middlebox compatibility, it's mostly used in specific niches like SIGTRAN.")},

@@ -34,10 +34,10 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦PMO 는 이 점검을 여러 책(프로젝트)에 걸쳐 동시에 해요|PMO does this checking across many books at once⟧", 12, "var(--ink)"))
 
 # 5. 감리가 다 해결해주진 않아요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **PRINTER) + label(190, 240, "⟦늦는 걸 알려줄 순 있어요|can flag that it's running late⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **WRITER) + manuscript(570, 220, 0.6) + label(570, 270, "⟦직접 쓰는 건 결국 작가예요|but the author still has to write it⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦감리/PMO는 확인하고 조율하는 역할이지, 개발을 대신하지 않아요|audit/PMO checks and coordinates — it doesn't do the development itself⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
+         + person(190, 130, s=0.8, face=EYES, **PRINTER) + label(190, 260, "⟦늦는 걸 알려줄 순 있어요|can flag that it's running late⟧", 11, "var(--ink)")
+         + person(570, 110, s=0.8, face=SMILE, **WRITER) + manuscript(570, 200, 0.6) + label(570, 260, "⟦직접 쓰는 건 결국 작가예요|but the author still has to write it⟧", 11, "var(--ink)")
+         + label(380, 315, "⟦감리/PMO는 확인하고 조율하는 역할이지, 개발을 대신하지 않아요|audit/PMO checks and coordinates — it doesn't do the development itself⟧", 12, "var(--ink)", cls="d"))
 
 CHECK_I = icon('<rect x="10" y="10" width="44" height="44" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 32 l8 8 l16 -18" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/>')
 CLOCK_I = icon('<circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M32 20 v12 l10 6" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/>')
