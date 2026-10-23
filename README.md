@@ -18,12 +18,12 @@
 | SRE | 하루도 안 닫는 놀이공원 — 놀이기구는 서비스, 손님은 요청 | 47 |
 | AI 보안 | 뭐든 시키는 대로 믿고 따르는 주방장과, 그 주방을 노리는 사람들 | 32 |
 | 소프트웨어 설계 | 앱은 집, 화면은 방, 화면 사이 이동은 문과 복도 | 1 |
-| PPE·SW공학 | 원고를 쓰고 교정하고 찍어내는 출판사 | 41 |
+| PPE·SW공학 | 원고를 쓰고 교정하고 찍어내는 출판사 | 40 |
 | PPE·DB/데이터 | 재고를 나눠 보관하는 물류창고 | 16 |
 | PPE·AI이론 | 작물을 등급별로 가려내는 품질검사장 | 23 |
 | PPE·네트워크 | 집집마다 봉투를 나르는 우체국 배송망 | 25 |
 | PPE·정보보안 | 보안 분야와 세계관을 공유하는 심화 성(城) | 19 |
-| PPE·시스템SW | 리프트 한 대를 돌려쓰는 자동차 정비공장 | 24 |
+| PPE·시스템SW | 리프트 한 대를 돌려쓰는 자동차 정비공장 | 25 |
 | PPE·클라우드 | 사무실을 빌려 쓰는 공유 오피스 빌딩 | 12 |
 | PPE·신기술 | 부스마다 다른 기술을 보여주는 과학관 전시장 | 25 |
 | PPE·IT관리 | 공연을 준비하는 콘서트 투어 기획사 | 8 |
@@ -352,7 +352,6 @@ AI 보안 용어는 하나의 세계를 공유한다 — 주방은 AI 시스템,
 | 결합도와 응집도 | 챕터가 서로 얼마나 엮여있나 | [couplingcohesion-ko](docs/couplingcohesion-ko.html) | [couplingcohesion-en](docs/couplingcohesion-en.html) |
 | 아키텍처 평가(ATAM/CBAM) | 출간 전 시나리오 리허설 | [atamcbam-ko](docs/atamcbam-ko.html) | [atamcbam-en](docs/atamcbam-en.html) |
 | SW 품질인증 | 책 표지의 공식 마크 | [swcert-ko](docs/swcert-ko.html) | [swcert-en](docs/swcert-en.html) |
-| UNIX 시스템 | 기계실의 보이지 않는 운영자 | [unixsys-ko](docs/unixsys-ko.html) | [unixsys-en](docs/unixsys-en.html) |
 | 디자인 씽킹 | 책상 추측 대신 독자에게 직접 묻기 | [designthinking-ko](docs/designthinking-ko.html) | [designthinking-en](docs/designthinking-en.html) |
 | 의존성 주입/역전(DI/DIP) | 아무 기계나 꽂을 수 있는 콘센트 | [diprinciple-ko](docs/diprinciple-ko.html) | [diprinciple-en](docs/diprinciple-en.html) |
 | 사용성평가(Usability) | 독자가 책을 쓱 넘겨보는 시험 | [usability-ko](docs/usability-ko.html) | [usability-en](docs/usability-en.html) |
@@ -489,6 +488,7 @@ AI 보안 용어는 하나의 세계를 공유한다 — 주방은 AI 시스템,
 | 최소신장트리(MST) | 가장 싼 배관만 골라 모든 지점 잇기 | [mstalgo-ko](docs/mstalgo-ko.html) | [mstalgo-en](docs/mstalgo-en.html) |
 | 플래시 변환계층(FTL) | 덮어쓰지 않는 부품 창고 관리인 | [ftl-ko](docs/ftl-ko.html) | [ftl-en](docs/ftl-en.html) |
 | 우선순위 역전/상속 | 급한 차가 유령처럼 멈춰요 | [priorityinv-ko](docs/priorityinv-ko.html) | [priorityinv-en](docs/priorityinv-en.html) |
+| UNIX 시스템 | 정비소의 보이지 않는 운영자 | [unixsys-ko](docs/unixsys-ko.html) | [unixsys-en](docs/unixsys-en.html) |
 
 ### PPE·클라우드
 

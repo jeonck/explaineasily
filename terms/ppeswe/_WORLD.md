@@ -71,7 +71,6 @@
 | couplingcohesion | 챕터가 서로 얼마나 엮여있나 |
 | atamcbam | 출간 전 시나리오 리허설 |
 | swcert | 책 표지의 공식 마크 |
-| unixsys | 기계실의 보이지 않는 운영자 |
 | designthinking | 책상 추측 대신 독자에게 직접 묻기 |
 | diprinciple | 아무 기계나 꽂을 수 있는 콘센트 |
 | usability | 독자가 책을 쓱 넘겨보는 시험 |
