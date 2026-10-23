@@ -53,10 +53,10 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦사용성만 깊게 보는 시험도 따로 있어요|there's a whole separate test just for usability⟧", 12, "var(--ink)"))
 
 # 5. 마크가 있어도 완벽을 뜻하진 않아요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + seal(190, 140, 0.7) + label(190, 240, "⟦완벽을 보장하진 않아요|doesn't guarantee perfection⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **READER) + label(570, 240, "⟦그래도 최소 기준은 확인됐어요|but a minimum standard is confirmed⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦인증은 '이 기준은 통과했다'는 뜻이지, 모든 문제가 없다는 뜻은 아니에요|certification means the standard was met — not that every problem is gone⟧", 12, "var(--ink)", cls="d"))
+P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
+         + seal(190, 140, 0.7) + label(190, 260, "⟦완벽을 보장하진 않아요|doesn't guarantee perfection⟧", 11, "var(--ink)")
+         + person(570, 125, s=0.8, face=SMILE, **READER) + label(570, 265, "⟦그래도 최소 기준은 확인됐어요|but a minimum standard is confirmed⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦인증은 '이 기준은 통과했다'는 뜻이지, 모든 문제가 없다는 뜻은 아니에요|certification means the standard was met — not that every problem is gone⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "swcert", "order": 42,

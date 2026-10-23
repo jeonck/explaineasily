@@ -38,10 +38,10 @@ P4 = svg(340, sky(340)
                        "⟦오차가 한쪽으로 몰리면 신뢰구간이 비뚤어져요|errors piling to one side skews the confidence interval⟧"), 0.95))
 
 # 5. 가정이 깨져도 숫자는 나오지만, 믿을 수는 없어요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
+P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
          + scale_(190, 180, 1.0, level=0.6) + label(190, 260, "⟦예측 숫자는 늘 나와요|a predicted number always comes out⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=EYES, **INSPECTOR) + label(570, 240, "⟦근데 그 숫자를 얼마나 믿을지는 가정이 지켜졌는지에 달렸어요|but how much to trust it depends on whether the conditions held⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦가정이 깨지면 예측값은 나와도, 오차범위·검정은 믿을 수 없어요|break the assumptions and a number still comes out — but the error range and tests can't be trusted⟧", 12, "var(--ink)", cls="d"))
+         + person(570, 125, s=0.8, face=EYES, **INSPECTOR) + label(570, 265, "⟦근데 그 숫자를 얼마나 믿을지는 가정이 지켜졌는지에 달렸어요|but how much to trust it depends on whether the conditions held⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦가정이 깨지면 예측값은 나와도, 오차범위·검정은 믿을 수 없어요|break the assumptions and a number still comes out — but the error range and tests can't be trusted⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "regassumption", "order": 20,

@@ -41,11 +41,11 @@ P4 = svg(330, sky(330)
          + label(380, 305, "⟦이 네 단계가 전부 서류로 남아야 '감사'를 통과해요|all four steps must be on paper to pass an audit⟧", 12, "var(--ink)"))
 
 # 5. 기술적 가리기와는 다른 일이에요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
+P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
          + person(190, 150, s=0.8, face=EYES, **INSPECTOR) + gradeboard(110, 190, 160, 60, "⟦허락·서류|PERMISSION⟧", ("⟦동의·보유기간·이전|consent · retention · transfer⟧",), 0.7)
          + label(190, 275, "⟦이건 '허락받았나, 적어뒀나'예요|this is about consent and paperwork⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **OPERATOR) + label(570, 240, "⟦이름을 번호표로 가리는 건 기술의 몫이에요|masking names into tags is a technical job⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦AI 개인정보보호(법·감사)와 기술적 마스킹은 짝을 이뤄 함께 움직여요|legal/audit privacy and technical masking move together as a pair⟧", 12, "var(--ink)", cls="d"))
+         + person(570, 125, s=0.8, face=SMILE, **OPERATOR) + label(570, 265, "⟦이름을 번호표로 가리는 건 기술의 몫이에요|masking names into tags is a technical job⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦AI 개인정보보호(법·감사)와 기술적 마스킹은 짝을 이뤄 함께 움직여요|legal/audit privacy and technical masking move together as a pair⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "aiprivacyppe", "order": 13,

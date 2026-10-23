@@ -46,10 +46,10 @@ P4 = svg(320, sky(320)
          + label(380, 300, "⟦독자 한 명 한 명을 그냥 조용히 지켜보며 적어요|quietly watching and noting each reader, one at a time⟧", 12, "var(--ink)"))
 
 # 5. 사용성평가는 오탈자를 잡는 일이 아니에요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
+P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
          + person(190, 150, s=0.8, face=EYES, **PROOFER) + inkstamp(190, 230, 0.5) + label(190, 270, "⟦교정 — 오탈자가 없나|proofing — any typos?⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=EYES, **READER) + label(570, 230, "⟦사용성평가 — 쓰기 편한가|usability — is it easy to use?⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦옳고 그름이 아니라, 편한지 아닌지를 보는 거라 교정과는 역할이 달라요|it checks ease of use, not right or wrong — a different job from proofing⟧", 12, "var(--ink)", cls="d"))
+         + person(570, 125, s=0.8, face=EYES, **READER) + label(570, 265, "⟦사용성평가 — 쓰기 편한가|usability — is it easy to use?⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦옳고 그름이 아니라, 편한지 아닌지를 보는 거라 교정과는 역할이 달라요|it checks ease of use, not right or wrong — a different job from proofing⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "usability", "order": 46,

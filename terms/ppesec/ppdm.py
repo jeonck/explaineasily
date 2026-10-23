@@ -86,10 +86,10 @@ PAGE = {
          "caption": ("기법마다 대가가 달라요.", "Each technique trades off something different."),
          "small": ('<a href="homoenc-ko.html">동형암호</a>는 PPDM이 쓰는 도구 중 하나예요. 보호를 세게 할수록 통계의 쓸모는 줄어들어요.',
                    '<a href="homoenc-en.html">Homomorphic encryption</a> is one of the tools PPDM reaches for. The stronger the protection, the less useful the statistic becomes.')},
-        {"svg": svg(300, sky(300)
-                    + person(190, 150, s=0.85, face=EYES, **RESEARCHER) + label(190, 230, "⟦보호를 세게 하면 통계가 덜 정확해져요|stronger protection makes the statistic less accurate⟧", 11, "var(--ink)")
-                    + person(560, 150, s=0.85, face=FROWN, **VILLAGER1) + label(560, 230, "⟦재식별 위험은 완전히 0이 되진 않아요|the re-identification risk never quite reaches zero⟧", 11, "var(--bad)")
-                    + label(380, 280, "⟦그래서 얼마나 가릴지는 늘 저울질해야 해요|so how much to blur is always a balance to strike⟧", 12, "var(--ink)", cls="d")),
+        {"svg": svg(330, sky(330)
+                    + person(190, 125, s=0.85, face=EYES, **RESEARCHER) + label(190, 260, "⟦보호를 세게 하면 통계가 덜 정확해져요|stronger protection makes the statistic less accurate⟧", 11, "var(--ink)")
+                    + person(560, 125, s=0.85, face=FROWN, **VILLAGER1) + label(560, 260, "⟦재식별 위험은 완전히 0이 되진 않아요|the re-identification risk never quite reaches zero⟧", 11, "var(--bad)")
+                    + label(380, 305, "⟦그래서 얼마나 가릴지는 늘 저울질해야 해요|so how much to blur is always a balance to strike⟧", 12, "var(--ink)", cls="d")),
          "alt": ("보호를 세게 할수록 통계가 덜 정확해지고, 재식별 위험은 완전히 0이 되지 않음", "The stronger the protection, the less accurate the statistic — and the re-identification risk never fully reaches zero"),
          "caption": ("보호와 쓸모는 늘 저울 위에 있어요.", "Protection and usefulness always sit on the same scale."),
          "small": ('재식별 위험은 0이 되지 않아요. → <a href="data3law-ko.html">가명정보</a>·<a href="privacy-ko.html">개인정보 보호</a>와 같은 고민을 데이터 분석에 적용한 거예요.',

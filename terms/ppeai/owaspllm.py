@@ -44,11 +44,11 @@ P4 = svg(360, sky(360)
                        '⟦LLM10 모델 도난 → <a href="modelextraction-ko.html">선별 기준 통째로 베끼기</a>|LLM10 → <a href="modelextraction-en.html">copying the whole sorting rulebook</a>⟧'), 0.72))
 
 # 5. 게시판 자체가 막아주지 않아요
-P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
+P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
          + person(190, 150, s=0.8, face=EYES, **INSPECTOR) + gradeboard(110, 190, 160, 50, "⟦목록 확인|CHECK LIST⟧", ("⟦10개를 다 살펴봤나|checked all 10?⟧",), 0.65)
          + label(190, 270, "⟦빠뜨린 게 없는지 체크만 해줘요|it only helps you check for gaps⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SMILE, **OPERATOR) + label(570, 230, "⟦막는 방법은 각 항목 페이지에 있어요|the actual defenses live on each item's own page⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦게시판은 '지도'일 뿐, 길은 각자 페이지에서 걸어야 해요|the board is only a map — you still walk each road on its own page⟧", 12, "var(--ink)", cls="d"))
+         + person(570, 125, s=0.8, face=SMILE, **OPERATOR) + label(570, 265, "⟦막는 방법은 각 항목 페이지에 있어요|the actual defenses live on each item's own page⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦게시판은 '지도'일 뿐, 길은 각자 페이지에서 걸어야 해요|the board is only a map — you still walk each road on its own page⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "owaspllm", "order": 14,
