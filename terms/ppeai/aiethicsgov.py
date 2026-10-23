@@ -61,12 +61,12 @@ PAGE = {
          "alt": ("농부가 이의를 제기하면 근거 기록을 확인하고 사람이 다시 본 뒤 등급을 수정하거나 유지하는 절차", "When a farmer appeals, the recorded reason is checked, a person re-reviews, and the grade is revised or confirmed"),
          "caption": ("원칙판은 이의 제기 절차까지 구체적으로 정해 둬요.", "The charter spells out the appeal process in concrete steps."),
          "small": ("등급을 매긴 근거가 남아 있어야, 재검토도 가능해요.", "Review only works if the reason for the grade was recorded in the first place.")},
-        {"svg": svg(340, '<rect width="380" height="340" fill="var(--good-soft)"/><rect x="380" width="380" height="340" fill="var(--accent-soft)"/>'
+        {"svg": svg(380, '<rect width="380" height="380" fill="var(--good-soft)"/><rect x="380" width="380" height="380" fill="var(--accent-soft)"/>'
                  + gradeboard(60, 40, 270, 90, "⟦원칙판 — 벽에 걸려 있음|CHARTER — ON THE WALL⟧", ("⟦작물 종류로 차별 않기|no bias by produce type⟧",))
                  + person(150, 170, s=0.6, face=SMILE, **INSPECTOR) + label(150, 265, "⟦지키면 작동해요|it works when it's followed⟧", 11, "var(--ink)")
                  + person(560, 170, s=0.6, face=FROWN, **OPERATOR)
                  + label(560, 265, "⟦원칙판을 안 보고 그냥 등급 매겼어요|graded without even looking at it⟧", 11, "var(--bad)")
-                 + label(380, 305, '⟦<a href="aigovernance-ko.html">주방 세계의 AI 거버넌스</a>는 보안 운영 각도를, 여긴 윤리·규제 준수 각도를 봐요|<a href="aigovernance-en.html">the kitchen world\'s AI governance</a> looks from a security-ops angle — this page looks from an ethics and regulatory-compliance angle⟧', 12, "var(--ink)", cls="d")),
+                 + label(380, 345, "⟦주방 세계의 AI 거버넌스는 보안 운영 각도를, 여긴 윤리·규제 준수 각도를 봐요|the kitchen world's AI governance looks from a security-ops angle — this page looks from an ethics and regulatory-compliance angle⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 검수반장이 원칙판을 지켜 등급이 잘 작동함. 오른쪽: 조작원이 원칙판을 안 보고 그냥 등급을 매김", "Left: the inspector follows the charter and grading works. Right: the operator grades without even consulting it"),
          "caption": ("원칙판이 있어도, 안 지키면 소용없어요.", "Having a charter doesn't help if nobody follows it."),
          "small": ("이 페이지는 윤리·규제 준수 각도, 주방 세계 쪽은 보안 운영 각도예요.", "This page takes the ethics/compliance angle; the kitchen world's page takes the security-ops angle.")},

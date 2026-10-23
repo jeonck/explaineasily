@@ -59,7 +59,7 @@ P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x
          + speck_produce(570, 130, 1.2)
          + label(570, 230, "⟦다 배운 선별기 앞에 미세 조작 작물을 들이밀어요|holds a perturbed item up to a sorter that's already fully trained⟧", 11, "var(--ink)")
          + label(570, 255, "⟦→ 판정하는 순간에 공격해요|→ attacks at the moment of judging⟧", 11, "var(--bad)")
-         + label(380, 295, '⟦씨앗을 상하게 하는 건 <a href="datapoisoning-ko.html">데이터 포이즈닝</a>, 다 배운 뒤 눈을 속이는 건 적대적 공격이에요|spoiling the seed is <a href="datapoisoning-en.html">data poisoning</a> — fooling the eye after training is an adversarial attack⟧', 12, "var(--ink)", cls="d"))
+         + label(380, 295, "⟦씨앗을 상하게 하는 건 데이터 포이즈닝, 다 배운 뒤 눈을 속이는 건 적대적 공격이에요|spoiling the seed is data poisoning — fooling the eye after training is an adversarial attack⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "advattack", "order": 3,

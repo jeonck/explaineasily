@@ -80,7 +80,7 @@ PAGE = {
                  + pixel_grid(100, 90, 6, 6, 22, seed=5) + label(190, 250, "⟦사진·무늬에 강해요|strong with photos and patterns⟧", 11, "var(--ink)")
                  + person(570, 150, s=0.75, face=FROWN, **OPERATOR)
                  + label(570, 250, "⟦그래도 사람처럼 '이해'하는 건 아니에요|still doesn't 'understand' the way a person does⟧", 11, "var(--bad)")
-                 + label(380, 282, '⟦국소 무늬만 본다는 성질 탓에, 몇 점만 살짝 바꿔도 속아 넘어가요 → <a href="advattack-ko.html">작물에 몰래 붙인 가짜 점무늬</a>|because it only reads local patterns, a few nudged dots can still fool it → <a href="advattack-en.html">The Fake Dot Pattern Snuck Onto the Produce</a>⟧', 12, "var(--ink)", cls="d")),
+                 + label(380, 282, "⟦국소 무늬만 본다는 성질 탓에, 몇 점만 살짝 바꿔도 속아 넘어가요|because it only reads local patterns, a few nudged dots can still fool it⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 픽셀 격자 사진과 무늬에 강하다는 설명. 오른쪽: 조작원이 사람처럼 이해하는 건 아니라고 말하며 적대적 공격 페이지로 연결됨", "Left: a pixel grid with a note that it's strong with photos. Right: the operator notes it still doesn't understand like a person does, linking to the adversarial attack page"),
          "caption": ("사진·무늬엔 강하지만, '이해'하는 건 아니에요.", "Strong with photos and patterns — but it doesn't truly understand."),
          "small": ("그래서 적대적 공격 같은 미세 조작에 여전히 흔들려요.", "Which is exactly why it still falls for things like adversarial attacks.")},
