@@ -24,9 +24,9 @@ P1 = svg(300, sky(300)
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + label(380, 30, "⟦시리즈가 커질수록, 어디까지 연결됐는지 한눈에 안 보여요|the bigger the series, the harder it is to see how far the links reach⟧", 13, "var(--ink)", cls="d")
          + seriesbooks(70, 100, 0.85, bad=1) + seriesbooks(430, 100, 0.85, bad=2)
-         + '<path d="M100 178 Q290 225 460 178" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 4" fill="none"/>'
-         + '<path d="M170 178 Q290 155 530 178" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 4" fill="none"/>'
-         + '<path d="M240 178 Q400 240 600 178" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 4" fill="none"/>'
+         + '<path d="M100 205 Q290 245 460 205" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 4" fill="none"/>'
+         + '<path d="M170 205 Q290 230 530 205" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 4" fill="none"/>'
+         + '<path d="M240 205 Q400 260 600 205" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 4" fill="none"/>'
          + label(380, 280, "⟦손댈 때마다 뭐가 흔들릴지 아무도 몰라요|nobody knows what will shake loose with each change⟧", 12, "var(--bad)"))
 
 # 3. 영향평가 = 고치기 전에 연결 지도를 그려보는 것 (hero)
