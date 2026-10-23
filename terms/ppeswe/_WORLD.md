@@ -66,8 +66,6 @@
 | productline | 같은 틀, 다른 표지 |
 | qaqc | 규칙을 지켰나, 책이 맞나 |
 | conflictmgmt | 작가와 편집장이 다툴 때 |
-| priorityinv | 급한 책이 유령처럼 멈춰요 |
-| sctp | 한 계약, 여러 개의 전용 차선 |
 | goodsw | 좋은 책의 조건 |
 | swpurchase | 인쇄기를 중간상인 없이 바로 사기 |
 | couplingcohesion | 챕터가 서로 얼마나 엮여있나 |
