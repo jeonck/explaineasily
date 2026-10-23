@@ -62,7 +62,6 @@
 | metamorphictest | 정답 없이도 관계로 확인하기 |
 | wbsswe | 책 만들기를 나뭇가지로 늘어놓기 |
 | techdebt | 지금 빨리 가려고 쌓아둔 빚 |
-| ftl | 덮어쓰지 않는 서가 관리인 |
 | tailoring | 책마다 다른 편집 규칙 |
 | productline | 같은 틀, 다른 표지 |
 | qaqc | 규칙을 지켰나, 책이 맞나 |

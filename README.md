@@ -18,12 +18,12 @@
 | SRE | 하루도 안 닫는 놀이공원 — 놀이기구는 서비스, 손님은 요청 | 47 |
 | AI 보안 | 뭐든 시키는 대로 믿고 따르는 주방장과, 그 주방을 노리는 사람들 | 32 |
 | 소프트웨어 설계 | 앱은 집, 화면은 방, 화면 사이 이동은 문과 복도 | 1 |
-| PPE·SW공학 | 원고를 쓰고 교정하고 찍어내는 출판사 | 44 |
+| PPE·SW공학 | 원고를 쓰고 교정하고 찍어내는 출판사 | 43 |
 | PPE·DB/데이터 | 재고를 나눠 보관하는 물류창고 | 16 |
 | PPE·AI이론 | 작물을 등급별로 가려내는 품질검사장 | 23 |
 | PPE·네트워크 | 집집마다 봉투를 나르는 우체국 배송망 | 24 |
 | PPE·정보보안 | 보안 분야와 세계관을 공유하는 심화 성(城) | 19 |
-| PPE·시스템SW | 리프트 한 대를 돌려쓰는 자동차 정비공장 | 22 |
+| PPE·시스템SW | 리프트 한 대를 돌려쓰는 자동차 정비공장 | 23 |
 | PPE·클라우드 | 사무실을 빌려 쓰는 공유 오피스 빌딩 | 12 |
 | PPE·신기술 | 부스마다 다른 기술을 보여주는 과학관 전시장 | 25 |
 | PPE·IT관리 | 공연을 준비하는 콘서트 투어 기획사 | 8 |
@@ -343,7 +343,6 @@ AI 보안 용어는 하나의 세계를 공유한다 — 주방은 AI 시스템,
 | 메타모픽 테스트 | 정답 없이도 관계로 확인하기 | [metamorphictest-ko](docs/metamorphictest-ko.html) | [metamorphictest-en](docs/metamorphictest-en.html) |
 | WBS | 책 만들기를 나뭇가지로 늘어놓기 | [wbsswe-ko](docs/wbsswe-ko.html) | [wbsswe-en](docs/wbsswe-en.html) |
 | 기술부채 | 지금 빨리 가려고 쌓아둔 빚 | [techdebt-ko](docs/techdebt-ko.html) | [techdebt-en](docs/techdebt-en.html) |
-| 플래시 변환계층(FTL) | 덮어쓰지 않는 서가 관리인 | [ftl-ko](docs/ftl-ko.html) | [ftl-en](docs/ftl-en.html) |
 | 개발방법론 테일러링 | 책마다 다른 편집 규칙 | [tailoring-ko](docs/tailoring-ko.html) | [tailoring-en](docs/tailoring-en.html) |
 | 제품계열(Product Line) 방법론 | 같은 틀, 다른 표지 | [productline-ko](docs/productline-ko.html) | [productline-en](docs/productline-en.html) |
 | 품질보증(QA)과 품질관리(QC) | 규칙을 지켰나, 책이 맞나 | [qaqc-ko](docs/qaqc-ko.html) | [qaqc-en](docs/qaqc-en.html) |
@@ -489,6 +488,7 @@ AI 보안 용어는 하나의 세계를 공유한다 — 주방은 AI 시스템,
 | 해시 알고리즘 | 번호만 계산해서 바로 칸을 짚기 | [hashalgo-ko](docs/hashalgo-ko.html) | [hashalgo-en](docs/hashalgo-en.html) |
 | 차세대 비휘발성 메모리 | 지우지 않고 바로바로 바꿔 쓰는 새 창고들 | [nextnvm-ko](docs/nextnvm-ko.html) | [nextnvm-en](docs/nextnvm-en.html) |
 | 최소신장트리(MST) | 가장 싼 배관만 골라 모든 지점 잇기 | [mstalgo-ko](docs/mstalgo-ko.html) | [mstalgo-en](docs/mstalgo-en.html) |
+| 플래시 변환계층(FTL) | 덮어쓰지 않는 부품 창고 관리인 | [ftl-ko](docs/ftl-ko.html) | [ftl-en](docs/ftl-en.html) |
 
 ### PPE·클라우드
 
