@@ -12,9 +12,16 @@ If the category has no rows yet, the rows are appended after the last table row 
 import argparse, glob, importlib.util, os, re, sys
 
 
+def cat_dir(category):
+    """terms/<category>/, or terms/ppe/<category>/ for the PPE bundle."""
+    nested = f"terms/ppe/{category}"
+    return nested if os.path.isdir(nested) else f"terms/{category}"
+
+
 def load(category):
-    sys.path.insert(0, "terms"); sys.path.insert(0, f"terms/{category}"); terms = []  # 분야 전용 _world.py
-    for f in glob.glob(f"terms/{category}/[!_]*.py"):
+    d = cat_dir(category)
+    sys.path.insert(0, "terms"); sys.path.insert(0, d); terms = []  # 분야 전용 _world.py
+    for f in glob.glob(f"{d}/[!_]*.py"):
         spec = importlib.util.spec_from_file_location(os.path.basename(f)[:-3], f)
         m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); terms.append(m.PAGE)
     return sorted(terms, key=lambda p: p["order"])

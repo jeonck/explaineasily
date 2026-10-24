@@ -579,6 +579,7 @@ AI 보안 용어는 하나의 세계를 공유한다 — 주방은 AI 시스템,
 
 ```
 terms/<분야>/<slug>.py   원본. 한 파일에 한글·영문을 같이 적는다 — 문장은 (ko, en) 튜플, SVG 글자는 ⟦ko|en⟧
+terms/ppe/<분야>/        PPE(정보관리기술사·컴퓨터시스템응용기술사) 10개 분야는 관리를 위해 이 아래 한 단계 더 묶여 있다
 terms/_draw.py           같이 쓰는 SVG 조각 (사람, 성, 개, 말풍선, 방패 …)
 build.py                 terms/ → docs/*-ko.html, docs/*-en.html, docs/index.html
 .github/ISSUE_TEMPLATE/  용어 요청 양식
@@ -593,7 +594,7 @@ python3 build.py
 
 ### 분야 (카테고리)
 
-분야는 `terms/` 아래 폴더 이름이고, `build.py` 의 `CATEGORIES` 에 한글·영문 이름을 등록한다.
+분야는 `terms/` 아래(PPE 분야는 `terms/ppe/` 아래) 폴더 이름이고, `build.py` 의 `CATEGORIES` 에 한글·영문 이름을 등록한다. `build.py` 가 `terms/` 를 재귀로 훑으므로 중첩 깊이는 상관없다.
 목록 페이지에는 검색창(제목·용어·원어로 찾기)이 있고, 맨 위 분야 탭으로 나뉘며, 탭 안에서 10개씩 페이지로 나눠 보여준다(`#cat=<폴더>&page=N`, `build.py` 의 `PER_PAGE`). "다음 이야기" 링크는 같은 분야 안에서만 돈다.
 
 ```python

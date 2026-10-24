@@ -11,9 +11,16 @@ Use it as the stop condition of the loop: audit -> write the missing terms -> au
 import argparse, glob, importlib.util, os, sys
 
 
+def cat_dir(category):
+    """terms/<category>/, or terms/ppe/<category>/ for the PPE bundle."""
+    nested = f"terms/ppe/{category}"
+    return nested if os.path.isdir(nested) else f"terms/{category}"
+
+
 def page_text(category):
-    sys.path.insert(0, "terms"); sys.path.insert(0, f"terms/{category}"); out = []  # 분야 전용 _world.py
-    for f in glob.glob(f"terms/{category}/[!_]*.py"):
+    d = cat_dir(category)
+    sys.path.insert(0, "terms"); sys.path.insert(0, d); out = []  # 분야 전용 _world.py
+    for f in glob.glob(f"{d}/[!_]*.py"):
         spec = importlib.util.spec_from_file_location(os.path.basename(f)[:-3], f)
         m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); P = m.PAGE
         out.append(" ".join([P["h1"][1], P["title"][1], P["summary"][1][1]] + [g[1] + " " + g[2][1] + " " + g[3][1] for g in P["glossary"]]))

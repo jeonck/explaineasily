@@ -15,6 +15,12 @@ import argparse, glob, importlib.util, os, re, subprocess, sys
 import xml.dom.minidom
 
 
+def cat_dir(category):
+    """terms/<category>/, or terms/ppe/<category>/ for the PPE bundle."""
+    nested = f"terms/ppe/{category}"
+    return nested if os.path.isdir(nested) else f"terms/{category}"
+
+
 def build():
     r = subprocess.run([sys.executable, "-W", "error", "build.py"], capture_output=True, text=True)
     if r.returncode:
@@ -35,8 +41,9 @@ def check_docs():
 
 
 def check_pages(category, slugs, strict):
-    sys.path.insert(0, "terms"); sys.path.insert(0, f"terms/{category}")  # 분야 전용 _world.py
-    files = [f"terms/{category}/{s}.py" for s in slugs] if slugs else sorted(glob.glob(f"terms/{category}/[!_]*.py"))
+    d = cat_dir(category)
+    sys.path.insert(0, "terms"); sys.path.insert(0, d)  # 분야 전용 _world.py
+    files = [f"{d}/{s}.py" for s in slugs] if slugs else sorted(glob.glob(f"{d}/[!_]*.py"))
     bad, orders = [], {}
     for f in files:
         name = os.path.basename(f)[:-3]

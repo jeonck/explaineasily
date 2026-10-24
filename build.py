@@ -18,6 +18,8 @@ REPO = "https://github.com/jeonck/explaineasily"
 REQUEST_URL = f"{REPO}/issues/new?template=term-request.yml"
 
 # 폴더 이름 → (한글, 영문). 순서가 목록 순서다. 새 분야는 폴더를 만들고 여기 한 줄 추가.
+# 폴더는 보통 terms/<분야>/ 이지만, PPE 묶음(아래 ppe* 10개)은 관리를 위해 terms/ppe/<분야>/ 로 한 단계 더 묶여 있다.
+# load_terms() 는 terms/ 아래를 재귀로 훑으므로 중첩 깊이는 상관없다 — path.parent.name 이 분야 키다.
 CATEGORIES = {
     "security": ("보안", "Security"),
     "design": ("소프트웨어 설계", "Software Design"),
@@ -354,7 +356,7 @@ def load_terms():
     sys.path.insert(0, str(TERMS))
     sys.path.insert(0, str(TERMS))  # [0] 은 분야 폴더로 바꿔 끼운다
     terms = []
-    for path in sorted(TERMS.glob("*/[!_]*.py")):
+    for path in sorted(TERMS.glob("**/[!_]*.py")):
         cat = path.parent.name
         if cat not in CATEGORIES:
             raise SystemExit(f"{path}: 폴더 '{cat}' 가 CATEGORIES 에 없다")
