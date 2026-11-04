@@ -100,7 +100,7 @@ PAGE = {
         ("혼합현실(MR)", "Mixed Reality", ("현실과 가상이 서로 반응하는 것.", "Reality and virtual content reacting to each other."), ("가상 물체를 만지듯 다룰 수 있어요.", "Lets you handle virtual objects as if touching them.")),
         ("메타버스", "Metaverse", ("아바타로 함께 머무는 가상 공간.", "The shared virtual space avatars gather in."), ('VR은 메타버스를 체험하는 한 방법이에요. → <a href="metaverse-ko.html">메타버스 부스</a>', "VR is one way to experience it. → <a href=\"metaverse-en.html\">the Metaverse booth</a>")),
         ("HMD(머리 장착형 디스플레이)", "HMD", ("머리에 쓰는 화면 장치, VR에선 눈앞을 완전히 가려요.", "A screen worn on the head; for VR it fully covers your view."), ("VR 체험의 핵심 장비예요.", "The core piece of VR hardware.")),
-        ("사이버 멀미", "Cybersickness / VR Sickness", ("눈과 몸이 느끼는 움직임이 어긋나 생기는 어지럼증.", "Dizziness from a mismatch between what the eyes see and the body feels."), ("추적·반응이 느릴수록 심해져요.", "Worse the slower the tracking and response.")),
+        ("사이버 멀미", "Cybersickness / VR Sickness", ("VR에서 생기는 어지럼증. 눈과 몸이 느끼는 움직임의 어긋남이 주된 원인으로 꼽혀요.", "Dizziness in VR, mainly blamed on a mismatch between what the eyes see and the body feels."), ("추적·반응이 느릴수록 심해져요.", "Worse the slower the tracking and response.")),
         ("헤드 트래킹", "Head Tracking", ("고개 방향을 읽어 화면을 바꾸는 기술.", "Reading head direction to change the view."), ("몰입감을 만드는 핵심 기술이에요.", "The key technology behind immersion.")),
         ("디지털 트윈", "Digital Twin", ("현실 기계를 그대로 복제한 쌍둥이.", "A twin that copies a real machine exactly."), ('VR로 트윈 안을 직접 둘러볼 수도 있어요. → <a href="digitaltwin-ko.html">디지털 트윈 부스</a>', "VR can even let you walk around inside a twin. → <a href=\"digitaltwin-en.html\">the Digital Twin booth</a>")),
     ],

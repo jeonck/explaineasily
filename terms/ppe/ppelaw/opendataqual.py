@@ -73,8 +73,8 @@ PAGE = {
     ],
     "summary": (("<b>공공데이터 제공·품질</b> = 누구나 볼 수 있게 <b>게시판에 공개</b>하고, <b>완전성·정확성·일관성·적시성</b>을 계속 챙기는 것.",
                  "<b>Public data provision & quality</b> = <b>posting data where anyone can see it</b>, and continuing to look after its <b>completeness, accuracy, consistency, and timeliness</b>."),
-                ("공공데이터법은 공공기관이 보유한 데이터(법이 정한 비공개 대상은 제외)를 기계 판독이 가능한 형태로, 누구나 자유롭게 이용·재배포할 수 있도록 개방하게 정해요. 단순 공개를 넘어, 완전성·정확성·일관성·적시성 같은 품질지표와 메타데이터 등록까지 함께 관리해야 실제로 활용 가능한 공공데이터가 돼요.",
-                 "Korea's Public Data Act requires public agencies to publish the data they hold (except categories the law keeps closed) in a machine-readable form, open for anyone to freely use and redistribute. Beyond simply publishing it, quality indicators such as completeness, accuracy, consistency, and timeliness, along with registered metadata, have to be managed too for the data to actually be usable.")),
+                ("공공데이터법은 공공기관이 보유한 데이터(비공개 정보 등 법이 정한 제외 대상은 빼고)를 기계 판독이 가능한 형태로, 누구나 자유롭게 이용·재배포할 수 있도록 개방하게 정해요. 단순 공개를 넘어, 완전성·정확성·일관성·적시성 같은 품질지표와 메타데이터 등록까지 함께 관리해야 실제로 활용 가능한 공공데이터가 돼요.",
+                 "Korea's Public Data Act requires public agencies to publish the data they hold (except what the law excludes, such as non-disclosable information) in a machine-readable form, open for anyone to freely use and redistribute. Beyond simply publishing it, quality indicators such as completeness, accuracy, consistency, and timeliness, along with registered metadata, have to be managed too for the data to actually be usable.")),
     "glossary": [
         ("공공데이터", "Public Data", ("공공기관이 가진, 원칙적으로 공개해야 하는 자료.", "Data a public agency holds that, as a rule, must be published."), ("법으로 공개 의무가 정해져 있어요.", "Publishing it is a legal obligation.")),
         ("완전성", "Completeness", ("빠진 항목 없이 다 있는 것.", "Nothing is missing from the record."), ("품질 체크표의 첫 번째 항목이에요.", "The first row on the quality checklist.")),
@@ -83,6 +83,6 @@ PAGE = {
         ("메타데이터", "Metadata", ("자료에 대해 설명해두는 꼬리표.", "The tag that explains what the data is."), ("없으면 자료를 찾기도 이해하기도 어려워요.", "Without it, data is hard to find or understand.")),
         ("개방형 표준 형식", "Open Standard Format", ("누구나 읽을 수 있는 공통 형식.", "A common format anyone can read."), ("사진이나 PDF 스캔본은 다시 쓰기 어려워요.", "A scanned photo or PDF is hard to reuse.")),
         ("품질관리 수준평가", "Quality Management Evaluation", ("기관이 데이터 품질을 제대로 관리하는지 평가하는 제도.", "A system that evaluates how well agencies manage data quality."), ("자료는 공개 이후에도 계속 점검해야 해요.", "Data needs ongoing checks even after it's published.")),
-        ("LOD(연계 공개 데이터)", "Linked Open Data", ("자료에 번호표를 달아 서로 연결하는 기술.", "Tagging data with IDs and linking records together."), ('형식·연결 기술은 다른 세계에서 자세히 다뤄요. → <a href="lodopendata-ko.html">문을 열고 번호표를 달아 연결해두는 창고</a>', 'The format and linking technique are covered in depth in another world. → <a href="lodopendata-en.html">the warehouse that opens its door and links its tags</a>')),
+        ("LOD(연계 공개 데이터)", "Linked Open Data", ("자료에 번호표를 달아 서로 연결하는 기술.", "Tagging data with IDs and linking records together."), ('형식·연결 기술은 다른 분야에서 자세히 다뤄요. → <a href="lodopendata-ko.html">문을 열고 번호표를 달아 연결해두는 창고</a>', 'The format and linking technique are covered in depth in another field. → <a href="lodopendata-en.html">the warehouse that opens its door and links its tags</a>')),
     ],
 }

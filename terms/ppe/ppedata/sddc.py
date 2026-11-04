@@ -87,7 +87,7 @@ PAGE = {
         ("가상화", "Virtualization", ("물리 자원을 소프트웨어로 나누기.", "Carving up physical resources in software."), ("SDDC의 가장 기본적인 토대예요.", "The basic foundation SDDC is built on.")),
         ("SDN", "SDN", ("통로를 설정으로 바꾸는 네트워크.", "A network whose aisles are set in software."), ("물리 배선을 건드리지 않고 경로를 바꿔요.", "Reroutes traffic without touching wiring.")),
         ("소프트웨어 정의 스토리지", "SDS", ("선반 배치를 설정으로 바꾸기.", "Shelf layout set in software."), ("디스크 묶음을 논리적으로 재구성해요.", "Reorganizes disk pools logically.")),
-        ("코드형 인프라", "Infrastructure as Code", ("설정 자체를 코드로 저장.", "The settings themselves, saved as code."), ('SRE 세계에서도 핵심 도구예요. → <a href="iac-ko.html">코드로 짓는 놀이공원</a>', 'A core tool in the SRE world too. → <a href="iac-en.html">building the theme park with code</a>')),
+        ("코드형 인프라", "Infrastructure as Code", ("설정 자체를 코드로 저장.", "The settings themselves, saved as code."), ('SRE 분야에서도 핵심 도구예요. → <a href="iac-ko.html">코드로 짓는 놀이공원</a>', 'A core tool in the SRE field too. → <a href="iac-en.html">building the theme park with code</a>')),
         ("하이퍼컨버지드 인프라", "HCI", ("선반·통로·일손을 한 상자에.", "Shelf, aisle, and staffing bundled into one box."), ("컴퓨팅·스토리지·네트워크를 서버 노드 단위로 묶어요. SDDC의 구성 블록으로 쓸 수 있어요.", "Bundles compute, storage, and network into server nodes. It can serve as an SDDC building block.")),
         ("프라이빗 클라우드와의 관계", "Relation to Private Cloud", ("자체 창고를 클라우드처럼.", "Running your own warehouse like a cloud."), ("SDDC는 프라이빗 클라우드의 기반이 될 수 있어요.", "SDDC can serve as the foundation of a private cloud.")),
         ("블라스트 레이디어스", "Blast Radius", ("설정 실수가 퍼지는 범위.", "How far a misconfiguration spreads."), ("설정 하나가 닿는 자원이 많아져 실수의 파급 범위도 넓어져요.", "One setting reaches more resources, so a mistake spreads further.")),

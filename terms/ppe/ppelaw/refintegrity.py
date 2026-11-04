@@ -24,7 +24,7 @@ P3 = svg(340, sky(340)
          + rulesboard(50, 40, 280, 240, "⟦학생 명부(원본)|STUDENT ROSTER (ORIGINAL)⟧", ("⟦1반 김하나|class 1: Kim Hana⟧", "⟦2반 이두리|class 2: Lee Duri⟧", "⟦3반 박세찬|class 3: Park Sechan⟧"), 1.0)
          + '<path d="M340 160 H420" stroke="var(--good)" stroke-width="4"/><path d="M414 152 l10 8 l-10 8" fill="none" stroke="var(--good)" stroke-width="3"/>'
          + rulesboard(430, 40, 280, 240, "⟦반장 명단(참조)|CLASS PRESIDENTS (REFERS TO IT)⟧", ("⟦1반 — 김하나 ✓|class 1 — Kim Hana ✓⟧", "⟦2반 — 이두리 ✓|class 2 — Lee Duri ✓⟧", "⟦3반 — 박세찬 ✓|class 3 — Park Sechan ✓⟧"), 1.0)
-         + label(380, 300, "⟦관계 무결성 = 원본에 있는 이름만 참조 명단에 쓸 수 있다는 규칙|referential integrity = you may only list a name the original roster actually has⟧", 12, "var(--ink)", cls="d")
+         + label(380, 300, "⟦참조 무결성 = 원본에 있는 이름만 참조 명단에 쓸 수 있다는 규칙|referential integrity = you may only list a name the original roster actually has⟧", 12, "var(--ink)", cls="d")
          + label(380, 325, "⟦명부에 없는 이름을 적으려 하면 아예 등록이 막혀요|trying to write a name the roster doesn't have gets blocked outright⟧", 11, "var(--muted)"))
 
 # 4. 원본 학생이 사라지면? 세 가지 선택
@@ -55,7 +55,7 @@ PAGE = {
          "caption": ("명부에 없는 학생이 반장이면, 나중에 그 반장이 누구인지 확인할 수 없어요.", "If a president isn't on the roster, nobody can later confirm who that person is."),
          "small": ("명부에 없는 학생이 반장으로 올라 있으면 그 반장 정보를 확인할 곳이 없어요.", "A president who isn't on the roster has no record to check against.")},
         {"svg": P3, "hero": True, "alt": ("학생 명부(원본)에서 화살표가 반장 명단(참조)으로 이어지고, 명단의 모든 이름에 체크 표시가 있음", "An arrow runs from the student roster (original) to the president list (which refers to it), and every name on the list is checked off"),
-         "caption": ("관계 무결성은 원본에 있는 이름만 참조 명단에 쓸 수 있다는 규칙이에요.", "Referential integrity is the rule that only a name the original roster actually has may go on the list that refers to it."),
+         "caption": ("참조 무결성은 원본에 있는 이름만 참조 명단에 쓸 수 있다는 규칙이에요.", "Referential integrity is the rule that only a name the original roster actually has may go on the list that refers to it."),
          "small": ("명부에 없는 이름을 적으려 하면 아예 등록이 막혀요.", "Trying to write a name the roster doesn't have gets blocked outright."),
          "tricks": (4, [
              (EXIST_I, ("원본에 있어야 참조 가능", "Must exist in the original"), ("없는 이름은 못 적어요", "a nonexistent name can't be written"), "calm"),
@@ -72,7 +72,7 @@ PAGE = {
     ],
     "summary": (("<b>참조 무결성 제약</b> = 참조하는 자료는 반드시 <b>원본에 실제로 있는 값</b>(또는 빈 값)이어야 한다는 규칙. 원본이 사라질 때 <b>지우거나, 막거나, 비우는</b> 방식을 미리 정해둬요.",
                  "<b>Referential integrity</b> = the rule that anything referencing another table must point to a <b>value that actually exists</b> there (or be left empty). When the original is removed, you decide in advance whether to <b>delete it along, block the delete, or leave it blank</b>."),
-                ("참조 무결성 제약(일부 교재의 '관계 무결성'이라고 불러요)은 관계형 데이터베이스에서 외래키(FK) 값은 참조 대상 테이블의 기본키(PK)에 실제로 존재하는 값이거나 NULL이어야 한다는 제약이에요. 원본 행이 삭제·수정될 때는 CASCADE(함께 삭제/수정), RESTRICT(삭제·수정 자체를 금지), SET NULL(참조 값을 NULL로) 같은 옵션을 정해 데이터 일관성을 지켜요(SET DEFAULT, NO ACTION도 있어요).",
+                ("참조 무결성 제약은 관계형 데이터베이스에서 외래키(FK) 값은 참조 대상 테이블의 기본키(PK)에 실제로 존재하는 값이거나 NULL이어야 한다는 제약이에요. 원본 행이 삭제·수정될 때는 CASCADE(함께 삭제/수정), RESTRICT(삭제·수정 자체를 금지), SET NULL(참조 값을 NULL로) 같은 옵션을 정해 데이터 일관성을 지켜요(SET DEFAULT, NO ACTION도 있어요).",
                  "A referential integrity constraint requires that a foreign key (FK) value in a relational database either match a primary key (PK) that actually exists in the referenced table or be NULL. When the original row is deleted or updated, an option such as CASCADE (delete/update together), RESTRICT (block the change), or SET NULL (clear the reference) is chosen to preserve data consistency (SET DEFAULT and NO ACTION also exist).")),
     "glossary": [
         ("참조 무결성 제약", "Referential Integrity Constraint", ("참조는 원본에 있는 값이어야 한다는 규칙.", "The rule that a reference must point to a value that exists in the original."), ("관계형 데이터베이스의 기본 일관성 규칙이에요.", "A basic consistency rule in relational databases.")),

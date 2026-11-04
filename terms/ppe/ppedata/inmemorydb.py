@@ -43,7 +43,7 @@ P4 = svg(320, sky(320, ground=False)
 
 # 5. 한계: 메모리는 비싸고 다 담을 수는 없어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + fastdesk(190, 150, 1.0) + label(190, 210, "⟦자주 찾는 데이터는 바로 꺼내요|frequently-needed data pops out instantly⟧", 11, "var(--ink)")
+         + fastdesk(190, 150, 1.0) + label(190, 210, "⟦자주 찾는 데이터는 바로 꺼내요|frequently-needed data comes out right away⟧", 11, "var(--ink)")
          + shelfzone(480, 140, 180, 70, 0.8, n=3) + label(570, 240, "⟦나머지 데이터는 여전히 깊은 선반(디스크)에 있어요|the rest of the data stays on the deep shelf (disk)⟧", 11, "var(--ink)")
          + label(380, 270, "⟦메모리는 디스크보다 비싸서 데이터를 전부 올리긴 어려워요|memory costs more than disk, so moving all the data into memory is hard⟧", 12, "var(--ink)", cls="d"))
 
@@ -60,19 +60,19 @@ PAGE = {
         {"svg": P2, "alt": ("같은 인기 상자 두 개가 매번 깊은 선반에서 꺼내짐", "The same popular box, fetched from deep storage both times"),
          "caption": ("같은 인기 상품인데 매번 깊은 선반까지 가요.", "The same popular item, fetched from deep storage every time."),
          "small": ("자주 찾는 상품은 가까이 둘 수 없을까요?", "Couldn't frequently-needed items stay close by?")},
-        {"svg": P3, "hero": True, "alt": ("포장 담당이 특급 출고대에서 바로 꺼내주고 배송 기사가 웃으며 금방 받아감", "A packer hands it over instantly from the express desk, and the driver smiles, getting it right away"),
+        {"svg": P3, "hero": True, "alt": ("포장 담당이 특급 출고대에서 바로 꺼내주고 배송 기사가 웃으며 금방 받아감", "A packer hands it over right away from the express desk, and the driver smiles, getting it right away"),
          "caption": ("인메모리 DB = 깊은 선반 대신 바로 꺼내는 특급 출고대예요.", "An in-memory DB is an express desk that skips the deep shelf."),
          "small": ("데이터를 메모리에 올려두니 디스크보다 훨씬 빨리 꺼내요.", "Data is kept in memory, so pickup is far faster than from disk."),
          "tricks": (4, [
              (MEM_I, ("데이터를 메모리에 바로 두기", "Keep data right in memory"), ("디스크까지 안 가요", "skips the trip to disk"), "calm"),
-             (FAST_I, ("빠른 꺼내기", "Instant pickup"), ("디스크보다 지연이 훨씬 짧아요", "far lower latency than disk")),
+             (FAST_I, ("빠른 꺼내기", "Fast pickup"), ("디스크보다 지연이 훨씬 짧아요", "far lower latency than disk")),
              (VOLATILE_I, ("휘발성 위험", "Volatility risk"), ("전원이 나가면 메모리의 데이터가 사라져요", "data in memory vanishes if power is lost"), "warm"),
              (GRID_I, ("IMDG — 여러 대 묶기", "IMDG — pool many machines"), ("여러 대의 메모리를 모아 큰 저장소로 써요", "pools memory into one big store")),
          ])},
         {"svg": P4, "alt": ("캐시, 빠른 조회, IMDG, 휘발성 네 가지 쓰임새를 비교하는 표", "A table comparing cache use, fast lookups, IMDG, and volatility"),
          "caption": ("인메모리 DB/IMDG는 캐시, 빠른 조회, 메모리 묶기에 쓰여요.", "In-memory DB/IMDG is used for caching, fast lookups, and pooling memory."),
          "small": ("전원이 나가도 데이터를 되살리도록 로그나 스냅샷을 남겨요.", "Logs or snapshots are kept so data can be restored after a power loss.")},
-        {"svg": P5, "alt": ("왼쪽: 특급 출고대에서 자주 찾는 것이 바로 나옴. 오른쪽: 나머지는 여전히 깊은 선반에 있음", "Left: frequent items pop out of the express desk instantly. Right: the rest still sits on the deep shelf"),
+        {"svg": P5, "alt": ("왼쪽: 특급 출고대에서 자주 찾는 것이 바로 나옴. 오른쪽: 나머지는 여전히 깊은 선반에 있음", "Left: frequent items come out of the express desk right away. Right: the rest still sits on the deep shelf"),
          "caption": ("메모리는 디스크보다 비싸서 데이터를 전부 올리긴 어려워요.", "Memory costs more than disk, so moving all the data into memory is hard."),
          "small": ("그래서 자주 쓰는 데이터만 골라 올리기도 해요(캐시).", "So often only frequently-used data gets loaded into memory — that's a cache.")},
     ],
@@ -87,7 +87,7 @@ PAGE = {
         ("휘발성", "Volatility", ("전원이 나가면 사라지는 성질.", "The trait of vanishing when power is lost."), ("사라진 데이터는 로그/스냅샷으로 복구해요.", "Lost data is recovered via log or snapshot.")),
         ("지속성(Durability)", "Durability", ("도장 찍히면 사라지지 않는 약속.", "The promise that once stamped, it stays."), ('일부 인메모리 DB는 속도를 위해 이 약속을 타협해요. → <a href="acid-ko.html">전표가 지키는 네 약속</a>', 'Some in-memory DBs trade off this promise for speed. → <a href="acid-en.html">the four promises a receipt keeps</a>')),
         ("NoSQL 모델링", "NoSQL Modeling", ("상자 모양에 맞춰 선반을 바꾸는 창고.", "A warehouse reshaping shelves to fit the box."), ('Redis처럼 Key-Value형이면서 인메모리인 제품도 있어요. → <a href="nosqltype-ko.html">자유로운 선반 창고</a>', 'Some products, like Redis, are both key-value and in-memory. → <a href="nosqltype-en.html">the free-shelf warehouse</a>')),
-        ("캐싱(놀이공원 세계)", "Caching (Amusement-Park World)", ("놀이공원 세계에서 다루는 캐시 이야기.", "The caching story from the amusement-park world."), ('분산 시스템 관점의 캐싱은 그쪽에서 더 다뤄요. → <a href="caching-ko.html">캐싱</a>', 'The distributed-systems view of caching is covered there. → <a href="caching-en.html">caching</a>')),
+        ("캐싱(SRE 분야)", "Caching (SRE field)", ("SRE 분야에서 다루는 캐시 이야기.", "The caching story from the SRE field."), ('분산 시스템 관점의 캐싱은 그쪽에서 더 다뤄요. → <a href="caching-ko.html">캐싱</a>', 'The distributed-systems view of caching is covered there. → <a href="caching-en.html">caching</a>')),
         ("병행제어", "Concurrency Control", ("동시에 손대도 안 부딪히게 막는 규칙.", "Rules that stop simultaneous edits from colliding."), ('메모리 위에서도 이 규칙은 그대로 필요해요. → <a href="concurrency-ko.html">동시에 안 부딪히는 규칙</a>', 'Still needed even when everything lives in memory. → <a href="concurrency-en.html">the no-collision rule</a>')),
     ],
 }

@@ -23,8 +23,8 @@ P3 = svg(340, sky(340)
          + '<rect x="190" y="150" width="60" height="22" rx="4" fill="var(--accent)"/>' + label(220, 166, "⟦:51234|:51234⟧", 11, "#fff", cls="d")
          + '<rect x="510" y="150" width="60" height="22" rx="4" fill="var(--good)"/>' + label(540, 166, "⟦:443|:443⟧", 11, "#fff", cls="d")
          + '<path d="M280 200 Q380 150 500 200" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 5" fill="none"/>'
-         + label(380, 30, "⟦소켓 = 집주소(IP)+호실번호(포트)로 만든, 이 대화 전용 구멍|a socket = a hole made from a house address (IP) plus a room number (port), dedicated to this one conversation⟧", 13, "var(--ink)", cls="d")
-         + label(380, 322, "⟦소켓 구멍 하나가 한 쌍의 대화(연결)를 처음부터 끝까지 맡아요|one socket hole carries one pairing (connection) from start to finish⟧", 12, "var(--muted)"))
+         + label(380, 30, "⟦소켓 = 집주소(IP)+호실번호(포트)로 만든, 대화의 한쪽 끝 구멍|a socket = a hole made from a house address (IP) plus a room number (port), one end of a conversation⟧", 13, "var(--ink)", cls="d")
+         + label(380, 322, "⟦TCP에선 연결된 소켓 구멍 하나가 그 대화를 끝까지 맡아요|in TCP, one connected socket hole carries that talk to the end⟧", 12, "var(--muted)"))
 
 # 4. 소켓 구조도
 P4 = svg(300, sky(300, ground=False)
@@ -44,7 +44,7 @@ DOOR2_I = icon('<rect x="18" y="10" width="28" height="44" rx="3" fill="var(--go
 
 PAGE = {
     "slug": "socket", "order": 10,
-    "title": ("이 대화만을 위한 전용 우편함 구멍", "The Mailbox Hole Just for This One Conversation"),
+    "title": ("대화의 한쪽 끝을 맡는 우편함 구멍", "The Mailbox Hole at One End of a Conversation"),
     "h1": ("<em>소켓</em>이 뭐예요?", "What is a <em>Socket</em>?"),
     "sub": ("소켓 통신을, 집주소와 호실번호로 만든 전용 우편함 구멍 이야기로 풀어봤어요.",
             "Socket communication, told as a story about a dedicated mailbox hole made from a house address and a room number."),
@@ -57,11 +57,11 @@ PAGE = {
          "small": ("집 주소만으론 어느 편지가 어느 프로그램의 대화인지 알 수 없어요.", "The house address alone can't tell which letter belongs to which program's conversation.")},
         {"svg": P3, "hero": True, "alt": ("두 우체국이 각각 IP와 포트 번호 꼬리표를 달고 점선으로 연결됨", "Two post offices, each tagged with an IP and port number, linked by a dashed line"),
          "caption": ("소켓은 집주소와 호실번호로 만든 전용 구멍이에요.", "A socket is a dedicated hole made from an address and a room number."),
-         "small": ("소켓 구멍 하나가 한 쌍의 대화(연결)를 처음부터 끝까지 맡아요.", "One socket hole carries one pairing (connection) from start to finish."),
+         "small": ("TCP에선 연결된 소켓 구멍 하나가 그 대화를 처음부터 끝까지 맡아요.", "In TCP, one connected socket hole carries that conversation from start to finish."),
          "tricks": (4, [
              (ADDR_I, ("IP 주소", "IP address"), ("어느 집인지 알려줘요", "says which house it is"), "calm"),
              (ROOM_I, ("포트 번호", "Port number"), ("몇 호실인지 알려줘요", "says which room number"), ),
-             (HOLE_I, ("전용 구멍", "A dedicated hole"), ("연결마다 따로 생겨요", "a fresh hole for each connection"), "warm"),
+             (HOLE_I, ("전용 구멍", "A dedicated hole"), ("TCP에선 연결마다 따로 생겨요", "in TCP, a fresh hole for each connection"), "warm"),
              (DOOR2_I, ("열고 닫기", "Open and close"), ("통신 시작할 때 만들고 끝나면 치워요", "made when talk begins, removed when it ends")),
          ])},
         {"svg": P4, "alt": ("보내는 쪽 소켓(IP와 포트)과 받는 쪽 소켓(IP와 포트)을 나란히 적은 안내판", "A board listing the sender's socket (IP, port) and the receiver's socket (IP, port) side by side"),
@@ -71,8 +71,8 @@ PAGE = {
          "caption": ("소켓은 구멍이고, 봉투 종류는 만들 때 따로 골라요.", "A socket is the hole — the envelope type is chosen when it's made."),
          "small": ("소켓을 열 때 등기봉투(TCP)용으로 할지 일반봉투(UDP)용으로 할지 정해요.", "When a socket is opened, it's set up for registered envelopes (TCP) or plain ones (UDP).")},
     ],
-    "summary": (("<b>소켓</b>은 <b>IP 주소(어느 집)와 포트 번호(몇 호실)</b>로 만든, <b>한 쌍의 대화만을 책임지는 전용 우편함 구멍</b>이에요.",
-                 "A <b>socket</b> is a <b>dedicated mailbox hole</b> made from an <b>IP address (which house) and a port number (which room)</b>, looking after just one conversation."),
+    "summary": (("<b>소켓</b>은 <b>IP 주소(어느 집)와 포트 번호(몇 호실)</b>로 만든, <b>대화의 한쪽 끝을 맡는 전용 우편함 구멍</b>이에요.",
+                 "A <b>socket</b> is a <b>dedicated mailbox hole</b> made from an <b>IP address (which house) and a port number (which room)</b>, looking after one end of a conversation."),
                 ("소켓은 운영체제가 네트워크 통신을 위해 제공하는 종단점(endpoint)으로, IP 주소+포트 번호의 조합(소켓 주소)으로 식별돼요. 프로그램은 소켓을 만들어 주소를 붙이거나(bind) 상대와 이은(connect) 뒤 데이터를 읽고 쓰며, TCP 소켓이면 연결 지향, UDP 소켓이면 비연결형으로 동작해요. 한 호스트 안의 여러 프로그램이 같은 IP를 쓰더라도 포트 번호가 다르면 서로 다른 소켓으로 구분돼요.",
                  "A socket is the endpoint the operating system provides for network communication, identified by the combination of an IP address and a port number (the socket address). A program creates a socket, gives it an address (bind) or links it to the other side (connect), then reads and writes data — a TCP socket behaves connection-oriented, a UDP socket connectionless. Multiple programs on the same host sharing one IP are still told apart as long as their port numbers differ.")),
     "glossary": [

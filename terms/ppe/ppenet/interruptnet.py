@@ -43,7 +43,7 @@ P4 = svg(320, sky(320)
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + person(190, 135, s=0.8, face=SMILE, **SORTER) + label(190, 260, "⟦모아서 울리면 직원이 같은 시간에 더 많이 처리해요|coalescing lets the clerk clear more parcels in the same time⟧", 11, "var(--ink)")
          + envelope(570, 135, 0.6) + label(570, 260, "⟦대신 소포 한 통 한 통은 조금 늦게 알려져요|but each single parcel is flagged a little later⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦인터럽트 일반 원리는 시스템SW 세계에서 다루고, 여기서는 네트워크 카드의 벨만 봐요|interrupts in general live in the Systems world; here we look only at the network card's bell⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦인터럽트 일반 원리는 시스템SW 분야에서 다루고, 여기서는 네트워크 카드의 벨만 봐요|interrupts in general live in the Systems field; here we look only at the network card's bell⟧", 12, "var(--ink)", cls="d"))
 
 BELL_I = icon('<path d="M32 12 a14 14 0 0 1 14 14 v8 l6 10 h-40 l6 -10 v-8 a14 14 0 0 1 14 -14z" fill="var(--accent)"/><circle cx="32" cy="50" r="4" fill="var(--ink)"/>')
 STOP_I = icon('<rect x="14" y="14" width="36" height="36" rx="6" fill="none" stroke="var(--bad)" stroke-width="4"/><path d="M22 32 h20" stroke="var(--bad)" stroke-width="4"/>')
@@ -77,12 +77,12 @@ PAGE = {
          "small": ("모아서 울리면 매번 울릴 때보다 전체 처리량은 늘지만, 소포별 도착 소식은 조금 늦어요.", "Coalescing raises overall throughput compared to ringing every time, but each arrival is known a bit later.")},
         {"svg": P5, "alt": ("왼쪽: 모아서 울리면 같은 시간에 더 많이 처리함. 오른쪽: 소포 한 통의 소식은 조금 늦게 알려짐", "Left: coalescing lets the clerk clear more parcels in the same time. Right: a single parcel's news comes a bit later"),
          "caption": ("소포 알림의 지연과 전체 처리량은 맞바꾸는 관계예요.", "Notification latency and overall throughput trade off against each other."),
-         "small": ("인터럽트 일반 원리는 시스템SW 세계에서 다루고, 여기서는 네트워크 카드의 벨만 봐요.", "Interrupts in general live in the Systems world; here we look only at the network card's bell.")},
+         "small": ("인터럽트 일반 원리는 시스템SW 분야에서 다루고, 여기서는 네트워크 카드의 벨만 봐요.", "Interrupts in general live in the Systems field; here we look only at the network card's bell.")},
     ],
     "summary": (("네트워크 I/O의 <b>인터럽트</b>는 <b>소포(패킷)가 도착했다고 즉시 알리는 벨소리</b>이고, 너무 잦으면 <b>모아서 한 번에 울리기(코얼레싱)</b>도 해요.",
                  "A network I/O <b>interrupt</b> is <b>the bell that announces a parcel (packet) has arrived right away</b> — and when it rings too often, several are <b>coalesced into one ring</b> instead."),
                 ("네트워크 카드(NIC)는 패킷이 도착할 때마다 CPU에 인터럽트를 걸어 즉시 처리하게 해요. 트래픽이 아주 많아지면 인터럽트가 너무 잦아져 CPU가 다른 일을 못 하는 '인터럽트 폭풍'이 생기는데, 이를 막기 위해 패킷 여러 개를 모았다가 인터럽트를 한 번만 거는 '인터럽트 코얼레싱(interrupt coalescing)'을 써요. 지연은 조금 늘지만 전체 처리량(throughput)은 좋아져요. 리눅스 NAPI처럼 부하가 큰 동안 폴링으로 바꾸는 방식도 있어요. CPU가 실행 중인 프로그램을 멈추고 신호를 처리하는 인터럽트 일반 원리 위에서, 네트워크 I/O에 특화된 이야기예요.",
-                 "A network interface card (NIC) raises a CPU interrupt on every packet arrival so it gets handled right away. Under very heavy traffic, interrupts fire so often the CPU can't do anything else — an 'interrupt storm.' To prevent this, interrupt coalescing batches several packets and raises just one interrupt for the group, trading a bit of latency for better overall throughput. Linux's NAPI goes further, switching to polling while traffic stays heavy. It builds on the general CPU interrupt that pauses a running program, applied specifically to network I/O.")),
+                 "A network interface card (NIC) raises a CPU interrupt on every packet arrival so it gets handled right away. Under very heavy traffic, interrupts fire so often the CPU can't do anything else — an 'interrupt storm.' To prevent this, interrupt coalescing batches several packets and raises just one interrupt for the group, trading a bit of latency for better overall throughput. Another approach, as in Linux's NAPI, switches to polling while traffic stays heavy. It builds on the general CPU interrupt that pauses a running program, applied specifically to network I/O.")),
     "glossary": [
         ("네트워크 인터럽트", "Network interrupt", ("소포 도착을 즉시 알리는 벨소리.", "The bell that announces a parcel's arrival right away."), ("NIC가 CPU에 거는 신호예요.", "A signal the NIC raises to the CPU.")),
         ("인터럽트 폭풍", "Interrupt storm", ("벨이 쉴 새 없이 울려 업무가 마비되는 것.", "The bell ringing nonstop until all other work stalls."), ("트래픽이 아주 많을 때 생겨요.", "Happens under very heavy traffic.")),
@@ -91,6 +91,6 @@ PAGE = {
         ("폴링", "Polling", ("벨 없이 직원이 수시로 직접 확인하러 가는 방식.", "Instead of a bell, the clerk walks over to check on their own, repeatedly."), ("인터럽트와 반대되는 전략이에요.", "The opposite strategy to an interrupt.")),
         ("처리량(throughput)", "Throughput", ("전체적으로 얼마나 많이 처리했는지.", "How much got processed overall."), ("코얼레싱이 늘려주는 값이에요.", "What coalescing is designed to improve.")),
         ("지연(latency)", "Latency", ("소포 하나가 알려지기까지 걸리는 시간.", "How long it takes for one parcel to be flagged."), ("코얼레싱이 조금 늘리는 값이에요.", "What coalescing slightly worsens.")),
-        ("인터럽트(프로세스)", "Interrupt (process)", ("CPU가 프로그램 실행 중 멈추는 일반적인 인터럽트.", "The general interrupt that pauses a CPU mid-program."), ('시스템SW 세계에서 다른 각도로 다뤄요. → <a href="interruptproc-ko.html">하던 일을 멈추게 하는 벨소리</a>', 'Covered from a different angle in the Systems world. → <a href="interruptproc-en.html">the bell that pauses what you were doing</a>')),
+        ("인터럽트(프로세스)", "Interrupt (process)", ("CPU가 프로그램 실행 중 멈추는 일반적인 인터럽트.", "The general interrupt that pauses a CPU mid-program."), ('시스템SW 분야에서 다른 각도로 다뤄요. → <a href="interruptproc-ko.html">하던 일을 멈추게 하는 벨소리</a>', 'Covered from a different angle in the Systems field. → <a href="interruptproc-en.html">the bell that pauses what you were doing</a>')),
     ],
 }

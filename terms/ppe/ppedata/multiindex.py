@@ -47,7 +47,7 @@ P5 = svg(300, sky(300, ground=False)
          + label(260, 260, "⟦딱지가 많아질수록 새 상자 넣기도 느려져요|more tags means every new box takes longer to file⟧", 11.5, "var(--bad)")
          + indexcard(560, 150, 1.1, tags=["～"])
          + label(560, 220, "⟦뜻이 비슷한 데이터끼리 찾는 색인도 있어요|some indexes find data with a similar meaning⟧", 11, "var(--ink)")
-         + label(560, 250, "⟦(AI 세계의 벡터 색인)|(vector index, in the AI world)⟧", 10.5, "var(--muted)"))
+         + label(560, 250, "⟦(AI 분야의 벡터 색인)|(vector index, in the AI field)⟧", 10.5, "var(--muted)"))
 
 MULTI_I = icon('<rect x="12" y="12" width="40" height="28" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="12" y="2" width="12" height="12" rx="2" fill="var(--accent)"/><rect x="26" y="2" width="12" height="12" rx="2" fill="var(--good)"/>')
 SPACE_I = icon('<rect x="8" y="8" width="48" height="48" rx="3" fill="none" stroke="var(--line)" stroke-width="3"/><rect x="18" y="18" width="20" height="18" rx="2" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2"/>')
@@ -71,7 +71,7 @@ PAGE = {
          "caption": ("다차원 색인구조는 카드 한 장에 여러 딱지를 동시에 붙여요.", "A multi-dimensional index puts several tags on one card at once."),
          "small": ("구역·유통기한·분류를 섞어 찾아도 선반을 다 뒤지지 않아요.", "Even a mix of zone, expiry, and category is found without searching every shelf."),
          "tricks": (4, [
-             (MULTI_I, ("여러 딱지 동시에 붙이기", "Tag by several keys at once"), ("복합 색인도 쓰지만 컬럼 순서에 묶여요", "composite indexes do this, but depend on column order")),
+             (MULTI_I, ("여러 딱지 동시에 붙이기", "Tag by several keys at once"), ("복합 색인도 쓰지만 앞쪽 컬럼 조건이 없으면 효율이 떨어져요", "composite indexes do this, but lose efficiency without a condition on the leading column")),
              (SPACE_I, ("공간을 나눠 찾기", "Narrow down by space"), ("R-트리 방식이에요", "the R-tree approach"), "calm"),
              (BIT_I, ("있다/없다로 빨리 거르기", "Filter fast with yes/no"), ("비트맵 색인이에요", "a bitmap index")),
              (SIM_I, ("비슷한 것끼리 묶어 찾기", "Group by similarity"), ("벡터 검색에 쓰여요", "used for vector search"), "warm"),
@@ -93,7 +93,7 @@ PAGE = {
         ("비트맵 색인", "Bitmap Index", ("있다/없다를 0·1로 겹쳐보는 색인.", "An index stacking yes/no as 0s and 1s."), ("값 종류가 적을 때 빨라요.", "Fast when there are few distinct values.")),
         ("차원의 저주", "Curse of Dimensionality", ("기준(차원)이 너무 많아지면 색인 검색이 느려짐.", "Too many dimensions, and index searches slow down."), ("색인이 오히려 덜 효과적이 돼요.", "The index becomes less effective, not more.")),
         ("공간 색인", "Spatial Index", ("위치 기준으로 찾는 색인.", "An index searched by location."), ("R-트리가 대표적인 구현이에요.", "The R-tree is a typical implementation.")),
-        ("벡터 색인", "Vector Index", ("뜻이 비슷한 것끼리 찾는 색인.", "An index that finds things by meaning."), ('AI 세계에서 임베딩 검색에 써요. → <a href="vectordb-ko.html">의미로 찾는 창고</a>', 'Used for embedding search in the AI world. → <a href="vectordb-en.html">a warehouse that searches by meaning</a>')),
+        ("벡터 색인", "Vector Index", ("뜻이 비슷한 것끼리 찾는 색인.", "An index that finds things by meaning."), ('AI 분야에서 임베딩 검색에 써요. → <a href="vectordb-ko.html">의미로 찾는 창고</a>', 'Used for embedding search in the AI field. → <a href="vectordb-en.html">a warehouse that searches by meaning</a>')),
         ("쓰기 비용", "Write Overhead", ("새 상자 넣을 때마다 드는 수고.", "The extra work every time a new box is filed."), ("색인이 많을수록 입력은 느려져요.", "More indexes mean slower inserts.")),
         ("커버링 색인", "Covering Index", ("색인만 보고 답을 다 주는 경우.", "When the index alone answers the question."), ("선반까지 안 가도 돼서 더 빨라요.", "No trip to the shelf needed — even faster.")),
     ],

@@ -82,7 +82,7 @@ PAGE = {
         ("AI 위험관리", "AI Risk Management", ("편향·오작동 같은 위험을 미리 찾는 것.", "Spotting risks like bias or malfunction in advance."), ("42001이 요구하는 핵심 활동이에요.", "A core activity 42001 requires.")),
         ("설명가능성", "Explainability", ("왜 그런 결과가 나왔는지 설명할 수 있는 성질.", "Being able to explain why a result came out that way."), ("기록이 없으면 설명도 불가능해요.", "No record means no explanation either.")),
         ("사람의 감독", "Human Oversight", ("AI의 판단을 사람이 살피고 필요하면 끼어들 수 있게 하는 것.", "Letting people review AI decisions and step in when needed."), ("어느 단계에 어떻게 둘지는 조직이 위험에 맞춰 정해요.", "The organization sets where and how, to fit the risk.")),
-        ("ISO/IEC 27001", "ISO/IEC 27001", ("정보보안 관리체계 표준.", "The standard for information-security management."), ('구조가 닮은 먼저 나온 표준이에요. → <a href="compliance-ko.html">이웃 나라 규칙 검사관</a>', 'The earlier standard this one is structured after. → <a href="compliance-en.html">the inspector from the neighboring kingdom</a>')),
+        ("ISO/IEC 27001", "ISO/IEC 27001", ("정보보안 관리체계 표준.", "The standard for information-security management."), ('구조가 닮은 먼저 나온 표준이에요. → <a href="compliance-ko.html">이웃 나라 규칙 검사관</a>', 'An earlier standard with a similar structure. →<a href="compliance-en.html">the inspector from the neighboring kingdom</a>')),
         ("AI 윤리기준·거버넌스", "AI Ethics & Governance", ("매일 지키는 AI 운영 원칙.", "The day-to-day principles for running AI responsibly."), ('이 표준의 인증 틀과 달리, 실제 운영 원칙 자체를 다뤄요. → <a href="aiethicsgov-ko.html">검사장 공통 등급 원칙판</a>', 'Unlike this standard\'s certification frame, it covers the operating principles themselves. → <a href="aiethicsgov-en.html">the shared grading charter</a>')),
     ],
 }

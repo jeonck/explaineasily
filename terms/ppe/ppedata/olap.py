@@ -87,8 +87,8 @@ PAGE = {
     ],
     "summary": (("<b>OLAP</b>(온라인 분석처리)은 전체 데이터를 <b>여러 기준(지역·기간·품목)으로 미리 쌓아두고 이리저리 잘라보며</b> 분석하는 방식이에요.",
                  "<b>OLAP</b> (Online Analytical Processing) analyzes the whole dataset by <b>pre-aggregating it across several axes — region, time, item — and slicing it any way you like</b>."),
-                ("한 건의 거래를 빠르게 처리하는 OLTP와 달리, OLAP은 큐브(다차원 집계) 구조로 슬라이스/다이스·드릴다운·롤업·피벗 같은 분석 연산을 빠르게 지원해요. 보통 데이터 웨어하우스에 쌓인 데이터를 스타 스키마로 모델링해 큐브를 만들고, 최신 거래 반영에는 배치 주기만큼의 시차가 있어요. 큐브를 미리 계산해 두는 MOLAP과 달리, ROLAP은 조회할 때 관계형 테이블에서 계산해요.",
-                 "Unlike OLTP, which processes one transaction quickly, OLAP uses a cube (multi-dimensional aggregate) structure to support fast slice/dice, drill-down, roll-up, and pivot operations. It's typically built by modeling data warehouse data into a star schema, and reflecting the very latest transactions lags by however often the cube batch-refreshes. Unlike MOLAP, which precomputes the cube, ROLAP computes aggregates from relational tables at query time.")),
+                ("한 건의 거래를 빠르게 처리하는 OLTP와 달리, OLAP은 큐브(다차원 집계) 구조로 슬라이스/다이스·드릴다운·롤업·피벗 같은 분석 연산을 빠르게 지원해요. 보통 데이터 웨어하우스에 쌓인 데이터를 스타 스키마로 모델링해 큐브를 만들고, 최신 거래 반영에는 배치 주기만큼의 시차가 있어요. MOLAP은 보통 큐브를 미리 계산해 두고, ROLAP은 보통 조회할 때 관계형 테이블에서 계산해요.",
+                 "Unlike OLTP, which processes one transaction quickly, OLAP uses a cube (multi-dimensional aggregate) structure to support fast slice/dice, drill-down, roll-up, and pivot operations. It's typically built by modeling data warehouse data into a star schema, and reflecting the very latest transactions lags by however often the cube batch-refreshes. MOLAP usually precomputes the cube, while ROLAP usually computes aggregates from relational tables at query time.")),
     "glossary": [
         ("OLTP", "OLTP", ("전표 한 건을 빠르게 처리.", "Processing one receipt quickly."), ("OLAP과 짝을 이루는 개념이에요.", "The counterpart concept to OLAP.")),
         ("큐브", "Cube", ("여러 기준으로 미리 쌓아둔 블록.", "A block pre-stacked across several axes."), ("OLAP 분석의 핵심 구조예요.", "The core structure behind OLAP analysis.")),
@@ -96,7 +96,7 @@ PAGE = {
         ("드릴다운", "Drill-down", ("큰 단위에서 작은 단위로 파고들기.", "Digging from a big unit into a smaller one."), ("분기→월→일처럼 내려가요.", "Quarter → month → day, for example.")),
         ("피벗/롤업", "Pivot / Roll-up", ("보는 축을 바꾸거나(피벗) 값을 큰 단위로 합쳐보기(롤업).", "Rotating the view axis (pivot), or adding values up to a bigger unit (roll-up)."), ("같은 데이터를 다른 각도로 봐요.", "Views the same data from a different angle.")),
         ("스타 스키마", "Star Schema", ("큐브를 만드는 테이블 모델링 방식.", "The table design used to build a cube."), ("사실 테이블과 차원 테이블로 나눠요.", "Splits into fact tables and dimension tables.")),
-        ("다차원 색인", "Multi-dimensional Index", ("큐브 조회를 빠르게 돕는 색인.", "The index that speeds up cube lookups."), ('같은 세계의 다른 페이지예요. → <a href="multiindex-ko.html">여러 딱지로 한 번에 찾기</a>', "A related page in the same world. → <a href=\"multiindex-en.html\">finding by several tags at once</a>")),
+        ("다차원 색인", "Multi-dimensional Index", ("큐브 조회를 빠르게 돕는 색인.", "The index that speeds up cube lookups."), ('같은 분야의 다른 페이지예요. → <a href="multiindex-ko.html">여러 딱지로 한 번에 찾기</a>', "A related page in the same field. → <a href=\"multiindex-en.html\">finding by several tags at once</a>")),
         ("배치 집계 지연", "Batch Refresh Lag", ("큐브를 다시 쌓는 주기만큼 생기는 시차.", "The delay caused by how often the cube is rebuilt."), ("최신 거래는 다음 쌓기 때 큐브에 반영돼요.", "The latest transactions reach the cube at the next rebuild.")),
     ],
 }

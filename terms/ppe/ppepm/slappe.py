@@ -41,7 +41,7 @@ P4 = svg(320, sky(320, ground=False)
          + label(560, 220, "⟦보장 수치를 실제로 달성하는 기술은 티켓과 따로 있어요|the tech that hits the guaranteed number is separate from the ticket⟧", 11, "var(--muted)")
          + label(380, 300, "⟦SLM은 티켓에 적힌 조항을 계속 관리하는 과정이에요|SLM is the ongoing process of managing the terms written on the ticket⟧", 12, "var(--ink)", cls="d"))
 
-# 5. 한계/차이: 이 티켓은 계약, 실제로 지켜내는 기술은 다른 세계
+# 5. 한계/차이: 이 티켓은 계약, 실제로 지켜내는 기술은 다른 분야
 P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
          + '<g transform="translate(190,150) scale(1.5,1)">' + ticket(0, 0) + '</g>' + label(190, 154, "⟦계약 조건|contract terms⟧", 10, "#142033") + label(190, 240, "⟦SLA/SLM은 약속을 적고 관리해요|SLA/SLM writes the promise down and manages it⟧", 11, "var(--ink)")
          + person(570, 150, s=0.8, face=EYES, **ARTIST) + label(570, 256, "⟦약속을 실제로 지키는 기술은 별개의 주제예요|the tech that actually keeps the promise is a separate topic⟧", 11, "var(--ink)")

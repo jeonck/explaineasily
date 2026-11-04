@@ -100,7 +100,7 @@ PAGE = {
          "small": ("같은 값이 이어져도(1,1) 맨체스터는 비트 중간에서 꼭 한 번 바뀌어요.", "Even for repeated bits (1,1), Manchester still flips once at each bit's middle.")},
         {"svg": P5, "alt": ("왼쪽: 신호를 두 배 빨리 바꿔야 해 땀 흘리는 분류소 직원. 오른쪽: 더 빠른 이더넷을 뜻하는 빠른 트럭", "Left: a sorter sweats because the signal must change twice as fast. Right: a fast truck stands for faster Ethernet using other encodings"),
          "caption": ("비트마다 꼭 신호를 뒤집어야 해서, 같은 비트 속도에 NRZ의 두 배 빠른 신호 변화가 필요해요.", "A flip in every bit means the same bit rate needs signal changes twice as fast as NRZ."),
-         "small": ("그래서 10Mb/s 이더넷(10BASE-T)에는 맨체스터를 썼지만, 더 빠른 이더넷은 다른 부호화를 써요.", "So 10 Mb/s Ethernet (10BASE-T) uses Manchester, while faster Ethernet uses other encodings.")},
+         "small": ("그래서 10Mb/s 이더넷(10BASE-T)에는 맨체스터를 썼지만, 더 빠른 이더넷은 다른 부호화를 써요.", "So 10 Mb/s Ethernet (10BASE-T) used Manchester, while faster Ethernet uses other encodings.")},
     ],
     "summary": (("<b>맨체스터 부호화</b> = 전선 신호를 <b>비트 한가운데서 항상 뒤집어</b>, 받는 쪽이 신호만 보고도 박자(클럭)를 되찾게 하는 약속.",
                  "<b>Manchester encoding</b> = a rule that <b>always flips the wire signal in the middle of every bit</b>, so the receiver can recover the clock from the signal alone."),
@@ -109,7 +109,7 @@ PAGE = {
     "glossary": [
         ("맨체스터 부호화", "Manchester Encoding", ("비트 중간마다 꼭 한 번 뒤집히는 신호 규칙.", "A signal rule that flips exactly once at the middle of every bit."), ("자기동기화를 위한 라인 부호화 방식이에요.", "A line-coding scheme built for self-clocking.")),
         ("자기동기화", "Self-Clocking", ("신호만 보고 박자를 되찾는 것.", "Recovering the beat from the signal alone."), ("박자를 알려주는 전선을 따로 깔지 않아도 돼요.", "No separate wire is needed to carry the beat.")),
-        ("NRZ(비귀환 부호화)", "NRZ (Non-Return-to-Zero)", ("값이 바뀔 때만 신호가 바뀌는 단순한 방식.", "A simpler scheme where the signal changes only when the value changes."), ("같은 값이 이어지면 비트 개수를 세기 어려워요.", "Repeated values make bits hard to count.")),
+        ("NRZ(일반 신호)", "NRZ (Non-Return-to-Zero)", ("값이 바뀔 때만 신호가 바뀌는 단순한 방식.", "A simpler scheme where the signal changes only when the value changes."), ("같은 값이 이어지면 비트 개수를 세기 어려워요.", "Repeated values make bits hard to count.")),
         ("DC 성분", "DC Component", ("신호를 평균 냈을 때 남는 한쪽 치우침.", "The one-sided lean left when a signal is averaged."), ("맨체스터는 이 값이 데이터에 따라 달라지지 않아, 변압기를 거치는 회선에도 잘 맞아요.", "In Manchester it doesn't depend on the data, which suits lines that pass through a transformer.")),
         ("라인 부호화", "Line Coding", ("비트를 전선 위 신호 모양으로 바꾸는 규칙 전체.", "The general category of rules turning bits into signal shapes on a wire."), ('OSI 1계층에서 하는 일이에요. → <a href="osi7-ko.html">7단계로 나뉜 배송 공정</a>', 'A job for OSI layer 1. → <a href="osi7-en.html">the delivery process split into 7 stages</a>')),
         ("대역폭", "Bandwidth", ("회선이 실어 나를 수 있는 신호 변화 빠르기의 폭.", "The range of signal-change speeds a line can carry."), ("맨체스터는 같은 비트 속도에 NRZ의 약 두 배가 필요해요.", "Manchester needs about twice NRZ's bandwidth for the same bit rate.")),

@@ -24,7 +24,7 @@ P1 = svg(320, sky(320)
          + person(130, 160, s=0.85, face=SWEAT + EYES, **CHIEF)
          + tire(300, 240) + tire(340, 250) + tire(380, 235) + tire(420, 255) + tire(460, 240) + tire(500, 250) + tire(540, 235)
          + label(380, 30, "⟦차 수백 대, 똑같이 타이어만 점검하면 돼요|hundreds of cars, each needing the exact same tire check⟧", 13, "var(--ink)", cls="d")
-         + label(380, 295, "⟦반장(CPU) 혼자서는 하나씩밖에 못 봐요|the chief (CPU) alone can only check them one at a time⟧", 12, "var(--ink)"))
+         + label(380, 295, "⟦반장(CPU)은 손이 적어서 한 번에 몇 대밖에 못 봐요|the chief (CPU) has few hands, so only a few get checked at a time⟧", 12, "var(--ink)"))
 
 # 2. 더 뛰어난 정비사 한 명을 데려와도 여전히 한 대씩이에요
 P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
@@ -73,7 +73,7 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("차 수백 대가 똑같은 타이어 점검을 기다리고, 반장 혼자서는 감당 못 함", "Hundreds of cars wait for the identical tire check, and the chief alone can't keep up"),
          "caption": ("똑같은 타이어 점검이 산더미처럼 쌓여요.", "The same tire check piles up by the hundreds."),
-         "small": ("반장(CPU) 혼자서는 하나씩밖에 못 봐요.", "The chief (CPU) alone can only check them one at a time.")},
+         "small": ("반장(CPU)은 손이 적어서 한 번에 몇 대밖에 못 봐요.", "The chief (CPU) has few hands, so only a few get checked at a time.")},
         {"svg": P2, "alt": ("더 뛰어난 정비사 한 명을 데려와도 여전히 타이어를 한 대씩만 점검함", "Bringing in one far more skilled mechanic still checks tires one car at a time"),
          "caption": ("더 뛰어난 정비사 한 명을 데려와도 한 번에 한 대씩인 건 같아요.", "Even a far better single mechanic still checks one car at a time."),
          "small": ("쌓인 점검을 빨리 끝내려면 뛰어난 한 명보다 많은 손이 필요해요.", "Clearing the piled-up checks fast takes many hands, not one better one.")},
@@ -105,6 +105,6 @@ PAGE = {
         ("CPU 스케줄링", "CPU Scheduling", ("리프트에 누가 먼저 올라갈지 정하는 규칙.", "The rule deciding who gets the lift first."), ('CPU 차례를 정하는 이야기예요. 그 페이지의 반장은 CPU가 아니라 운영체제예요. → <a href="cpusched-ko.html">리프트에 누가 먼저 올라갈까</a>', 'How CPU turns get decided; on that page the chief is the OS, not the CPU. → <a href="cpusched-en.html">who gets the lift first</a>')),
         ("프로세스/스레드", "Process/Thread", ("같은 차를 같이 고치는 여러 손.", "Several hands working the same car."), ('여러 손으로 일을 나누는 점은 닮았지만, GPU는 같은 계산을 한꺼번에 돌리는 데 특화됐어요. → <a href="processthread-ko.html">같은 차, 여러 손</a>', 'Both split work among many hands, but a GPU specializes in running the same calculation at once. → <a href="processthread-en.html">one car, many hands</a>')),
         ("복잡도(Big-O)", "Time Complexity", ("일이 늘 때 시간이 느는 정도를 재는 자.", "The ruler for how fast time grows as work piles up."), ('병렬로 나누면 같은 Big-O도 체감 속도가 달라져요. → <a href="bigofunc-ko.html">차가 많아질 때 얼마나 느려질까</a>', 'Splitting work in parallel changes the felt speed even at the same Big-O. → <a href="bigofunc-en.html">how much slower as cars pile up</a>')),
-        ("AI 분야의 GPU", "GPU in the AI World", ("AI 모델(앵무새)을 돌리는 빠른 장비(횃대).", "The fast hardware (perch) that runs an AI model (the parrot)."), ('AI 분야(앵무새 세계)에서는 추론 비용 관점으로 짧게 다뤄요. → <a href="inference-ko.html">AI 추론</a>', 'The AI world (the parrot world) covers it briefly, from the inference-cost angle. → <a href="inference-en.html">AI inference</a>')),
+        ("AI 분야의 GPU", "GPU in the AI Field", ("AI 모델(앵무새)을 돌리는 빠른 장비(횃대).", "The fast hardware (perch) that runs an AI model (the parrot)."), ('AI 분야에서는 추론 비용 관점으로 짧게 다뤄요. → <a href="inference-ko.html">AI 추론</a>', 'The AI field (the AI field) covers it briefly, from the inference-cost angle. → <a href="inference-en.html">AI inference</a>')),
     ],
 }

@@ -33,7 +33,7 @@ P3 = svg(340, sky(340)
          + person(170, 140, s=0.85, face=EYES, **INSPECTOR) + clipboard(280, 110, 0.9)
          + warehouse(470, 170, 1.1, stamped=True)
          + '<path d="M250 150 L410 160" stroke="var(--good)" stroke-width="3" stroke-dasharray="5 5"/>'
-         + person(620, 190, s=0.7, face=EYES, **CLERK) + label(620, 290, "⟦도장 찍힌 창고만 관청이 빌려요|offices rent only stamped warehouses⟧", 11, "var(--good)")
+         + person(620, 190, s=0.7, face=EYES, **CLERK) + label(620, 290, "⟦관청은 도장 찍힌 창고부터 찾아요|offices look for stamped warehouses first⟧", 11, "var(--good)")
          + label(380, 320, "⟦CSAP = 왕의 점검관이 빌린 창고를 정해진 표로 검사하고 도장을 찍는 제도|CSAP = the king's inspector checks a warehouse against a fixed list and stamps it⟧", 13, "var(--ink)", cls="d"))
 
 LIST_I = icon('<rect x="12" y="10" width="40" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 22 h24 M20 30 h24 M20 38 h16" stroke="#142033" stroke-width="2.5" stroke-linecap="round"/>')
@@ -54,14 +54,14 @@ PAGE = {
         {"svg": P2, "alt": ("두 창고 주인이 모두 자기 창고가 완전 안전하다고 말하지만, 서기는 확인할 기준이 없어 곤란해함", "Two warehouse keepers both claim their warehouse is totally safe, but the clerk has no shared standard to check it against"),
          "caption": ("창고마다 안전하다고만 말해요.", "Every warehouse just claims to be safe."),
          "small": ("저마다 안전하다고 하는데, 공통 기준이 없어서 뭘 믿어야 할지 알 수 없어요.", "Everyone says they're safe, but with no common standard, there's no way to know who to believe.")},
-        {"svg": P3, "hero": True, "alt": ("왕의 점검관이 점검표를 들고 창고를 검사해 도장을 찍고, 도장 찍힌 창고만 관청이 빌릴 수 있음", "The king's inspector checks the warehouse with a checklist and stamps it, and only a stamped warehouse may be rented by a government office"),
+        {"svg": P3, "hero": True, "alt": ("왕의 점검관이 점검표를 들고 창고를 검사해 도장을 찍고, 관청은 도장 찍힌 창고부터 찾음", "The king's inspector checks the warehouse with a checklist and stamps it, and only a stamped warehouse may be rented by a government office"),
          "caption": ("CSAP는 왕의 점검관이 빌린 창고를 정해진 표로 검사하고 도장을 찍는 제도예요.", "CSAP is the king's inspector checking a rented warehouse against a fixed list and stamping it."),
          "small": ('점검관은 정해진 점검표로 검사하고 통과한 창고에만 도장을 찍어요. → <a href="cspm-ko.html">빌린 창고 문단속 점검</a>은 도장을 찍은 뒤에도 계속해요.',
                    'The inspector checks against a fixed list and stamps only the warehouses that pass. → <a href="cspm-en.html">ongoing door-checks on the rented warehouse</a> continue even after the stamp.'),
          "tricks": (4, [
              (LIST_I, ("정해진 점검표로 확인", "Checked against a fixed list"), ("물리 보안·접근통제·분리 등", "physical security, access control, isolation"), "calm"),
              (TIER_I, ("창고 등급을 나눠요", "Warehouses are graded into tiers"), ("상·중·하 등급으로 나뉘어요", "split into high/medium/low tiers")),
-             (GOV_I, ("공공기관은 의무예요", "Mandatory for public agencies"), ("도장 없는 창고는 못 빌려요", "no stamp, no rental"), "warm"),
+             (GOV_I, ("공공기관의 기본 조건이에요", "A baseline for public agencies"), ("도장이 없으면 따로 협의해야 해요", "no stamp means extra review first"), "warm"),
              (RECHECK_I, ("주기적으로 다시 검사", "Re-inspected periodically"), ("도장은 영원하지 않아요", "the stamp doesn't last forever")),
          ])},
         {"svg": svg(330, sky(330)
@@ -70,12 +70,12 @@ PAGE = {
                     + "".join(f'<path d="M40 {64 + i * 70} h680" stroke="#C9A86A" stroke-width="1.5"/>' for i in range(1, 3))
                     + label(100, 100, "⟦상등급|high tier⟧", 13, "#142033", cls="d") + label(400, 100, "⟦민감한 행정 내부 장부까지|even sensitive internal administrative records⟧", 11, "#142033")
                     + label(100, 170, "⟦중·하등급|mid/low tier⟧", 13, "#142033", cls="d") + label(400, 170, "⟦비공개 업무 장부(중), 공개 자료(하)|non-public records (mid), public data (low)⟧", 11, "#142033")
-                    + label(100, 240, "⟦도장 없음|no stamp⟧", 13, "var(--bad)", cls="d") + label(400, 240, "⟦관청은 아예 못 빌려요|government offices can't rent it at all⟧", 11, "var(--bad)")),
-         "alt": ("표: 상등급은 민감한 행정 내부 장부까지, 중등급은 비공개 업무 장부, 하등급은 공개 자료, 도장 없음은 관청이 아예 못 빌림", "Table: high tier up to sensitive internal administrative records, mid tier for non-public records, low tier for public data, no stamp means government offices can't rent it at all"),
+                    + label(100, 240, "⟦도장 없음|no stamp⟧", 13, "var(--bad)", cls="d") + label(400, 240, "⟦관청이 쓰려면 먼저 국정원과 협의해요|an office must consult the NIS first⟧", 11, "var(--bad)")),
+         "alt": ("표: 상등급은 민감한 행정 내부 장부까지, 중등급은 비공개 업무 장부, 하등급은 공개 자료, 도장 없음은 관청이 먼저 국정원과 협의", "Table: high tier up to sensitive internal administrative records, mid tier for non-public records, low tier for public data, no stamp means an office must consult the NIS first"),
          "caption": ("창고 등급에 따라 맡길 수 있는 장부가 달라요.", "A warehouse's tier decides what kind of record it may hold."),
          "small": ("중요한 장부일수록 더 높은 등급의 창고가 필요해요.", "The more sensitive the record, the higher the tier it needs.")},
         {"svg": svg(320, sky(320)
-                    + warehouse(190, 150, 1.0, stamped=True) + label(190, 230, "⟦공공기관에 창고를 빌려주려면 CSAP가 필수예요|a warehouse needs CSAP to serve public agencies⟧", 11, "var(--muted)")
+                    + warehouse(190, 150, 1.0, stamped=True) + label(190, 230, "⟦공공기관에 창고를 빌려주려면 CSAP가 기본이에요|CSAP is the baseline for serving public agencies⟧", 11, "var(--muted)")
                     + person(560, 150, s=0.85, face=EYES, **INSPECTOR) + label(560, 270, "⟦도장이 다가 아니에요, 계속 점검해야 해요|the stamp isn't the finish line — checking continues⟧", 11, "var(--bad)")
                     + label(380, 305, "⟦우리나라 제도라, 해외에서는 그 나라 기준을 따로 봐야 해요|a Korean system — abroad, each country's own standard applies⟧", 12, "var(--ink)", cls="d")),
          "alt": ("공공기관에 창고를 빌려주려면 필수. 도장 이후에도 지속적인 점검이 필요하고, 해외에서는 그 나라 기준을 따로 봐야 함", "Required to serve public agencies. Checking continues even after the stamp, and abroad, each country's own standard applies"),
@@ -83,15 +83,15 @@ PAGE = {
          "small": ('CSAP는 우리나라 제도라 해외엔 안 통하고, 도장 이후에도 <a href="cspm-ko.html">문단속 점검</a>은 계속돼요.',
                    'CSAP is a Korea-specific system that doesn\'t carry abroad, and the <a href="cspm-en.html">door-checking</a> continues even after the stamp.')},
     ],
-    "summary": (("<b>CSAP</b> = 왕의 점검관이 빌린 창고(클라우드)를 <b>정해진 표</b>로 검사해 <b>도장</b>을 찍는 제도. <b>도장 없는 창고는 관청이 못 빌려요.</b>",
-                 "<b>CSAP</b> = the king's inspector checks a rented warehouse (the cloud) against a <b>fixed list</b> and gives it a <b>stamp</b>. <b>No stamp, and a government office can't rent it.</b>"),
-                ("CSAP, Cloud Security Assurance Program(클라우드 보안인증제). 한국인터넷진흥원(KISA)이 주관해 클라우드 서비스의 물리적·기술적·관리적 보안 수준을 심사해 인증하는 제도예요. 공공기관이 민간 클라우드를 이용하려면 CSAP 인증과 국정원 보안 검증을 거친 서비스를 쓰는 게 기본이고, 다루는 정보의 민감도에 따라 등급이 나뉘어요. 기존의 IaaS·SaaS 표준·SaaS 간편 인증 체계가 상·중·하 등급제로 개편됐어요. 하등급은 개인정보 없는 공개 공공데이터, 중등급은 비공개 업무자료, 상등급은 행정 내부업무·수사·재판 같은 민감정보를 다루는 시스템이에요. 2026년 9월 국정원은 등급을 N2SF 기준 기밀·민감·공개(C/S/O)로 바꾸는 개편안을 내놓았고, 의견을 모아 확정할 예정이에요.",
-                 "CSAP, Cloud Security Assurance Program. Run by KISA (Korea Internet & Security Agency), it reviews and certifies a cloud service's physical, technical, and managerial security level. Korean public agencies generally use private cloud services that passed both CSAP and the National Intelligence Service's security review, and the certification is tiered by how sensitive the information is. The older IaaS, SaaS standard, and SaaS simplified tracks were reorganized into high, medium, and low tiers. The low tier covers systems with public data and no personal information, the medium tier covers non-public work records, and the high tier covers internal administration and sensitive data such as investigations and trials. In September 2026 the National Intelligence Service proposed replacing these with N2SF's classified, sensitive, and open (C/S/O) grades, to be finalized after gathering feedback.")),
+    "summary": (("<b>CSAP</b> = 왕의 점검관이 빌린 창고(클라우드)를 <b>정해진 표</b>로 검사해 <b>도장</b>을 찍는 제도. <b>도장 없는 창고를 관청이 쓰려면 먼저 국정원과 협의해야 해요.</b>",
+                 "<b>CSAP</b> = the king's inspector checks a rented warehouse (the cloud) against a <b>fixed list</b> and gives it a <b>stamp</b>. <b>Without a stamp, a government office must consult the National Intelligence Service first.</b>"),
+                ("CSAP, Cloud Security Assurance Program(클라우드 보안인증제). 과학기술정보통신부가 운영하고 한국인터넷진흥원(KISA)이 인증 업무를 맡아, 클라우드 서비스의 물리적·기술적·관리적 보안 수준을 심사해 인증하는 제도예요. 공공기관이 민간 클라우드를 이용하려면 CSAP 인증과 국정원 보안 검증을 거친 서비스를 쓰는 게 기본이고, 다루는 정보의 민감도에 따라 등급이 나뉘어요. 기존의 IaaS·SaaS 표준·SaaS 간편 인증 체계가 상·중·하 등급제로 개편됐어요. 하등급은 개인정보 없는 공개 공공데이터를 다루는 시스템, 중등급은 비공개 업무자료를 다루는 시스템, 상등급은 안보·외교 같은 국가 중대이익이나 행정 내부업무를 다루는 시스템을 기준으로 삼아요(2023년 도입 당시 보도 기준). 2026년 9월 국정원은 CSAP와 국정원 보안 검증을 국정원 검증으로 합치고 등급도 N2SF의 기밀·민감·공개(C/S/O)로 바꾸는 개편 방향을 밝혔어요. 이르면 2027년 하반기 적용을 검토하고 있어요.",
+                 "CSAP, Cloud Security Assurance Program. Run by the Ministry of Science and ICT, with KISA (Korea Internet & Security Agency) handling the certification work, it reviews and certifies a cloud service's physical, technical, and managerial security level. Korean public agencies generally use private cloud services that passed both CSAP and the National Intelligence Service's security review, and the certification is tiered by how sensitive the information is. The older IaaS, SaaS standard, and SaaS simplified tracks were reorganized into high, medium, and low tiers. The low tier is meant for systems with public data and no personal information, the medium tier for systems with non-public work records, and the high tier for systems handling major national interests such as security and diplomacy or internal administration (as reported when the tiers were introduced in 2023). In September 2026 the National Intelligence Service announced a plan to merge CSAP and its own security review into a single NIS review and to replace these tiers with N2SF's classified, sensitive, and open (C/S/O) grades. It is considering applying this from the second half of 2027 at the earliest.")),
     "glossary": [
         ("CSAP", "CSAP", ("빌린 창고에 찍는 왕의 안전 도장.", "The king's safety stamp on a rented warehouse."), ("한국 클라우드 보안인증제예요.", "Korea's Cloud Security Assurance Program.")),
-        ("KISA", "KISA", ("점검하는 왕의 점검관.", "The king's inspector who checks it."), ("한국인터넷진흥원. 이 인증을 주관해요.", "The Korea Internet & Security Agency, which runs this certification.")),
+        ("KISA", "KISA", ("점검하는 왕의 점검관.", "The king's inspector who checks it."), ("한국인터넷진흥원. 이 인증의 업무를 맡아요.", "The Korea Internet & Security Agency, which handles this certification's work.")),
         ("상·중·하 등급제", "High/Mid/Low Tiers", ("창고를 안전도별로 나눈 것.", "Grading warehouses by how safe they are."), ("다루는 정보가 민감할수록 더 높은 등급의 창고가 필요해요.", "The more sensitive the data, the higher the tier the warehouse must hold.")),
-        ("공공기관 의무화", "Mandatory for public agencies", ("도장 없는 창고는 관청이 못 빌려요.", "No stamp, and a government office can't rent it."), ("공공 클라우드 전환의 전제 조건이에요.", "A precondition for any public-sector cloud migration.")),
+        ("공공기관 이용 조건", "Condition for public agencies", ("도장 없는 창고는 관청이 국정원과 먼저 협의해야 해요.", "Without a stamp, an office must consult the NIS first."), ("공공 클라우드 전환의 전제 조건이에요.", "A precondition for any public-sector cloud migration.")),
         ("CSPM", "CSPM", ("도장 이후에도 계속하는 문단속.", "The door-checking that continues after the stamp."), ('CSAP는 기한마다 다시 받는 인증, CSPM은 그 사이에도 계속하는 점검이에요. → <a href="cspm-ko.html">빌린 창고 문단속 점검</a>', 'CSAP is a certification renewed at set intervals; CSPM is the continuous check in between. → <a href="cspm-en.html">door-checking the rented warehouse</a>')),
         ("클라우드", "Cloud", ("빌린 창고.", "The rented warehouse."), ("성 밖에 두고 빌려 쓰는 창고예요.", "A warehouse kept outside the castle and rented for use.")),
         ("물리 보안", "Physical security", ("창고 건물 자체의 안전.", "The safety of the warehouse building itself."), ("점검표의 한 항목이에요.", "One of the items on the inspector's checklist.")),

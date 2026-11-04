@@ -76,8 +76,8 @@ PAGE = {
     ],
     "summary": (("<b>서버리스</b> = 쓸 때만 <b>자동으로 문이 열리고</b>, <b>쓴 시간만큼만</b> 내는 시간제 회의실. 사무실(서버) 관리는 건물이 대신해요.",
                  "<b>Serverless</b> is an hourly meeting room whose door <b>opens automatically</b> only when used, and you <b>pay only for the time used</b>. The building handles all the \"office\" management for you."),
-                ("서버가 없다는 뜻이 아니라, 클라우드 제공자가 서버를 관리해서 내가 신경 쓸 필요가 없다는 뜻이에요. 요청이 들어올 때만 코드가 실행되고(이벤트 기반, 예: FaaS), 쓴 만큼만 과금돼요. 평소엔 완전히 내려가 있다가 처음 깨어날 때 지연이 생기는 걸 콜드 스타트라고 해요.",
-                 "It doesn't mean there's no server — it means the cloud provider manages it, so you never have to. Code runs only when triggered (event-driven, e.g. FaaS), and billing follows exact usage. Because it's fully shut down by default, the delay on first wake-up is called a cold start.")),
+                ("서버가 없다는 뜻이 아니라, 클라우드 제공자가 서버를 관리해서 내가 신경 쓸 필요가 없다는 뜻이에요. 요청이 들어올 때만 코드가 실행되고(이벤트 기반, 예: FaaS), 쓴 만큼만 과금돼요. 한동안 요청이 없어 내려가 있던 코드가 다시 깨어날 때 생기는 지연을 콜드 스타트라고 해요.",
+                 "It doesn't mean there's no server — it means the cloud provider manages it, so you never have to. Code runs only when triggered (event-driven, e.g. FaaS), and billing follows exact usage. When code that was shut down after a while without requests wakes up again, the delay is called a cold start.")),
     "glossary": [
         ("서버리스", "Serverless", ("쓸 때만 여는 시간제 회의실.", "The meeting room that opens only when used."), ("서버가 없는 게 아니라 신경 쓸 필요가 없는 거예요.", "It's not that there's no server — you just never manage one.")),
         ("FaaS", "FaaS (Function as a Service)", ("회의실 안에서 할 일 한 가지만 맡기는 방식.", "Handing the room just one single task to run."), ("요청이 오면 그 요청을 맡을 함수가 실행돼요.", "When a request arrives, the function that handles it runs.")),

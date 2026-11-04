@@ -89,6 +89,6 @@ PAGE = {
         ("스트리밍 처리", "Stream Processing", ("들어오자마자 바로 정리하기.", "Sorting the instant it arrives."), ("결과가 바로 필요할 때 유리해요.", "Favored when results are needed right away.")),
         ("데이터레이크", "Data Lake", ("원본 그대로 쌓아두는 큰 창고.", "The big warehouse that keeps raw originals."), ("정리가 안 되면 '늪'이 될 수 있어요.", "Without upkeep, it can turn into a swamp.")),
         ("데이터웨어하우스", "Data Warehouse", ("정리된 서가.", "The tidied, organized shelf."), ("분석하기 좋게 구조화돼 있어요.", "Structured to be ready for analysis.")),
-        ("고가용성", "High Availability", ("창고 하나가 무너져도 버티는 대비.", "Holding up even if one warehouse goes down."), ('이 세계 대신 놀이공원 세계에서 다뤄요. → <a href="failover-ko.html">예비 발전기가 넘겨받는 이야기</a>', 'Covered in the theme-park world, not this one. → <a href="failover-en.html">when the spare generator takes over</a>')),
+        ("고가용성", "High Availability", ("창고 하나가 무너져도 버티는 대비.", "Holding up even if one warehouse goes down."), ('이 분야 대신 SRE 분야에서 다뤄요. → <a href="failover-ko.html">예비 발전기가 넘겨받는 이야기</a>', 'Covered in the SRE field, not this one. → <a href="failover-en.html">when the spare generator takes over</a>')),
     ],
 }

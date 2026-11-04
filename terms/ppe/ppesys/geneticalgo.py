@@ -81,7 +81,7 @@ PAGE = {
              (CROSS_I, ("교배(섞기)", "Crossover"), ("잘 나가는 두 설정을 섞어 새 설정을 만들어요", "mixes two good settings into a new one")),
              (MUT_I, ("돌연변이(비틀기)", "Mutation"), ("가끔 설정 하나를 무작위로 살짝 바꿔요", "occasionally twists a setting at random"), "warm"),
          ])},
-        {"svg": P4, "alt": ("개체군 생성, 적합도 평가, 교배, 돌연변이, 반복으로 이어지는 다섯 단계", "The five steps of the cycle: population, fitness, crossover, mutation, repeat"),
+        {"svg": P4, "alt": ("개체군 생성, 적합도 평가, 교배, 돌연변이, 반복으로 이어지는 다섯 단계", "The five steps: population, fitness, crossover, mutation, repeat"),
          "caption": ("처음에 설정들을 만든 뒤, ②~⑤를 세대마다 되풀이해요.", "After creating the first settings, steps ② to ⑤ repeat each generation."),
          "small": ("점수 매기기부터 비틀기까지를 세대마다 반복해요.", "Scoring through twisting repeats generation after generation.")},
         {"svg": P5, "alt": ("왼쪽: 여러 세대 뒤 꽤 좋은 설정을 찾음. 오른쪽: 가장 완벽한 설정이라는 보장은 없음", "Left: after many generations, a pretty good setting is found. Right: it's never guaranteed to be the perfect one"),

@@ -82,6 +82,6 @@ PAGE = {
         ("트래픽 쉐이핑/폴리싱", "Traffic Shaping/Policing", ("차선 안에서 속도를 조절하는 방법.", "How speed is managed inside a lane."), ('차선을 깐 다음엔 차선 안 속도 조절도 필요해요. → <a href="trafficshaping-ko.html">택배량을 조절하는 창구</a>', 'Speed control is needed once the lanes are laid. → <a href="trafficshaping-en.html">the counter that controls the flow</a>')),
         ("V2X", "V2X", ("달리는 트럭끼리 주고받는 통신.", "The chatter between moving trucks themselves."), ('5G의 대표적인 활용 사례예요. → <a href="v2x-ko.html">트럭끼리 주고받는 쪽지</a>', "A flagship use case for 5G. → <a href=\"v2x-en.html\">the note trucks pass to each other</a>")),
         ("기지국(RAN)", "Base Station (RAN)", ("실제로 신호가 닿는 도로.", "The actual road the signal reaches."), ("5G는 분류소(코어)와 이 도로가 함께 있어야 동작해요.", "5G needs this road alongside the core to work at all.")),
-        ("VPN", "VPN", ("남이 못 보게 암호로 감싼 비밀 통로.", "A secret, encrypted passage no one else can peek into."), ('다른 세계(보안)에서 자세히 다뤄요. → <a href="vpn-ko.html">암호로 감싼 비밀 통로</a>', 'Covered in depth in another world (Security). → <a href="vpn-en.html">the encrypted secret passage</a>')),
+        ("VPN", "VPN", ("남이 못 보게 암호로 감싼 비밀 통로.", "A secret, encrypted passage no one else can peek into."), ('보안 분야에서 자세히 다뤄요. → <a href="vpn-ko.html">암호로 감싼 비밀 통로</a>', 'Covered in depth in the Security field. → <a href="vpn-en.html">the encrypted secret passage</a>')),
     ],
 }

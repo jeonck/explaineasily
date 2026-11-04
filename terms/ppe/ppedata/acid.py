@@ -69,7 +69,7 @@ PAGE = {
         {"svg": P4, "alt": ("Atomicity, Consistency, Isolation, Durability 네 글자를 설명하는 표", "A table explaining the four letters: atomicity, consistency, isolation, durability"),
          "caption": ("ACID의 네 글자는 약속을 하나씩 뜻해요.", "Each of ACID's four letters stands for one promise."),
          "small": ("Isolation은 격리 수준으로 세밀하게 조절해요.", "Isolation is fine-tuned via isolation levels.")},
-        {"svg": P5, "alt": ("왼쪽: 온전한 전표가 믿을 수 있음을 보여줌. 오른쪽: 특급 출고대는 더 빠를 수 있음", "Left: a full receipt shows it can be trusted. Right: the express desk can be faster"),
+        {"svg": P5, "alt": ("왼쪽: 온전한 전표가 믿을 수 있음을 보여줌. 오른쪽: 특급 출고대(인메모리 DB)는 ACID를 다 지키는 창고보다 빠를 수 있음", "Left: a full receipt shows it can be trusted. Right: the express desk (in-memory DB) can be faster than a warehouse keeping full ACID"),
          "caption": ("ACID를 다 지키면 장부를 믿을 수 있지만, 전표 처리는 느려질 수 있어요.", "Fully keeping ACID makes the ledger trustworthy, but receipt processing can slow down."),
          "small": ("장부 안전과 처리 속도는 종종 맞바꿔야 해요.", "Ledger safety and processing speed often trade off.")},
     ],

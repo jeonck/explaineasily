@@ -40,12 +40,12 @@ P4 = svg(320, sky(320, ground=False)
          + label(555, 160, "⟦지점 간 조인·정합성 맞추기 어려움|cross-branch joins and consistency get hard⟧", 10.5, "var(--bad)")
          + label(380, 300, "⟦분산을 택할지는 이 트레이드오프(속도 vs 정합성/조인 비용)로 판단해요|weigh this trade-off — speed vs. consistency and join cost — when choosing⟧", 12, "var(--ink)"))
 
-# 5. 더 깊은 이론은 SRE 세계에서
+# 5. 더 깊은 이론은 SRE 분야에서
 P5 = svg(300, sky(300, ground=False)
          + person(380, 150, s=0.85, face=EYES, **MANAGER)
          + box(260, 190, 0.8) + box(500, 190, 0.8, twin=True)
          + label(380, 262, "⟦나누기(샤딩)·복제·합의는 분산 DB 모델링의 기본기예요|sharding, replication, and consensus are the basics of distributed DB modeling⟧", 12, "var(--ink)")
-         + label(380, 285, "⟦분산 이론 자체는 SRE 세계에서 더 깊이 다뤄요|distributed-systems theory itself goes deeper in the SRE world⟧", 12, "var(--muted)"))
+         + label(380, 285, "⟦분산 이론 자체는 SRE 분야에서 더 깊이 다뤄요|distributed-systems theory itself goes deeper in the SRE field⟧", 12, "var(--muted)"))
 
 SPLIT_I = icon('<rect x="8" y="22" width="20" height="30" rx="3" fill="var(--accent)"/><rect x="36" y="22" width="20" height="30" rx="3" fill="var(--accent)"/><path d="M32 16 v32" stroke="var(--muted)" stroke-width="3" stroke-dasharray="4 3"/>')
 COPY_I = icon('<rect x="12" y="14" width="26" height="24" rx="3" fill="var(--good)"/><rect x="26" y="26" width="26" height="24" rx="3" fill="var(--good)" opacity="0.6"/>')
@@ -56,8 +56,8 @@ PAGE = {
     "slug": "distdb", "order": 10,
     "title": ("여러 지점으로 나뉜 창고", "The Warehouse Split Across Branches"),
     "h1": ("<em>분산 데이터베이스</em>가 뭐예요?", "What is a <em>Distributed Database</em>?"),
-    "sub": ("분산 데이터베이스를, 하나의 거대한 창고 대신 여러 지역 지점으로 나눠 서로 맞춰가는 이야기로 풀어봤어요. 깊은 분산 이론은 SRE 세계에서 더 다뤄요.",
-            "A distributed database, told as a story about splitting one giant warehouse into regional branches that keep each other in sync. The deeper distributed-systems theory lives in the SRE world."),
+    "sub": ("분산 데이터베이스를, 하나의 거대한 창고 대신 여러 지역 지점으로 나눠 서로 맞춰가는 이야기로 풀어봤어요. 깊은 분산 이론은 SRE 분야에서 더 다뤄요.",
+            "A distributed database, told as a story about splitting one giant warehouse into regional branches that keep each other in sync. The deeper distributed-systems theory lives in the SRE field."),
     "panels": [
         {"svg": P1, "alt": ("전국의 배송 기사들이 멀리 있는 창고 하나에만 몰려듦", "Drivers from across the country all converge on one distant warehouse"),
          "caption": ("전국 모든 주문이 창고 하나로만 몰려요.", "Every order nationwide piles onto one single warehouse."),
@@ -79,14 +79,14 @@ PAGE = {
          "small": ("지점 간 조인 비용까지 함께 따져서 골라야 해요.", "The cost of cross-branch joins belongs in that choice too.")},
         {"svg": P5, "alt": ("관리자가 나뉜 상자와 복제 상자를 보며 서 있음", "A manager stands beside split and duplicated boxes"),
          "caption": ("나누기·복제·합의는 분산 DB 모델링의 기본기예요.", "Sharding, replication, and consensus are the basics of distributed DB modeling."),
-         "small": ("분산 이론 자체는 SRE 세계에서 더 깊이 다뤄요.", "Distributed-systems theory itself goes deeper in the SRE world.")},
+         "small": ("분산 이론 자체는 SRE 분야에서 더 깊이 다뤄요.", "Distributed-systems theory itself goes deeper in the SRE field.")},
     ],
     "summary": (("<b>분산 데이터베이스</b>는 하나의 논리적 DB를 <b>여러 지점(노드)에 나눠 저장</b>하고, 복제·합의 같은 기법으로 <b>하나처럼 보이게</b> 맞추는 구조예요.",
                  "A <b>distributed database</b> stores one logical database <b>split across many nodes</b>, using techniques like replication and consensus to make it <b>look like a single database</b>."),
-                ("DB 모델링 관점에서는 데이터를 어떻게 나눌지(샤딩 키 설계), 어떻게 복제할지(동기/비동기), 조인·트랜잭션 비용이 어떻게 늘어나는지를 다뤄요. CAP 정리·합의 알고리즘 같은 분산 시스템 이론 자체는 SRE 세계의 관련 페이지에서 더 깊이 설명해요.",
-                 "From a DB-modeling angle, this is about choosing a sharding key, picking sync vs. async replication, and the rising cost of cross-node joins and transactions. The deeper distributed-systems theory — CAP theorem, consensus algorithms — is covered in more depth over in the SRE world.")),
+                ("DB 모델링 관점에서는 데이터를 어떻게 나눌지(샤딩 키 설계), 어떻게 복제할지(동기/비동기), 조인·트랜잭션 비용이 어떻게 늘어나는지를 다뤄요. CAP 정리·합의 알고리즘 같은 분산 시스템 이론 자체는 SRE 분야의 관련 페이지에서 더 깊이 설명해요.",
+                 "From a DB-modeling angle, this is about choosing a sharding key, picking sync vs. async replication, and the rising cost of cross-node joins and transactions. The deeper distributed-systems theory — CAP theorem, consensus algorithms — is covered in more depth over in the SRE field.")),
     "glossary": [
-        ("샤딩", "Sharding", ("지점별로 나눠 담기.", "Splitting goods by branch."), ('나누는 기준(키) 설계는 이 세계에서 더 다뤄요. → <a href="dbsharding-ko.html">너무 커진 창고를 구역으로 쪼개기</a>', 'Choosing the split key is covered further in this same world. → <a href="dbsharding-en.html">splitting an overgrown warehouse into zones</a>')),
+        ("샤딩", "Sharding", ("지점별로 나눠 담기.", "Splitting goods by branch."), ('나누는 기준(키) 설계는 이 분야에서 더 다뤄요. → <a href="dbsharding-ko.html">너무 커진 창고를 구역으로 쪼개기</a>', 'Choosing the split key is covered further in this same field. → <a href="dbsharding-en.html">splitting an overgrown warehouse into zones</a>')),
         ("복제", "Replication", ("지점마다 복제 상자 두기.", "Keeping a duplicate box at each branch."), ('동기/비동기 복제의 차이를 다뤄요. → <a href="replication-ko.html">복제 상자의 세계</a>', 'Covers sync vs. async replication. → <a href="replication-en.html">the world of duplicate boxes</a>')),
         ("합의 알고리즘", "Consensus", ("여럿이 투표해서 하나로 정하기.", "Several branches voting on one answer."), ('Raft/Paxos 같은 알고리즘을 다뤄요. → <a href="consensus-ko.html">여러 명이 투표로 정하기</a>', 'Covers algorithms like Raft/Paxos. → <a href="consensus-en.html">deciding by a vote among many</a>')),
         ("CAP 정리", "CAP Theorem", ("세 가지 성질을 다 완벽히 가질 순 없다는 법칙.", "The law that three properties can't all be perfect at once."), ('일관성·가용성·분단내성의 트레이드오프예요. → <a href="captheorem-ko.html">세 가지를 동시에 가질 수 없는 법칙</a>', "The consistency/availability/partition trade-off. → <a href=\"captheorem-en.html\">the law you can't have all three of at once</a>")),

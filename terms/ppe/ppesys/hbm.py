@@ -106,7 +106,7 @@ PAGE = {
                  "HBM (High Bandwidth Memory) vertically stacks DRAM chips using TSVs (through-silicon vias) and places them right next to a GPU or AI accelerator via an interposer, connecting them with a very wide bus. Rather than pushing per-pin speed, it widens the bus (64 bits for a DDR module, 1,024 per HBM stack, 2,048 for HBM4) to offer far higher bandwidth than conventional DDR memory, but is costlier to manufacture and requires careful heat management. It's mainly used where memory bandwidth drives performance, such as graphics and AI workloads.")),
     "glossary": [
         ("HBM", "HBM", ("엔진 바로 옆에 쌓은 공구탑.", "The toolbox tower stacked right by the engine."), ("공구탑과 엔진이 아주 넓은 통로로 연결돼요.", "The tower and engine connect through a very wide passage.")),
-        ("대역폭", "Bandwidth", ("한 번에 건너갈 수 있는 공구의 양.", "How many tools can cross at once."), ("통로가 넓을수록 대역폭이 커요.", "A wider passage means more bandwidth.")),
+        ("대역폭", "Bandwidth", ("일정 시간에 건너갈 수 있는 공구의 양.", "How many tools can cross in a given time."), ("통로가 넓을수록 대역폭이 커요.", "A wider passage means more bandwidth.")),
         ("TSV(실리콘 관통전극)", "TSV (Through-Silicon Via)", ("공구탑 층 사이를 바로 뚫은 기둥.", "The pillar drilled straight through the stacked layers."), ("적층된 칩끼리 바로 연결해요.", "Connects the stacked chips directly.")),
         ("인터포저", "Interposer", ("공구탑과 엔진을 잇는 받침판.", "The base plate linking the tower to the engine."), ("공구탑과 엔진을 가깝게 놓게 해줘요.", "Lets the tower and engine sit close together.")),
         ("DDR 메모리", "DDR Memory", ("멀리 떨어진 일반 공구함.", "The ordinary toolbox sitting far away."), ("HBM보다 싸지만 대역폭이 낮아요.", "Cheaper than HBM, but lower bandwidth.")),

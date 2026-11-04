@@ -44,7 +44,7 @@ P4 = svg(320, sky(320, ground=False)
 # 5. 한계: 데이터 없이 친환경인 척 포장하면(그린워싱) 금방 들통나요
 P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--bad-soft)"/>'
          + person(190, 130, s=0.8, face=SMILE, **DIRECTOR) + label(190, 260, "⟦진짜 데이터를 보여주면 후원사의 믿음을 얻어요|showing real data earns the sponsor's trust⟧", 11, "var(--ink)")
-         + person(570, 130, s=0.8, face=FROWN + SWEAT, **DIRECTOR) + label(570, 260, "⟦데이터 없이 겉만 포장하면 증거를 댈 때 들통나요|a green image with no data falls apart when proof is asked⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=FROWN + SWEAT, **DIRECTOR) + label(570, 260, "⟦데이터 없이 친환경인 척하면 증거를 요구받을 때 들통나요|a green image with no data falls apart when proof is asked⟧", 11, "var(--ink)")
          + label(380, 305, "⟦ESG 활동은 홍보만이 아니라 실제 측정과 보고로 뒷받침돼야 해요|ESG claims need real measurement and reporting behind them, not just promotion⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {

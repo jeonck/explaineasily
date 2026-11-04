@@ -94,7 +94,7 @@ PAGE = {
                  "Next-generation non-volatile memories can overwrite at the byte level instantly, without erasing a whole block first the way flash does. FeRAM (ferroelectric RAM) writes very fast but has lower density, suiting small capacities. MRAM (magnetoresistive RAM) offers very high write endurance and good speed, at a higher cost. PRAM (phase-change RAM) uses a material's crystalline/amorphous states for a good balance of speed and density. Flash (NAND) still leads for high-capacity, low-cost storage.")),
     "glossary": [
         ("FeRAM", "FeRAM", ("쓰기가 아주 빠른 작은 창고.", "A small warehouse with very fast writes."), ("강유전체 물질의 분극 방향을 이용해요.", "Uses the polarization direction of a ferroelectric material.")),
-        ("MRAM", "MRAM", ("몇 번을 다시 써도 오래가는 창고.", "A warehouse that holds up through countless rewrites."), ("자성 방향으로 값을 저장해요.", "Stores values via magnetic orientation.")),
+        ("MRAM", "MRAM", ("NAND보다 훨씬 많이 다시 써도 버티는 창고.", "A warehouse that survives far more rewrites than NAND."), ("자성 방향으로 값을 저장해요.", "Stores values via magnetic orientation.")),
         ("PRAM(PCM)", "PRAM (PCM)", ("속도와 용량의 균형이 좋은 창고.", "A warehouse with a good speed/capacity balance."), ("물질의 결정/비결정 상태 변화를 써요.", "Uses a material's crystalline/amorphous state change.")),
         ("비휘발성", "Non-Volatile", ("전원이 꺼져도 기억이 남는 성질.", "The property of remembering even off power."), ("차세대 메모리들의 공통점이에요.", "Common to all these next-gen memories.")),
         ("쓰기 내구성", "Write Endurance", ("몇 번이나 다시 써도 되는지.", "How many times it can be rewritten."), ("MRAM이 특히 강점이에요.", "MRAM particularly excels here.")),

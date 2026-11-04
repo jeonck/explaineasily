@@ -78,10 +78,10 @@ PAGE = {
         ("소켓", "Socket", ("상대와 바로 주고받는 전용 편지함.", "A dedicated mailbox for talking with the other side live."), ("IP와 포트로 상대를 특정해요.", "Identifies the other side by IP and port.")),
         ("메시지 큐", "Message Queue", ("쌓아뒀다 나중에 꺼내가는 편지함.", "A mailbox where notes pile up for later pickup."), ("보내는 쪽과 받는 쪽이 동시에 있지 않아도 돼요.", "Sender and receiver don't need to be present at once.")),
         ("포트 번호", "Port Number", ("건물 안 몇 번 창구인지.", "Which counter inside the building."), ("같은 주소 안에서 서비스를 구분해요.", "Distinguishes services at the same address.")),
-        ("TCP/UDP", "TCP/UDP", ("등기 봉투와 일반 봉투.", "The registered envelope and the plain one."), ("이 세계의 두 기본 배송 방식이에요.", "The two basic shipping methods in this world.")),
+        ("TCP/UDP", "TCP/UDP", ("등기 봉투와 일반 봉투.", "The registered envelope and the plain one."), ("이 분야의 두 기본 배송 방식이에요.", "The two basic shipping methods in this field.")),
         ("전송계층", "Transport Layer", ("포트와 등기·일반우편을 다루는 단계.", "The stage that handles ports and the registered/plain choice."), ('네트워크 IPC가 기대는 바로 그 계층이에요. → <a href="transportlayer-ko.html">포트를 나누고 신뢰도를 고르는 단계</a>', 'The very layer network IPC leans on. → <a href="transportlayer-en.html">the stage that splits ports and picks reliability</a>')),
         ("Modbus", "Modbus", ("산업 현장에서 쓰는 단순한 쪽지 규칙.", "A simple note rule used on factory floors."), ('이 전용 편지함 위에서 쓰이는 쪽지 규칙의 한 예예요. → <a href="modbus-ko.html">우체국장이 순서대로 묻는 쪽지 규칙</a>', 'One example of a note rule riding on this mailbox. → <a href="modbus-en.html">the note rule where the clerk asks one at a time</a>')),
-        ("로컬 IPC(OS 수준)", "Local IPC (OS-level)", ("같은 건물 안 부서끼리 복도로 전달하는 방식.", "The way teams in the same building hand things across the hallway."), ("건물 안 전달 이야기는 다른 세계(PPE·시스템SW)에서 다뤄요.", "Those in-building hand-offs are covered in another world (PPE Systems).")),
+        ("로컬 IPC(OS 수준)", "Local IPC (OS-level)", ("같은 건물 안 부서끼리 복도로 전달하는 방식.", "The way teams in the same building hand things across the hallway."), ("건물 안 전달 이야기는 다른 분야(PPE·시스템SW)에서 다뤄요.", "Those in-building hand-offs are covered in another field (PPE Systems).")),
         ("회선교환·패킷교환", "Circuit vs Packet Switching", ("편지가 실제로 오가는 길의 종류.", "What kind of road the note actually travels."), ('전용 편지함 아래 깔린 전송 방식이에요. → <a href="circuitpacket-ko.html">전용 도로냐, 조각내 보내기냐</a>', "The transport method underneath this dedicated mailbox. → <a href=\"circuitpacket-en.html\">a dedicated road, or splitting it into pieces</a>")),
     ],
 }

@@ -81,7 +81,7 @@ PAGE = {
         ("전송계층", "Transport Layer", ("포트와 등기·일반우편을 다루는 단계.", "The stage that handles ports and the registered/plain choice."), ('L4 스위치가 참조하는 바로 그 계층이에요. → <a href="transportlayer-ko.html">포트를 나누고 신뢰도를 고르는 단계</a>', 'The very layer an L4 switch references. → <a href="transportlayer-en.html">the stage that splits ports and picks reliability</a>')),
         ("트래픽 쉐이핑·폴리싱", "Traffic Shaping/Policing", ("창구마다 접수량을 조절하는 규칙.", "The rule controlling intake at each counter."), ('창구를 나눈 뒤에 함께 적용하는 규칙이에요. → <a href="trafficshaping-ko.html">택배량을 조절하는 창구</a>', 'A rule applied once counters are split this way. → <a href="trafficshaping-en.html">the counter that controls the flow</a>')),
         ("서브네팅", "Subnetting", ("동네를 작은 구역으로 나누는 것.", "Splitting a town into smaller zones."), ('동네를 나누는 L3 수준의 이야기예요. → <a href="subnetting-ko.html">동네를 작은 우편번호 구역으로 나누기</a>', 'The L3-level story of splitting a town. → <a href="subnetting-en.html">splitting the town into smaller zip-code zones</a>')),
-        ("WAF/L7 장비", "WAF/L7 Device", ("봉투 속 내용까지 읽는 장비.", "A device that reads inside the envelope too."), ("다른 세계(보안)에서 다루는 주제예요.", "A topic covered in another world (Security).")),
+        ("WAF/L7 장비", "WAF/L7 Device", ("봉투 속 내용까지 읽는 장비.", "A device that reads inside the envelope too."), ("보안 분야에서 다루는 주제예요.", "A topic covered in the Security field.")),
         ("IPC(네트워크)", "Network IPC", ("포트로 상대를 특정하는 전용 편지함.", "The dedicated mailbox that picks its target by port."), ('포트 개념을 실제로 쓰는 예시예요. → <a href="ipc-ko.html">프로세스끼리 여는 전용 편지함</a>', 'A concrete example of using port numbers. → <a href="ipc-en.html">the dedicated mailbox between processes</a>')),
     ],
 }

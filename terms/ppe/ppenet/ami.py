@@ -83,6 +83,6 @@ PAGE = {
         ("Modbus", "Modbus", ("우체국장이 순서대로 묻는 단순한 쪽지 규칙.", "The simple note rule where the clerk asks one at a time."), ('현장 설비끼리는 이런 단순한 규칙으로도 통신해요. → <a href="modbus-ko.html">우체국장이 순서대로 묻는 쪽지 규칙</a>', 'Field devices often talk this simply too. → <a href="modbus-en.html">the note rule where the clerk asks one at a time</a>')),
         ("Ad-hoc 라우팅", "Ad-hoc Routing", ("고정 우체국 없이 집배원끼리 길을 찾는 법.", "How carriers find the way among themselves, with no fixed post office."), ('먼 계량기가 이웃을 거쳐 전달할 때 쓰는 방식이에요. → <a href="adhocrouting-ko.html">집배원끼리 길을 찾아 전달하는 법</a>', "Used when a distant meter relays through a neighbor. → <a href=\"adhocrouting-en.html\">how carriers find the way among themselves</a>")),
         ("5G·mMTC", "5G mMTC", ("소형 소포 대량 전용 차선.", "The lane built for millions of tiny parcels."), ('대량의 계량기를 한꺼번에 연결할 때 쓰일 수 있어요. → <a href="5gcore-ko.html">상황별 전용 차선을 가진 배송망</a>', 'Can be used to connect huge numbers of meters at once. → <a href="5gcore-en.html">the network with a lane for every need</a>')),
-        ("개인정보·보안", "Privacy & Security", ("편지 내용을 엿보지 못하게 잠그는 것.", "Locking the note so no one can peek inside."), ("다른 세계(보안)에서 자세히 다루는 주제예요.", "A topic covered in depth in another world (Security).")),
+        ("개인정보·보안", "Privacy & Security", ("편지 내용을 엿보지 못하게 잠그는 것.", "Locking the note so no one can peek inside."), ("보안 분야에서 자세히 다루는 주제예요.", "A topic covered in depth in the Security field.")),
     ],
 }

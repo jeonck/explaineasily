@@ -112,7 +112,7 @@ PAGE = {
         ("쉘(Shell)", "Shell", ("정비사가 지시를 내리는 명령창.", "The command window where a mechanic gives instructions."), ("정비사는 커널에 직접 손대지 않고 이 창을 거쳐요.", "Mechanics go through this window instead of touching the kernel directly.")),
         ("파일시스템(트리 구조)", "File System (Tree Structure)", ("나뭇가지처럼 뻗은 부품함 정리법.", "A storage layout that branches like a tree."), ("맨 위 뿌리(root, /)에서 가지가 갈라져요.", "Branches split off from a single root (/) at the top.")),
         ("권한(rwx)", "Permissions (rwx)", ("부품함마다 다른 열쇠 세 벌.", "Three different keys for every bin."), ("주인·같은 팀·그 외 사람의 권한을 각각 정해요.", "Owner, group, and others each get their own access setting.")),
-        ("프로세스", "Process", ("지금 돌아가고 있는 작업 하나하나.", "Each job that's currently running."), ('어떤 작업을 먼저 돌릴지는 이 세계의 다른 이야기예요. → <a href="cpusched-ko.html">리프트에 누가 먼저 올라갈까</a>', 'Deciding which job runs first is another story in this world. → <a href="cpusched-en.html">who gets the lift first</a>')),
+        ("프로세스", "Process", ("지금 돌아가고 있는 작업 하나하나.", "Each job that's currently running."), ('어떤 작업을 먼저 돌릴지는 이 분야의 다른 이야기예요. → <a href="cpusched-ko.html">리프트에 누가 먼저 올라갈까</a>', 'Deciding which job runs first is another story in this field. → <a href="cpusched-en.html">who gets the lift first</a>')),
         ("다중 사용자/다중 작업", "Multiuser / Multitasking", ("UNIX는 여러 사람·여러 작업을 동시에 받아줘요.", "UNIX takes on many people and many jobs at once."), ("한 작업이 베이를 독차지하지 못해요.", "No single job monopolizes a bay.")),
         ("이식성(Portability)", "Portability", ("다른 정비소 장비로 옮겨도 같은 명령이 통해요.", "The same commands still work after moving to a different garage's equipment."), ("C 언어로 다시 쓴 커널과 POSIX 표준 덕분이에요.", "Thanks to a kernel rewritten in C and the POSIX standard.")),
     ],

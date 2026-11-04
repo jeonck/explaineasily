@@ -34,7 +34,7 @@ P3 = svg(340, sky(340)
 P4 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--bad-soft)"/>'
          + label(190, 40, "⟦망중립 있음|with net neutrality⟧", 13, "var(--ink)", cls="d")
          + person(100, 150, s=0.6, face=SMILE, **STUDENT) + person(190, 150, s=0.6, face=SMILE, **STUDENT) + person(280, 150, s=0.6, face=SMILE, **STUDENT)
-         + label(190, 240, "⟦모두 같은 속도로 줄을 서요|everyone waits in line at the same speed⟧", 11, "var(--good)")
+         + label(190, 240, "⟦모두 똑같은 줄에 서요|everyone shares the same line⟧", 11, "var(--good)")
          + label(570, 40, "⟦망중립 없음|without net neutrality⟧", 13, "var(--ink)", cls="d")
          + person(480, 150, s=0.6, face=FROWN, **STUDENT) + person(570, 130, s=0.7, face=SMILE, **STUDENT) + person(660, 150, s=0.6, face=FROWN, **STUDENT)
          + label(570, 240, "⟦유료 학생만 빠른 길로 가요|only the paying student gets the fast lane⟧", 11, "var(--bad)")
@@ -70,7 +70,7 @@ PAGE = {
              (NOSLOW_I, ("일부러 느리게 안 하기", "No deliberate slowdown"), ("통신사가 특정 업체만 일부러 느리게 못 해요", "a carrier can't slow down one company on purpose"), "warm"),
              (OPEN_I, ("트래픽 관리 방법 공개", "Disclose traffic management"), ("통신사가 관리 방법을 숨기지 않아요", "carriers don't hide how they manage it")),
          ])},
-        {"svg": P4, "alt": ("왼쪽: 망중립이 있어 모두 같은 속도. 오른쪽: 망중립이 없어 유료 학생만 빠른 길로 감", "Left: with net neutrality, everyone moves at the same speed. Right: without it, only the paying student gets the fast lane"),
+        {"svg": P4, "alt": ("왼쪽: 망중립이 있어 모두 똑같은 줄에 섬. 오른쪽: 망중립이 없어 유료 학생만 빠른 길로 감", "Left: with net neutrality, everyone shares the same line. Right: without it, only the paying student gets the fast lane"),
          "caption": ("망중립이 있으면 모두 똑같은 줄에 서고, 없으면 돈 낸 쪽만 빠른 길로 가요.", "With net neutrality everyone shares the same line; without it, only those who pay get the fast lane."),
          "small": ("공평함이 사라지면, 새 서비스를 만들 기회도 돈 있는 쪽에만 몰려요.", "Lose fairness, and the chance to build new services tilts toward whoever can pay.")},
         {"svg": P5, "alt": ("선생님은 응급 방송도 똑같이 줄 세워야 하냐고 묻고, 학생회장은 불합리한 차별만 막는 거라고 답함", "A teacher asks if even an emergency broadcast must wait in line; the president answers it only bans unreasonable discrimination"),
@@ -79,8 +79,8 @@ PAGE = {
     ],
     "summary": (("<b>망중립성</b> = 급식 줄(통신망)을 지나는 누구의 데이터든 <b>차별·차단·새치기 없이</b> 똑같이 다뤄야 한다는 원칙.",
                  "<b>Net neutrality</b> = the rule that everyone's data moving through the lunch line (the network) is treated the same, with <b>no discrimination, blocking, or cutting in line</b>."),
-                ("망중립성은 인터넷 제공사업자(ISP)가 합법적인 트래픽을 내용·유형·제공사업자에 따라 차별하거나 차단해서는 안 된다는 원칙으로, 국내에서는 과기정통부 가이드라인으로 운영돼요. 다만 모든 트래픽 관리가 금지되는 건 아니고, 망 혼잡을 덜거나 보안을 지키는 합리적 관리는 허용돼요. 2021년 시행된 개정 가이드라인은 자율주행·스마트팩토리처럼 망을 논리적으로 분리한 특수서비스를 망중립 원칙의 예외로 뒀어요.",
-                 "Net neutrality is the principle that internet service providers must not discriminate against or block lawful traffic based on its content, type, or provider; in Korea it runs through a Ministry of Science and ICT guideline. Not all traffic management is banned, though: reasonable management to ease congestion or protect security is allowed. The revised guideline in effect since 2021 also treats logically separated special services, like self-driving and smart factories, as exceptions to the neutrality principle.")),
+                ("망중립성은 인터넷 제공사업자(ISP)가 합법적인 트래픽을 내용·유형·제공사업자에 따라 차별하거나 차단해서는 안 된다는 원칙으로, 국내에서는 과기정통부 가이드라인으로 운영돼요. 다만 모든 트래픽 관리가 금지되는 건 아니고, 망 혼잡을 덜거나 보안을 지키는 합리적 관리는 허용돼요. 2021년 시행된 개정 가이드라인은 자율주행·스마트공장처럼 일반 인터넷과 물리적 또는 논리적으로 구분된 망으로 제공하는 특수서비스를, 요건을 갖추면 망중립 원칙의 예외로 인정해요.",
+                 "Net neutrality is the principle that internet service providers must not discriminate against or block lawful traffic based on its content, type, or provider; in Korea it runs through a Ministry of Science and ICT guideline. Not all traffic management is banned, though: reasonable management to ease congestion or protect security is allowed. The revised guideline in effect since 2021 also exempts special services, like self-driving and smart factories, from the neutrality principle if they meet set conditions and run on a network physically or logically separate from general internet access.")),
     "glossary": [
         ("망중립성", "Network Neutrality", ("줄에서 새치기를 막는 규칙.", "The rule that stops cutting in line."), ("통신사가 트래픽을 차별하지 못하게 해요.", "Stops a carrier from favoring one kind of traffic.")),
         ("트래픽 차별", "Traffic Discrimination", ("특정 서비스만 빠르게/느리게 하는 것.", "Speeding up or slowing down one service on purpose."), ("망중립성이 막으려는 핵심 행위예요.", "The core behavior net neutrality is meant to stop.")),

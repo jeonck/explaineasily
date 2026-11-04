@@ -39,7 +39,7 @@ P4 = svg(320, sky(320)
 
 # 5. 한계: 단순하고 오래된 규칙이라 느리고, 지키는 사람도 없어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 130, s=0.75, face=EYES, **CLERK) + label(190, 255, "⟦우체국장이 한 번에 한 기계씩만 물어 느려요|the clerk asks one machine at a time, so it's slow⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.75, face=EYES, **CLERK) + label(190, 255, "⟦직렬선에선 한 번에 한 기계씩만 물어 느려요|on a serial line, one machine at a time is slow⟧", 11, "var(--ink)")
          + person(570, 130, s=0.75, face=FROWN, **CLERK) + label(570, 255, "⟦누구나 쪽지에 끼어들 수 있어요(암호화·인증 없음)|anyone can slip in a note — no encryption or login⟧", 11, "var(--ink)")
          + label(380, 282, "⟦공장 안 통신용으로 만들어진 오래된 규칙, 요즘은 보안 대책을 따로 둬요|an old factory-floor rule — modern setups add security separately⟧", 12, "var(--ink)", cls="d"))
 
@@ -68,8 +68,8 @@ PAGE = {
         {"svg": P4, "alt": ("Modbus 쪽지 규칙 안내판: 마스터, 슬레이브, 레지스터, 단순함 네 줄", "A guide board listing master, slave, register, and simplicity for the Modbus note rule"),
          "caption": ("우체국장만 먼저 묻고, 값은 번호 붙은 칸에 적는 게 Modbus 쪽지 규칙이에요.", "Only the clerk asks first, and values go in numbered slots: that's the Modbus note rule."),
          "small": ("Modbus 기본 규격은 암호화도 없는, 아주 가벼운 규칙이에요.", "Base Modbus is a very light rule, with no encryption at all.")},
-        {"svg": P5, "alt": ("왼쪽: 우체국장이 한 번에 한 기계씩만 물어 느림. 오른쪽: 누구나 쪽지에 끼어들 수 있어 보안이 없음", "Left: the clerk asks one machine at a time, so it's slow. Right: anyone can slip in a note — no security"),
-         "caption": ("Modbus는 한 번에 한 기계씩만 물어 기계가 많으면 느리고, 기본 규격엔 보안 기능이 없어요.", "Asking one machine at a time, Modbus slows down with many machines, and its base spec has no security features."),
+        {"svg": P5, "alt": ("왼쪽: 직렬선에선 우체국장이 한 번에 한 기계씩만 물어 느림. 오른쪽: 누구나 쪽지에 끼어들 수 있어 보안이 없음", "Left: on a serial line, the clerk asks one machine at a time, so it's slow. Right: anyone can slip in a note — no security"),
+         "caption": ("직렬선 Modbus는 한 번에 한 기계씩만 물어 기계가 많으면 느리고, 기본 규격엔 보안 기능이 없어요.", "Asking one machine at a time, serial Modbus slows down with many machines, and the base spec has no security features."),
          "small": ("그래서 요즘은 Modbus 통신에 보안 대책을 따로 둬요.", "So modern setups add security measures around Modbus separately.")},
     ],
     "summary": (("<b>Modbus</b> = 우체국장(마스터)이 기계(슬레이브)마다 <b>번호를 불러 한 번에 하나씩</b> 묻고 답하는, 아주 단순한 쪽지 규칙.",
@@ -83,7 +83,7 @@ PAGE = {
         ("Modbus TCP/RTU", "Modbus TCP/RTU", ("우체국망(TCP/IP)을 타는 버전과 직렬선(RS-485 등)을 타는 버전.", "A version over the postal network (TCP/IP), and one over a serial wire (such as RS-485)."), ("둘 다 같은 쪽지 규칙을 다른 통로로 보내요.", "Both carry the same note rule over different channels.")),
         ("IPC(네트워크)", "Network IPC", ("서로 다른 컴퓨터의 프로세스끼리 쓰는 전용 편지함.", "The dedicated mailbox processes on different computers use to talk."), ('Modbus TCP는 이 방식의 한 예예요. → <a href="ipc-ko.html">프로세스끼리 여는 전용 편지함</a>', 'Modbus TCP is one example of this. → <a href="ipc-en.html">the dedicated mailbox between processes</a>')),
         ("AMI(지능형 검침)", "AMI", ("계량기가 자동으로 값을 보고하는 망.", "The network where meters report their readings automatically."), ('AMI에서도 중앙 시스템이 계량기에 물어 값을 읽기도 해요. → <a href="ami-ko.html">계량기가 자동으로 편지를 보내는 망</a>', 'There too, a central system sometimes asks a meter for its reading. → <a href="ami-en.html">the network where meters mail their own readings</a>')),
-        ("OT/IoT 보안", "OT/IoT Security", ("오래된 공장 기계를 지키는 방법.", "How old factory machines get protected today."), ("다른 세계(보안)에서 다루는 주제예요.", "A topic covered in another world (Security).")),
+        ("OT/IoT 보안", "OT/IoT Security", ("오래된 공장 기계를 지키는 방법.", "How old factory machines get protected today."), ("보안 분야에서 다루는 주제예요.", "A topic covered in the Security field.")),
         ("회선교환·패킷교환", "Circuit vs Packet Switching", ("전용 도로냐, 봉투를 조각내 보내기냐.", "A dedicated road, or splitting the envelope into pieces."), ('Modbus TCP 쪽지는 패킷교환 위에서 오가요. → <a href="circuitpacket-ko.html">전용 도로냐, 조각내 보내기냐</a>', "Modbus TCP notes ride on packet switching. → <a href=\"circuitpacket-en.html\">a dedicated road, or splitting it into pieces</a>")),
     ],
 }

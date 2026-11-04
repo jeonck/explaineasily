@@ -22,8 +22,8 @@ P3 = svg(340, sky(340)
                        "⟦2년차 — 청소년 소설|year 2 — YA novels⟧",
                        "⟦3년차 — 해외 번역본|year 3 — translated editions⟧"), 1.0)
          + person(500, 150, s=0.9, face=EYES, **EDITOR)
-         + label(380, 30, "⟦ISP/ISMP = 무엇을 먼저, 어떤 순서로 낼지 큰 그림부터 그리는 일|ISP/ISMP = drawing the big picture of what to publish, and in what order⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦ISP/ISMP는 감리(출간 전 점검)보다 훨씬 앞선, 계획 그 자체예요|ISP/ISMP comes long before audit (the pre-publication check) — it's the plan itself⟧", 12, "var(--muted)"))
+         + label(380, 30, "⟦ISP = 무엇을 먼저, 어떤 순서로 낼지 큰 그림부터 그리는 일|ISP = drawing the big picture of what to publish, and in what order⟧", 13, "var(--ink)", cls="d")
+         + label(380, 320, "⟦ISP/ISMP는 감리(사업 중 점검)보다 앞선, 계획 그 자체예요|ISP/ISMP comes before audit (checks during the project) — it's the plan itself⟧", 12, "var(--muted)"))
 
 # 4. 로드맵을 그릴 때 보는 것들
 P4 = svg(320, sky(320)
@@ -60,8 +60,8 @@ PAGE = {
          "caption": ("베스트셀러만 좇다가, 출판사 전체 방향을 잃어요.", "Chasing only bestsellers loses the house's overall direction."),
          "small": ("유행만 따라가면, 출판사의 진짜 색깔은 안 보여요.", "Chasing trends alone loses the house's own identity.")},
         {"svg": P3, "hero": True, "alt": ("편집장이 출판 로드맵 안내판 앞에 서 있음: 1년차 그림책, 2년차 청소년 소설, 3년차 번역본", "An editor stands by a publishing-roadmap board: year 1 picture books, year 2 YA novels, year 3 translations"),
-         "caption": ("ISP/ISMP는 무엇을 먼저, 어떤 순서로 낼지 큰 그림부터 그리는 일이에요.", "ISP/ISMP draws the big picture of what to publish, and in what order."),
-         "small": ("ISP/ISMP는 감리보다 훨씬 앞선, 계획 그 자체예요.", "ISP/ISMP comes long before audit — it's the plan itself."),
+         "caption": ("ISP는 무엇을 먼저, 어떤 순서로 낼지 큰 그림을 그리고, ISMP는 시리즈 하나를 어떻게 만들지 구체화해요.", "ISP draws the big picture of what to publish and in what order; ISMP details how to build one series."),
+         "small": ("ISP/ISMP는 감리보다 앞선, 계획 그 자체예요.", "ISP/ISMP comes before audit — it's the plan itself."),
          "tricks": (4, [
              (MAP_I, ("큰 그림 먼저 그리기", "Draw the big picture first"), ("몇 년치 출판 방향", "years of publishing direction ahead"), "calm"),
              (READERS_I, ("독자층 살피기", "Study the readership"), ("누구에게 팔 것인가", "who we're selling to")),
@@ -75,14 +75,14 @@ PAGE = {
          "caption": ("로드맵이 책을 대신 써주진 않아요.", "The roadmap doesn't write the book for you."),
          "small": ("로드맵은 방향을 정하는 지도이고, 원고를 대신 쓰진 않아요.", "The roadmap is a map that sets direction, not the manuscript itself.")},
     ],
-    "summary": (("<b>ISP/ISMP</b> = 출판사가 <b>무엇을, 어떤 순서로</b> 낼지 미리 그려두는 <b>큰 그림 로드맵</b>.",
-                 "<b>ISP/ISMP</b> = a <b>big-picture roadmap</b> drawn ahead of time, deciding <b>what</b> to publish and <b>in what order</b>."),
+    "summary": (("<b>ISP</b> = 출판사가 <b>무엇을, 어떤 순서로</b> 낼지 미리 그려두는 <b>큰 그림 로드맵</b>. <b>ISMP</b> = <b>시리즈 하나</b>를 어떻게 만들지 미리 구체화한 계획.",
+                 "<b>ISP</b> = a <b>big-picture roadmap</b> drawn ahead of time, deciding <b>what</b> to publish and <b>in what order</b>. <b>ISMP</b> = a plan drawn ahead of time, detailing how to build <b>one series</b>."),
                 ("ISP(Information Strategy Planning)는 조직의 경영 전략에 맞춰 정보화 방향과 우선순위를 수립하는 일이고, ISMP(Information System Master Plan)는 특정 시스템을 대상으로 필요한 기능과 요건을 구체화하는 계획이에요. ISP는 조직 전체 수준, ISMP는 시스템 하나 수준이고, 둘 다 구축 사업이 시작되기 전에 세워요.",
                  "ISP (Information Strategy Planning) sets an organization's information direction and priorities in line with its business strategy, while ISMP (Information System Master Plan) targets one specific system and pins down the functions and requirements it needs. ISP works at the whole-organization level and ISMP at the level of one system, and both come before the build project begins.")),
     "glossary": [
         ("ISP", "ISP", ("출판사 전체의 방향을 정하는 일.", "Setting the direction for the whole house."), ("경영 전략에 맞춰 정보화 우선순위를 짜요.", "Lines up IT priorities with business strategy.")),
         ("ISMP", "ISMP", ("시리즈 하나를 어떻게 만들지 세운 구체 계획.", "A detailed plan for building one specific series."), ("ISP 뒤에 이어지기도 하고, 기관 상황에 따라 ISMP만 세우기도 해요.", "It can follow ISP, or stand alone depending on the organization.")),
-        ("정보시스템 감리/PMO", "IS Audit/PMO", ("출간 과정을 곁에서 살피는 검수관.", "The checker who watches the whole publishing run."), ('ISP/ISMP 다음, 실제 프로젝트가 시작된 뒤에 와요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'Comes after ISP/ISMP, once the project is actually running. → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
+        ("정보시스템 감리/PMO", "IS Audit/PMO", ("출간 과정을 곁에서 살피는 검수관.", "The checker who watches the whole publishing run."), ('감리는 ISP/ISMP 다음, 구축 사업이 시작된 뒤에 와요. PMO는 사업 기획 단계부터 맡기도 해요. →<a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'Audit comes after ISP/ISMP, once the build project is running. A PMO can start as early as the planning stage. →<a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
         ("요구공학", "Requirements Engineering", ("개별 책의 개요를 정확히 받아적는 일.", "Taking down one book's own outline precisely."), ("로드맵이 정해진 뒤, 책 한 권 단위에서 하는 일이에요.", "Happens for a single book, after the roadmap is set.")),
         ("BPR", "BPR", ("출판 공정 자체를 뜯어고치는 일.", "Overhauling the publishing process itself."), ("ISP와 함께 조직 차원에서 논의되곤 해요.", "Often discussed alongside ISP at the organizational level.")),
         ("아키텍처 원칙", "Architecture Principles", ("모든 책이 따라야 할 공통 스타일가이드.", "The shared style guide every book must follow."), ("로드맵 실행 과정에서 지켜야 할 규칙이에요.", "A rule to follow while carrying out the roadmap.")),

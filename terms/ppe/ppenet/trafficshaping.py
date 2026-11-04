@@ -83,6 +83,6 @@ PAGE = {
         ("QoS", "QoS", ("창구마다 다른 대우를 해주는 것.", "Giving different counters different treatment."), ("이 규칙을 실현하는 더 큰 틀이에요.", "The broader framework these rules serve.")),
         ("L4 스위치", "L4 Switch", ("봉투 안 창구 번호까지 보는 분류 직원.", "The sorter who checks the counter number too."), ('L4 스위치는 트래픽을 창구별로 고르게 나눠 흐름을 조절해요. → <a href="l4switch-ko.html">포트까지 보는 분류소 직원</a>', 'It manages flow too, by spreading traffic across counters. → <a href="l4switch-en.html">the sorter who checks the port</a>')),
         ("5G 네트워크 슬라이싱", "5G Network Slicing", ("차선 자체를 나누는 더 큰 기술.", "The bigger tech that splits the lane itself."), ('차선을 깐 뒤에 이 규칙이 필요해요. → <a href="5gcore-ko.html">상황별 전용 차선을 가진 배송망</a>', "This rule applies once that lane exists. → <a href=\"5gcore-en.html\">the network with a lane for every need</a>")),
-        ("백프레셔", "Backpressure", ("창구가 너무 밀리면 보내는 쪽에 알려서 늦추게 하는 것.", "Telling the sender upstream to slow down when the counter is too full."), ("다른 세계(SRE)에서 비슷한 개념을 다뤄요.", "A related idea covered in another world (SRE).")),
+        ("백프레셔", "Backpressure", ("창구가 너무 밀리면 보내는 쪽에 알려서 늦추게 하는 것.", "Telling the sender upstream to slow down when the counter is too full."), ("다른 분야(SRE)에서 비슷한 개념을 다뤄요.", "A related idea covered in another field (SRE).")),
     ],
 }

@@ -43,7 +43,7 @@
 | tcpcontrol | 등기 배송을 끝까지 지키는 세 장치 |
 | dynamicrouting | 스스로 고쳐 그리는 배송 지도 |
 | interruptnet | 소포가 도착했다고 알리는 벨소리 |
-| socket | 이 대화만을 위한 전용 우편함 구멍 |
+| socket | 대화의 한쪽 끝을 맡는 우편함 구멍 |
 | wirelesspos | 신호탑 세 개로 위치 찾기 |
 | ipv6 | 끝없이 늘어난 새 번지수 |
 | 5gcore | 상황별 전용 차선을 가진 배송망 |

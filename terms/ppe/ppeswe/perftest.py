@@ -93,6 +93,6 @@ PAGE = {
         ("처리량(TPS)", "Throughput (TPS)", ("초당 몇 권 찍어내나.", "How many books printed per second."), ('처리량은 속도를, 기능점수는 기능의 크기를 재요. → <a href="fpruler-ko.html">쪽수 대신 기능을 재는 자</a>', 'Throughput measures speed; function points measure functional size. → <a href="fpruler-en.html">the ruler that measures functions, not pages</a>')),
         ("병목지점", "Bottleneck", ("가장 먼저 막히는 좁은 문.", "The narrow door that jams up first."), ("테스트로 미리 찾아둬야 해요.", "Testing finds it before it's too late.")),
         ("가설검정", "Hypothesis Testing", ("두 표지 중 뭐가 진짜 더 잘 팔리는지 따지는 법.", "How to tell which of two covers truly sells better."), ('우연인지 진짜 차이인지 가릴 때 써요. → <a href="hypothesistest-ko.html">우연인지 진짜 차이인지 가리기</a>', 'Used to separate real differences from coincidence. → <a href="hypothesistest-en.html">telling a real difference from coincidence</a>')),
-        ("고가용성", "High Availability", ("인쇄소를 두 곳 두는 대비.", "Keeping a backup print shop ready."), ('성능이 아니라 멈추지 않는 것에 대한 이야기예요(다른 세계). → <a href="failover-ko.html">예비 발전기가 넘겨받는 이야기</a>', 'A different story — about never stopping, not about speed (another world). → <a href="failover-en.html">when the spare generator takes over</a>')),
+        ("고가용성", "High Availability", ("인쇄소를 두 곳 두는 대비.", "Keeping a backup print shop ready."), ('성능이 아니라 멈추지 않는 것에 대한 이야기예요(다른 분야). → <a href="failover-ko.html">예비 발전기가 넘겨받는 이야기</a>', 'A different story — about never stopping, not about speed (another field). → <a href="failover-en.html">when the spare generator takes over</a>')),
     ],
 }

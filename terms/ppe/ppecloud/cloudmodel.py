@@ -88,7 +88,7 @@ PAGE = {
         ("PaaS", "PaaS (Platform as a Service)", ("인테리어까지 된 사무실.", "The office with interior already done."), ("OS·런타임까지 챙겨줘서 개발에만 집중해요.", "Covers OS and runtime too, so you focus only on building the app.")),
         ("SaaS", "SaaS (Software as a Service)", ("완제품 사무실, 열쇠만 받으면 끝.", "A move-in-ready office — just take the keys."), ("완성된 소프트웨어를 그대로 써요.", "You use finished software as-is.")),
         ("온프레미스", "On-premises", ("직접 짓는 자기 건물.", "A building you construct yourself."), ("보안·규정 때문에 서버를 회사 안에 직접 두는 경우예요.", "Some keep their servers in-house for security or regulation.")),
-        ("종량제 과금", "Pay-as-you-go", ("월세 대신 쓴 만큼만 내는 방식.", "Paying for what you use, instead of flat rent."), ("안 쓴 자원에는 요금을 내지 않아요.", "You aren't billed for resources you don't use.")),
+        ("종량제 과금", "Pay-as-you-go", ("월세 대신 쓴 만큼만 내는 방식.", "Paying for what you use, instead of flat rent."), ("자원을 반납하면 그때부터 요금이 멈춰요. 켜 두고 놀리면 요금이 나와요.", "Charges stop once you release a resource; leave it running idle and you still pay.")),
         ("가상머신·컨테이너", "VM and Container", ("독채 사무실과 칸막이 책상.", "The private office and the partitioned desk."), ('서버 한 대의 공간을 나누는 두 가지 방법이에요. → <a href="vmcontainer-ko.html">독채 사무실과 칸막이 책상</a>', 'Two ways to divide the space in one server. → <a href="vmcontainer-en.html">the private office and the partitioned desk</a>')),
         ("서버리스", "Serverless", ("시간제로만 빌리는 회의실.", "A meeting room rented only by the hour."), ('서버(뼈대)조차 신경 안 써도 되는 극단적인 형태예요. → <a href="serverless-ko.html">시간제 회의실</a>', "An extreme form where you don't even think about the server (the shell). → <a href=\"serverless-en.html\">the hourly meeting room</a>")),
     ],

@@ -88,7 +88,7 @@ PAGE = {
         ("Serializable", "Serializable", ("동시 작업을 차례로 하나씩 처리한 것처럼 만드는 수준.", "The level that makes simultaneous work look done one at a time."), ("가장 엄격하고, 동시 작업이 많을 때 보통 가장 느려요.", "Strictest, and usually the slowest under concurrent work.")),
         ("ACID", "ACID", ("전표가 지키는 네 가지 약속.", "The four promises a receipt keeps."), ('격리(I)는 그중 하나예요. → <a href="acid-ko.html">전표가 지키는 네 약속</a>', 'Isolation is one of the four. → <a href="acid-en.html">the four promises a receipt keeps</a>')),
         ("병행제어", "Concurrency Control", ("격리 수준을 실제로 지켜내는 방법.", "How isolation levels actually get enforced."), ('락이나 MVCC로 구현해요. → <a href="concurrency-ko.html">동시에 안 부딪히는 규칙</a>', 'Implemented with locks or MVCC. → <a href="concurrency-en.html">the no-collision rule</a>')),
-        ("CAP 정리", "CAP Theorem", ("놀이공원 세계의 트레이드오프 이야기.", "A trade-off story from the amusement-park world."), ('분산 환경에서 일관성 자체의 한계를 다뤄요. → <a href="captheorem-ko.html">CAP 정리</a>', 'Covers the limits of consistency itself in distributed settings. → <a href="captheorem-en.html">the CAP theorem</a>')),
+        ("CAP 정리", "CAP Theorem", ("SRE 분야의 트레이드오프 이야기.", "A trade-off story from the SRE field."), ('분산 환경에서 일관성 자체의 한계를 다뤄요. → <a href="captheorem-ko.html">CAP 정리</a>', 'Covers the limits of consistency itself in distributed settings. → <a href="captheorem-en.html">the CAP theorem</a>')),
         ("최종 일관성", "Eventual Consistency", ("복제본 값이 당장은 달라도 결국 같아지는 것.", "Copies differ for now, but eventually match."), ('격리 수준과는 또 다른 분산 환경의 타협이에요. → <a href="eventualconsistency-ko.html">최종 일관성</a>', 'A different distributed-systems compromise from isolation levels. → <a href="eventualconsistency-en.html">eventual consistency</a>')),
     ],
 }

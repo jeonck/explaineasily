@@ -85,6 +85,6 @@ PAGE = {
         ("데이터 표준화", "Data Standardization", ("주소를 적는 형식을 하나로 맞추는 일.", "Unifying the format addresses are written in."), ("일관성을 지키는 방법 중 하나예요.", "One way to keep consistency.")),
         ("마스터 데이터 관리", "Master Data Management", ("독자 한 명당 기록을 하나로 통합하는 일.", "Unifying one reader's records into a single one."), ("중복 주소록을 막는 핵심이에요.", "The key to preventing duplicate address entries.")),
         ("요구공학", "Requirements Engineering", ("무엇을 정확히 적어야 하는지 미리 정하는 일.", "Deciding in advance exactly what must be recorded."), ('주소록 항목도 결국 명세에서 정해져요. → <a href="reqeng-ko.html">쓰기 전에 먼저 묻는 사람</a>', 'Even address-list fields ultimately come from a spec. → <a href="reqeng-en.html">the one who asks before writing</a>')),
-        ("정보시스템 감리/PMO", "IS Audit/PMO", ("출간 과정을 곁에서 살피는 검수관.", "The checker who watches the whole publishing run."), ('데이터베이스 감리에서는 데이터 품질도 점검해요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'Database audits check data quality too. → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
+        ("정보시스템 감리/PMO", "IS Audit/PMO", ("출간 과정을 곁에서 살피는 검수관.", "The checker who watches the whole publishing run."), ('데이터베이스 감리에서 데이터 품질을 살피기도 해요. →<a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'Database audits can look at data quality too. →<a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
     ],
 }

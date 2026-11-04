@@ -66,10 +66,10 @@ PAGE = {
                  + person(150, 170, s=0.6, face=SMILE, **INSPECTOR) + label(150, 265, "⟦원칙판을 지키면 등급이 일관돼요|follow the charter and grades stay consistent⟧", 11, "var(--ink)")
                  + person(560, 170, s=0.6, face=FROWN, **OPERATOR)
                  + label(560, 265, "⟦원칙판을 안 보고 그냥 등급 매겼어요|graded without even looking at the charter⟧", 11, "var(--bad)")
-                 + label(380, 345, "⟦주방 세계의 AI 거버넌스는 보안 운영 각도를, 여긴 윤리·규제 준수 각도를 봐요|the kitchen world's AI governance looks from a security-ops angle — this page looks from an ethics and regulatory-compliance angle⟧", 12, "var(--ink)", cls="d")),
+                 + label(380, 345, "⟦LLM 보안 분야는 보안 운영 각도로, 이 쪽은 윤리·규제 준수 각도로 AI 거버넌스를 봐요|LLM security views AI governance through security ops; this page, through ethics and compliance⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 검수반장이 원칙판을 지켜 등급이 일관되게 매겨짐. 오른쪽: 조작원이 원칙판을 안 보고 그냥 등급을 매김", "Left: the inspector follows the charter and grades stay consistent. Right: the operator grades without even consulting it"),
          "caption": ("원칙판이 있어도 검사장이 안 지키면 소용없어요.", "Having a charter doesn't help if the station doesn't follow it."),
-         "small": ("AI 거버넌스를 이 페이지는 윤리·규제 준수 각도로, 주방 세계 페이지는 보안 운영 각도로 봐요.", "On AI governance, this page takes the ethics/compliance angle; the kitchen world's page takes the security-ops angle.")},
+         "small": ("AI 거버넌스를 이 페이지는 윤리·규제 준수 각도로, LLM 보안 분야 페이지는 보안 운영 각도로 봐요.", "On AI governance, this page takes the ethics/compliance angle; the LLM-security field's page takes the security-ops angle.")},
     ],
     "summary": (("<b>AI 윤리기준·거버넌스</b> = 모든 검사장이 함께 지킬 <b>공정성·설명가능성·책임소재</b>를 정한 등급 원칙판.",
                  "<b>AI ethics & governance</b> = a shared grading charter spelling out <b>fairness, explainability, and accountability</b> for every station."),
@@ -77,7 +77,7 @@ PAGE = {
                  "AI ethics and governance is the policy and normative framework ensuring fairness, transparency (explainability), accountability, and a right to human review throughout how an organization builds and operates AI. It connects to the OECD AI Principles, the EU AI Act, and the trust requirements of Korea's AI Basic Act. Unlike security-operations governance focused on incident response, this is the wider frame of social acceptability, regulatory compliance, and stakeholder trust.")),
     "glossary": [
         ("AI 윤리기준", "AI ethics standard", ("공통 등급 원칙판.", "The shared grading charter."), ("모든 검사장이 함께 지켜요.", "Every station follows it together.")),
-        ("AI 거버넌스(보안 각도)", "AI governance (security angle)", ("주방 세계의 규칙판.", "The kitchen world's rules board."), ('운영·보안 중심 각도는 여기서. → <a href="aigovernance-ko.html">주방 규칙판</a>', 'The operations/security-focused angle lives here. → <a href="aigovernance-en.html">The Kitchen Rules Board</a>')),
+        ("AI 거버넌스(보안 각도)", "AI governance (security angle)", ("LLM 보안 분야의 규칙판.", "The LLM-security field's rules board."), ('운영·보안 중심 각도는 여기서. → <a href="aigovernance-ko.html">주방 규칙판</a>', 'The operations/security-focused angle lives here. → <a href="aigovernance-en.html">The Kitchen Rules Board</a>')),
         ("설명가능성(XAI)", "Explainability (XAI)", ("등급을 매긴 이유를 남기는 일.", "Recording the reason behind a grade."), ("이유 없이 매긴 등급은 이의 제기조차 못 해요.", "A grade with no recorded reason can't even be appealed.")),
         ("공정성", "Fairness", ("작물 종류로 차별하지 않는 것.", "Not discriminating by produce type."), ('편향은 씨앗 단계에서도 섞여 들어와요. → <a href="aidataqual-ko.html">상한 씨앗으로 가르친 선별기</a>', 'Bias can creep in as early as the seed stage. → <a href="aidataqual-en.html">A Sorter Trained on Rotten Seed</a>')),
         ("AI 리스크 관리 프레임워크", "AI risk management framework", ("원칙을 실제 절차로 바꾸는 작업 지도.", "The working map that turns principles into real procedure."), ('원칙판을 실행에 옮기는 방법은 따로 있어요. → <a href="airiskframe-ko.html">검사장 전체를 도는 운영 지도</a>', 'How the charter gets carried out, in a page of its own. → <a href="airiskframe-en.html">The Operations Map That Walks the Whole Station</a>')),

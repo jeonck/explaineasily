@@ -35,7 +35,7 @@ P4 = svg(320, sky(320)
                      "⟦비용 — 저렴|cost — cheap⟧",
                      "⟦범위 — 전국|coverage — nationwide⟧"), 1.0)
          + routemap(390, 40, 310, 250, "⟦5G 특화망|5G Private Network⟧",
-                    ("⟦속도 — 이 공장만 보장|speed — guaranteed for this factory⟧",
+                    ("⟦속도 — 이 공장 안에서만 나눠 써요|speed — shared only inside this factory⟧",
                      "⟦보안 — 전용, 안 섞임|security — dedicated, no mixing⟧",
                      "⟦비용 — 비쌈|cost — expensive⟧",
                      "⟦범위 — 공장 안만|coverage — campus only⟧"), 1.0, hl=0))
@@ -80,10 +80,10 @@ PAGE = {
          "caption": ("특화망도 만능은 아니에요.", "A private network isn't a cure-all."),
          "small": ("특화망은 좁지만 확실한 길이지, 세상 전체로 가는 길은 아니에요.", "A private network is a narrow but certain road — not a road to the whole world.")},
     ],
-    "summary": (("<b>5G 특화망</b>은 한 공장·건물·캠퍼스만을 위해 <b>따로 깔아둔 전용 5G망</b>으로, 공용망과 안 섞여 속도와 보안을 보장해요.",
-                 "A <b>5G private network</b> is a <b>dedicated 5G network laid down for one factory, building, or campus</b> — never mixed with the public network, so speed and security can be guaranteed."),
-                ("5G 특화망(한국의 이음5G, 일본의 Local 5G)은 통신사의 공용 5G 코어·주파수와 분리된 전용 주파수·전용 코어망을 특정 구역에만 구축해, 지연·보안·대역폭을 그 구역 용도에 맞게 보장하는 방식이에요. 스마트팩토리·병원·항만 등 끊기면 안 되는 현장에 주로 쓰여요.",
-                 "A 5G private network (Korea's 이음5G, Japan's Local 5G) builds a dedicated frequency and dedicated core — separate from a carrier's shared public 5G core — within one specific site, guaranteeing latency, security, and bandwidth tailored to that site's needs. It's used where connectivity can't be allowed to drop: smart factories, hospitals, ports.")),
+    "summary": (("<b>5G 특화망</b>은 한 공장·건물·캠퍼스만을 위해 <b>따로 깔아둔 전용 5G망</b>으로, 공용망과 안 섞여 속도와 보안을 그 현장에 맞춰 관리해요.",
+                 "A <b>5G private network</b> is a <b>dedicated 5G network laid down for one factory, building, or campus</b> — never mixed with the public network, so speed and security can be managed for that site."),
+                ("5G 특화망(한국의 이음5G, 일본의 Local 5G)은 통신사의 공용 5G 코어·주파수와 분리된 전용 주파수·전용 코어망을 특정 구역에만 구축해, 지연·보안·대역폭을 그 구역 용도에 맞게 설계하는 방식이에요. 스마트팩토리·병원·항만 등 끊기면 안 되는 현장에 주로 쓰여요.",
+                 "A 5G private network (Korea's Eum 5G, Japan's Local 5G) builds a dedicated frequency and dedicated core — separate from a carrier's shared public 5G core — within one specific site, designing latency, security, and bandwidth tailored to that site's needs. It's used where connectivity can't be allowed to drop: smart factories, hospitals, ports.")),
     "glossary": [
         ("5G 특화망", "5G Private Network", ("이 공장만을 위한 전용 배송망.", "A delivery network dedicated to just this factory."), ("주파수·코어망을 따로 가져요.", "Has its own frequency and core network.")),
         ("주파수 대역", "Frequency band", ("배송 트럭이 달리는 전용 차로.", "The dedicated lane the delivery trucks run on."), ("공용망과 섞이지 않는 전파 구간이에요.", "A radio range that never mixes with the public network.")),

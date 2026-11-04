@@ -91,7 +91,7 @@ PAGE = {
         ("모델 레지스트리", "Model Registry", ("기계를 버전별로 보관하는 서가.", "The shelf that stores each version of the machine."), ('형상관리와 같은 생각이에요 → <a href="scmshelf-ko.html">원고를 지키는 보관 서가</a>.', 'Same idea as configuration management → <a href="scmshelf-en.html">the shelf that protects the manuscript</a>.')),
         ("드리프트(Drift)", "Drift", ("세상이 바뀌어 기계가 자꾸 틀리는 것.", "The machine starting to miss things as the world changes."), ("데이터가 변하면 정확도가 조용히 떨어져요.", "As the data shifts, accuracy quietly slips.")),
         ("A/B 테스트", "A/B Testing", ("새 기계와 옛 기계를 나란히 비교하는 것.", "Running the new machine and the old one side by side."), ("더 정확한 기계만 남겨요.", "Only the more accurate machine stays.")),
-        ("모델 롤백", "Model Rollback", ("새 기계가 더 자주 틀리면 예전 판으로 되돌리기.", "If the new machine makes more mistakes, go back to the old version."), ('놀이공원 세계의 되돌리기와 같아요 → <a href="rollback-ko.html">기구를 예전 설정으로</a>.', 'Same idea as the rewind in the theme-park world → <a href="rollback-en.html">resetting a ride to its old setup</a>.')),
+        ("모델 롤백", "Model Rollback", ("새 기계가 더 자주 틀리면 예전 판으로 되돌리기.", "If the new machine makes more mistakes, go back to the old version."), ('SRE 분야의 되돌리기와 같아요 → <a href="rollback-ko.html">기구를 예전 설정으로</a>.', 'Same idea as the rewind in the SRE field → <a href="rollback-en.html">resetting a ride to its old setup</a>.')),
         ("모니터링", "Monitoring", ("기계의 실수를 계속 지켜보는 일.", "Keeping an eye on the machine's mistakes."), ("정확도가 떨어지면 가장 먼저 알아채는 장치예요.", "It's the first thing to notice when accuracy drops.")),
     ],
 }

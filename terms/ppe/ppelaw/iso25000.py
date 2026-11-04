@@ -90,6 +90,6 @@ PAGE = {
         ("품질 평가(ISO 2504n)", "Quality Evaluation (ISO 2504n)", ("목표와 실제를 비교해 판정하는 절차.", "The process of comparing target against actual and judging."), ("기준에 못 미치면 다시 고쳐야 해요.", "Falling short means it has to be fixed again.")),
         ("사용성", "Usability", ("쓰기 쉬운 정도.", "How easy something is to use."), ("2011판 품질 특성 중 하나로, 2023판에선 상호작용 능력으로 바뀌었어요.", "A 2011-edition characteristic; the 2023 edition calls it interaction capability.")),
         ("유지보수성", "Maintainability", ("나중에 고치기 쉬운 정도.", "How easy it is to fix later."), ("오래 쓸 소프트웨어일수록 중요해요.", "Matters more the longer software stays in use.")),
-        ("소프트웨어 테스트", "Software Testing", ("소프트웨어를 실제로 돌려보며 동작을 확인하는 것.", "Actually running software to check how it behaves."), ('SQuaRE가 정한 기준을 실제로 확인하는 과정이에요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'The process that actually checks SQuaRE\'s standard. → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
+        ("소프트웨어 테스트", "Software Testing", ("소프트웨어를 실제로 돌려보며 동작을 확인하는 것.", "Actually running software to check how it behaves."), ('SQuaRE가 정한 기준을 실제로 확인하는 과정이에요. → <a href="wbblacktest-ko.html">속을 펼쳐 볼지, 겉만 읽을지</a>', 'The process that actually checks SQuaRE\'s standard. → <a href="wbblacktest-en.html">looking inside, or just reading the outside</a>')),
     ],
 }

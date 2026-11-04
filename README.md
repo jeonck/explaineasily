@@ -420,7 +420,7 @@ AI 보안 용어는 하나의 세계를 공유한다 — 주방은 AI 시스템,
 | TCP 오류·흐름·혼잡 제어 | 등기 배송을 끝까지 지키는 세 장치 | [tcpcontrol-ko](docs/tcpcontrol-ko.html) | [tcpcontrol-en](docs/tcpcontrol-en.html) |
 | 동적 라우팅 프로토콜 | 스스로 고쳐 그리는 배송 지도 | [dynamicrouting-ko](docs/dynamicrouting-ko.html) | [dynamicrouting-en](docs/dynamicrouting-en.html) |
 | 인터럽트(네트워크 I/O) | 소포가 도착했다고 알리는 벨소리 | [interruptnet-ko](docs/interruptnet-ko.html) | [interruptnet-en](docs/interruptnet-en.html) |
-| 소켓 | 이 대화만을 위한 전용 우편함 구멍 | [socket-ko](docs/socket-ko.html) | [socket-en](docs/socket-en.html) |
+| 소켓 | 대화의 한쪽 끝을 맡는 우편함 구멍 | [socket-ko](docs/socket-ko.html) | [socket-en](docs/socket-en.html) |
 | 무선 측위 | 신호탑 세 개로 위치 찾기 | [wirelesspos-ko](docs/wirelesspos-ko.html) | [wirelesspos-en](docs/wirelesspos-en.html) |
 | IPv6 | 끝없이 늘어난 새 번지수 | [ipv6-ko](docs/ipv6-ko.html) | [ipv6-en](docs/ipv6-en.html) |
 | 5G 이동통신 핵심기술 | 상황별 전용 차선을 가진 배송망 | [5gcore-ko](docs/5gcore-ko.html) | [5gcore-en](docs/5gcore-en.html) |

@@ -110,6 +110,6 @@ PAGE = {
         ("폴링", "Polling", ("계속 흘깃흘깃 확인하는 방식.", "Constantly glancing over to check."), ("인터럽트보다 비효율적일 수 있어요.", "Can be less efficient than interrupts.")),
         ("인터럽트 우선순위", "Interrupt Priority", ("더 급한 벨부터 처리하는 순서.", "Handling the more urgent bell first."), ("벨 여러 개가 동시에 울릴 때 쓰여요.", "Matters when several bells ring at once.")),
         ("소프트웨어 인터럽트", "Software Interrupt", ("정비사 스스로 벨을 눌러 요청하는 것.", "The mechanic pressing the bell themselves to make a request."), ("옛 x86 시스템 콜이 이 방식이었고, x86-64는 전용 syscall 명령어를 써요.", "Older x86 system calls used this; x86-64 has a dedicated syscall instruction.")),
-        ("네트워크 인터럽트", "Network Interrupt", ("네트워크 카드 벨만 다루는 이야기.", "The story about the network-card bell specifically."), ('다른 세계(네트워크 분야)에서 자세히 다뤄요. → <a href="interruptnet-ko.html">소포가 도착했다고 알리는 벨소리</a>', 'Covered in depth in another world (the networking field). → <a href="interruptnet-en.html">the bell that says a parcel just arrived</a>')),
+        ("네트워크 인터럽트", "Network Interrupt", ("네트워크 카드 벨만 다루는 이야기.", "The story about the network-card bell specifically."), ('다른 분야(네트워크 분야)에서 자세히 다뤄요. → <a href="interruptnet-ko.html">소포가 도착했다고 알리는 벨소리</a>', 'Covered in depth in another field (the networking field). → <a href="interruptnet-en.html">the bell that says a parcel just arrived</a>')),
     ],
 }

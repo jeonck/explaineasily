@@ -81,11 +81,11 @@ PAGE = {
          "small": ("실수의 결과가 되돌릴 수 없을 때, 안전장치는 선택이 아니라 필수예요.", "When a mistake can't be undone, safeguards aren't optional — they're required.")},
         {"svg": svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
                  + gripper_arm(190, 140, 1.0) + produce(190, 188, 1.1, "var(--good)") + label(190, 250, "⟦집게 로봇도 CNN 같은 시각 모델을 쓸 수 있어요|a gripper can use a vision model like a CNN⟧", 11, "var(--ink)")
-                 + person(570, 150, s=0.75, face=EYES, **INSPECTOR) + label(570, 250, "⟦법정 영역에서 생명·안전에 큰 영향이면 고영향 AI예요|in listed areas, big life-or-safety impact = high-impact⟧", 11, "var(--ink)")
-                 + label(380, 282, "⟦로봇의 몸은 사람의 생명·안전에 직접 닿을 수 있어서, 안전 기준과 규제를 더 꼼꼼히 따져야 해요|because a robot's body can directly affect human life and safety, safety standards and rules need a closer look⟧", 12, "var(--ink)", cls="d")),
-         "alt": ("왼쪽: 집게 로봇도 CNN 같은 시각 모델을 쓸 수 있다는 설명. 오른쪽: 검수반장이 법정 영역에서 생명·안전에 큰 영향을 주면 고영향 AI라고 말함", "Left: a note that a gripper can use a vision model like a CNN. Right: the inspector notes that a big impact on life or safety in listed areas makes an AI high-impact"),
+                 + person(570, 150, s=0.75, face=EYES, **INSPECTOR) + label(570, 250, "⟦법이 정한 영역에서 생명·안전에 큰 영향이면 고영향 AI예요|in listed areas, big life-or-safety impact = high-impact⟧", 11, "var(--ink)")
+                 + label(380, 282, "⟦로봇의 몸은 생명·안전에 직접 닿을 수 있어서, 화면 속 AI보다 안전 기준과 규제를 더 꼼꼼히 따져야 해요|a robot's body can directly affect life and safety, so safety rules need a closer look than for screen AI⟧", 12, "var(--ink)", cls="d")),
+         "alt": ("왼쪽: 집게 로봇도 CNN 같은 시각 모델을 쓸 수 있다는 설명. 오른쪽: 검수반장이 법이 정한 영역에서 생명·안전에 큰 영향을 주면 고영향 AI라고 말함", "Left: a note that a gripper can use a vision model like a CNN. Right: the inspector notes that a big impact on life or safety in listed areas makes an AI high-impact"),
          "caption": ("피지컬 AI는 CNN 같은 보는 눈에, 몸과 움직임 제어를 더한 거예요.", "Physical AI takes a seeing eye such as a CNN and adds a body and motion control."),
-         "small": ("로봇의 몸은 사람의 생명·안전에 직접 닿을 수 있어서, 안전 기준과 규제를 더 꼼꼼히 따져야 해요.", "Because a robot's body can directly affect human life and safety, safety standards and rules need a closer look.")},
+         "small": ("로봇의 몸은 사람의 생명·안전에 직접 닿을 수 있어서, 화면 속 AI보다 안전 기준과 규제를 더 꼼꼼히 따져야 해요.", "Because a robot's body can directly affect human life and safety, safety standards and rules need a closer look than for screen-bound AI.")},
     ],
     "summary": (("<b>피지컬 AI</b> = 보고 판단하는 AI에 <b>센서로 느끼고 몸으로 움직이는</b> 능력을 더한 것.",
                  "<b>Physical AI</b> = an AI that already sees and judges, with <b>sensing and physical movement</b> added on top."),

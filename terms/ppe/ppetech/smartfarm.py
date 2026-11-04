@@ -93,8 +93,8 @@ PAGE = {
     ],
     "summary": (("<b>스마트팜</b> = 센서가 흙과 공기 상태를 재고, 기계가 <b>물·온도를 자동으로</b> 맞춰주는 농장.",
                  "<b>Smart farm</b> = a farm where sensors read the soil and air, and machines adjust <b>water and temperature automatically</b>."),
-                ("스마트팜은 IoT 센서, 자동 관개·환경 제어 장치, 데이터 분석을 결합해 작물 생육 환경을 정밀하게 관리하는 농업 방식이에요. 정밀농업(precision agriculture)과 맞닿아 있으며, 사람의 경험적 판단을 데이터 기반 자동 제어로 보완하는 데 목적이 있어요. 온실뿐 아니라 축사·과수원·노지에도 적용돼요.",
-                 "A smart farm combines IoT sensors, automated irrigation and environmental control, and data analysis to precisely manage a crop's growing conditions. Closely related to precision agriculture, its goal is to supplement a farmer's experience-based judgment with data-driven automatic control. It's applied not only to greenhouses but also to livestock barns, orchards, and open fields.")),
+                ("스마트팜은 IoT 센서, 자동 관개·환경 제어 장치, 데이터 분석을 결합해 작물이나 가축의 생육 환경을 정밀하게 관리하는 농업 방식이에요. 정밀농업(precision agriculture)과 맞닿아 있으며, 사람의 경험적 판단을 데이터 기반 자동 제어로 보완하는 데 목적이 있어요. 온실뿐 아니라 축사·과수원·노지에도 적용돼요.",
+                 "A smart farm combines IoT sensors, automated irrigation and environmental control, and data analysis to precisely manage the growing conditions of crops or livestock. Closely related to precision agriculture, its goal is to supplement a farmer's experience-based judgment with data-driven automatic control. It's applied not only to greenhouses but also to livestock barns, orchards, and open fields.")),
     "glossary": [
         ("정밀농업", "Precision Agriculture", ("데이터로 정밀하게 돌보는 농사, 스마트팜과 가까운 말.", "Farming by exact data, a close relative of smart farming."), ("숫자로 정확히 돌본다는 뜻이에요.", "Tending the crop with exact numbers.")),
         ("IoT 센서", "IoT Sensor", ("흙과 공기 상태를 재는 장치.", "The device that reads soil and air conditions."), ("이 온실 곳곳에 꽂혀 있어요.", "Planted all over this greenhouse.")),

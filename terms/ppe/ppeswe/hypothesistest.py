@@ -25,7 +25,7 @@ P3 = svg(340, sky(340)
          + person(360, 190, s=0.6, face=SMILE, **READER) + person(390, 195, s=0.6, face=SMILE, **READER)
          + '<rect x="340" y="125" width="50" height="60" rx="3" fill="var(--accent)"/>'
          + label(250, 278, "⟦두 그룹에게 각자 다른 표지를 보여줘요|showing each group a different cover⟧", 11, "var(--muted)")
-         + ruler(520, 150, 1.0) + label(580, 182, "⟦차이가 없을 때 이만큼 벌어질 확률(p값)|p-value: odds of a gap this big if no real difference⟧", 11, "var(--muted)")
+         + ruler(520, 150, 1.0) + label(580, 182, "⟦차이가 없을 때 이만큼 이상 벌어질 확률(p값)|p-value: odds of a gap at least this big if no difference⟧", 11, "var(--muted)")
          + label(380, 30, "⟦가설검정 = '차이 없다'고 가정하고 시작해, 데이터로 진짜 차이인지 따져보는 절차|hypothesis testing = start by assuming 'no difference', then use data to check if it's real⟧", 13, "var(--ink)", cls="d")
          + label(380, 320, "⟦p값이 기준(유의수준)보다 작으면 '차이 없다'는 가정을 버려요|if the p-value falls below the threshold, drop the 'no difference' assumption⟧", 12, "var(--muted)"))
 

@@ -67,7 +67,7 @@ P4 = svg(320, sky(320, ground=False)
          + queueboard(390, 20, 340, 125, "⟦세그멘테이션|SEGMENTATION⟧",
                       ("⟦쓰임새 단위(세그먼트)로 잘라요|cut into segments by use⟧",
                        "⟦크기가 제각각이에요|each a different size⟧",
-                       "⟦칸 사이 빈틈 낭비(외부 단편화)|gaps between chunks (external fragmentation)⟧"), 1.0)
+                       "⟦덩어리 사이 빈틈 낭비(외부 단편화)|gaps between chunks (external fragmentation)⟧"), 1.0)
          + part_slot(70, 165, 80, 70, 0.6) + part_slot(160, 165, 80, 70, 0.8) + part_slot(250, 165, 80, 70, 0.35)
          + seg(420, 165, 90, 70, "⟦코드|code⟧") + seg(535, 165, 60, 70, "⟦스택|stack⟧") + seg(620, 165, 80, 70, "⟦데이터|data⟧")
          + label(522, 256, "⟦빈틈|gap⟧", 11, "var(--bad)", cls="d") + label(607, 256, "⟦빈틈|gap⟧", 11, "var(--bad)", cls="d")
@@ -76,7 +76,7 @@ P4 = svg(320, sky(320, ground=False)
 # 5. 대응표 모양도 달라요 (번지 찾기와 페이지 폴트는 virtualmem 쪽)
 P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
          + queueboard(40, 30, 300, 125, "⟦페이지 테이블|PAGE TABLE⟧", ["P0 → F7", "P1 → F2", "P2 → F5"], 1.0)
-         + label(190, 190, "⟦페이지마다 프레임 번호 하나만 적어요|one frame number per page⟧", 11, "var(--ink)")
+         + label(190, 190, "⟦위치는 페이지마다 프레임 번호 하나예요|location: one frame number per page⟧", 11, "var(--ink)")
          + label(190, 210, "⟦칸 크기가 같아서 길이는 안 적어요|same-size slots, so no length is listed⟧", 11, "var(--ink)")
          + queueboard(420, 30, 300, 125, "⟦세그먼트 테이블|SEGMENT TABLE⟧",
                       ["⟦코드: 시작 100, 길이 40|code: start 100, length 40⟧",
@@ -111,8 +111,8 @@ PAGE = {
         {"svg": P4, "alt": ("페이징은 같은 크기로 잘라 칸 안에 자투리가 남고, 세그멘테이션은 쓰임새대로 잘라 덩어리 사이에 빈틈이 남음", "Paging cuts to one size and leaves scraps inside slots; segmentation cuts by use and leaves gaps between chunks"),
          "caption": ("페이징은 칸 안에 자투리를, 세그멘테이션은 덩어리 사이에 빈틈을 남겨요.", "Paging leaves scraps inside slots; segmentation leaves gaps between chunks."),
          "small": ("세그먼트를 다시 같은 크기 페이지로 자르는 혼합 방식도 있어요.", "A hybrid also exists: segments cut again into same-size pages.")},
-        {"svg": P5, "alt": ("왼쪽: 페이지마다 프레임 번호만 적은 페이지 테이블. 오른쪽: 세그먼트마다 시작 위치와 길이를 적은 세그먼트 테이블", "Left: a page table listing one frame number per page. Right: a segment table listing each segment's start and length"),
-         "caption": ("페이지 테이블은 프레임 번호만, 세그먼트 테이블은 시작 위치와 길이까지 적어요.", "A page table lists only frame numbers; a segment table also lists start and length."),
+        {"svg": P5, "alt": ("왼쪽: 위치를 프레임 번호로 적은 페이지 테이블. 오른쪽: 세그먼트마다 시작 위치와 길이를 적은 세그먼트 테이블", "Left: a page table giving each page's location as one frame number. Right: a segment table listing each segment's start and length"),
+         "caption": ("위치를 적을 때 페이지 테이블은 프레임 번호만, 세그먼트 테이블은 시작 위치와 길이까지 적어요.", "For location, a page table needs only a frame number; a segment table needs start and length."),
          "small": ("번지를 찾는 과정과 페이지 폴트는 가상메모리 페이지에서 다뤄요.", "The address lookup and page faults are on the virtual-memory page.")},
     ],
     "summary": (("<b>페이징</b>은 메모리를 <b>같은 크기 칸</b>으로, <b>세그멘테이션</b>은 <b>쓰임새 단위(코드·데이터·스택 등)</b>로 나누는, 가상 주소를 실제 메모리 위치로 바꾸는 두 가지 방식이에요.",

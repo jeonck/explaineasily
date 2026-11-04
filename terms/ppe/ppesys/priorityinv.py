@@ -91,7 +91,7 @@ PAGE = {
         ("뮤텍스/락", "Mutex / Lock", ("리프트를 쓰는 동안 거는 잠금.", "The lock held while using the lift."), ("공유 자원을 지키는 실제 도구예요.", "The actual mechanism protecting the shared resource.")),
         ("우선순위 천장 프로토콜", "Priority Ceiling Protocol", ("자원이 여럿일 때 쓰는 더 정교한 방식.", "A more elaborate scheme for multiple resources."), ("우선순위 상속의 확장판이에요.", "An extension of priority inheritance.")),
         ("실시간 시스템", "Real-time System", ("마감 시간이 결과만큼 중요한 시스템.", "A system where the deadline matters as much as the result."), ("우선순위 역전이 특히 치명적인 곳이에요.", "Where priority inversion is especially dangerous.")),
-        ("데드락과 차이", "Difference from Deadlock", ("데드락은 서로 영원히 묶이는 것.", "Deadlock is two tasks permanently stuck on each other."), ('교착상태는 이 세계의 다른 이야기예요. → <a href="deadlockstarve-ko.html">서로의 열쇠를 기다리며 멈춘 정비공장</a>', 'Deadlock is a different story in this same world. → <a href="deadlockstarve-en.html">the garage stalled waiting on each other\'s keys</a>')),
+        ("데드락과 차이", "Difference from Deadlock", ("데드락은 서로 영원히 묶이는 것.", "Deadlock is two tasks permanently stuck on each other."), ('교착상태는 이 분야의 다른 이야기예요. → <a href="deadlockstarve-ko.html">서로의 열쇠를 기다리며 멈춘 정비공장</a>', 'Deadlock is a different story in this same field. → <a href="deadlockstarve-en.html">the garage stalled waiting on each other\'s keys</a>')),
         ("스케줄링", "Scheduling", ("누가 먼저 리프트를 쓸지 정하는 규칙.", "The rule for who gets the lift first."), ('우선순위 역전은 스케줄링의 부작용이에요. → <a href="cpusched-ko.html">리프트에 누가 먼저 올라갈까</a>', 'Priority inversion is a side effect of scheduling. → <a href="cpusched-en.html">who gets on the lift first</a>')),
     ],
 }

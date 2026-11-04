@@ -87,6 +87,6 @@ PAGE = {
         ("데드락(교착상태)", "Deadlock", ("서로의 자물쇠를 기다리며 멈추는 것.", "Both sides stuck waiting on each other's lock."), ("순환 대기가 생기면 발생해요.", "Happens when a wait cycle forms.")),
         ("격리 수준", "Isolation Level", ("동시 작업을 얼마나 엄격히 막을지 정하는 단계.", "The setting for how strictly to guard simultaneous work."), ('병행제어 방법이 이 수준을 실현해요. → <a href="isolevel-ko.html">동시에 손댈 때 얼마나 가려 볼지</a>', 'Concurrency control methods realize this level. → <a href="isolevel-en.html">how much to hide when hands overlap</a>')),
         ("ACID", "ACID", ("전표가 지키는 네 가지 약속.", "The four promises a receipt keeps."), ('병행제어는 그중 Isolation을 지켜줘요. → <a href="acid-ko.html">전표가 지키는 네 약속</a>', 'Concurrency control is what keeps the Isolation promise. → <a href="acid-en.html">the four promises a receipt keeps</a>')),
-        ("합의(Consensus)", "Consensus", ("놀이공원 세계의 여러 서버가 뜻을 맞추는 이야기.", "A story from the amusement-park world about servers agreeing."), ('여러 서버가 같은 값에 동의해야 할 때는 합의 알고리즘을 써요. → <a href="consensus-ko.html">합의(Consensus)</a>', 'When many servers must agree on one value, they use a consensus algorithm. → <a href="consensus-en.html">consensus</a>')),
+        ("합의(Consensus)", "Consensus", ("SRE 분야의 여러 서버가 뜻을 맞추는 이야기.", "A story from the SRE field about servers agreeing."), ('여러 서버가 같은 값에 동의해야 할 때는 합의 알고리즘을 써요. → <a href="consensus-ko.html">합의(Consensus)</a>', 'When many servers must agree on one value, they use a consensus algorithm. → <a href="consensus-en.html">consensus</a>')),
     ],
 }

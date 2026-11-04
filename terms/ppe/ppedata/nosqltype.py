@@ -84,7 +84,7 @@ PAGE = {
     "glossary": [
         ("Key-Value", "Key-Value", ("번호표 하나로 상자 하나.", "One tag, one box."), ("구조가 가장 단순하고, 키로 찾을 때 빨라요.", "The simplest structure, and fast when looking up by key.")),
         ("Document", "Document", ("상자 안에 자유 형식으로 담기.", "Free-form content inside the box."), ("JSON처럼 중첩 구조를 담아요.", "Holds nested structure like JSON.")),
-        ("Column-family", "Column-family", ("행 키 아래 열 묶음을 담는 넓은 선반.", "A wide shelf holding column groups under each row key."), ("행마다 열 구성이 달라도 돼요. 분석용 컬럼형 DB와는 달라요.", "Rows can have different columns. It differs from an analytical columnar DB.")),
+        ("Column-family", "Column-family", ("행 키 아래 열 묶음을 담는 넓은 선반.", "A wide shelf holding column groups under each row key."), ("행마다 열 구성이 달라도 돼요. 열마다 따로 모아 저장하는 분석용 컬럼형 DB와는 달라요.", "Rows can have different columns. Unlike an analytical columnar DB, it doesn't store each column separately.")),
         ("Graph", "Graph", ("상자끼리 끈으로 연결.", "Boxes linked by string."), ("관계 추적에 강해요.", "Strong at tracing relationships.")),
         ("정규화", "Normalization", ("고정 선반에 중복 없이 담는 규칙.", "The rule of storing without duplication on fixed shelves."), ('NoSQL은 이 규칙을 느슨하게 써요. → <a href="normalization-ko.html">한 칸에 한 번만 적는 규칙</a>', 'NoSQL applies this rule loosely. → <a href="normalization-en.html">the rule of writing it once</a>')),
         ("샤딩/파티셔닝", "Sharding/Partitioning", ("창고를 구역으로 쪼개는 것.", "Splitting the warehouse into zones."), ('NoSQL은 보통 샤딩을 쉽게 지원해요. → <a href="dbsharding-ko.html">구역으로 쪼갠 창고</a>', 'NoSQL usually supports sharding easily. → <a href="dbsharding-en.html">the warehouse split into zones</a>')),

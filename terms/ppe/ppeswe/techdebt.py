@@ -74,7 +74,7 @@ PAGE = {
         {"svg": P4, "alt": ("의도적/무의식적 빚이 쌓이는 방식과, 당장 비용 vs 나중 비용(이자)을 정리한 표", "Tables comparing deliberate vs. inadvertent debt, and cost now vs. cost later (interest)"),
          "caption": ("빚은 알면서 쌓을 수도, 모르고 쌓일 수도 있어요.", "Debt can be taken on knowingly, or pile up without anyone noticing."),
          "small": ("의도적이든 아니든, 빚은 적어두고 계획적으로 갚아야 해요.", "Deliberate or not, the debt needs to be recorded and repaid on purpose.")},
-        {"svg": P5, "alt": ("왼쪽: 빚을 완전히 0으로 만들려다 마감을 놓침. 오른쪽: 장부에 적어 계획적으로 갚음", "Left: trying to zero out the debt can miss the deadline. Right: writing it in a ledger and repaying it on purpose"),
+        {"svg": P5, "alt": ("왼쪽: 빚을 완전히 0으로 만들려다 마감을 놓치기 쉬움. 오른쪽: 장부에 적어 계획적으로 갚음", "Left: trying to zero out the debt can miss the deadline. Right: writing it in a ledger and repaying it on purpose"),
          "caption": ("빚을 0으로 만들 필요는 없어요.", "The debt doesn't need to hit zero."),
          "small": ("핵심은 빚을 없애는 게 아니라, 기록하고 계획적으로 갚는 거예요.", "The point isn't erasing debt — it's recording and repaying it on purpose.")},
     ],
