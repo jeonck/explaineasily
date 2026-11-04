@@ -70,7 +70,7 @@ PAGE = {
          "caption": ("세 방식은 충돌을 다루는 법이 달라요.", "The three ways handle collisions differently."),
          "small": ("CSMA는 듣고 보내고, TDMA는 시간을 나누고, CDMA는 코드로 구분해요.", "CSMA listens first, TDMA splits time, CDMA tells senders apart by code.")},
         {"svg": P5, "alt": ("CSMA는 집배원이 많아지면 충돌이 늘고, TDMA는 빈 차례가 버려지고, CDMA는 코드 맞추기가 어려워짐", "CSMA gets more collisions as carriers grow, TDMA wastes empty turns, CDMA finds matching the codes harder"),
-         "caption": ("참여자가 늘면 각자 한계가 생겨요.", "More carriers expose each method's limits."),
+         "caption": ("집배원이 늘면 세 방식 모두 저마다 한계가 생겨요.", "More carriers expose each method's limits."),
          "small": ("CSMA는 충돌이 늘고, TDMA는 보낼 게 없는 차례가 버려지고, CDMA는 코드 맞추기가 어려워져요.", "CSMA collides more, TDMA wastes idle turns, and CDMA finds matching the codes harder.")},
     ],
     "summary": (("<b>다중접속 제어(MAC)</b>는 <b>여러 사용자가 하나의 통신 매체를 안 부딪히고 나눠 쓰도록</b> 하는 규칙이에요(CSMA·TDMA·CDMA).",
@@ -80,7 +80,7 @@ PAGE = {
     "glossary": [
         ("CSMA", "CSMA", ("보내기 전에 통로가 비었는지 듣는 방식.", "Listening whether the lane is clear before sending."), ("충돌이 나면 감지하거나 미리 피해요.", "Detects collisions, or avoids them in advance.")),
         ("TDMA", "TDMA", ("시간을 쪼개 차례대로 쓰는 방식.", "Splitting time and taking turns."), ("각자 정해진 시간에만 보내요.", "Each carrier sends only in its own assigned slot.")),
-        ("CDMA", "CDMA", ("각자 고유 코드로 동시에 보내는 방식.", "Sending at once, each with its own code."), ("받는 쪽이 자기 코드로만 걸러 들어요.", "The receiver filters using only its own code.")),
+        ("CDMA", "CDMA", ("각자 고유 코드로 동시에 보내는 방식.", "Sending at once, each with its own code."), ("받는 쪽은 보낸 이의 코드로 그 신호만 걸러 들어요.", "The receiver picks out a signal using its sender's code.")),
         ("충돌 감지(CSMA/CD)", "CSMA/CD", ("부딪힌 걸 알아채는 방법.", "Noticing that a collision happened."), ("부딪히면 잠깐 기다렸다 다시 보내요.", "On collision, wait briefly and resend.")),
         ("충돌 회피(CSMA/CA)", "CSMA/CA", ("부딪히기 전에 미리 피하는 방법.", "Avoiding the collision before it happens."), ("무선처럼 감지가 어려운 곳에서 써요.", "Used where sensing a collision directly is hard, like wireless.")),
         ("TCP/UDP", "TCP/UDP", ("등기봉투와 일반봉투.", "The registered envelope and the plain one."), ('다중접속 규칙으로 통로를 나눈 뒤, 그 위에서 쓰는 봉투예요. → <a href="tcpudp-ko.html">등기봉투와 일반봉투</a>', 'The envelopes carried once a sharing rule has divided up the lane. → <a href="tcpudp-en.html">the registered envelope and the plain one</a>')),

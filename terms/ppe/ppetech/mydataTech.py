@@ -81,9 +81,9 @@ PAGE = {
          "small": ("마이데이터는 '내 정보는 나의 것'이라는 생각에서 출발해요.", "MyData starts from the idea that 'my data is mine.'"),
          "tricks": (4, [
              (MD_CONSENT, ("본인이 동의해야 이동", "Moves only with my consent"), ("내가 허락해야 내 정보가 움직여요", "my data moves only if I say yes"), "calm"),
-             (MD_API, ("표준 API로 전송", "Transferred via standard API"), ("오픈뱅킹 같은 방식이에요", "like open banking")),
+             (MD_API, ("표준 API로 전송", "Transferred via standard API"), ("은행 정보를 주고받는 오픈뱅킹과 비슷해요", "similar to how open banking shares bank data")),
              (MD_UNIFY, ("한곳에서 통합 조회", "Viewed all in one place"), ("여러 기관 정보를 한눈에", "several institutions, one view")),
-             (MD_RECOMMEND, ("맞춤 서비스 추천", "Personalized recommendations"), ("모은 정보로 내게 맞는 서비스를 골라줘요", "services picked for me from the gathered data"), "warm"),
+             (MD_RECOMMEND, ("맞춤 서비스 추천", "Personalized recommendations"), ("사업자가 모은 정보로 내게 맞는 서비스를 골라줘요", "a provider picks services for me from the gathered data"), "warm"),
          ])},
         {"svg": P4, "alt": ("흩어진 정보가 동의를 거쳐 마이데이터 사업자를 통해 통합 대시보드로 흐르는 과정도", "A flow diagram: scattered data, consent, a MyData provider, then a unified dashboard"),
          "caption": ("내가 동의하지 않으면 내 정보는 움직이지 않아요.", "Without my consent, my data doesn't move."),
@@ -94,8 +94,8 @@ PAGE = {
     ],
     "summary": (("<b>마이데이터</b>는 '<b>내 정보는 나의 것</b>'이라는 생각에서, 내가 직접 동의해 여러 기관의 내 정보를 한곳에 모아보고 다른 곳으로 옮길 수도 있게 하는 제도예요.",
                  "<b>MyData</b> starts from the idea that '<b>my data is mine</b>' — letting me consent to gather my own information from several institutions into one view, and move it elsewhere too."),
-                ("마이데이터는 정보주체(개인)가 자신에 관한 데이터의 전송을 직접 요구할 수 있는 개인정보 이동권에 기반한 제도예요. 표준화된 API(오픈뱅킹 등)로 은행·통신·의료 등 여러 기관의 데이터를 본인 동의 하에 통합 조회하거나 제3자에게 전송할 수 있어요. 동의 절차가 있어도 유출 위험이 사라지는 건 아니고, 모든 기관이 표준을 지원하는 것도 아니라는 한계가 있어요.",
-                 "MyData is a system built on the data subject's (an individual's) right to data portability — the right to directly request that their own data be transferred. Through standardized APIs (like open banking), it lets individuals view data from multiple institutions (banking, telecom, healthcare) together, or send it to a third party, all with their own consent. Even with a consent process, breach risk doesn't disappear, and not every institution supports the standard.")),
+                ("마이데이터는 정보주체(개인)가 자신에 관한 데이터의 전송을 직접 요구할 수 있는 개인정보 이동권에 기반한 제도예요. 표준화된 API로 은행·통신·의료 등 여러 기관의 데이터를 본인 동의 하에 통합 조회하거나 제3자에게 전송할 수 있어요. 동의 절차가 있어도 유출 위험이 사라지는 건 아니고, 모든 기관이 표준을 지원하는 것도 아니라는 한계가 있어요.",
+                 "MyData is a system built on the data subject's (an individual's) right to data portability — the right to directly request that their own data be transferred. Through standardized APIs, it lets individuals view data from multiple institutions (banking, telecom, healthcare) together, or send it to a third party, all with their own consent. Even with a consent process, breach risk doesn't disappear, and not every institution supports the standard.")),
     "glossary": [
         ("마이데이터", "MyData", ("내 정보를 내가 모아보는 제도.", "A system letting me gather my own data."), ("본인 동의가 시작점이에요.", "It all starts with my own consent.")),
         ("개인정보 이동권", "Data Portability Right", ("내 데이터 전송을 내가 요구할 권리.", "My right to request my own data be transferred."), ("마이데이터 제도의 법적 기반이에요.", "The legal basis MyData rests on.")),

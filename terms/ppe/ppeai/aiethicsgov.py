@@ -69,7 +69,7 @@ PAGE = {
                  + label(380, 345, "⟦주방 세계의 AI 거버넌스는 보안 운영 각도를, 여긴 윤리·규제 준수 각도를 봐요|the kitchen world's AI governance looks from a security-ops angle — this page looks from an ethics and regulatory-compliance angle⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 검수반장이 원칙판을 지켜 등급이 일관되게 매겨짐. 오른쪽: 조작원이 원칙판을 안 보고 그냥 등급을 매김", "Left: the inspector follows the charter and grades stay consistent. Right: the operator grades without even consulting it"),
          "caption": ("원칙판이 있어도 검사장이 안 지키면 소용없어요.", "Having a charter doesn't help if the station doesn't follow it."),
-         "small": ("이 페이지는 윤리·규제 준수 각도, 주방 세계 쪽은 보안 운영 각도예요.", "This page takes the ethics/compliance angle; the kitchen world's page takes the security-ops angle.")},
+         "small": ("AI 거버넌스를 이 페이지는 윤리·규제 준수 각도로, 주방 세계 페이지는 보안 운영 각도로 봐요.", "On AI governance, this page takes the ethics/compliance angle; the kitchen world's page takes the security-ops angle.")},
     ],
     "summary": (("<b>AI 윤리기준·거버넌스</b> = 모든 검사장이 함께 지킬 <b>공정성·설명가능성·책임소재</b>를 정한 등급 원칙판.",
                  "<b>AI ethics & governance</b> = a shared grading charter spelling out <b>fairness, explainability, and accountability</b> for every station."),

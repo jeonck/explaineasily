@@ -71,7 +71,7 @@ PAGE = {
          "small": ("가는 길 자체는 한 단계 아래(네트워크계층)에서 정해져요.", "The actual route is decided one layer below, by the network layer.")},
     ],
     "summary": (("<b>전송계층</b> = 동네(주소)까지 온 봉투를 <b>창구 번호(포트)</b>로 나누고, <b>등기(TCP)·일반우편(UDP)</b> 중 방식을 고르는 단계.",
-                 "<b>The transport layer</b> = the stage that splits by <b>counter number (port)</b> and chooses between <b>registered (TCP)</b> and <b>plain (UDP)</b> mail."),
+                 "<b>The transport layer</b> = the stage that splits envelopes arriving in town by <b>counter number (port)</b> and chooses between <b>registered (TCP)</b> and <b>plain (UDP)</b> mail."),
                 ("전송계층(OSI 4계층)은 포트 번호로 같은 호스트 안의 여러 서비스를 구분하고, TCP(연결지향·신뢰성)나 UDP(비연결·속도) 중 하나로 데이터를 주고받으며, 필요하면 데이터를 세그먼트로 나누고 흐름·혼잡 제어로 보내는 속도를 조절해요. 목적지(주소)를 정하는 네트워크계층과는 역할이 구분돼요.",
                  "The transport layer (OSI Layer 4) distinguishes multiple services on the same host by port number, exchanges data via either TCP (connection-oriented, reliable) or UDP (connectionless, fast), splits data into segments when needed, and regulates the sending rate through flow and congestion control. Its role is distinct from the network layer, which decides the destination address.")),
     "glossary": [

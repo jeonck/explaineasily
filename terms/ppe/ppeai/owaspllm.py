@@ -18,8 +18,8 @@ P2 = svg(310, '<rect width="760" height="310" fill="var(--bad-soft)"/>'
 # 3. OWASP LLM Top 10 = 업계가 합의한 공통 위험 목록판 (hero)
 P3 = svg(360, sky(360)
          + gradeboard(260, 50, 260, 190, "⟦LLM Top 10 게시판|LLM TOP 10 BOARD⟧",
-                      ("⟦LLM01 쪽지 끼워넣기|LLM01 note insertion⟧", "⟦LLM02 안전하지 않은 출력|LLM02 unsafe output⟧",
-                       "⟦LLM03 재료 오염|LLM03 tainted ingredients⟧", "⟦... LLM10 레시피 훔치기|... LLM10 recipe theft⟧"), 0.95)
+                      ("⟦LLM01 쪽지 끼워넣기|LLM01 note insertion⟧", "⟦LLM02 민감정보 유출|LLM02 sensitive info leak⟧",
+                       "⟦LLM03 공급망 취약점|LLM03 supply chain⟧", "⟦... LLM10 무제한 소비|... LLM10 unbounded use⟧"), 0.95)
          + person(150, 200, s=0.8, face=SMILE, **INSPECTOR)
          + label(380, 30, "⟦OWASP LLM Top 10 = 여러 검사장의 사고를 모아 번호를 매긴 업계 공용 목록|the OWASP LLM Top 10 = incidents from many stations, pooled and numbered into one shared list⟧", 13, "var(--ink)", cls="d")
          + label(380, 338, "⟦각 번호는 '이름표'일 뿐, 자세한 내용은 따로 찾아봐야 해요|each number is just a label — the detail lives elsewhere⟧", 12, "var(--muted)"))
@@ -32,20 +32,20 @@ FLAG_I = icon('<rect x="18" y="8" width="4" height="48" fill="#5A3B22"/><path d=
 # 4. Top 10 각 항목은 더 자세한 이야기로 연결돼요
 P4 = svg(360, sky(360)
          + gradeboard(40, 20, 680, 320, "⟦Top 10 → 자세한 이야기로|TOP 10 → THE FULL STORY⟧",
-                      ('⟦LLM01 쪽지 끼워넣기 → <a href="promptinjection-ko.html">주문서 뒤 몰래 쪽지</a>|LLM01 → <a href="promptinjection-en.html">the note slipped behind the order</a>⟧',
-                       '⟦LLM02 안전하지 않은 출력 → <a href="unsafeoutput-ko.html">검증 없이 내보낸 접시</a>|LLM02 → <a href="unsafeoutput-en.html">the dish served unchecked</a>⟧',
-                       '⟦LLM03 학습데이터 오염 → <a href="datapoisoning-ko.html">상한 재료 섞기</a>|LLM03 → <a href="datapoisoning-en.html">tainted ingredients mixed in</a>⟧',
-                       '⟦LLM04 과부하 공격 → <a href="llmdos-ko.html">끝없는 주문 폭탄</a>|LLM04 → <a href="llmdos-en.html">the endless order bomb</a>⟧',
-                       '⟦LLM05 공급망 취약점 → <a href="aibom-ko.html">재료 출처 장부</a>|LLM05 → <a href="aibom-en.html">the ingredient-origin ledger</a>⟧',
-                       '⟦LLM06 민감정보 유출 → <a href="promptleak-ko.html">레시피북 몰래 베끼기</a>|LLM06 → <a href="promptleak-en.html">quietly copying the recipe book</a>⟧',
-                       '⟦LLM07 위험한 도구 연결 → <a href="toolpermission-ko.html">허락 없는 칼서랍</a>|LLM07 → <a href="toolpermission-en.html">the unapproved knife drawer</a>⟧',
-                       '⟦LLM08 과도한 자율행동 → <a href="excessiveagency-ko.html">너무 많이 맡긴 심부름</a>|LLM08 → <a href="excessiveagency-en.html">the errand given too much freedom</a>⟧',
-                       '⟦LLM09 과신뢰 → <a href="hallucination-ko.html">모르는데 자신 있게 답함</a>|LLM09 → <a href="hallucination-en.html">answering confidently while unsure</a>⟧',
-                       '⟦LLM10 모델 도난 → <a href="modelextraction-ko.html">선별 기준 통째로 베끼기</a>|LLM10 → <a href="modelextraction-en.html">copying the whole sorting rulebook</a>⟧'), 0.72))
+                      ('⟦LLM01 쪽지 끼워넣기 → <a href="promptinjection-ko.html">주문서 뒤 몰래 쪽지</a>|LLM01 note insertion → <a href="promptinjection-en.html">the note slipped behind the order</a>⟧',
+                       '⟦LLM02 민감정보 유출 → <a href="memorization-ko.html">그대로 베낀 접시</a>|LLM02 sensitive info leak → <a href="memorization-en.html">the carbon-copy dish</a>⟧',
+                       '⟦LLM03 공급망 취약점 → <a href="aibom-ko.html">재료 출처 장부</a>|LLM03 supply chain → <a href="aibom-en.html">the ingredient-origin ledger</a>⟧',
+                       '⟦LLM04 데이터·모델 오염 → <a href="datapoisoning-ko.html">상한 재료 섞기</a>|LLM04 data and model poisoning → <a href="datapoisoning-en.html">tainted ingredients mixed in</a>⟧',
+                       '⟦LLM05 부적절한 출력 처리 → <a href="unsafeoutput-ko.html">검증 없이 내보낸 접시</a>|LLM05 improper output → <a href="unsafeoutput-en.html">the dish served unchecked</a>⟧',
+                       '⟦LLM06 과도한 자율행동 → <a href="excessiveagency-ko.html">너무 많이 맡긴 심부름</a>|LLM06 excessive agency → <a href="excessiveagency-en.html">the errand given too much freedom</a>⟧',
+                       '⟦LLM07 시스템 프롬프트 유출 → <a href="promptleak-ko.html">레시피북 몰래 베끼기</a>|LLM07 prompt leakage → <a href="promptleak-en.html">quietly copying the recipe book</a>⟧',
+                       '⟦LLM08 벡터·임베딩 약점 → <a href="ragpoisoning-ko.html">참고 카드함에 끼운 가짜 카드</a>|LLM08 vector weaknesses → <a href="ragpoisoning-en.html">the fake card in the reference box</a>⟧',
+                       '⟦LLM09 잘못된 정보 → <a href="hallucination-ko.html">모르는데 자신 있게 답함</a>|LLM09 misinformation → <a href="hallucination-en.html">answering confidently while unsure</a>⟧',
+                       '⟦LLM10 무제한 소비 → <a href="llmdos-ko.html">끝없는 주문 폭탄</a>|LLM10 unbounded use → <a href="llmdos-en.html">the endless order bomb</a>⟧'), 1.0))
 
 # 5. 게시판 자체가 막아주지 않아요
 P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **INSPECTOR) + gradeboard(20, 185, 190, 70, "⟦목록 확인|CHECK LIST⟧", ("⟦10개를 다 살펴봤나|checked all 10?⟧",), 0.65)
+         + person(190, 150, s=0.8, face=EYES, **INSPECTOR) + gradeboard(25, 180, 190, 70, "⟦목록 확인|CHECK LIST⟧", ("⟦10개를 다 살펴봤나|checked all 10?⟧",), 0.78)
          + label(190, 270, "⟦점검에서 빠뜨린 위험이 없는지만 체크해줘요|the list only helps check for missed risks⟧", 11, "var(--ink)")
          + person(570, 125, s=0.8, face=SMILE, **OPERATOR) + label(570, 265, "⟦막는 방법은 각 항목 페이지에 있어요|the actual defenses live on each item's own page⟧", 11, "var(--ink)")
          + label(380, 300, "⟦게시판은 '지도'일 뿐, 실제 방어법은 항목별 페이지에서 봐야 해요|the board is only a map — the actual defenses are on each item's page⟧", 12, "var(--ink)", cls="d"))
@@ -81,14 +81,14 @@ PAGE = {
     ],
     "summary": (("<b>OWASP LLM Top 10</b> = 여러 검사장(현장)의 사고를 모아 <b>업계가 합의한 공용 번호</b>로 정리한 <b>위험 목록판</b>. 목록 자체는 지도일 뿐, 각 항목의 실제 대응은 그 번호가 가리키는 페이지에 있어요.",
                  "The <b>OWASP Top 10 for LLMs</b> = a <b>shared risk board</b> that pools incidents from many sites into <b>industry-agreed numbers</b>. The list itself is only a map — the real defenses live on the page each number points to."),
-                ("OWASP Top 10 for LLM Applications는 OWASP 재단이 커뮤니티 사례를 모아 주기적으로 갱신하는 'LLM01~LLM10' 표준 위협 분류 목록이에요. 프롬프트 인젝션, 안전하지 않은 출력 처리, 학습데이터 오염, 서비스 거부, 공급망 취약점, 민감정보 유출, 위험한 플러그인/도구 설계, 과도한 자율행동, 과신뢰, 모델 도난이 대표 항목이에요. 이 목록의 가치는 '공용 언어'를 제공한다는 데 있고, 실제 방어 방법은 각 항목이 가리키는 세부 자료(가이드라인, 본 사이트의 개별 용어 페이지 등)에서 다뤄요.",
-                 "The OWASP Top 10 for LLM Applications is a standardized LLM01-LLM10 threat classification, updated periodically from community-reported cases. Its named items include prompt injection, insecure output handling, training data poisoning, denial of service, supply chain vulnerabilities, sensitive information disclosure, insecure plugin/tool design, excessive agency, overreliance, and model theft. The list's value is in giving everyone a shared vocabulary — the actual defenses live in the detailed material (guidelines, or this site's own per-term pages) that each item points to.")),
+                ("OWASP Top 10 for LLM Applications는 OWASP 재단이 커뮤니티 사례를 모아 주기적으로 갱신하는 'LLM01~LLM10' 표준 위협 분류 목록이에요. 2025년판 기준으로 프롬프트 인젝션, 민감정보 유출, 공급망 취약점, 데이터·모델 오염, 부적절한 출력 처리, 과도한 자율행동, 시스템 프롬프트 유출, 벡터·임베딩 약점, 잘못된 정보, 무제한 소비가 대표 항목이에요. 이 목록의 가치는 '공용 언어'를 제공한다는 데 있고, 실제 방어 방법은 각 항목이 가리키는 세부 자료(가이드라인, 본 사이트의 개별 용어 페이지 등)에서 다뤄요.",
+                 "The OWASP Top 10 for LLM Applications is a standardized LLM01-LLM10 threat classification, updated periodically from community-reported cases. In the 2025 edition its items are prompt injection, sensitive information disclosure, supply chain, data and model poisoning, improper output handling, excessive agency, system prompt leakage, vector and embedding weaknesses, misinformation, and unbounded consumption. The list's value is in giving everyone a shared vocabulary — the actual defenses live in the detailed material (guidelines, or this site's own per-term pages) that each item points to.")),
     "glossary": [
         ("LLM01 프롬프트 인젝션", "LLM01 Prompt Injection", ("주문서 뒤에 몰래 끼운 쪽지.", "The note slipped behind the order."), ('→ <a href="promptinjection-ko.html">쪽지 사고 자세히 보기</a>', '→ <a href="promptinjection-en.html">see the note incident in full</a>')),
-        ("LLM03 학습데이터 오염", "LLM03 Training Data Poisoning", ("상한 작물을 재료창고에 섞어 넣기.", "Tainted crops mixed into the pantry."), ('→ <a href="datapoisoning-ko.html">재료 오염 자세히 보기</a>', '→ <a href="datapoisoning-en.html">see the tainted-ingredient story</a>')),
-        ("LLM06 민감정보 유출", "LLM06 Sensitive Info Disclosure", ("레시피북을 몰래 베껴가기.", "Quietly copying the recipe book."), ('→ <a href="promptleak-ko.html">유출 자세히 보기</a>', '→ <a href="promptleak-en.html">see the leak in full</a>')),
-        ("LLM08 과도한 자율행동", "LLM08 Excessive Agency", ("너무 많이 맡긴 심부름.", "An errand given too much freedom."), ('→ <a href="excessiveagency-ko.html">자세히 보기</a>', '→ <a href="excessiveagency-en.html">see it in full</a>')),
-        ("LLM10 모델 도난", "LLM10 Model Theft", ("선별 기준을 통째로 베껴가기.", "Copying the whole sorting rulebook."), ('→ <a href="modelextraction-ko.html">자세히 보기</a>', '→ <a href="modelextraction-en.html">see it in full</a>')),
+        ("LLM04 데이터·모델 오염", "LLM04 Data and Model Poisoning", ("상한 작물을 재료창고에 섞어 넣기.", "Tainted crops mixed into the pantry."), ('→ <a href="datapoisoning-ko.html">재료 오염 자세히 보기</a>', '→ <a href="datapoisoning-en.html">see the tainted-ingredient story</a>')),
+        ("LLM07 시스템 프롬프트 유출", "LLM07 System Prompt Leakage", ("레시피북을 몰래 베껴가기.", "Quietly copying the recipe book."), ('→ <a href="promptleak-ko.html">유출 자세히 보기</a>', '→ <a href="promptleak-en.html">see the leak in full</a>')),
+        ("LLM06 과도한 자율행동", "LLM06 Excessive Agency", ("너무 많이 맡긴 심부름.", "An errand given too much freedom."), ('→ <a href="excessiveagency-ko.html">자세히 보기</a>', '→ <a href="excessiveagency-en.html">see it in full</a>')),
+        ("모델 도난", "Model Theft", ("선별 기준을 통째로 베껴가기.", "Copying the whole sorting rulebook."), ('2023년판의 LLM10이었고, 2025년판에선 무제한 소비에 포함돼요. → <a href="modelextraction-ko.html">자세히 보기</a>', 'LLM10 in the 2023 edition; the 2025 edition folds it into unbounded consumption. → <a href="modelextraction-en.html">see it in full</a>')),
         ("AI 거버넌스", "AI Governance", ("농장 운영 전체 규칙판.", "The whole-farm operating rules board."), ('Top 10은 거버넌스가 참고하는 목록 중 하나예요. → <a href="aigovernance-ko.html">주방 규칙판</a>', 'The Top 10 is one list governance leans on. → <a href="aigovernance-en.html">the rules board on the wall</a>')),
         ("레드팀", "Red Team", ("불시에 게시판 항목을 실제로 찔러보는 사람.", "Someone who actually pokes at each board item, unannounced."), ('→ <a href="airedteam-ko.html">AI 전용 위생 검사관</a>', '→ <a href="airedteam-en.html">the AI-specific inspector</a>')),
         ("모델 카드", "Model Card", ("선별기 한 대의 설명서.", "The spec sheet for one sorter."), ('Top 10 점검 결과를 적어두는 칸이 있기도 해요. → <a href="modelcard-ko.html">자세히 보기</a>', 'Sometimes has a field for noting Top 10 check results. → <a href="modelcard-en.html">see it in full</a>')),

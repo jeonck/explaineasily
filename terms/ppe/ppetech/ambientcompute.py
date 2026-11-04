@@ -89,7 +89,7 @@ PAGE = {
          "small": ("앰비언트 컴퓨팅은 똑똑해 보여도, 결국 센서와 전기에 기대는 기술이에요.", "Clever as it looks, ambient computing still depends on sensors and power.")},
     ],
     "summary": (("<b>앰비언트 컴퓨팅</b> = 사람이 다가가면 <b>센서와 작은 컴퓨터</b>가 알아서 환경을 바꿔주는, '보이지 않는' 기술.",
-                 "<b>Ambient computing</b> = sensors and small computers that change your environment for you, staying invisible as technology."),
+                 "<b>Ambient computing</b> = sensors and small computers that change your environment for you as you approach, staying invisible as technology."),
                 ("앰비언트 컴퓨팅은 센서·IoT 기기·엣지컴퓨팅이 사람의 존재와 상황을 감지해, 명시적 조작 없이도 조명·온도·안내 등 주변 환경이 스스로 반응하도록 하는 패러다임이에요. 기술이 전면에 드러나지 않고 배경에 녹아드는 것이 핵심이에요.",
                  "Ambient computing is a paradigm where sensors, IoT devices, and edge computing detect a person's presence and context so the surrounding environment — lighting, temperature, guidance — reacts on its own, without explicit input. The key idea is that the technology recedes into the background instead of standing in front.")),
     "glossary": [

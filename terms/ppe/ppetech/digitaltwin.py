@@ -19,7 +19,7 @@ def sensorline(x1, y1, x2, y2):
 P1 = svg(320, sky(320)
          + ribbon(130, 50, 1.1) + label(130, 42, "⟦미래 과학관 전시장|Future Science Expo Hall⟧", 12, "var(--ink)")
          + person(90, 170, s=0.85, face=SMILE, **GUIDE)
-         + bubble(10, 90, 210, 46, "⟦부스를 하나씩 돌며 신기술을 만나볼까요?|Shall we meet new tech, booth by booth?⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(10, 90, 235, 46, "⟦부스를 하나씩 돌며 신기술을 만나볼까요?|Shall we meet new tech, booth by booth?⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + booth(470, 70, 250, 200, 1.0, "var(--accent)", "⟦첫 번째 부스: 디지털 트윈|Booth 1: Digital Twin⟧")
          + robot(600, 190, 1.0) + label(600, 263, "⟦진짜 로봇 — 함부로 못 건드려요|the real robot — can't just poke it⟧", 11, "var(--muted)")
          + label(380, 300, "⟦오늘 첫 부스는 디지털 트윈이에요|Today's first booth is Digital Twin⟧", 13, "var(--ink)"))
@@ -94,7 +94,7 @@ PAGE = {
          "small": ("다음 부스 엣지 컴퓨팅에서, 이 데이터를 어떻게 빠르게 처리하는지 봐요.", "Next booth, Edge Computing, shows how this data gets processed fast.")},
     ],
     "summary": (("<b>디지털 트윈</b>은 진짜 기계·설비를 <b>센서 데이터로 그대로 복제한 가상 쌍둥이</b>로, 위험하거나 비싼 실험을 화면 속에서 먼저 해볼 수 있게 해줘요.",
-                 "A <b>digital twin</b> is a <b>virtual twin, kept in sync by sensor data</b>, that lets you try risky or costly experiments on screen first."),
+                 "A <b>digital twin</b> is a <b>virtual twin of a real machine, kept in sync by sensor data</b>, that lets you try risky or costly experiments on screen first."),
                 ("디지털 트윈은 물리적 자산·공정·시스템을 소프트웨어로 실시간 복제해, 시뮬레이션·예측·최적화에 활용하는 기술이에요. 트윈의 정확도는 전적으로 들어오는 센서 데이터 품질에 달려 있고, 최종 검증은 여전히 실물로 한 번 더 거쳐야 해요.",
                  "A digital twin is a software replica of a physical asset, process, or system, kept synchronized in real time for simulation, prediction, and optimization. Its accuracy depends entirely on the quality of incoming sensor data, and final validation still needs a pass on the real thing.")),
     "glossary": [
@@ -104,7 +104,7 @@ PAGE = {
         ("메타버스", "Metaverse", ("새 가상 세계를 만드는 것.", "Building a brand-new virtual world."), ('트윈은 진짜를 복제하지만, 메타버스는 새로 만들 수도 있어요. → <a href="metaverse-ko.html">메타버스 부스</a>', 'A twin copies something real; a metaverse can invent something new. → <a href="metaverse-en.html">the Metaverse booth</a>')),
         ("IoT 센서", "IoT Sensor", ("쌍둥이에게 진짜 상태를 알려주는 눈과 귀.", "The eyes and ears that tell the twin the real state."), ("센서가 끊기면 트윈도 엉터리가 돼요.", "If sensors drop out, the twin goes wrong too.")),
         ("시뮬레이션", "Simulation", ("기계 동작을 가상으로 미리 돌려보는 것.", "Running a machine's behavior virtually, ahead of time."), ("트윈의 핵심 쓸모 중 하나예요.", "One of the twin's main uses.")),
-        ("예지보전", "Predictive Maintenance", ("기계가 고장나기 전에 미리 손보는 것.", "Fixing a machine before it actually breaks."), ("트윈이 쌓은 기록으로 패턴을 읽어요.", "Read from the pattern in the twin's logs.")),
+        ("예지보전", "Predictive Maintenance", ("기계가 고장나기 전에 미리 손보는 것.", "Fixing a machine before it actually breaks."), ("트윈이 쌓은 기록으로 패턴을 읽어요.", "Based on patterns read from the twin's logs.")),
         ("실물 검증", "Physical Validation", ("트윈의 결과를 마지막에 실제 기계로 확인하는 것.", "Confirming the twin's results on the real machine at the end."), ("트윈이 다 해결해주진 않아요.", "The twin doesn't settle everything by itself.")),
     ],
 }

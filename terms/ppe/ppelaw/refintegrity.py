@@ -72,7 +72,7 @@ PAGE = {
     ],
     "summary": (("<b>관계 무결성 제약</b> = 참조하는 자료는 반드시 <b>원본에 실제로 있는 값</b>이어야 한다는 규칙. 원본이 사라질 때 <b>지우거나, 막거나, 비우는</b> 방식을 미리 정해둬요.",
                  "<b>Referential integrity</b> = the rule that anything referencing another table must point to a <b>value that actually exists</b> there. When the original is removed, you decide in advance whether to <b>delete it along, block the delete, or leave it blank</b>."),
-                ("관계 무결성 제약은 관계형 데이터베이스에서 외래키(FK)가 반드시 참조 대상 테이블의 기본키(PK)에 실제로 존재하는 값이어야 한다는 제약이에요. 원본 행이 삭제·수정될 때는 CASCADE(함께 삭제/수정), RESTRICT(삭제 자체를 금지), SET NULL(참조 값을 NULL로) 중 하나를 옵션으로 정해 데이터 일관성을 지켜요.",
+                ("관계 무결성 제약(보통 '참조 무결성'이라고 불러요)은 관계형 데이터베이스에서 외래키(FK)가 반드시 참조 대상 테이블의 기본키(PK)에 실제로 존재하는 값이어야 한다는 제약이에요. 원본 행이 삭제·수정될 때는 CASCADE(함께 삭제/수정), RESTRICT(삭제 자체를 금지), SET NULL(참조 값을 NULL로) 중 하나를 옵션으로 정해 데이터 일관성을 지켜요.",
                  "A referential integrity constraint requires that a foreign key (FK) in a relational database always point to a value that actually exists as a primary key (PK) in the referenced table. When the original row is deleted or updated, one of three options — CASCADE (delete/update together), RESTRICT (block the delete), or SET NULL (clear the reference) — is chosen to preserve data consistency.")),
     "glossary": [
         ("관계 무결성 제약", "Referential Integrity Constraint", ("참조는 원본에 있는 값이어야 한다는 규칙.", "The rule that a reference must point to a value that exists in the original."), ("관계형 데이터베이스의 기본 일관성 규칙이에요.", "A basic consistency rule in relational databases.")),

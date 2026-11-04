@@ -11,7 +11,7 @@ P1 = svg(300, sky(300)
 # 2. 베스트셀러만 좇다가, 출판사 전체 방향을 잃어요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(190, 150, s=0.85, face=EYES, **EDITOR)
-         + bubble(230, 70, 230, 38, "⟦저 장르가 요즘 잘 팔린대요, 그것부터!|that genre is hot right now, let's do that first!⟧", 11, "var(--panel)", "var(--line)", "left")
+         + bubble(230, 70, 230, 38, "⟦저 장르가 요즘 잘 팔린대요, 그것부터!|that genre is hot, let's do that first!⟧", 11, "var(--panel)", "var(--line)", "left")
          + manuscript(560, 190, 0.7)
          + label(380, 280, "⟦유행만 따라가면, 출판사의 진짜 색깔은 안 보여요|chasing trends alone loses the house's own identity⟧", 12, "var(--ink)"))
 
@@ -69,7 +69,7 @@ PAGE = {
              (PRIORITY_I, ("순서 정하기", "Set the order"), ("뭐부터 낼지 줄 세워요", "lining up what comes first")),
          ])},
         {"svg": P4, "alt": ("로드맵 안내판: 독자층·경쟁 출판사·역량·우선순위 네 항목", "A roadmap board: readers, rivals, capability, priority"),
-         "caption": ("로드맵을 그릴 때 이 네 가지를 봐요.", "The roadmap is drawn by looking at these four things."),
+         "caption": ("로드맵을 그릴 때 독자층·경쟁 출판사·역량·우선순위, 이 네 가지를 봐요.", "The roadmap is drawn by looking at four things: readers, rivals, capability, and priority."),
          "small": ("ISP는 출판사 전체, ISMP는 그 로드맵을 더 잘게 쪼갠 실행 계획이에요.", "ISP covers the whole house; ISMP breaks that roadmap into a finer execution plan.")},
         {"svg": P5, "alt": ("왼쪽: 편집장이 어떤 책을 언제 낼지 정함. 오른쪽: 결국 쓰는 건 작가", "Left: the editor decides which book comes out when. Right: the writer still has to write it"),
          "caption": ("로드맵이 책을 대신 써주진 않아요.", "The roadmap doesn't write the book for you."),

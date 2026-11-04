@@ -18,7 +18,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 # 3. 애자일/스크럼 = 짧은 챕터 단위로 나눠 쓰고 매번 보여주는 작업법 (hero)
 P3 = svg(340, sky(340)
          + person(380, 120, s=0.9, face=EYES, **WRITER) + inkstamp(460, 90, 0.8)
-         + manuscript(260, 180, 0.7, text="⟦1장 완성|ch.1 done⟧") + manuscript(380, 200, 0.7, text="⟦2장 완성|ch.2 done⟧") + manuscript(500, 180, 0.7, text="⟦3장 완성|ch.3 done⟧")
+         + manuscript(260, 180, 0.7, text="⟦1장 완성|ch.1 done⟧") + manuscript(380, 216, 0.7, text="⟦2장 완성|ch.2 done⟧") + manuscript(500, 180, 0.7, text="⟦3장 완성|ch.3 done⟧")
          + label(380, 30, "⟦애자일/스크럼 = 책을 짧은 챕터 단위로 나눠 쓰고, 챕터마다 독자에게 보여주는 작업법|Agile/Scrum = writing the book in short chapters and showing each one to readers⟧", 13, "var(--ink)", cls="d")
          + label(380, 320, "⟦한 챕터가 끝날 때마다 독자 피드백을 받아 다음 챕터에 바로 반영해요|after every chapter, reader feedback comes in and goes straight into the next one⟧", 12, "var(--muted)"))
 

@@ -43,5 +43,5 @@ def noticeboard(x, y, s=1.0, label_text=None):
     """공지사항 게시판(공공데이터 공개)."""
     out = f'<g transform="translate({x},{y}) scale({s})"><rect width="70" height="50" rx="3" fill="#8B5E3C"/><rect x="6" y="6" width="58" height="38" fill="#FFF8E7"/>'
     if label_text:
-        out += label(35, 64, label_text, 10, "var(--muted)")
+        out += label(35, 64, label_text, fit(10, s), "var(--muted)")
     return out + '</g>'

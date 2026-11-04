@@ -1,5 +1,6 @@
 from _draw import *
 from _world import *
+from math import hypot
 
 
 def branch(x, y, s=1.0, label_text=None):
@@ -13,7 +14,13 @@ def branch(x, y, s=1.0, label_text=None):
 def pipe(x1, y1, x2, y2, cost, used=False, skipped=False):
     color = "var(--good)" if used else ("var(--bad)" if skipped else "var(--line)")
     dash = ' stroke-dasharray="5 4"' if skipped else ""
-    mx, my = (x1 + x2) / 2, (y1 + y2) / 2 - 10
+    # 숫자를 선에 수직으로 띄워, 기울기와 상관없이 선 위에 겹치지 않게 한다
+    dx, dy = x2 - x1, y2 - y1
+    n = hypot(dx, dy) or 1
+    nx, ny = dy / n, -dx / n
+    if ny > 0 or (ny == 0 and nx < 0):
+        nx, ny = -nx, -ny
+    mx, my = (x1 + x2) / 2 + nx * 14, (y1 + y2) / 2 + ny * 12 + 4
     return (f'<path d="M{x1} {y1} L{x2} {y2}" stroke="{color}" stroke-width="4"{dash}/>'
             + label(mx, my, str(cost), 12, "var(--ink)" if color == "var(--line)" else color, cls="d"))
 
@@ -66,7 +73,7 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="
          + label(190, 250, "⟦싼 배관부터 고르되, 양쪽이 이미 이어졌으면 건너뛰어요|pick the cheapest pipe, but skip it if both ends already connect⟧", 11, "var(--ink)")
          + branch(560, 140, 0.9, "C") + branch(640, 140, 0.9, "D") + branch(600, 220, 0.9, "E")
          + pipe(560, 140, 640, 140, 2, skipped=True)
-         + label(600, 260, "⟦사이클 금지를 빼먹으면 배관이 빙 둘러 이어져 돈이 낭비돼요|forget the no-loop rule, and pipes loop around, wasting money⟧", 11, "var(--ink)")
+         + label(600, 260, "⟦사이클 금지를 빼먹으면 배관이 빙 둘러 이어져 돈이 낭비돼요|without the no-loop rule, pipes loop and waste money⟧", 11, "var(--ink)")
          + label(380, 282, "⟦'가장 싸게'와 '사이클 없이' 둘 다 지켜야 진짜 최소신장트리예요|both 'cheapest' and 'no loop' must hold for a true MST⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {

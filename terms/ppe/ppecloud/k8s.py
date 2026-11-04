@@ -5,7 +5,7 @@ from _world import *
 P1 = svg(355, sky(355)
          + deskbadge(200, 150, 1.3) + deskbadge(400, 150, 1.0) + deskbadge(560, 178, 0.8)
          + person(380, 232, s=0.8, face=EYES, **MANAGER)
-         + bubble(420, 70, 320, 60, "⟦자동 배정 배지만 여러 회사가 각자 만들어요|lots of companies each make their own auto-assign badge⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(420, 70, 320, 60, "⟦자동 배정 배지를 여러 회사가 각자 만들어요|lots of companies each make their own auto-assign badge⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 337, "⟦자동 배정 배지(오케스트레이션)는 여러 회사가 각자 만들어요|auto-assign badges — orchestration — come from many different companies⟧", 12, "var(--ink)"))
 
 # 2. 왜 어려운가: 다 다르면 입주사가 뭘 믿고 골라야 할지 몰라요
@@ -52,7 +52,7 @@ PAGE = {
             "Kubernetes, told as a story about the most widely used real product behind the auto-assign badge."),
     "panels": [
         {"svg": P1, "alt": ("자동 배정 배지 세 종류가 각자 다른 모양으로 놓여 있고 관리사무소 직원이 회사마다 제각각 만든다고 말함", "Three different-looking auto-assign badges sit together, with a manager noting every company makes its own"),
-         "caption": ("자동 배정 배지는 여러 회사가 각자 만들어요.", "Auto-assign badges come from many different companies."),
+         "caption": ("칸막이 자리를 자동으로 정해주는 배지(오케스트레이션)는 여러 회사가 각자 만들어요.", "Badges that auto-assign desk spots (orchestration) come from many different companies."),
          "small": ("배지마다 모양도, 쓰는 법도 달라요.", "Each badge has its own shape and its own way of being used.")},
         {"svg": P2, "alt": ("땀 흘리는 입주사가 설명서가 부실하거나 쓰는 회사가 거의 없는 배지들을 보며 뭘 골라야 할지 모름", "A sweating tenant, looking at badges with thin manuals or hardly any users, doesn't know which to pick"),
          "caption": ("배지가 제각각이면 입주사는 어느 제품을 믿고 골라야 할지 몰라요.", "With every badge different, a tenant can't tell which one to trust."),

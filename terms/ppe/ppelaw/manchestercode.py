@@ -76,7 +76,7 @@ PAGE = {
          "small": ("이 약속 하나로 받는 쪽이 신호만 보고 박자를 알 수 있어요.", "That one rule lets the receiver read the beat from the signal alone."),
          "tricks": (4, [
              (TRANS_I, ("비트마다 꼭 한 번 중간 전환", "One mid-bit flip, every bit"), ("경계가 아니라 비트 중간에서요", "at the bit's middle, not its edge"), "calm"),
-             (DIR_I, ("방향으로 0/1 구분", "Direction marks 0/1"), ("올라가면 1, 내려가면 0", "up means 1, down means 0")),
+             (DIR_I, ("방향으로 0/1 구분", "Direction marks 0/1"), ("이 그림 규칙: 올라가면 1, 내려가면 0", "in this picture: up means 1, down means 0")),
              (CLOCK_I, ("신호로 박자 복원", "Recovers the beat"), ("자기동기화(self-clocking)", "self-clocking"), "warm"),
              (BALANCE_I, ("신호 위아래가 고르게", "Signal balanced high and low"), ("한쪽 전압으로 치우치지 않아요", "never leans toward one voltage")),
          ])},
@@ -89,8 +89,8 @@ PAGE = {
     ],
     "summary": (("<b>맨체스터 부호화</b> = <b>비트 한가운데서 항상 신호를 바꿔</b>, 받는 쪽이 신호만 보고도 박자(클럭)를 되찾게 하는 전기 신호 약속.",
                  "<b>Manchester encoding</b> = an electrical-signal rule that <b>always flips in the middle of every bit</b>, so the receiver can recover the clock from the signal alone."),
-                ("맨체스터 부호화는 매 비트 구간의 중간에서 신호 천이(transition)가 일어나도록 하는 라인 부호화(line coding) 방식이에요. 천이 방향(상승/하강)으로 0과 1을 구분하고, 이 천이 덕분에 별도의 클럭 신호 없이도 수신 측이 타이밍을 복원할 수 있어요(자기동기화). 10BASE-T 이더넷 등에 쓰였지만, 비트마다 전환이 필요해 같은 속도를 보내려면 일반 부호화보다 두 배 넓은 대역폭이 필요하다는 단점이 있어요.",
-                 "Manchester encoding is a line-coding scheme that forces a signal transition at the midpoint of every bit period. The direction of the transition (rising or falling) encodes 0 or 1, and that transition lets the receiver recover timing without a separate clock signal (self-clocking). It was used in 10BASE-T Ethernet and similar links, but needs roughly twice the bandwidth of simpler encodings to carry the same bit rate, since a transition is required every single bit.")),
+                ("맨체스터 부호화는 매 비트 구간의 중간에서 신호 천이(transition)가 일어나도록 하는 라인 부호화(line coding) 방식이에요. 천이 방향(상승/하강)으로 0과 1을 구분하고(어느 쪽을 1로 볼지는 규격마다 달라요), 이 천이 덕분에 별도의 클럭 신호 없이도 수신 측이 타이밍을 복원할 수 있어요(자기동기화). 10BASE-T 이더넷 등에 쓰였지만, 비트마다 전환이 필요해 같은 속도를 보내려면 일반 부호화보다 두 배 넓은 대역폭이 필요하다는 단점이 있어요.",
+                 "Manchester encoding is a line-coding scheme that forces a signal transition at the midpoint of every bit period. The direction of the transition (rising or falling) encodes 0 or 1 (which is which varies by standard), and that transition lets the receiver recover timing without a separate clock signal (self-clocking). It was used in 10BASE-T Ethernet and similar links, but needs roughly twice the bandwidth of simpler encodings to carry the same bit rate, since a transition is required every single bit.")),
     "glossary": [
         ("맨체스터 부호화", "Manchester Encoding", ("비트 중간마다 꼭 한 번 바뀌는 신호 규칙.", "A signal rule that flips exactly once at the middle of every bit."), ("자기동기화를 위한 라인 부호화 방식이에요.", "A line-coding scheme built for self-clocking.")),
         ("자기동기화", "Self-Clocking", ("신호만 보고 박자를 되찾는 것.", "Recovering the beat from the signal alone."), ("따로 클럭 신호선을 보낼 필요가 없어요.", "No separate clock wire is needed.")),
@@ -99,6 +99,6 @@ PAGE = {
         ("라인 부호화", "Line Coding", ("디지털 값을 전기 신호 모양으로 바꾸는 규칙 전체.", "The general category of rules turning digital values into signal shapes."), ("맨체스터 부호화는 그중 한 가지예요.", "Manchester encoding is one member of this family.")),
         ("대역폭", "Bandwidth", ("회선이 한 번에 보낼 수 있는 신호의 양.", "How much signal a line can carry at once."), ("맨체스터 부호화는 같은 속도에 대역폭을 두 배 써요.", "Manchester encoding spends twice the bandwidth for the same bit rate.")),
         ("10BASE-T", "10BASE-T Ethernet", ("맨체스터 부호화를 쓴 초기 이더넷.", "An early Ethernet standard that used Manchester encoding."), ("요즘 고속 이더넷은 다른 부호화를 써요.", "Modern high-speed Ethernet uses different encodings.")),
-        ("8b/10b 부호화", "8b/10b Encoding", ("요즘 고속 통신에서 더 많이 쓰는 부호화.", "An encoding used more often in today's high-speed links."), ("대역폭을 덜 쓰면서도 동기화 성질을 지켜요.", "Keeps the self-clocking benefit while using less bandwidth.")),
+        ("8b/10b 부호화", "8b/10b Encoding", ("요즘 고속 통신에서 더 많이 쓰는 부호화.", "An encoding used more often in today's high-speed links."), ("맨체스터보다 대역폭을 덜 쓰면서도 동기화 성질을 지켜요.", "Keeps the self-clocking benefit while using less bandwidth than Manchester.")),
     ],
 }

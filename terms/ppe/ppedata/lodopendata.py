@@ -32,7 +32,7 @@ P3 = svg(340, sky(340)
 
 # 4. 오픈 데이터 성숙도 사다리 (4단계)
 P4 = svg(320, sky(320, ground=False)
-         + label(380, 30, "⟦공개 데이터가 재사용하기 쉬워지는 네 단계|four steps that make open data easier to reuse⟧", 14, "var(--ink)", cls="d")
+         + label(380, 30, "⟦5성 등급을 네 단계로 간추린 재사용 사다리|the 5-star model, condensed into four reuse steps⟧", 14, "var(--ink)", cls="d")
          + receipt(160, 230, 0.55, text="⟦①사진/PDF|①photo/PDF⟧")
          + receipt(300, 190, 0.6, text="⟦②표로 정리|②as a table⟧")
          + receipt(460, 150, 0.65, text="⟦③CSV 같은 열린 형식|③open format like CSV⟧")
@@ -68,8 +68,8 @@ PAGE = {
              (URI_I, ("표준 번호표 달기", "Attach a standard tag"), ("어느 프로그램이든 같은 데이터를 가리켜요", "any program can point to the same data"), "warm"),
              (LINK_I, ("다른 창고와 연결하기", "Link to other warehouses"), ("끈으로 이으면 함께 찾아볼 데이터가 늘어요", "links add more data to explore together")),
          ])},
-        {"svg": P4, "alt": ("사진/PDF에서 번호표가 붙어 서로 연결되는 데이터까지 재사용하기 쉬워지는 네 단계", "Four steps, each easier to reuse, from photo/PDF up to tagged, linked data"),
-         "caption": ("공개 데이터는 사진/PDF에서 연결된 데이터까지 네 단계를 거치며 재사용하기 쉬워져요.", "Open data gets easier to reuse through four steps, from photo/PDF up to linked data."),
+        {"svg": P4, "alt": ("5성 등급을 간추린 그림: 사진/PDF에서 번호표가 붙어 서로 연결되는 데이터까지 재사용하기 쉬워지는 네 단계", "The 5-star model condensed: four steps, each easier to reuse, from photo/PDF up to tagged, linked data"),
+         "caption": ("5성 등급을 간추리면, 공개 데이터는 사진/PDF에서 연결된 데이터까지 네 단계를 거치며 재사용하기 쉬워져요.", "Condensing the 5-star model, open data gets easier to reuse through four steps, from photo/PDF up to linked data."),
          "small": ("마지막 단계가 바로 LOD(연계 공개 데이터)예요.", "The last step is exactly LOD (Linked Open Data)."),
         },
         {"svg": P5, "alt": ("왼쪽: 누구나 데이터를 찾고 연결할 수 있음. 오른쪽: 무효 표시된 전표로 낡거나 틀린 데이터일 수 있음을 나타냄", "Left: anyone can find and link the data. Right: a voided receipt shows the data may still be stale or wrong"),

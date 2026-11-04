@@ -13,7 +13,7 @@ def building(x, y, s=1.0, floors=3, label_text=None):
     for f in range(floors):
         out += f'<rect x="8" y="{f*26+6}" width="74" height="16" fill="#8B5E3C" opacity="0.4"/>'
     if label_text:
-        out += label(45, -10, label_text, 11, "var(--ink)", cls="d")
+        out += label(45, -10, label_text, fit(11, s), "var(--ink)", cls="d")
     return out + '</g>'
 
 
@@ -23,7 +23,7 @@ def office(x, y, s=1.0, shared=False, label_text=None):
     if shared:
         out += '<path d="M20 0 v44 M40 0 v44" stroke="#C9A86A" stroke-width="2"/>'
     if label_text:
-        out += label(30, 58, label_text, 10, "var(--muted)")
+        out += label(30, 58, label_text, fit(10, s), "var(--muted)")
     return out + '</g>'
 
 

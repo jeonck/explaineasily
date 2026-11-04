@@ -52,7 +52,7 @@ P4 = svg(320, sky(320)
                      ("⟦고전 비트 — 항상 0 아니면 1|classic bit — always 0 or 1⟧",
                       "⟦큐비트 — 0과 1을 동시에, 확률로 가져요|qubit — holds 0 and 1 at once, as probabilities⟧",
                       "⟦큐비트 두 개를 묶으면 서로 영향을 줘요(얽힘)|entangled qubits affect each other⟧",
-                      "⟦특정 문제만 고전 컴퓨터보다 빨라요|only some problems beat classic computers⟧"), 1.0, hl=1)
+                      "⟦양자 컴퓨터는 특정 문제만 고전 컴퓨터보다 빨라요|faster than classic computers only on some problems⟧"), 1.0, hl=1)
          + person(560, 150, s=0.75, face=EYES, **GUIDE)
          + label(560, 250, "⟦양자 컴퓨터는 암호 풀기·분자 시뮬레이션에 강해요|quantum computers excel at code-breaking and molecules⟧", 11, "var(--muted)"))
 

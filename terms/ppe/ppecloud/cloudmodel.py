@@ -40,7 +40,7 @@ P4 = svg(340, sky(340)
 # 5. 깨지는 곳: 한 건물에만 다 맡기면 나중에 옮기기 힘들어요(락인), 모든 회사가 공유 건물이 맞는 것도 아니에요
 P5 = svg(375, '<rect width="380" height="375" fill="var(--accent-soft)"/><rect x="380" width="380" height="375" fill="var(--good-soft)"/>'
          + building(100, 60, 0.85) + person(60, 236, s=0.6, face=FROWN, **TENANT)
-         + label(190, 355, "⟦이 건물 방식에만 너무 맞추면, 다른 건물로 옮기기 어려워요(락인)|fit too tightly to one building's way, and moving to another gets hard (lock-in)⟧", 11, "var(--ink)")
+         + label(190, 355, "⟦이 건물 방식에만 너무 맞추면, 다른 건물로 옮기기 어려워요(락인)|fit one building too tightly and moving gets hard (lock-in)⟧", 11, "var(--ink)")
          + building(480, 60, 0.85, floors=5) + person(680, 273, s=0.6, face=SMILE, **LANDLORD)
          + label(570, 355, "⟦보안·규정 때문에 자기 건물을 직접 짓는 곳도 있어요(온프레미스)|some still build their own, for security or rules — that's on-premises⟧", 11, "var(--ink)"))
 

@@ -20,10 +20,10 @@ P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
 
 # 3. SDN=관제탑이 소프트웨어로 길을 바꿈, NFV=범용 트럭에 기능만 설치 (hero)
 P3 = svg(340, sky(340)
-         + postoffice(210, 160, 0.6, "⟦우체국 A|Office A⟧") + postoffice(380, 160, 0.6, "⟦우체국 B|Office B⟧") + postoffice(550, 160, 0.6, "⟦우체국 C|Office C⟧")
+         + postoffice(210, 178, 0.6, "⟦우체국 A|Office A⟧") + postoffice(380, 178, 0.6, "⟦우체국 B|Office B⟧") + postoffice(550, 178, 0.6, "⟦우체국 C|Office C⟧")
          + person(362, 28, s=0.6, face=EYES, **CLERK)
          + label(380, 20, "⟦관제탑|Control Tower⟧", 12, "var(--ink)", cls="d")
-         + '<path d="M360 100 L220 128 M380 100 L380 128 M400 100 L540 128" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 5"/>'
+         + '<path d="M360 100 L222 134 M380 100 L380 134 M400 100 L538 134" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 5"/>'
          + label(380, 300, "⟦SDN = 관제탑이 소프트웨어로 모든 길을 한 번에 바꿔줘요|SDN = one control tower reroutes every road at once, in software⟧", 13, "var(--ink)", cls="d")
          + label(380, 325, "⟦NFV = 전용 기계 대신 범용 트럭에 소프트웨어만 깔아요|NFV = swap the dedicated machine for software on a generic truck⟧", 12, "var(--muted)"))
 
@@ -37,7 +37,7 @@ P4 = svg(320, sky(320)
 
 # 5. 소프트웨어 장애엔 더 취약해요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
-         + person(190, 130, s=0.8, face=SMILE, **CLERK) + label(190, 255, "⟦기능 하나 추가가 하루 만에 끝나요|adding one feature now takes a single day⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.8, face=SMILE, **CLERK) + label(190, 255, "⟦새 기계 없이 소프트웨어로 기능을 더해요|features get added in software, with no new machine⟧", 11, "var(--ink)")
          + person(570, 120, s=0.8, face=SWEAT + EYES, **CLERK) + label(570, 250, "⟦관제탑이 멈추면 어느 우체국도 새 길을 못 받아요|if the tower goes down, no post office gets new routes⟧", 11, "var(--ink)")
          + label(380, 282, "⟦길 바꾸기는 빠르고 유연하지만, 관제탑이 멈추면 망 전체가 새 길을 못 받아요|rerouting is fast and flexible — but if the tower stops, the whole network gets no new routes⟧", 12, "var(--ink)", cls="d"))
 
@@ -71,7 +71,7 @@ PAGE = {
         {"svg": P4, "alt": ("위쪽 관제탑(제어 평면)이 점선으로 아래쪽 세 우체국(데이터 평면)과 연결됨", "An upper control tower (control plane) connects by dashed line to three post offices below (data plane)"),
          "caption": ("관제탑(제어)과 현장 우체국(전달)은 분리돼 있어요.", "The tower (control) and the field post offices (data) are kept separate."),
          "small": ("제어 평면은 길을 정하고, 데이터 평면은 소포를 실제로 날라요.", "The control plane decides the route; the data plane actually carries the parcels.")},
-        {"svg": P5, "alt": ("왼쪽: 기능 추가가 하루 만에 끝남. 오른쪽: 관제탑이 멈추면 어느 우체국도 새 길을 못 받음", "Left: adding a feature now takes a day. Right: if the tower stops, no post office gets new routes"),
+        {"svg": P5, "alt": ("왼쪽: 새 기계 없이 소프트웨어로 기능을 더함. 오른쪽: 관제탑이 멈추면 어느 우체국도 새 길을 못 받음", "Left: features get added in software, with no new machine. Right: if the tower stops, no post office gets new routes"),
          "caption": ("관제탑 소프트웨어가 고장 나면 망 전체가 영향을 받아요.", "If the tower's software fails, the whole network feels it."),
          "small": ("길 바꾸기는 빠르고 유연하지만, 관제탑이 멈추면 망 전체가 새 길을 못 받아요.", "Rerouting is fast and flexible — but if the tower stops, the whole network gets no new routes.")},
     ],

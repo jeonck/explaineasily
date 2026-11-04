@@ -49,7 +49,7 @@ P4 = svg(320, sky(320, ground=False)
 
 # 5. 둘 다 '가짜 지도'일 뿐, 진짜 관리는 다른 세계에서
 P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
-         + locker(230, 130, 90, 60, "⟦가상|virtual⟧", True, 0.9) + label(275, 220, "⟦프로그램이 보는 지도일 뿐이에요|only the map a program sees⟧", 11, "var(--ink)")
+         + locker(230, 130, 90, 60, "⟦가상|virtual⟧", True, 0.9) + label(275, 220, "⟦가상 주소는 프로그램이 보는 지도일 뿐이에요|a virtual address is only the map a program sees⟧", 11, "var(--ink)")
          + person(570, 125, s=0.8, face=EYES, **REP) + label(570, 255, "⟦운영체제의 실제 관리법은 시스템SW 분야의 가상메모리 쪽에서 다뤄요|how the OS really manages it is on the Systems virtual-memory page⟧", 11, "var(--ink)")
          + label(380, 300, "⟦이 페이지는 두 방식의 차이만 다루고, 운영체제(OS)의 실제 관리는 시스템SW 분야에서 다뤄요|this page covers only the difference — the OS's actual management is detailed in the Systems category⟧", 12, "var(--ink)", cls="d"))
 
@@ -78,7 +78,7 @@ PAGE = {
         {"svg": P4, "alt": ("페이징은 고정 크기·크기로만 나눔·내부 단편화, 세그멘테이션은 의미 단위·논리적 역할·외부 단편화로 비교", "A comparison: paging is fixed-size, split by size only, internal fragmentation; segmentation is logical-unit, role-based, external fragmentation"),
          "caption": ("페이징은 같은 크기로, 세그멘테이션은 역할별로 자르고, 낭비되는 공간도 달라요.", "Paging cuts by fixed size and segmentation by role, and each wastes space differently."),
          "small": ("실제 시스템은 둘을 섞어 쓰기도 해요.", "Real systems sometimes mix both.")},
-        {"svg": P5, "alt": ("왼쪽: 가상 사물함은 프로그램이 보는 지도일 뿐이라는 라벨. 오른쪽: 대표가 운영체제의 실제 관리법은 시스템SW 분야에서 다룬다고 말함", "Left: a label saying the virtual locker is only the map a program sees. Right: a rep says how the OS really manages it is on the Systems category's page"),
+        {"svg": P5, "alt": ("왼쪽: 가상 사물함은 프로그램이 보는 지도일 뿐이라는 라벨. 오른쪽: 대표가 운영체제의 실제 관리법은 시스템SW 분야에서 다룬다고 말함", "Left: a label saying the virtual locker is just a map the program sees. Right: a rep says how the OS really manages it is on the Systems category's page"),
          "caption": ("둘 다 프로그램에게 보여주는 '가짜 지도'이고, 운영체제의 실제 관리는 시스템SW 분야에서 다뤄요.", "Both give a program a fake map — the OS's real management is covered in the Systems category."),
          "small": ("이 페이지는 두 방식의 차이만 다루고, 운영체제(OS)의 실제 관리는 시스템SW 분야에서 다뤄요.", "This page covers only the difference — the OS's actual management is detailed in the Systems category.")},
     ],

@@ -106,7 +106,7 @@ PAGE = {
     "glossary": [
         ("분산원장", "Distributed ledger", ("모두가 든 장부 사본.", "A ledger copy in everyone's hands."), ("한 사람의 장부가 아니라 참여자 전체가 똑같은 사본을 들어요.", "Not one person's ledger — every participant holds an identical copy.")),
         ("해시 체인", "Hash chaining", ("페이지마다 이전 지문을 적기.", "Each page records the last one's fingerprint."), ('한 글자만 바꿔도 지문이 통째로 달라져요. → <a href="hashing-ko.html">물건마다 찍는 지문</a>', 'Change even one character, and the whole fingerprint changes. → <a href="hashing-en.html">a fingerprint for everything</a>')),
-        ("합의 알고리즘", "Consensus (PoW/PoS)", ("과반수가 맞아야 진짜.", "Majority agreement makes it real."), ("일을 많이 한 사람(작업증명)이나 많이 맡긴 사람(지분증명)이 투표권을 더 가져요.", "Whoever did more work (proof of work) or staked more (proof of stake) gets more say.")),
+        ("합의 알고리즘", "Consensus (PoW/PoS)", ("과반수가 맞아야 진짜.", "Majority agreement makes it real."), ("일을 많이 한 사람(작업증명)이나 코인을 많이 맡긴 사람(지분증명)이 투표권을 더 가져요.", "Whoever did more work (proof of work) or staked more coins (proof of stake) gets more say.")),
         ("51% 공격", "51% attack", ("과반수를 장악하는 공격.", "Seizing the majority."), ("참여자가 적은 작은 마을일수록 과반수를 뺏기 쉬워요.", "Easier in a small, sparsely populated network to seize the majority.")),
         ("스마트 계약 취약점", "Smart-contract vulnerabilities", ("자동 실행 코드의 버그.", "A bug in self-running code."), ("한 번 배포되면 자동으로 실행돼서 멈추거나 되돌리기 어려워요.", "Once deployed, it runs automatically — hard to pause or reverse.")),
         ("개인키 분실", "Lost private key", ("개인키를 잃어버리면 아무도 못 찾아줘요.", "Lose your private key, and no one can recover it for you."), ("비밀번호 재설정 같은 구제 수단이 없어요.", "There's no password-reset-style recovery.")),

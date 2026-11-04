@@ -72,11 +72,11 @@ PAGE = {
          "small": ("소켓을 열 때 등기봉투(TCP)용으로 할지 일반봉투(UDP)용으로 할지 정해요.", "When a socket is opened, it's set up for registered envelopes (TCP) or plain ones (UDP).")},
     ],
     "summary": (("<b>소켓</b>은 <b>IP 주소(어느 집)와 포트 번호(몇 호실)</b>로 만든, <b>한 쌍의 대화만을 책임지는 전용 우편함 구멍</b>이에요.",
-                 "A <b>socket</b> is a <b>dedicated mailbox hole</b> made from an <b>IP address (which house) and a port number (which room)</b>, responsible for exactly one conversation."),
+                 "A <b>socket</b> is a <b>dedicated mailbox hole</b> made from an <b>IP address (which house) and a port number (which room)</b>, marking one end of a conversation."),
                 ("소켓은 운영체제가 네트워크 통신을 위해 제공하는 종단점(endpoint)으로, IP 주소+포트 번호의 조합(소켓 주소)으로 식별돼요. 프로그램은 소켓을 열어(bind/connect) 데이터를 읽고 쓰며, TCP 소켓이면 연결 지향, UDP 소켓이면 비연결형으로 동작해요. 한 호스트 안의 여러 프로그램이 같은 IP를 쓰더라도 포트 번호가 다르면 서로 다른 소켓으로 구분돼요.",
                  "A socket is the endpoint the operating system provides for network communication, identified by the combination of an IP address and a port number (the socket address). A program opens a socket (bind/connect) to read and write data — a TCP socket behaves connection-oriented, a UDP socket connectionless. Multiple programs on the same host sharing one IP are still told apart as long as their port numbers differ.")),
     "glossary": [
-        ("소켓", "Socket", ("집주소+호실번호로 만든 전용 구멍.", "A dedicated hole made from an address and a room number."), ("한 쌍의 연결을 책임져요.", "Responsible for exactly one connection.")),
+        ("소켓", "Socket", ("집주소+호실번호로 만든 전용 구멍.", "A dedicated hole made from an address and a room number."), ("연결의 한쪽 끝이 돼요.", "It marks one end of a connection.")),
         ("IP 주소", "IP address", ("집 주소.", "The house address."), ("어느 컴퓨터인지를 가리켜요.", "Points to which computer it is.")),
         ("포트 번호", "Port number", ("집 안의 호실 번호.", "The room number inside the house."), ("어느 프로그램인지를 가리켜요.", "Points to which program it is.")),
         ("TCP/UDP", "TCP/UDP", ("등기봉투와 일반봉투.", "The registered envelope and the plain one."), ('소켓이라는 구멍으로 어떤 봉투를 쓸지 고르는 거예요. → <a href="tcpudp-ko.html">등기봉투와 일반봉투</a>', 'Choosing which envelope to send through the socket hole. → <a href="tcpudp-en.html">the registered envelope and the plain one</a>')),

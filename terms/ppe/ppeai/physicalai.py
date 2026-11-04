@@ -31,7 +31,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + label(570, 100, "⟦진짜 검사장|the real inspection station⟧", 12, "var(--ink)", cls="d")
          + produce(570, 170, 1.3, "var(--good)")
          + label(570, 230, "⟦무게·마찰·타이밍이 다 있어요|weight, friction, and timing, all at once⟧", 11, "var(--bad)")
-         + label(380, 280, "⟦사진 속 세계와 다르게, 진짜 세계는 무게·마찰·타이밍까지 다뤄야 해요|unlike the world inside a photo, the real world demands handling weight, friction, and timing too⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 280, "⟦사진 속 세계와 다르게, 진짜 세계에선 로봇이 무게·마찰·타이밍까지 다뤄야 해요|unlike the world inside a photo, in the real world a robot must handle weight, friction, and timing too⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 피지컬 AI = 보고 판단하는 AI에 느끼고 움직이는 능력을 더한 것 (hero)
 P3 = svg(340, sky(340)
@@ -61,7 +61,7 @@ PAGE = {
          "small": ("로봇 집게가 사과를 너무 세게 쥐어서 터뜨렸어요.", "The robot gripper squeezed too hard and burst the apple.")},
         {"svg": P2, "alt": ("사진 속 사과는 무게도 마찰도 없지만, 진짜 검사장의 사과는 무게·마찰·타이밍을 모두 가짐", "The apple inside a photo has no weight or friction, while the one in the real station carries weight, friction, and timing all at once"),
          "caption": ("사진 속 세계와 진짜 세계는 달라요.", "The world inside a photo and the real world aren't the same."),
-         "small": ("진짜 세계는 무게·마찰·타이밍까지 다뤄야 해요.", "The real world demands handling weight, friction, and timing too.")},
+         "small": ("진짜 세계에선 로봇이 무게·마찰·타이밍까지 다뤄야 해요.", "In the real world, a robot must handle weight, friction, and timing too.")},
         {"svg": P3, "hero": True, "alt": ("집게가 사과를 집으며, 보고 느끼고 다시 보는 화살표 루프가 옆에 그려짐", "A gripper picks up an apple while a looping arrow beside it reads see, feel, look again"),
          "caption": ("피지컬 AI는 보고 판단하는 AI에, 느끼고 움직이는 능력을 더한 것이에요.", "Physical AI adds sensing and moving to an AI that already sees and judges."),
          "small": ("지각→판단→행동을 쉬지 않고 반복하는, 몸을 가진 AI예요.", "An AI with a body, cycling through sense, decide, and act without a pause."),
@@ -82,10 +82,10 @@ PAGE = {
         {"svg": svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
                  + gripper_arm(190, 140, 1.0) + produce(190, 188, 1.1, "var(--good)") + label(190, 250, "⟦집게 로봇은 CNN의 눈을 그대로 빌려 써요|the gripper borrows the same CNN eye⟧", 11, "var(--ink)")
                  + person(570, 150, s=0.75, face=EYES, **INSPECTOR) + label(570, 250, "⟦AI가 생명·안전에 크게 영향을 주면 고영향 AI예요|an AI heavily affecting life or safety is high-impact⟧", 11, "var(--ink)")
-                 + label(380, 282, "⟦로봇의 몸은 사람의 생명·안전에 직접 영향을 줄 수 있어서, 법·안전 기준이 한층 더 엄격해져요|because a robot's body can directly affect human life and safety, the legal and safety bar rises⟧", 12, "var(--ink)", cls="d")),
+                 + label(380, 282, "⟦로봇의 몸은 사람의 생명·안전에 직접 영향을 줄 수 있어서, 화면 속 AI보다 법·안전 기준이 더 엄격해요|because a robot's body can directly affect human life and safety, the legal and safety bar is higher than for screen AI⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 집게가 CNN의 눈을 그대로 쓴다는 설명. 오른쪽: 검수반장이 생명·안전에 크게 영향을 주면 고영향 AI라고 말함", "Left: a note that the gripper borrows the same CNN eye. Right: the inspector notes that heavily affecting life or safety makes an AI high-impact"),
          "caption": ("피지컬 AI는 보는 눈(CNN)은 그대로 쓰고, 몸만 더해진 거예요.", "Physical AI keeps the same seeing eye (a CNN) and only adds a body."),
-         "small": ("로봇의 몸은 사람의 생명·안전에 직접 영향을 줄 수 있어서, 법·안전 기준이 한층 더 엄격해져요.", "Because a robot's body can directly affect human life and safety, the legal and safety bar rises.")},
+         "small": ("로봇의 몸은 사람의 생명·안전에 직접 영향을 줄 수 있어서, 화면 속 AI보다 법·안전 기준이 더 엄격해요.", "Because a robot's body can directly affect human life and safety, the legal and safety bar is higher than for screen-bound AI.")},
     ],
     "summary": (("<b>피지컬 AI</b> = 보고 판단하는 AI에 <b>센서로 느끼고 몸으로 움직이는</b> 능력을 더한 것.",
                  "<b>Physical AI</b> = an AI that already sees and judges, with <b>sensing and physical movement</b> added on top."),
@@ -96,7 +96,7 @@ PAGE = {
         ("지각-판단-행동 루프", "Perception-decision-action loop", ("보고, 정하고, 움직이는 걸 쉬지 않고 반복하는 것.", "Seeing, deciding, and moving — on an unbroken repeat."), ("피지컬 AI의 가장 기본적인 작동 구조예요.", "The most basic operating structure of physical AI.")),
         ("CNN", "CNN", ("피지컬 AI가 빌려 쓰는 보는 눈.", "The seeing eye physical AI borrows."), ('화면 속 분류에서 쓰던 바로 그 방법이에요. → <a href="cnn-ko.html">작은 창으로 조금씩 살펴보는 눈</a>', 'The very same method used for screen-bound classification. → <a href="cnn-en.html">The Eye That Scans Through a Small Window</a>')),
         ("액추에이터", "Actuator", ("판단을 실제 움직임으로 바꾸는 모터.", "The motor that turns a decision into real movement."), ("집게·팔다리를 실제로 움직이는 부분이에요.", "The part that actually moves the gripper or limb.")),
-        ("힘 제한·비상정지", "Force limiting & e-stop", ("너무 세게 쥐거나 부딪히면 즉시 멈추는 안전장치.", "A safeguard that stops everything the instant it grips or hits too hard."), ("되돌릴 수 없는 실수를 막는 핵심 장치예요.", "The core safeguard against a mistake that can't be undone.")),
+        ("힘 제한·비상정지", "Force limiting & e-stop", ("집게가 너무 세게 쥐거나 부딪히면 로봇을 즉시 멈추는 안전장치.", "A safeguard that stops the robot the instant its gripper squeezes or hits too hard."), ("되돌릴 수 없는 실수를 막는 핵심 장치예요.", "The core safeguard against a mistake that can't be undone.")),
         ("고영향 AI", "High-impact AI", ("생명·안전에 직접 닿는 AI 분류.", "The classification for AI that touches life and safety directly."), ('몸을 가진 AI는 이쪽으로 분류되기 쉬워요. → <a href="aibasiclaw-ko.html">나라가 정한 최소 등급 기준</a>', 'An AI with a body is especially likely to fall into this category. → <a href="aibasiclaw-en.html">The Minimum Grading Rule the Country Itself Sets</a>')),
         ("시뮬레이션 학습", "Simulation training", ("진짜 작물을 터뜨리기 전에, 가짜 환경에서 먼저 연습하는 것.", "Practicing in a fake environment before ever bursting a real piece of produce."), ("실수의 비용이 큰 피지컬 AI에서 특히 중요해요.", "Especially important when physical AI's mistakes are this costly.")),
         ("혼동행렬", "Confusion matrix", ("피지컬 AI의 판단 성능도 이 표로 확인해요.", "Physical AI's own judgment is checked the same way, with this table."), ('다만 피지컬 AI는 틀렸을 때의 대가가 화면 속 AI보다 훨씬 커요. → <a href="confmatrix-ko.html">네 칸으로 나눈 도장 기록부</a>', "Only the cost of being wrong runs much higher than for a screen-bound AI. → <a href=\"confmatrix-en.html\">The Four-Box Stamp Ledger</a>")),

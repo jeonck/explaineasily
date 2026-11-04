@@ -12,9 +12,9 @@ P1 = svg(300, sky(300)
 # 2. 우연히 하루 반짝 잘 팔린 걸 수도 있음
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(220, 150, s=0.8, face=SWEAT + EYES, **EDITOR)
-         + bubble(100, 70, 260, 44, "⟦어제 새 표지가 더 팔렸는데, 그게 우연일 수도 있잖아요?|the new cover sold more yesterday — just luck?⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(100, 70, 260, 44, "⟦새 표지가 더 팔렸는데, 우연일 수도 있잖아요?|the new cover sold more yesterday — just luck?⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(560, 150, s=0.75, face=EYES, **PROOFER)
-         + bubble(440, 70, 240, 40, "⟦느낌만으론 '진짜 차이'인지 '우연'인지 몰라요|a hunch can't tell a real difference from chance⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(440, 70, 240, 40, "⟦느낌만으론 '진짜 차이'인지 '우연'인지 몰라요|a hunch can't tell a real gap from chance⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦우연과 진짜 차이를 가를 숫자가 필요해요|we need numbers to separate chance from a real difference⟧", 12, "var(--ink)"))
 
 # 3. 가설검정 = 차이가 없다고 가정하고 따져보는 절차 (hero)

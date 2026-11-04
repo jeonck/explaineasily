@@ -14,12 +14,12 @@ def ledgerbook(x, y, s=1.0, color="#FFF8E7"):
 def shopfront(x, y, s=1.0, name=""):
     return (f'<g transform="translate({x},{y}) scale({s})"><rect x="-40" y="0" width="80" height="60" fill="var(--panel)" stroke="var(--stone-dark)" stroke-width="3"/>'
             f'<path d="M-46 0 L0 -30 L46 0 Z" fill="var(--stone-dark)"/><rect x="-14" y="20" width="28" height="40" fill="var(--night)"/>'
-            + label(0, -40, name, 11, "var(--muted)") + "</g>")
+            + label(0, -40, name, fit(11, s), "var(--muted)") + "</g>")
 
 
 # 1. 손님 장부가 여러 가게에 흩어져 있어요
 P1 = svg(320, sky(320)
-         + person(360, 88, s=0.85, **VILLAGER) + bubble(235, 20, 290, 40, "⟦내 장부가 어느 가게에 뭐가 있는지 나도 몰라요|I don't even know which shop has which of my own pages⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + person(360, 88, s=0.85, **VILLAGER) + bubble(235, 20, 290, 40, "⟦내 장부가 어느 가게에 뭐가 있는지 나도 몰라요|I don't know which shop has which of my pages⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + shopfront(130, 220, 0.75, "⟦빵 가게|the bakery⟧") + ledgerbook(182, 235, 0.6)
          + shopfront(380, 230, 0.75, "⟦대장간|the smithy⟧") + ledgerbook(432, 245, 0.6)
          + shopfront(630, 220, 0.75, "⟦곳간|the storehouse⟧") + ledgerbook(682, 235, 0.6))
@@ -64,7 +64,7 @@ PAGE = {
              (MINE_I, ("내 것이라고 선언해요", "Declared mine"), ("장부 내용은 손님의 것이에요", "the ledger's content belongs to the villager"), "calm"),
              (ROUTE_I, ("보낼 곳도 내가 정해요", "I choose where it goes"), ("가게 A에서 가게 B로 직접", "straight from shop A to shop B")),
              (VIEW_I, ("한곳에 모아 볼 수 있어요", "All in one view"), ("여러 가게 장부를 합쳐서 봐요", "combine ledgers from many shops"), "warm"),
-             (CONSENT_I, ("동의마다 새로 정해요", "Fresh consent, every time"), ("동의는 언제든 다시 거둘 수 있어요", "and consent can be withdrawn any time")),
+             (CONSENT_I, ("보낼 곳은 동의할 때마다 새로 정해요", "Fresh consent, every time"), ("동의는 언제든 다시 거둘 수 있어요", "and consent can be withdrawn any time")),
          ])},
         {"svg": svg(320, sky(320)
                     + person(120, 110, s=0.7, **VILLAGER) + label(120, 205, "⟦① 동의|① consent⟧", 12, "var(--ink)")
@@ -79,7 +79,7 @@ PAGE = {
          "caption": ("실제로는 장부가 이런 순서로 옮겨져요.", "In practice, the pages move through these steps."),
          "small": ("동의 → 요청 전달 → (허가받은 사업자) → 전달 완료. 아무 가게나 마음대로 보내주는 게 아니에요.", "Consent, then the request forwards, then a licensed operator carries it, then delivery. It isn't just any shop sending it on a whim.")},
         {"svg": svg(320, sky(320)
-                    + person(190, 150, s=0.85, **AGENT) + label(190, 270, "⟦허가받은 사업자만 할 수 있어요|only a licensed operator may do this⟧", 11, "var(--muted)")
+                    + person(190, 150, s=0.85, **AGENT) + label(190, 270, "⟦허가받은 사업자만 장부를 중계할 수 있어요|only a licensed operator may relay pages⟧", 11, "var(--muted)")
                     + person(560, 150, s=0.85, face=FROWN + SWEAT, **SHOPKEEP_B) + label(560, 270, "⟦전달 통로가 뚫리면 여러 가게 장부가 한꺼번에 새요|a breached pipe leaks every shop's pages at once⟧", 11, "var(--bad)")
                     + label(380, 305, "⟦장부 옮기기가 편리해진 만큼, 전달 통로를 지키는 게 더 중요해져요|easier moves raise the stakes on protecting the delivery pipe⟧", 12, "var(--ink)", cls="d")),
          "alt": ("허가받은 사업자만 마이데이터를 다룰 수 있고, 전달 통로가 뚫리면 여러 가게 장부가 한 번에 샐 수 있음", "Only a licensed operator may handle MyData, and a breach of the pipe can leak every shop's pages at once"),

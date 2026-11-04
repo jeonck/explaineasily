@@ -89,7 +89,7 @@ PAGE = {
         ("멀티호밍", "Multi-homing", ("대체 도로를 미리 마련해두는 것.", "Keeping a backup road ready in advance."), ("한 경로가 끊겨도 다른 경로로 통신을 이어가요.", "Keeps communicating over another path if one fails.")),
         ("head-of-line blocking", "Head-of-Line Blocking", ("한 줄로 묶이면 하나가 전부를 막는 현상.", "When one line jams and blocks everything behind it."), ("SCTP가 스트림 분리로 피하는 문제예요.", "What SCTP avoids by splitting into streams.")),
         ("TCP와 차이", "Difference from TCP", ("TCP는 한 줄, SCTP는 여러 차선.", "TCP is one line; SCTP is many lanes."), ('둘 다 신뢰성은 챙겨요. → <a href="tcpudp-ko.html">등기봉투와 일반봉투</a>', 'Both still guarantee reliability where it matters. → <a href="tcpudp-en.html">the registered envelope and the plain one</a>')),
-        ("UDP와 차이", "Difference from UDP", ("UDP는 확인 없이 던지기만 해요.", "UDP just sends without confirming."), ("SCTP는 신뢰성 있게 보내요.", "SCTP sends it reliably instead.")),
+        ("UDP와 차이", "Difference from UDP", ("UDP는 확인 없이 던지기만 해요.", "UDP just sends without confirming."), ("SCTP는 신뢰성 있게 보내요.", "SCTP sends reliably instead, with confirmation.")),
         ("SIGTRAN", "SIGTRAN", ("SCTP가 실제로 많이 쓰이는 전화망 신호 전달 용도.", "A telephony signaling use case where SCTP actually sees real use."), ("SCTP의 대표적인 실사용 예시예요.", "One of SCTP's best-known real deployments.")),
     ],
 }

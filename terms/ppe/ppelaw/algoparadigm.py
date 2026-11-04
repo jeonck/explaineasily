@@ -42,7 +42,7 @@ P4 = svg(320, sky(320, ground=False)
                       ("⟦탐욕: 가장 급한 동아리부터 먼저 배정|greedy: fund the most urgent club first⟧",
                        "⟦DP: 이미 계산한 학년 조합은 다시 안 따져요|DP: never recomputes a grade combo it did⟧",
                        "⟦탐욕: 빠르지만 전체 최선이 아닐 수 있어요|greedy: fast, but may miss the overall best⟧"), 1.0)
-         + label(380, 310, "⟦쪼갤 수 있는지, 같은 계산이 반복되는지에 따라 어울리는 방법이 달라요|the right method depends on whether the problem splits cleanly or repeats the same subproblems⟧", 11, "var(--ink)", cls="d"))
+         + label(380, 310, "⟦문제를 쪼갤 수 있는지, 같은 계산이 반복되는지에 따라 어울리는 방법이 달라요|the right method depends on whether the problem splits cleanly or repeats the same subproblems⟧", 11, "var(--ink)", cls="d"))
 
 # 5. 탐욕법은 빠르지만 늘 최선은 아니에요
 P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
@@ -74,7 +74,7 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("왼쪽: 분할정복으로 학년별 몫을 나눠 정하고 합침. 오른쪽: 탐욕법으로 급한 곳부터, 동적계획법으로 같은 조합은 다시 안 따짐", "Left: divide-and-conquer splits the budget by grade, then combines. Right: greedy funds the urgent one first; DP avoids re-solving the same combination"),
          "caption": ("세 방법을 축제 예산에 적용하면 나누는 방식·고르는 순서·계산 횟수가 달라져요.", "Applied to the festival budget, the three differ in how they split, what they pick first, and how often they recalculate."),
-         "small": ("쪼갤 수 있는지, 같은 계산이 반복되는지에 따라 어울리는 방법이 달라요.", "The right method depends on whether the problem splits cleanly or repeats the same subproblems.")},
+         "small": ("문제를 쪼갤 수 있는지, 같은 계산이 반복되는지에 따라 어울리는 방법이 달라요.", "The right method depends on whether the problem splits cleanly or repeats the same subproblems.")},
         {"svg": P5, "alt": ("왼쪽: 대표가 가장 급한 곳부터 바로 줬다고 말함. 오른쪽: 학생회장이 전체로 보면 더 나은 조합이 있었다고 땀 흘리며 말함", "Left: a rep says they funded the most urgent club right away. Right: a sweating president says a better overall combination existed"),
          "caption": ("탐욕법은 빠르지만 늘 최선은 아니에요.", "Greedy is fast, but not always the best."),
          "small": ("탐욕법은 빠르지만, 매번 전체 최선을 보장하진 않아요.", "Greedy is fast — but it doesn't always guarantee the overall best.")},

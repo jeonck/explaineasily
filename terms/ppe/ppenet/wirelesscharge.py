@@ -75,7 +75,7 @@ PAGE = {
          "caption": ("유선과 무선은 네 가지가 달라요.", "Wired and wireless differ on four things."),
          "small": ("무선은 편하지만, 속도와 효율은 유선보다 조금 낮아요.", "Wireless is more convenient, but a bit slower and less efficient than wired.")},
         {"svg": P5, "alt": ("왼쪽: 트럭이 충전판 위에서 줄 없이 충전됨. 오른쪽: 판에서 벗어난 트럭은 충전이 끊김", "Left: a truck charges on the pad with no cable. Right: a truck off the pad loses the charge"),
-         "caption": ("무선충전은 유선보다 효율이 낮고, 판 위에 서야만 해요.", "Wireless is less efficient than wired, and the truck must stay on the pad."),
+         "caption": ("무선충전은 유선보다 효율이 낮고, 트럭이 판 위에 서야만 해요.", "Wireless is less efficient than wired, and the truck must stay on the pad."),
          "small": ("무선충전은 편하지만 유선보다 덜 효율적이고, 트럭이 판 위에 꼭 있어야 해요.", "Wireless charging is convenient, but less efficient than wired — and the truck must stay on the pad.")},
     ],
     "summary": (("<b>무선충전기술</b>은 <b>줄을 꽂지 않고도 충전판 위에 서는 것만으로</b> 전기가 공중으로 건너가게 하는 기술이에요.",

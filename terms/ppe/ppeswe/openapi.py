@@ -80,7 +80,7 @@ PAGE = {
         ("공공데이터포털", "Public Data Portal", ("정부가 연 가장 큰 열람실.", "The government's biggest reading room of all."), ("수많은 기관의 개방형 API가 여기 모여 있어요.", "Open APIs from many agencies are gathered here.")),
         ("데이터 표준화", "Data Standardization", ("응답 모양을 다 같이 맞추는 것.", "Making the response shape the same for everyone."), ("응답 모양이 제각각이면, 서식이 있어도 받은 자료를 쓰기 어려워요.", "Even with a form, responses in mismatched shapes are hard to use.")),
         ("API 게이트웨이", "API Gateway", ("몰려드는 요청을 실제로 다루는 안내소.", "The booth that actually handles the flood of requests."), ('개방형 API는 정책, 게이트웨이는 그 요청을 다루는 인프라예요 → <a href="apigateway-ko.html">정문 안내소</a>.', 'Open API is the policy; the gateway is the infrastructure that handles the requests → <a href="apigateway-en.html">the front gate information booth</a>.')),
-        ("EIF(외부연계파일)", "External Interface File", ("다른 출판사 자료를 참고하는 연결점.", "The connection point for referencing another publisher's data."), ('규모를 잴 때 이 연결도 하나로 세어요 → <a href="fpruler-ko.html">매수를 재는 자</a>.', 'This kind of link gets counted too, when sizing up the work → <a href="fpruler-en.html">the ruler that measures page count</a>.')),
+        ("EIF(외부연계파일)", "External Interface File", ("다른 출판사 자료를 참고하는 연결점.", "The connection point for referencing another publisher's data."), ('규모를 잴 때 이 연결도 하나로 세어요 → <a href="fpruler-ko.html">쪽수 대신 기능을 재는 자</a>.', 'This kind of link gets counted too, when sizing up the work → <a href="fpruler-en.html">the ruler that measures functions, not pages</a>.')),
         ("이용 쿼터", "Usage Quota", ("한 열쇠로 하루에 빌릴 수 있는 한도.", "The daily limit on how much one key can borrow."), ("너무 많이 요청하면 그날은 더 못 빌려요.", "Ask too much, and that key is done for the day.")),
     ],
 }

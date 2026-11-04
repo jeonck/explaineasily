@@ -35,7 +35,7 @@ P1 = svg(280, sky(280)
          + small_castle(560, 70, 0.5) + ledger(650, 190, 0.9) + label(650, 230, "⟦성 B|castle B⟧", 11, "var(--muted)")
          + '<path d="M250 190 L560 190" stroke="var(--bad)" stroke-width="3" stroke-dasharray="4 4"/>'
          + label(405, 170, "⟦못 보내요|can\'t send it⟧", 13, "var(--bad)", cls="d")
-         + label(380, 258, "⟦두 장부를 합치면 더 좋은 답이 나오는데, 장부를 성 밖으로 못 들고 나가요|combining the two ledgers would help — but neither may leave its own castle⟧", 12, "var(--ink)"))
+         + label(380, 258, "⟦두 장부를 합치면 더 좋은 답이 나오는데, 장부를 성 밖으로 못 들고 나가요|combining the two ledgers gives a better analysis — but neither may leave its own castle⟧", 12, "var(--ink)"))
 
 # 2. 그렇다고 그냥 보내주면 위험해요
 P2 = svg(280, '<rect width="760" height="280" fill="var(--bad-soft)"/>'
@@ -58,7 +58,7 @@ P3 = svg(340, sky(340)
 P4 = svg(300, sky(300)
          + box(50, 30, 660, 240, "⟦반출 절차|THE CHECK-OUT PROCESS⟧",
                ("⟦1. 신청 — 어떤 분석을 할지 먼저 적어요|1. apply — write down what analysis you plan⟧",
-                "⟦2. 승인 — 결합전문기관이 신청을 검토해요|2. approval — the linkage agency reviews the application⟧",
+                "⟦2. 승인 — 운영기관이 신청을 검토해요|2. approval — the operating agency reviews the application⟧",
                 "⟦3. 분석 — 안심구역 안에서만 계산해요|3. analyze — computed only inside the safe zone⟧",
                 "⟦4. 반출심사 — 결과가 재식별 위험 없는지 확인해요|4. export review — the result is checked for re-identification risk⟧"), 13))
 
@@ -79,7 +79,7 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("두 성이 각자 장부를 들고 있는데, 가운데 '못 보내요' 표시와 함께 선이 막혀 있음", "Two castles each hold a ledger, with a blocked line between them marked can't send it"),
          "caption": ("각자 장부를 성 밖으로 못 들고 나가요.", "Neither castle's ledger may leave its own walls."),
-         "small": ("두 장부를 합치면 더 좋은 분석 결과가 나오는데, 장부가 각자 성 안에 갇혀 있어요.", "Combining the two ledgers would give better analysis than either alone — but each stays locked inside its own castle.")},
+         "small": ("두 장부를 합치면 장부 하나만 볼 때보다 더 좋은 분석 결과가 나오는데, 장부가 각자 성 안에 갇혀 있어요.", "Combining the two ledgers would give better analysis than either alone — but each stays locked inside its own castle.")},
         {"svg": P2, "alt": ("장부를 그냥 보내다가 가면 쓴 사람이 가로채고, 서기가 '그래서 아무도 안 보내줘요'라고 말함", "A ledger sent plainly is intercepted by a masked figure, while a clerk says so no one sends anything, ever"),
          "caption": ("그렇다고 장부를 그냥 보내주면 위험해요.", "But sending a ledger over in the open is dangerous."),
          "small": ("결국 장부를 각자 성 안에서만 보다 보니, 합쳐서 하는 더 좋은 분석을 못 해요.", "So each ledger stays inside its own castle, and the better combined analysis never happens.")},
@@ -106,11 +106,11 @@ PAGE = {
     ],
     "summary": (("<b>개인정보 안심구역</b> = 여러 기관의 데이터를 <b>한 방에 모아</b> 그 안에서만 분석하고, <b>결과만 승인받아 반출</b>하는 특별 열람실.",
                  "A <b>personal-data safe zone</b> = a special reading room where data from several organizations is <b>gathered in one place</b>, analyzed only inside, with <b>only approved results ever exported</b>."),
-                ("데이터 안심구역은 여러 기관의 가명정보·결합정보를 물리적·논리적으로 통제된 공간에 모아 분석하되, 원본 데이터의 반출은 원천 차단하고 분석 결과만 재식별 위험 평가를 거쳐 반출을 허용하는 제도예요. 결합전문기관이 신청을 심사하고 결합을 수행하며, 반출심사위원회가 결과물의 재식별 가능성을 확인한 뒤에만 밖으로 나갈 수 있어요. 여러 기관의 데이터를 안전하게 활용하면서도 유출 위험을 최소화하는 것이 목적이에요.",
-                 "A data safe zone gathers pseudonymized and linked data from multiple organizations into a physically and logically controlled space for analysis, while blocking the raw data from ever leaving and allowing only the analysis results out, after a re-identification risk review. A data linkage agency screens applications and performs the linkage, and an export review committee checks the results for re-identification risk before anything is released. The goal is to let organizations use combined data safely while keeping leak risk to a minimum.")),
+                ("데이터 안심구역은 여러 기관의 가명정보·결합정보를 물리적·논리적으로 통제된 공간에 모아 분석하되, 원본 데이터의 반출은 원천 차단하고 분석 결과만 재식별 위험 평가를 거쳐 반출을 허용하는 제도예요. 운영기관이 이용 신청을 심사하고, 가명정보 결합은 결합전문기관이 맡으며, 반출심사위원회가 결과물의 재식별 가능성을 확인한 뒤에만 밖으로 나갈 수 있어요. 여러 기관의 데이터를 안전하게 활용하면서도 유출 위험을 최소화하는 것이 목적이에요.",
+                 "A data safe zone gathers pseudonymized and linked data from multiple organizations into a physically and logically controlled space for analysis, while blocking the raw data from ever leaving and allowing only the analysis results out, after a re-identification risk review. The operating agency screens applications, a data linkage agency performs the linkage, and an export review committee checks the results for re-identification risk before anything is released. The goal is to let organizations use combined data safely while keeping leak risk to a minimum.")),
     "glossary": [
         ("개인정보 안심구역", "Personal-data safe zone", ("특별 열람실.", "The special reading room."), ("여러 기관의 데이터를 모아 분석하되 원본은 못 나가는 통제된 공간이에요.", "A controlled space where data from several organizations is analyzed, but the raw data never leaves.")),
-        ("결합전문기관", "Data linkage agency", ("여러 장부를 합치는 전담 기관.", "The dedicated agency that combines the ledgers."), ("신청을 심사하고 가명정보끼리의 결합을 전문적으로 수행해요.", "Screens applications and professionally performs the linkage between pseudonymized datasets.")),
+        ("결합전문기관", "Data linkage agency", ("여러 장부를 합치는 전담 기관.", "The dedicated agency that combines the ledgers."), ("가명정보끼리의 결합을 전문적으로 수행해요.", "Specializes in linking pseudonymized datasets.")),
         ("반출심사", "Export review", ("나갈 때 검사.", "The check on the way out."), ("결과가 재식별 위험이 없는지 반출심사위원회가 확인해요.", "An export review committee checks the result poses no re-identification risk.")),
         ("재식별 위험 평가", "Re-identification risk assessment", ("다시 알아낼 수 있는지 재기.", "Measuring whether the name can come back."), ('<a href="pseudonymize-ko.html">가명처리</a>된 데이터라도 결합되면 위험이 다시 커질 수 있어요.', 'Even <a href="pseudonymize-en.html">pseudonymized</a> data can grow risky again once combined.')),
         ("가명정보 결합", "Pseudonymized data linkage", ("번호표끼리 이어 붙이기.", "Stitching number tags together."), ("서로 다른 기관의 가명정보를 연결해 더 풍부한 분석을 가능하게 해요.", "Links pseudonymized records across organizations, enabling richer analysis.")),

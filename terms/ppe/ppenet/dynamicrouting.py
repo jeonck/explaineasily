@@ -74,7 +74,7 @@ PAGE = {
          "small": ("RIP는 간단하지만 소식이 느리게 퍼지고, OSPF는 빠르고 정확하지만 RIP보다 복잡해요.", "RIP is simple but spreads news slowly; OSPF is fast and accurate but more complex than RIP.")},
         {"svg": P5, "alt": ("왼쪽: 소식이 다 퍼지는 데 잠깐 걸림. 오른쪽: 다른 회사 우체국과는 다른 규칙을 씀", "Left: spreading the news takes a moment. Right: a different company's post office uses a different rule"),
          "caption": ("지도 소식이 퍼지는 데 시간이 걸리고, 다른 회사와는 다른 규칙이 필요해요.", "Map news takes time to spread, and talking to another company needs a different rule."),
-         "small": ("자동이라도 소식이 다 퍼질 때까진 시간이 걸리고, IGP는 회사 밖에선 안 통해요.", "Even automatic, spreading news takes time — and IGP doesn't reach outside one's own organization.")},
+         "small": ("지도 고치기가 자동이라도 소식이 다 퍼질 때까진 시간이 걸리고, IGP는 회사 밖에선 안 통해요.", "Even with automatic map updates, spreading news takes time — and IGP doesn't reach outside one's own organization.")},
     ],
     "summary": (("<b>동적 라우팅 프로토콜</b>은 <b>우체국(라우터)들이 서로 소식을 주고받아 배송 지도(경로표)를 스스로 갱신</b>하는 규칙이에요(RIP·OSPF 등 IGP).",
                  "A <b>dynamic routing protocol</b> is a set of rules by which <b>post offices (routers) trade news and update the delivery map (routing table) themselves</b> — RIP, OSPF, and other IGPs."),
@@ -82,7 +82,7 @@ PAGE = {
                  "RIP (Routing Information Protocol) is a distance-vector protocol that propagates hop counts only to neighbors — simple but slow. OSPF (Open Shortest Path First) is a link-state protocol that shares the whole topology map and computes shortest paths — fast and scalable. Both are IGPs (Interior Gateway Protocols) used inside one organization (autonomous system); between organizations, a separate EGP like BGP is used instead.")),
     "glossary": [
         ("동적 라우팅", "Dynamic routing", ("우체국들이 소식을 주고받아 지도를 스스로 고치는 것.", "Post offices trading news and redrawing the map themselves."), ("정적 라우팅은 사람이 손으로 고쳐요.", "Static routing, by contrast, is redrawn by hand.")),
-        ("RIP", "RIP", ("이웃에게만 소문으로 퍼지는 방식.", "Spreading only to neighbors, by rumor."), ("홉 수로 가까운 길을 판단해요.", "Judges distance by counting hops.")),
+        ("RIP", "RIP", ("지도 소식이 이웃에게만 소문으로 퍼지는 방식.", "Spreading map news only to neighbors, by rumor."), ("홉 수로 가까운 길을 판단해요.", "Judges distance by counting hops.")),
         ("OSPF", "OSPF", ("전체 지도를 모두에게 공유하는 방식.", "Sharing the whole map with everyone."), ("링크 상태로 최단 경로를 계산해요.", "Computes the shortest path from link state.")),
         ("IGP", "IGP", ("한 회사 안에서만 쓰는 라우팅 규칙 범주.", "A category of routing rules used only inside one organization."), ("RIP·OSPF가 여기에 속해요.", "RIP and OSPF both belong to this category.")),
         ("홉 수", "Hop count", ("거쳐 가는 우체국 숫자.", "The number of post offices a parcel passes through."), ("RIP가 경로를 판단하는 기준이에요.", "The yardstick RIP uses to judge a route.")),

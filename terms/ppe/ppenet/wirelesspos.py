@@ -72,7 +72,7 @@ PAGE = {
          "small": ("건물에 가려 위성 신호가 안 닿거나 약해요.", "Blocked by the building, the satellite signal barely gets through.")},
         {"svg": P3, "hero": True, "alt": ("신호탑 두 곳과 위성에서 잰 거리의 호 세 개가 집배원 머리 위 한 점에서 만남", "Three distance arcs, from two signal towers and a satellite, meet at one point right above the carrier"),
          "caption": ("여러 신호탑에서 거리를 재어 내 위치를 찾아요.", "Measuring distance from several signal towers finds your spot."),
-         "small": ("원 세 개가 겹치는 한 점이 바로 지금 있는 자리예요.", "The one point where three circles overlap is exactly where you're standing."),
+         "small": ("세 곳에서 잰 거리의 호가 만나는 한 점이 바로 지금 있는 자리예요.", "The one point where the three distance arcs meet is exactly where you're standing."),
          "tricks": (4, [
              (SAT_I, ("위성(GPS)", "Satellite (GPS)"), ("멀리서도 정확하지만 실내엔 약해요", "accurate even far away, but weak indoors"), "calm"),
              (TOWER2_I, ("기지국 신호", "Cell tower signal"), ("신호 세기로 대략 위치를 가늠해요", "roughly gauges position from signal strength")),
@@ -92,7 +92,7 @@ PAGE = {
                  "Wireless positioning is fundamentally trilateration — computing distance from the arrival-time difference of satellite signals like GPS. But indoors and in dense cities, signals weaken or bounce off surfaces, widening the error. To compensate, hybrid positioning blends in cell tower signal strength (RSSI) and indoor Wi-Fi or BLE beacon signals.")),
     "glossary": [
         ("무선 측위", "Wireless positioning", ("여러 신호탑 거리로 내 위치를 찾는 기술.", "Finding your position by distance from several towers."), ("삼변측량이 기본 원리예요.", "Trilateration is the underlying principle.")),
-        ("삼변측량", "Trilateration", ("세 곳 이상 거리를 겹쳐 위치를 계산하는 것.", "Overlapping distances from three or more points to compute position."), ("원이 겹치는 한 점이 위치예요.", "The spot is where the circles overlap.")),
+        ("삼변측량", "Trilateration", ("세 곳 이상 거리를 겹쳐 위치를 계산하는 것.", "Overlapping distances from three or more points to compute position."), ("거리의 호가 만나는 점이 위치예요. GPS는 수신기 시계 오차까지 풀려고 위성 넷을 써요.", "The spot is where the distance arcs meet. GPS uses four satellites, to also solve for receiver clock error.")),
         ("GPS", "GPS", ("가장 흔히 쓰는 위성 측위 신호.", "The most common satellite positioning signal."), ("실내·도심에선 약해질 수 있어요.", "Can weaken indoors or in dense cities.")),
         ("RSSI", "RSSI", ("받은 신호의 세기.", "The strength of a received signal."), ("가까운 기지국 신호일수록 세게 잡혀요.", "A closer tower's signal is received more strongly.")),
         ("BLE 비콘", "BLE beacon", ("실내 위치를 보완하는 작은 신호 발신기.", "A small signal transmitter that fills in indoor positioning."), ("위성이 안 닿는 실내에서 요긴해요.", "Useful indoors where satellites can't reach.")),

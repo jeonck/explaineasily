@@ -31,7 +31,7 @@ SPLIT_I = icon('<rect x="8" y="14" width="48" height="10" fill="var(--line)"/><r
 # 4. 네 가지 방법의 속도 비교
 P4 = svg(320, sky(320)
          + queueboard(60, 40, 320, 240, "⟦속도 비교(차가 많아질수록)|speed as the line grows⟧",
-                      ("⟦거품/선택/삽입 — 한 대씩 다 비교(느림)|bubble/selection/insertion — compare one by one (slow)⟧",
+                      ("⟦거품/선택/삽입 — 한 대씩 다 비교(느림)|bubble/selection/insertion — one by one (slow)⟧",
                        "⟦시간: 대략 n²|time: roughly n²⟧",
                        "⟦병합/퀵 — 둘로 나눠 따로 정리(빠름)|merge/quick — split in two, sort each part (fast)⟧",
                        "⟦시간: 대략 n log n|time: roughly n log n⟧"), 1.0, hl=2)

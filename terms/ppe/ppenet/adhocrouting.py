@@ -40,7 +40,7 @@ P4 = svg(320, sky(320)
 P5 = svg(300, '<rect width="760" height="300" fill="var(--accent-soft)"/>'
          + person(260, 125, s=0.7, face=EYES, **CARRIER) + label(260, 250, "⟦Ad-hoc 라우팅은 고정 우체국 없이도 길을 이어요|ad-hoc routing connects a path with no fixed post office⟧", 11, "var(--ink)")
          + person(540, 150, s=0.7, face=SWEAT + FROWN, **CARRIER) + label(540, 275, "⟦집배원이 너무 멀거나 적으면 길이 끊겨요|carriers too far apart or too few, and the path breaks⟧", 11, "var(--ink)")
-         + label(380, 40, "⟦V2X·재난 현장처럼 고정 통신망이 없는 곳에서 특히 쓰여요|used especially where there's no fixed network — like V2X or disaster zones⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 40, "⟦Ad-hoc 라우팅은 V2X·재난 현장처럼 고정 통신망이 없는 곳에서 특히 쓰여요|ad-hoc routing is used especially where there's no fixed network — like V2X or disaster zones⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "adhocrouting", "order": 18,
@@ -62,14 +62,14 @@ PAGE = {
              (I1, ("서로 연결", "Peer Connection"), ("집배원끼리 직접 이어져요", "carriers link up directly")),
              (I2, ("다음 사람에게", "Hand to Next"), ("한 명씩 건네며 전달", "passed on one by one"), "calm"),
              (I3, ("길을 그때그때", "Find On Demand"), ("고정된 경로가 없어요", "no fixed path at all")),
-             (I4, ("끊어질 수 있음", "Can Break"), ("한 명만 빠져도 끊겨요", "one missing link breaks it"), "warm"),
+             (I4, ("끊어질 수 있음", "Can Break"), ("집배원 한 명만 빠져도 길이 끊겨요", "one missing carrier breaks the path"), "warm"),
          ])},
         {"svg": P4, "alt": ("길 찾는 두 방식 안내판: 미리 외우기, 그때그때 묻기, 홉, 끊김 네 줄", "A guide board listing proactive, reactive, hop, and break for way-finding"),
          "caption": ("길을 찾는 방식도 두 가지예요.", "There are two ways to find the path."),
          "small": ("집배원은 길을 늘 외워두거나, 보낼 봉투가 생겼을 때만 물어봐요.", "Carriers either keep paths memorized, or ask only when there's something to send.")},
         {"svg": P5, "alt": ("왼쪽: 고정 우체국 없이도 길을 잇는 게 장점. 오른쪽: 너무 멀거나 사람이 적으면 길이 끊김", "Left: its strength is connecting without a fixed post office. Right: too sparse or too far, and the path breaks"),
          "caption": ("집배원이 적거나 흩어지면 길 찾기가 어려워요.", "Too few or too scattered carriers make way-finding hard."),
-         "small": ("V2X·재난 현장처럼 고정 통신망이 없는 곳에서 특히 쓰여요.", "Used especially where there's no fixed network — like V2X or disaster zones.")},
+         "small": ("Ad-hoc 라우팅은 V2X·재난 현장처럼 고정 통신망이 없는 곳에서 특히 쓰여요.", "Ad-hoc routing is used especially where there's no fixed network — like V2X or disaster zones.")},
     ],
     "summary": (("<b>Ad-hoc 라우팅</b> = 고정 우체국 없이, <b>집배원끼리 서로 봉투를 건네며</b> 그때그때 목적지까지 길을 잇는 방법.",
                  "<b>Ad-hoc routing</b> = chaining a path to the destination by having <b>carriers hand envelopes to each other</b>, with no fixed post office at all."),
@@ -82,7 +82,7 @@ PAGE = {
         ("홉(Hop)", "Hop", ("봉투가 몇 명을 거쳐가는지 세는 단위.", "A count of how many carriers an envelope passes through."), ("홉이 많을수록 길이 길어요.", "More hops means a longer path.")),
         ("V2X", "V2X", ("달리는 트럭끼리 주고받는 통신.", "The chatter between moving trucks themselves."), ('고정망 없이 움직이는 상황의 대표 사례예요. → <a href="v2x-ko.html">트럭끼리 주고받는 쪽지</a>', 'A flagship case of coordinating on the move without a fixed network. → <a href="v2x-en.html">the note trucks pass to each other</a>')),
         ("AMI(지능형 검침)", "AMI", ("계량기가 자동으로 값을 보고하는 망.", "The network where meters report readings automatically."), ('계량기끼리 서로 중계하며 보고하기도 해요. → <a href="ami-ko.html">계량기가 자동으로 편지를 보내는 망</a>', 'Meters sometimes relay through each other too. → <a href="ami-en.html">the network where meters mail their own readings</a>')),
-        ("회선교환·패킷교환", "Circuit vs Packet Switching", ("전용 도로냐, 조각내 보내기냐.", "A dedicated road, or splitting it into pieces."), ('Ad-hoc 라우팅은 조각내 보내는 방식 위에서 동작해요. → <a href="circuitpacket-ko.html">전용 도로냐, 조각내 보내기냐</a>', 'Ad-hoc routing runs on top of the piece-by-piece style. → <a href="circuitpacket-en.html">a dedicated road, or splitting it into pieces</a>')),
+        ("회선교환·패킷교환", "Circuit vs Packet Switching", ("전용 도로냐, 봉투를 조각내 보내기냐.", "A dedicated road, or splitting the envelope into pieces."), ('Ad-hoc 라우팅은 조각내 보내는 방식 위에서 동작해요. → <a href="circuitpacket-ko.html">전용 도로냐, 조각내 보내기냐</a>', 'Ad-hoc routing runs on top of the piece-by-piece style. → <a href="circuitpacket-en.html">a dedicated road, or splitting it into pieces</a>')),
         ("라우팅 테이블", "Routing Table", ("고정 우체국이 쓰는 길 안내판.", "The guide board a fixed post office relies on."), ("고정 우체국이 있을 땐 이 안내판이 더 단순한 방법이에요.", "With fixed post offices, this board is the simpler answer.")),
     ],
 }

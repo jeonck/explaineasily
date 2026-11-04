@@ -17,7 +17,7 @@ def flatscreen(x, y, s=1.0):
 P1 = svg(300, sky(300, ground=False)
          + flatscreen(120, 110, 1.0)
          + person(400, 170, s=0.85, face=FROWN, **VISITOR)
-         + bubble(440, 90, 230, 46, "⟦다 같이 모인 건데 왠지 따로 있는 것 같아요|we're all here, but it still feels like we're apart⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(440, 90, 230, 46, "⟦다 같이 모인 건데 왠지 따로 있는 것 같아요|we're all here, but it feels like we're apart⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦평면 화상회의 화면엔 '같이 있다'는 느낌이 없어요|a flat video-call screen has no sense of 'being together'⟧", 13, "var(--ink)"))
 
 # 2. 2D 화면은 공간감이 없어요

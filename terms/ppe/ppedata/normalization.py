@@ -26,7 +26,7 @@ MERGE_I = icon('<rect x="8" y="22" width="20" height="20" rx="3" fill="#2E8B57"/
 P3 = svg(340, sky(340)
          + person(380, 130, s=0.9, face=EYES, **SORTER)
          + box(260, 190, 0.8) + label(260, 230, "⟦주소 칸|address shelf⟧", 10, "var(--muted)")
-         + receipt(460, 190, 0.6, text="⟦번호표→주소칸|tag→address shelf⟧") + receipt(540, 190, 0.6, text="⟦번호표→주소칸|tag→address shelf⟧")
+         + receipt(530, 190, 0.6, text="⟦번호표→주소칸|tag→address shelf⟧") + receipt(650, 190, 0.6, text="⟦번호표→주소칸|tag→address shelf⟧")
          + label(380, 30, "⟦정규화 = 같은 정보는 선반 한 칸에 한 번만 적고, 전표는 번호표로 그 칸을 가리켜요|normalization = write shared info on one shelf once, and let receipts point to it by tag⟧", 13, "var(--ink)", cls="d")
          + label(380, 320, "⟦그래서 고객이 이사 가도 주소 칸 하나만 고치면 끝이에요|so when the customer moves, fixing that one address shelf is enough⟧", 12, "var(--muted)"))
 
@@ -49,7 +49,7 @@ P4 = svg(320, sky(320, ground=False)
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + box(190, 150, 1.0) + label(190, 210, "⟦정규화 = 주소가 안 어긋나지만 조인 많음|normalized: addresses stay in sync, but more joins⟧", 11, "var(--ink)")
          + box(540, 150, 1.0, twin=True) + label(570, 210, "⟦반정규화 = 조회는 빠르지만 복제본이 어긋날 수 있음|denormalized: fast reads, but copies can drift⟧", 11, "var(--ink)")
-         + label(380, 270, "⟦그래서 복제본을 동시에 고칠 때 부딪히지 않게 막는 규칙(병행제어)이 또 필요해요|so copies edited at once still need a no-collision rule (concurrency control)⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 270, "⟦그래서 복제본을 함께 맞추는 규칙과, 동시 수정을 막는 병행제어가 필요해요|so copies need a rule to stay in step, plus concurrency control for edits⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "normalization", "order": 1,
@@ -78,7 +78,7 @@ PAGE = {
          "small": ("표를 너무 잘게 나눠 조인이 많아지면 다시 합쳐요.", "If tables get so fine-grained that joins pile up, merge them back.")},
         {"svg": P5, "alt": ("왼쪽: 정규화는 안전하지만 조인이 많음. 오른쪽: 반정규화는 빠르지만 복제본이 어긋날 수 있음", "Left: normalized is safe but needs more joins. Right: denormalized is fast but copies can drift"),
          "caption": ("반정규화는 조회는 빠르지만 복제본이 어긋날 수 있어요.", "Denormalization makes reads fast, but copies can drift apart."),
-         "small": ("그래서 복제본을 동시에 고칠 때 부딪히지 않게 막는 규칙(병행제어)이 또 필요해요.", "So copies edited at once still need a no-collision rule (concurrency control).")},
+         "small": ("그래서 복제본을 함께 맞추는 규칙이 필요하고, 동시에 고칠 때 부딪히지 않게 막는 병행제어도 필요해요.", "So copies need a rule that keeps them in step, plus concurrency control so simultaneous edits don't collide.")},
     ],
     "summary": (("<b>정규화</b> = 같은 정보를 <b>한 곳에만 적고 번호표로 연결</b>해서 중복과 이상현상을 없애는 규칙, <b>반정규화</b>는 자주 같이 보는 정보를 일부러 다시 합쳐 조회를 빠르게 하는 것.",
                  "<b>Normalization</b> writes shared data in one place and links to it by key, removing duplication and anomalies. <b>Denormalization</b> deliberately re-merges frequently-read data for speed."),
@@ -90,8 +90,8 @@ PAGE = {
         ("이상현상(Anomaly)", "Anomaly", ("전표마다 주소가 달라지는 사고.", "Receipts ending up with different addresses."), ("삽입·갱신·삭제 세 종류가 있어요.", "Comes in insertion, update, and deletion kinds.")),
         ("함수적 종속성", "Functional Dependency", ("번호표 하나가 선반 한 칸을 정하는 규칙.", "The rule that one tag fixes one shelf slot."), ("정규화 단계를 가르는 기준이에요.", "The yardstick for each normal form.")),
         ("NoSQL 모델링", "NoSQL Modeling", ("선반 모양을 자유롭게 바꾸는 창고.", "A warehouse that freely changes shelf shape."), ('정규화 대신 조회 패턴에 맞춰 데이터를 담아요. → <a href="nosqltype-ko.html">자유로운 선반 창고</a>', 'Stores data to fit query patterns instead of normalizing. → <a href="nosqltype-en.html">the free-shelf warehouse</a>')),
-        ("병행제어", "Concurrency Control", ("동시에 전표를 쓸 때 부딪히지 않게 막는 규칙.", "Rules that stop simultaneous receipt edits from colliding."), ('반정규화된 복제본을 지킬 때 필요해요. → <a href="concurrency-ko.html">동시에 안 부딪히는 규칙</a>', 'Needed to protect denormalized copies. → <a href="concurrency-en.html">the no-collision rule</a>')),
+        ("병행제어", "Concurrency Control", ("동시에 전표를 쓸 때 부딪히지 않게 막는 규칙.", "Rules that stop simultaneous receipt edits from colliding."), ('복제본을 동시에 고칠 때 필요해요. → <a href="concurrency-ko.html">동시에 안 부딪히는 규칙</a>', 'Needed when copies are edited at the same time. → <a href="concurrency-en.html">the no-collision rule</a>')),
         ("트랜잭션", "Transaction", ("전표 한 장의 작업 단위.", "One receipt's unit of work."), ('ACID 네 가지 약속을 지켜요. → <a href="acid-ko.html">전표가 지키는 네 약속</a>', 'Keeps four ACID promises. → <a href="acid-en.html">the four promises a receipt keeps</a>')),
-        ("샤딩/파티셔닝", "Sharding/Partitioning", ("창고를 구역으로 쪼개는 것.", "Splitting the warehouse into zones."), ('정규화와는 다른 축의 \'나누기\'예요. → <a href="dbsharding-ko.html">구역으로 쪼갠 창고</a>', 'A different kind of splitting. → <a href="dbsharding-en.html">the warehouse split into zones</a>')),
+        ("샤딩/파티셔닝", "Sharding/Partitioning", ("창고를 구역으로 쪼개는 것.", "Splitting the warehouse into zones."), ('정규화와는 다른 축의 \'나누기\'예요. → <a href="dbsharding-ko.html">구역으로 쪼갠 창고</a>', 'A different kind of splitting from normalization. → <a href="dbsharding-en.html">the warehouse split into zones</a>')),
     ],
 }

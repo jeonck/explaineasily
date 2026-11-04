@@ -5,7 +5,7 @@ from _world import *
 P1 = svg(320, sky(320)
          + building(60, 50, 1.0)
          + person(320, 175, s=0.8, face=EYES, **TENANT, extra='')
-         + bubble(370, 70, 360, 64, "⟦우리도 이 건물에 입주해 비용을 아끼고 싶은데... 공공데이터를 맡겨도 될까요?|we want in too, to save money — but can we put public data here?⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(370, 70, 360, 64, "⟦이 건물에 입주해 비용을 아끼고 싶은데, 공공데이터를 맡겨도 될까요?|we want in too, to save money — but can we put public data here?⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 300, "⟦공공기관도 공유 건물에 들어가서 비용을 아끼고 싶어요|public agencies want to move into the shared building too, to save on cost⟧", 12, "var(--ink)"))
 
 # 2. 왜 어려운가: 아무 건물에나 입주하면 안 돼요 — 검증되지 않은 건물엔 위험해요
@@ -22,7 +22,7 @@ P3 = svg(340, sky(340)
          + office(320, 210, 0.95, label_text="⟦상등급: 민감정보|high grade: sensitive⟧")
          + office(440, 210, 0.95, label_text="⟦하등급: 일반업무|low grade: general⟧")
          + person(650, 236, s=0.75, face=EYES, **MANAGER)
-         + label(380, 30, "⟦검증된 건물의, 정해진 등급 칸에만 입주해요|move in only to a certified building, into the grade your data earns⟧", 14, "var(--ink)", cls="d")
+         + label(380, 30, "⟦공공기관은 검증된 건물의, 정해진 등급 칸에만 입주해요|move in only to a certified building, into the grade your data earns⟧", 14, "var(--ink)", cls="d")
          + label(380, 325, "⟦인증 건물·등급별 입주가 공공부문의 클라우드 조달·활용 규정이에요|certified building, matching grade: that's how the public sector adopts cloud⟧", 12, "var(--muted)"))
 
 # 4. 작동 디테일: 입주 전 절차 — 등급 분류 → 인증 확인 → 조달 → 입주 후 지속 점검
@@ -59,7 +59,7 @@ PAGE = {
          "caption": ("아무 건물에나 입주하면 공공데이터가 안전한지 아무도 보장 못 해요.", "Move into just any building, and nobody can vouch that public data is safe."),
          "small": ("검증 없는 건물은 공공데이터엔 너무 위험해요.", "An uncertified building is too risky for public data.")},
         {"svg": P3, "hero": True, "alt": ("체크마크가 붙은 CSAP 인증 건물 안에 상등급 민감정보 사무실과 하등급 일반업무 사무실이 나뉘어 있고 관리자가 지켜봄", "Inside a check-marked CSAP-certified building, a high-grade sensitive-data office and a low-grade general office sit apart, watched by a manager"),
-         "caption": ("검증된 건물의, 정해진 등급 칸에만 입주해요.", "Move in only to a certified building, into the grade your data earns."),
+         "caption": ("공공기관은 검증된 건물의, 정해진 등급 칸에만 입주해요.", "Move in only to a certified building, into the grade your data earns."),
          "small": ("인증 건물·등급별 입주가 공공부문의 클라우드 조달·활용 규정이에요.", "Certified building, matching grade: that's how the public sector procures and adopts cloud."),
          "tricks": (4, [
              (GRADE_I, ("데이터 등급부터 나눠요", "Classify the data's grade first"), ("상/중/하로요", "high / mid / low"), "calm"),

@@ -24,7 +24,7 @@ def flatscreen(x, y, s=1.0):
 P1 = svg(300, sky(300, ground=False)
          + photo(160, 100, 1.4)
          + person(480, 170, s=0.85, face=EYES, **DEMO)
-         + bubble(530, 90, 220, 46, "⟦사진만 봐서는 하나도 안 무서운데요?|just looking at a photo, it's not scary at all?⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(530, 90, 220, 46, "⟦높은 곳 사진만 봐서는 하나도 안 무서운데요?|a photo of a high place isn't scary, is it?⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦평면 사진으로는 '거기 있다'는 느낌이 안 나요|a flat photo gives no sense of actually being there⟧", 13, "var(--ink)"))
 
 # 2. 평면 화면은 몰입감을 못 줘요
@@ -69,7 +69,7 @@ PAGE = {
             "Virtual reality, told as a story about a booth where putting on a headset replaces your whole field of view with a virtual world."),
     "panels": [
         {"svg": P1, "alt": ("시연 담당자가 높은 곳 사진을 보며 하나도 안 무섭다고 말함", "A demonstrator looks at a photo of a high place and says it's not scary at all"),
-         "caption": ("사진만 봐서는 하나도 안 무서운데요?", "Just looking at a photo, it's not scary at all?"),
+         "caption": ("높은 곳 사진만 봐서는 하나도 안 무서운데요?", "Just looking at a photo of a high place, it's not scary at all?"),
          "small": ("평면 사진으로는 '거기 있다'는 느낌이 안 나요.", "A flat photo gives no sense of actually being there.")},
         {"svg": P2, "alt": ("커다란 평면 화면 한 대가 놓여 있지만 몰입감을 주지 못함", "A big flat screen sits there but fails to give any sense of immersion"),
          "caption": ("평면 화면을 훈련·교육에 쓰려 해도, 화면 밖은 그냥 교실이에요.", "Use a flat screen for training, and outside it you're still just in a classroom."),

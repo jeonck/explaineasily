@@ -18,7 +18,7 @@ def passstamp(x, y, s=1.0, ok=True):
 
 # 1. 이웃 나라마다 다른 문단속
 P1 = svg(320, sky(320)
-         + person(140, 160, s=0.8, **MERCHANT) + ledgerbook(140, 90) + label(140, 275, "⟦손님 장부를 이웃 성으로 옮기고 싶어요|wants to carry the guest ledger to a neighboring castle⟧", 11, "var(--muted)")
+         + person(140, 160, s=0.8, **MERCHANT) + ledgerbook(140, 90) + label(140, 275, "⟦손님 장부를 이웃 성으로 옮기고 싶어요|a merchant wants to take the guest ledger abroad⟧", 11, "var(--muted)")
          + small_castle(360, 90, 0.5) + label(440, 230, "⟦이웃 성 A|neighbor castle A⟧", 11, "var(--muted)")
          + small_castle(540, 90, 0.5) + label(620, 230, "⟦이웃 성 B|neighbor castle B⟧", 11, "var(--muted)")
          + label(380, 40, "⟦나라마다 국경 규칙이 다 달라요|every kingdom's border rule is different⟧", 13, "var(--ink)", cls="d"))
@@ -64,7 +64,7 @@ PAGE = {
          "tricks": (4, [
              (CHECK1_I, ("한 번만 검사해요", "Inspected just once"), ("독립 검사관이 확인해요", "by an independent inspector"), "calm"),
              (MAP_I, ("여러 나라에서 통해요", "Works across many kingdoms"), ("미리 동의한 곳들 전부에서요", "wherever the members pre-agreed")),
-             (OWNER_I, ("손님 것은 여전히 손님 것", "The guest's data is still the guest's"), ("손님 동의와 이용 목적은 그대로 지켜요", "the guest's consent and the stated purpose still apply"), "warm"),
+             (OWNER_I, ("손님 정보는 여전히 손님 것", "The guest's data is still the guest's"), ("손님 동의와 이용 목적은 그대로 지켜요", "the guest's consent and the stated purpose still apply"), "warm"),
              (PENALTY_I, ("규칙을 어기면 벌칙도 있어요", "Breaking the rules has a penalty"), ("통행증이 취소될 수 있어요", "the pass can be revoked")),
          ])},
         {"svg": svg(320, '<rect width="380" height="320" fill="var(--bad-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
@@ -73,7 +73,7 @@ PAGE = {
                     + label(190, 140, "⟦서류를 다시 내느라 느리고 비용이 커요|re-filing papers is slow and costly⟧", 11, "var(--bad)")
                     + label(570, 30, "⟦CBPR 인증 후|with CBPR⟧", 13, "var(--ink)", cls="d")
                     + label(570, 80, "⟦인증 한 번|certified once⟧", 11, "var(--ink)") + label(570, 110, "⟦회원국 모두가 인증을 인정|every member recognizes the certificate⟧", 11, "var(--ink)")
-                    + label(570, 140, "⟦손님 장부가 국경을 더 빨리 넘어요|the ledger crosses faster than with per-border papers⟧", 11, "var(--good)")
+                    + label(570, 140, "⟦손님 장부가 국경마다 서류 낼 때보다 빨리 넘어요|the ledger crosses faster than with per-border papers⟧", 11, "var(--good)")
                     + passstamp(190, 220, 1.1, ok=False) + passstamp(570, 220, 1.1, ok=True)
                     + label(380, 300, "⟦같은 국경, 나라들이 미리 합의했는지만 달라요|the same border — the difference is whether the kingdoms pre-agreed⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: CBPR 없이 국경마다 따로 느린 서류. 오른쪽: CBPR 인증 후 회원국 모두가 빠르게 인정", "Left: without CBPR, slow separate paperwork at every border. Right: with CBPR, every member recognizes it quickly"),
@@ -91,8 +91,8 @@ PAGE = {
     ],
     "summary": (("<b>CBPR</b> = 여러 이웃 나라가 <b>미리 인정하기로 한</b> 개인정보 이동 통행 증명. 독립 검사관이 <b>한 번</b> 검사하면, 가입국 <b>전부</b>에서 다시 안 물어봐요.",
                  "<b>CBPR</b> = a pass for moving personal data that several neighboring kingdoms <b>agreed in advance</b> to honor. An independent inspector checks <b>once</b>, and every member kingdom accepts it without asking again."),
-                ("CBPR, Cross-Border Privacy Rules. APEC(아시아태평양경제협력체)이 만든 개인정보 국외 이전 인증 제도예요. 기업이 책임 대리인(Accountability Agent)의 심사를 받아 CBPR 인증을 취득하면, 회원국 간 개인정보 이전 시 각국이 정한 보호 기준을 충족한 것으로 인정받아요. 다만 가입국 사이에서만 유효하고, 각 나라의 국내 개인정보 법은 별도로 지켜야 해요.",
-                 "CBPR, Cross-Border Privacy Rules — a cross-border data transfer certification created by APEC. A company that passes review by an Accountability Agent earns CBPR certification, which is then recognized as meeting each member country's protection standard when personal data moves between them. It is valid only among member economies, and each country's own domestic privacy law still applies on top.")),
+                ("CBPR, Cross-Border Privacy Rules. APEC(아시아태평양경제협력체)이 만든 개인정보 국외 이전 인증 제도예요. 기업이 책임 대리인(Accountability Agent)의 심사를 받아 CBPR 인증을 취득하면, 회원국 간 개인정보 이전 시 각국이 정한 보호 기준을 충족한 것으로 인정받아요. 다만 가입국 사이에서만 유효하고, 각 나라의 국내 개인정보 법은 별도로 지켜야 해요. 2022년에는 APEC 밖 나라도 참여할 수 있는 글로벌 CBPR 포럼이 따로 출범했고, 2025년부터 글로벌 CBPR 인증이 APEC 인증과 함께 운영돼요.",
+                 "CBPR, Cross-Border Privacy Rules — a cross-border data transfer certification created by APEC. A company that passes review by an Accountability Agent earns CBPR certification, which is then recognized as meeting each member country's protection standard when personal data moves between them. It is valid only among member economies, and each country's own domestic privacy law still applies on top. In 2022 a separate Global CBPR Forum opened participation beyond APEC, and since 2025 Global CBPR certification has run alongside the APEC one.")),
     "glossary": [
         ("CBPR", "Cross-Border Privacy Rules", ("여러 나라가 미리 인정한 통행 증명.", "A pass several kingdoms pre-agreed to honor."), ("APEC 회원국 간 개인정보 이전을 위한 인증 제도예요.", "A certification for moving personal data among APEC member economies.")),
         ("APEC", "APEC", ("CBPR을 만든 나라들의 모임.", "The group of kingdoms that created CBPR."), ("아시아태평양경제협력체. CBPR 제도의 틀을 만들었어요.", "Asia-Pacific Economic Cooperation — it built the CBPR framework.")),

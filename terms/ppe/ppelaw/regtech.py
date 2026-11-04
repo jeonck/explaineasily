@@ -38,7 +38,7 @@ P4 = svg(300, sky(300, ground=False)
                        "⟦2. 규칙판과 바로 대조하기|2. check them against the rule board right away⟧",
                        "⟦3. 기록이 규칙과 어긋나면 바로 알리기|3. flag any record that breaks a rule immediately⟧",
                        "⟦4. 최종 판단은 사람이 하기|4. a human still makes the final call⟧"), 1.0, hl=2)
-         + label(380, 288, "⟦기계가 위반 의심 건을 거르고, 사람이 최종 결정해요|the machine filters out suspected violations — a person decides⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 288, "⟦기계가 위반 의심 건을 골라내고, 사람이 최종 결정해요|the machine flags suspected violations — a person decides⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 레그테크도 모든 걸 다 잡아내진 못해요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
@@ -66,11 +66,11 @@ PAGE = {
              (COLLECT_I, ("자동으로 모으기", "Automatically gather"), ("흩어진 기록을 손대지 않고 모아요", "gathers scattered records without lifting a hand"), "calm"),
              (MATCH_I, ("규칙판과 바로 대조", "Check against the board right away"), ("사람보다 훨씬 빠르게 비교해요", "compares far faster than a person could"), "warm"),
              (ALERT_I, ("이상 신호 포착", "Flag anomalies"), ("어긋나면 바로 알려줘요", "flags a mismatch immediately")),
-             (HUMAN_I, ("최종 판단은 사람", "The final call is human"), ("기계가 위반 의심 건을 거르고, 사람이 결정해요", "the machine filters suspected violations, a person decides")),
+             (HUMAN_I, ("최종 판단은 사람", "The final call is human"), ("기계가 위반 의심 건을 골라내고, 사람이 결정해요", "the machine flags suspected violations, a person decides")),
          ])},
         {"svg": P4, "alt": ("레그테크가 기록 모으기 → 규칙판 대조 → 이상 신호 알림 → 사람의 최종 판단 네 단계로 이어진다는 기준표", "A board showing RegTech's four steps: gather records → check against the rule board → flag anomalies → a human's final call"),
          "caption": ("레그테크는 기록 모으기, 규칙 대조, 어긋남 알리기, 사람의 판단 — 네 단계를 거쳐요.", "RegTech works through four steps: gather records, check against the rules, flag mismatches, and leave the final call to a person."),
-         "small": ("기계가 위반 의심 건을 거르고, 사람이 최종 결정해요.", "The machine filters out suspected violations — a person decides.")},
+         "small": ("기계가 위반 의심 건을 골라내고, 사람이 최종 결정해요.", "The machine flags suspected violations — a person decides.")},
         {"svg": P5, "alt": ("왼쪽: 자동 검사기가 이미 아는 유형의 위반은 빠르게 잡아냄. 오른쪽: 선생님이 처음 보는 위반은 여전히 사람 몫이라고 말함", "Left: the automatic checker quickly catches known kinds of violations. Right: a teacher says a never-seen-before violation is still a human's job"),
          "caption": ("레그테크도 모든 위반을 다 잡아내진 못해요.", "RegTech can't catch every violation either."),
          "small": ("규칙을 만드는 것과, 지키는지 확인하는 것은 다른 일이에요.", "Making a rule and checking whether it's kept are two different jobs.")},

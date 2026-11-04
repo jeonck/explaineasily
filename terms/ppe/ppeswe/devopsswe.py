@@ -11,7 +11,7 @@ P1 = svg(300, sky(300, ground=False)
 
 # 2. 책임이 나뉘면 발견이 늦어져요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(220, 150, s=0.8, face=EYES, **WRITER) + bubble(120, 70, 200, 40, "⟦글만 잘 쓰면 제 할 일은 끝이죠|once the writing's good, my part's done⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + person(220, 150, s=0.8, face=EYES, **WRITER) + bubble(120, 70, 200, 40, "⟦글만 잘 쓰면 제 할 일은 끝이죠|once it's written, my part's done⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(560, 150, s=0.8, face=EYES, **PRINTER) + bubble(450, 70, 230, 40, "⟦저는 받은 대로 찍을 뿐이에요|I just print whatever I'm handed⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦각자 자기 몫만 생각하면, 문제는 맨 마지막에야 드러나요|each watching only their own part — problems surface only at the very end⟧", 12, "var(--ink)"))
 

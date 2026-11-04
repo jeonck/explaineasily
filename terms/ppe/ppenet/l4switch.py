@@ -6,7 +6,7 @@ P1 = svg(300, sky(300)
          + person(220, 130, s=0.85, face=EYES, **SORTER)
          + envelope(340, 130, 0.55, text="⟦12동네|Town 12⟧") + envelope(400, 160, 0.55, text="⟦12동네|Town 12⟧")
          + person(560, 180, s=0.6, face=FROWN, **RECEIVER) + person(620, 130, s=0.6, face=FROWN, **RECEIVER)
-         + label(380, 40, "⟦분류소 직원이 동네 이름만 보고 아무 창구로나 던져요|the sorter only reads the town name, then tosses it to any counter⟧", 12, "var(--ink)")
+         + label(380, 40, "⟦분류소 직원이 동네 이름만 보고 봉투를 아무 창구로나 던져요|the sorter only reads the town name, then tosses the envelope to any counter⟧", 12, "var(--ink)")
          + label(380, 270, "⟦같은 동네에도 '웹용' '메일용' 창구가 따로 있는데 봉투가 섞여버려요|the same town has separate counters for web vs mail — but the envelopes get mixed up⟧", 12, "var(--bad)"))
 
 # 2. 창구별로 처리 속도·중요도가 다른데 구분을 못 함
@@ -29,7 +29,7 @@ I4 = icon('<circle cx="32" cy="32" r="22" fill="none" stroke="var(--good)" strok
 
 # 4. L2/L3/L4 비교표 — 뭘 보고 나누는지
 P4 = svg(320, sky(320)
-         + routemap(60, 40, 640, 240, "⟦뭘 보고 나누나요|WHAT DOES IT READ⟧",
+         + routemap(60, 40, 640, 240, "⟦장비는 뭘 보고 나누나요|WHAT DOES EACH DEVICE READ⟧",
                     ("⟦L2 스위치 — 바로 옆 건물 번호(MAC)만 봐요|L2 switch — reads only the neighboring building's own tag (MAC)⟧",
                      "⟦L3 라우터 — 동네 이름(IP 주소)까지 봐요|L3 router — reads the town name (IP address) too⟧",
                      "⟦L4 스위치 — 창구 번호(포트)까지 보고 고르게 나눠요|L4 switch — reads the counter number (port) too, and spreads the load⟧",
@@ -49,7 +49,7 @@ PAGE = {
             "An L4 switch, told as a story about a sorter who reads the counter number too, not just the town name, when handing off packages."),
     "panels": [
         {"svg": P1, "alt": ("분류소 직원이 동네 이름만 보고 봉투를 아무 창구로나 던져 받는 사람들이 당황함", "A sorter reads only the town name and tosses envelopes to any counter, confusing the receivers"),
-         "caption": ("분류소 직원이 동네 이름만 보고 아무 창구로나 던져요.", "The sorter only reads the town name, then tosses the envelope to any counter."),
+         "caption": ("분류소 직원이 동네 이름만 보고 봉투를 아무 창구로나 던져요.", "The sorter only reads the town name, then tosses the envelope to any counter."),
          "small": ("같은 동네에도 용도별 창구가 따로 있는데 봉투가 섞여버려요.", "The same town has separate counters by purpose — but the envelopes get mixed up.")},
         {"svg": P2, "alt": ("봉투 두 개가 각각 다른 창구 번호를 가리키며 급함과 여유로움을 말함", "Two envelopes point to different counter numbers, one urgent, one not"),
          "caption": ("창구별로 처리 속도·중요도가 달라요.", "Different counters need different speed and priority."),

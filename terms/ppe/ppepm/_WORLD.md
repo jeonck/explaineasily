@@ -35,7 +35,7 @@
 | slug | 제목 |
 |---|---|
 | itinvesteval | 공연 끝난 뒤의 성적표 |
-| projrisk | 비 오는 날에도 챙기는 우산 |
+| projrisk | 비가 안 오는 날에도 챙기는 우산 |
 | slappe | 공연을 보장하는 티켓 |
 | negotiation | 조건을 조율해 서명하기 |
 | esgit | 환경·사회·투명성까지 챙기는 투어 |

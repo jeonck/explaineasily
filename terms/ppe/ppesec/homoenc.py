@@ -88,21 +88,21 @@ PAGE = {
          "small": ("같은 셈이지만, 보통 계산은 서기에게 금액이 보이고 동형암호는 열쇠 주인에게만 합계가 보여요.", "The same sum — but plain computation shows the amounts to the scribe, while homomorphic computation shows only the total, only to the key's owner.")},
         {"svg": svg(300, sky(300)
                     + person(160, 140, s=0.85, face=EYES, **SCRIBE) + card(230, 100, 90, 60, "")
-                    + label(160, 250, "⟦덧셈만 되는 간단한 버전도 있어요|a simpler kind does only addition⟧", 11, "var(--muted)")
+                    + label(160, 250, "⟦한 가지 연산만 되는 간단한 동형암호도 있어요|a simpler kind supports just one operation⟧", 11, "var(--muted)")
                     + person(560, 140, s=0.85, **VILLAGER2) + label(560, 250, "⟦더하기·곱하기 다 되는 버전은 덧셈 버전보다 훨씬 느려요|the add-and-multiply kind runs far slower than add-only⟧", 11, "var(--muted)")
                     + label(380, 280, "⟦클라우드에 맡긴 의료·금융 자료를 계산할 때 주로 써요|mostly used for computing on medical or financial data handed to the cloud⟧", 12, "var(--ink)", cls="d")),
-         "alt": ("부분 동형암호(덧셈만)와 완전 동형암호(덧셈+곱셈)를 비교", "Comparing partial homomorphic encryption (addition only) with fully homomorphic encryption (addition and multiplication)"),
-         "caption": ("종류에 따라 되는 셈이 다르고, 보통 계산보다 훨씬 느려요.", "Which math works depends on the type, and all of it is far slower than plain computation."),
+         "alt": ("부분 동형암호(한 가지 연산)와 완전 동형암호(덧셈+곱셈)를 비교", "Comparing partial homomorphic encryption (one operation) with fully homomorphic encryption (addition and multiplication)"),
+         "caption": ("동형암호는 종류에 따라 되는 셈이 다르고, 보통 계산보다 훨씬 느려요.", "Which math works depends on the type of homomorphic encryption, and all of it is far slower than plain computation."),
          "small": ('동형암호는 클라우드에 맡긴 의료·금융 자료를 계산할 때 주로 써요. 개인을 지키며 통계 내는 다른 방법도 있어요 → <a href="ppdm-ko.html">PPDM</a>',
                    'Homomorphic encryption is mostly used to compute on medical or financial data handed to the cloud. Other ways to mine statistics while protecting individuals exist too → <a href="ppdm-en.html">PPDM</a>')},
     ],
     "summary": (("<b>동형암호</b> = 편지를 <b>봉인한 채로</b> 더하거나 곱할 수 있는 암호. 계산하는 사람은 내용을 못 보고, <b>결과도 봉인된 채</b> 나와서 주인만 열 수 있어요.",
                  "<b>Homomorphic encryption</b> = a cipher that lets you add or multiply a letter <b>while it stays sealed</b>. Whoever computes never sees the content, and the <b>result comes out sealed too</b> — only the owner can open it."),
-                ("Homomorphic Encryption. 암호문 상태 그대로 연산해 같은 연산을 평문에 한 것과 같은 결과(암호문)를 얻는 암호 기법이에요. 덧셈만 지원하는 부분 동형암호(PHE, 예: Paillier)와 덧셈·곱셈을 모두 지원하는 완전 동형암호(FHE)로 나뉘고, 클라우드에 민감 데이터를 맡기고 계산시키되 내용은 숨기는 용도로 쓰여요. 연산 비용이 매우 커서 아직 제한적으로 쓰여요.",
-                 "A cryptographic technique that lets you operate directly on ciphertext and get a result that, once decrypted, matches applying the same operation to the plaintext. Partial homomorphic encryption (PHE, e.g. Paillier) supports addition only; fully homomorphic encryption (FHE) supports both addition and multiplication. It lets a cloud compute on sensitive data without ever seeing it, though the computational cost is still very high.")),
+                ("Homomorphic Encryption. 암호문 상태 그대로 연산해 같은 연산을 평문에 한 것과 같은 결과(암호문)를 얻는 암호 기법이에요. 덧셈이나 곱셈 중 한 가지만 지원하는 부분 동형암호(PHE, 예: 덧셈의 Paillier)와 덧셈·곱셈을 모두 지원하는 완전 동형암호(FHE)로 나뉘고, 클라우드에 민감 데이터를 맡기고 계산시키되 내용은 숨기는 용도로 쓰여요. 연산 비용이 매우 커서 아직 제한적으로 쓰여요.",
+                 "A cryptographic technique that lets you operate directly on ciphertext and get a result that, once decrypted, matches applying the same operation to the plaintext. Partial homomorphic encryption (PHE) supports just one operation, addition or multiplication (Paillier, for example, adds); fully homomorphic encryption (FHE) supports both addition and multiplication. It lets a cloud compute on sensitive data without ever seeing it, though the computational cost is still very high.")),
     "glossary": [
         ("동형암호", "Homomorphic encryption", ("봉인째로 셈이 되는 편지.", "A letter you can do math on while sealed."), ("암호문 그대로 연산해요. 결과를 복호화하면 평문 연산 결과와 같아요.", "You operate on the ciphertext itself. Decrypt the result, and it matches operating on the plaintext.")),
-        ("부분 동형암호(PHE)", "Partial HE", ("덧셈만 되는 간단한 버전.", "A simpler version that only adds."), ("더하기 한 가지 연산만 암호문 상태로 지원해요.", "Supports only one operation — addition — directly on ciphertext.")),
+        ("부분 동형암호(PHE)", "Partial HE", ("한 가지 연산만 되는 간단한 버전.", "A simpler version with one operation."), ("덧셈이나 곱셈 중 하나만 암호문 상태로 지원해요.", "Supports either addition or multiplication directly on ciphertext.")),
         ("완전 동형암호(FHE)", "Fully HE", ("더하기·곱하기 다 되는 버전.", "A version that both adds and multiplies."), ("부분 동형암호보다 훨씬 유연하지만 훨씬 느려요.", "Far more flexible than partial HE, but far slower too.")),
         ("암호문 연산", "Ciphertext computation", ("봉인된 채로 셈.", "Doing the math while it's sealed."), ("계산자는 내용을 몰라도 돼요.", "The one computing never needs to know the content.")),
         ("기밀 계산", "Confidential computing", ("계산하는 동안에도 자료를 숨기기.", "Hiding the data even while it's being computed on."), ("동형암호는 이 목표를 암호로 이루는 한 가지 방법이에요.", "Homomorphic encryption is one cryptographic way to reach this goal.")),

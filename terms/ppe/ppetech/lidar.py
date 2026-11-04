@@ -54,7 +54,7 @@ P4 = svg(320, sky(320)
 # 5. 한계 - 비·안개엔 약하고, 가격도 비싸요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
          + glyph(166, 110, 1.3, CLOUD3D_P)
-         + label(190, 250, "⟦맑은 날엔 아주 작은 오차로 거리를 재요|on a clear day it measures distance with tiny error⟧", 11, "var(--ink)")
+         + label(190, 250, "⟦맑은 날엔 LiDAR가 아주 작은 오차로 거리를 재요|on a clear day LiDAR measures distance with tiny error⟧", 11, "var(--ink)")
          + spinner(570, 150, 1.2)
          + label(570, 250, "⟦비·안개에 레이저가 흩어지고, 장비도 비싸요|rain and fog scatter the laser, and the gear is pricey⟧", 11, "var(--ink)")
          + label(380, 282, "⟦LiDAR는 거리를 정확히 재지만, 날씨와 가격이라는 벽은 남아 있어요|LiDAR measures distance precisely, but weather and cost remain real walls⟧", 12, "var(--ink)", cls="d"))

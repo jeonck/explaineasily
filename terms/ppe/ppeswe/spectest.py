@@ -5,7 +5,7 @@ from _world import *
 P1 = svg(300, sky(300)
          + person(380, 130, s=0.85, face=SWEAT, **PROOFER)
          + "".join(manuscript(120 + i * 90, 260, 0.45) for i in range(7))
-         + label(380, 30, "⟦나이 칸 하나에도 경우의 수가 수천 가지예요|just one age field has thousands of possible cases⟧", 13, "var(--ink)", cls="d")
+         + label(380, 30, "⟦나이 칸 하나에도 경우의 수가 셀 수 없이 많아요|just one age field has far too many possible cases⟧", 13, "var(--ink)", cls="d")
          + label(380, 292, "⟦다 검사하려면 교정자가 평생 걸려요|checking every single one would take a lifetime⟧", 12, "var(--bad)"))
 
 # 2. 입력 가짓수는 사실상 무한해요
@@ -38,7 +38,7 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("교정자가 땀을 흘리며 서 있고, 나이 칸 샘플 원고 일곱 뭉치가 늘어서 있음", "A sweating proofreader stands before seven sample manuscripts for just one age field"),
          "caption": ("모든 경우를 다 검사하려면 평생 걸려요.", "Checking every single case would take a lifetime."),
-         "small": ("나이 칸 하나에도 경우의 수가 수천 가지예요.", "Just one age field has thousands of possible values.")},
+         "small": ("나이 칸 하나에도 경우의 수가 셀 수 없이 많아요.", "Just one age field has far too many possible values.")},
         {"svg": P2, "alt": ("나이 칸에 넣을 수 있는 값이 -1부터 200까지 끝없이 이어지고, 교정자가 찡그리며 서 있음", "Possible values for an age field stretch endlessly from -1 to 200, while the proofreader frowns"),
          "caption": ("나이 칸에 넣을 수 있는 값의 가짓수는 사실상 무한해요.", "The number of values an age field could take is practically infinite."),
          "small": ("하나하나 다 넣어보는 건 애초에 불가능해요.", "Trying every single value just isn't possible.")},

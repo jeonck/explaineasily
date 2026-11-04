@@ -85,6 +85,6 @@ PAGE = {
         ("품질보증(QA/QC)", "QA/QC", ("교정자처럼 결함을 막고 찾아내는 일.", "Preventing and finding flaws, like a proofreader."), ("감리는 품질에 일정과 위험까지 더해 더 넓게 봐요.", "Audit adds schedule and risk on top of quality.")),
         ("형상관리", "Configuration Management", ("원고를 보관하는 서가.", "The shelf where manuscripts are kept."), ('감리가 점검하는 항목 중 하나예요. → <a href="scmshelf-ko.html">원고를 지키는 보관 서가</a>', "One of the things audit checks. → <a href=\"scmshelf-en.html\">the shelf that protects the manuscript</a>")),
         ("SLA", "SLA", ("관객에게 보장한 약속.", "The promise made to the audience."), ('다른 세계(IT관리)에서 자세히 다뤄요. → <a href="slappe-ko.html">공연 보장 티켓</a>', 'Covered in depth in another world (IT Mgmt). → <a href="slappe-en.html">the ticket that guarantees the show</a>')),
-        ("기능점수(FP)", "Function Point", ("매수 계산 자.", "The measuring ruler for page count."), ('감리가 규모를 가늠할 때 써요. → <a href="fpruler-ko.html">매수를 재는 자</a>', "Used by audit to gauge project size. → <a href=\"fpruler-en.html\">the ruler that measures page count</a>")),
+        ("기능점수(FP)", "Function Point", ("소프트웨어 규모를 재는 자.", "The ruler for measuring software size."), ('감리가 규모를 가늠할 때 써요. → <a href="fpruler-ko.html">쪽수 대신 기능을 재는 자</a>', "Used by audit to gauge project size. → <a href=\"fpruler-en.html\">the ruler that measures functions, not pages</a>")),
     ],
 }

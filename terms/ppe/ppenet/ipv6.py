@@ -63,7 +63,7 @@ PAGE = {
          "tricks": (4, [
              (LEN_I, ("훨씬 긴 주소", "A much longer address"), ("32비트에서 128비트로 늘었어요", "grew from 32 bits to 128 bits"), "calm"),
              (INF_I, ("거의 무한한 개수", "Practically endless count"), ("지구 모래알보다 많아요", "more addresses than grains of sand on Earth")),
-             (AUTO_I, ("자동 주소 할당", "Self-assigning addresses"), ("스스로 주소를 만들어 받기도 해요", "a device can generate its own address"), "warm"),
+             (AUTO_I, ("자동 주소 할당", "Self-assigning addresses"), ("기기가 스스로 주소를 만들어 받기도 해요", "a device can generate its own address"), "warm"),
              (BRIDGE_I, ("호환 작업 필요", "Needs compatibility work"), ("IPv4와 직접 통하지 않아 연결 작업이 필요해요", "can't talk directly to IPv4, so it needs a bridge")),
          ])},
         {"svg": P4, "alt": ("IPv4와 IPv6를 길이·개수·NAT 필요 여부·표기법으로 비교한 두 안내판", "Two boards comparing IPv4 and IPv6 by length, count, NAT need, and notation"),

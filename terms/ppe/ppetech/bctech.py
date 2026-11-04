@@ -27,7 +27,7 @@ def singleserver(x, y, s=1.0, cracked=False):
 P1 = svg(300, sky(300, ground=False)
          + singleserver(220, 160, 1.4, cracked=True)
          + person(380, 170, s=0.8, face=EYES, **DEMO)
-         + bubble(440, 90, 250, 50, "⟦여기 한 곳만 몰래 고치면 아무도 몰라요|just quietly edit this one spot and nobody knows⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(440, 90, 250, 50, "⟦여기 한 곳만 몰래 고치면 아무도 몰라요|quietly edit this one spot and nobody knows⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦중앙 장부는 서버 한 곳만 뚫리면 기록을 마음대로 바꿀 수 있어요|with a central ledger, one breached server lets anyone rewrite the records⟧", 13, "var(--bad)"))
 
 # 2. 블록체인은 블록마다 지문을 물고 있어요
@@ -39,7 +39,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--accent-soft)"/>'
 # 3. 블록체인 = 지문으로 이어진 장부 (hero)
 P3 = svg(340, sky(340, ground=False)
          + blockchain(110, 130, 4, 1.1, broken_at=1)
-         + label(380, 30, "⟦블록체인 = 블록마다 지문을 물고 있어, 몰래 고치면 들통나는 장부|Blockchain = a ledger of blocks holding each other's fingerprints, so tampering shows⟧", 13, "var(--ink)", cls="d")
+         + label(380, 30, "⟦블록체인 = 블록마다 이전 블록의 지문을 물고 있어, 몰래 고치면 들통나는 장부|Blockchain = a ledger where each block holds the last one's fingerprint, so tampering shows⟧", 13, "var(--ink)", cls="d")
          + label(380, 280, "⟦2번 블록을 고치자 3·4번 블록의 지문이 전부 안 맞아요|change block 2, and blocks 3 and 4's fingerprints no longer match⟧", 12, "var(--bad)")
          + label(380, 320, "⟦그래서 장부를 몰래 고치는 게 사실상 불가능해요|that's why quietly altering the ledger is practically impossible⟧", 12, "var(--muted)"))
 
@@ -74,11 +74,11 @@ PAGE = {
         {"svg": P1, "alt": ("시연 담당자가 중앙 서버 한 곳만 몰래 고치면 아무도 모른다고 말함", "A demonstrator says quietly editing just one central server goes unnoticed"),
          "caption": ("중앙 장부는 서버 한 곳만 뚫리면 기록을 마음대로 바꿀 수 있어요.", "With a central ledger, one breached server lets anyone rewrite the records."),
          "small": ("중앙 장부 한 곳만 고치면 아무도 몰라요.", "Quietly edit one central ledger, and nobody knows.")},
-        {"svg": P2, "alt": ("네 개의 블록이 서로의 지문(해시)을 물고 이어짐", "Four blocks, each holding the previous one's fingerprint (hash)"),
+        {"svg": P2, "alt": ("네 개의 블록이 저마다 이전 블록의 지문(해시)을 물고 이어짐", "Four blocks, each holding the previous one's fingerprint (hash)"),
          "caption": ("블록마다 이전 블록의 지문을 물고 있어요.", "Each block holds the previous block's fingerprint."),
          "small": ("블록 하나를 고치면 뒤 블록들의 지문이 전부 어긋나요.", "Change one block, and every fingerprint after it stops matching.")},
         {"svg": P3, "hero": True, "alt": ("두 번째 블록을 고치자 뒤 블록들의 지문이 전부 어긋남", "Editing the second block makes every later fingerprint mismatch"),
-         "caption": ("블록체인은 블록마다 지문을 물고 있어, 몰래 고치면 들통나는 장부예요.", "Blockchain is a ledger of blocks holding each other's fingerprints, so tampering shows."),
+         "caption": ("블록체인은 블록마다 이전 블록의 지문을 물고 있어, 몰래 고치면 들통나는 장부예요.", "Blockchain is a ledger where each block holds the previous block's fingerprint, so tampering shows."),
          "small": ("그래서 장부를 몰래 고치는 게 사실상 불가능해요.", "That's why quietly altering the ledger is practically impossible."),
          "tricks": (4, [
              (BC_HASH, ("해시로 연결하기", "Link by hash"), ("블록마다 앞 블록의 지문을 물어요", "each block holds the previous fingerprint"), "calm"),

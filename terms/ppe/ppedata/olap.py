@@ -11,7 +11,7 @@ P1 = svg(300, sky(300)
 
 # 2. 전표 처리 시스템은 한 건은 빠른데, 전체 집계는 느려요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(220, 150, s=0.75, face=SMILE, **PACKER) + receipt(280, 210, 0.5, text="⟦방금 상자 1개|just 1 box, right now⟧")
+         + person(220, 150, s=0.75, face=SMILE, **PACKER) + receipt(330, 200, 0.5, text="⟦방금 상자 1개|just 1 box, right now⟧")
          + label(220, 90, "✓ ⟦한 건은 빨라요|one record: fast⟧", 13, "var(--good)")
          + person(560, 130, s=0.75, face=FROWN, **MANAGER) + label(560, 250, "⟦1년치 전체 합계는?|but a whole year's total?⟧", 11, "var(--bad)")
          + label(560, 90, "✕ ⟦합계는 느려요|the total: slow⟧", 13, "var(--bad)")

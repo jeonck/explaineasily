@@ -12,7 +12,7 @@ def lift(x, y, s=1.0, occupied=False, label_text=None):
     c = "var(--bad)" if occupied else "var(--good)"
     out = f'<g transform="translate({x},{y}) scale({s})"><rect x="-30" y="0" width="60" height="8" fill="#5A3B22"/><rect x="-26" y="-50" width="8" height="50" fill="{c}"/><rect x="18" y="-50" width="8" height="50" fill="{c}"/>'
     if label_text:
-        out += label(0, -58, label_text, 11, "var(--ink)", cls="d")
+        out += label(0, -58, label_text, fit(11, s), "var(--ink)", cls="d")
     return out + '</g>'
 
 
@@ -27,7 +27,7 @@ def toolbox(x, y, s=1.0, label_text=None):
     """공구함(캐시 메모리)."""
     out = f'<g transform="translate({x},{y}) scale({s})"><rect x="-22" y="-16" width="44" height="30" rx="3" fill="#E9B44C"/><rect x="-22" y="-16" width="44" height="10" rx="3" fill="#C9822B"/>'
     if label_text:
-        out += label(0, 26, label_text, 10, "var(--muted)")
+        out += label(0, 16 + fit(10, s) * 0.85, label_text, fit(10, s), "var(--muted)")
     return out + '</g>'
 
 

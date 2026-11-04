@@ -72,8 +72,8 @@ PAGE = {
     "glossary": [
         ("QA(품질보증)", "Quality Assurance", ("편집 절차를 지켰는지 보는 일.", "Checking whether the editing process was followed."), ("예방에 가까워요.", "Closer to prevention.")),
         ("QC(품질관리)", "Quality Control", ("완성 원고를 직접 검사하는 일.", "Directly inspecting the finished manuscript."), ("검출에 가까워요.", "Closer to detection.")),
-        ("검증(Verification)", "Verification", ("\"제대로 만들었나\"를 보는 것.", "Checking \"did we build it right.\""), ("QA 쪽에 더 가까워요.", "Leans closer to QA.")),
-        ("확인(Validation)", "Validation", ("\"맞는 걸 만들었나\"를 보는 것.", "Checking \"did we build the right thing.\""), ("QC/테스트 쪽에 더 가까워요.", "Leans closer to QC and testing.")),
+        ("검증(Verification)", "Verification", ("\"제대로 만들었나\"를 보는 것.", "Checking \"did we build it right.\""), ("단계별 산출물을 명세와 대조해요.", "Compares each stage's output against its spec.")),
+        ("확인(Validation)", "Validation", ("\"맞는 걸 만들었나\"를 보는 것.", "Checking \"did we build the right thing.\""), ("완성품이 사용자 요구에 맞는지 봐요.", "Checks the result against what users need.")),
         ("결함(Defect)", "Defect", ("원고에 남은 오탈자.", "A typo left in the manuscript."), ("QC가 직접 찾아내는 대상이에요.", "What QC directly hunts for.")),
         ("ISO 9001", "ISO 9001", ("품질 경영 체계의 국제 표준.", "An international standard for quality management systems."), ("QA가 따르는 외부 기준 중 하나예요.", "One external standard QA can follow.")),
         ("정보시스템 감리/PMO", "IS Audit/PMO", ("여러 책의 품질과 일정을 함께 점검.", "Checking quality and schedule across many books at once."), ('QA보다 더 넓은 범위를 봐요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'Looks at an even wider scope than QA. → <a href="pmoaudit-en.html">the last checker before publication</a>')),

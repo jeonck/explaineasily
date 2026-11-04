@@ -94,7 +94,7 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("왼쪽은 '성의 일반 규칙' 두루마리, 오른쪽은 '손님정보 전용 수칙' 두루마리 — 후자는 법이 정한 세부 항목", "Left: the general castle rules scroll. Right: the guest-info-only rulebook — its items are set out by law"),
          "caption": ("내부관리계획은 성의 일반 규칙과는 다른 전용 두루마리예요.", "The internal management plan is a separate rulebook, apart from the castle's general rules."),
-         "small": ("그 항목은 개인정보보호법 시행령과 고시(안전성 확보조치 기준)가 정한 법적 의무예요.", "Its items are legal requirements set by the Personal Information Protection Act's enforcement decree and the safeguard-measures notice.")},
+         "small": ("내부관리계획의 항목은 개인정보보호법 시행령과 고시(안전성 확보조치 기준)가 정한 법적 의무예요.", "Its items are legal requirements set by the Personal Information Protection Act's enforcement decree and the safeguard-measures notice.")},
         {"svg": P5, "alt": ("왕이 수칙 두루마리 옆에서 '접속기록 좀 보여주시겠어요?'라고 묻고, 서기가 땀을 흘림", "Beside the rulebook, the king asks may I see the access logs? while the clerk sweats"),
          "caption": ("수칙 문서만 있고 안 지키면 소용없어요.", "A rulebook with nothing behind it is worthless."),
          "small": ('수칙이 글로만 있으면 종이예요 — 실제 접속기록으로 지켰음을 증명해야 해요. 검사관은 늘 <a href="compliance-ko.html">증거</a>부터 봐요.',

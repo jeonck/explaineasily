@@ -5,7 +5,7 @@ from _world import *
 P1 = svg(300, sky(300)
          + person(170, 170, s=0.8, face=SWEAT + EYES, **OPERATOR)
          + conveyor(60, 250, 220, 1.0) + produce(100, 230, 0.7) + produce(160, 230, 0.7)
-         + bubble(360, 80, 300, 50, "⟦이 작물이 합격인지 불합격인지, 미리 알려주는 정답표가 없어요|no answer key tells me pass or fail ahead of time⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(360, 80, 300, 50, "⟦이 작물이 합격인지 불합격인지 알려주는 정답표가 없어요|no answer key tells me pass or fail ahead of time⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦훈련 교사가 미리 보여준 예제 없이 조작원 혼자 판단해야 해요|no teacher-given examples — the operator has to judge alone⟧", 12, "var(--ink)"))
 
 # 2. 일단 던져보고, 보너스와 벌점으로 배워요
@@ -82,7 +82,7 @@ PAGE = {
     "glossary": [
         ("상태(State)", "State", ("지금 컨베이어 벨트 위의 상황.", "What's currently on the conveyor belt."), ("조작원이 행동을 고를 때 보는 정보예요.", "What the operator looks at before choosing an action.")),
         ("행동(Action)", "Action", ("어느 분류함에 던질지 고르는 것.", "Choosing which bin to toss into."), ("상태를 보고 조작원이 고르는 선택이에요.", "The choice the operator makes after seeing the state.")),
-        ("보상(Reward)", "Reward", ("맞으면 +점수, 틀리면 -점수.", "Plus points for right, minus for wrong."), ("행동이 좋았는지 나빴는지 알려주는 유일한 신호예요.", "The only signal telling it whether the action was good or bad.")),
+        ("보상(Reward)", "Reward", ("맞으면 +점수, 틀리면 -점수.", "Plus points for right, minus for wrong."), ("행동이 좋았는지 나빴는지 알려주는 유일한 신호예요.", "The only signal telling the operator whether the action was good or bad.")),
         ("정책(Policy)", "Policy", ("조작원이 몸에 익힌 요령 전체.", "The whole knack the operator has built up."), ("상태마다 어떤 행동을 할지 정하는 규칙이에요.", "The rule that decides what action to take in each state.")),
         ("탐험 vs 활용", "Exploration vs Exploitation", ("새 분류함을 시도할지, 늘 하던 대로 할지.", "Trying a new bin, or sticking with the usual one."), ("둘의 균형이 깨지면 학습이 멈추거나 헤매요.", "Lose the balance and learning stalls or wanders.")),
         ("RLHF", "RLHF", ("사람이 고른 쪽에 점수를 주는 특수한 강화학습.", "A special case where humans decide the score."), ('앵무새 세계에서 다루는 정렬 방법이에요. → <a href="alignment-ko.html">자세히 보기</a>', "Covered as an alignment method in the parrot world. → <a href=\"alignment-en.html\">see it in full</a>")),

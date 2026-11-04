@@ -90,7 +90,7 @@ PAGE = {
         ("K-평균(K-means)", "K-means", ("무리 개수를 미리 정하고 중심점으로 묶는 방법.", "Fixing the group count in advance and grouping by distance to a center."), ("둥근 모양의 무리를 잘 찾아요.", "Good at finding round-shaped groups.")),
         ("DBSCAN", "DBSCAN", ("밀도가 높은 곳을 무리로 보는 방법.", "Treating dense regions as groups."), ("무리 개수를 미리 안 정해도 되고, 소음도 걸러줘요.", "No fixed count needed, and it filters out noise too.")),
         ("중심점(centroid)", "Centroid", ("K-평균이 잡는 무리의 한가운데.", "The middle point K-means plants for each group."), ("이 점과의 거리로 소속 무리가 정해져요.", "Distance to this point decides which group something belongs to.")),
-        ("노이즈(소음)", "Noise", ("아무 무리에도 못 낀 점.", "A point that fits into no group."), ('무리에서 유난히 튀는 점과 이어지는 개념이에요. → <a href="aidataqual-ko.html">상한 씨앗으로 가르친 선별기</a>', 'Connects to the idea of a point that stands out from every group.')),
+        ("노이즈(소음)", "Noise", ("아무 무리에도 못 낀 점.", "A point that fits into no group."), ('무리에서 유난히 튀는 점과 이어지는 개념이에요. → <a href="outlier-ko.html">무리에서 유난히 튀는 작물</a>', 'Connects to the idea of a point that stands out from every group. → <a href="outlier-en.html">The Produce That Stands Out from the Crowd</a>')),
         ("로지스틱 회귀", "Logistic regression", ("정답 라벨로 미리 가르치는 지도학습 방법.", "A supervised method taught from answer labels up front."), ("군집분석과 정반대 출발점을 가진 이웃 방법이에요.", "A neighboring method that starts from the opposite assumption.")),
         ("차원 축소", "Dimensionality reduction", ("너무 많은 특징을 보기 좋게 줄이는 것.", "Trimming down too many features into something visible."), ("무리를 눈으로 확인하기 전에 흔히 먼저 거치는 단계예요.", "Often the step taken before a cluster can even be seen with the eye.")),
     ],

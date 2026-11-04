@@ -37,8 +37,8 @@ P4 = svg(320, sky(320, ground=False)
                       "⟦측정 지표 — 공연마다 로그 확인|metric — logged every show⟧",
                       "⟦위반 시 — 환불 10%|if missed — 10% refund⟧",
                       "⟦정기 리뷰 — 분기마다 재점검|review — re-checked quarterly⟧"), 1.0)
-         + '<g transform="translate(560,150) scale(1.7,1)">' + ticket(0, 0) + '</g>' + label(560, 154, "⟦기술적 신뢰성|technical uptime⟧", 10, "#142033")
-         + label(560, 220, "⟦보장 수치를 실제로 달성하는 기술은 따로 있어요|the tech that actually hits the guaranteed number is separate⟧", 11, "var(--muted)")
+         + '<g transform="translate(560,150) scale(1.7,1)">' + ticket(0, 0) + '</g>' + label(560, 154, "⟦기술적 신뢰성|technical reliability⟧", 10, "#142033")
+         + label(560, 220, "⟦보장 수치를 실제로 달성하는 기술은 티켓과 따로 있어요|the tech that hits the guaranteed number is separate from the ticket⟧", 11, "var(--muted)")
          + label(380, 300, "⟦SLM은 티켓에 적힌 조항을 계속 관리하는 과정이에요|SLM is the ongoing process of managing the terms written on the ticket⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 한계/차이: 이 티켓은 계약, 실제로 지켜내는 기술은 다른 세계
@@ -72,7 +72,7 @@ PAGE = {
         {"svg": P4, "alt": ('티켓 조항 체크리스트와, 보장 수치를 실제로 달성하는 기술을 뜻하는 또 다른 티켓', 'A checklist of ticket terms, next to another ticket standing for the tech that actually delivers that number'),
          "caption": ("티켓엔 보장 수준·측정·위반 조치·리뷰 주기가 적혀요.", "The ticket spells out the target, metric, penalty, and review cycle."),
          "small": ("SLM은 티켓에 적힌 조항을 계속 관리하는 과정이에요.", "SLM is the ongoing process of managing the terms written on the ticket.")},
-        {"svg": P5, "alt": ('왼쪽: 계약 조건을 적은 티켓. 오른쪽: 실제로 기술을 지켜내는 출연자', 'Left: a ticket with the contract terms written on it. Right: the performer who actually keeps the technical promise'),
+        {"svg": P5, "alt": ('왼쪽: 계약 조건을 적은 티켓. 오른쪽: 기술로 약속을 실제로 지켜내는 출연자', 'Left: a ticket with the contract terms written on it. Right: the performer who actually keeps the technical promise'),
          "caption": ("SLA 티켓은 계약이고, 그 약속을 실제로 지켜내는 기술은 별개의 주제예요.", "The SLA ticket is a contract — the tech that actually keeps its promise is a separate topic."),
          "small": ("계약(SLA/SLM)은 무엇을 약속할지, 기술적 신뢰성은 어떻게 지킬지를 다뤄요.", "The contract (SLA/SLM) covers what's promised; technical reliability covers how it's kept.")},
     ],

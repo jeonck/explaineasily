@@ -327,11 +327,11 @@ AI 보안 용어는 하나의 세계를 공유한다 — 주방은 AI 시스템,
 | GoF 디자인패턴 | 검증된 글쓰기 공식집 | [gofpattern-ko](docs/gofpattern-ko.html) | [gofpattern-en](docs/gofpattern-en.html) |
 | 마이크로서비스 아키텍처(MSA) | 두꺼운 책을 소책자들로 쪼개기 | [msa-ko](docs/msa-ko.html) | [msa-en](docs/msa-en.html) |
 | UML 다이어그램 작성 | 쓰기 전에 그리는 설계 지도 | [umldiagram-ko](docs/umldiagram-ko.html) | [umldiagram-en](docs/umldiagram-en.html) |
-| 기능점수(FP) | 매수를 재는 자 | [fpruler-ko](docs/fpruler-ko.html) | [fpruler-en](docs/fpruler-en.html) |
+| 기능점수(FP) | 쪽수 대신 기능을 재는 자 | [fpruler-ko](docs/fpruler-ko.html) | [fpruler-en](docs/fpruler-en.html) |
 | 소프트웨어 형상관리(SCM) | 원고를 지키는 보관 서가 | [scmshelf-ko](docs/scmshelf-ko.html) | [scmshelf-en](docs/scmshelf-en.html) |
 | MLOps/ModelOps | 자동 교정 기계 돌보기 | [mlops-ko](docs/mlops-ko.html) | [mlops-en](docs/mlops-en.html) |
 | SW 사업 대가산정 | 매수를 돈으로 바꾸는 계산 | [swcost-ko](docs/swcost-ko.html) | [swcost-en](docs/swcost-en.html) |
-| SW사업 영향평가 | 고치기 전에 그려보는 연결 지도 | [swimpact-ko](docs/swimpact-ko.html) | [swimpact-en](docs/swimpact-en.html) |
+| SW사업 영향평가 | 서점에 있는 책을 또 만들기 전에 | [swimpact-ko](docs/swimpact-ko.html) | [swimpact-en](docs/swimpact-en.html) |
 | 명세기반 테스트 설계기법 | 규칙서만 보고 고르는 대표 사례 | [spectest-ko](docs/spectest-ko.html) | [spectest-en](docs/spectest-en.html) |
 | DevOps | 담장을 허문 작가와 인쇄소 | [devopsswe-ko](docs/devopsswe-ko.html) | [devopsswe-en](docs/devopsswe-en.html) |
 | 개방형 API(Open API) | 서식 하나로 열어둔 열람실 | [openapi-ko](docs/openapi-ko.html) | [openapi-en](docs/openapi-en.html) |
@@ -542,7 +542,7 @@ AI 보안 용어는 하나의 세계를 공유한다 — 주방은 AI 시스템,
 | 용어 | 이야기 | 한글 | English |
 |---|---|---|---|
 | IT 투자성과 평가 | 공연 끝난 뒤의 성적표 | [itinvesteval-ko](docs/itinvesteval-ko.html) | [itinvesteval-en](docs/itinvesteval-en.html) |
-| 프로젝트 위험관리 | 비 오는 날에도 챙기는 우산 | [projrisk-ko](docs/projrisk-ko.html) | [projrisk-en](docs/projrisk-en.html) |
+| 프로젝트 위험관리 | 비가 안 오는 날에도 챙기는 우산 | [projrisk-ko](docs/projrisk-ko.html) | [projrisk-en](docs/projrisk-en.html) |
 | SLA/SLM | 공연을 보장하는 티켓 | [slappe-ko](docs/slappe-ko.html) | [slappe-en](docs/slappe-en.html) |
 | 협상에 의한 계약·제안서 평가 | 조건을 조율해 서명하기 | [negotiation-ko](docs/negotiation-ko.html) | [negotiation-en](docs/negotiation-en.html) |
 | ESG 경영과 IT | 환경·사회·투명성까지 챙기는 투어 | [esgit-ko](docs/esgit-ko.html) | [esgit-en](docs/esgit-en.html) |

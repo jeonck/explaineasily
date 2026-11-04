@@ -17,9 +17,9 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 
 # 3. 5G 핵심 = 상황별 전용 차선을 가진 배송망 (hero)
 P3 = svg(340, sky(340)
-         + postoffice(380, 110, 1.0, "⟦5G 분류소|5G core⟧")
+         + postoffice(380, 110, 1.0, "⟦5G 분류소|5G hub⟧")
          + truck(200, 250, 1.0, fast=True) + truck(380, 250, 1.0, fast=True) + truck(560, 250, 1.0, fast=True)
-         + label(380, 30, "⟦5G 핵심기술 = 상황별 전용 차선을 가진 배송망|5G core = a delivery network with dedicated lanes per need⟧", 14, "var(--ink)", cls="d")
+         + label(380, 30, "⟦5G 핵심기술 = 상황별 전용 차선을 가진 배송망|key 5G tech = a delivery network with dedicated lanes per need⟧", 14, "var(--ink)", cls="d")
          + label(380, 320, "⟦5G는 같은 도로를 차선으로 쪼개, 세 종류 소포가 서로 방해하지 않게 해요|5G splits one road into lanes so the three kinds of parcels don't get in each other's way⟧", 12, "var(--muted)"))
 
 I1 = icon('<rect x="8" y="26" width="48" height="24" rx="4" fill="var(--accent)"/><circle cx="20" cy="52" r="6" fill="#142033"/><circle cx="44" cy="52" r="6" fill="#142033"/>')
@@ -44,9 +44,9 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x
 PAGE = {
     "slug": "5gcore", "order": 13,
     "title": ("상황별 전용 차선을 가진 배송망", "The Delivery Network With a Lane for Every Need"),
-    "h1": ("<em>5G 이동통신 핵심기술</em>이 뭐예요?", "What is <em>5G Core Technology</em>?"),
+    "h1": ("<em>5G 이동통신 핵심기술</em>이 뭐예요?", "What is <em>Key 5G Technology</em>?"),
     "sub": ("5G 핵심기술을, 큰 짐·응급약·작은 소포마다 전용 차선을 깔아주는 배송망 이야기로 풀어봤어요.",
-            "5G core technology, told as a story about a delivery network that lays a dedicated lane for big boxes, urgent medicine, and tiny parcels alike."),
+            "Key 5G technology, told as a story about a delivery network that lays a dedicated lane for big boxes, urgent medicine, and tiny parcels alike."),
     "panels": [
         {"svg": P1, "alt": ("트럭 한 대가 온갖 종류의 택배로 밀려 있고 집배원이 땀을 흘림", "One truck is overloaded with every kind of package, and the carrier sweats"),
          "caption": ("택배 종류가 너무 많아요.", "There are too many kinds of packages."),
@@ -54,8 +54,8 @@ PAGE = {
         {"svg": P2, "alt": ("큰 짐은 속도를, 응급약은 즉시성을, 센서 소포는 숫자를 원한다고 말함", "The big box wants speed, the urgent medicine wants immediacy, the sensor parcel wants sheer numbers"),
          "caption": ("소포 종류마다 요구사항이 달라요.", "Each kind of package needs something different."),
          "small": ("큰 짐은 속도, 응급약은 즉시 도착, 센서 소포는 많은 개수를 원해요.", "Big boxes want speed, urgent medicine wants instant arrival, sensor parcels want huge numbers.")},
-        {"svg": P3, "hero": True, "alt": ("5G 분류소가 세 종류의 빠른 전용 트럭 차선으로 길을 나눔", "The 5G core splits the road into three dedicated fast lanes"),
-         "caption": ("5G 핵심기술 = 상황별 전용 차선을 가진 배송망이에요.", "5G core = a delivery network with a lane for every need."),
+        {"svg": P3, "hero": True, "alt": ("5G 분류소가 세 종류의 빠른 전용 트럭 차선으로 길을 나눔", "The 5G hub splits the road into three dedicated fast lanes"),
+         "caption": ("5G 핵심기술 = 상황별 전용 차선을 가진 배송망이에요.", "Key 5G tech = a delivery network with a lane for every need."),
          "small": ("5G는 같은 도로를 차선으로 쪼개, 세 종류 소포가 서로 방해하지 않게 해요.", "5G splits one road into lanes so the three kinds of parcels don't get in each other's way."),
          "tricks": (4, [
              (I1, ("eMBB", "eMBB"), ("큰 짐을 아주 빠르게", "very fast for big boxes")),
@@ -71,9 +71,9 @@ PAGE = {
          "small": ("5G는 4G보다 빠른 길을 깔아줄 뿐, 교통정리·길찾기는 다른 기술이 해요.", "5G just lays a road faster than 4G's — traffic control and routing are other technologies' jobs.")},
     ],
     "summary": (("<b>5G 핵심기술</b> = 큰 짐·응급·대량 소형 소포마다 <b>전용 차선(슬라이스)</b>을 깔아주는, 4G보다 빠른 배송망.",
-                 "<b>5G core technology</b> = a delivery network, faster than 4G, that lays a dedicated lane (slice) for big, urgent, and massive tiny-parcel traffic alike."),
+                 "<b>Key 5G technology</b> = a delivery network, faster than 4G, that lays a dedicated lane (slice) for big, urgent, and massive tiny-parcel traffic alike."),
                 ("5G 핵심기술은 eMBB(초고속·대용량), URLLC(초저지연·고신뢰), mMTC(대량 사물 연결)라는 세 가지 서비스 요구사항을, 네트워크 슬라이싱으로 하나의 물리망 위에서 논리적으로 분리해 동시에 만족시키는 기술이에요.",
-                 "5G core technology satisfies three service requirements — eMBB (ultra-fast, high-bandwidth), URLLC (ultra-low-latency, high-reliability), and mMTC (massive device connectivity) — at once, by logically splitting a single physical network through network slicing.")),
+                 "Key 5G technology satisfies three service requirements — eMBB (ultra-fast, high-bandwidth), URLLC (ultra-low-latency, high-reliability), and mMTC (massive device connectivity) — at once, by logically splitting a single physical network through network slicing.")),
     "glossary": [
         ("eMBB", "eMBB", ("대용량 짐 전용 빠른 차선.", "The fast lane for heavy, bulky traffic."), ("초고속 모바일 브로드밴드예요.", "Enhanced Mobile Broadband.")),
         ("URLLC", "URLLC", ("응급약 전용 즉시 차선.", "The instant lane for urgent traffic."), ("초저지연·초고신뢰 통신이에요.", "Ultra-Reliable Low-Latency Communication.")),

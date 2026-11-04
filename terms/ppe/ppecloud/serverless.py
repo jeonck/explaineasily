@@ -5,7 +5,7 @@ from _world import *
 P1 = svg(320, sky(320)
          + office(260, 150, 1.0, label_text="⟦1년 내내 비어있는 내 사무실|my office, empty almost all year⟧")
          + person(480, 175, s=0.8, face=FROWN, **TENANT)
-         + bubble(490, 60, 260, 60, "⟦한 시간 회의 하나 때문에 사무실을 통째로 빌려야 해요?|I need a whole office, just for a one-hour meeting?⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(490, 60, 260, 60, "⟦한 시간 회의 때문에 사무실을 통째로 빌려야 해요?|a whole office, just for a one-hour meeting?⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 300, "⟦가끔 쓰는 일 때문에 사무실 전체를 유지하긴 아까워요|keeping a whole office for something you use rarely feels wasteful⟧", 12, "var(--ink)"))
 
 # 2. 왜 어려운가: 안 쓸 때도 월세는 계속 나가요

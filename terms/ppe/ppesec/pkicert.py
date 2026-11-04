@@ -20,7 +20,7 @@ def idcard(x, y, s=1.0):
 # 1. 도장집이 딱 하나뿐이던 시절
 P1 = svg(340, sky(340)
          + sealshop(380, 160, 1.3)
-         + label(380, 40, "⟦나라가 정한 도장집이 딱 하나뿐이었어요|there used to be exactly one state-designated seal-shop⟧", 13, "var(--ink)", cls="d")
+         + label(380, 40, "⟦나라가 지정한 도장집만 특별한 대우를 받았어요|only state-designated seal-shops got special standing⟧", 13, "var(--ink)", cls="d")
          + person(170, 230, s=0.7, face=SMILE, **VILLAGER) + label(170, 320, "⟦빵 하나 사려 해도 여길 들러야 했어요|even to buy a loaf of bread, you had to stop here first⟧", 10, "var(--muted)")
          + person(600, 230, s=0.7, face=SMILE, **VILLAGER) + label(600, 320, "⟦나라 서류 내려 해도 똑같이요|same, even to file a government paper⟧", 10, "var(--muted)"))
 
@@ -29,7 +29,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(220, 150, s=0.85, face=FROWN + SWEAT, **VILLAGER)
          + bubble(50, 40, 320, 50, "⟦도장을 특별한 상자에 담아 다녀야 하고, 다른 성엔 못 써요|the seal rides in a special box and fails at other castles⟧", 10, "var(--panel)", "var(--line)", "bottom")
          + sealshop(560, 160, 1.1)
-         + label(380, 282, "⟦불편해도 법이 그 도장집만 쓰라고 정해뒀어요|inconvenient as it was, the law said only that one shop counted⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦불편해도 법은 나라가 지정한 도장집을 특별 대우했어요|inconvenient as it was, the law favored the state-designated shops⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 법이 바뀌어 도장집이 여럿 생겼어요 (hero)
 P3 = svg(340, sky(340)
@@ -51,9 +51,9 @@ PAGE = {
     "sub": ("공인인증서와 사설(민간) 인증서를, 나라가 정한 도장집이 하나뿐이던 시절과 여럿이 된 지금을 비교하는 이야기로 풀어봤어요.",
             "Accredited (공인) vs. private (사설) certificates, told as a story comparing the days of one state-designated seal-shop with today's many."),
     "panels": [
-        {"svg": P1, "alt": ("나라가 정한 도장집이 성 한가운데 딱 하나 있고, 빵을 사거나 서류를 내려는 손님 모두 이곳을 거쳐야 함", "A single state-designated seal-shop sits at the center of the castle, and every villager — whether buying bread or filing a paper — must pass through it"),
-         "caption": ("도장집이 딱 하나뿐이던 시절이 있었어요.", "There used to be exactly one state-designated seal-shop."),
-         "small": ("공인인증서. 전자서명을 하려면 법이 정한 이 도장집만 써야 했어요.", "The 공인인증서 (accredited certificate). To sign anything electronically, the law said this one shop was the only option.")},
+        {"svg": P1, "alt": ("나라가 지정한 도장집이 성 한가운데 있고, 빵을 사거나 서류를 내려는 손님 모두 이곳을 거쳐야 함", "A state-designated seal-shop sits at the center of the castle, and every villager — whether buying bread or filing a paper — must pass through it"),
+         "caption": ("나라가 지정한 도장집만 특별 대우를 받던 시절이 있었어요.", "There was a time when only state-designated seal-shops got special standing."),
+         "small": ("공인인증서. 법은 나라가 지정한 도장집들이 찍어준 도장에만 더 강한 효력을 줬어요.", "The 공인인증서 (accredited certificate). The law gave stronger effect only to seals from the state-designated shops.")},
         {"svg": P2, "alt": ("손님이 땀 흘리며 도장을 특별한 상자에 담아 다녀야 하고 다른 성엔 못 쓴다고 불평함", "A sweating villager complains that the seal must ride in a special box and fails at other castles"),
          "caption": ("인증서가 복잡하고 불편해도 다른 길이 없었어요.", "The certificate was inconvenient, but there was no other option."),
          "small": ("인증서를 특별한 상자(보안 프로그램)에 담아 들고 다녀야 했고, 다른 컴퓨터로 옮기기도 번거로웠어요.", "The certificate had to be carried around in a special box (security software), and moving it to another computer was a hassle.")},
@@ -69,12 +69,12 @@ PAGE = {
          ])},
         {"svg": svg(320, '<rect width="380" height="320" fill="var(--bad-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
                     + label(190, 30, "⟦2020년 이전|before 2020⟧", 13, "var(--ink)", cls="d")
-                    + label(190, 80, "⟦공인인증서 하나만 법적 효력|only the accredited certificate counted⟧", 11, "var(--ink)") + label(190, 110, "⟦특정 보안 프로그램 강제|a specific security program was mandatory⟧", 11, "var(--ink)")
+                    + label(190, 80, "⟦공인인증서만 더 강한 법적 효력|only the accredited certificate got stronger legal effect⟧", 11, "var(--ink)") + label(190, 110, "⟦특정 보안 프로그램 강제|a specific security program was mandatory⟧", 11, "var(--ink)")
                     + label(570, 30, "⟦2020년 이후|after 2020⟧", 13, "var(--ink)", cls="d")
                     + label(570, 80, "⟦여러 민간 인증서가 동등한 효력|many private certificates carry equal effect⟧", 11, "var(--ink)") + label(570, 110, "⟦앱 하나로 간편 인증 가능|simple app-based authentication is enough⟧", 11, "var(--ink)")
                     + idcard(190, 220) + idcard(570, 220)
                     + label(380, 290, "⟦신분증 자체는 그대로, 발급하는 곳이 늘었을 뿐이에요|the ID card itself didn't change — only who may issue it did⟧", 12, "var(--ink)", cls="d")),
-         "alt": ("왼쪽: 2020년 이전엔 공인인증서만 법적 효력. 오른쪽: 2020년 이후엔 여러 민간 인증서가 동등한 효력", "Left: before 2020, only the accredited certificate had legal effect. Right: after 2020, many private certificates carry equal effect"),
+         "alt": ("왼쪽: 2020년 이전엔 공인인증서만 더 강한 법적 효력. 오른쪽: 2020년 이후엔 여러 민간 인증서가 동등한 효력", "Left: before 2020, only the accredited certificate had stronger legal effect. Right: after 2020, many private certificates carry equal effect"),
          "caption": ("2020년 법 개정 전과 후를 나란히 보면 이래요.", "Before and after the 2020 amendment, side by side."),
          "small": ("신분증(인증서) 자체의 구조는 그대로예요. 달라진 건 누가 발급할 수 있느냐예요.", "The ID card (the certificate) itself is structurally unchanged — what changed is who's allowed to issue one.")},
         {"svg": svg(320, sky(320)
@@ -86,8 +86,8 @@ PAGE = {
          "small": ('도장을 실제로 찍고 확인하는 방식은 그대로 <a href="pki-ko.html">PKI</a>예요. → <a href="pki-ko.html">왕의 도장이 찍힌 신분증</a>',
                    'The actual mechanism for stamping and checking the seal is still plain old <a href="pki-en.html">PKI</a>. → <a href="pki-en.html">the badge with the king\'s seal</a>')},
     ],
-    "summary": (("과거엔 <b>공인인증서</b> 하나만 법적 효력이 있는 도장집이었지만, <b>2020년 전자서명법 개정</b>으로 그 특혜가 사라지고 여러 <b>사설(민간) 인증서</b>가 <b>동등한 법적 효력</b>을 갖게 됐어요.",
-                 "There used to be only one seal-shop with legal effect — the <b>accredited certificate</b> — but the <b>2020 amendment to the Digital Signature Act</b> ended that privilege, giving several <b>private certificates</b> <b>equal legal standing</b>."),
+    "summary": (("과거엔 나라가 지정한 기관이 발급한 <b>공인인증서</b>만 더 강한 법적 효력을 가졌지만, <b>2020년 전자서명법 개정</b>으로 그 특혜가 사라지고 여러 <b>사설(민간) 인증서</b>가 <b>동등한 법적 효력</b>을 갖게 됐어요.",
+                 "Only the <b>accredited certificate</b>, issued by state-designated authorities, used to carry stronger legal effect, but the <b>2020 amendment to the Digital Signature Act</b> ended that privilege, giving several <b>private certificates</b> <b>equal legal standing</b>."),
                 ("공인인증서는 1999년 전자서명법 제정 이후 정부가 지정한 공인인증기관만 발급할 수 있었고, 민간 전자서명보다 높은 법적 추정력을 가졌어요. 2020년 전자서명법 전부개정으로 이 특별한 지위가 폐지되고, 기존 공인인증서는 '공동인증서'라는 이름으로 남아 카카오페이·PASS·네이버 등 다른 사설인증과 동등한 효력을 갖게 됐어요. 기술적으로는 공인·사설 모두 PKI(공개키 기반 구조)를 쓰며, 달라진 건 법적 지위일 뿐이에요.",
                  "After the 1999 Digital Signature Act, only government-designated accredited certificate authorities could issue a 공인인증서, which carried a stronger legal presumption than private electronic signatures. The 2020 full revision of the Act abolished that special status; the old certificate survives as the renamed '공동인증서' (Joint Certificate), now standing on equal legal footing with other private certificates like KakaoPay, PASS, and Naver. Technically, both accredited and private certificates run on PKI (Public Key Infrastructure) — what changed was the legal status, not the cryptography.")),
     "glossary": [

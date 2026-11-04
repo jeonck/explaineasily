@@ -59,7 +59,7 @@ PAGE = {
          "caption": ("돈을 더 낸 학생이 급식 줄에서 새치기하려고 해요.", "A student who paid extra is trying to cut the lunch line."),
          "small": ("그 학생은 돈을 더 내면 먼저 갈 수 있다고 주장해요.", "That student claims paying more means going first.")},
         {"svg": P2, "alt": ("돈 낸 학생만 빨라지고 나머지는 계속 뒤로 밀림", "Only the paying student speeds up; everyone else keeps getting pushed back"),
-         "caption": ("돈 낸 학생에겐 편해도, 결국 줄 전체가 불공평해져요.", "It's convenient for whoever pays, but the whole line ends up unfair."),
+         "caption": ("새치기는 돈 낸 학생에겐 편해도, 결국 줄 전체가 불공평해져요.", "Cutting in is convenient for whoever pays, but the whole line ends up unfair."),
          "small": ("한 번 새치기를 봐주면, 돈 없는 학생은 늘 손해예요.", "Allow one cut, and students without money always lose out.")},
         {"svg": P3, "hero": True, "alt": ("선생님이 모든 학생을 같은 순서로 줄 세움", "A teacher lines up every student in the same, fair order"),
          "caption": ("망중립성은 통신사가 누구 데이터든 차별 없이 같은 속도로 보내는 원칙이에요.", "Net neutrality is the rule that a carrier moves everyone's data at the same speed, no favorites."),

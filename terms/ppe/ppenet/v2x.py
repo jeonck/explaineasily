@@ -28,7 +28,7 @@ I4 = icon('<rect x="10" y="30" width="24" height="16" rx="3" fill="var(--accent)
 
 # 4. V2X 네 종류 — 누구와 주고받는지
 P4 = svg(320, sky(320)
-         + routemap(60, 40, 640, 240, "⟦누구와 쪽지를 주고받나요|WHO DOES IT TALK TO⟧",
+         + routemap(60, 40, 640, 240, "⟦트럭은 누구와 쪽지를 주고받나요|WHO DOES THE TRUCK TALK TO⟧",
                     ("⟦V2V — 트럭끼리, 급정거·속도를 바로 공유해요|V2V — truck to truck, sharing braking and speed instantly⟧",
                      "⟦V2I — 신호등 같은 시설과, 신호 시간을 미리 알아요|V2I — truck to infrastructure like signals, knowing timing ahead⟧",
                      "⟦V2P — 보행자와, 가까이 오면 서로 알려줘요|V2P — truck to pedestrian, alerting each other when close⟧",
@@ -79,7 +79,7 @@ PAGE = {
         ("V2P", "V2P", ("보행자와 주고받는 쪽지.", "The note exchanged with a pedestrian."), ("가까이 오면 서로 알려줘요.", "Alerts both sides when they get close.")),
         ("V2N", "V2N", ("통신망 전체와 주고받는 쪽지.", "The note exchanged with the whole network."), ("눈앞 너머 먼 곳 정보까지 받을 수 있어요.", "Reaches information from well beyond what's nearby.")),
         ("저지연(URLLC)", "Low Latency (URLLC)", ("응급 전용 즉시 차선.", "The instant lane reserved for emergencies."), ('V2X가 기대는 5G의 핵심 기술이에요. → <a href="5gcore-ko.html">상황별 전용 차선을 가진 배송망</a>', 'A core 5G technology that V2X relies on. → <a href="5gcore-en.html">the network with a lane for every need</a>')),
-        ("Ad-hoc 라우팅", "Ad-hoc Routing", ("고정 우체국 없이 서로 길을 찾는 법.", "Finding the way among themselves, with no fixed post office."), ('고정망이 먼 곳에서 트럭끼리 길을 잇는 방식이에요. → <a href="adhocrouting-ko.html">집배원끼리 길을 찾아 전달하는 법</a>', "How trucks link up directly, far from fixed infrastructure. → <a href=\"adhocrouting-en.html\">how carriers find the way among themselves</a>")),
+        ("Ad-hoc 라우팅", "Ad-hoc Routing", ("고정 우체국 없이 집배원끼리 길을 찾는 법.", "How carriers find the way among themselves, with no fixed post office."), ('고정망이 먼 곳에서 트럭끼리 길을 잇는 방식이에요. → <a href="adhocrouting-ko.html">집배원끼리 길을 찾아 전달하는 법</a>', "How trucks link up directly, far from fixed infrastructure. → <a href=\"adhocrouting-en.html\">how carriers find the way among themselves</a>")),
         ("AMI(지능형 검침)", "AMI", ("계량기가 자동으로 값을 보고하는 망.", "The network where meters report readings automatically."), ('비슷하게 사물끼리 자동으로 소식을 주고받는 예시예요. → <a href="ami-ko.html">계량기가 자동으로 편지를 보내는 망</a>', 'A similar example of things auto-reporting to each other. → <a href="ami-en.html">the network where meters mail their own readings</a>')),
         ("자율주행 센서", "Autonomous Sensors", ("트럭 스스로 눈앞의 길만 보는 장치.", "The device by which a truck sees only the road right ahead."), ("V2X는 이 눈이 못 보는 곳까지 알려주는 보완재예요.", "V2X complements this by covering what the truck's own eyes can't see.")),
     ],

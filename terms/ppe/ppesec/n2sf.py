@@ -15,7 +15,7 @@ def checkpost(x, y, s=1.0):
             '<path d="M-24 -6 L0 -26 L24 -6 Z" fill="var(--good)"/></g>')
 
 
-def grade_castle(x, y, s=1.0, grade=1, color="var(--bad)"):
+def grade_castle(x, y, s=1.0, grade="C", color="var(--bad)"):
     return (f'<g transform="translate({x},{y}) scale({s})"><rect x="-50" y="0" width="100" height="70" fill="var(--stone-dark)"/>'
             f'{battlements(-50, -20, 100, 3, "var(--stone-dark)")}<path d="M-16 70 V40 a16 16 0 0 1 32 0 V70 Z" fill="var(--night)"/>'
             f'<circle cx="40" cy="-6" r="16" fill="{color}"/>' + label(40, -1, str(grade), 16, "#FFF", cls="d") + "</g>")
@@ -38,7 +38,7 @@ def box(x, y, w, h, title, rows, size=11):
 # 1. 나라의 모든 성이 다리를 아예 끊었어요
 P1 = svg(300, sky(300)
          + f'<rect x="320" y="150" width="200" height="110" fill="{WATER}" opacity="0.5"/>'
-         + castle(20, 70, 0.6) + label(140, 190, "⟦공공기관 성|a public-sector castle⟧", 11, "var(--muted)")
+         + castle(20, 70, 0.6) + label(140, 212, "⟦공공기관 성|a public-sector castle⟧", 11, "var(--muted)")
          + no_bridge(330, 195) + label(420, 130, "⟦다리가 없어요|no bridge at all⟧", 13, "var(--bad)", cls="d")
          + cloud(600, 90, 1.1) + label(600, 140, "⟦클라우드|the cloud⟧", 11, "var(--muted)")
          + label(380, 280, "⟦도둑도 못 오지만, 바깥 도구도 전혀 못 써요|no thief can get in — but no outside tool can either⟧", 13, "var(--ink)"))
@@ -52,13 +52,13 @@ P2 = svg(280, '<rect width="760" height="280" fill="var(--accent-soft)"/>'
 
 # 3. N2SF = 다리는 다시 놓되, 검문소를 촘촘히 (hero)
 P3 = svg(340, sky(340)
-         + grade_castle(110, 120, 0.8, 1, "var(--bad)") + label(110, 230, "⟦1등급|grade 1⟧", 11, "var(--muted)")
+         + grade_castle(110, 120, 0.8, "C", "var(--bad)") + label(110, 230, "⟦C(기밀) 등급|C: classified⟧", 11, "var(--muted)")
          + '<path d="M190 230 h70" stroke="#8B5E3C" stroke-width="10" stroke-linecap="round"/>' + checkpost(230, 205, 0.6)
-         + grade_castle(330, 140, 0.6, 2, "var(--accent)") + label(330, 215, "⟦2등급|grade 2⟧", 10, "var(--muted)")
+         + grade_castle(330, 140, 0.6, "S", "var(--accent)") + label(330, 215, "⟦S(민감) 등급|S: sensitive⟧", 10, "var(--muted)")
          + '<path d="M380 215 h70" stroke="#8B5E3C" stroke-width="10" stroke-linecap="round"/>' + checkpost(420, 195, 0.55)
          + cloud(560, 110, 1.0)
          + label(380, 30, "⟦N2SF = 다리는 놓되, 다리 위 검문소를 촘촘히 세워요|N2SF = rebuild the bridge, but line it with checkpoints, one after another⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦중요도별로 성 등급도 나눠요|castles are also graded by how critical they are⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦장부를 기밀(C)·민감(S)·공개(O)로 나눠 통제를 달리해요|ledgers are graded C, S, or O, with controls to match⟧", 12, "var(--muted)"))
 
 # 4. 비교표
 P4 = svg(300, sky(300)
@@ -91,10 +91,10 @@ PAGE = {
          "small": ("다리를 다시 놓자니 도둑이 걱정이에요.", "Rebuild the bridge, and the old worry about thieves comes right back.")},
         {"svg": P3, "hero": True, "alt": ("등급이 다른 두 성 사이 다리마다 검문소가 줄지어 서 있고, 그 너머에 구름 모양 클라우드가 있음", "Checkpoints line the bridges between castles of different grades, with a cloud shape beyond them"),
          "caption": ("N2SF는 다리는 다시 놓되, 다리 위 검문소를 촘촘히 세우는 거예요.", "N2SF rebuilds the bridge, but lines it with checkpoints, one after another."),
-         "small": ("중요도별로 성 등급도 나눠서, 등급에 맞게 통제 수준을 다르게 해요.", "Castles are also graded by how critical they are, with controls matched to each grade."),
+         "small": ("장부를 기밀(C)·민감(S)·공개(O) 세 등급으로 나눠, 등급에 맞게 통제 수준을 다르게 해요.", "Ledgers are graded classified (C), sensitive (S), or open (O), with controls matched to each grade."),
          "tricks": (4, [
              (icon('<circle cx="32" cy="24" r="16" fill="none" stroke="var(--bad)" stroke-width="4"/>' + label(32, 29, "1", 14, "var(--bad)", cls="d")),
-              ("등급별로 성을 나눠요", "Castles are graded"), ("중요도에 따라 통제 수준이 달라요", "control level matches how critical it is"), "warm"),
+              ("장부를 C·S·O로 나눠요", "Ledgers get a C, S, or O grade"), ("등급에 따라 통제 수준이 달라요", "the control level matches the grade"), "warm"),
              (icon('<path d="M10 40 h44" stroke="#8B5E3C" stroke-width="6"/><path d="M22 40 V26 L32 16 L42 26 V40" fill="var(--good)"/>'),
               ("다리는 놓되 검문소 촘촘히", "Bridge rebuilt, checkpoints everywhere"), ("구간마다 다시 확인해요", "re-checked section by section"), "calm"),
              (icon('<ellipse cx="20" cy="36" rx="16" ry="11" fill="none" stroke="var(--accent)" stroke-width="3"/><ellipse cx="40" cy="30" rx="18" ry="13" fill="none" stroke="var(--accent)" stroke-width="3"/>'),
@@ -110,17 +110,17 @@ PAGE = {
          "caption": ("N2SF 전환은 아직 초기 단계예요.", "The switch to N2SF is still in its early days."),
          "small": ("모든 공공기관이 다 바꾸진 않았고, 등급 기준도 아직 다듬는 중이에요.", "Not every public-sector castle has switched yet, and the grading criteria themselves are still being refined.")},
     ],
-    "summary": (("<b>N2SF</b> = 다리를 <b>아예 끊는</b> 대신, <b>등급별로 성을 나누고</b> 다리 위에 <b>검문소를 촘촘히</b> 세우는 나라의 새 망 보안 틀.",
-                 "<b>N2SF</b> = the nation's new network security framework — instead of <b>cutting the bridge entirely</b>, it <b>grades castles by criticality</b> and lines the bridge with <b>checkpoints, one after another</b>."),
-                ("N2SF(국가 망 보안체계, National Network Security Framework)는 국가정보원이 추진하는 공공부문 망 보안체계로, 기존의 물리적 망분리 중심 정책을 등급제와 제로 트러스트 기반의 논리적 망분리로 전환하는 것을 핵심으로 해요. 업무 중요도에 따라 보안 등급을 나누고, 등급에 맞는 통제를 적용해 공공기관도 클라우드 등 외부 서비스를 활용할 수 있게 하는 게 목표예요.",
-                 "N2SF is a public-sector network security framework led by South Korea's National Intelligence Service, shifting the country's traditional physical network-separation policy toward a grade-based, zero-trust-driven logical separation. Systems are graded by how critical their work is, with controls matched to each grade, aiming to let public institutions use cloud and other outside services while still staying protected.")),
+    "summary": (("<b>N2SF</b> = 다리를 <b>아예 끊는</b> 대신, <b>장부를 등급별로 나누고</b> 다리 위에 <b>검문소를 촘촘히</b> 세우는 나라의 새 망 보안 틀.",
+                 "<b>N2SF</b> = the nation's new network security framework — instead of <b>cutting the bridge entirely</b>, it <b>grades ledgers by sensitivity</b> and lines the bridge with <b>checkpoints, one after another</b>."),
+                ("N2SF(국가 망 보안체계, National Network Security Framework)는 국가정보원이 추진하는 공공부문 망 보안체계로, 기존의 물리적 망분리 중심 정책을 등급제와 제로 트러스트 기반의 논리적 망분리로 전환하는 것을 핵심으로 해요. 업무정보를 기밀(C)·민감(S)·공개(O) 세 등급으로 나누고, 등급에 맞는 통제를 적용해 공공기관도 클라우드 등 외부 서비스를 활용할 수 있게 하는 게 목표예요.",
+                 "N2SF is a public-sector network security framework led by South Korea's National Intelligence Service, shifting the country's traditional physical network-separation policy toward a grade-based, zero-trust-driven logical separation. Work information is graded classified (C), sensitive (S), or open (O), with controls matched to each grade, aiming to let public institutions use cloud and other outside services while still staying protected.")),
     "glossary": [
         ("N2SF", "N2SF", ("나라의 새 망 보안 틀.", "The nation's new network security framework."), ("국가정보원이 추진하는 공공부문 망 보안체계예요.", "A public-sector framework led by Korea's National Intelligence Service.")),
         ("물리적 망분리", "Physical network separation", ("다리를 아예 끊기.", "Cutting the bridge entirely."), ('기존 방식. → <a href="airgap-ko.html">다리 없는 섬 창고</a>', 'The old approach. → <a href="airgap-en.html">the island shed with no bridge</a>')),
         ("논리적 망분리", "Logical network separation", ("다리는 열되 검문소로.", "Bridge open, but checkpointed."), ("물리적으로 끊지 않고, 접근을 통제해서 비슷한 효과를 내요.", "No physical cut — access control achieves a similar effect.")),
-        ("등급제", "Grading system", ("성마다 매긴 등급.", "A grade assigned to each castle."), ("업무 중요도에 따라 1~3등급처럼 나누고, 등급별로 통제 수준이 달라요.", "Systems are graded, roughly 1 to 3, by how critical their work is, with controls matched to each.")),
+        ("C·S·O 등급", "C/S/O Grades", ("장부마다 매긴 세 가지 등급.", "The three grades given to each ledger."), ("기밀(C)·민감(S)·공개(O)로 나누고, 등급별로 통제 수준이 달라요.", "Classified, sensitive, and open, with the control level matched to each.")),
         ("제로 트러스트 기반", "Zero-trust based", ("문마다 다시 물어봐요.", "Every door asks again."), ('N2SF의 검문소 방식이 기대는 생각이에요. → <a href="zerotrust-ko.html">문마다 물어보는 성</a>', "The idea N2SF's checkpoints lean on. → <a href=\"zerotrust-en.html\">the castle that always asks</a>")),
-        ("공공 클라우드 이용", "Public-sector cloud use", ("성 등급에 맞으면 클라우드 허용.", "Cloud allowed when it matches the castle's grade."), ("물리적 망분리 아래선 거의 불가능했던 일이에요.", "Something that was nearly impossible under physical separation.")),
+        ("공공 클라우드 이용", "Public-sector cloud use", ("장부 등급에 맞으면 클라우드 허용.", "Cloud allowed when it matches the ledger's grade."), ("물리적 망분리 아래선 거의 불가능했던 일이에요.", "Something that was nearly impossible under physical separation.")),
         ("상시 모니터링", "Continuous monitoring", ("계속 지켜보기.", "Watching continuously."), ("검문소를 한 번 통과했다고 끝이 아니에요.", "Passing a checkpoint once isn't the end of the watching.")),
         ("단계적 전환", "Phased rollout", ("공공기관이 아직 다 바뀌진 않았어요.", "Not every public institution has switched yet."), ("전환 속도는 기관마다 다르고, 등급 기준도 계속 다듬는 중이에요.", "The pace varies by institution, and the grading criteria themselves are still being refined.")),
     ],

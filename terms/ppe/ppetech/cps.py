@@ -80,7 +80,7 @@ PAGE = {
          "tricks": (4, [
              (SENSOR2_I, ("상태 읽기", "Read the state"), ("진짜 기계를 센서로 읽어요", "a sensor reads the real machine")),
              (LOOP_I, ("화면에 비추기", "Mirror on screen"), ("읽은 상태를 쌍둥이에 비춰요", "mirrors that state onto the twin"), "calm"),
-             (CMD_I, ("계산해서 명령하기", "Calculate a command"), ("기계가 다음에 할 일을 정해요", "decides what the machine does next")),
+             (CMD_I, ("계산해서 명령하기", "Calculate a command"), ("컴퓨터가 기계의 다음 할 일을 정해요", "the computer decides what the machine does next")),
              (SENSOR2_I, ("실제로 움직이기", "Act in reality"), ("명령이 진짜 기계를 움직여요", "the command moves the real machine"), "warm"),
          ])},
         {"svg": P4, "alt": ("신호가 도는 순서 설명판: 읽기→비추기→계산→움직이기, 다시 읽기로", "A board shows the loop: read, mirror, calculate, act, back to read"),
@@ -90,10 +90,10 @@ PAGE = {
          "caption": ("신호가 늦거나 해킹되면, 화면 속 쌍둥이와 실제 기계가 어긋나요.", "A late or hacked signal puts the screen twin and the real machine out of step."),
          "small": ("CPS에선 보이는 화면만큼이나, 신호의 속도와 보안이 중요해요.", "In a CPS, the signal's speed and security matter as much as what's on screen.")},
     ],
-    "summary": (("<b>CPS</b> = <b>센서</b>로 읽은 실제 상태를 <b>화면(디지털 트윈)</b>에 비추고, 컴퓨터가 판단한 명령으로 <b>진짜 기계</b>를 다시 움직이는 닫힌 고리 시스템.",
-                 "<b>CPS</b> = a closed-loop system that mirrors a <b>sensor</b>-read real state onto a <b>screen (digital twin)</b>, then uses the computer's decision to move the <b>real machine</b> again."),
-                ("사이버물리시스템(Cyber-Physical System)은 센서·네트워크·컴퓨팅이 물리적 기계·설비와 실시간으로 연결되어, 감지·판단·제어가 하나의 피드백 루프로 돌아가는 시스템이에요. 디지털 트윈은 이 CPS의 '화면' 역할을 하는 가상 모형이고, 스마트팩토리·자율주행·스마트팜 등 대부분의 신기술 현장 응용이 CPS 구조 위에서 동작해요.",
-                 "A Cyber-Physical System links sensors, networks, and computing to physical machinery in real time, so that sensing, deciding, and controlling run as one continuous feedback loop. A digital twin is the virtual model that plays the 'screen' role in a CPS, and most real-world applications of new technology — smart factories, autonomous driving, smart farms — run on this same CPS structure.")),
+    "summary": (("<b>CPS</b> = <b>센서</b>로 읽은 실제 상태를 컴퓨터에 비추고(이 그림에선 <b>디지털 트윈 화면</b>), 컴퓨터가 판단한 명령으로 <b>진짜 기계</b>를 다시 움직이는 닫힌 고리 시스템.",
+                 "<b>CPS</b> = a closed-loop system that mirrors a <b>sensor</b>-read real state into a computer (here, a <b>digital-twin screen</b>), then uses the computer's decision to move the <b>real machine</b> again."),
+                ("사이버물리시스템(Cyber-Physical System)은 센서·네트워크·컴퓨팅이 물리적 기계·설비와 실시간으로 연결되어, 감지·판단·제어가 하나의 피드백 루프로 돌아가는 시스템이에요. 디지털 트윈은 CPS에서 기계 상태를 비추는 가상 모형으로, 모든 CPS에 꼭 있는 건 아니에요. 스마트팩토리·자율주행·스마트팜 등 대부분의 신기술 현장 응용이 CPS 구조 위에서 동작해요.",
+                 "A Cyber-Physical System links sensors, networks, and computing to physical machinery in real time, so that sensing, deciding, and controlling run as one continuous feedback loop. A digital twin is a virtual model that can mirror a machine's state in a CPS, though not every CPS has one. Most real-world applications of new technology — smart factories, autonomous driving, smart farms — run on this same CPS structure.")),
     "glossary": [
         ("디지털 트윈", "Digital Twin", ("실제를 그대로 옮긴 화면 속 쌍둥이.", "The screen twin that mirrors the real thing exactly."), ("CPS에서 '화면' 역할을 맡아요.", "It plays the 'screen' role inside a CPS.")),
         ("피드백 루프", "Feedback Loop", ("감지→판단→제어로 돌고 도는 신호의 고리.", "The signal's circle of sensing, deciding, and controlling."), ("CPS가 멈추지 않고 계속 작동하는 이유예요.", "The reason a CPS keeps running without stopping.")),

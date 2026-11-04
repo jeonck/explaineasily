@@ -28,8 +28,8 @@ P4 = svg(320, sky(320)
          + styleguide(60, 40, 320, 240, "⟦소책자 구조의 특징|TRAITS OF THE SPLIT STRUCTURE⟧",
                       ("⟦독립 출간 — 한 편만 먼저 낼 수 있어요|independent release — one volume can ship alone⟧",
                        "⟦독립 팀 — 편마다 전담 팀이 따로 있어요|independent teams — each volume has its own team⟧",
-                       "⟦목차로 연결 — 차례로만 서로 참조해요|connected by index — refers via table of contents only⟧",
-                       "⟦분량도 따로 — 잘 팔리는 편만 더 찍어요|separate sizing — a popular volume alone gets reprinted⟧"), 1.0)
+                       "⟦목차로 연결 — 차례로만 서로 참조해요|linked by index — refers via contents page only⟧",
+                       "⟦분량도 따로 — 잘 팔리는 편만 더 찍어요|separate sizing — reprint just the popular volume⟧"), 1.0)
          + person(560, 150, s=0.75, face=EYES, **EDITOR)
          + label(560, 250, "⟦소책자 수만큼 조율할 목차도 늘어나요|the more volumes, the more indexes to coordinate⟧", 11, "var(--muted)")
          + label(380, 300, "⟦소책자 구조는 작은 출판사엔 오히려 버거울 수 있어요|the split structure can be more than a small publishing house can handle⟧", 12, "var(--ink)"))
@@ -68,7 +68,7 @@ PAGE = {
              (SCALE_I, ("따로 키우기", "Grow each on its own"), ("잘 팔리는 편만 더 찍어요", "reprinting only the popular volume")),
          ])},
         {"svg": P4, "alt": ("소책자 구조 특징표: 독립 출간·독립 팀·목차 연결·독립 분량 네 항목", "A board of split-structure traits: independent release, independent teams, index-only links, independent sizing"),
-         "caption": ("소책자 구조는 이런 특징을 가져요.", "The split structure has these traits."),
+         "caption": ("소책자 구조는 독립 출간·독립 팀·목차 연결·따로 정하는 분량, 이런 특징을 가져요.", "The split structure has four traits: independent release, independent teams, index-only links, and separate sizing."),
          "small": ("소책자 수만큼 조율할 목차도 늘어나요.", "The more volumes, the more indexes to coordinate.")},
         {"svg": P5, "alt": ("왼쪽: 편집장이 한 편에 문제가 생겨도 다른 편엔 안 번진다고 말함. 오른쪽: 인쇄 감독이 조율 비용은 늘어난다고 말함", "Left: the editor says a problem in one volume doesn't spread to others. Right: the print supervisor says coordination cost still rises"),
          "caption": ("책을 소책자로 풀면, 조율이라는 새 일이 생겨요.", "Splitting the book into volumes creates a new job: coordination."),

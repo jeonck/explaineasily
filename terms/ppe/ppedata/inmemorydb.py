@@ -45,7 +45,7 @@ P4 = svg(320, sky(320, ground=False)
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + fastdesk(190, 150, 1.0) + label(190, 210, "⟦자주 찾는 데이터는 바로 꺼내요|frequently-needed data pops out instantly⟧", 11, "var(--ink)")
          + shelfzone(480, 140, 180, 70, 0.8, n=3) + label(570, 240, "⟦나머지 데이터는 여전히 깊은 선반(디스크)에 있어요|the rest of the data stays on the deep shelf (disk)⟧", 11, "var(--ink)")
-         + label(380, 270, "⟦메모리는 디스크보다 비싸서 데이터를 전부 올리긴 어려워요|memory costs more than disk, so moving all the data is hard⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 270, "⟦메모리는 디스크보다 비싸서 데이터를 전부 올리긴 어려워요|memory costs more than disk, so moving all the data into memory is hard⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "inmemorydb", "order": 8,
@@ -73,8 +73,8 @@ PAGE = {
          "caption": ("인메모리 DB/IMDG는 캐시, 빠른 조회, 메모리 묶기에 쓰여요.", "In-memory DB/IMDG is used for caching, fast lookups, and pooling memory."),
          "small": ("전원이 나가도 데이터를 되살리도록 로그나 스냅샷을 남겨요.", "Logs or snapshots are kept so data can be restored after a power loss.")},
         {"svg": P5, "alt": ("왼쪽: 특급 출고대에서 자주 찾는 것이 바로 나옴. 오른쪽: 나머지는 여전히 깊은 선반에 있음", "Left: frequent items pop out of the express desk instantly. Right: the rest still sits on the deep shelf"),
-         "caption": ("메모리는 디스크보다 비싸서 데이터를 전부 올리긴 어려워요.", "Memory costs more than disk, so moving all the data is hard."),
-         "small": ("그래서 자주 쓰는 데이터만 골라 올리기도 해요(캐시).", "So often only frequently-used data gets picked — that's a cache.")},
+         "caption": ("메모리는 디스크보다 비싸서 데이터를 전부 올리긴 어려워요.", "Memory costs more than disk, so moving all the data into memory is hard."),
+         "small": ("그래서 자주 쓰는 데이터만 골라 올리기도 해요(캐시).", "So often only frequently-used data gets loaded into memory — that's a cache.")},
     ],
     "summary": (("<b>인메모리 DB/IMDG</b> = 깊은 선반(디스크)까지 가지 않고, <b>메모리에 바로 올려 둬서</b> 거의 지연 없이 꺼내 쓰는 방식.",
                  "<b>In-memory DB/IMDG</b> keeps data right in memory instead of making the trip to the deep shelf (disk), so it can be fetched with almost no delay."),

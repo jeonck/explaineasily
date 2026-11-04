@@ -27,10 +27,10 @@ P3 = svg(340, sky(340)
 
 # 4. 배치 vs 스트리밍, 데이터레이크 vs 데이터웨어하우스
 P4 = svg(320, sky(320)
-         + styleguide(60, 30, 300, 260, "⟦언제 정리하나|WHEN TO SORT⟧",
+         + styleguide(60, 30, 300, 245, "⟦언제 정리하나|WHEN TO SORT⟧",
                       ("⟦배치 — 밤에 몰아서 정리|batch — sort it all overnight⟧",
                        "⟦스트리밍 — 들어오자마자 바로|streaming — sort it the instant it arrives⟧"), 1.0)
-         + styleguide(400, 30, 300, 260, "⟦어떻게 쌓아두나|HOW TO STORE IT⟧",
+         + styleguide(400, 30, 300, 245, "⟦어떻게 쌓아두나|HOW TO STORE IT⟧",
                       ("⟦데이터레이크 — 원본 그대로 큰 창고|data lake — raw originals, one big warehouse⟧",
                        "⟦데이터웨어하우스 — 정리된 서가|data warehouse — tidied, organized shelves⟧"), 1.0)
          + label(380, 300, "⟦쓰임새에 맞춰 '언제 정리할지'와 '어떻게 쌓을지'를 따로 골라요|when to sort and how to store are chosen separately, to fit the use⟧", 12, "var(--ink)"))
@@ -55,13 +55,13 @@ PAGE = {
     "sub": ("빅데이터 플랫폼과 처리 아키텍처를, 전국 독자 주문을 감당하는 출판사 창고 네트워크 이야기로 풀어봤어요.",
             "Big data platforms and processing architecture, told as a story about a publishing house's nationwide warehouse network handling orders from everywhere."),
     "panels": [
-        {"svg": P1, "alt": ("전국에서 쏟아지는 주문 원고를 단일 서가 하나로 감당 못해 인쇄 감독이 진땀을 흘림", "Orders pour in from everywhere and a single shelf can't hold it — the print supervisor sweats"),
+        {"svg": P1, "alt": ("전국에서 쏟아지는 주문 원고를 단일 창고 하나로 감당 못해 인쇄 감독이 진땀을 흘림", "Orders pour in from everywhere and a single warehouse can't hold it — the print supervisor sweats"),
          "caption": ("전국 독자 주문이 하루에도 수백만 건씩 쏟아져요.", "Orders pour in from across the country, millions a day."),
          "small": ("창고 하나로는 주문 자료를 다 담지도, 다 찾지도 못해요.", "One warehouse can't hold all the order records, let alone find them.")},
-        {"svg": P2, "alt": ("서가에서 원고가 넘쳐 떨어지고 인쇄 감독이 지쳐있음", "Manuscripts overflow the shelf and the print supervisor is worn out"),
+        {"svg": P2, "alt": ("창고에서 원고가 넘쳐 떨어지고 인쇄 감독이 지쳐있음", "Manuscripts overflow the warehouse and the print supervisor is worn out"),
          "caption": ("주문 자료를 한 창고에 다 넣으려니 창고는 넘치고 정리는 느려져요.", "Cramming every order into one warehouse means it overflows and sorting slows down."),
          "small": ("창고 하나, 일꾼 한 명으로는 정리 속도가 주문 속도를 못 따라가요.", "With one warehouse and one worker, sorting can't keep pace with orders.")},
-        {"svg": P3, "hero": True, "alt": ("세 개의 작은 서가에 세 사람이 나눠서 동시에 원고를 정리함", "Three smaller shelves, each with its own worker, sorting manuscripts at the same time"),
+        {"svg": P3, "hero": True, "alt": ("세 개의 작은 창고에 세 사람이 나눠서 동시에 원고를 정리함", "Three smaller warehouses, each with its own worker, sorting manuscripts at the same time"),
          "caption": ("빅데이터 플랫폼은 자료를 여러 창고에 나눠 담고, 일꾼 여럿이 나눠서 정리해요.", "A big data platform stores data across many warehouses and sorts it with many workers."),
          "small": ("한 창고가 꽉 차도 다른 창고에 담으면 돼요.", "If one warehouse fills up, data goes to the others."),
          "tricks": (4, [
@@ -73,7 +73,7 @@ PAGE = {
         {"svg": P4, "alt": ("언제 정리하나(배치/스트리밍)와 어떻게 쌓아두나(데이터레이크/웨어하우스)를 각각 정리한 표", "Two tables: when to sort (batch/streaming) and how to store (data lake/warehouse)"),
          "caption": ("쓰임새에 맞춰 '언제 정리할지'와 '어떻게 쌓을지'를 따로 골라요.", "When to sort and how to store are chosen separately, to fit the use."),
          "small": ("결과가 급하면 스트리밍, 양이 많으면 배치를 골라요.", "Streaming when results are urgent, batch when the volume is huge.")},
-        {"svg": P5, "alt": ("왼쪽: 서가를 계획 없이 늘려 오히려 꼬임. 오른쪽: 정리 안 한 원고가 쌓여 늪처럼 됨", "Left: adding shelves without a plan tangles things. Right: unsorted manuscripts pile into a swamp"),
+        {"svg": P5, "alt": ("왼쪽: 창고를 계획 없이 늘려 오히려 꼬임. 오른쪽: 정리 안 한 원고가 쌓여 늪처럼 됨", "Left: adding warehouses without a plan tangles things. Right: unsorted manuscripts pile into a swamp"),
          "caption": ("창고를 늘린다고 정리가 저절로 빨라지진 않아요.", "Adding more warehouses doesn't automatically make sorting faster."),
          "small": ("자료를 정리 안 하고 쌓아두기만 하면 나중엔 아무것도 못 찾는 '늪'이 돼요.", "Pile data up without tidying, and eventually nothing can be found — a swamp.")},
     ],
@@ -89,6 +89,6 @@ PAGE = {
         ("스트리밍 처리", "Stream Processing", ("들어오자마자 바로 정리하기.", "Sorting the instant it arrives."), ("급할 때 유리해요.", "Favored when speed matters most.")),
         ("데이터레이크", "Data Lake", ("원본 그대로 쌓아두는 큰 창고.", "The big warehouse that keeps raw originals."), ("정리가 안 되면 '늪'이 될 수 있어요.", "Without upkeep, it can turn into a swamp.")),
         ("데이터웨어하우스", "Data Warehouse", ("정리된 서가.", "The tidied, organized shelf."), ("분석하기 좋게 구조화돼 있어요.", "Structured to be ready for analysis.")),
-        ("고가용성", "High Availability", ("창고 하나가 무너져도 버티는 대비.", "Holding up even if one warehouse goes down."), ('이 세계 대신 놀이공원 세계에서 다뤄요. → <a href="failover-ko.html">예비 발전기가 넘겨받는 이야기</a>', 'Covered in another world, not this one. → <a href="failover-en.html">when the spare generator takes over</a>')),
+        ("고가용성", "High Availability", ("창고 하나가 무너져도 버티는 대비.", "Holding up even if one warehouse goes down."), ('이 세계 대신 놀이공원 세계에서 다뤄요. → <a href="failover-ko.html">예비 발전기가 넘겨받는 이야기</a>', 'Covered in the theme-park world, not this one. → <a href="failover-en.html">when the spare generator takes over</a>')),
     ],
 }

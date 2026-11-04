@@ -33,7 +33,7 @@ P4 = svg(340, sky(340)
          + gradeboard(40, 40, 330, 260, "⟦치우친 공식|A BIASED FORMULA⟧",
                       ("⟦편차 제곱합 ÷ n|sum of squared deviations ÷ n⟧", "⟦표본 분산을 살짝 작게 만들어요|slightly underestimates the true spread⟧",
                        "⟦여러 번 평균 내도 진짜 값보다 작아요|averages out smaller than the truth⟧"), 0.95)
-         + gradeboard(390, 40, 330, 260, "⟦불편 공식|AN UNBIASED FORMULA⟧",
+         + gradeboard(390, 40, 330, 260, "⟦치우침 없는 공식|AN UNBIASED FORMULA⟧",
                       ("⟦편차 제곱합 ÷ (n-1)|sum of squared deviations ÷ (n-1)⟧", "⟦자유도를 하나 보정해요|corrects for one degree of freedom⟧",
                        "⟦여러 번 평균 내면 진짜 값에 맞춰져요|averages right onto the truth⟧"), 0.95))
 
@@ -67,7 +67,7 @@ PAGE = {
              (RANDOM_I, ("무작위로 뽑기", "Sample at random"), ("한쪽 상자만 골라 재면 안 돼요", "don't always pick the same box"), "warm"),
              (ONESHOT_I, ("한 번으로 판단 안 하기", "Don't judge from just one reading"), ("한 번은 틀려도 괜찮아요", "it's fine if a single reading misses")),
          ])},
-        {"svg": P4, "alt": ("편차 제곱합을 n으로 나누는 치우친 공식과 n-1로 나누는 불편 공식을 나란히 비교함", "A biased formula dividing by n and an unbiased formula dividing by n-1 are compared side by side"),
+        {"svg": P4, "alt": ("편차 제곱합을 n으로 나누는 치우친 공식과 n-1로 나누는 치우침 없는 공식을 나란히 비교함", "A biased formula dividing by n and an unbiased formula dividing by n-1 are compared side by side"),
          "caption": ("표본 분산은 나누는 숫자 하나(n 또는 n-1)로 치우침이 생길 수 있어요.", "For sample variance, the divisor alone (n or n-1) can create bias."),
          "small": ("표본 분산은 n-1로 나눠야 치우치지 않아요(자유도 보정).", "Sample variance needs n-1, not n, to stay unbiased — a degrees-of-freedom correction.")},
         {"svg": P5, "alt": ("왼쪽: 치우치지 않지만 결과가 크게 흔들리는 저울. 오른쪽: 살짝 치우쳤지만 덜 흔들리는 저울", "Left: an unbiased scale whose readings swing widely. Right: a slightly biased scale that swings less"),
@@ -82,9 +82,9 @@ PAGE = {
         ("추정량", "Estimator", ("표본으로 참값을 가늠하는 저울.", "The scale that guesses the truth from a sample."), ("공식 하나하나가 추정량이에요.", "Each formula you use is itself an estimator.")),
         ("모수", "Parameter", ("트럭 전체의 진짜 평균 무게.", "The true average weight of the whole truck."), ("우리가 영영 직접 못 보는 참값이에요.", "The true value we can never directly see.")),
         ("표본평균", "Sample Mean", ("상자 하나의 평균 무게.", "The average weight of one box."), ("모평균의 대표적인 불편추정량이에요.", "The classic unbiased estimator of the population mean.")),
-        ("자유도 보정(n-1)", "Degrees-of-Freedom Correction", ("나누는 숫자를 하나 줄이는 보정.", "Shaving one off the number you divide by."), ("표본분산을 불편하게 만들어요.", "Makes the sample variance unbiased.")),
+        ("자유도 보정(n-1)", "Degrees-of-Freedom Correction", ("나누는 숫자를 하나 줄이는 보정.", "Shaving one off the number you divide by."), ("표본분산에서 치우침을 없애요.", "Makes the sample variance unbiased.")),
         ("편향-분산 트레이드오프", "Bias-Variance Tradeoff", ("안 치우침과 안 흔들림 사이의 줄다리기.", "The tug-of-war between no tilt and no swing."), ("치우침 없음과 흔들림 없음을 둘 다 완벽히 가지기는 어려워요.", "Having both no tilt and no swing is rarely possible.")),
-        ("회귀모형 가정", "Regression Assumptions", ("저울이 똑바로 걸리는 조건들.", "The conditions that keep the scale hanging straight."), ('불편추정량이 성립하려면 이 가정들이 필요해요. → <a href="regassumption-ko.html">자세히 보기</a>', 'These conditions are what make the unbiased estimator hold. → <a href="regassumption-en.html">see it in full</a>')),
+        ("회귀모형 가정", "Regression Assumptions", ("저울이 똑바로 걸리는 조건들.", "The conditions that keep the scale hanging straight."), ('불편성에는 이 중 선형성·외생성 같은 일부 가정이 필요해요. → <a href="regassumption-ko.html">자세히 보기</a>', 'Unbiasedness needs some of these, such as linearity and exogeneity. → <a href="regassumption-en.html">see it in full</a>')),
         ("교차검증", "Cross Validation", ("조를 나눠 번갈아 시험해 보는 일.", "Splitting into groups and testing in rotation."), ('모형 성능을 반복해서 가늠한다는 점이 비슷해요. → <a href="crossval-ko.html">자세히 보기</a>', 'Shares the idea of repeated estimation. → <a href="crossval-en.html">see it in full</a>')),
         ("시계열분석(AR/MA)", "Time-Series Analysis (AR/MA)", ("지난 며칠 값으로 내일을 가늠하는 저울.", "A scale that guesses tomorrow from the last few days."), ('예측값을 만드는 저울도 불편성을 따져요. → <a href="timeseries-ko.html">자세히 보기</a>', 'The scale behind a forecast is checked for bias too. → <a href="timeseries-en.html">see it in full</a>')),
     ],

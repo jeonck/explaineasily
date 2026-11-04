@@ -46,11 +46,11 @@
 | gofpattern | 검증된 글쓰기 공식집 |
 | msa | 두꺼운 책을 소책자들로 쪼개기 |
 | umldiagram | 쓰기 전에 그리는 설계 지도 |
-| fpruler | 매수를 재는 자 |
+| fpruler | 쪽수 대신 기능을 재는 자 |
 | scmshelf | 원고를 지키는 보관 서가 |
 | mlops | 자동 교정 기계 돌보기 |
 | swcost | 매수를 돈으로 바꾸는 계산 |
-| swimpact | 고치기 전에 그려보는 연결 지도 |
+| swimpact | 서점에 있는 책을 또 만들기 전에 |
 | spectest | 규칙서만 보고 고르는 대표 사례 |
 | devopsswe | 담장을 허문 작가와 인쇄소 |
 | openapi | 서식 하나로 열어둔 열람실 |

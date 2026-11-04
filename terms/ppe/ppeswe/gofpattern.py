@@ -12,7 +12,7 @@ P1 = svg(300, sky(300)
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(200, 150, s=0.85, face=SMILE, **EDITOR)
          + bubble(140, 80, 220, 36, "⟦그냥 각자 마음대로 쓰면 되죠|everyone can just write it their own way⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + person(560, 150, s=0.7, face=FROWN, **PROOFER) + bubble(445, 80, 260, 36, "⟦그럼 책마다 구조가 달라서 헷갈려요|then every book's structure is different and confusing⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + person(560, 150, s=0.7, face=FROWN, **PROOFER) + bubble(445, 80, 260, 36, "⟦그럼 책마다 구조가 달라서 헷갈려요|then every book's structure differs — confusing⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦복선 까는 법을 매번 새로 발명하면, 검증 안 된 방법으로 쓰게 돼요|reinventing the method every time means writing with one never proven⟧", 12, "var(--ink)"))
 
 # 3. GoF 디자인패턴 = 검증된 글쓰기 공식집 (hero)

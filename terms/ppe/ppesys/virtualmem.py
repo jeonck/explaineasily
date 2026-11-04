@@ -41,9 +41,9 @@ P3 = svg(360, sky(360)
          + label(515, 150, "⟦진짜 선반(물리)|the real shelf (physical)⟧", 11, "var(--muted)")
          + basement(640, 260)
          + label(640, 225, "⟦디스크|disk⟧", 10, "var(--muted)")
-         + '<path d="M120 160 Q300 170 505 195" stroke="var(--good)" stroke-width="2" fill="none" stroke-dasharray="5 4"/>'
-         + '<path d="M190 160 Q350 180 575 195" stroke="var(--good)" stroke-width="2" fill="none" stroke-dasharray="5 4"/>'
-         + '<path d="M260 160 Q450 220 635 248" stroke="var(--bad)" stroke-width="2" fill="none" stroke-dasharray="5 4"/>'
+         + '<path d="M120 160 Q300 225 510 220" stroke="var(--good)" stroke-width="2" fill="none" stroke-dasharray="5 4"/>'
+         + '<path d="M190 160 Q400 262 580 220" stroke="var(--good)" stroke-width="2" fill="none" stroke-dasharray="5 4"/>'
+         + '<path d="M260 160 Q450 275 625 262" stroke="var(--bad)" stroke-width="2" fill="none" stroke-dasharray="5 4"/>'
          + label(380, 20, "⟦가상메모리 = 창고 전체를 내 것처럼 보여주는 가짜 지도|virtual memory = a fake map that makes the whole warehouse look like mine⟧", 13, "var(--ink)", cls="d")
          + label(380, 345, "⟦지도의 각 칸(페이지)이 실제 선반 칸(프레임)을 가리켜요, 없으면 디스크에서 가져와요|each map square (page) points to a real shelf slot (frame) — or fetches from disk if it's not there⟧", 11, "var(--muted)"))
 

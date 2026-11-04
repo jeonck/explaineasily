@@ -59,7 +59,7 @@ P4 = svg(300, sky(300)
          + box(50, 30, 310, 240, "⟦지금 암호(수학 기반)|TODAY'S ENCRYPTION (math-based)⟧",
                ("⟦계산이 어려워서 못 풀어요|hard to compute — that's the lock⟧", "⟦미래의 센 계산기엔 위험할 수 있어요|a far stronger computer might crack it⟧", "⟦엿봐도 티가 안 나요|peeking leaves no trace⟧"), 12)
          + box(400, 30, 310, 240, "⟦QKD(물리법칙 기반)|QKD (physics-based)⟧",
-               ("⟦빛의 성질이라 계산으론 못 뚫어요|a property of light — no computation breaks it⟧", "⟦엿보면 값이 바뀌어서 바로 들켜요|peeking changes the value — instantly caught⟧", "⟦내용은 결국 기존 자물쇠로 잠가요|the message itself still uses ordinary encryption⟧"), 12))
+               ("⟦빛의 성질이라 계산으론 못 뚫어요|a property of light — no computation breaks it⟧", "⟦엿보면 값이 바뀌어 대조할 때 들켜요|a peek changes values, so a sample check reveals it⟧", "⟦내용은 결국 기존 자물쇠로 잠가요|the message itself still uses ordinary encryption⟧"), 12))
 
 # 5. 거리 제한과 비용
 P5 = svg(280, '<rect width="760" height="280" fill="var(--accent-soft)"/>'
@@ -92,7 +92,7 @@ PAGE = {
              (icon('<circle cx="32" cy="32" r="10" fill="#5B8DEF"/><circle cx="32" cy="32" r="18" fill="none" stroke="#5B8DEF" stroke-width="3"/>'),
               ("빛 알갱이 열쇠", "A key of photons"), ("양자 상태로 된 열쇠 조각", "key bits held in a quantum state"), "calm"),
              (icon('<path d="M16 32 h12 M36 32 h12" stroke="var(--bad)" stroke-width="4" stroke-dasharray="6 4"/><circle cx="32" cy="32" r="6" fill="var(--bad)"/>'),
-              ("엿보면 바뀌어요", "Watching changes it"), ("관측하면 상태가 깨져요", "observation breaks the state"), "warm"),
+              ("엿보면 빛의 상태가 바뀌어요", "Watching changes the light's state"), ("관측하면 상태가 깨져요", "observation breaks the state"), "warm"),
              (icon('<path d="M20 20 L44 44 M44 20 L20 44" stroke="var(--bad)" stroke-width="5" stroke-linecap="round"/>'),
               ("엿본 조각은 버려요", "Peeked bits are discarded"), ("새 조각을 다시 만들어요", "new bits are generated")),
              (icon('<rect x="14" y="18" width="36" height="28" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><circle cx="32" cy="32" r="5" fill="#E9B44C"/>'),
@@ -100,13 +100,13 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("두 상자 비교: 지금 암호(수학 기반, 계산이 어려워 안전, 미래 계산기엔 위험할 수 있음, 엿봐도 티 안 남) vs QKD(물리법칙 기반, 계산으론 못 뚫음, 엿보면 바로 들킴, 내용은 결국 기존 자물쇠)", "Two boxes compared: today's encryption (math-based, safe because it's hard to compute, a future computer might crack it, peeking leaves no trace) vs QKD (physics-based, no computation breaks it, peeking is instantly caught, the message itself still uses ordinary locks)"),
          "caption": ("지금 암호와 QKD는 안전한 이유 자체가 달라요.", "Today's encryption and QKD are safe for entirely different reasons."),
-         "small": ("지금 암호는 계산이 어려워서, QKD는 빛의 성질 때문에 안전해요. 그래서 QKD는 도청 자체를 즉시 알아챌 수 있어요.", "Today's encryption is safe because the math is hard; QKD because of a property of light. That's why QKD can catch eavesdropping the instant it happens.")},
+         "small": ("지금 암호는 계산이 어려워서, QKD는 빛의 성질 때문에 안전해요. 그래서 QKD는 일부 값을 대조해 도청 흔적을 알아챌 수 있어요.", "Today's encryption is safe because the math is hard; QKD because of a property of light. That's why QKD can reveal eavesdropping by checking a sample of values.")},
         {"svg": P5, "alt": ("빛 알갱이가 먼 거리를 가지 못해 중계소를 거쳐 전달되는 모습", "A particle of light can't travel far, so it passes through a relay station to reach its destination"),
          "caption": ("QKD의 한계는 거리 제한과 비용이에요.", "QKD's limits are distance and cost."),
          "small": ("QKD는 중계소가 많이 필요하고 장비도 비싸서, 아직 일부 구간에서만 써요.", "QKD needs many relay stations and costly equipment, so it's still used on only a few stretches.")},
     ],
     "summary": (("<b>양자암호통신(QKD)</b> = <b>빛 알갱이</b>로 만든 열쇠를 주고받는 것. <b>엿보면 빛의 상태가 바뀌어</b> 도청이 바로 드러나요.",
-                 "<b>Quantum Key Distribution (QKD)</b> = exchanging a key made of <b>particles of light</b>. <b>Peeking changes the light's state</b>, so eavesdropping is caught instantly."),
+                 "<b>Quantum Key Distribution (QKD)</b> = exchanging a key made of <b>particles of light</b>. <b>Peeking changes the light's state</b>, so eavesdropping leaves detectable traces."),
                 ("QKD(Quantum Key Distribution)는 양자역학의 '관측하면 상태가 바뀐다'는 성질을 이용해 암호 키를 분배하는 기술이에요. 기존 공개키 암호가 계산 복잡도에 의존해 미래의 양자컴퓨터에 취약할 수 있는 것과 달리, QKD는 물리 법칙 자체로 도청을 탐지해요. 단, QKD는 키 분배만 담당하고 실제 메시지는 대칭키 암호로 암호화하며, 전송 거리 제한과 높은 구축 비용이 실용화의 걸림돌이에요. 수학적 알고리즘으로 양자컴퓨터에 대응하는 PQC(양자내성암호)와는 접근 방식이 다른 별개의 기술이에요.",
                  "QKD distributes cryptographic keys using the quantum-mechanical property that observation disturbs a system's state. Unlike public-key encryption, which relies on computational hardness and may be vulnerable to future quantum computers, QKD detects eavesdropping through physics itself. QKD only distributes the key; the message itself is still encrypted with symmetric encryption. Distance limits and high deployment costs remain obstacles to wide use. It is a separate technology from PQC (post-quantum cryptography), which instead uses math-based algorithms designed to resist quantum computers.")),
     "glossary": [

@@ -1,100 +1,96 @@
 from _draw import *
 from _world import *
 
+OFFICER = dict(hat="#1B7F79", shirt="#4A7B9D")  # 공공기관 담당자 = 발주기관
 
-def seriesbooks(x, y, s=1.0, hl=-1, bad=-1):
-    """나란히 꽂힌 시리즈 책 세 권. hl 번째는 지금 고치는 책, bad 번째는 충돌이 생긴 책."""
-    out = f'<g transform="translate({x},{y}) scale({s})">'
-    for i in range(3):
-        xx = i * 70
-        c = "var(--accent)" if i == hl else ("var(--bad)" if i == bad else "#4A5A72")
-        out += f'<rect x="{xx}" y="0" width="56" height="78" rx="4" fill="{c}"/><rect x="{xx + 8}" y="10" width="40" height="10" fill="#FFF8E7"/>'
-        out += label(xx + 28, 96, f"⟦{i + 1}권|book {i + 1}⟧", 11, "var(--muted)")
-    return out + "</g>"
-
-
-# 1. 1권만 고쳤는데 2권에서 모순이 생겼어요
+# 1. 공공기관이 서점에 이미 있는 책을 새로 만들려고 해요
 P1 = svg(300, sky(300)
-         + seriesbooks(240, 110, 1.0, hl=0)
-         + person(170, 180, s=0.7, face=SMILE, **WRITER) + label(170, 280, "⟦1권 설정만 살짝 고쳤어요|I only tweaked book 1's setting a bit⟧", 11, "var(--ink)")
-         + person(560, 150, s=0.8, face=FROWN, **READER) + bubble(470, 70, 220, 40, "⟦2권이랑 얘기가 안 맞는데요?|this doesn't match book 2 anymore?⟧", 11, "var(--panel)", "var(--bad)", "bottom")
-         + label(380, 30, "⟦1권만 고쳤는데 2권에서 모순이 생겼어요|only book 1 changed, but now book 2 contradicts it⟧", 13, "var(--ink)", cls="d"))
+         + label(380, 30, "⟦공공기관이 서점에 이미 있는 책을 새로 만들려고 해요|a public agency plans to make a book the bookstore already sells⟧", 13, "var(--ink)", cls="d")
+         + person(130, 130, s=0.8, face=EYES, **OFFICER)
+         + bubble(30, 60, 250, 44, "⟦우리 기관 안내서를 직접 만들래요|we'll make our own guidebook in-house⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bookshelf(324, 140, 1.0, n=4) + label(380, 225, "⟦서점에 이미 있는 책|already in the bookstore⟧", 11, "var(--muted)")
+         + person(560, 130, s=0.8, face=SWEAT, **EDITOR)
+         + bubble(470, 60, 250, 44, "⟦저희가 그 책을 벌써 팔고 있어요|we already sell that very book⟧", 11, "var(--panel)", "var(--line)", "bottom"))
 
-# 2. 시리즈가 커질수록 연결이 안 보여요
+# 2. 같은 책을 공짜로 뿌리면 출판사가 손님을 잃어요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + label(380, 30, "⟦시리즈가 커질수록, 어디까지 연결됐는지 한눈에 안 보여요|the bigger the series, the harder it is to see how far the links reach⟧", 13, "var(--ink)", cls="d")
-         + seriesbooks(70, 100, 0.85, bad=1) + seriesbooks(430, 100, 0.85, bad=2)
-         + '<path d="M100 205 Q290 245 460 205" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 4" fill="none"/>'
-         + '<path d="M170 205 Q290 230 530 205" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 4" fill="none"/>'
-         + '<path d="M240 205 Q400 260 600 205" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 4" fill="none"/>'
-         + label(380, 280, "⟦한 권을 고칠 때마다 어느 책 내용이 어긋날지 아무도 몰라요|nobody knows which book will stop matching after each change⟧", 12, "var(--bad)"))
+         + label(380, 30, "⟦공공기관이 같은 책을 공짜로 뿌리면 어떻게 될까요|what happens if the agency hands out the same book for free?⟧", 13, "var(--bad)", cls="d")
+         + person(120, 90, s=0.8, face=SMILE, **OFFICER)
+         + manuscript(240, 130, 0.8) + manuscript(300, 160, 0.8)
+         + bookshelf(450, 110, 1.0, n=4)
+         + person(600, 90, s=0.8, face=FROWN + SWEAT, **EDITOR)
+         + label(380, 240, "⟦같은 책을 팔던 출판사는 손님을 잃어요|publishers selling that book lose their customers⟧", 12, "var(--ink)", cls="d")
+         + label(380, 270, "⟦출판사가 줄면 나중엔 고를 책도 줄어요|fewer publishers means fewer books to choose from later⟧", 12, "var(--muted)"))
 
-# 3. 영향평가 = 고치기 전에 연결 지도를 그려보는 것 (hero)
+# 3. SW사업 영향평가 = 시작하기 전에 민간 시장에 미칠 영향을 따져보는 일 (hero)
 LINK_I = icon('<circle cx="18" cy="32" r="9" fill="var(--accent)"/><circle cx="46" cy="18" r="9" fill="var(--good)"/><circle cx="46" cy="46" r="9" fill="var(--bad)"/><path d="M18 32 L46 18 M18 32 L46 46" stroke="var(--muted)" stroke-width="3"/>')
 SCOPE_I = icon('<circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4" stroke-dasharray="6 4"/><circle cx="32" cy="32" r="8" fill="var(--accent)"/>')
 GRADE_I = icon('<rect x="12" y="38" width="10" height="16" fill="var(--good)"/><rect x="27" y="26" width="10" height="28" fill="var(--accent)"/><rect x="42" y="12" width="10" height="42" fill="var(--bad)"/>')
 STAKE_I = icon('<circle cx="22" cy="24" r="8" fill="var(--accent)"/><path d="M22 32 v16" stroke="var(--accent)" stroke-width="4"/><circle cx="44" cy="24" r="8" fill="var(--good)"/><path d="M44 32 v16" stroke="var(--good)" stroke-width="4"/>')
 
 P3 = svg(340, sky(340)
-         + label(380, 30, "⟦영향평가 = 고치기 전에 연결 지도를 그려보는 것|impact assessment = mapping the connections before you touch anything⟧", 13, "var(--ink)", cls="d")
-         + seriesbooks(290, 110, 1.0, hl=0)
-         + '<path d="M326 214 Q400 250 480 214" stroke="var(--accent)" stroke-width="3" stroke-dasharray="4 4" fill="none"/>'
-         + person(150, 210, s=0.6, face=EYES, **EDITOR) + label(150, 300, "⟦1권을 고치기 전에|before changing book 1⟧", 11, "var(--muted)")
-         + person(640, 210, s=0.6, face=EYES, **PRINTER) + label(640, 300, "⟦변경이 어디까지 번지는지 먼저 봐요|first check how far the change reaches⟧", 11, "var(--muted)"))
+         + label(380, 30, "⟦SW사업 영향평가 = 공공 SW사업이 민간 시장에 미칠 영향을 미리 따져보는 일|SW project impact assessment = weighing a public project's effect on the private market first⟧", 13, "var(--ink)", cls="d")
+         + person(60, 130, s=0.85, face=EYES, **OFFICER)
+         + styleguide(180, 70, 370, 170, "⟦시작하기 전 평가표|THE CHECK BEFORE STARTING⟧",
+                      ("⟦서점에 비슷한 책이 있나요?|is a similar book on the shelf?⟧",
+                       "⟦사서 쓰면 안 되나요?|could the agency just buy it?⟧",
+                       "⟦출판사 손님을 빼앗게 되나요?|would it take publishers' customers?⟧"), 1.0)
+         + bookshelf(600, 130, 1.0, n=4) + label(656, 215, "⟦서점(민간 시장)|the private market⟧", 11, "var(--muted)")
+         + label(380, 305, "⟦먼저 따져봐야 '사서 쓸지, 새로 만들지'를 제대로 고를 수 있어요|checking first leaves a real choice: buy it or build it⟧", 12, "var(--muted)"))
 
 PAGE = {
     "slug": "swimpact", "order": 18,
-    "title": ("고치기 전에 그려보는 연결 지도", "The Connection Map You Draw Before Changing Anything"),
+    "title": ("서점에 있는 책을 또 만들기 전에", "Before Remaking a Book the Store Already Sells"),
     "h1": ("<em>SW사업 영향평가</em>가 뭐예요?", "What is a <em>Software Project Impact Assessment</em>?"),
-    "sub": ("SW사업 영향평가를, 시리즈 1권을 고치기 전에 다른 책들에 어디까지 번질지 미리 그려보는 지도 이야기로 풀어봤어요.",
-            "Impact assessment, told as a story about mapping how far a change to book one will ripple into the rest of the series before you make it."),
+    "sub": ("SW사업 영향평가를, 공공기관이 서점에 이미 있는 책을 새로 만들기 전에 출판사들에게 끼칠 영향부터 따져보는 이야기로 풀어봤어요.",
+            "A software project impact assessment, told as a story about a public agency weighing the effect on publishers before remaking a book the bookstore already sells."),
     "panels": [
-        {"svg": P1, "alt": ("작가가 1권 설정만 고쳤다고 말하는데, 독자는 2권과 얘기가 안 맞는다고 찡그리며 말함", "A writer says they only tweaked book one's setting, while a reader frowns that it no longer matches book two"),
-         "caption": ("1권만 고쳤는데 2권에서 모순이 생겼어요.", "Only book one changed, but now book two contradicts it."),
-         "small": ("작은 설정 하나가 뒷이야기 전체에 번졌어요.", "One small setting change rippled through the rest of the story.")},
-        {"svg": P2, "alt": ("점점 늘어나는 시리즈 책들 사이에 점선 연결선이 어지럽게 얽혀 있음", "A growing stack of series books with tangled dashed lines connecting them"),
-         "caption": ("시리즈가 커질수록 책들 사이 연결이 안 보여요.", "The bigger the series, the harder it is to see the links between books."),
-         "small": ("한 권을 고칠 때마다 어느 책 내용이 어긋날지 아무도 몰라요.", "Nobody knows which book will stop matching after each change.")},
-        {"svg": P3, "hero": True, "alt": ("편집장과 인쇄 감독이 1권을 고치기 전, 다른 책으로 이어지는 점선을 함께 확인함", "The editor and print supervisor check a dashed line from book one to the next book before making the change"),
-         "caption": ("영향평가는 고치기 전에 연결 지도를 그려보는 거예요.", "Impact assessment maps the connections before you change anything."),
-         "small": ("1권을 고치기 전에, 변경이 어디까지 번지는지 먼저 봐요.", "Before changing book one, first check how far the change reaches."),
+        {"svg": P1, "alt": ("공공기관 담당자가 안내서를 직접 만들겠다고 하자, 출판사 편집장이 그 책을 이미 팔고 있다고 땀 흘리며 말함", "An agency officer says they'll make a guidebook in-house, and a sweating publisher's editor says they already sell it"),
+         "caption": ("공공기관이 서점에 이미 있는 책을 새로 만들려고 해요.", "A public agency plans to make a book the bookstore already sells."),
+         "small": ("공공기관은 SW사업을 맡기는 발주기관, 서점의 책은 이미 나와 있는 상용 SW예요.", "The agency is the party commissioning a software project; the store's books are commercial software already on sale.")},
+        {"svg": P2, "alt": ("공공기관 담당자가 공짜 원고를 나눠주고, 옆에서 출판사 편집장이 손님을 잃어 찡그림", "An agency officer hands out free copies while a publisher's editor frowns, losing customers"),
+         "caption": ("공공기관이 같은 책을 공짜로 뿌리면 그 책을 팔던 출판사는 손님을 잃어요.", "If the agency hands out the same book for free, publishers selling it lose customers."),
+         "small": ("출판사가 줄어들면 나중엔 공공기관과 독자 모두 고를 책이 줄어요.", "With fewer publishers, the agency and readers alike end up with fewer books to choose from.")},
+        {"svg": P3, "hero": True, "alt": ("공공기관 담당자가 서점 책장을 옆에 두고, 시작하기 전 평가표를 확인함", "An agency officer checks a pre-project assessment board, with the bookstore's shelf beside it"),
+         "caption": ("SW사업 영향평가는 공공 SW사업이 민간 시장에 미칠 영향을 미리 따져보는 제도예요.", "A software project impact assessment weighs a public software project's effect on the private market in advance."),
+         "small": ("먼저 따져봐야 '사서 쓸지, 새로 만들지'를 제대로 고를 수 있어요.", "Checking first leaves a real choice: buy it or build it."),
          "tricks": (4, [
-             (LINK_I, ("연결점 찾기", "Find the connections"), ("이 변경이 어디로 이어지는지 찾아요", "trace where this change leads"), "calm"),
-             (SCOPE_I, ("영향 범위 그리기", "Map the scope"), ("번질 수 있는 범위를 동그라미로 그려요", "circle how far it could spread")),
-             (GRADE_I, ("위험 등급 매기기", "Grade the risk"), ("크게 번지는 건 더 높은 등급으로", "bigger ripples get a higher risk grade")),
-             (STAKE_I, ("이해관계자 확인", "Check who's affected"), ("어느 독자층이 영향받는지 확인해요", "see which readers are affected"), "warm"),
+             (SCOPE_I, ("비슷한 상용 SW 찾기", "Look for similar commercial software"), ("서점에 같은 책이 있는지 봐요", "is the same book already on the shelf?"), "calm"),
+             (GRADE_I, ("민간 시장 영향 따지기", "Weigh the market effect"), ("출판사 손님을 빼앗는지 봐요", "does it take customers from publishers?")),
+             (LINK_I, ("입찰 공고 전에 끝내기", "Finish before the bid notice"), ("사업을 맡기기 전에 미리 해요", "done before the project goes out to bid")),
+             (STAKE_I, ("결과 공개하기", "Publish the result"), ("출판사가 재평가를 요청할 수 있어요", "a vendor can request a re-assessment"), "warm"),
          ])},
         {"svg": svg(320, '<rect width="760" height="320" fill="var(--good-soft)"/>'
-                    + styleguide(60, 30, 640, 240, "⟦영향평가 매트릭스|IMPACT ASSESSMENT MATRIX⟧",
-                                 ("⟦변경 대상: 1권 설정|change target: book 1's setting⟧",
-                                  "⟦직접 영향: 2권 줄거리 — 위험 높음|direct impact: book 2's plot — high risk⟧",
-                                  "⟦간접 영향: 3권 캐릭터 — 위험 중간|indirect impact: book 3's character — medium risk⟧",
-                                  "⟦무관: 외전 — 위험 없음|unaffected: the side story — no risk⟧"), 1.0)),
-         "alt": ("변경 대상과 직접·간접 영향, 무관한 부분을 나눠 적은 영향평가 매트릭스", "An impact matrix separating the change target, direct and indirect impact, and the unaffected part"),
-         "caption": ("변경의 영향을 위험 등급별로 나눠 적어요.", "A change's impact gets written down by risk grade."),
-         "small": ("직접 영향, 간접 영향, 무관 — 이렇게 나누면 어디부터 손봐야 할지 보여요.", "Direct, indirect, and unaffected — sorted this way, it's clear where to start.")},
-        {"svg": svg(300, sky(300)
-                    + person(190, 150, s=0.8, face=EYES, **PRINTER) + label(190, 265, "⟦영향평가는 책끼리 어긋나는 큰 사고를 막아줘요|impact assessment stops big clashes between books⟧", 11, "var(--ink)")
-                    + person(560, 150, s=0.8, face=SWEAT, **EDITOR) + label(560, 265, "⟦작은 수정까지 매번 평가하면 출간이 느려져요|assessing every tiny fix slows publishing down⟧", 11, "var(--ink)")
-                    + label(380, 30, "⟦영향평가에도 시간이 들어요|impact assessment takes time too⟧", 13, "var(--bad)", cls="d")
-                    + label(380, 280, "⟦변경 규모에 맞춰, 얼마나 깊이 볼지 정해요|how deep you look should match the size of the change⟧", 12, "var(--muted)")),
-         "alt": ("인쇄 감독은 영향평가가 큰 사고를 막아준다 말하고, 편집장은 작은 수정까지 매번 하면 느려진다고 땀 흘리며 말함", "The print supervisor says it stops big accidents; the sweating editor says assessing every tiny fix slows publishing down"),
-         "caption": ("영향평가에도 시간이 들어요.", "Impact assessment takes time too."),
-         "small": ('영향평가를 너무 자주 하면 출간이 느려지고, 너무 안 하면 사고가 나요. 적절한 기준은 → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>이 함께 정해요.',
-                   "Assess too often and publishing slows down; too rarely and accidents happen. The right balance is set together with → <a href=\"pmoaudit-en.html\">the last checker before publication</a>.")},
+                    + styleguide(60, 30, 640, 240, "⟦영향평가는 이런 순서예요|THE ASSESSMENT, STEP BY STEP⟧",
+                                 ("⟦① 사업을 기획할 때 발주기관이 직접 평가해요|① the ordering agency assesses it while planning the project⟧",
+                                  "⟦② 비슷한 상용 SW가 있는지 찾아봐요|② the agency looks for similar commercial software⟧",
+                                  "⟦③ 있으면 사서 쓰는 쪽을 먼저 검토해요|③ if one exists, buying it gets considered first⟧",
+                                  "⟦④ 결과를 공개하고, 사업자는 재평가를 요청할 수 있어요|④ the result is published, and vendors can request a re-assessment⟧",
+                                  "⟦⑤ 과기정통부가 결과를 검토하고 개선을 요청할 수 있어요|⑤ the science ministry can review it and request fixes⟧"), 1.0)),
+         "alt": ("발주기관의 평가, 상용 SW 확인, 구매 검토, 결과 공개와 재평가 요청, 과기정통부 검토까지 다섯 단계를 적은 안내판", "A board listing five steps: the agency's assessment, checking for commercial software, considering a purchase, publishing with re-assessment requests, and ministry review"),
+         "caption": ("영향평가는 사업을 맡기기 전에 다섯 단계로 이어져요.", "The assessment runs through five steps before the project goes out to bid."),
+         "small": ("입찰 공고 전에 평가를 끝내야 '사서 쓰는' 선택지가 살아 있어요.", "Finishing before the bid notice keeps the option to buy alive.")},
+        {"svg": svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
+                    + person(160, 130, s=0.8, face=SMILE, **EDITOR) + label(190, 260, "⟦출판사는 공짜 책에 시장을 안 빼앗겨요|publishers don't lose the market to free copies⟧", 11, "var(--ink)")
+                    + person(540, 130, s=0.8, face=SWEAT, **OFFICER) + label(570, 260, "⟦기관이 직접 평가하니 형식적이지 않게 해야 해요|agencies grade themselves, so it mustn't be a formality⟧", 11, "var(--ink)")
+                    + label(380, 305, "⟦영향평가는 새 개발을 막는 제도가 아니라, 민간 시장 영향을 먼저 따지게 하는 제도예요|the assessment doesn't ban new development — it makes the market effect get weighed first⟧", 12, "var(--ink)", cls="d")),
+         "alt": ("왼쪽: 출판사가 시장을 지켜 웃음. 오른쪽: 공공기관 담당자가 스스로 평가해야 해서 땀을 흘림", "Left: a publisher smiles, keeping its market. Right: an agency officer sweats, having to assess its own project"),
+         "caption": ("영향평가는 개발을 금지하지 않아요. 영향을 먼저 따지게 해요.", "The assessment doesn't ban development. It makes the effect get weighed first."),
+         "small": ('평가 뒤 사서 쓰기로 정했다면 이어서 볼 이야기가 있어요. → <a href="swpurchase-ko.html">인쇄기를 중간상인 없이 바로 사기</a>',
+                   "If the agency decides to buy, this story comes next. → <a href=\"swpurchase-en.html\">buying the press machine, no middleman</a>")},
     ],
-    "summary": (("<b>SW사업 영향평가</b> = 시리즈 중 한 권을 고치기 전에, <b>다른 책들로 번질 범위와 위험</b>을 미리 그려보는 연결 지도.",
-                 "<b>Software project impact assessment</b> = before changing one book in a series, drawing a connection map of <b>how far it spreads and how risky that is</b>."),
-                ("SW사업 영향평가는 기존 정보시스템에 변경을 가하기 전, 그 변경이 연관된 업무·시스템·이해관계자에 미치는 영향의 범위와 크기를 분석하는 활동이에요. 직접 영향과 간접 영향을 나눠 위험 등급을 매기고, 그 결과로 변경 범위와 일정, 자원 배분을 조정해요.",
-                 "A software project impact assessment analyzes, before changing an existing information system, how far and how severely that change reaches related work, systems, and stakeholders. It separates direct from indirect impact, assigns a risk grade, and uses the result to adjust the scope, schedule, and resourcing of the change.")),
+    "summary": (("<b>SW사업 영향평가</b> = 공공기관이 SW사업을 맡기기 전에, 그 사업이 <b>민간 SW 시장에 미칠 영향</b>을 따져보고 <b>이미 있는 상용 SW를 사서 쓸 수 있는지</b> 살펴보는 제도.",
+                 "A <b>software project impact assessment</b> = before commissioning a software project, a public agency weighs its <b>effect on the private software market</b> and checks whether <b>existing commercial software could simply be bought</b>."),
+                ("SW사업 영향평가는 국가기관·지방자치단체·공공기관이 소프트웨어사업을 추진할 때 민간 소프트웨어 시장에 미치는 영향을 미리 평가하는 소프트웨어 진흥법상의 제도예요. 민간에 상용 소프트웨어가 이미 있으면 사서 쓰게 해 상용 소프트웨어 산업을 살리는 것이 목적이고, 입찰 공고 전에 평가해요. 2023년 개정으로 과학기술정보통신부가 평가 결과를 검토하고 개선을 요청할 수 있게 됐어요. 시스템을 고치기 전에 연관 범위를 따지는 '변경 영향 분석'과는 이름만 비슷한 다른 활동이에요.",
+                 "A software project impact assessment is a system under Korea's Software Promotion Act: state bodies, local governments, and public institutions assess in advance how a software project would affect the private software market. Its aim is to support the commercial software industry by having agencies buy software that already exists, and it is done before the bid notice. A 2023 amendment lets the science ministry review the result and request improvements. It is a different activity from 'change impact analysis', which traces what a change to a system would touch, despite the similar name.")),
     "glossary": [
-        ("영향평가", "Impact Assessment", ("고치기 전에 그려보는 연결 지도.", "The connection map drawn before a change."), ("범위와 위험을 미리 가늠해요.", "Gauges scope and risk ahead of time.")),
-        ("영향범위분석", "Impact Scope Analysis", ("번질 수 있는 범위를 동그라미로 그리는 일.", "Circling how far the ripple could reach."), ("직접·간접 영향을 나눠 봐요.", "Separates direct impact from indirect.")),
-        ("이해관계자분석", "Stakeholder Analysis", ("어느 독자층이 영향받는지 확인하는 일.", "Checking which readers are affected."), ("누구에게 미리 알려야 할지 정해요.", "Decides who needs to be told in advance.")),
-        ("추적성(Traceability)", "Traceability", ("요구사항부터 코드까지 이어지는 실.", "The thread running from requirement to code."), ("이 실이 있어야 영향 범위를 따라갈 수 있어요.", "Without this thread, you can't trace how far an impact runs.")),
-        ("위험등급", "Risk Grade", ("번짐의 크기에 매기는 등급.", "The grade assigned to how big the ripple is."), ("높을수록 더 꼼꼼히 봐야 해요.", "The higher it is, the closer the review needs to be.")),
-        ("회귀테스트", "Regression Testing", ("고친 뒤 멀쩡하던 곳도 다시 확인하는 일.", "Re-checking the parts that used to be fine, after a change."), ('영향평가에서 찾은 범위를 실제로 확인하는 단계예요.', 'The step that actually verifies the scope impact assessment identified.')),
-        ("변경관리", "Change Management", ("고칠지 말지, 언제 고칠지 결정하는 절차.", "The process deciding whether and when to make the change."), ("영향평가 결과가 이 결정의 근거가 돼요.", "The impact assessment result is what this decision is based on.")),
-        ("거버넌스", "Governance", ("누가 이런 결정을 승인하는지 정해놓은 틀.", "The framework for who approves this kind of decision."), ("큰 영향일수록 더 높은 선에서 승인받아요.", "The bigger the impact, the higher up it needs sign-off.")),
+        ("SW사업 영향평가", "SW Project Impact Assessment", ("공공 SW사업이 민간 시장에 미칠 영향을 미리 따지는 제도.", "The system for weighing a public software project's effect on the private market."), ("사업을 맡기기 전에 해요.", "Done before the project is commissioned.")),
+        ("소프트웨어 진흥법", "Software Promotion Act", ("이 평가를 하라고 정한 법.", "The law that requires this assessment."), ("공공 SW사업의 여러 규칙을 함께 담고 있어요.", "It also holds other rules for public software projects.")),
+        ("발주기관", "Ordering Agency", ("책 만드는 일을 맡기는 공공기관.", "The public body commissioning the book."), ("국가기관·지자체·공공기관이 해당돼요.", "State bodies, local governments, and public institutions.")),
+        ("상용 소프트웨어", "Commercial Software", ("서점에 이미 나와 있는 책.", "The book already on the bookstore shelf."), ("새로 안 만들고 사서 쓸 수 있어요.", "It can be bought instead of being built anew.")),
+        ("민간 시장 침해", "Crowding Out the Private Market", ("공짜 책 때문에 출판사가 손님을 잃는 일.", "A publisher losing customers to free copies."), ("영향평가가 막으려는 바로 그 문제예요.", "The exact problem the assessment aims to prevent.")),
+        ("재평가 요청", "Re-assessment Request", ("평가 결과를 다시 봐 달라고 하는 일.", "Asking for the result to be looked at again."), ("결과를 공개하니 사업자가 요청할 수 있어요.", "Results are published, so vendors can ask for it.")),
+        ("상용SW 직접구매", "Direct Purchase of Commercial SW", ("상용 SW를 발주기관이 직접 사는 방식.", "The agency buying commercial software directly."), ('사서 쓰기로 정한 뒤의 이야기예요. → <a href="swpurchase-ko.html">인쇄기를 중간상인 없이 바로 사기</a>', 'What comes after deciding to buy. → <a href="swpurchase-en.html">buying the press machine, no middleman</a>')),
+        ("변경 영향 분석", "Change Impact Analysis", ("시스템을 고치기 전에 번질 범위를 따지는 일.", "Tracing how far a change to a system would spread."), ("이름은 비슷해도 다른 활동이니 헷갈리지 마세요.", "A different activity, despite the similar name.")),
     ],
 }

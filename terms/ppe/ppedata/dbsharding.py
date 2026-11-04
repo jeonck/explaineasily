@@ -12,7 +12,7 @@ P1 = svg(320, sky(320)
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + shelfzone(190, 120, 380, 100, 0.9, n=4, bad=2)
          + person(640, 180, s=0.75, face=FROWN, **MANAGER)
-         + label(380, 90, "⟦나누는 기준을 아무렇게나 정하면 상자가 한 구역에만 몰려요|pick a careless split rule, and the boxes pile into one zone⟧", 12, "var(--bad)")
+         + label(380, 90, "⟦창고를 나누는 기준을 아무렇게나 정하면 상자가 한 구역에만 몰려요|split the warehouse by a careless rule, and the boxes pile into one zone⟧", 12, "var(--bad)")
          + label(380, 260, "⟦나누는 기준(키)을 잘 골라야 해요|the splitting key has to be chosen carefully⟧", 13, "var(--ink)"))
 
 # 3. hero: 샤딩 = 창고를 여러 구역(서버)으로 쪼개는 것
@@ -61,7 +61,7 @@ PAGE = {
          "caption": ("상자가 너무 많아서 찾는 데 한참 걸려요.", "So many boxes that finding one takes forever."),
          "small": ("창고 하나로는 늘어난 상자와 요청을 못 받아내요.", "One warehouse alone can't handle all the boxes and requests.")},
         {"svg": P2, "alt": ("창고 관리자가 아무렇게나 나눈 선반 한 구역에 상자가 몰린 것을 보고 찡그림", "A manager frowns at a carelessly split shelf where boxes pile into one zone"),
-         "caption": ("나누는 기준을 아무렇게나 정하면 상자가 한 구역에만 몰려요.", "Pick a careless split rule, and the boxes pile into one zone."),
+         "caption": ("창고를 창고를 나누는 기준을 아무렇게나 정하면 상자가 한 구역에만 몰려요.", "Split the warehouse by a careless rule, and the boxes pile into one zone."),
          "small": ("나누는 기준(키)을 잘 골라야 해요.", "The splitting key has to be chosen carefully.")},
         {"svg": P3, "hero": True, "alt": ("창고 관리자가 창고를 구역 A와 구역 B로 나누고, 배송 기사가 자기 몫의 구역을 찾아감", "A manager splits the warehouse into zone A and zone B, and a driver heads to the right zone"),
          "caption": ("샤딩 = 창고를 여러 구역(서버)으로 쪼개는 것이에요.", "Sharding splits the warehouse into several zones (servers)."),
@@ -70,7 +70,7 @@ PAGE = {
              (HKEY_I, ("샤딩 키 고르기", "Choose a shard key"), ("상자가 어느 구역으로 갈지 정해요", "decides which zone each box goes to"), "calm"),
              (VSPLIT_I, ("수직/수평 나누기", "Split vertically or horizontally"), ("열 기준, 행 기준", "by column, or by row")),
              (ROUTE_I, ("올바른 구역으로 안내", "Route to the right zone"), ("배송 기사(요청)가 맞는 구역으로 바로 가요", "the driver (request) goes straight to the right zone"), "warm"),
-             (JOIN_I, ("걸친 질문은 느려짐", "Cross-zone queries slow down"), ("그 질문은 여러 구역을 다 봐야 해요", "each such query has to check several zones")),
+             (JOIN_I, ("여러 구역에 걸친 질문은 느려짐", "Cross-zone queries slow down"), ("그 질문은 여러 구역을 다 봐야 해요", "each such query has to check several zones")),
          ])},
         {"svg": P4, "alt": ("샤딩과 파티셔닝을 비교하는 표", "A table comparing sharding and partitioning"),
          "caption": ("샤딩은 데이터를 여러 서버로 나누고, 파티셔닝은 한 창고(서버) 안의 구역을 나눠요.", "Sharding splits data across servers; partitioning splits zones within one warehouse (server)."),

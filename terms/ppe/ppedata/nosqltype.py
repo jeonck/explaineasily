@@ -38,7 +38,7 @@ P4 = svg(320, sky(320, ground=False)
          + '<rect x="200" y="54" width="360" height="2" fill="var(--line)"/>'
          + _row(80, "⟦Key-Value — 번호표로 바로 꺼내기|key-value — fetch by tag directly⟧", "⟦예: 캐시|e.g. cache⟧")
          + _row(116, "⟦Document — 상자 안에 자유 형식|document — free-form inside the box⟧", "⟦예: 상품 정보|e.g. product info⟧")
-         + _row(152, "⟦Column-family — 같은 열끼리 빨리 꺼내기|column-family — fast reads of one column⟧", "⟦예: 로그|e.g. logs⟧")
+         + _row(152, "⟦Column-family — 행 키 아래 열을 묶어 저장|column-family — columns grouped under a row key⟧", "⟦예: 로그|e.g. logs⟧")
          + _row(188, "⟦Graph — 상자끼리 끈으로 연결|graph — boxes linked by string⟧", "⟦예: 친구 관계|e.g. friend networks⟧")
          + label(380, 250, "⟦NoSQL은 관계형 창고(정규화)와 상자를 담는 방식부터 달라요|NoSQL stores boxes differently from the relational (normalized) warehouse⟧", 12, "var(--muted)"))
 
@@ -67,7 +67,7 @@ PAGE = {
          "tricks": (4, [
              (KV_I, ("Key-Value", "Key-Value"), ("번호표로 바로 꺼내요", "fetch straight by tag"), "calm"),
              (DOC_I, ("Document", "Document"), ("상자 안이 자유 형식이에요", "free-form inside the box")),
-             (COL_I, ("Column-family", "Column-family"), ("같은 열을 세로로 빨리 꺼내요", "fast reads down one column"), "warm"),
+             (COL_I, ("Column-family", "Column-family"), ("행 키 아래 열을 묶어 넓게 저장해요", "stores grouped columns under a row key"), "warm"),
              (GRAPH_I, ("Graph", "Graph"), ("상자끼리 끈으로 연결해요", "boxes linked by string")),
          ])},
         {"svg": P4, "alt": ("Key-Value, Document, Column-family, Graph 네 유형을 설명하는 표", "A table explaining key-value, document, column-family, and graph types"),

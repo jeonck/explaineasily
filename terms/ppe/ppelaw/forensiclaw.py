@@ -34,7 +34,7 @@ P3 = svg(360, sky(360)
 # 4. 절차를 지켰을 때 vs 안 지켰을 때
 P4 = svg(320, sky(320, ground=False)
          + rulesboard(50, 40, 320, 230, "⟦절차를 지켰을 때|FOLLOWED THE PROCEDURE⟧", ("⟦위원회가 증거로 인정해요|the committee accepts it as evidence⟧", "⟦학생도 결과에 승복하기 쉬워요|the student finds it easier to accept the result⟧"), 1.0)
-         + rulesboard(400, 40, 320, 230, "⟦절차를 안 지켰을 때|SKIPPED THE PROCEDURE⟧", ("⟦\"위법하게 얻었다\"며 증거가 빠져요|thrown out as \"unlawfully obtained\"⟧", "⟦진짜였어도 못 써서 사건 전체가 흔들려요|even if real, it can't be used — the whole case wobbles⟧"), 1.0)
+         + rulesboard(400, 40, 320, 230, "⟦절차를 안 지켰을 때|SKIPPED THE PROCEDURE⟧", ("⟦\"위법하게 얻었다\"며 증거가 빠져요|thrown out as \"unlawfully obtained\"⟧", "⟦진짜였어도 못 써서 사건 전체가 흔들려요|even if real, it's unusable — the whole case wobbles⟧"), 1.0)
          + label(380, 295, "⟦증거 내용이 진짜인가와, 정당하게 얻었는가는 서로 다른 질문이에요|\"is the evidence real?\" and \"was it lawfully obtained?\" are two different questions⟧", 11, "var(--ink)", cls="d"))
 
 # 5. 절차를 지켜도 내용 판단은 또 다른 문제예요

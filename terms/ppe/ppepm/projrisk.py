@@ -10,7 +10,7 @@ P1 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 # 2. 왜: 위험 대비는 사고가 안 터지면 낭비로 보이고, 터진 뒤에 하면 이미 늦어요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(190, 150, s=0.8, face=EYES, **SPONSOR)
-         + bubble(60, 70, 240, 46, "⟦우산은 왜 미리 사둬요? 돈 낭비예요|why buy an umbrella in advance? that's a waste⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(60, 70, 240, 46, "⟦우산은 왜 미리 사둬요? 돈 낭비예요|buying an umbrella early? that's a waste⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(560, 150, s=0.8, face=FROWN + SWEAT, **PLANNER)
          + bubble(440, 70, 240, 46, "⟦근데 이미 다 젖어버렸어요|but everyone's already soaked now⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 282, "⟦안 보이는 위험이 제일 무서워요, 눈앞에 닥친 뒤엔 대비하기 늦어요|the risk you can't see is the scary one — once it hits, it's too late to prepare⟧", 12, "var(--ink)", cls="d"))
@@ -46,7 +46,7 @@ P5 = svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="3
 
 PAGE = {
     "slug": "projrisk", "order": 2,
-    "title": ("비 오는 날에도 챙기는 우산", "The Umbrella You Carry Even on a Dry Day"),
+    "title": ("비가 안 오는 날에도 챙기는 우산", "The Umbrella You Carry Even on a Dry Day"),
     "h1": ("<em>프로젝트 위험관리</em>가 뭐예요?", "What is <em>Project Risk Management</em>?"),
     "sub": ("프로젝트 위험관리를, 공연 당일 비가 올지 몰라 늘 챙겨두는 우산 이야기로 풀어봤어요.",
             "Project risk management, told as a story about an umbrella you always carry, just in case it rains on show day."),
@@ -82,7 +82,7 @@ PAGE = {
         ("위험 분석", "Risk Analysis", ("비가 올 확률과 피해 크기를 재는 일.", "Gauging the odds of rain and how bad it'd be."), ("확률 × 영향도로 우선순위를 매겨요.", "Ranked by probability × impact.")),
         ("회피", "Avoid", ("아예 야외공연을 접는 전략.", "The strategy of canceling the outdoor show entirely."), ("가장 강력하지만 비용이 커요.", "Strongest option, but costly.")),
         ("전가", "Transfer", ("보험이나 외주로 위험을 넘기는 전략.", "Shifting risk via insurance or outsourcing."), ("위험 자체가 없어지진 않아요.", "The risk itself doesn't disappear.")),
-        ("완화", "Mitigate", ("천막을 쳐서 피해를 줄이는 전략.", "Pitching a tent to shrink the damage."), ("가장 흔히 쓰는 전략이에요.", "The most commonly used strategy.")),
+        ("완화", "Mitigate", ("천막을 쳐서 피해를 줄이는 전략.", "Pitching a tent to shrink the damage."), ("위험을 없애진 못해도 크기를 줄여요.", "It can't remove the risk, but it shrinks the damage.")),
         ("수용", "Accept", ("작은 위험은 그냥 안고 가는 전략.", "Just carrying small risks as they are."), ("대응 비용이 위험보다 클 때 써요.", "Used when the fix would cost more than the risk itself.")),
         ("WBS", "WBS", ("공연 준비를 쪼갠 체크리스트.", "The checklist that breaks show prep into pieces."), ('위험은 이 체크리스트의 각 항목에 숨어 있어요. → <a href="wbsppm-ko.html">공연 준비를 쪼갠 체크리스트</a>', 'Risk hides inside each item of this checklist. → <a href="wbsppm-en.html">the checklist that breaks down show prep</a>')),
         ("BCP", "BCP", ("정전처럼 큰 사고에도 공연을 이어가는 계획.", "The plan that keeps the show going even through a blackout-sized disaster."), ('더 큰 위험(재해급)에 대한 대비예요. → <a href="bcpplan-ko.html">정전에도 멈추지 않는 투어</a>', 'Preparation for even bigger (disaster-scale) risk. → <a href="bcpplan-en.html">the tour that doesn\'t stop for a blackout</a>')),

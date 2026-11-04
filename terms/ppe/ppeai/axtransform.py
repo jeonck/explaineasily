@@ -74,7 +74,7 @@ PAGE = {
                  + label(380, 300, "⟦AX는 기술보다 변화관리가 더 어렵고, 구조를 바꾸기 전에 원칙판과 운영 지도가 있어야 해요|AX is harder as change management than as technology, and needs a charter and an operations map already in place⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 조작원이 기술만 있으면 될 줄 알았다고 후회함. 오른쪽: 교사가 사람들이 새 역할에 익숙해지는 게 먼저라고 말함", "Left: the operator regrets thinking technology alone would be enough. Right: the teacher says getting people used to new roles comes first"),
          "caption": ("AX는 기술보다 변화관리가 더 어려워요.", "AX is harder as change management than as technology."),
-         "small": ("등급 원칙판과 운영 지도 없이 구조부터 바꾸면, 오히려 혼란만 커져요.", "Restructuring before the charter and the operations map are in place only breeds confusion.")},
+         "small": ("등급 원칙판(윤리기준)과 운영 지도(리스크 관리) 없이 구조부터 바꾸면, 오히려 혼란만 커져요.", "Restructuring before the charter (ethics standards) and the operations map (risk management) are in place only breeds confusion.")},
     ],
     "summary": (("<b>AX</b> = AI 카메라 한 대를 얹는 게 아니라, <b>검사장이 일하는 방식 자체</b>를 AI 중심으로 <b>처음부터 다시 설계</b>하는 것.",
                  "<b>AX</b> = not bolting on one AI camera, but <b>redesigning the way of working itself</b>, from the ground up, <b>around AI</b>."),

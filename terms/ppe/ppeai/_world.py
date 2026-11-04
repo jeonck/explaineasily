@@ -26,7 +26,7 @@ def bin_(x, y, s=1.0, label_text=None, color="var(--accent)"):
     """분류함(classification bin)."""
     out = f'<g transform="translate({x},{y}) scale({s})"><path d="M-24 -4 h48 l-6 30 h-36 z" fill="{color}"/>'
     if label_text:
-        out += label(0, -14, label_text, 11, "var(--ink)", cls="d")
+        out += label(0, -14, label_text, fit(11, s), "var(--ink)", cls="d")
     return out + '</g>'
 
 

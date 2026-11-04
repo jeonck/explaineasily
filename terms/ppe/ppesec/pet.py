@@ -94,7 +94,7 @@ PAGE = {
               ("합성데이터", "Synthetic data"), ("닮은 가짜 명부를 만들어요", "a look-alike fake list"), "calm"),
          ])},
         {"svg": P4, "alt": ("네 기법이 언제 쓰이는지 정리한 표: 차분 프라이버시(통계), 동형암호(암호화 계산), 연합학습(데이터 분산), 합성데이터(테스트용)", "A table listing when each method fits: differential privacy (stats), homomorphic encryption (encrypted compute), federated learning (distributed data), synthetic data (testing)"),
-         "caption": ("네 기법은 쓰는 상황이 서로 달라요.", "Each of the four fits a different situation."),
+         "caption": ("차분 프라이버시·동형암호·연합학습·합성데이터는 쓰는 상황이 서로 달라요.", "Differential privacy, homomorphic encryption, federated learning, and synthetic data each fit a different situation."),
          "small": ("차분 프라이버시처럼 빠른 기법도 있고, 동형암호처럼 느리고 비싼 기법도 있어요.", "Some, like differential privacy, are fast; others, like homomorphic encryption, are slow and costly.")},
         {"svg": P5, "alt": ("흐림을 많이 섞은 차트는 더 안전하지만 덜 정확하고, 흐림을 적게 섞은 차트는 덜 안전하지만 더 정확함", "A heavily blurred chart is safer but less accurate; a lightly blurred chart is less safe but more accurate"),
          "caption": ("완벽한 프라이버시와 완벽한 정확도는 같이 안 돼요.", "Perfect privacy and perfect accuracy can't both happen at once."),

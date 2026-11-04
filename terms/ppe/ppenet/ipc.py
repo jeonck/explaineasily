@@ -37,7 +37,7 @@ P4 = svg(320, sky(320)
 
 # 5. 로컬 IPC와는 달라요 — 네트워크 IPC는 멀리 있는 건물 사이
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + postoffice(140, 150, 0.6) + postoffice(230, 150, 0.6) + label(190, 240, "⟦같은 건물 안 부서끼리는 복도로 바로 전달해요|same-building teams just hand it across the hallway⟧", 10, "var(--ink)")
+         + postoffice(140, 150, 0.6) + postoffice(230, 150, 0.6) + label(190, 240, "⟦같은 건물 안 부서끼리는 봉투를 복도로 바로 전달해요|same-building teams just hand envelopes across the hallway⟧", 10, "var(--ink)")
          + postoffice(520, 150, 0.6) + postoffice(680, 150, 0.6) + label(600, 240, "⟦멀리 떨어진 건물끼리는 이 전용 편지함이 필요해요|distant buildings need this dedicated mailbox instead⟧", 10, "var(--ink)")
          + label(380, 282, "⟦네트워크 IPC는 같은 건물 안 전달(로컬 IPC)과 다른 이야기예요|network IPC is a different story from hand-offs inside one building (local IPC)⟧", 12, "var(--ink)", cls="d"))
 

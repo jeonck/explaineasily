@@ -18,7 +18,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 # 3. 소프트웨어 안전/기능안전 = 위험이 큰 책일수록 검증을 몇 겹으로 (hero)
 P3 = svg(340, sky(340)
          + person(380, 120, s=0.9, face=EYES, **PROOFER) + inkstamp(460, 90, 0.8)
-         + manuscript(260, 180, 0.7, text="⟦1차 검토|1st check⟧") + manuscript(380, 200, 0.7, text="⟦2차 검토|2nd check⟧") + manuscript(500, 180, 0.7, text="⟦독립 재검토|independent re-check⟧")
+         + manuscript(260, 180, 0.7, text="⟦1차 검토|1st check⟧") + manuscript(380, 216, 0.7, text="⟦2차 검토|2nd check⟧") + manuscript(500, 180, 0.7, text="⟦독립 재검토|independent re-check⟧")
          + label(380, 30, "⟦소프트웨어 안전/기능안전 = 위험이 큰 책일수록 검증을 몇 겹으로 더 엄격하게 거치게 하는 일|software/functional safety = putting higher-risk books through several extra-strict layers of checking⟧", 12, "var(--ink)", cls="d")
          + label(380, 320, "⟦위험 등급에 따라 거치는 검증 겹의 수가 달라져요|the number of checking layers changes with the risk grade⟧", 12, "var(--muted)"))
 

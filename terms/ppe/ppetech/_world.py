@@ -10,7 +10,7 @@ def booth(x, y, w, h, s=1.0, color="var(--accent)", label_text=None):
     """전시 부스 한 칸."""
     out = f'<g transform="translate({x},{y}) scale({s})"><rect width="{w}" height="{h}" rx="4" fill="{color}" opacity="0.18" stroke="{color}" stroke-width="3"/>'
     if label_text:
-        out += label(w / 2, -12, label_text, 12, "var(--ink)", cls="d")
+        out += label(w / 2, -12, label_text, fit(12, s), "var(--ink)", cls="d")
     return out + '</g>'
 
 

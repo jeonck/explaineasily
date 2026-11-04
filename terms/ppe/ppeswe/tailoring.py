@@ -14,7 +14,7 @@ P1 = svg(300, sky(300)
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(190, 150, s=0.8, face=SWEAT, **WRITER)
          + manuscript(190, 230, 0.6, marks=0)
-         + bubble(90, 70, 210, 40, "⟦규칙을 다 지키다 마감을 놓쳐요|following every rule, we miss the deadline⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(90, 70, 235, 40, "⟦규칙을 다 지키다 마감을 놓쳐요|following every rule, we miss the deadline⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(570, 150, s=0.8, face=FROWN, **PROOFER)
          + manuscript(570, 230, 0.6, marks=3)
          + bubble(460, 70, 220, 40, "⟦규칙을 대충 쓰다 오탈자가 쏟아져요|skipping the rules, typos pour in⟧", 11, "var(--panel)", "var(--line)", "bottom")

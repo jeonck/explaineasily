@@ -9,7 +9,7 @@
 ## 등장인물 (헬퍼는 `terms/ppesys/_world.py`)
 | 인물 | 그림 | 실제 |
 |---|---|---|
-| 정비반장 | `person(..., **CHIEF)` 보라 | OS 스케줄러 |
+| 정비반장 | `person(..., **CHIEF)` 보라 | OS 스케줄러 (단, gpu·aiaccel은 비교를 위해 CPU로 쓰고 글에 '반장(CPU)'로 밝힘) |
 | 정비사1/2 | `person(..., **MECH1/MECH2)` | 프로세스 / 스레드 |
 | 손님 | `person(..., **CUSTOMER)` 주황 | 작업 요청 |
 

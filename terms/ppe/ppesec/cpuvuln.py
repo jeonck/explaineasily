@@ -94,7 +94,7 @@ PAGE = {
          "caption": ("Meltdown과 Spectre는 엿보는 대상이 달라요.", "Meltdown and Spectre differ in what gets peeked at."),
          "small": ("Meltdown은 원래 못 들어가는 방(커널)까지 엿보고, Spectre는 프로그램을 속여서 짐작을 유도해 다른 방을 엿봐요.", "Meltdown peeks into a room it should never enter at all (the kernel); Spectre tricks a program into guessing its way into another room.")},
         {"svg": P5, "alt": ("일꾼이 짐작을 줄이니 다시 느려지고, 선반에 판자(패치)를 덧댐", "The worker guesses less and slows down again, while a patch boards up the shelf"),
-         "caption": ("패치하면 CPU가 느려지고, 이 틈을 완전히 없애긴 어려워요.", "Patching slows the CPU down, and the flaw can't be fully removed."),
+         "caption": ("패치하면 CPU가 느려지고, CPU 설계의 틈을 완전히 없애긴 어려워요.", "Patching slows the CPU down, and the CPU's design flaw can't be fully removed."),
          "small": ('<a href="patch-ko.html">판자(패치)</a>는 흔적을 줄이지만, CPU가 빠른 이유가 바로 짐작이라서 틈을 완전히 없애진 못해요.',
                    'A <a href="patch-en.html">patch</a> reduces the trace but can\'t remove the flaw entirely — guessing ahead is the very reason the CPU is fast.')},
     ],

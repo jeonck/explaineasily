@@ -54,7 +54,7 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="
          + label(190, 250, "⟦증명서로 '누가 갖고 있나'는 확실히 증명돼요|the certificate proves, for certain, who holds the work⟧", 11, "var(--ink)")
          + canvas(550, 110, 1.0) + glyph(560, 170, 0.6, COPY_P)
          + label(570, 262, "⟦그림 자체는 여전히 누구나 내려받고 복사할 수 있어요|the picture itself can still be downloaded and copied by anyone⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦NFT는 원본의 '소유 증명'이지, 복제를 막는 자물쇠가 아니에요|an NFT is proof of ownership, not a lock against copying⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦NFT는 '이 번호의 주인' 기록이지, 복제를 막는 자물쇠가 아니에요|an NFT records who holds this token, not a lock against copying⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "nft", "order": 19,
@@ -79,11 +79,11 @@ PAGE = {
              (COPY_I, ("그래도 복사는 돼요", "Still copyable"), ("그림 파일 복사 자체는 못 막아요", "it can't stop the image file from being copied"), "warm"),
          ])},
         {"svg": P4, "alt": ("증명서 설명판: 고유 번호, 현재 소유자, 거래 기록, 작품 자체는 아님", "A board lists what the certificate records: unique ID, current owner, history, and that it is not the artwork itself"),
-         "caption": ("증명서에는 번호와 소유자, 거래 기록이 적혀요.", "The certificate records an ID, the owner, and its history."),
+         "caption": ("증명서에는 번호와 소유자, 거래 기록이 적혀요.", "The certificate records an ID, the owner, and the trade history."),
          "small": ("그림 파일은 여전히 누구나 볼 수 있고 복사할 수 있어요.", "The image file itself can still be viewed and copied by anyone.")},
         {"svg": P5, "alt": ("왼쪽: 증명서가 소유자를 확실히 보여줌. 오른쪽: 그림은 여전히 복사됨", "Left: the certificate clearly shows the owner. Right: the picture is still copied"),
          "caption": ("증명서만 유일할 뿐, 그림 복사 자체는 막을 수 없어요.", "Only the certificate is unique — it can't stop the picture from being copied."),
-         "small": ("NFT는 원본의 '소유 증명'이지, 복제를 막는 자물쇠가 아니에요.", "An NFT is proof of ownership, not a lock against copying.")},
+         "small": ("NFT는 '이 번호의 주인' 기록이지, 복제를 막는 자물쇠가 아니에요. 저작권까지 넘어오는 것도 아니에요.", "An NFT records who holds this token; it isn't a lock against copying, and it doesn't transfer copyright by itself.")},
     ],
     "summary": (("<b>NFT</b> = 디지털 작품에 <b>위조 못 하는 고유 번호</b>를 붙여, <b>누가 원본을 소유하는지</b>만 증명하는 기술.",
                  "<b>NFT</b> = a technology that attaches an <b>unforgeable unique ID</b> to a digital work, proving only <b>who owns the original</b>."),

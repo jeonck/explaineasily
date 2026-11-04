@@ -22,7 +22,7 @@ P3 = svg(340, sky(340)
          + person(260, 150, s=0.85, face=EYES, **CARRIER) + envelope(380, 140, 0.8, registered=True)
          + person(520, 180, s=0.85, face=SMILE, **RECEIVER)
          + label(380, 30, "⟦TCP 오류·흐름·혼잡 제어 = 등기 배송을 끝까지 안전하게 지키는 세 장치|TCP's error, flow, and congestion control = the three devices that guard a registered delivery to the end⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦봉투를 잃어버리면 다시 보내고, 우편함이 넘치면 늦추고, 길이 막히면 수를 줄여요|resend lost envelopes, slow down when the mailbox overflows, send fewer when the road jams⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦봉투를 잃어버리면 다시 보내고, 우편함이 넘치면 늦추고, 길이 막히면 보내는 봉투 수를 줄여요|resend lost envelopes, slow down when the mailbox overflows, send fewer when the road jams⟧", 12, "var(--muted)"))
 
 # 4. 혼잡 제어 타임라인(점점 늘리다 줄이는 톱니)
 P4 = svg(300, sky(300, ground=False)
@@ -51,18 +51,18 @@ PAGE = {
             "TCP's error, flow, and congestion control, told as a story about three devices guarding a registered delivery to the end."),
     "panels": [
         {"svg": P1, "alt": ("집배원이 쉬지 않고 등기봉투를 계속 보내고, 받는 사람은 땀을 흘림", "A carrier keeps sending registered envelopes nonstop, and the receiver starts to sweat"),
-         "caption": ("쉬지 않고 등기봉투를 계속 보내요.", "The carrier keeps sending registered envelopes without a pause."),
+         "caption": ("집배원이 쉬지 않고 등기봉투를 계속 보내요.", "The carrier keeps sending registered envelopes without a pause."),
          "small": ("봉투가 찢어지고, 우편함도 넘치고, 길도 막혀요.", "Envelopes tear, the mailbox overflows, and the road jams.")},
         {"svg": P2, "alt": ("봉투가 찢어지고, 우편함이 넘치고, 길에 트럭이 꽉 막힌 세 장면", "Three scenes: a torn envelope, an overflowing mailbox, and a road jammed with trucks"),
          "caption": ("세 사고가 동시에 터지면 하나씩 터질 때보다 훨씬 나빠요.", "Three failures at once are far worse than one at a time."),
          "small": ("훼손·분실, 우편함 넘침, 길 전체 막힘이 한꺼번에 와요.", "Damage and loss, an overflowing mailbox, and a jammed road all arrive together.")},
         {"svg": P3, "hero": True, "alt": ("집배원과 받는 사람 사이에서 등기봉투가 안전하게 오가는 모습", "A registered envelope passing safely between a carrier and a smiling receiver"),
          "caption": ("TCP의 오류·흐름·혼잡 제어는 등기 배송을 끝까지 지키는 세 장치예요.", "TCP's error, flow, and congestion control are three devices guarding a registered delivery to the end."),
-         "small": ("봉투를 잃어버리면 다시 보내고, 우편함이 넘치면 늦추고, 길이 막히면 수를 줄여요.", "Resend lost envelopes, slow down when the mailbox overflows, send fewer when the road jams."),
+         "small": ("봉투를 잃어버리면 다시 보내고, 우편함이 넘치면 늦추고, 길이 막히면 보내는 봉투 수를 줄여요.", "Resend lost envelopes, slow down when the mailbox overflows, send fewer when the road jams."),
          "tricks": (4, [
              (RESEND_I, ("오류 제어", "Error control"), ("확인이 없으면 다시 보내요(재전송)", "no acknowledgment means the envelope gets resent"), "calm"),
              (WINDOW_I, ("흐름 제어", "Flow control"), ("받는 우편함 크기만큼만 보내요(윈도)", "sends only as much as the mailbox can hold (window)")),
-             (SLOW_I, ("혼잡 제어", "Congestion control"), ("길이 막히면 보내는 수를 줄여요", "cuts back the count when the road jams"), "warm"),
+             (SLOW_I, ("혼잡 제어", "Congestion control"), ("길이 막히면 보내는 수를 줄여요", "sends fewer trucks when the road jams"), "warm"),
              (TIMEOUT_I, ("타임아웃", "Timeout"), ("일정 시간 답이 없으면 다시 보내요", "no reply in time also triggers a resend")),
          ])},
         {"svg": P4, "alt": ("보내는 트럭 수가 천천히 늘다가 막히면 뚝 줄어드는 톱니 모양 그래프", "A sawtooth graph where the number of trucks sent slowly climbs, then drops sharply on a jam"),
@@ -79,7 +79,7 @@ PAGE = {
     "glossary": [
         ("오류 제어", "Error control", ("잃어버리거나 훼손되면 다시 보내는 장치.", "The device that resends what was lost or damaged."), ("체크섬과 확인응답(ACK)으로 알아차려요.", "Detected via checksum and acknowledgment (ACK).")),
         ("흐름 제어", "Flow control", ("받는 우편함 크기만큼만 보내는 장치.", "The device that sends only as much as the mailbox can hold."), ("수신 윈도 크기로 속도를 맞춰요.", "Matches pace to the receive window size.")),
-        ("혼잡 제어", "Congestion control", ("길이 막히면 보내는 수를 줄이는 장치.", "The device that cuts the count when the road jams."), ("혼잡 윈도를 늘렸다 줄여요(AIMD).", "Grows then cuts the congestion window (AIMD).")),
+        ("혼잡 제어", "Congestion control", ("길이 막히면 보내는 수를 줄이는 장치.", "The device that sends fewer trucks when the road jams."), ("혼잡 윈도를 늘렸다 줄여요(AIMD).", "Grows then cuts the congestion window (AIMD).")),
         ("ACK", "ACK", ("잘 받았다는 확인 쪽지.", "The note confirming something arrived safely."), ("없으면 재전송이 시작돼요.", "Its absence is what triggers a resend.")),
         ("타임아웃·재전송", "Timeout/retransmission", ("일정 시간 답이 없으면 다시 보내는 규칙.", "The rule that resends when no reply comes in time."), ("오류 제어의 핵심 수단이에요.", "A core mechanism of error control.")),
         ("3-way 핸드셰이크", "3-way handshake", ("보내기 전 나누는 인사 세 번.", "The three greetings exchanged before anything is sent."), ('TCP가 제어 전에 먼저 거치는 절차예요. → <a href="tcpudp-ko.html">등기봉투와 일반봉투</a>', "The step TCP takes before any of this control begins. → <a href=\"tcpudp-en.html\">the registered envelope and the plain one</a>")),

@@ -59,7 +59,7 @@ PAGE = {
          "small": ("구역마다 전용 우체국을 두니 집 찾기도, 구역 관리도 큰 동네 하나일 때보다 쉬워요.", "Each zone gets its own post office — houses are easier to find and manage than in one big town."),
          "tricks": (4, [
              (I1, ("나누기", "Split"), ("큰 동네를 쪼개요", "splits the big town up")),
-             (I2, ("빨리 찾기", "Find Faster"), ("구역만 알면 그 구역 우체국으로 바로 가요", "knowing the zone sends it straight to that zone's office"), "calm"),
+             (I2, ("빨리 찾기", "Find Faster"), ("구역만 알면 봉투가 그 구역 우체국으로 바로 가요", "knowing the zone sends the envelope straight to that zone's office"), "calm"),
              (I3, ("자(마스크)로 자르기", "Cut With a Ruler"), ("주소 어디까지가 구역 번호인지 정해요", "marks where the zone part of the address ends")),
              (I4, ("전용 구역", "Dedicated Zone"), ("혼잡·장애를 가둬요", "contains congestion and outages"), "warm"),
          ])},

@@ -17,7 +17,7 @@ P1 = svg(300, sky(300)
          + person(520, 160, s=0.8, face=EYES, **CUSTOMER)
          + bubble(400, 50, 280, 44, "⟦3번 칸 부품만 살짝 바꿔주세요?|could you just swap the part in slot 3?⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(140, 170, s=0.8, face=FROWN, **CHIEF)
-         + bubble(20, 50, 240, 56, "⟦칸 하나만은 못 바꿔요, 상자째 비워야 해요|one slot alone? the whole box must be cleared⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(20, 50, 262, 56, "⟦칸 하나만은 못 바꿔요, 상자째 비워야 해요|one slot alone? the whole box must be cleared⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦의아하죠? 플래시 메모리 창고는 원래 상자 단위로만 비워져요|strange, right? a flash-memory warehouse can only clear whole boxes⟧", 12, "var(--ink)"))
 
 # 2. 상자(블록) 단위로만 비워지고, 너무 자주 비우면 칸이 닳음
@@ -103,6 +103,6 @@ PAGE = {
         ("오버프로비저닝", "Over-provisioning", ("늘 비워두는 여분의 칸.", "Slots kept empty in reserve, always."), ("SSD의 쓰기 속도와 수명을 지켜줘요.", "Protects both the SSD's write speed and lifespan.")),
         ("블록/페이지", "Block/Page", ("통째로만 지워지는 큰 칸, 그 안의 작은 칸.", "The big slot that clears all at once, and the small slots inside it."), ("지우기는 블록, 쓰기는 페이지 단위예요.", "Erasing works by block; writing works by page.")),
         ("플래시 메모리", "Flash Memory", ("전원이 꺼져도 부품을 기억하는 이 창고 자체.", "The warehouse itself, which remembers parts even off power."), ('이 창고를 관리하는 소프트웨어가 FTL이에요. → <a href="flashmem-ko.html">전원이 꺼져도 기억하는 부품 창고</a>', 'FTL is the software that manages this very warehouse. → <a href="flashmem-en.html">the parts warehouse that remembers even off power</a>')),
-        ("고가용성", "High Availability", ("칸 하나가 망가져도 버티는 대비.", "Holding up even when one slot fails."), ('이 세계 대신 놀이공원 세계에서 다뤄요. → <a href="failover-ko.html">예비 발전기가 넘겨받는 이야기</a>', 'Covered in another world, not this one. → <a href="failover-en.html">when the spare generator takes over</a>')),
+        ("고가용성", "High Availability", ("칸 하나가 망가져도 버티는 대비.", "Holding up even when one slot fails."), ('이 세계 대신 놀이공원 세계에서 다뤄요. → <a href="failover-ko.html">예비 발전기가 넘겨받는 이야기</a>', 'Covered in the amusement-park world, not this one. → <a href="failover-en.html">when the spare generator takes over</a>')),
     ],
 }

@@ -54,7 +54,7 @@ P4 = svg(360, sky(360, ground=False)
                       "⟦Go-Back-N: 틀린 것부터 전부 재전송|Go-Back-N: resend bad one onward⟧",
                       "⟦Selective: 틀린 것만 재전송|Selective: resend only the bad one⟧",
                       "⟦Stop-and-Wait보다 빠르지만 복잡해요|faster than Stop-and-Wait, more complex⟧"), 1.3)
-         + label(380, 345, "⟦빠른 방식일수록 메시지를 더 많이 저장해 둬야 해요|the faster the method, the more messages must be kept in memory⟧", 12, "var(--ink)"))
+         + label(380, 345, "⟦빠른 방식일수록 보내는 쪽이 메시지를 더 많이 저장해 둬야 해요|the faster the method, the more messages the sender must keep in memory⟧", 12, "var(--ink)"))
 
 # 5. 한계: 재전송은 지연을 늘려요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
@@ -86,7 +86,7 @@ PAGE = {
              (ARQ_CRC, ("체크섬/CRC로 검출", "Detect with checksum/CRC"), ("메시지가 틀렸는지 확인해요", "checks whether the message is wrong"), "warm"),
          ])},
         {"svg": P4, "alt": ("Stop-and-Wait와 Go-Back-N/Selective Repeat 방식을 비교하는 설명판", "A board comparing Stop-and-Wait with Go-Back-N and Selective Repeat"),
-         "caption": ("빠른 방식일수록 메시지를 더 많이 저장해 둬야 해요.", "The faster the method, the more messages must be kept in memory."),
+         "caption": ("빠른 방식일수록 보내는 쪽이 메시지를 더 많이 저장해 둬야 해요.", "The faster the method, the more messages the sender must keep in memory."),
          "small": ("Selective Repeat가 가장 효율적이지만 가장 복잡해요.", "Selective Repeat is the most efficient, and the most complex.")},
         {"svg": P5, "alt": ("왼쪽: 문서 전송엔 ARQ가 딱 맞음. 오른쪽: 실시간 영상엔 재전송이 오히려 나쁨", "Left: ARQ is great for file transfer. Right: for live video, resending is actually worse"),
          "caption": ("메시지를 다시 보내는 만큼 도착이 늦어져요.", "Every resend makes the message arrive later."),
@@ -104,6 +104,6 @@ PAGE = {
         ("체크섬/CRC", "Checksum / CRC", ("메시지가 틀렸는지 확인하는 검사값.", "The check value that tells if a message is wrong."), ("ARQ가 재전송을 결정하는 근거예요.", "What ARQ uses to decide whether to resend.")),
         ("ACK/NACK", "ACK/NACK", ("'받았어요'와 '틀렸어요' 신호.", "The 'got it' and 'that's wrong' signals."), ("ARQ 동작의 핵심 신호예요.", "The core signals that drive ARQ.")),
         ("FEC(전진 오류 수정)", "Forward Error Correction", ("재전송 없이 오류를 고치는 다른 방식.", "A different approach that fixes errors without resending."), ("지연에 민감한 데이터에는 ARQ보다 잘 맞아요.", "Suits delay-sensitive data better than ARQ does.")),
-        ("MEC", "MEC", ("지연을 줄이려고 사용자 가까이에서 계산하는 기술.", "Computing near the user to cut delay."), ('재전송 지연 자체를 줄이는 또 다른 접근이에요. → <a href="mec-ko.html">MEC 부스</a>', 'A different approach to shrinking the delay itself. → <a href="mec-en.html">the MEC booth</a>')),
+        ("MEC", "MEC", ("지연을 줄이려고 사용자 가까이에서 계산하는 기술.", "Computing near the user to cut delay."), ('재전송 지연 자체를 줄이는 또 다른 접근이에요. → <a href="mec-ko.html">MEC 부스</a>', 'A different approach to shrinking the resend delay itself. → <a href="mec-en.html">the MEC booth</a>')),
     ],
 }

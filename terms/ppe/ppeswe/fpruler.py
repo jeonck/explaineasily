@@ -29,7 +29,7 @@ P3 = svg(340, sky(340)
 
 PAGE = {
     "slug": "fpruler", "order": 14,
-    "title": ("매수를 재는 자", "The Ruler That Measures Page Count"),
+    "title": ("쪽수 대신 기능을 재는 자", "The Ruler That Measures Functions, Not Pages"),
     "h1": ("<em>기능점수(FP)</em>가 뭐예요?", "What is a <em>Function Point (FP)</em>?"),
     "sub": ("기능점수를, 쪽수 대신 '무엇을 하는가'로 원고 분량을 재는 표준 자 이야기로 풀어봤어요.",
             "Function Points, told as a story about a standard ruler that measures a manuscript by what it does, not by its page count."),

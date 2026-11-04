@@ -64,6 +64,11 @@ def foot(x, y, rot=0, color="#7A5236"):
             f'<ellipse cy="-20" rx="7" ry="6" fill="{color}"/></g>')
 
 
+def fit(size, s, floor=9):
+    """축소된 <g> 안의 글자도 화면에서 floor px 밑으로 작아지지 않게 한다."""
+    return max(size, round(floor / s, 1))
+
+
 def label(x, y, text, size=18, fill="var(--ink)", anchor="middle", cls="", weight=700):
     c = f' class="{cls}"' if cls else ""
     return f'<text x="{x}" y="{y}" text-anchor="{anchor}" font-size="{size}" font-weight="{weight}" fill="{fill}"{c}>{text}</text>'

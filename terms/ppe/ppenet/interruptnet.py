@@ -14,7 +14,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + truck(260, 200, 0.9, fast=True)
          + person(460, 170, s=0.85, face=SWEAT + EYES, **SORTER)
          + '<circle cx="400" cy="140" r="12" fill="var(--bad)"/><circle cx="420" cy="150" r="12" fill="var(--bad)"/><circle cx="440" cy="140" r="12" fill="var(--bad)"/>'
-         + label(460, 283, "⟦벨이 쉴 새 없이 울려 다른 일을 전혀 못 해요|the bell never stops — there's no time for anything else⟧", 11, "var(--ink)")
+         + label(460, 283, "⟦벨이 쉴 새 없이 울려 직원이 다른 일을 전혀 못 해요|the bell never stops — the clerk has no time for anything else⟧", 11, "var(--ink)")
          + label(380, 30, "⟦초고속 트럭이 초당 수천 통을 배달하면 벨이 폭주해요|an ultra-fast truck delivering thousands a second floods the bell⟧", 13, "var(--ink)", cls="d"))
 
 # 3. 네트워크 인터럽트 = 도착 벨, 너무 잦으면 모아서 울림 (hero)

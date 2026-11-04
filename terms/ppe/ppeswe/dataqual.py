@@ -11,14 +11,14 @@ P1 = svg(300, sky(300)
 # 2. 주소록 정리는 나중에, 라고 미루다 생긴 일
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(200, 150, s=0.85, face=SMILE, **EDITOR)
-         + bubble(140, 80, 220, 36, "⟦주소록 정리는 나중에 해도 되잖아요|cleaning up the address list can wait, right?⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(140, 80, 220, 36, "⟦주소록 정리는 나중에 해도 되잖아요|the address-list cleanup can wait, right?⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(560, 150, s=0.7, face=FROWN, **READER) + bubble(470, 80, 220, 36, "⟦저는 책을 아예 못 받았어요|I never got my book at all⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦주소록 데이터가 지저분하면, 책을 아무리 잘 써도 독자에게 안 가요|messy address data means even a well-written book never reaches the reader⟧", 12, "var(--ink)"))
 
 # 3. 데이터 품질관리 = 주소록을 정확·완전·유일하게 계속 관리하는 일 (hero)
 P3 = svg(340, sky(340)
          + person(380, 120, s=0.9, face=EYES, **EDITOR) + inkstamp(460, 90, 0.8)
-         + manuscript(260, 180, 0.7, text="⟦정확해요|accurate⟧") + manuscript(380, 200, 0.7, text="⟦빠짐없어요|complete⟧") + manuscript(500, 180, 0.7, text="⟦중복 없어요|no duplicates⟧")
+         + manuscript(260, 180, 0.7, text="⟦정확해요|accurate⟧") + manuscript(380, 216, 0.7, text="⟦빠짐없어요|complete⟧") + manuscript(500, 180, 0.7, text="⟦중복 없어요|no duplicates⟧")
          + label(380, 30, "⟦데이터 품질관리 = 독자 주소록을 정확하고 빠짐없고 중복 없이 계속 관리하는 일|data quality management = keeping the reader address list accurate, complete, and duplicate-free, continuously⟧", 12, "var(--ink)", cls="d")
          + label(380, 320, "⟦주소록은 한 번 정리로 끝나지 않아요, 계속 들여다봐야 해요|the list is never cleaned just once — it needs constant attention⟧", 12, "var(--muted)"))
 
@@ -28,7 +28,7 @@ P4 = svg(320, sky(320)
                       ("⟦정확성 — 실제와 맞아야 해요|accuracy — must match reality⟧",
                        "⟦완전성 — 빠진 항목이 없어야 해요|completeness — nothing missing⟧",
                        "⟦일관성 — 어느 명부에 적힌 값이든 같아야 해요|consistency — same value in every copy of the list⟧",
-                       "⟦최신성 — 이사 간 주소는 바로 갱신|timeliness — update addresses as soon as they change⟧"), 1.0)
+                       "⟦최신성 — 이사 간 주소는 바로 갱신|timeliness — update addresses when they change⟧"), 1.0)
          + person(560, 150, s=0.75, face=EYES, **EDITOR)
          + label(560, 250, "⟦교정자가 오탈자를 잡듯, 주소록도 똑같이 교정해요|the list gets proofed just like a manuscript's typos⟧", 11, "var(--muted)")
          + label(380, 300, "⟦주소록이 기준 하나라도 어긋나면, 책이 독자에게 못 갈 수 있어요|if the list fails even one of these, the book may not reach the reader⟧", 12, "var(--ink)"))
@@ -67,7 +67,7 @@ PAGE = {
              (TIMELY_I, ("바로 갱신하기", "Update right away"), ("이사 가면 바로 고쳐요", "fixing it the moment someone moves")),
          ])},
         {"svg": P4, "alt": ("품질 기준표: 정확성·완전성·일관성·최신성 네 항목", "A quality standards board: accuracy, completeness, consistency, timeliness"),
-         "caption": ("데이터 품질은 주로 이 네 기준으로 재요(유일성을 더해 다섯으로 보기도 해요).", "Data quality is mainly measured by these four dimensions (uniqueness sometimes makes it five)."),
+         "caption": ("데이터 품질은 주로 정확성·완전성·일관성·최신성, 이 네 기준으로 재요(유일성을 더해 다섯으로 보기도 해요).", "Data quality is mainly measured by four dimensions: accuracy, completeness, consistency, and timeliness (uniqueness sometimes makes it five)."),
          "small": ("교정자가 오탈자를 잡듯, 주소록도 똑같이 교정해요.", "The list gets proofed just like a manuscript's typos.")},
         {"svg": P5, "alt": ("왼쪽: 편집장이 주소록을 돌보면 배송 오류가 크게 줄어든다고 말함. 오른쪽: 인쇄 감독이 주소록은 여전히 계속 손이 간다고 말함", "Left: the editor says tending the list cuts delivery errors way down. Right: the print supervisor says the list still takes constant upkeep"),
          "caption": ("주소록 관리는 한 번의 청소로 끝나지 않아요.", "Keeping the list clean doesn't end with a single cleanup."),

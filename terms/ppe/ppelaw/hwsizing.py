@@ -9,7 +9,7 @@ REDO_I = icon('<path d="M46 20 a18 18 0 1 1 -8 -10" stroke="var(--accent)" strok
 
 # 1. 축제 음식 몇 인분 만들지 몰라요
 P1 = svg(300, sky(300)
-         + person(200, 150, s=0.85, face=EYES, **REP) + bubble(85, 70, 260, 44, "⟦떡볶이를 몇 인분 만들어야 하죠?|how many servings of tteokbokki should we make?⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + person(200, 150, s=0.85, face=EYES, **REP) + bubble(85, 70, 260, 44, "⟦떡볶이를 몇 인분 만들어야 하죠?|how many tteokbokki servings do we make?⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(560, 150, s=0.8, face=FROWN, **STUDENT) + bubble(470, 70, 220, 44, "⟦작년엔 300인분이었는데…|last year it was 300 servings…⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦음식 양을 감으로 정하면 모자라거나 남아요|guessing the amount of food means too little or too much⟧", 13, "var(--ink)", cls="d"))
 
@@ -54,7 +54,7 @@ PAGE = {
          "caption": ("축제 음식을 몇 인분 만들어야 할지 몰라요.", "Nobody knows how many festival servings to make."),
          "small": ("음식 양을 감으로 정하면 모자라거나 남아요.", "Guessing the amount of food means either too little or too much.")},
         {"svg": P2, "alt": ("왼쪽: 너무 많이 만들어 버림. 오른쪽: 전학생 증가를 반영 못 함", "Left: too much made and wasted. Right: failed to account for new transfer students"),
-         "caption": ("그냥 많이, 혹은 작년처럼 정하면 틀려요.", "Just guessing high, or copying last year, gets it wrong."),
+         "caption": ("음식 양을 그냥 많이, 혹은 작년처럼 정하면 틀려요.", "Just guessing the food amount high, or copying last year's, gets it wrong."),
          "small": ("예산도 인원도 해마다 바뀌어서, 계산 없이 정한 양은 틀려요.", "Budget and headcount change each year, so an amount guessed without a formula comes out wrong.")},
         {"svg": P3, "hero": True, "alt": ("학생회장이 규모산정 공식표를 들고 인원·피크·여유율·증가율을 계산함", "The council president holds a sizing formula sheet covering headcount, peak, margin, and growth"),
          "caption": ("규모산정 지침은 필요한 서버·저장장치 양을 미리 계산하는 공식표예요.", "The sizing guideline is a formula sheet that works out, in advance, how much server and storage capacity is needed."),

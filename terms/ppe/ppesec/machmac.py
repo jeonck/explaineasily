@@ -42,7 +42,7 @@ P3 = svg(340, sky(340)
          + person(150, 130, s=0.8, **SENDER) + stampmold(150, 210, 0.9) + label(150, 260, "⟦비밀 도장틀|the secret mold⟧", 11, "var(--muted)")
          + note(330, 150, 1.1, mark="seal") + label(330, 210, "⟦내용 + 도장틀로 찍어요|stamped using the content + the mold⟧", 11, "var(--muted)")
          + '<path d="M400 150 h100" stroke="var(--good)" stroke-width="3" stroke-dasharray="5 5"/>'
-         + person(600, 130, s=0.8, face=EYES, **RECEIVER) + stampmold(600, 210, 0.9) + label(600, 260, "⟦같은 도장틀로 다시 찍어 비교|re-stamps with the same mold to compare⟧", 10, "var(--good)")
+         + person(600, 130, s=0.8, face=EYES, **RECEIVER) + stampmold(600, 210, 0.9) + label(600, 260, "⟦받는 사람이 같은 도장틀로 다시 찍어 비교|the receiver re-stamps with the same mold to compare⟧", 10, "var(--good)")
          + label(380, 320, "⟦MAC/HMAC = 비밀 도장틀 없인 아무도 못 찍는 확인 도장|MAC/HMAC = a seal nobody can stamp without the secret mold⟧", 13, "var(--ink)", cls="d"))
 
 MOLD_I = icon('<rect x="18" y="20" width="28" height="30" rx="3" fill="#8B5E3C"/><circle cx="32" cy="12" r="10" fill="#E9B44C"/>')

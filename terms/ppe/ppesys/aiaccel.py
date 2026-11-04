@@ -79,7 +79,7 @@ PAGE = {
              (MATMUL_I, ("행렬곱 전용", "Built for Matrix Multiply"), ("신경망 계산의 핵심 동작이에요", "the core move behind neural-network math")),
              (SPEC_I, ("특화(Specialization)", "Specialization"), ("한 가지만 하니까 GPU보다 빠르고 전기도 적게 써요", "doing only one thing makes it faster than a GPU, on less power"), "calm"),
              (NPU_I, ("NPU", "NPU"), ("폰 안에 들어가는 작은 전용 로봇팔", "the small dedicated arm inside your phone")),
-             (TRADE_I, ("트레이드오프", "Tradeoff"), ("다른 일은 전혀 못 해요", "it can't do anything else at all"), "warm"),
+             (TRADE_I, ("트레이드오프", "Tradeoff"), ("전용 로봇팔은 다른 일은 전혀 못 해요", "the dedicated arm can't do anything else at all"), "warm"),
          ])},
         {"svg": P4, "alt": ("CPU·GPU·TPU·NPU를 유연함과 속도의 순서로 비교하는 순서판", "A board ranking CPU, GPU, TPU, and NPU from most flexible to most specialized"),
          "caption": ("할 수 있는 일이 다양한 칩일수록 한 가지 일은 더 느려요.", "The more kinds of work a chip can do, the slower it is at any one of them."),

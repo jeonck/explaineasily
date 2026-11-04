@@ -15,7 +15,7 @@ P1 = svg(300, sky(300)
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(220, 150, s=0.8, face=SWEAT + EYES, **PROOFER)
          + '<rect x="330" y="120" width="100" height="70" rx="4" fill="#FFF8E7" stroke="var(--bad)" stroke-width="3"/>'
-         + label(380, 160, "⟦정답지|answer key⟧", 14, "var(--bad)", cls="d")
+         + label(380, 108, "⟦정답지|answer key⟧", 14, "var(--bad)", cls="d")
          + '<path d="M345 135 L415 175 M415 135 L345 175" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/>'
          + person(560, 150, s=0.8, face=EYES, **WRITER)
          + label(380, 30, "⟦'정답과 비교하기'라는 평소 방법을 못 써요|the usual trick — 'compare to the answer key' — just doesn't work here⟧", 13, "var(--ink)")
@@ -69,7 +69,7 @@ PAGE = {
          "small": ("번역엔 '유일한 정답'이 없을 때가 많아요.", "Translation often has no single correct answer.")},
         {"svg": P2, "alt": ("정답지에 가위표가 그어져 있고, 평소 방법을 못 쓴다는 걸 보여줌", "An answer key is crossed out, showing the usual method just doesn't work"),
          "caption": ("'정답과 비교하기'라는 평소 방법을 못 써요.", "The usual trick — comparing to an answer key — doesn't work here."),
-         "small": ("그럼 아예 확인할 방법이 없을까요?", "So is there no way at all to check it?")},
+         "small": ("그럼 번역이 맞는지 아예 확인할 방법이 없을까요?", "So is there no way at all to check the translation?")},
         {"svg": P3, "hero": True, "alt": ("같은 문장을 두 번 반복해 넣으면, 번역문도 두 번 반복되어 나와야 한다는 관계를 보여줌", "Feeding the same sentence twice should make the translation come out twice as well — a relationship check"),
          "caption": ("메타모픽 테스트는 정답 없이도 입력과 출력의 관계로 번역을 확인해요.", "Metamorphic testing checks the translation by the relationship between input and output, even with no known answer."),
          "small": ("문장을 두 번 넣으면, 번역문도 두 번 나와야 해요.", "Feed the sentence twice, and the translation should come out twice too."),
@@ -80,7 +80,7 @@ PAGE = {
              (BREAK_I, ("관계가 깨지면 버그", "Broken relation = a bug"), ("정답을 몰라도 버그를 알아챌 수 있어요", "the bug is catchable even without the answer"), "warm"),
          ])},
         {"svg": P4, "alt": ("문장 반복, 단어 순서 변경, 같은 문장 재번역 세 가지 메타모픽 관계 예시표", "A table of three example metamorphic relations: repeating a sentence, reordering words, translating the same sentence twice separately"),
-         "caption": ("입력과 출력 사이의 이런 '관계'를 미리 정해두고 확인해요.", "Relationships like these, between input and output, are set in advance and checked."),
+         "caption": ("문장을 반복하면 번역문도 반복되듯, 입력과 출력 사이의 '관계'를 미리 정해두고 확인해요.", "Like 'repeat the sentence, and the translation repeats', relationships between input and output are set in advance and checked."),
          "small": ("이 관계가 깨지면, 정답을 몰라도 번역 어딘가 잘못된 거예요.", "If a relationship breaks, something went wrong in the translation — even with no answer key.")},
         {"svg": P5, "alt": ("왼쪽: 관계를 잘못 세워 버그를 놓침. 오른쪽: 정답을 아는 경우엔 정답 비교가 더 정확함", "Left: a badly chosen relation misses a bug. Right: when the answer is known, comparing to it is more precise"),
          "caption": ("관계를 잘못 세우면 버그를 놓칠 수 있어요.", "A badly chosen relationship can miss a real bug."),

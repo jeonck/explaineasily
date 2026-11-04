@@ -69,7 +69,7 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="
          + label(190, 260, "⟦공구 오가는 속도는 일반 호스(DDR)보다 훨씬 빨라요|tools move far faster than through an ordinary hose (DDR)⟧", 11, "var(--ink)")
          + person(570, 130, s=0.8, face=FROWN, **CHIEF)
          + label(570, 250, "⟦탑을 더 쌓을수록 열이 많이 나고 비싸져요|stacking higher means more heat and more cost⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦그래서 보통 대용량보단 AI·그래픽처럼 속도가 중요한 곳에 써요|so it's mainly used where speed matters most — AI, graphics⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦그래서 HBM은 보통 대용량보단 AI·그래픽처럼 속도가 중요한 곳에 써요|so HBM is mainly used where speed over capacity matters — AI, graphics⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "hbm", "order": 16,

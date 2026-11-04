@@ -7,7 +7,7 @@ P1 = svg(300, sky(300)
          + car(190, 155, 0.7, "var(--bad)")
          + person(80, 150, s=0.8, face=SWEAT + EYES, **MECH1)
          + person(300, 150, s=0.8, face=SWEAT + EYES, **MECH2)
-         + label(380, 30, "⟦둘 다 \"지금 비었다\"고 보고 동시에 차를 올려요|Both see \"it's free\" and lift a car at the same moment⟧", 13, "var(--ink)", cls="d")
+         + label(380, 30, "⟦정비사 둘 다 \"지금 비었다\"고 보고 동시에 차를 올려요|Both mechanics see \"it's free\" and lift a car at the same moment⟧", 13, "var(--ink)", cls="d")
          + label(380, 280, "⟦리프트는 한 대뿐인데, 서로 상대가 쓰려는 줄 모르고 같이 손을 대요|only one lift, but neither knows the other is reaching for it⟧", 12, "var(--ink)"))
 
 # 2. 비었는지 보고 나서 손대는 사이에도 사고가 나요 (race condition)
@@ -93,7 +93,7 @@ PAGE = {
         ("모니터", "Monitor", ("대기실 딸린 방.", "A room with a built-in waiting lounge."), ("락과 조건변수를 한 세트로 묶어줘요.", "Bundles a lock with condition variables.")),
         ("교착상태", "Deadlock", ("서로의 열쇠를 기다리며 영원히 멈춤.", "Frozen forever, each waiting on the other's key."), ('열쇠를 쥔 채 서로의 열쇠를 기다리면 이 문제가 생겨요. → <a href="deadlockstarve-ko.html">서로의 열쇠를 기다리며 멈춘 정비공장</a>', 'Holding a key while waiting on each other\'s leads straight here. → <a href="deadlockstarve-en.html">the garage frozen waiting on each other\'s keys</a>')),
         ("프로세스/스레드", "Process/Thread", ("같은 차를 같이 고치는 여러 손.", "Several hands working the same car."), ('동기화는 특히 \'같은 차 공유\'인 스레드에서 자주 필요해요. → <a href="processthread-ko.html">같은 차, 여러 손</a>', 'Synchronization matters most for threads, which share "the same car." → <a href="processthread-en.html">one car, many hands</a>')),
-        ("CPU 스케줄링", "CPU Scheduling", ("순서판에 적힌 차 순서.", "The car order written on the job board."), ('\'누가 먼저\'가 스케줄링이면, 이건 \'동시에 건드리지 않기\'예요. → <a href="cpusched-ko.html">리프트에 누가 먼저 올라갈까</a>', '"Who goes first" is scheduling — this is "don\'t touch at once." → <a href="cpusched-en.html">who gets the lift first</a>')),
+        ("CPU 스케줄링", "CPU Scheduling", ("순서판에 적힌 차 순서.", "The car order written on the job board."), ('\'누가 먼저\'가 스케줄링이면, 동기화는 \'동시에 건드리지 않기\'예요. → <a href="cpusched-ko.html">리프트에 누가 먼저 올라갈까</a>', '"Who goes first" is scheduling — synchronization is "don\'t touch at once." → <a href="cpusched-en.html">who gets the lift first</a>')),
         ("캐시 메모리", "Cache Memory", ("자주 쓰는 공구만 담는 작은 공구함.", "A small toolbox holding only the frequently used tools."), ('여러 코어가 같은 캐시 줄을 동시에 쓸 때도 비슷한 조율이 필요해요. → <a href="cachemem-ko.html">자주 쓰는 공구만 담는 공구함</a>', 'Similar coordination is needed when several cores share a cache line. → <a href="cachemem-en.html">the toolbox that holds only the frequent tools</a>')),
     ],
 }

@@ -12,7 +12,7 @@ P1 = svg(300, sky(300)
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(200, 150, s=0.85, face=SMILE, **EDITOR)
          + bubble(140, 80, 200, 36, "⟦그냥 새로 쓰면 되잖아요|just write it from scratch again⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + person(560, 150, s=0.7, face=FROWN, **WRITER) + bubble(460, 80, 230, 36, "⟦그럼 20년 치를 다 다시 만들어야 해요|that means remaking twenty years of content⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + person(560, 150, s=0.7, face=FROWN, **WRITER) + bubble(460, 80, 230, 36, "⟦그럼 20년 치를 다 다시 만들어야 해요|that's remaking twenty years of content⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦완성본을 버려두고 처음부터 새로 쓰면, 되짚어 고치기보다 더 비쌀 수 있어요|ignoring the finished book and starting from nothing can cost more than tracing it back⟧", 12, "var(--ink)"))
 
 # 3. 역공학으로 개요를 되짚고, 재공학으로 다시 써 재출간 (hero)
@@ -22,12 +22,12 @@ P3 = svg(340, sky(340)
          + manuscript(380, 260, 0.7, text="⟦되짚은 개요|outline reconstructed⟧")
          + printplate(520, 190, 0.6) + label(520, 218, "⟦재출간본|re-published⟧", 11, "var(--muted)")
          + label(380, 30, "⟦역공학 = 완성본만 보고 개요를 거꾸로 추정, 재공학 = 정리해서 요즘 말로 다시 써 재출간|reverse engineering = inferring the outline from the finished book; reengineering = reworking it and republishing⟧", 12, "var(--ink)", cls="d")
-         + label(380, 320, "⟦역공학 → 재구조화 → 재공학, 이 순서를 3R이라고 불러요|reverse engineering → restructuring → reengineering — these three together are called 3R⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦역공학 → 재구조화 → 재공학, 이 세 단계를 묶어 3R이라 불러요|reverse engineering → restructuring → reengineering: grouped here as the 3Rs⟧", 12, "var(--muted)"))
 
 # 4. 3R 순서
 P4 = svg(320, sky(320)
          + styleguide(60, 40, 320, 240, "⟦3R 순서|THE THREE Rs, IN ORDER⟧",
-                      ("⟦역공학 — 완성본에서 개요를 거꾸로 추정|reverse engineering — inferring the outline from the book⟧",
+                      ("⟦역공학 — 완성본에서 개요를 거꾸로 추정|reverse engineering — infer outline from the book⟧",
                        "⟦재구조화 — 추정한 개요를 정리정돈|restructuring — tidying up the inferred outline⟧",
                        "⟦재공학 — 요즘 말로 다시 써서 재출간|reengineering — rewriting in today's language⟧",
                        "⟦순공학과 차이 — 순공학은 원고부터 새로 써요|vs forward engineering — writes a fresh manuscript⟧"), 1.0)
@@ -61,7 +61,7 @@ PAGE = {
          "small": ("완성본을 버려두고 처음부터 새로 쓰면, 되짚어 고치기보다 더 비쌀 수 있어요.", "Ignoring the finished book and starting from nothing can cost more than tracing it back.")},
         {"svg": P3, "hero": True, "alt": ("작가가 완성본을 보고 개요를 되짚어 재구성한 뒤, 새 재출간본을 만듦", "A writer studies the finished book, reconstructs its outline, and produces a newly republished edition"),
          "caption": ("역공학으로 개요를 되짚고, 재공학으로 다시 써 재출간해요.", "Reverse engineering traces back the outline; reengineering rewrites it and republishes."),
-         "small": ("역공학 → 재구조화 → 재공학, 이 순서를 3R이라고 불러요.", "Reverse engineering → restructuring → reengineering — together these three are called 3R."),
+         "small": ("역공학 → 재구조화 → 재공학, 이 세 단계를 묶어 3R이라 불러요.", "Reverse engineering → restructuring → reengineering: grouped here as the 3Rs."),
          "tricks": (4, [
              (ANALYZE_I, ("완성본 뜯어보기", "Study the finished book"), ("있는 그대로 자세히 봐요", "examining it closely as it is"), "calm"),
              (INFER_I, ("거꾸로 개요 추정하기", "Infer the outline backward"), ("있던 구조를 되짚어요", "tracing back the original structure")),
@@ -77,8 +77,8 @@ PAGE = {
     ],
     "summary": (("<b>재공학/역공학(3R)</b> = 사라진 원본을 <b>완성본에서 거꾸로 되짚어</b> 정리하고 <b>다시 써 재출간</b>하는 일.",
                  "<b>Re-engineering/reverse engineering (3R)</b> = <b>tracing a lost original backward</b> from the finished product, tidying it up, and <b>rewriting it for republication</b>."),
-                ("3R은 역공학(Reverse Engineering, 산출물에서 설계를 되짚기)·재구조화(Restructuring, 기능은 그대로 두고 구조만 정리)·재공학(Reengineering, 현대 기술로 다시 구축)을 함께 부르는 말이에요. 원본 설계 문서나 소스가 부실한 레거시 시스템을 다루는 대표적 방법이고, 처음부터 새로 짓는 순공학(Forward Engineering)보다 기존 자산을 살리는 데 집중해요.",
-                 "3R refers together to reverse engineering (tracing design back from the output), restructuring (tidying structure while keeping function the same), and reengineering (rebuilding with modern technology). It's a standard approach for legacy systems with poor original design documents or source, focused on reviving existing assets rather than building fresh, as forward engineering would.")),
+                ("이 쪽의 3R은 역공학(Reverse Engineering, 산출물에서 설계를 되짚기)·재구조화(Restructuring, 기능은 그대로 두고 구조만 정리)·재공학(Reengineering, 현대 기술로 다시 구축)을 묶어 부른 말이에요. 3R을 재사용(Reuse)까지 넣어 정리하는 자료도 있으니, 시험 준비 땐 교재의 정의를 함께 확인하세요. 원본 설계 문서나 소스가 부실한 레거시 시스템을 다루는 대표적 방법이고, 처음부터 새로 짓는 순공학(Forward Engineering)보다 기존 자산을 살리는 데 집중해요.",
+                 "The 3Rs here group reverse engineering (tracing design back from the output), restructuring (tidying structure while keeping function the same), and reengineering (rebuilding with modern technology). Some references include reuse among the 3Rs instead, so check your textbook's definition when studying. It's a standard approach for legacy systems with poor original design documents or source, focused on reviving existing assets rather than building fresh, as forward engineering would.")),
     "glossary": [
         ("역공학", "Reverse Engineering", ("완성본을 보고 개요를 거꾸로 추정하는 일.", "Inferring the outline backward from the finished product."), ("설계 문서가 없을 때 특히 써요.", "Especially useful when design docs are missing.")),
         ("재구조화", "Restructuring", ("내용은 그대로, 구조만 정리정돈하는 일.", "Tidying up structure while keeping content the same."), ("역공학과 재공학 사이 단계예요.", "The stage between reverse engineering and reengineering.")),

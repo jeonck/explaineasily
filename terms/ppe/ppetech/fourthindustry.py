@@ -21,7 +21,7 @@ P1 = svg(300, sky(300)
 # 2. 다 다른 기술인데, 왜 한 전시장에 모아둔 거죠?
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(220, 150, s=0.8, face=EYES, **VISITOR)
-         + bubble(300, 65, 340, 44, "⟦로봇이랑 드론이랑 양자컴퓨터는 서로 다른 기술 아닌가요?|aren't robots, drones, and quantum computers all different things?⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(300, 65, 340, 44, "⟦로봇이랑 드론이랑 양자컴퓨터는 서로 다른 기술 아닌가요?|aren't robots, drones, and quantum computers all different?⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 265, "⟦부스를 따로 보면 안 보이는, 기술들의 공통 흐름이 있어요|seen booth by booth, you miss the trend these technologies share⟧", 12, "var(--ink)"))
 
 # 3. 4차 산업혁명 = 이 모든 부스를 잇는, 전시장 전체의 큰 흐름 (hero)

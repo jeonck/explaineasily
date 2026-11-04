@@ -84,7 +84,7 @@ PAGE = {
     "glossary": [
         ("가동률", "Availability/Uptime", ("시스템이 안 멈춘 시간의 비율.", "The share of time the system stays up."), ("정전 같은 사고로 깎여요.", "Cut down by incidents like outages.")),
         ("응답속도", "Latency", ("요청에 얼마나 빨리 답하는가.", "How fast the system responds to a request."), ("서서히 느려지는 걸 놓치기 쉬워요.", "Easy to miss as it slowly degrades.")),
-        ("이용자 만족도", "User Satisfaction", ("관객이 불편함 없이 썼는가.", "Whether the audience used it without friction."), ("설문·문의 건수로 재요.", "Measured via surveys and complaint counts.")),
+        ("이용자 만족도", "User Satisfaction", ("관객이 시스템을 불편함 없이 썼는가.", "Whether the audience used the system without friction."), ("설문·문의 건수로 재요.", "Measured via surveys and complaint counts.")),
         ("PDCA", "PDCA", ("계획-실행-점검-개선을 도는 고리.", "The loop of Plan, Do, Check, Act."), ("운영 개선은 이 고리를 계속 돌려요.", "Ops improvement keeps turning this loop.")),
         ("SLA/SLM", "SLA/SLM", ("후원사와 맺은 보장 티켓과 그 관리.", "The guarantee ticket agreed with the sponsor, and managing it."), ('운영 지표는 이 약속을 지켰는지의 근거가 돼요. → <a href="slappe-ko.html">공연을 보장하는 티켓</a>', 'Ops metrics become the evidence that the promise was kept. → <a href="slappe-en.html">the ticket that guarantees the show</a>')),
         ("IT 투자성과 평가", "IT Investment Evaluation", ("공연 끝난 뒤 돈값 했는지 따지는 성적표.", "The scorecard checking if the investment paid off."), ('운영 데이터는 돈값을 했느냐는 질문에 계속 답을 줘요. → <a href="itinvesteval-ko.html">공연 끝난 뒤의 성적표</a>', 'Ops data keeps answering whether the investment paid off. → <a href="itinvesteval-en.html">the scorecard after the show</a>')),

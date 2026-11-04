@@ -4,7 +4,7 @@ from _world import *
 
 def box(x, y, s=1.0, text="", color="#E9B44C"):
     out = f'<g transform="translate({x},{y}) scale({s})"><rect x="-26" y="-18" width="52" height="34" rx="3" fill="{color}" stroke="#C9822B" stroke-width="2"/>'
-    out += label(0, 5, text, 12, "#142033", cls="d")
+    out += label(0, 5, text, fit(12, s), "#142033", cls="d")
     return out + '</g>'
 
 
@@ -88,7 +88,7 @@ PAGE = {
          "caption": ("넣기와 꺼내기 동작마다 이름이 따로 있어요.", "Each put-in and take-out operation has its own name."),
          "small": ("배열처럼 \'번호로 바로 찾는\' 구조도 같이 알아두면 좋아요.", "An array — finding things directly by index — is worth knowing too.")},
         {"svg": P5, "alt": ("왼쪽: 적당히 쌓은 상자는 빠르고 단순함. 오른쪽: 너무 높이 쌓은 상자가 스택 오버플로로 넘침", "Left: a reasonably stacked pile stays fast and simple. Right: stacking too high overflows — a stack overflow"),
-         "caption": ("쌓다 보면 넘치고, 줄이 안 줄면 끝없이 길어져요.", "Stack it too high and it overflows; let a queue grow unchecked and it never stops."),
+         "caption": ("상자를 쌓다 보면 넘치고, 차 줄이 안 줄면 끝없이 길어져요.", "Stack boxes too high and the pile overflows; let a queue grow unchecked and it never stops."),
          "small": ("규칙은 단순해도, 스택과 큐 모두 정해진 크기를 넘기면 문제가 생겨요.", "The rule is simple — but push a stack or queue past its size limit, and trouble follows.")},
     ],
     "summary": (("<b>스택</b> = 상자를 <b>위로 쌓고 위에서부터 꺼내는</b>(LIFO) 규칙. <b>큐</b> = 차를 <b>줄 세우고 앞에서부터 내보내는</b>(FIFO) 규칙.",

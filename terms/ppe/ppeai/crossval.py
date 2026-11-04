@@ -59,7 +59,7 @@ PAGE = {
          "small": ("5번 돌아가며 다섯 조가 전부 한 번씩 시험지가 돼요.", "The test rotates five times, so every group gets a turn."),
          "tricks": (4, [
              (SPLIT_I, ("조 나누기", "Split into groups"), ("데이터를 k개 조로 쪼개요", "split the data into k groups"), "calm"),
-             (HOLDOUT_I, ("한 조는 숨겨두기", "Hold one group back"), ("그 조는 훈련에 안 써요", "that group never enters training")),
+             (HOLDOUT_I, ("한 조는 숨겨두기", "Hold one group back"), ("그 조는 그 회차 훈련에 안 써요", "that group sits out that round's training")),
              (ROTATE_I, ("돌아가며 시험", "Rotate the test group"), ("모든 조가 한 번씩 시험지가 돼요", "every group gets a turn as the test"), "warm"),
              (AVG_I, ("평균 성적으로 판단", "Judge by the average"), ("한 번이 아니라 전체 평균을 봐요", "it's the overall average that counts")),
          ])},
@@ -76,7 +76,7 @@ PAGE = {
                  "k-fold cross validation splits data into k folds, rotating each fold as the held-out validation set while the other k-1 folds train the model, then averages performance across the k rounds. It guards against the optimistic illusion created by evaluating on the training data itself. The cost is k times the compute, and for time-ordered data (time series), you need an order-preserving split instead, so future data never leaks into predicting the past.")),
     "glossary": [
         ("k-겹 교차검증", "k-fold Cross Validation", ("조를 k개로 나누는 가장 흔한 방식.", "The most common way to split into k groups."), ("보통 k=5나 k=10을 많이 써요.", "k=5 or k=10 are the usual choices.")),
-        ("검증셋", "Validation Set", ("이번 회차의 시험지 조.", "This round's test group."), ("훈련에는 절대 쓰지 않는 조예요.", "A group that never enters training.")),
+        ("검증셋", "Validation Set", ("이번 회차의 시험지 조.", "This round's test group."), ("그 회차 훈련에는 쓰지 않는 조예요.", "A group left out of that round's training.")),
         ("과적합", "Overfitting", ("외운 문제만 잘 푸는 상태.", "Only acing memorized questions."), ("교차검증이 바로 이걸 잡아내는 도구예요.", "Cross validation is precisely the tool that catches this.")),
         ("홀드아웃 검증", "Holdout Validation", ("딱 한 번만 나눠서 시험하는 간단한 방식.", "A simpler split-once, test-once approach."), ("교차검증보다 빠르지만 덜 안정적이에요.", "Faster than cross validation, but less stable.")),
         ("시계열 분할", "Time-Series Split", ("수확 날짜 순서를 지키는 특별한 나누기.", "A split that respects harvest-date order."), ('일반 교차검증을 그대로 쓰면 안 되는 대표 사례예요. → <a href="timeseries-ko.html">자세히 보기</a>', "A classic case where ordinary cross validation can't be used as-is. → <a href=\"timeseries-en.html\">see it in full</a>")),

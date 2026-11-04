@@ -26,7 +26,7 @@ P3 = svg(360, sky(360)
          + '<path d="M150 280 L340 210" stroke="var(--good)" stroke-width="3" stroke-dasharray="5 4"/>'
          + '<path d="M420 190 L600 90" stroke="var(--good)" stroke-width="3" stroke-dasharray="5 4"/>'
          + label(380, 30, "⟦엣지 = 동네 지점, 포그 = 본사와 지점 사이 중간 허브|edge = the local branch, fog = the hub between it and HQ⟧", 13, "var(--ink)", cls="d")
-         + label(380, 345, "⟦방문객 가까이에서 먼저 처리하니 본사까지 갈 때보다 응답이 빨라요|handled near the visitor first, the reply comes faster than from HQ⟧", 12, "var(--muted)"))
+         + label(380, 345, "⟦지점이 방문객 가까이에서 요청을 먼저 처리하니 본사까지 갈 때보다 응답이 빨라요|the branch handles requests near the visitor first, so the reply comes faster than from HQ⟧", 12, "var(--muted)"))
 
 # 4. 작동 디테일: 처리 위치별 지도 — 어디서 뭘 먼저 처리하나
 P4 = svg(320, sky(320)
@@ -64,7 +64,7 @@ PAGE = {
          "small": ("방문객 가까운 곳에서 요청을 처리할 방법이 필요해요.", "Visitors' requests need to be handled somewhere closer.")},
         {"svg": P3, "hero": True, "alt": ("동네 가까운 작은 지점, 그 사이 중간 허브, 멀리 있는 본사가 점선으로 연결되어 있고 방문객이 웃고 있음", "A small local branch, a middle hub between it and HQ, and the distant HQ connected by dashed lines, with a smiling visitor"),
          "caption": ("엣지 = 동네 지점, 포그 = 본사와 지점 사이 중간 허브예요.", "Edge = the local branch, fog = the hub between it and HQ."),
-         "small": ("방문객 가까이에서 먼저 처리하니 본사까지 갈 때보다 응답이 빨라요.", "Handled near the visitor first, the reply comes faster than from HQ."),
+         "small": ("지점이 방문객 가까이에서 요청을 먼저 처리하니 본사까지 갈 때보다 응답이 빨라요.", "The branch handles requests near the visitor first, so the reply comes faster than from HQ."),
          "tricks": (4, [
              (NEAR_I, ("방문객과 가까운 지점이 먼저 처리해요", "The branch nearest the visitor handles the request first"), ("엣지 = 동네 지점이에요", "edge = the local branch"), "calm"),
              (LAYER_I, ("포그는 지점 여러 곳을 묶어요", "Fog bundles several branches together"), ("본사와 지점 사이 중간 허브예요", "it's the hub between branch and HQ")),

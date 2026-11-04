@@ -70,7 +70,7 @@ PAGE = {
                      + label(110, 229, "L", 12, "#142033", cls="d") + label(410, 229, "H", 12, "#142033", cls="d")
                      + label(410, 260, "⟦L이 금방 끝나고, H가 바로 시작해요|L finishes fast, and H starts right away⟧", 11, "var(--ink)")),
          "alt": ("위: 상속 적용 전 타임라인 — L이 M에게 계속 밀려 H가 오래 기다림. 아래: 상속 적용 후 — L이 금방 끝나고 H가 바로 시작함", "Top: timeline before inheritance — L keeps getting bumped by M, so H waits a long time. Bottom: after inheritance — L finishes fast and H starts right away"),
-         "caption": ("시간선으로 보면 H가 기다리는 시간의 차이가 분명해요.", "On a timeline, the difference in H's wait is clear."),
+         "caption": ("시간선으로 보면 상속 전후 H가 기다리는 시간의 차이가 분명해요.", "On a timeline, the difference in H's wait before and after inheritance is clear."),
          "small": ("상속을 적용하면 L이 금방 끝나고, H가 바로 시작해요.", "With inheritance, L finishes quickly and H starts right away.")},
         {"svg": svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
                      + person(190, 130, s=0.8, face=SMILE, **CUSTOMER) + label(190, 260, "⟦상속 덕분에 H가 끝나는 시간을 예측할 수 있어요|with inheritance, H's finish time becomes predictable⟧", 11, "var(--ink)")

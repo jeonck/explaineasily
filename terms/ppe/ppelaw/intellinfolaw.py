@@ -27,7 +27,7 @@ P3 = svg(340, sky(340)
                       ("⟦디지털 전환의 큰 방향 세우기|set the big direction for going digital⟧",
                        "⟦태블릿 없는 반도 소외시키지 않기|leave no tablet-less class behind⟧",
                        "⟦데이터·AI를 안전하게 다루는 원칙|principles for handling data/AI safely⟧",
-                       "⟦세부 규칙들의 뿌리가 되기|become the root the detailed rules grow from⟧"), 0.9)
+                       "⟦관련 규칙들의 기본 방향 되기|set the direction related rules follow⟧"), 0.9)
          + person(640, 160, s=0.8, face=SMILE, **REP)
          + label(380, 320, "⟦이 법은 반마다 흩어진 디지털 규칙에 하나의 큰 방향을 줘요|this Act gives one big direction to every class's scattered digital rules⟧", 12, "var(--muted)"))
 
@@ -36,7 +36,7 @@ P4 = svg(320, sky(320, ground=False)
          + '<rect x="280" y="40" width="200" height="50" rx="8" fill="#C9A86A"/>' + label(380, 70, "⟦지능정보화 기본법(헌장)|THE FRAMEWORK ACT (charter)⟧", 12, "#142033", cls="d")
          + '<path d="M330 90 V140 M380 90 V140 M430 90 V140" stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 4"/>'
          + rulesboard(130, 140, 180, 140, "⟦격차해소 세칙|GAP-CLOSING RULE⟧", ("⟦태블릿 지원 계획|tablet support plan⟧",), 0.85)
-         + rulesboard(330, 140, 180, 140, "⟦데이터 운영 세칙|DATA-HANDLING RULE⟧", ("⟦학적 데이터 공개 범위|who may see student records⟧",), 0.85)
+         + rulesboard(330, 140, 180, 140, "⟦데이터 운영 세칙|DATA-HANDLING RULE⟧", ("⟦학적 데이터 공개 범위|who sees student records⟧",), 0.85)
          + rulesboard(530, 140, 180, 140, "⟦AI 활용 세칙|AI-USE RULE⟧", ("⟦AI 숙제 도우미 사용 범위|AI homework helper limits⟧",), 0.85)
          + label(380, 305, "⟦세부 규칙들이 전부 이 헌장 밑에서 갈라져 나와요|every detailed rule branches down from this one charter⟧", 12, "var(--ink)", cls="d"))
 
@@ -66,7 +66,7 @@ PAGE = {
              (PLAN_I, ("큰 방향 먼저 세우기", "Set the big direction first"), ("종합계획을 먼저 그려요", "draws the master plan first"), "calm"),
              (GAP_I, ("누구도 소외되지 않게", "Leave no one behind"), ("정보격차부터 줄여요", "closes the digital gap first"), "warm"),
              (SHIELD_I, ("데이터·AI를 안전하게 다루는 원칙", "Principles for handling data and AI safely"), ("데이터·AI 보호 원칙을 세워요", "sets principles to protect data and AI")),
-             (ROOT_I, ("세부 법의 뿌리 되기", "Become the root of detailed laws"), ("세칙들이 여기서 갈라져 나와요", "detailed rules branch down from here")),
+             (ROOT_I, ("관련 법의 기본 방향 되기", "Set direction for related laws"), ("새 규칙은 이 원칙에 맞추려 애써요", "new rules try to fit these principles")),
          ])},
         {"svg": P4, "alt": ("기본 헌장 아래로 격차해소·데이터운영·AI활용 세 세부 규칙이 가지처럼 뻗어 나감", "Three detailed rules — gap-closing, data-handling, AI-use — branch down like limbs from the framework charter"),
          "caption": ("기본 헌장에서 세부 규칙들이 갈라져 나와요.", "Detailed rules branch down from the framework charter."),
@@ -75,18 +75,18 @@ PAGE = {
          "caption": ("헌장만 있다고 학교의 디지털 전환이 저절로 되진 않아요.", "A charter alone doesn't make the school's digital shift happen."),
          "small": ("디지털 전환을 실제로 하려면 세부 규칙과 예산이 더 필요해요.", "Actually making the shift takes detailed rules and a budget too.")},
     ],
-    "summary": (("<b>지능정보화 기본법</b> = 학교(국가) 전체의 <b>디지털·AI 전환 방향</b>을 세우고, <b>격차 해소와 안전 원칙</b>을 담아 세부 법들의 <b>뿌리</b>가 되는 기본 헌장.",
-                 "<b>The Framework Act on Intelligent Informatization</b> = the charter that sets the whole school's (nation's) <b>direction for going digital</b>, bakes in <b>gap-closing and safety principles</b>, and becomes the <b>root</b> that detailed laws grow from."),
-                ("지능정보화 기본법은 과거의 국가정보화 기본법을 대체한 법으로, 지능정보사회 종합계획 수립, 정보격차 해소, 정보보호와 데이터 기반 행정의 기본 원칙을 정해요. 이 법 자체가 구체적인 개별 서비스를 규율하기보다, 전자정부법·개인정보보호법·AI 관련 법 등 세부 법령이 따라야 할 기본 방향과 원칙을 제공하는 상위 기본법 역할을 해요.",
-                 "The Framework Act on Intelligent Informatization replaced the earlier National Informatization Basic Act. It establishes the master plan for an intelligent information society, principles for closing the digital divide, and baseline rules for information protection and data-based administration. Rather than regulating specific services itself, it serves as the upper framework law that sets direction and principles for detailed statutes like the e-Government Act, personal data protection law, and AI-related laws.")),
+    "summary": (("<b>지능정보화 기본법</b> = 학교(국가) 전체의 <b>디지털·AI 전환 방향</b>을 세우고, <b>격차 해소와 안전 원칙</b>을 담아 관련 법들이 맞춰야 할 <b>기본 방향</b>을 정하는 헌장.",
+                 "<b>The Framework Act on Intelligent Informatization</b> = the charter that sets the whole school's (nation's) <b>direction for going digital</b>, bakes in <b>gap-closing and safety principles</b>, and sets the <b>basic direction</b> related laws should fit."),
+                ("지능정보화 기본법은 과거의 국가정보화 기본법을 대체한 법으로, 지능정보사회 종합계획 수립, 정보격차 해소, 정보보호의 기본 원칙을 정해요. 지능정보사회에 관한 다른 법을 만들거나 고칠 때는 이 법의 목적과 기본원칙에 맞도록 노력해야 해요(제5조). 다만 다른 법에 특별한 규정이 있으면 그 법을 따르고, 전자정부에 관한 사항은 전자정부법을 따라요.",
+                 "The Framework Act on Intelligent Informatization replaced the earlier National Informatization Basic Act. It establishes the master plan for an intelligent information society, principles for closing the digital divide, and baseline rules for information protection. When other laws on the intelligent information society are made or amended, they should try to fit this Act's purpose and principles (Article 5). Special provisions in other laws still take priority, and e-government matters follow the e-Government Act.")),
     "glossary": [
-        ("지능정보화기본법", "Framework Act on Intelligent Informatization", ("학교 전체 디지털 생활의 기본 헌장.", "The charter covering the whole school's digital life."), ("세부 법들의 뿌리가 되는 상위 법이에요.", "The upper law that detailed statutes branch from.")),
+        ("지능정보화기본법", "Framework Act on Intelligent Informatization", ("학교 전체 디지털 생활의 기본 헌장.", "The charter covering the whole school's digital life."), ("관련 법을 만들 때 맞춰야 할 기본 원칙을 정해요.", "Sets the basic principles related laws should fit.")),
         ("지능정보사회 종합계획", "Master Plan for an Intelligent Information Society", ("큰 방향을 미리 그려두는 계획.", "The plan that sketches the big direction in advance."), ("몇 년 단위로 다시 세워요.", "Redrawn every few years.")),
         ("정보격차 해소", "Closing the Digital Divide", ("누구도 디지털에서 소외되지 않게 하는 일.", "Making sure no one is left behind digitally."), ("태블릿 없는 반을 먼저 챙기는 것과 같아요.", "Like looking after the tablet-less class first.")),
         ("정보보호 원칙", "Information Protection Principle", ("데이터·AI를 안전하게 다루는 기본 약속.", "The baseline promise to handle data and AI safely."), ("세부 보안 법들이 이 원칙을 구체화해요.", "Detailed security laws flesh this principle out.")),
         ("데이터기반행정", "Data-Based Administration", ("감이 아니라 데이터로 결정하는 것.", "Deciding by data, not by gut feel."), ("이 법이 그 원칙의 근거를 둬요.", "This act provides the basis for that principle.")),
-        ("전자정부법", "e-Government Act", ("세부 법 중 하나 — 전자정부 서비스를 규율해요.", "One detailed law — governs e-government services specifically."), ('전자정부 수준을 재는 평가 지표는 → <a href="egdi-ko.html">다른 학교와 비교하는 평가단</a>', 'How e-government gets evaluated is covered → <a href="egdi-en.html">the board that compares schools</a>')),
-        ("개인정보보호법", "Personal Information Protection Act", ("세부 법 중 하나 — 개인정보를 특히 다뤄요.", "One detailed law — specifically governs personal data."), ("이 기본법의 방향을 개인정보 분야에서 구체화하는 별도 법이에요.", "A separate statute that works out this act's direction for personal data.")),
-        ("AI 기본법", "AI Basic Act", ("AI를 콕 집어 다루는 또 다른 세부 법.", "Another detailed law aimed squarely at AI."), ("디지털 전환의 한 갈래를 AI 전용으로 다뤄요.", "Handles one branch of digital transition specifically for AI.")),
+        ("전자정부법", "e-Government Act", ("전자정부 서비스를 규율하는 별도 법.", "The separate law governing e-government services."), ('전자정부 수준을 재는 평가 지표는 → <a href="egdi-ko.html">다른 학교와 비교하는 평가단</a>', 'How e-government gets evaluated is covered → <a href="egdi-en.html">the board that compares schools</a>')),
+        ("개인정보보호법", "Personal Information Protection Act", ("개인정보를 규율하는 별도 법.", "The separate law governing personal data."), ("정보보호 원칙과 맞닿지만 자체 규칙을 따로 갖고 있어요.", "It touches this act's protection principles but has its own rules.")),
+        ("AI 기본법", "AI Basic Act", ("AI를 콕 집어 다루는 별도 법.", "A separate law aimed squarely at AI."), ("AI 산업 진흥과 신뢰 기반을 따로 다뤄요.", "Separately covers AI industry promotion and trust.")),
     ],
 }

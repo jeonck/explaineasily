@@ -53,8 +53,8 @@ P4 = svg(320, sky(320, ground=False)
          + infoboard(60, 40, 300, 240, "⟦기존 암호키 전달|OLD-STYLE KEY EXCHANGE⟧",
                      ("⟦도청 감지 — 못 해요|detect eavesdropping — no⟧", "⟦양자컴퓨터 — 언젠가 뚫릴 수 있어요|future quantum computers — may crack it⟧"), 1.0)
          + infoboard(400, 40, 300, 240, "⟦QKD|QKD⟧",
-                     ("⟦도청 감지 — 반드시 들통나요|detect eavesdropping — always caught⟧", "⟦양자컴퓨터 — 원리상 안전해요|future quantum computers — safe by design⟧"), 1.0, hl=0)
-         + label(380, 300, "⟦기존 방식과 QKD의 가장 큰 차이는 도청을 감지할 수 있다는 거예요|the biggest difference: QKD can tell when it's being snooped on⟧", 12, "var(--ink)"))
+                     ("⟦도청 감지 — 엿보면 흔적이 남아요|detect eavesdropping — a peek leaves traces⟧", "⟦양자컴퓨터 — 계산으론 못 푸는 방식이에요|quantum computers — can't crack it by math⟧"), 1.0, hl=0)
+         + label(380, 300, "⟦기존 방식과 QKD의 가장 큰 차이는 QKD만 도청을 감지할 수 있다는 거예요|the biggest difference: QKD can tell when it's being snooped on⟧", 12, "var(--ink)"))
 
 # 5. 한계: 거리 제한, 비싼 장비, 암호화는 따로
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
@@ -85,7 +85,7 @@ PAGE = {
              (QKD_SAFE, ("안전한 키만 사용", "Only a safe key gets used"), ("그 키를 암호화에 써요", "that key is used for encryption"), "warm"),
          ])},
         {"svg": P4, "alt": ("기존 암호키 전달과 QKD를 도청 감지·양자컴퓨터 내성으로 비교하는 설명판", "A board comparing old-style key exchange and QKD on eavesdropping detection and quantum-computer resistance"),
-         "caption": ("기존 방식과 QKD의 가장 큰 차이는 도청을 감지할 수 있다는 거예요.", "The biggest difference from older methods: QKD can tell when it's being snooped on."),
+         "caption": ("기존 방식과 QKD의 가장 큰 차이는 QKD만 도청을 감지할 수 있다는 거예요.", "The biggest difference from older methods: QKD can tell when it's being snooped on."),
          "small": ("QKD는 양자컴퓨터가 발전해도 원리상 안전해요.", "QKD is safe by design, even as quantum computers advance.")},
         {"svg": P5, "alt": ("왼쪽: 광섬유 거리 제한. 오른쪽: QKD는 열쇠만 나누고 실제 암호화는 다른 알고리즘이 맡음", "Left: limited distance over optical fiber. Right: QKD only shares the key — actual encryption is a separate algorithm's job"),
          "caption": ("QKD를 널리 쓰는 데는 광섬유 거리 제한과 비싼 장비가 걸림돌이에요.", "Limited fiber distance and expensive equipment are the obstacles to using QKD widely."),
@@ -96,7 +96,7 @@ PAGE = {
                 ("QKD는 양자역학의 관측 교란 원리를 이용해, 도청이 발생하면 광자의 양자 상태가 바뀌어 송수신 양측이 이를 감지할 수 있게 하는 키 분배 기술이에요. 도청이 감지된 키는 폐기하고 안전한 키만 암호화에 사용해요. 다만 광섬유 거리 제한, 고가의 전용 장비가 필요하고, QKD 자체는 '안전한 키 분배'만 담당할 뿐 실제 데이터 암호화는 대칭키 알고리즘 같은 별도 수단과 함께 써야 해요.",
                  "QKD is a key-distribution technology that exploits quantum mechanics' observation-disturbance principle: any eavesdropping changes a photon's quantum state, letting both sender and receiver detect it. A key found to be eavesdropped on is discarded, and only a verified-safe key is used for encryption. However, it's limited by optical-fiber distance and needs expensive dedicated equipment, and QKD itself handles only 'safe key distribution' — actual data encryption still needs a separate method, like a symmetric-key algorithm.")),
     "glossary": [
-        ("양자키분배(QKD)", "QKD", ("엿보면 들통나는 빛의 열쇠 나눔.", "A light-based key exchange that always gets caught when peeked at."), ("광자의 양자 성질을 이용해요.", "Relies on the quantum properties of photons.")),
+        ("양자키분배(QKD)", "QKD", ("엿보면 들통나는 빛의 열쇠 나눔.", "A light-based key exchange that always catches anyone who peeks."), ("광자의 양자 성질을 이용해요.", "Relies on the quantum properties of photons.")),
         ("양자 얽힘·중첩", "Quantum Entanglement/Superposition", ("중첩은 관측하면 깨지고, 얽힘은 두 입자가 서로 묶인 양자의 성질.", "Superposition breaks when observed; entanglement ties two particles together."), ("QKD가 도청을 감지하는 원리예요.", "The principle behind QKD's eavesdropping detection.")),
         ("대칭키 암호화", "Symmetric-Key Encryption", ("실제 데이터를 암호화하는 알고리즘.", "The algorithm that actually encrypts the data."), ("QKD가 나눈 열쇠를 여기에 써요.", "Uses the key QKD has safely shared.")),
         ("양자컴퓨터", "Quantum Computer", ("기존 암호를 풀 수도 있는 미래 기술.", "Future tech that might crack today's encryption."), ("QKD는 이 위협에도 안전하도록 설계됐어요.", "QKD is designed to stay safe even against this.")),

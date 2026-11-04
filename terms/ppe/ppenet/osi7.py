@@ -89,7 +89,7 @@ PAGE = {
         ("데이터링크/물리 계층(2-1)", "Data Link/Physical (2-1)", ("바로 옆 건물 전달과 실제 도로·전선.", "Handing to the next building, and the actual road or wire."), ("가장 아래, 실제로 신호가 흐르는 단계예요.", "The bottommost stages, where signals actually flow.")),
         ("캡슐화", "Encapsulation", ("단계마다 포장지를 덧씌우는 것.", "Adding a wrapper at each stage."), ("보낼 땐 덧씌우고, 받을 땐 벗겨내요.", "Added on the way out, peeled off on the way in.")),
         ("L4 스위치", "L4 Switch", ("4계층까지만 보고 창구를 정하는 분류 직원.", "The sorter who picks a counter after checking only up to layer 4."), ('계층을 실제로 참조하는 장비의 예시예요. → <a href="l4switch-ko.html">포트까지 보는 분류소 직원</a>', 'A concrete example of a device referencing these layers. → <a href="l4switch-en.html">the sorter who checks the port</a>')),
-        ("회선교환·패킷교환", "Circuit vs Packet Switching", ("전용 도로냐, 조각내 보내기냐.", "A dedicated road, or splitting it into pieces."), ('하위 계층에서 실제로 오가는 방식이에요. → <a href="circuitpacket-ko.html">전용 도로냐, 조각내 보내기냐</a>', 'The actual transport method at the lower layers. → <a href="circuitpacket-en.html">a dedicated road, or splitting it into pieces</a>')),
+        ("회선교환·패킷교환", "Circuit vs Packet Switching", ("전용 도로냐, 봉투를 조각내 보내기냐.", "A dedicated road, or splitting the envelope into pieces."), ('하위 계층에서 실제로 오가는 방식이에요. → <a href="circuitpacket-ko.html">전용 도로냐, 조각내 보내기냐</a>', 'The actual transport method at the lower layers. → <a href="circuitpacket-en.html">a dedicated road, or splitting it into pieces</a>')),
         ("TCP/IP 모델", "TCP/IP Model", ("OSI보다 더 단순하게 4단계로 묶은 모델.", "A simpler model that groups the same idea into just 4 stages."), ("실제 인터넷은 이 더 단순한 모델을 따라요.", "The actual internet follows this simpler model instead.")),
     ],
 }

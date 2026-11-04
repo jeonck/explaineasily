@@ -106,7 +106,7 @@ PAGE = {
         ("재식별", "Re-identification", ("지운 이름을 도로 찾아내는 것.", "Finding the erased name back again."), ('남은 몇 가지 단서만으로도 가능해요. → <a href="masking-ko.html">이름 대신 번호표</a>', 'Possible from just a few remaining clues. → <a href="masking-en.html">a number tag instead of a name</a>')),
         ("동형암호", "Homomorphic encryption", ("봉인한 채로 셈하는 방법.", "A way to compute while things stay sealed."), ('PPDM이 쓰는 도구 중 하나예요. → <a href="homoenc-ko.html">뜯지 않고 셈하는 봉인 편지</a>', 'One of the tools PPDM reaches for. → <a href="homoenc-en.html">the sealed letter you can do math on</a>')),
         ("가명정보", "Pseudonymized data", ("이름을 지운 기록.", "A record with the name removed."), ('PPDM은 이 가명정보로 통계를 낼 때 특히 쓰여요. → <a href="data3law-ko.html">데이터 3법 개정</a>', 'PPDM is especially used when mining statistics from this kind of data. → <a href="data3law-en.html">the Three Data Acts amendment</a>')),
-        ("정확도 trade-off", "Accuracy trade-off", ("보호를 세게 할수록 덜 정확해지는 것.", "The stronger the protection, the less accurate it gets."), ("완벽한 보호와 완벽한 정확도를 동시에 가질 순 없어요.", "You can't have perfect protection and perfect accuracy at the same time.")),
+        ("정확도 trade-off", "Accuracy trade-off", ("보호를 세게 할수록 통계가 덜 정확해지는 것.", "The stronger the protection, the less accurate the statistic gets."), ("완벽한 보호와 완벽한 정확도를 동시에 가질 순 없어요.", "You can't have perfect protection and perfect accuracy at the same time.")),
         ("개인정보 보호", "Privacy", ("PPDM이 지키려는 약속.", "The promise PPDM is built to keep."), ('PPDM은 통계·연구 목적에서 이 약속을 지키는 기술적 방법이에요. → <a href="privacy-ko.html">손님 이름표는 손님 것</a>', 'PPDM is the technical way to keep this promise for statistics and research. → <a href="privacy-en.html">the visitor\'s name tag belongs to the visitor</a>')),
     ],
 }

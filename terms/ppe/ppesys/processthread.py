@@ -42,7 +42,7 @@ P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="
          + person(140, 130, s=0.75, face=SMILE, **MECH1) + person(240, 130, s=0.75, face=SMILE, **MECH2)
          + label(190, 250, "⟦트렁크를 같이 쓰니 따로 챙길 때보다 훨씬 빨라요|sharing the trunk beats setting up separate ones⟧", 11, "var(--ink)")
          + person(540, 130, s=0.75, face=FROWN, **MECH1) + person(630, 130, s=0.75, face=FROWN, **MECH2)
-         + label(585, 250, "⟦같은 부품에 동시에 손대면 서로 부딪혀요|touch the same part at once, and they collide⟧", 11, "var(--ink)")
+         + label(585, 250, "⟦두 손이 같은 부품에 동시에 손대면 서로 부딪혀요|two hands touch the same part at once, and they collide⟧", 11, "var(--ink)")
          + label(380, 295, "⟦그래서 같이 쓰는 트렁크엔 동기화 규칙이 꼭 필요해요|that's why a shared trunk always needs a synchronization rule⟧", 12, "var(--ink)", cls="d"))
 
 PROC_I = icon('<rect x="10" y="12" width="20" height="40" rx="3" fill="var(--accent)"/><rect x="34" y="12" width="20" height="40" rx="3" fill="var(--good)"/>')
@@ -76,7 +76,7 @@ PAGE = {
          "caption": ("메모리(트렁크)를 공유하느냐가 핵심 차이예요.", "Whether memory (the trunk) is shared is the key difference."),
          "small": ("스레드는 프로세스 안에서 돌아가는, 실제 스케줄링의 단위예요.", "A thread runs inside a process — the real unit the scheduler moves.")},
         {"svg": P5, "alt": ("왼쪽: 같은 트렁크를 같이 써서 빨라짐. 오른쪽: 동시에 손대다 부딪힘", "Left: sharing the trunk makes work faster. Right: touching it at the same time causes a collision"),
-         "caption": ("트렁크를 같이 쓰면 빠르지만, 부딪히면 둘 다 일을 망쳐요.", "Sharing the trunk is fast — but a collision ruins the work of both."),
+         "caption": ("손 둘이 트렁크를 같이 쓰면 빠르지만, 부딪히면 둘 다 일을 망쳐요.", "Two hands sharing the trunk work fast — but a collision ruins the work of both."),
          "small": ("그래서 같이 쓰는 트렁크엔 동기화 규칙이 꼭 필요해요.", "That's why a shared trunk always needs a synchronization rule.")},
     ],
     "summary": (("<b>프로세스</b> = 각자 <b>독립된 차</b>(독립된 메모리). <b>스레드</b> = <b>같은 차 안에서 트렁크(메모리)를 같이 쓰며</b> 일하는 여러 손.",
@@ -91,6 +91,6 @@ PAGE = {
         ("교착상태", "Deadlock", ("서로의 열쇠를 기다리며 영원히 멈춤.", "Frozen forever, each waiting on the other's key."), ('스레드끼리도, 프로세스끼리도 생길 수 있어요. → <a href="deadlockstarve-ko.html">서로의 열쇠를 기다리며 멈춘 정비공장</a>', 'Can happen between threads or between processes. → <a href="deadlockstarve-en.html">the garage frozen waiting on each other\'s keys</a>')),
         ("가상메모리", "Virtual Memory", ("창고 전체를 내 것처럼 보여주는 가짜 지도.", "A fake map that makes the whole warehouse look like mine."), ('프로세스마다 이 가짜 지도를 따로 가져요. → <a href="virtualmem-ko.html">창고 전체를 내 것처럼 보여주는 가짜 지도</a>', 'Each process gets its own copy of this fake map. → <a href="virtualmem-en.html">the fake map that makes the whole warehouse yours</a>')),
         ("CPU 스케줄링", "CPU Scheduling", ("순서판에 적힌 차 순서 규칙.", "The rule that sets the car order on the board."), ('실제로 순서판에 오르는 건 대개 스레드예요. → <a href="cpusched-ko.html">리프트에 누가 먼저 올라갈까</a>', 'What actually lands on the board is usually a thread. → <a href="cpusched-en.html">who gets the lift first</a>')),
-        ("GPU의 많은 손", "The GPU's Many Hands", ("똑같은 간단한 일을 한번에 나눠 하는 보조 정비팀.", "A crew doing the same simple task all at once."), ('GPU의 코어 하나하나도 매우 가벼운 스레드 개념에 가까워요. → <a href="gpu-ko.html">수백 명이 함께 움직이는 보조 정비팀</a>', 'Each GPU core is close to an extremely lightweight thread. → <a href="gpu-en.html">the hundred-hand helper crew</a>')),
+        ("GPU의 많은 손", "The GPU's Many Hands", ("똑같은 간단한 일을 한번에 나눠 하는 보조 정비팀.", "A crew doing the same simple task all at once."), ('여러 손으로 일을 나누는 점은 닮았지만, GPU는 같은 계산을 한꺼번에 돌리는 데 특화됐어요. → <a href="gpu-ko.html">수백 명이 함께 움직이는 보조 정비팀</a>', 'Both split work among many hands, but a GPU specializes in running the same calculation at once. → <a href="gpu-en.html">the hundred-hand helper crew</a>')),
     ],
 }

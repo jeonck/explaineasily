@@ -97,6 +97,6 @@ PAGE = {
         ("동적 메모리 할당", "Dynamic Memory Allocation", ("힙에서 필요한 만큼 빌리는 것.", "Borrowing as much as needed from the heap."), ("malloc/new 로 빌리고 free/delete 로 돌려줘요.", "Borrowed with malloc/new, returned with free/delete.")),
         ("메모리 누수", "Memory Leak", ("빌린 공간을 안 돌려줘서 쌓이는 것.", "Space that piles up because it's never returned."), ("오래 켜둔 프로그램을 느리게 만들어요.", "Slows down long-running programs.")),
         ("스택 오버플로", "Stack Overflow", ("작업대(스택)가 정해진 한도를 넘어 넘치는 사고.", "The temp table (stack) spilling past its set limit."), ("재귀 호출이 너무 깊을 때 자주 나요.", "Common with excessively deep recursion.")),
-        ("힙-스택 충돌", "Heap-Stack Collision", ("힙과 스택이 서로를 향해 자라다 부딪히는 것.", "Heap and stack growing toward each other until they collide."), ("메모리 부족 오류의 전형적인 원인이에요.", "A classic cause of out-of-memory errors.")),
+        ("힙-스택 충돌", "Heap-Stack Collision", ("힙과 스택이 서로를 향해 자라다 부딪히는 것.", "Heap and stack growing toward each other until they collide."), ("둘 사이 공간이 바닥나면 더 쓸 메모리가 없어요.", "Once the space between them runs out, no memory is left to use.")),
     ],
 }

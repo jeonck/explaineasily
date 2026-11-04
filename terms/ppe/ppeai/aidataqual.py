@@ -48,7 +48,7 @@ PAGE = {
          "caption": ("농부가 훈련 데이터(씨앗) 바구니를 들고 왔는데, 라벨과 상태가 엉망이에요.", "The farmer brings a basket of seed (training data) — with bad labels and spoiled items."),
          "small": ("라벨이 틀리고, 상한 것도 섞이고, 같은 게 여러 번 들어있어요.", "Wrong labels, rotten pieces, the same item showing up twice.")},
         {"svg": P2, "alt": ("훈련 교사가 상한 작물도 사과라고 가르치자 선별기 조작원이 땀을 흘리며 그대로 외움", "The teacher tells the operator that even the rotten one is an apple, and the operator sweats, memorizing it as-is"),
-         "caption": ("교사가 이 재료 그대로 가르치면, 선별기는 라벨 실수까지 정답으로 배워요.", "If the teacher teaches straight from this batch, the sorter memorizes labeling mistakes as fact."),
+         "caption": ("교사가 라벨이 틀린 재료를 그대로 가르치면, 선별기는 라벨 실수까지 정답으로 배워요.", "If the teacher teaches straight from a mislabeled batch, the sorter memorizes labeling mistakes as fact."),
          "small": ("선별기는 틀린 라벨도 의심 없이 그대로 배워요.", "The sorter learns even a wrong label without question.")},
         {"svg": P3, "hero": True, "alt": ("검수반장이 씨앗 검사표로 작물을 하나씩 확인해 합격·불합격 도장을 찍은 뒤에야 교사에게 넘김", "The inspector checks each item against a seed checklist, stamping pass or fail, before it ever reaches the teacher"),
          "caption": ("데이터 품질관리 = 가르치기 전에 씨앗 자체부터 검사하는 일이에요.", "Data quality management checks the seed itself before any teaching begins."),
@@ -65,7 +65,7 @@ PAGE = {
                   "⟦일관성 — 같은 기준으로 적혔나|consistency — recorded the same way?⟧",
                   "⟦대표성 — 한쪽에 치우치지 않았나|representativeness — not skewed to one kind?⟧"), 1.0)),
          "alt": ("정확성·완전성·일관성·대표성 네 기준이 적힌 품질표", "A quality board listing accuracy, completeness, consistency, and representativeness"),
-         "caption": ("데이터 품질은 이 네 가지로 가늠해요.", "Data quality is judged by these four standards."),
+         "caption": ("데이터 품질은 정확성·완전성·일관성·대표성 네 가지로 가늠해요.", "Data quality is judged by four standards: accuracy, completeness, consistency, and representativeness."),
          "small": ("네 기준 중 하나라도 무너지면, 선별기의 '정답률'은 숫자일 뿐 믿을 수 없어요.", "If even one of the four fails, the sorter's accuracy number stops being trustworthy.")},
         {"svg": svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
                  + person(190, 130, s=0.8, face=SMILE, **INSPECTOR) + label(190, 260, "⟦씨앗은 깨끗해졌어요|the seed is clean now⟧", 11, "var(--ink)")

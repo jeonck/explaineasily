@@ -69,14 +69,14 @@ P4 = svg(320, sky(320, ground=False)
 # 5. 한계: 기기 엣지와는 다른, 통신망 안의 엣지예요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + edgebox(190, 150, 1.3) + label(190, 230, "⟦MEC — 통신사 기지국 옆|MEC — beside the carrier's tower⟧", 11, "var(--ink)")
-         + smallserver(570, 150, 1.3) + label(570, 230, "⟦엣지 컴퓨팅 — 내 기기 바로 옆|edge computing — right beside my own device⟧", 11, "var(--ink)")
-         + label(380, 280, "⟦둘 다 '가까이서 계산'이지만, 서버를 어디에 두느냐가 달라요|both mean 'compute nearby' — but the server sits in a different place⟧", 12, "var(--ink)", cls="d"))
+         + smallserver(570, 150, 1.3) + label(570, 230, "⟦엣지 컴퓨팅 — 데이터가 생기는 곳 가까이|edge computing — close to where data is made⟧", 11, "var(--ink)")
+         + label(380, 280, "⟦MEC는 엣지 컴퓨팅 중에서 서버를 통신사 기지국 쪽에 두는 방식이에요|MEC is one kind of edge computing: the server sits at the carrier's tower⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "mec", "order": 9,
     "title": ("기지국 옆에 붙은 작은 서버", "The Small Server Perched by the Tower"),
     "h1": ("<em>모바일 엣지 컴퓨팅(MEC)</em>이 뭐예요?", "What is <em>Mobile Edge Computing (MEC)</em>?"),
-    "sub": ("MEC를, 멀리 떨어진 중앙 데이터센터 대신 기지국 바로 옆에서 휴대폰 요청을 처리하는 이야기로 풀어봤어요.",
+    "sub": ("MEC(요즘은 Multi-access Edge Computing이라고도 해요)를, 멀리 떨어진 중앙 데이터센터 대신 기지국 바로 옆에서 휴대폰 요청을 처리하는 이야기로 풀어봤어요.",
             "MEC, told as a story about a server that handles phone requests right by the tower, instead of a far-away central datacenter."),
     "panels": [
         {"svg": P1, "alt": ("휴대폰이 멀리 있는 중앙 데이터센터로 신호를 보내고, AR 게임 캐릭터가 늦게 움직임", "A phone sends a signal all the way to a far central datacenter, and the AR game character moves late"),
@@ -97,8 +97,8 @@ PAGE = {
         {"svg": P4, "alt": ("중앙 데이터센터와 MEC 노드까지의 거리·지연을 비교하는 설명판", "Boards comparing distance and latency to the central datacenter vs the MEC node"),
          "caption": ("서버까지 거리가 짧아질수록 지연도 크게 줄어요.", "The shorter the distance to the server, the lower the latency."),
          "small": ("MEC를 5G와 함께 쓰면 전체 지연이 더 줄어요.", "Using MEC with 5G cuts total delay even further.")},
-        {"svg": P5, "alt": ("왼쪽: MEC는 통신사 기지국 옆에. 오른쪽: 엣지 컴퓨팅은 내 기기 바로 옆에", "Left: MEC sits beside the carrier's tower. Right: edge computing sits right beside my own device"),
-         "caption": ("MEC는 통신사 기지국 옆, 엣지 컴퓨팅은 내 기기 바로 옆이에요.", "MEC is beside the carrier's tower; edge computing is right beside my own device."),
+        {"svg": P5, "alt": ("왼쪽: MEC는 통신사 기지국 옆에. 오른쪽: 엣지 컴퓨팅은 데이터가 생기는 곳 가까이에", "Left: MEC sits beside the carrier's tower. Right: edge computing sits close to where data is made"),
+         "caption": ("MEC는 엣지 컴퓨팅 중에서 서버를 통신사 기지국 옆에 두는 방식이에요.", "MEC is the kind of edge computing that puts the server beside the carrier's tower."),
          "small": ("둘 다 '가까이서 계산'이지만, 서버를 어디에 두느냐가 달라요.", "Both mean 'compute nearby' — but the server sits in a different place.")},
     ],
     "summary": (("<b>MEC(모바일 엣지 컴퓨팅)</b>는 통신사 <b>기지국 바로 옆</b>에 서버를 두어, 휴대폰 요청을 중앙 데이터센터까지 보내지 않고 <b>가까이서 초저지연으로</b> 처리해요.",
@@ -108,7 +108,7 @@ PAGE = {
     "glossary": [
         ("모바일 엣지 컴퓨팅(MEC)", "MEC", ("기지국 옆에 둔 작은 서버.", "A small server placed beside the base station."), ("통신망 안의 엣지예요.", "The edge, inside the carrier's network.")),
         ("엣지 컴퓨팅", "Edge Computing", ("내 기기 바로 옆에서 계산하는 것.", "Computing right beside my own device."), ('MEC는 이 개념을 통신망에 적용한 거예요. → <a href="edgecompute-ko.html">엣지 컴퓨팅 부스</a>', "MEC applies this idea inside the carrier network. → <a href=\"edgecompute-en.html\">the Edge Computing booth</a>")),
-        ("지연시간(latency)", "Latency", ("신호가 왕복하는 데 걸리는 시간.", "How long a round trip takes."), ("MEC는 왕복 시간을 한 자릿수 ms로 줄여요.", "MEC cuts the round trip to single-digit ms.")),
+        ("지연시간(latency)", "Latency", ("신호가 왕복하는 데 걸리는 시간.", "How long a signal's round trip takes."), ("MEC는 왕복 시간을 한 자릿수 ms로 줄여요.", "MEC cuts the round trip to single-digit ms.")),
         ("5G", "5G", ("MEC와 짝을 이루는 통신 기술.", "The network tech that pairs with MEC."), ("MEC와 5G가 함께 저지연 서비스를 만들어요.", "MEC and 5G together enable low-latency services.")),
         ("기지국(RAN)", "Base Station / RAN", ("휴대폰과 가장 먼저 연결되는 통신 설비.", "The first piece of network gear a phone connects to."), ("MEC 서버가 이 바로 옆에 있어요.", "The MEC server sits right beside it.")),
         ("자율주행", "Self-Driving", ("초저지연이 꼭 필요한 대표 사례.", "A case where ultra-low latency really matters."), ("MEC의 낮은 지연이 자율주행 같은 서비스를 뒷받침해요.", "MEC's low latency helps make services like self-driving possible.")),

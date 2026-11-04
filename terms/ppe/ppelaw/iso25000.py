@@ -46,7 +46,7 @@ P4 = svg(320, sky(320, ground=False)
 # 5. 기준표가 있어도 전부 100점은 어려워요
 P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
          + person(190, 130, s=0.8, face=SMILE, **REP) + label(190, 260, "⟦같은 기준표로 같이 평가해요|we judge by the same checklist⟧", 11, "var(--ink)")
-         + person(570, 130, s=0.8, face=SWEAT + EYES, **STUDENT) + label(570, 260, "⟦근데 8가지 다 100점을 맞추기엔 시간도 돈도 모자라요|but acing all eight takes more time and money than we have⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=SWEAT + EYES, **STUDENT) + label(570, 260, "⟦근데 모든 특성을 다 100점 맞추기엔 시간도 돈도 모자라요|but acing every trait takes more time and money than we have⟧", 11, "var(--ink)")
          + label(380, 305, "⟦앱이 빠른 대신 조금 덜 예쁠 수도 있어요 — 어떤 품질을 먼저 챙길지 정해야 해요|a faster app may be a little less polished — you have to choose which quality comes first⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
@@ -62,11 +62,11 @@ PAGE = {
         {"svg": P2, "alt": ("한 학생은 같은 앱을 완전 좋다고 하고, 다른 학생은 별로라고 함", "One student calls the same app great; another calls it bad"),
          "caption": ("기준이 없으면 같은 앱도 다르게 평가해 다퉈요.", "Without a standard, the same app gets judged differently and people argue."),
          "small": ("같은 앱을 보고도 기준이 달라 결론이 갈려요.", "Looking at the same app, different standards give different verdicts.")},
-        {"svg": P3, "hero": True, "alt": ("학생회장과 대표가 좋은 소프트웨어의 여덟 가지 공통 기준표를 들고 있음", "The council president and a rep hold up eight shared criteria for good software"),
+        {"svg": P3, "hero": True, "alt": ("학생회장과 대표가 좋은 소프트웨어의 공통 기준표를 들고 있음", "The council president and a rep hold up the shared criteria for good software"),
          "caption": ("ISO/IEC 25000(SQuaRE)은 모두가 같이 쓰는 '좋은 소프트웨어' 기준표예요.", "ISO/IEC 25000 (SQuaRE) is the shared checklist for what makes software good."),
          "small": ("기준이 같으면, 평가도 같은 말로 할 수 있어요.", "The same standard lets everyone judge in the same language."),
          "tricks": (4, [
-             (MODEL_I, ("품질 특성 정의하기", "Define quality traits"), ("기능·성능·보안 등 8가지", "function, performance, security, and more"), "calm"),
+             (MODEL_I, ("품질 특성 정의하기", "Define quality traits"), ("기능·성능·보안 등 여러 특성", "function, performance, security, and more"), "calm"),
              (NEED_I, ("목표 수준 적어두기", "Write the target level"), ("얼마나 좋아야 하는지 미리", "how good it must be, set in advance")),
              (RULER_I, ("숫자로 측정하기", "Measure it in numbers"), ("느낌이 아니라 수치로", "numbers, not just a feeling"), "warm"),
              (JUDGE_I, ("목표와 비교해 평가하기", "Evaluate against the target"), ("측정값을 목표와 맞춰 판정해요", "measured values are judged against the target")),
@@ -78,17 +78,17 @@ PAGE = {
          "caption": ("기준표가 있어도 전부 100점은 어려워요.", "Even with a checklist, acing everything is hard."),
          "small": ("앱이 빠른 대신 조금 덜 예쁠 수도 있어요 — 어떤 품질을 먼저 챙길지 정해야 해요.", "A faster app may be a little less polished — you have to choose which quality comes first.")},
     ],
-    "summary": (("<b>ISO/IEC 25000(SQuaRE)</b> = '좋은 소프트웨어'란 무엇인지 <b>8가지 품질 특성으로 정의</b>하고, <b>재고 요구하고 평가</b>하는 공통 기준표.",
-                 "<b>ISO/IEC 25000 (SQuaRE)</b> = a shared checklist that <b>defines \"good software\" with 8 quality characteristics</b>, then <b>measures, requires, and evaluates</b> it."),
-                ("ISO/IEC 25000 시리즈(SQuaRE, Systems and Software Quality Requirements and Evaluation)는 소프트웨어 품질을 정의·측정·요구·평가하는 국제표준 모음이에요. 2501n(품질모델)이 기능적합성·성능효율성·호환성·사용성·신뢰성·보안성·유지보수성·이식성 8가지 특성을 정의하고, 2502n(측정)·2503n(요구사항)·2504n(평가)이 이를 수치화하고 비교·판정하는 절차를 제공해요.",
-                 "The ISO/IEC 25000 series (SQuaRE — Systems and Software Quality Requirements and Evaluation) is a family of international standards that define, measure, require, and evaluate software quality. The 2501n quality model defines eight characteristics — functional suitability, performance efficiency, compatibility, usability, reliability, security, maintainability, and portability — while 2502n (measurement), 2503n (requirements), and 2504n (evaluation) provide the process to quantify, compare, and judge them.")),
+    "summary": (("<b>ISO/IEC 25000(SQuaRE)</b> = '좋은 소프트웨어'란 무엇인지 <b>품질 특성(2011판 8가지, 2023판 9가지)으로 정의</b>하고, <b>측정하고 요구하고 평가</b>하는 공통 기준표.",
+                 "<b>ISO/IEC 25000 (SQuaRE)</b> = a shared checklist that <b>defines \"good software\" by quality characteristics (8 in the 2011 edition, 9 in 2023)</b>, then <b>measures, requires, and evaluates</b> it."),
+                ("ISO/IEC 25000 시리즈(SQuaRE, Systems and Software Quality Requirements and Evaluation)는 소프트웨어 품질을 정의·측정·요구·평가하는 국제표준 모음이에요. 2501n(품질모델)이 기능적합성·성능효율성·호환성·사용성·신뢰성·보안성·유지보수성·이식성 8가지 특성을 정의해요(2011판 기준. 2023판은 사용성을 상호작용 능력으로, 이식성을 유연성으로 바꾸고 안전성을 더해 9가지예요). 그리고 2502n(측정)·2503n(요구사항)·2504n(평가)이 이를 수치화하고 비교·판정하는 절차를 제공해요.",
+                 "The ISO/IEC 25000 series (SQuaRE — Systems and Software Quality Requirements and Evaluation) is a family of international standards that define, measure, require, and evaluate software quality. The 2501n quality model defines eight characteristics — functional suitability, performance efficiency, compatibility, usability, reliability, security, maintainability, and portability (2011 edition; the 2023 edition renames usability as interaction capability and portability as flexibility, and adds safety, for nine) — while 2502n (measurement), 2503n (requirements), and 2504n (evaluation) provide the process to quantify, compare, and judge them.")),
     "glossary": [
         ("SQuaRE", "SQuaRE", ("좋은 소프트웨어의 기준 시리즈.", "The standard series for good software."), ("ISO/IEC 25000번대 표준을 통틀어 부르는 이름이에요.", "The umbrella name for the ISO/IEC 25000-series standards.")),
-        ("품질모델(ISO 25010)", "Quality Model (ISO 25010)", ("8가지 품질 특성을 정의한 목록.", "The list defining the eight quality characteristics."), ("기능·성능·사용성 등을 하나하나 정의해요.", "Defines function, performance, usability, and the rest, one by one.")),
+        ("품질모델(ISO 25010)", "Quality Model (ISO 25010)", ("품질 특성을 정의한 목록(2011판 8가지, 2023판 9가지).", "The list defining the quality characteristics (8 in 2011, 9 in 2023)."), ("기능·성능·사용성 등을 하나하나 정의해요.", "Defines function, performance, usability, and the rest, one by one.")),
         ("품질 측정(ISO 2502n)", "Quality Measurement (ISO 2502n)", ("특성을 숫자로 재는 방법.", "How to measure each trait in numbers."), ("느낌이 아니라 측정 가능한 지표를 써요.", "Uses measurable indicators, not just a feeling.")),
         ("품질 요구사항(ISO 2503n)", "Quality Requirements (ISO 2503n)", ("미리 적어두는 목표 수준.", "The target level written down in advance."), ("평가의 기준선이 돼요.", "Becomes the baseline for evaluation.")),
         ("품질 평가(ISO 2504n)", "Quality Evaluation (ISO 2504n)", ("목표와 실제를 비교해 판정하는 절차.", "The process of comparing target against actual and judging."), ("기준에 못 미치면 다시 고쳐야 해요.", "Falling short means it has to be fixed again.")),
-        ("사용성", "Usability", ("쓰기 쉬운 정도.", "How easy something is to use."), ("8가지 품질 특성 중 하나예요.", "One of the eight quality characteristics.")),
+        ("사용성", "Usability", ("쓰기 쉬운 정도.", "How easy something is to use."), ("2011판 품질 특성 중 하나로, 2023판에선 상호작용 능력으로 바뀌었어요.", "A 2011-edition characteristic; the 2023 edition calls it interaction capability.")),
         ("유지보수성", "Maintainability", ("나중에 고치기 쉬운 정도.", "How easy it is to fix later."), ("오래 쓸 소프트웨어일수록 중요해요.", "Matters more the longer software stays in use.")),
         ("소프트웨어 테스트", "Software Testing", ("소프트웨어를 실제로 돌려보며 동작을 확인하는 것.", "Actually running software to check how it behaves."), ('SQuaRE가 정한 기준을 실제로 확인하는 과정이에요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'The process that actually checks SQuaRE\'s standard. → <a href="pmoaudit-en.html">the last checker before publication</a>')),
     ],

@@ -18,7 +18,7 @@ def manuscript(x, y, s=1.0, marks=0, text=None):
     for i in range(marks):
         out += f'<circle cx="{-18 + i * 16}" cy="14" r="3" fill="var(--bad)"/>'
     if text:
-        out += label(0, 36, text, 11, "var(--ink)", cls="d")
+        out += label(0, 24 + fit(11, s) * 0.85, text, fit(11, s), "var(--ink)", cls="d")
     return out + '</g>'
 
 
@@ -64,5 +64,5 @@ def ruler(x, y, s=1.0, text=None):
     for i in range(5):
         out += f'<rect x="{i * 20}" y="0" width="2" height="18" fill="#C9822B"/>'
     if text:
-        out += label(50, 32, text, 10, "var(--muted)")
+        out += label(50, 32, text, fit(10, s), "var(--muted)")
     return out + '</g>'

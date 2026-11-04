@@ -16,7 +16,7 @@ def shelfzone(x, y, w, h, s=1.0, n=4, bad=-1, label_text=None):
         c = "var(--bad)" if i == bad else "#C9A86A"
         out += f'<rect x="{i * cw + 4}" y="6" width="{cw - 8}" height="{h - 12}" rx="2" fill="{c}"/>'
     if label_text:
-        out += label(w / 2, -10, label_text, 11, "var(--muted)")
+        out += label(w / 2, -10, label_text, fit(11, s), "var(--muted)")
     return out + '</g>'
 
 
@@ -35,7 +35,7 @@ def receipt(x, y, s=1.0, text=None, void=False):
     if void:
         out += '<path d="M-18 -24 L18 24 M18 -24 L-18 24" stroke="var(--bad)" stroke-width="3"/>'
     if text:
-        out += label(0, 42, text, 10, "var(--muted)")
+        out += label(0, 30 + fit(10, s) * 0.85, text, fit(10, s), "var(--muted)")
     return out + '</g>'
 
 
@@ -52,6 +52,9 @@ def indexcard(x, y, s=1.0, tags=None):
     """다차원 색인 카드(여러 딱지가 붙은 카드)."""
     tags = tags or ["A", "B"]
     out = f'<g transform="translate({x},{y}) scale({s})"><rect x="-20" y="-14" width="40" height="28" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/>'
-    for i, t in enumerate(tags):
-        out += f'<rect x="{-20 + i * 14}" y="-24" width="12" height="12" rx="2" fill="var(--accent)"/>' + label(-14 + i * 14, -16, t, 8, "#fff")
+    cx = -20
+    for t in tags:
+        w = 14 if len(t) == 1 or t.startswith("⟦") else 9 * len(t) + 6
+        out += f'<rect x="{cx}" y="-27" width="{w - 2}" height="15" rx="2" fill="var(--accent)"/>' + label(cx + (w - 2) / 2, -16, t, fit(10, s, 8.5), "#fff")
+        cx += w
     return out + '</g>'

@@ -12,7 +12,7 @@ P1 = svg(320, sky(320)
 # 2. 왜 어려운가: 규칙 없이 두면 상자가 망가져요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + box(300, 150, 1.0) + box(460, 150, 1.0, color="#C9822B")
-         + label(380, 90, "⟦두 사람이 동시에 수량을 고치면 한쪽 기록이 지워져요|when both edit the count at once, one edit gets erased⟧", 12, "var(--bad)")
+         + label(380, 90, "⟦두 사람이 동시에 수량을 고치면 한쪽 기록이 지워져요|when two people edit the count at once, one edit gets erased⟧", 12, "var(--bad)")
          + label(380, 250, "⟦기록이 지워지지 않게 막는 규칙이 '병행제어'예요|the rule that stops lost edits is 'concurrency control'⟧", 13, "var(--ink)"))
 
 # 3. hero: 병행제어 = 동시에 손대도 안 부딪히게 막는 규칙
@@ -57,7 +57,7 @@ PAGE = {
          "caption": ("포장 담당과 배송 기사가 같은 상자를 동시에 집으려고 해요.", "The packer and the driver both reach for the same box at once."),
          "small": ("누가 먼저 집을지 정하지 않으면 두 사람이 부딪혀요.", "If nobody decides who goes first, the two collide.")},
         {"svg": P2, "alt": ("두 사람이 동시에 쓰려다 서로의 작업을 지우는 상자 두 개", "Two boxes where simultaneous writes erase each other's work"),
-         "caption": ("두 사람이 동시에 수량을 고치면 한쪽 기록이 지워져요.", "When both edit the count at once, one edit gets erased."),
+         "caption": ("두 사람이 동시에 수량을 고치면 한쪽 기록이 지워져요.", "When two people edit the count at once, one edit gets erased."),
          "small": ("기록이 지워지지 않게 막는 규칙이 '병행제어'예요.", "The rule that stops lost edits is 'concurrency control'.")},
         {"svg": P3, "hero": True, "alt": ("창고 관리자가 줄 세우기와 복제 상자로 동시 접근을 조율함", "A manager coordinates simultaneous access with a queue and a twin box"),
          "caption": ("병행제어 = 동시에 손대도 안 부딪히게 막는 규칙이에요.", "Concurrency control is rules that stop simultaneous edits from colliding."),

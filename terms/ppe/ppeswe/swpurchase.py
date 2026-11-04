@@ -12,7 +12,7 @@ def press(x, y, s=1.0, color="#4A5A72"):
 P1 = svg(300, sky(300)
          + press(400, 150, 1.0)
          + person(560, 150, s=0.85, face=SMILE, **PRINTER)
-         + bubble(370, 50, 280, 48, "⟦제조사 정가 1000만 원 → 저희가 1400만 원에 구해드릴게요|maker's price: $10k → we'll get it for you at $14k⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(370, 50, 280, 48, "⟦정가 1000만 원 → 저희가 1400만 원에 구해드릴게요|maker's price: $10k → we'll get it for you at $14k⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(180, 180, s=0.75, face=EYES, **EDITOR)
          + label(380, 270, "⟦발주자는 제조사 정가를 몰라요|the client doesn't know the maker's actual price⟧", 12, "var(--ink)"))
 

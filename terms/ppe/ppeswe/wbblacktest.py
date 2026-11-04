@@ -11,7 +11,7 @@ P1 = svg(300, sky(300)
 # 2. 안에서 볼지, 밖에서 볼지로 의견이 갈려요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(200, 150, s=0.85, face=SMILE, **PROOFER)
-         + bubble(140, 80, 210, 36, "⟦원고 속 흐름을 다 들여다봐야죠|you have to look inside at the whole flow⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(140, 80, 235, 36, "⟦원고 속 흐름을 다 들여다봐야죠|you have to look inside at the whole flow⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(560, 150, s=0.7, face=SMILE, **READER) + bubble(460, 80, 230, 36, "⟦그냥 독자처럼 읽어보면 되잖아요|just read it like a reader would⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦어느 한쪽만 고집하면, 다른 쪽에서만 보이는 오류를 못 잡아요|insisting on one way misses errors only the other way can see⟧", 12, "var(--ink)"))
 
@@ -28,7 +28,7 @@ P4 = svg(320, sky(320)
                       ("⟦화이트박스 — 속 흐름을 따라가며 확인|white-box — checks the inner flow⟧",
                        "⟦블랙박스 — 입력·출력만 보고 확인|black-box — checks only input and output⟧",
                        "⟦경계값 — 범위의 처음과 끝을 특히 살펴요|boundary values — extra care at a range's two ends⟧",
-                       "⟦동등분할 — 비슷한 경우는 대표로 확인|equivalence partitioning — checking one case per group⟧"), 1.0)
+                       "⟦동등분할 — 비슷한 경우는 대표로 확인|equivalence partitioning — test one per group⟧"), 1.0)
          + person(560, 150, s=0.75, face=EYES, **PROOFER)
          + label(560, 250, "⟦두 방식 다 완벽하진 않아요, 같이 써야 빈틈이 줄어요|neither way alone is perfect — using both closes more gaps⟧", 11, "var(--muted)")
          + label(380, 300, "⟦작은 책일수록 둘 다 해보는 게 어렵지 않아요|the smaller the book, the easier it is to do both⟧", 12, "var(--ink)"))
