@@ -42,7 +42,7 @@ P2 = svg(280, '<rect width="760" height="280" fill="var(--bad-soft)"/>'
          + ledger(150, 130, 1.0) + person(220, 160, s=0.6, face=MASK)
          + label(190, 243, "⟦장부를 그냥 보내면 도둑도 가로채요|send a ledger plainly, and a thief can grab it⟧", 12, "var(--bad)")
          + person(560, 150, s=0.75, face=FROWN, **CLERK)
-         + bubble(480, 60, 240, 40, "⟦그래서 아무도 안 보내줘요|so no one sends anything, ever⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(480, 60, 240, 40, "⟦그래서 어느 성도 장부를 안 보내요|so no castle ever sends its ledger⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 258, "⟦결국 장부를 각자 성 안에서만 보다 보니, 합쳐서 하는 더 좋은 분석을 못 해요|each ledger stays inside its own castle, so the better combined analysis never happens⟧", 12, "var(--ink)"))
 
 # 3. 안심구역 = 밖으로 못 들고 나가는 특별 열람실 (hero)

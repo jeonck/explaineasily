@@ -75,7 +75,7 @@ PAGE = {
          "small": ("원칙만 있고 실행이 없으면, 지도는 벽에 걸린 그림일 뿐이에요.", "Principles without execution are just a map hanging on the wall.")},
         {"svg": svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
                  + person(190, 130, s=0.8, face=SMILE, **INSPECTOR) + label(190, 260, "⟦프레임워크도 위험을 0으로 만들진 못해요|the framework can't bring risk to zero⟧", 11, "var(--ink)")
-                 + person(570, 130, s=0.8, face=EYES, **TEACHER) + label(570, 260, "⟦대신 위험을 다룰 수 있는 크기로 줄여요|but it shrinks risk to a manageable size⟧", 11, "var(--ink)")
+                 + person(570, 130, s=0.8, face=EYES, **TEACHER) + label(570, 260, "⟦대신 프레임워크가 위험을 다룰 만한 크기로 줄여요|but the framework shrinks risk to a manageable size⟧", 11, "var(--ink)")
                  + label(380, 300, "⟦리스크 관리는 위험을 없애는 게 아니라, 체계적으로 다루는 일이에요|risk management isn't about erasing risk — it's about handling it systematically⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 검수반장이 위험을 0으로 만들 순 없다고 말함. 오른쪽: 교사가 대신 다룰 수 있는 크기로 줄인다고 말함", "Left: the inspector says risk can't be zeroed out. Right: the teacher says it's shrunk to a manageable size instead"),
          "caption": ("프레임워크가 위험을 완전히 없애주진 않아요.", "The framework doesn't make risk disappear entirely."),

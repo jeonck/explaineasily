@@ -51,7 +51,7 @@ P4 = svg(320, sky(320)
 # 5. 한계 - 증명서만 유일할 뿐, 그림 자체는 막을 수 없어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
          + glyph(166, 110, 1.3, STAMP_P)
-         + label(190, 250, "⟦증명서 주인이 누구인지는 확실히 증명돼요|it proves, for certain, who holds the certificate⟧", 11, "var(--ink)")
+         + label(190, 250, "⟦증명서 주인이 누구인지는 장부 기록으로 확실히 증명돼요|the ledger proves, for certain, who holds the certificate⟧", 11, "var(--ink)")
          + canvas(550, 110, 1.0) + glyph(560, 170, 0.6, COPY_P)
          + label(570, 262, "⟦그림 자체는 여전히 누구나 내려받고 복사할 수 있어요|the picture itself can still be downloaded and copied by anyone⟧", 11, "var(--ink)")
          + label(380, 282, "⟦NFT는 '이 번호의 주인' 기록이지, 복제를 막는 자물쇠가 아니에요|an NFT records who holds this token, not a lock against copying⟧", 12, "var(--ink)", cls="d"))

@@ -23,7 +23,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + proofmachine(380, 130, 1.1, ok=False)
          + manuscript(200, 230, 0.6) + manuscript(300, 230, 0.6) + manuscript(400, 230, 0.6) + manuscript(500, 230, 0.6) + manuscript(600, 230, 0.6)
          + label(380, 30, "⟦이 기계는 규칙을 적어 넣은 게 아니라, 예시 더미를 보고 스스로 배웠어요|this machine wasn't given written rules — it learned from piles of examples⟧", 13, "var(--ink)", cls="d")
-         + label(380, 290, "⟦그래서 일반 코드 고치듯 규칙 한 줄만 바꿔선 못 고쳐요|so fixing it isn't like changing one line of ordinary code⟧", 12, "var(--bad)"))
+         + label(380, 290, "⟦그래서 일반 코드 고치듯 규칙 한 줄만 바꿔선 못 고쳐요|so fixing the machine isn't like changing one line of ordinary code⟧", 12, "var(--bad)"))
 
 # 3. MLOps = 교정 기계를 계속 돌보는 일 (hero)
 DATA_I = icon('<path d="M14 18 Q32 8 50 18 V46 Q32 56 14 46 Z" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M14 18 Q32 28 50 18" stroke="var(--accent)" stroke-width="3" fill="none"/>')

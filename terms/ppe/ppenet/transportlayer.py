@@ -20,7 +20,7 @@ P3 = svg(340, sky(340)
          + envelope(220, 210, 0.6, registered=True, text="80") + envelope(380, 230, 0.6, text="53")
          + envelope(540, 210, 0.6, registered=True, text="443")
          + label(380, 30, "⟦전송계층 = 창구 번호를 나누고, 등기냐 일반우편이냐를 고르는 단계|the transport layer = splitting counters by number, and choosing registered vs plain mail⟧", 12, "var(--ink)", cls="d")
-         + label(380, 320, "⟦전송계층은 동네까지 온 봉투를 정확한 창구와 방식으로 넘겨줘요|this layer hands the envelope — once it's in the right town — to the right counter, the right way⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦전송계층은 동네까지 온 봉투를 정확한 창구와 방식으로 넘겨줘요|the transport layer hands the envelope — once it's in the right town — to the right counter, the right way⟧", 12, "var(--muted)"))
 
 I1 = icon('<rect x="10" y="22" width="44" height="22" rx="4" fill="var(--panel)" stroke="var(--accent)" stroke-width="3"/><text x="32" y="37" font-size="12" font-weight="700" fill="var(--accent)" text-anchor="middle">PORT</text>')
 I2 = icon('<circle cx="20" cy="32" r="10" fill="var(--good)"/><path d="M15 32 l4 4 l8 -10" stroke="#fff" stroke-width="3" fill="none"/><circle cx="48" cy="32" r="10" fill="var(--accent)"/>')

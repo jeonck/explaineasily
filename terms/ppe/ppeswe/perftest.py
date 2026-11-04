@@ -13,7 +13,7 @@ P1 = svg(300, sky(300)
 # 2. 왜 터졌는지 모르면 또 터짐
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(220, 150, s=0.8, face=FROWN, **PRINTER)
-         + bubble(140, 70, 220, 40, "⟦한두 명일 땐 멀쩡했는데요?|it was fine with just a few people?⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(140, 70, 220, 40, "⟦인쇄소가 한두 명일 땐 멀쩡했는데요?|the shop was fine with just a few people?⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(560, 150, s=0.8, face=SWEAT + EYES, **EDITOR)
          + bubble(440, 70, 240, 40, "⟦얼마나 몰려야 인쇄가 멈추는지 몰라 불안해요|we don't know how big a rush stops printing⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦가짜 독자를 미리 몰리게 해보지 않으면, 인쇄소 한계가 어딘지 아무도 몰라요|without a practice rush ahead of time, nobody knows where the print shop's limit is⟧", 12, "var(--ink)"))

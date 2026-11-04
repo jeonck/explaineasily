@@ -13,7 +13,7 @@ P2 = svg(330, '<rect width="760" height="330" fill="var(--bad-soft)"/>'
          + printplate(380, 140, 1.2)
          + person(380, 200, s=0.7, face=FROWN + SWEAT, **PRINTER)
          + bubble(260, 30, 280, 44, "⟦이 장정으론 전자책 전환이 안 돼요!|this binding can't convert to an e-book at all!⟧", 12, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 300, "⟦이미 다 찍은 뒤라 장정을 바꾸기엔 너무 늦었어요|it's already all printed — far too late to change the binding⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 300, "⟦이미 다 찍은 뒤라 장정을 바꾸기엔 너무 늦었어요|the book's already all printed — far too late to change the binding⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 인쇄 전, 시나리오로 미리 리허설 (hero)
 P3 = svg(365, sky(365)

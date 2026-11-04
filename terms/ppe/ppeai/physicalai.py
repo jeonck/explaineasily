@@ -20,7 +20,7 @@ P1 = svg(300, sky(300)
          + gripper_arm(230, 150, 1.0, open_claw=False, color="var(--bad)")
          + label(230, 260, "⟦집게가 너무 세게 쥐어 사과가 터졌어요|the gripper squeezed too hard — the apple burst⟧", 11, "var(--bad)")
          + person(560, 170, s=0.75, face=SWEAT + EYES, **OPERATOR)
-         + label(560, 270, "⟦사진으로 보던 거랑 또 다르네요|this is different from just looking at a photo⟧", 11, "var(--muted)")
+         + label(560, 270, "⟦집어 옮기는 건 사진 보기와 또 달라요|picking it up is different from reading a photo⟧", 11, "var(--muted)")
          + label(380, 25, "⟦사진으로 분류만 하던 선별기에게, 이제 작물을 직접 집어서 옮기라고 해요|a sorter that used to just classify photos is now asked to pick up and move produce⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 왜 어려운가: 실제 세계엔 무게·마찰·타이밍이 있어요
