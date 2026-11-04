@@ -72,7 +72,7 @@ P5 = svg(280, '<rect width="760" height="280" fill="var(--bad-soft)"/>'
          + small_castle(100, 60, 0.5) + label(200, 180, "⟦바꾼 기관|a castle that switched⟧", 11, "var(--good)")
          + small_castle(380, 90, 0.42) + label(460, 185, "⟦아직 그대로인 기관|a castle that hasn't yet⟧", 11, "var(--muted)")
          + person(640, 150, s=0.8, face=EYES, **GUARD)
-         + bubble(560, 70, 200, 40, "⟦등급 나누는 기준부터 어려워요|even grading the castles is hard⟧", 10, "var(--panel)", "var(--line)", "bottom")
+         + bubble(540, 70, 205, 40, "⟦등급 나누는 기준부터 어려워요|even grading the castles is hard⟧", 10, "var(--panel)", "var(--line)", "bottom")
          + label(380, 258, "⟦모든 공공기관이 다 바꾸진 않았고, 등급 기준도 아직 다듬는 중이에요|not every public castle has switched, and the grading itself is still being refined⟧", 11, "var(--ink)"))
 
 PAGE = {

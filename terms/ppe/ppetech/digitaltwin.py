@@ -50,10 +50,10 @@ TWIN_LOG = icon('<rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7
 # 4. 진짜 로봇 vs 디지털 트윈 비교
 P4 = svg(320, sky(320, ground=False)
          + infoboard(60, 40, 300, 240, "⟦진짜 로봇|REAL ROBOT⟧",
-                     ("⟦위험한 테스트 ✕|risky tests ✕⟧", "⟦수리비 큼|big repair bills⟧",
+                     ("⟦위험한 테스트 — 못 해요|risky tests — off-limits⟧", "⟦수리비 큼|big repair bills⟧",
                       "⟦한 번에 하나씩|one try at a time⟧", "⟦지금 상태만 보임|shows only right now⟧"), 1.0)
          + infoboard(400, 40, 300, 240, "⟦디지털 트윈|DIGITAL TWIN⟧",
-                     ("⟦위험한 테스트 ✓|risky tests ✓⟧", "⟦수리비 거의 없음|almost no repair bill⟧",
+                     ("⟦위험한 테스트 — 마음껏|risky tests — go ahead⟧", "⟦수리비 거의 없음|almost no repair bill⟧",
                       "⟦수백 번도 반복|try it hundreds of times⟧", "⟦기록도 계속 쌓여요|keeps a running history⟧"), 1.0)
          + label(380, 300, "⟦위험하고 비싼 실험을, 화면 속에서 먼저 해봐요|Risky, costly tests happen on screen first⟧", 12, "var(--ink)"))
 

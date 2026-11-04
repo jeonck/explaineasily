@@ -24,7 +24,7 @@ def flatscreen(x, y, s=1.0):
 P1 = svg(300, sky(300, ground=False)
          + photo(160, 100, 1.4)
          + person(480, 170, s=0.85, face=EYES, **DEMO)
-         + bubble(530, 90, 220, 46, "⟦높은 곳 사진만 봐서는 하나도 안 무서운데요?|a photo of a high place isn't scary, is it?⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(515, 90, 238, 46, "⟦높은 곳 사진만 봐서는 하나도 안 무서운데요?|a photo of a high place isn't scary, is it?⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦평면 사진으로는 '거기 있다'는 느낌이 안 나요|a flat photo gives no sense of actually being there⟧", 13, "var(--ink)"))
 
 # 2. 평면 화면은 몰입감을 못 줘요
