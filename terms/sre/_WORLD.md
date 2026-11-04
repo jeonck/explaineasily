@@ -82,7 +82,7 @@
 | alerting | Check | 몇 번 울려야 진짜 비상인가 |
 | chaosengineering | Check | 일부러 내는 가짜 고장 |
 | gameday | Check | 가짜 화재 훈련일 |
-| dorametrics | Check | 우리 공사팀 네 가지 성적표 |
+| dorametrics | Check | 우리 공사팀 다섯 가지 성적표 |
 | oncall | Act | 이번 주 호출기를 든 사람 |
 | incidentcommand | Act | 지휘봉을 든 사람 |
 | runbook | Act | 정비사의 공책 |

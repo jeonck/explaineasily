@@ -260,7 +260,7 @@ AI 용어는 하나의 세계를 공유한다 — 모델은 책을 산더미로 
 | Check | Alerting | 몇 번 울려야 진짜 비상인가 | [alerting-ko](docs/alerting-ko.html) | [alerting-en](docs/alerting-en.html) |
 | Check | Chaos Engineering | 일부러 내는 가짜 고장 | [chaosengineering-ko](docs/chaosengineering-ko.html) | [chaosengineering-en](docs/chaosengineering-en.html) |
 | Check | Game Day | 가짜 화재 훈련일 | [gameday-ko](docs/gameday-ko.html) | [gameday-en](docs/gameday-en.html) |
-| Check | DORA Metrics | 우리 공사팀 네 가지 성적표 | [dorametrics-ko](docs/dorametrics-ko.html) | [dorametrics-en](docs/dorametrics-en.html) |
+| Check | DORA Metrics | 우리 공사팀 다섯 가지 성적표 | [dorametrics-ko](docs/dorametrics-ko.html) | [dorametrics-en](docs/dorametrics-en.html) |
 | Act | On-call | 이번 주 호출기를 든 사람 | [oncall-ko](docs/oncall-ko.html) | [oncall-en](docs/oncall-en.html) |
 | Act | Incident Commander | 지휘봉을 든 사람 | [incidentcommand-ko](docs/incidentcommand-ko.html) | [incidentcommand-en](docs/incidentcommand-en.html) |
 | Act | Runbook | 정비사의 공책 | [runbook-ko](docs/runbook-ko.html) | [runbook-en](docs/runbook-en.html) |
