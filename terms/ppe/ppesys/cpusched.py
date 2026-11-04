@@ -22,7 +22,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 
 # 3. CPU 스케줄링 = 반장이 작업 순서판에 규칙을 적어 차 순서를 정하는 것 (hero)
 P3 = svg(340, sky(340)
-         + queueboard(60, 50, 280, 220, "⟦작업 순서판|JOB QUEUE⟧", ["1. #118 (타이어)", "2. #119 (오일)", "3. #120 (엔진)"], 1.0, hl=0)
+         + queueboard(60, 50, 280, 220, "⟦작업 순서판|JOB QUEUE⟧", ["1. #118 ⟦(타이어)|(tires)⟧", "2. #119 ⟦(오일)|(oil)⟧", "3. #120 ⟦(엔진)|(engine)⟧"], 1.0, hl=0)
          + person(500, 110, s=0.9, face=EYES, **CHIEF)
          + lift(620, 250, 0.9)
          + label(380, 25, "⟦CPU 스케줄링 = 반장이 순서판에 규칙을 적어 차 순서를 정하는 것|CPU scheduling = the chief writing a rule on the board to set the car order⟧", 13, "var(--ink)", cls="d")
@@ -36,12 +36,12 @@ P4 = svg(340, sky(340)
                        "Round Robin: ⟦조금씩 돌아가며|small turns, round-robin⟧",
                        "Priority: ⟦급한 차 먼저|urgent car first⟧"], 1.0)
          + person(590, 150, s=0.8, face=EYES, **CHIEF)
-         + label(590, 250, "⟦반장은 이 중 하나를 골라 순서판에 적어요|the chief picks one and writes it on the board⟧", 11, "var(--muted)")
-         + label(380, 320, "⟦Round Robin 은 짧게 돌아가며 주는 대신, 차를 바꿀 때마다 시간이 조금씩 들어요|round-robin shares turns fairly, but switching cars costs a little time each time⟧", 12, "var(--ink)"))
+         + label(590, 258, "⟦반장은 이 중 하나를 골라 순서판에 적어요|the chief picks one and writes it on the board⟧", 11, "var(--muted)")
+         + label(380, 320, "⟦Round Robin은 리프트를 짧게 돌아가며 주는 대신, 차를 바꿀 때마다 시간이 조금씩 들어요|round-robin shares the lift in short turns, but swapping cars costs a little time each turn⟧", 12, "var(--ink)"))
 
 # 5. 완벽한 규칙은 없어요 — 공평함과 빠름은 자주 부딪혀요
 P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--bad-soft)"/>'
-         + person(190, 130, s=0.8, face=SMILE, **CHIEF) + label(190, 260, "⟦짧은 일을 먼저 하면 평균 대기는 짧아져요|job-shortest-first keeps the average wait low⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.8, face=SMILE, **CHIEF) + label(190, 260, "⟦짧은 일을 먼저 하면 평균 대기는 짧아져요|shortest-job-first keeps the average wait low⟧", 11, "var(--ink)")
          + person(570, 130, s=0.8, face=FROWN, **CUSTOMER) + car(570, 200, 0.5, "var(--bad)") + label(570, 260, "⟦근데 긴 일은 계속 밀려요(기아)|but the long job keeps getting skipped (starvation)⟧", 11, "var(--ink)")
          + label(380, 305, "⟦완벽한 순서 규칙은 없어요 — 공평함과 속도는 자주 부딪혀요|no single rule is perfect — fairness and speed often pull against each other⟧", 12, "var(--ink)", cls="d"))
 
@@ -61,10 +61,10 @@ PAGE = {
          "caption": ("이 정비공장이 곧 컴퓨터 시스템이에요.", "This garage IS a computer system."),
          "small": ("리프트(CPU)는 하나인데, 차(작업)는 계속 들어와요.", "One lift (the CPU), but cars (jobs) keep arriving.")},
         {"svg": P2, "hero": False, "alt": ("긴 엔진 작업 차가 리프트를 3시간째 붙잡아, 타이어만 넣으면 되는 손님이 계속 기다림", "A long engine job holds the lift for 3 hours while a customer who just needs air keeps waiting"),
-         "caption": ("순서를 아무렇게나 정하면 안 돼요.", "You can't just pick an order at random."),
+         "caption": ("차 순서를 아무렇게나 정하면, 먼저 온 느린 차가 다른 차를 다 막아요.", "Pick the car order carelessly, and a slow car that came first blocks all the others."),
          "small": ("짧은 일도 긴 일 뒤에서 하염없이 기다려요.", "Even a quick job waits forever behind a long one.")},
         {"svg": P3, "hero": True, "alt": ("작업 순서판에 적힌 차례대로 반장이 차를 리프트에 올림", "The chief sends cars onto the lift in the order written on the job board"),
-         "caption": ("CPU 스케줄링 = 반장이 순서판에 규칙을 적어 순서를 정하는 것이에요.", "CPU scheduling = the chief writing a rule on the board to set the order."),
+         "caption": ("CPU 스케줄링 = 반장이 순서판에 규칙을 적어 차 순서를 정하는 것이에요.", "CPU scheduling = the chief writing a rule on the board to set the car order."),
          "small": ("어떤 규칙을 쓰느냐에 따라 누가 먼저 리프트에 오르는지가 달라져요.", "Which rule is used decides who gets the lift first."),
          "tricks": (4, [
              (FCFS_I, ("FCFS", "FCFS"), ("온 순서 그대로, 제일 단순해요", "first come, first served — the simplest rule")),
@@ -73,7 +73,7 @@ PAGE = {
              (PRI_I, ("Priority", "Priority"), ("급한 차가 새치기해요", "an urgent car cuts in line"), "warm"),
          ])},
         {"svg": P4, "alt": ("네 가지 스케줄링 규칙을 적은 순서판: FCFS, SJF, Round Robin, Priority", "A job board listing four scheduling rules: FCFS, SJF, Round Robin, Priority"),
-         "caption": ("규칙마다 장단점이 달라요.", "Each rule trades off differently."),
+         "caption": ("FCFS는 단순하지만 긴 차가 뒤를 막고, SJF는 대기가 짧지만 긴 차가 밀려요.", "FCFS is simple but a long car blocks the rest; SJF shortens waits but pushes long cars back."),
          "small": ("Round Robin 은 공평하지만 차를 바꿀 때마다 시간이 조금씩 들어요.", "Round-robin is fair, but switching cars costs a little time each turn.")},
         {"svg": P5, "alt": ("왼쪽: 짧은 일 먼저 하면 평균 대기가 짧음. 오른쪽: 긴 일은 계속 밀려 기아 상태가 됨", "Left: shortest-first keeps average wait low. Right: the long job keeps getting skipped — starvation"),
          "caption": ("완벽한 순서 규칙은 없어요.", "No single rule is perfect."),
@@ -87,7 +87,7 @@ PAGE = {
         ("FCFS", "FCFS", ("온 순서 그대로 태우는 규칙.", "Load cars in the order they arrived."), ("단순하지만 긴 차가 뒤를 막아요(convoy effect).", "Simple, but a long car blocks everyone behind it.")),
         ("SJF", "SJF", ("짧은 일을 먼저 끝내는 규칙.", "Finish the shortest job first."), ("평균 대기는 짧지만 긴 일은 기아 상태가 될 수 있어요.", "Lowers average wait, but can starve long jobs.")),
         ("Round Robin", "Round Robin", ("조금씩 돌아가며 태우는 규칙.", "Give everyone a small, rotating turn."), ("공평하지만 차 바꿀 때마다 시간이 들어요(컨텍스트 스위치).", "Fair, but each switch costs a little time (context switch).")),
-        ("기아현상", "Starvation", ("순서판에서 계속 밀려나는 차.", "A car that keeps getting bumped down the board."), ('자세한 원리는 교착상태 페이지에서 같이 다뤄요. → <a href="deadlockstarve-ko.html">서로의 열쇠를 기다리며 멈춘 정비공장</a>', 'Covered alongside deadlock. → <a href="deadlockstarve-en.html">the garage frozen waiting on each other\'s keys</a>')),
+        ("기아현상", "Starvation", ("순서판에서 계속 밀려나는 차.", "A car that keeps getting bumped down the board."), ('자세한 원리는 교착상태 페이지에서 같이 다뤄요. → <a href="deadlockstarve-ko.html">서로의 열쇠를 기다리며 멈춘 정비공장</a>', 'Starvation is covered alongside deadlock. → <a href="deadlockstarve-en.html">the garage frozen waiting on each other\'s keys</a>')),
         ("동기화", "Synchronization", ("리프트 열쇠를 나눠주는 규칙.", "The rule for handing out the lift key."), ('스케줄링이 \'누가 먼저\'라면, 이건 \'동시에 건드리지 않기\'예요. → <a href="syncprim-ko.html">리프트 열쇠는 하나뿐</a>', 'Scheduling is "who goes first" — this is "don\'t touch at once." → <a href="syncprim-en.html">there\'s only one lift key</a>')),
         ("프로세스/스레드", "Process/Thread", ("차 한 대 vs 같은 차를 같이 고치는 손들.", "One car vs. several hands working the same car."), ('스케줄링의 실제 단위는 스레드인 경우가 많아요. → <a href="processthread-ko.html">같은 차, 여러 손</a>', 'The actual scheduling unit is often the thread. → <a href="processthread-en.html">one car, many hands</a>')),
         ("복잡도(Big-O)", "Time Complexity", ("차가 늘어날 때 일이 얼마나 빨리 느는지 재는 자.", "The ruler for how fast work grows as cars pile up."), ('순서판을 매번 다시 정렬하는 비용도 이 자로 재요. → <a href="bigofunc-ko.html">차가 많아질 때 얼마나 느려질까</a>', 'Re-sorting the board each time is measured with this ruler too. → <a href="bigofunc-en.html">how much slower as cars pile up</a>')),

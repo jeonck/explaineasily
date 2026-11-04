@@ -6,14 +6,14 @@ P1 = svg(300, sky(300)
          + gradeboard(280, 50, 220, 130, "⟦업계 표준 위험 목록|INDUSTRY RISK LIST⟧", ("⟦LLM01 ~ LLM10|LLM01 ~ LLM10⟧", "⟦??? ???|??? ???⟧"), 0.9)
          + person(170, 190, s=0.8, face=EYES, **INSPECTOR)
          + bubble(40, 120, 190, 44, "⟦이 번호들은 다 뭐예요?|what are all these numbers?⟧", 11, "var(--panel)", "var(--line)", "right")
-         + label(380, 280, "⟦우리 검사장만의 사고 기록이 아니라, 업계 전체가 모은 목록이래요|not just our station's own records — a list the whole industry put together⟧", 12, "var(--ink)"))
+         + label(440, 280, "⟦우리 검사장만의 사고 기록이 아니라, 업계 전체가 모은 목록이래요|not just our station's own records — a list the whole industry put together⟧", 12, "var(--ink)"))
 
 # 2. 검사장마다 같은 사고를 다른 이름으로 불러요
 P2 = svg(310, '<rect width="760" height="310" fill="var(--bad-soft)"/>'
          + person(140, 170, s=0.7, face=FROWN, **OPERATOR) + bubble(60, 90, 190, 40, "⟦저흰 이걸 \'쪽지 사고\'라 불러요|we call it a note incident⟧", 10, "var(--panel)", "var(--line)", "bottom")
          + person(400, 170, s=0.7, face=FROWN, **CHEATER) + bubble(320, 90, 190, 40, "⟦저흰 \'끼워넣기 문제\'라 불러요|we call it an insertion problem⟧", 10, "var(--panel)", "var(--line)", "bottom")
          + person(650, 170, s=0.7, face=FROWN, **TEACHER) + bubble(560, 90, 190, 40, "⟦저흰 또 다른 이름으로...|we\'ve got yet another name...⟧", 10, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 290, "⟦이름이 다 다르면, 사고를 비교하거나 함께 배울 수가 없어요|different names for the same thing means no comparing, no learning together⟧", 12, "var(--ink)"))
+         + label(380, 290, "⟦사고 이름이 다 다르면, 검사장끼리 사고를 비교하거나 함께 배울 수가 없어요|when the same incident has different names, stations can't compare notes or learn together⟧", 12, "var(--ink)"))
 
 # 3. OWASP LLM Top 10 = 업계가 합의한 공통 위험 목록판 (hero)
 P3 = svg(360, sky(360)
@@ -45,10 +45,10 @@ P4 = svg(360, sky(360)
 
 # 5. 게시판 자체가 막아주지 않아요
 P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **INSPECTOR) + gradeboard(110, 190, 160, 50, "⟦목록 확인|CHECK LIST⟧", ("⟦10개를 다 살펴봤나|checked all 10?⟧",), 0.65)
-         + label(190, 270, "⟦빠뜨린 게 없는지 체크만 해줘요|it only helps you check for gaps⟧", 11, "var(--ink)")
+         + person(190, 150, s=0.8, face=EYES, **INSPECTOR) + gradeboard(20, 185, 190, 70, "⟦목록 확인|CHECK LIST⟧", ("⟦10개를 다 살펴봤나|checked all 10?⟧",), 0.65)
+         + label(190, 270, "⟦점검에서 빠뜨린 위험이 없는지만 체크해줘요|the list only helps check for missed risks⟧", 11, "var(--ink)")
          + person(570, 125, s=0.8, face=SMILE, **OPERATOR) + label(570, 265, "⟦막는 방법은 각 항목 페이지에 있어요|the actual defenses live on each item's own page⟧", 11, "var(--ink)")
-         + label(380, 300, "⟦게시판은 '지도'일 뿐, 길은 각자 페이지에서 걸어야 해요|the board is only a map — you still walk each road on its own page⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 300, "⟦게시판은 '지도'일 뿐, 실제 방어법은 항목별 페이지에서 봐야 해요|the board is only a map — the actual defenses are on each item's page⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "owaspllm", "order": 14,
@@ -59,30 +59,30 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("검사장 입구에 'LLM01~LLM10'이라 적힌 낯선 게시판이 붙고, 검수반장이 이게 뭔지 궁금해함", "An unfamiliar board reading LLM01 through LLM10 appears at the station entrance, and the inspector wonders what it is"),
          "caption": ("검사장 입구에 낯선 게시판이 붙었어요.", "An unfamiliar board appeared at the entrance."),
-         "small": ("우리 검사장만의 기록이 아니라, 업계 전체가 모은 목록이래요.", "Not just our own records — a list the whole industry put together.")},
+         "small": ("이 게시판은 우리 검사장만의 기록이 아니라, 업계 전체가 모은 목록이래요.", "This board isn't just our own records — it's a list the whole industry put together.")},
         {"svg": P2, "alt": ("세 검사장이 같은 종류의 사고를 각자 다른 이름(쪽지 사고, 끼워넣기 문제 등)으로 부름", "Three stations each call the same kind of incident by a different name — a note incident, an insertion problem, and so on"),
          "caption": ("검사장마다 같은 사고를 다른 이름으로 불러요.", "Every station calls the same incident by a different name."),
-         "small": ("이름이 다 다르면 비교하거나 함께 배울 수가 없어요.", "Different names for the same thing means no comparing, no learning together.")},
+         "small": ("사고 이름이 다 다르면 검사장끼리 사고를 비교하거나 함께 배울 수가 없어요.", "When the same incident has different names, stations can't compare notes or learn together.")},
         {"svg": P3, "hero": True, "alt": ("업계 공용 LLM Top 10 게시판에 번호가 매겨진 위험 목록이 붙어 있음", "An industry-shared LLM Top 10 board lists numbered risks"),
          "caption": ("OWASP LLM Top 10은 업계가 합의한 공통 위험 목록판이에요.", "The OWASP LLM Top 10 is a shared, industry-agreed risk list."),
          "small": ("각 번호는 이름표일 뿐, 자세한 내용은 따로 찾아봐야 해요.", "Each number is just a label — the detail lives elsewhere."),
          "tricks": (4, [
-             (CHECK_I, ("공용 번호로 부르기", "Call it by a shared number"), ("검사장이 달라도 같은 말", "the same words across every station"), "calm"),
+             (CHECK_I, ("공용 번호로 부르기", "Call it by a shared number"), ("검사장이 달라도 같은 사고를 같은 번호로 불러요", "every station calls the same incident by the same number"), "calm"),
              (CLOCK_I, ("주기적으로 갱신하기", "Update it periodically"), ("새 사고가 쌓이면 목록도 바뀌어요", "new incidents reshape the list")),
-             (LINK_I, ("상세 페이지로 연결하기", "Link out to the detail"), ("목록은 지도, 설명은 따로", "the list is the map; the detail lives elsewhere"), "warm"),
+             (LINK_I, ("상세 페이지로 연결하기", "Link out to the detail"), ("목록은 지도, 자세한 설명은 항목별 페이지에", "the list is the map; the details are on each item's page"), "warm"),
              (FLAG_I, ("점검용 안내일 뿐", "Just a checklist"), ("자동으로 막아주진 않아요", "it doesn't block anything by itself")),
          ])},
         {"svg": P4, "alt": ("Top 10의 LLM01부터 LLM10까지 각 항목이 각각의 자세한 사고 이야기 페이지로 화살표 연결됨", "Each LLM01-through-LLM10 item on the Top 10 arrows out to its own detailed incident-story page"),
          "caption": ("Top 10 각 항목은 더 자세한 이야기로 연결돼요.", "Each Top 10 item links out to its own fuller story."),
          "small": ("이 페이지는 목록 자체를 설명해요 — 각 항목의 속사정은 연결된 페이지에서 봐요.", "This page explains the list itself — the details of each item live on the linked page.")},
         {"svg": P5, "alt": ("왼쪽: 검수반장이 목록으로 빠뜨린 항목만 체크함. 오른쪽: 실제로 막는 방법은 각 항목 페이지에 있음", "Left: the inspector only checks the list for gaps. Right: the real defenses live on each item's own page"),
-         "caption": ("게시판 자체가 막아주지 않아요.", "The board itself doesn't block anything."),
-         "small": ("지도일 뿐이에요 — 길은 각자 페이지에서 걸어야 해요.", "It's only a map — you still have to walk each road on its own page.")},
+         "caption": ("게시판 자체가 사고를 막아주지는 않아요.", "The board itself doesn't block any incident."),
+         "small": ("이 목록은 지도일 뿐이에요 — 실제 방어법은 항목별 페이지에서 봐야 해요.", "The list is only a map — the actual defenses are on each item's page.")},
     ],
     "summary": (("<b>OWASP LLM Top 10</b> = 여러 검사장(현장)의 사고를 모아 <b>업계가 합의한 공용 번호</b>로 정리한 <b>위험 목록판</b>. 목록 자체는 지도일 뿐, 각 항목의 실제 대응은 그 번호가 가리키는 페이지에 있어요.",
                  "The <b>OWASP Top 10 for LLMs</b> = a <b>shared risk board</b> that pools incidents from many sites into <b>industry-agreed numbers</b>. The list itself is only a map — the real defenses live on the page each number points to."),
-                ("OWASP Top 10 for LLM Applications는 OWASP 재단이 커뮤니티 사례를 모아 매년 갱신하는 'LLM01~LLM10' 표준 위협 분류 목록이에요. 프롬프트 인젝션, 안전하지 않은 출력 처리, 학습데이터 오염, 서비스 거부, 공급망 취약점, 민감정보 유출, 위험한 플러그인/도구 설계, 과도한 자율행동, 과신뢰, 모델 도난이 대표 항목이에요. 이 목록의 가치는 '공용 언어'를 제공한다는 데 있고, 실제 방어 방법은 각 항목이 가리키는 세부 자료(가이드라인, 본 사이트의 개별 용어 페이지 등)에서 다뤄요.",
-                 "The OWASP Top 10 for LLM Applications is a standardized LLM01-LLM10 threat classification, updated yearly from community-reported cases. Its named items include prompt injection, insecure output handling, training data poisoning, denial of service, supply chain vulnerabilities, sensitive information disclosure, insecure plugin/tool design, excessive agency, overreliance, and model theft. The list's value is in giving everyone a shared vocabulary — the actual defenses live in the detailed material (guidelines, or this site's own per-term pages) that each item points to.")),
+                ("OWASP Top 10 for LLM Applications는 OWASP 재단이 커뮤니티 사례를 모아 주기적으로 갱신하는 'LLM01~LLM10' 표준 위협 분류 목록이에요. 프롬프트 인젝션, 안전하지 않은 출력 처리, 학습데이터 오염, 서비스 거부, 공급망 취약점, 민감정보 유출, 위험한 플러그인/도구 설계, 과도한 자율행동, 과신뢰, 모델 도난이 대표 항목이에요. 이 목록의 가치는 '공용 언어'를 제공한다는 데 있고, 실제 방어 방법은 각 항목이 가리키는 세부 자료(가이드라인, 본 사이트의 개별 용어 페이지 등)에서 다뤄요.",
+                 "The OWASP Top 10 for LLM Applications is a standardized LLM01-LLM10 threat classification, updated periodically from community-reported cases. Its named items include prompt injection, insecure output handling, training data poisoning, denial of service, supply chain vulnerabilities, sensitive information disclosure, insecure plugin/tool design, excessive agency, overreliance, and model theft. The list's value is in giving everyone a shared vocabulary — the actual defenses live in the detailed material (guidelines, or this site's own per-term pages) that each item points to.")),
     "glossary": [
         ("LLM01 프롬프트 인젝션", "LLM01 Prompt Injection", ("주문서 뒤에 몰래 끼운 쪽지.", "The note slipped behind the order."), ('→ <a href="promptinjection-ko.html">쪽지 사고 자세히 보기</a>', '→ <a href="promptinjection-en.html">see the note incident in full</a>')),
         ("LLM03 학습데이터 오염", "LLM03 Training Data Poisoning", ("상한 작물을 재료창고에 섞어 넣기.", "Tainted crops mixed into the pantry."), ('→ <a href="datapoisoning-ko.html">재료 오염 자세히 보기</a>', '→ <a href="datapoisoning-en.html">see the tainted-ingredient story</a>')),

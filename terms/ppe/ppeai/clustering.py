@@ -53,11 +53,11 @@ PAGE = {
          "caption": ("이름표 없는 작물이 잔뜩 쏟아져요.", "A pile of unlabeled produce comes pouring in."),
          "small": ("훈련 교사도 없고, 분류함 이름도 안 적혀 있어요.", "No teacher this time, and the bins have no names on them.")},
         {"svg": P2, "alt": ("조작원이 몇 무리로 나눠야 할지, 경계가 어딘지 묻는 말풍선을 띄움", "The operator wonders aloud how many groups there should be and where the boundary falls"),
-         "caption": ("몇 무리인지, 경계가 어딘지도 몰라요.", "Nobody knows how many groups there should be, or where the line falls."),
-         "small": ("정답이 없으니, 스스로 판단해야 해요.", "With no answer key, it has to judge for itself.")},
+         "caption": ("선별기는 작물이 몇 무리인지, 경계가 어딘지도 몰라요.", "The sorter doesn't know how many groups there are, or where the line falls."),
+         "small": ("정답이 없으니, 선별기가 데이터만 보고 스스로 판단해야 해요.", "With no answer key, the sorter has to judge from the data alone.")},
         {"svg": P3, "hero": True, "alt": ("비슷한 작물끼리 점선 원으로 세 무리가 묶이고, 어디에도 끼지 못한 작물 하나가 따로 남음", "Similar produce gets grouped into three dashed-circle clusters, with one leftover item fitting into none of them"),
-         "caption": ("정답 라벨 없이, 비슷한 것끼리 스스로 묶는 방법이에요.", "It groups look-alikes together on its own, with no answer key."),
-         "small": ("어디에도 안 낀 건 소음(노이즈)으로 남겨둬요.", "The one that fits nowhere is simply left as noise."),
+         "caption": ("군집분석은 정답 라벨 없이, 비슷한 것끼리 스스로 묶는 방법이에요.", "Clustering groups look-alikes together on its own, with no answer key."),
+         "small": ("DBSCAN 같은 방법은 어느 무리에도 안 낀 작물을 소음(노이즈)으로 남겨둬요.", "Methods like DBSCAN simply leave an item that fits no group as noise."),
          "tricks": (4, [
              (CENTER_I, ("중심점부터 잡기", "Plant a center point"), ("무리의 한가운데를 정해요", "picking the middle of a group"), "calm"),
              (NEAR_I, ("가까운 것끼리 묶기", "Group the nearby ones"), ("거리가 가까운 것들을 모아요", "gathering whatever sits close together")),
@@ -73,12 +73,12 @@ PAGE = {
          "caption": ("묶는 방식에 따라 결과 모양도 달라져요.", "Different methods produce differently shaped groups."),
          "small": ("K-평균은 무리 수를 미리 정하고, DBSCAN은 밀도만 보고 스스로 찾아요.", "K-means fixes the count in advance; DBSCAN finds it on its own, by density alone.")},
         {"svg": svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-                 + dashed_ring(155, 160, 55, "var(--good)") + scatter(GROUP_A, 0.9, "var(--good)") + label(155, 250, "⟦비슷하게 묶긴 했어요|it grouped the look-alikes⟧", 11, "var(--ink)")
-                 + person(570, 140, s=0.75, face=EYES, **INSPECTOR) + label(570, 250, "⟦근데 이게 '사과'무리인지는 몰라요|but it has no idea this group means apples⟧", 11, "var(--ink)")
+                 + dashed_ring(155, 160, 55, "var(--good)") + scatter(GROUP_A, 0.9, "var(--good)") + label(155, 250, "⟦비슷한 작물끼리 묶긴 했어요|clustering grouped the look-alikes⟧", 11, "var(--ink)")
+                 + person(570, 140, s=0.75, face=EYES, **INSPECTOR) + label(570, 250, "⟦근데 이 무리가 '사과'인지는 몰라요|but clustering can't tell this group means apples⟧", 11, "var(--ink)")
                  + label(380, 282, "⟦군집분석은 무리를 찾아줄 뿐, 그 무리가 뭘 뜻하는지는 사람이 이름 붙여야 해요|clustering only finds the groups — a person still has to name what each one means⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 비슷한 작물이 무리로 묶임. 오른쪽: 검수반장이 그 무리가 무엇을 뜻하는지는 모른다고 말함", "Left: look-alike produce gets grouped. Right: the inspector notes nobody knows what the group actually means"),
-         "caption": ("무리는 찾아도, 이름은 못 붙여요.", "It finds the group — but can't name it."),
-         "small": ("정답 라벨로 미리 가르치는 지도학습·로지스틱 회귀와는 정반대 출발점이에요.", "The exact opposite starting point from supervised learning and logistic regression, which teach from labels up front.")},
+         "caption": ("군집분석은 무리를 찾아도, 이름은 못 붙여요.", "Clustering finds the group — but can't name it."),
+         "small": ("군집분석은 정답 라벨로 미리 가르치는 지도학습·로지스틱 회귀와는 정반대 출발점이에요.", "Clustering starts from the exact opposite point from supervised learning and logistic regression, which teach from labels up front.")},
     ],
     "summary": (("<b>군집분석</b> = 정답 이름표 없이, <b>비슷한 작물끼리</b> 스스로 <b>무리를 찾는</b> 방법.",
                  "<b>Clustering</b> = finding groups of <b>look-alike produce</b> on its own, <b>with no answer labels</b> to start from."),

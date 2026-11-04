@@ -24,7 +24,7 @@ P3 = svg(365, sky(365)
          + '<rect x="500" y="220" width="40" height="30" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><rect x="550" y="235" width="40" height="30" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><rect x="525" y="260" width="40" height="30" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>'
          + label(555, 320, "⟦오브젝트: 태그 붙은 박스|object: tagged boxes⟧", 11, "var(--ink)")
          + label(380, 30, "⟦블록=벽돌, 파일=폴더 트리, 오브젝트=태그 붙은 박스예요|block=bricks, file=folder tree, object=tagged boxes⟧", 13, "var(--ink)", cls="d")
-         + label(380, 340, "⟦셋 다 '어떻게 저장하고 꺼내나'의 방식이 달라요|all three differ in HOW things get stored and retrieved⟧", 12, "var(--muted)"))
+         + label(380, 340, "⟦블록·파일·오브젝트는 저장하고 꺼내는 방식이 서로 달라요|block, file, and object differ in HOW data gets stored and retrieved⟧", 12, "var(--muted)"))
 
 # 4. 작동 디테일: 구조·접근방식·확장성·용도 비교
 P4 = svg(320, sky(320)
@@ -38,9 +38,9 @@ P4 = svg(320, sky(320)
 P5 = svg(320, sky(320)
          + '<rect x="130" y="170" width="40" height="30" rx="3" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>'
          + person(230, 178, s=0.6, face=SWEAT, **TENANT)
-         + label(190, 285, "⟦박스 하나를 통째로 다시 보내야 해요|has to resend the whole box, just for one tweak⟧", 11, "var(--ink)")
+         + label(190, 285, "⟦오브젝트는 조금만 고쳐도 박스를 통째로 다시 보내요|object: even one tweak means resending the whole box⟧", 11, "var(--ink)")
          + '<rect x="500" y="180" width="18" height="18" fill="var(--stone-dark)"/>' + person(600, 178, s=0.6, face=SMILE, **TENANT)
-         + label(570, 285, "⟦벽돌(블록)은 한 조각만 바꿔도 빨라요|a block lets you swap just one brick, quickly⟧", 11, "var(--ink)"))
+         + label(570, 285, "⟦블록은 벽돌 한 조각만 바꾸면 돼서 빨라요|block: swap just the one brick, so edits are quick⟧", 11, "var(--ink)"))
 
 RAW_I = icon('<rect x="10" y="30" width="18" height="18" fill="var(--stone-dark)"/><rect x="34" y="30" width="18" height="18" fill="var(--stone-dark)"/><rect x="10" y="12" width="18" height="18" fill="var(--stone-dark)"/>')
 TREE_I = icon('<path d="M32 10 v18 M20 44 L32 28 L44 44" stroke="#8B5E3C" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>')
@@ -58,36 +58,36 @@ PAGE = {
          "caption": ("입주사마다 보관하고 싶은 형태가 다 달라요.", "Every tenant wants to store things in a different shape."),
          "small": ("벽돌, 폴더, 박스 — 다 다른 모양이에요.", "Bricks, folders, boxes — all different shapes.")},
         {"svg": P2, "alt": ("서류 폴더함만 있는 공간에서 벽돌 든 사람과 박스 든 사람이 각각 안 맞는다고 불평함", "In a space with only paper-folder filing, one tenant holding bricks and another holding a box both complain things don't fit"),
-         "caption": ("한 가지 방식만 있으면 누군가의 짐은 늘 안 맞아요.", "With only one storage shape, somebody's stuff never fits."),
-         "small": ("벽돌도, 박스 태그도 여기선 안 통해요.", "Neither bricks nor box tags work here.")},
+         "caption": ("한 가지 보관 방식만 있으면 누군가의 짐은 늘 안 맞아요.", "With only one storage shape, somebody's stuff never fits."),
+         "small": ("서류 폴더함에선 벽돌도, 박스 태그도 안 통해요.", "In a folder-only room, neither bricks nor box tags work.")},
         {"svg": P3, "hero": True, "alt": ("벽돌 더미, 폴더 트리가 그려진 자료함, 태그 붙은 박스 더미가 나란히 놓여 있음", "A pile of bricks, a filing cabinet with a folder tree drawn on it, and a pile of tagged boxes sit side by side"),
          "caption": ("블록=벽돌, 파일=폴더 트리, 오브젝트=태그 붙은 박스예요.", "Block=bricks, file=folder tree, object=tagged boxes."),
-         "small": ("셋 다 저장하고 꺼내는 방식이 달라요.", "All three differ in how things get stored and retrieved."),
+         "small": ("블록·파일·오브젝트는 저장하고 꺼내는 방식이 서로 달라요.", "Block, file, and object differ in how data gets stored and retrieved."),
          "tricks": (4, [
-             (RAW_I, ("블록 = 벽돌 조각", "Block = raw bricks"), ("가장 날것이고 가장 빨라요", "the rawest, and the fastest"), "calm"),
+             (RAW_I, ("블록 = 벽돌 조각", "Block = raw bricks"), ("별도 구조 없는 조각이라 셋 중 가장 빨라요", "structureless pieces, and the fastest of the three"), "calm"),
              (TREE_I, ("파일 = 폴더 트리", "File = a folder tree"), ("사람에게 가장 익숙해요", "most familiar to people")),
              (TAG_I, ("오브젝트 = 태그 붙은 박스", "Object = tagged boxes"), ("API로 태그를 조회해 찾아요", "found by querying tags via an API"), "warm"),
-             (SCALE_I, ("오브젝트는 거의 무제한으로 쌓여요", "Object storage piles up almost without limit"), ("창고가 끝없이 늘어나요", "the warehouse just keeps growing")),
+             (SCALE_I, ("오브젝트는 거의 무제한으로 쌓여요", "Object storage piles up almost without limit"), ("박스 창고를 옆으로 계속 늘릴 수 있어요", "the box warehouse can keep growing sideways")),
          ])},
         {"svg": P4, "alt": ("구조·접근 방식·확장성·대표 용도를 블록·파일·오브젝트로 비교한 안내판", "A board comparing block, file, and object storage on structure, access, scalability, and typical use"),
-         "caption": ("네 가지 기준에서 성격이 다 갈려요.", "They differ on all four measures."),
+         "caption": ("구조·접근·확장성·용도, 네 기준에서 세 저장 방식이 갈려요.", "The three storage types differ on structure, access, scalability, and use."),
          "small": ("쓰임새가 뚜렷이 갈려요 — DB엔 블록, 공유문서엔 파일, 사진·백업엔 오브젝트.", "Use cases split clearly — block for databases, file for shared docs, object for photos and backups.")},
         {"svg": P5, "alt": ("오른쪽: 벽돌(블록)은 한 조각만 바꿔도 빨라 웃는 사람. 왼쪽: 박스(오브젝트)는 통째로 다시 보내야 해서 땀 흘리는 사람", "Right: swapping just one brick (block) is quick, tenant smiling. Left: a box (object) has to be resent whole, tenant sweating"),
-         "caption": ("오브젝트는 박스 하나를 통째로 바꿔야 해서 느려요.", "Object storage is slow because the whole box has to be resent."),
-         "small": ("블록은 한 조각만 바꿔도 빨라요.", "Block storage lets you swap just one piece, quickly.")},
+         "caption": ("오브젝트는 일부만 고칠 때도 박스를 통째로 바꿔야 해서 블록보다 느려요.", "Even a small edit to an object means resending the whole box, so it's slower than block."),
+         "small": ("블록은 바뀐 조각만 고쳐 쓰면 돼서 빨라요.", "Block storage rewrites only the changed piece, so edits are quick.")},
     ],
-    "summary": (("<b>블록</b> = 벽돌 조각(가장 빠르고 날것). <b>파일</b> = 폴더 트리(사람에게 익숙). <b>오브젝트</b> = 태그 붙은 박스(무한 확장, 메타데이터로 조회).",
-                 "<b>Block</b> is raw bricks (fast, unstructured). <b>File</b> is a folder tree (familiar to people). <b>Object</b> is tagged boxes (near-infinite scale, found by metadata)."),
+    "summary": (("<b>블록</b> = 벽돌 조각(가장 빠르고, 별도 구조 없음). <b>파일</b> = 폴더 트리(사람에게 익숙). <b>오브젝트</b> = 태그 붙은 박스(무한 확장, 메타데이터로 조회).",
+                 "<b>Block</b> is raw bricks (fastest, with no structure of its own). <b>File</b> is a folder tree (familiar to people). <b>Object</b> is tagged boxes (near-infinite scale, found by metadata)."),
                 ("블록 스토리지는 고정 크기 블록 단위로 접근해 DB처럼 빠른 입출력이 필요한 곳에 쓰이고, 파일 스토리지는 디렉터리·파일 계층 구조로 사람이 다루기 쉬워요. 오브젝트 스토리지는 파일을 메타데이터·고유 ID가 붙은 객체로 저장해 API로 조회하며, 수평 확장이 거의 무제한이라 사진·백업·로그 같은 비정형 대용량 데이터에 적합해요. 다만 객체는 일부만 수정하는 덴 비효율적이에요.",
                  "Block storage is accessed in fixed-size chunks, suited to fast I/O like databases. File storage uses a directory/file hierarchy that's easy for people to navigate. Object storage keeps data as objects tagged with metadata and a unique ID, queried via an API, with near-unlimited horizontal scale — ideal for unstructured bulk data like photos, backups, and logs. But objects are inefficient to partially modify.")),
     "glossary": [
-        ("블록 스토리지", "Block storage", ("벽돌처럼 조각난 저장 단위.", "Storage carved into brick-like chunks."), ("가장 빠르지만 날것 그대로예요.", "Fastest, but completely unstructured.")),
+        ("블록 스토리지", "Block storage", ("벽돌처럼 조각난 저장 단위.", "Storage carved into brick-like chunks."), ("셋 중 가장 빠르지만, 파일 같은 구조는 없어요.", "Fastest of the three, but with no file structure of its own.")),
         ("파일 스토리지", "File storage", ("폴더 트리처럼 정리된 저장 방식.", "Storage organized like a folder tree."), ("사람이 다루기 가장 익숙해요.", "Most familiar for a person to navigate.")),
         ("오브젝트 스토리지", "Object storage", ("태그(메타데이터) 붙은 박스 창고.", "A warehouse of boxes tagged with metadata."), ("API로 태그를 조회해 찾아요.", "Found by querying tags via an API.")),
         ("메타데이터", "Metadata", ("박스에 붙이는 태그.", "The tag attached to the box."), ("오브젝트를 찾는 열쇠예요.", "The key used to find an object.")),
-        ("DAS/NAS/SAN", "DAS / NAS / SAN", ("연결 방식과 나눠쓰는 범위의 차이.", "A difference in connection method and sharing scope."), ('이건 다른 축이에요 — 데이터 모양이 아니라 연결 방식 이야기예요. → <a href="dasnassan-ko.html">내 서랍, 공용 자료실, 전용 창고망</a>', "A different axis — connection method, not data shape. → <a href=\"dasnassan-en.html\">my drawer, the shared file room, the dedicated network</a>")),
+        ("DAS/NAS/SAN", "DAS / NAS / SAN", ("연결 방식과 나눠쓰는 범위의 차이.", "A difference in connection method and sharing scope."), ('DAS/NAS/SAN은 기준이 달라요 — 데이터 모양이 아니라 연결 방식 이야기예요. → <a href="dasnassan-ko.html">내 서랍, 공용 자료실, 전용 창고망</a>', "A different yardstick — how storage connects, not what shape data takes. → <a href=\"dasnassan-en.html\">my drawer, the shared file room, the dedicated network</a>")),
         ("수평 확장", "Horizontal scaling", ("창고를 옆으로 계속 늘리는 것.", "Adding more warehouse space sideways, endlessly."), ("오브젝트 스토리지가 이 방식으로 거의 무제한 늘어나요.", "This is how object storage scales almost without limit.")),
         ("백업", "Backup", ("자료 사본을 따로 하나 더 두는 일.", "Keeping one more copy of the data elsewhere."), ("오브젝트 스토리지가 자주 쓰이는 용도예요.", "A common use case for object storage.")),
-        ("클라우드 서비스 모델", "Cloud service model", ("뼈대만/인테리어까지/완제품.", "Bare shell / interior done / move-in ready."), ('어느 모델을 빌리든 이 세 저장 방식 중 하나를 골라요. → <a href="cloudmodel-ko.html">셋 중 골라 빌리기</a>', 'Whichever model you rent, you still pick one of these three. → <a href="cloudmodel-en.html">pick one to rent</a>')),
+        ("클라우드 서비스 모델", "Cloud service model", ("뼈대만/인테리어까지/완제품.", "Bare shell / interior done / move-in ready."), ('IaaS처럼 직접 구성하는 모델이면 이 세 저장 방식 중에서 골라요. → <a href="cloudmodel-ko.html">셋 중 골라 빌리기</a>', 'With self-built models like IaaS, you pick among these three. → <a href="cloudmodel-en.html">pick one to rent</a>')),
     ],
 }

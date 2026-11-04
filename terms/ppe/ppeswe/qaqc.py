@@ -6,7 +6,7 @@ P1 = svg(300, sky(300)
          + person(560, 150, s=0.85, face=FROWN, **READER) + printplate(560, 230, 0.6)
          + bubble(380, 70, 240, 44, "⟦12쪽에 오탈자가 있어요!|there's a typo on page 12!⟧", 12, "var(--panel)", "var(--line)", "bottom")
          + person(180, 150, s=0.85, face=SWEAT, **EDITOR)
-         + label(380, 280, "⟦이미 다 찍어서 독자 손에 들어간 뒤예요|it's already printed and in the reader's hands⟧", 12, "var(--ink)"))
+         + label(380, 280, "⟦그 책은 이미 다 찍어서 독자 손에 들어갔어요|that book is already printed and in readers' hands⟧", 12, "var(--ink)"))
 
 # 2. 나중에 찾으면 늦고 비쌈
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
@@ -35,16 +35,16 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("독자가 이미 인쇄된 책에서 오탈자를 발견하고 편집장이 당황함", "A reader finds a typo in an already-printed book, and the editor is caught off guard"),
          "caption": ("독자가 오탈자를 발견했어요 — 이미 다 찍은 뒤에요.", "A reader found a typo — after everything was already printed."),
-         "small": ("이미 독자 손에 들어간 뒤라 되돌리기 힘들어요.", "It's already in the reader's hands, so it's hard to undo.")},
+         "small": ("책이 이미 독자 손에 들어가서 오탈자를 되돌리기 힘들어요.", "The book is already in readers' hands, so the typo is hard to undo.")},
         {"svg": P2, "alt": ("이미 인쇄된 책 세 권이 쌓여 있고, 결함을 늦게 찾을수록 고치는 값이 비싸진다는 설명", "Three already-printed books stacked up, with a note that finding flaws late costs more to fix"),
-         "caption": ("나중에 찾으면 늦고, 고치는 값도 비싸져요.", "Found late, it's both slow and expensive to fix."),
+         "caption": ("오탈자를 인쇄 뒤에 찾으면, 원고 단계보다 고치는 값이 훨씬 비싸요.", "Found after printing, a typo costs far more to fix than at the manuscript stage."),
          "small": ("다 찍은 뒤 고치려면 전부 다시 찍어야 해요.", "Fixing it after printing means reprinting everything.")},
         {"svg": P3, "hero": True, "alt": ("편집장은 교열 절차 자체를 점검하고(QA), 교정자는 완성된 원고를 직접 읽고 표시함(QC)", "The editor checks the proofing process itself (QA), while the proofreader reads and marks up the finished manuscript (QC)"),
          "caption": ("QA는 \"만드는 방식\"을, QC는 \"만들어진 결과\"를 봐요.", "QA checks how it's made; QC checks what came out of it."),
          "small": ("둘 다 있어야 오탈자가 독자 손에 닿기 전에 걸러져요.", "Both are needed to catch typos before they reach readers."),
          "tricks": (4, [
              (PROCESS_I, ("QA = 공정 점검", "QA = process check"), ("교열 절차 자체를 봐요", "watches the proofing procedure itself"), "calm"),
-             (PREVENT_I, ("QA = 예방 중심", "QA = prevention-focused"), ("애초에 덜 틀리게 해요", "aims to cause fewer errors up front")),
+             (PREVENT_I, ("QA = 예방 중심", "QA = prevention-focused"), ("절차를 고쳐 오탈자가 덜 생기게 해요", "fixes the process so fewer typos appear")),
              (READ_I, ("QC = 결과물 검사", "QC = product inspection"), ("완성된 원고를 직접 읽어요", "reads the finished manuscript directly"), "warm"),
              (MARK_RED_I, ("QC = 결함 찾아 표시", "QC = find and mark flaws"), ("빨간 펜으로 콕 집어요", "marks each one with a red pen")),
          ])},
@@ -53,17 +53,17 @@ PAGE = {
                                   ("⟦편집 절차 준수 여부|was the process followed?⟧", "⟦조직 표준 지킴|org standard kept?⟧", "⟦예방 중심|prevention-focused⟧"), 1.0)
                      + styleguide(420, 40, 280, 240, "⟦QC (품질관리)|QC (quality control)⟧",
                                   ("⟦완성 원고 직접 검사|inspect the finished manuscript⟧", "⟦오탈자 표시|mark the typos⟧", "⟦결과 중심|output-focused⟧"), 1.0)
-                     + label(380, 300, "⟦QA는 넓고 미리, QC는 좁고 나중에 봐요|QA looks broad and early, QC looks narrow and late⟧", 12, "var(--ink)")),
+                     + label(380, 300, "⟦QA는 편집 과정 전체를 미리, QC는 완성된 원고를 나중에 봐요|QA looks at the whole editing process early; QC looks at the finished manuscript late⟧", 12, "var(--ink)")),
          "alt": ("왼쪽: QA는 편집 절차 준수 여부를 봄. 오른쪽: QC는 완성 원고를 직접 검사함", "Left: QA checks whether the process was followed. Right: QC inspects the finished manuscript directly"),
          "caption": ("QA와 QC는 보는 범위와 시점이 달라요.", "QA and QC differ in scope and timing."),
-         "small": ("QA는 넓고 미리, QC는 좁고 나중에 봐요.", "QA looks broad and early; QC looks narrow and late.")},
+         "small": ("QA는 편집 과정 전체를 미리, QC는 완성된 원고를 나중에 봐요.", "QA looks at the whole editing process early; QC looks at the finished manuscript late.")},
         {"svg": svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
-                     + person(190, 130, s=0.8, face=FROWN, **PROOFER) + label(190, 260, "⟦QA 없이 QC만: 늦고 비싸요|QC alone, no QA: late and costly⟧", 11, "var(--ink)")
+                     + person(190, 130, s=0.8, face=FROWN, **PROOFER) + label(190, 260, "⟦QA 없이 QC만 하면: 결함을 늦게 찾아 비싸요|QC alone, no QA: flaws are found late and cost more⟧", 11, "var(--ink)")
                      + person(570, 130, s=0.8, face=SMILE, **EDITOR) + label(570, 260, "⟦QA가 있으면 결함이 애초에 줄어요|with QA, fewer flaws appear in the first place⟧", 11, "var(--ink)")
-                     + label(380, 305, "⟦QC는 걸러내는 그물, QA는 애초에 덜 터지게 하는 손질이에요|QC is the net that catches flaws, QA is the care that makes fewer in the first place⟧", 12, "var(--ink)", cls="d")),
+                     + label(380, 305, "⟦QC는 결함을 걸러내는 그물, QA는 결함이 애초에 덜 생기게 하는 손질이에요|QC is the net that catches flaws, QA is the care that makes fewer in the first place⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: QA 없이 QC만 하면 늦고 비쌈. 오른쪽: QA가 있으면 결함이 애초에 줄어듦", "Left: QC alone, without QA, is late and costly. Right: with QA, fewer flaws appear from the start"),
-         "caption": ("둘 다 필요하지만 역할은 달라요.", "Both are needed, but they play different roles."),
-         "small": ("QC는 걸러내는 그물, QA는 애초에 덜 틀리게 하는 손질이에요.", "QC is the net that catches flaws; QA is the care that prevents them in the first place.")},
+         "caption": ("QA와 QC 둘 다 필요하지만 역할은 달라요.", "QA and QC are both needed, but they play different roles."),
+         "small": ("QC는 결함을 걸러내는 그물, QA는 결함이 애초에 덜 생기게 하는 손질이에요.", "QC is the net that catches flaws; QA is the care that prevents them in the first place.")},
     ],
     "summary": (("<b>QA(품질보증)</b>는 편집 <b>과정</b>이 기준대로 지켜졌는지 보고, <b>QC(품질관리)</b>는 완성된 <b>결과물</b>을 직접 검사해 결함을 찾아내요.",
                  "<b>QA</b> checks whether the <b>process</b> followed the standard; <b>QC</b> inspects the finished <b>product</b> itself to find defects."),

@@ -35,15 +35,15 @@ P1 = svg(280, sky(280)
          + small_castle(560, 70, 0.5) + ledger(650, 190, 0.9) + label(650, 230, "⟦성 B|castle B⟧", 11, "var(--muted)")
          + '<path d="M250 190 L560 190" stroke="var(--bad)" stroke-width="3" stroke-dasharray="4 4"/>'
          + label(405, 170, "⟦못 보내요|can\'t send it⟧", 13, "var(--bad)", cls="d")
-         + label(380, 258, "⟦합치면 더 좋은 답이 나오는데, 장부를 성 밖으로 못 들고 나가요|combining them would help — but neither ledger may leave its own castle⟧", 12, "var(--ink)"))
+         + label(380, 258, "⟦두 장부를 합치면 더 좋은 답이 나오는데, 장부를 성 밖으로 못 들고 나가요|combining the two ledgers would help — but neither may leave its own castle⟧", 12, "var(--ink)"))
 
 # 2. 그렇다고 그냥 보내주면 위험해요
 P2 = svg(280, '<rect width="760" height="280" fill="var(--bad-soft)"/>'
          + ledger(150, 130, 1.0) + person(220, 160, s=0.6, face=MASK)
-         + label(190, 230, "⟦그냥 보내면 도둑도 가로채요|send it plainly, and a thief can grab it too⟧", 12, "var(--bad)")
+         + label(190, 243, "⟦장부를 그냥 보내면 도둑도 가로채요|send a ledger plainly, and a thief can grab it⟧", 12, "var(--bad)")
          + person(560, 150, s=0.75, face=FROWN, **CLERK)
          + bubble(480, 60, 240, 40, "⟦그래서 아무도 안 보내줘요|so no one sends anything, ever⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 258, "⟦결국 각자 성 안에서만 보다 보니 더 좋은 분석을 못 해요|everyone stays locked inside their own castle, and the better analysis never happens⟧", 12, "var(--ink)"))
+         + label(380, 258, "⟦결국 장부를 각자 성 안에서만 보다 보니, 합쳐서 하는 더 좋은 분석을 못 해요|each ledger stays inside its own castle, so the better combined analysis never happens⟧", 12, "var(--ink)"))
 
 # 3. 안심구역 = 밖으로 못 들고 나가는 특별 열람실 (hero)
 P3 = svg(340, sky(340)
@@ -58,15 +58,15 @@ P3 = svg(340, sky(340)
 P4 = svg(300, sky(300)
          + box(50, 30, 660, 240, "⟦반출 절차|THE CHECK-OUT PROCESS⟧",
                ("⟦1. 신청 — 어떤 분석을 할지 먼저 적어요|1. apply — write down what analysis you plan⟧",
-                "⟦2. 승인 — 결합전문기관이 괜찮은지 봐요|2. approval — the linkage body reviews it⟧",
+                "⟦2. 승인 — 결합전문기관이 신청을 검토해요|2. approval — the linkage agency reviews the application⟧",
                 "⟦3. 분석 — 안심구역 안에서만 계산해요|3. analyze — computed only inside the safe zone⟧",
-                "⟦4. 반출심사 — 결과가 재식별 위험 없는지 확인해요|4. export review — checked for re-identification risk⟧"), 13))
+                "⟦4. 반출심사 — 결과가 재식별 위험 없는지 확인해요|4. export review — the result is checked for re-identification risk⟧"), 13))
 
 # 5. 승인이 오래 걸리고, 다 허락되진 않아요
 P5 = svg(280, '<rect width="760" height="280" fill="var(--accent-soft)"/>'
          + person(160, 150, s=0.85, face=FROWN + SWEAT, **ANALYST)
          + '<g transform="translate(260,130)"><rect x="-26" y="-22" width="52" height="48" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><rect x="-26" y="-22" width="52" height="12" rx="4" fill="var(--accent)"/></g>'
-         + label(260, 196, "⟦몇 주가 걸려요|it can take weeks⟧", 11, "var(--muted)")
+         + label(285, 196, "⟦승인에 몇 주가 걸려요|approval can take weeks⟧", 11, "var(--muted)")
          + paper_small(560, 150, 1.2, "⟦반출 불가|denied⟧") + person(650, 170, s=0.7, face=EYES, **GUARD)
          + label(380, 258, "⟦결과가 재식별될 수 있으면 반출 자체가 거부돼요|if the result could still be re-identified, the export itself is refused⟧", 12, "var(--ink)"))
 
@@ -79,10 +79,10 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("두 성이 각자 장부를 들고 있는데, 가운데 '못 보내요' 표시와 함께 선이 막혀 있음", "Two castles each hold a ledger, with a blocked line between them marked can't send it"),
          "caption": ("각자 장부를 성 밖으로 못 들고 나가요.", "Neither castle's ledger may leave its own walls."),
-         "small": ("합치면 더 좋은 답이 나오는데, 각자 성 안에 갇혀 있어요.", "Combining them would give a far better answer — but each stays locked inside its own castle.")},
+         "small": ("두 장부를 합치면 더 좋은 분석 결과가 나오는데, 장부가 각자 성 안에 갇혀 있어요.", "Combining the two ledgers would give better analysis than either alone — but each stays locked inside its own castle.")},
         {"svg": P2, "alt": ("장부를 그냥 보내다가 가면 쓴 사람이 가로채고, 서기가 '그래서 아무도 안 보내줘요'라고 말함", "A ledger sent plainly is intercepted by a masked figure, while a clerk says so no one sends anything, ever"),
-         "caption": ("그렇다고 그냥 보내주면 위험해요.", "But sending it over in the open is dangerous."),
-         "small": ("결국 각자 성 안에서만 보다 보니 더 좋은 분석을 못 해요.", "So everyone stays locked inside their own castle, and the better analysis never happens.")},
+         "caption": ("그렇다고 장부를 그냥 보내주면 위험해요.", "But sending a ledger over in the open is dangerous."),
+         "small": ("결국 장부를 각자 성 안에서만 보다 보니, 합쳐서 하는 더 좋은 분석을 못 해요.", "So each ledger stays inside its own castle, and the better combined analysis never happens.")},
         {"svg": P3, "hero": True, "alt": ("특별 열람실 안에 두 성의 장부가 모여 있고 분석가가 그 안에서만 보고, 요약 결과 쪽지만 경비를 통해 밖으로 나감", "Inside a special reading room, two castles' ledgers sit together; an analyst views them only inside, and only a summary slip is carried out past a guard"),
          "caption": ("안심구역은 장부를 한 방에 모아, 그 안에서만 보고, 결과만 들고 나가는 열람실이에요.", "A safe zone is a reading room where ledgers are gathered in one place, viewed only inside, with only the result ever carried out."),
          "small": ("장부 자체는 절대 그 방을 떠나지 않아요.", "The ledgers themselves never leave the room at all."),
@@ -90,7 +90,7 @@ PAGE = {
              (icon('<rect x="8" y="20" width="18" height="24" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><rect x="38" y="20" width="18" height="24" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M26 32 h12" stroke="var(--good)" stroke-width="3"/>'),
               ("여러 성의 장부를 한 방에", "Many castles' ledgers, one room"), ("결합해서 함께 봐요", "gathered and viewed together"), "calm"),
              (icon('<rect x="10" y="10" width="44" height="44" rx="4" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M20 20 L44 44 M44 20 L20 44" stroke="var(--bad)" stroke-width="3" stroke-linecap="round"/>'),
-              ("그 안에서만 보고 계산", "Viewed and computed only inside"), ("반출은 원칙적으로 금지예요", "taking it out is forbidden"), "warm"),
+              ("그 안에서만 보고 계산", "Viewed and computed only inside"), ("반출은 원칙적으로 금지예요", "taking ledgers out is forbidden in principle"), "warm"),
              (icon('<rect x="14" y="14" width="36" height="36" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 32 l7 7 l14 -16" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/>'),
               ("나갈 땐 검사", "Checked on the way out"), ("승인받은 결과만 반출돼요", "only approved results leave")),
              (icon('<circle cx="32" cy="22" r="10" fill="none" stroke="var(--accent)" stroke-width="4"/><rect x="18" y="36" width="28" height="18" rx="6" fill="var(--accent)"/>'),
@@ -100,7 +100,7 @@ PAGE = {
          "caption": ("안심구역을 쓰려면 정해진 절차를 거쳐요.", "Using a safe zone follows a set process."),
          "small": ("신청하고, 승인받고, 방 안에서 분석하고, 나가기 전에 한 번 더 검사받아요.", "Apply, get approved, analyze inside the room, then undergo one more check before anything leaves.")},
         {"svg": P5, "alt": ("분석가가 땀을 흘리며 몇 주짜리 달력을 기다리고, 다른 결과는 '반출 불가' 도장이 찍힘", "A sweating analyst waits through a weeks-long calendar, while another result is stamped export denied"),
-         "caption": ("승인이 오래 걸리고, 다 허락되진 않아요.", "Approval can take a long time, and not everything is allowed out."),
+         "caption": ("안심구역 승인은 오래 걸리고, 결과 반출도 다 허락되진 않아요.", "Approval can take a long time, and not every result is allowed out."),
          "small": ('결과가 <a href="pseudonymize-ko.html">재식별</a>될 수 있으면 반출 자체가 거부돼요.',
                    'If the result could still be <a href="pseudonymize-en.html">re-identified</a>, the export is refused outright.')},
     ],

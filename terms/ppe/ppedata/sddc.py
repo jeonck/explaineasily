@@ -27,22 +27,22 @@ P3 = svg(340, sky(340, ground=False)
 
 # 4. 물리 공사 vs 설정 변경
 P4 = svg(320, sky(320, ground=False)
-         + '<rect x="40" y="40" width="330" height="240" rx="6" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>'
-         + '<rect x="390" y="40" width="330" height="240" rx="6" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>'
+         + '<rect x="40" y="40" width="330" height="150" rx="6" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>'
+         + '<rect x="390" y="40" width="330" height="150" rx="6" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>'
          + label(205, 66, "⟦물리 레이아웃 변경|physical reconfiguration⟧", 12, "var(--ink)", weight=700)
          + label(555, 66, "⟦소프트웨어 설정 변경|software reconfiguration⟧", 12, "var(--ink)", weight=700)
          + label(205, 110, "⟦공사, 몇 주|construction, weeks⟧", 12, "var(--bad)")
          + label(205, 150, "⟦그 동안 창고 사용 중단|warehouse unusable meanwhile⟧", 10.5, "var(--muted)")
          + label(555, 110, "⟦버튼 몇 개, 몇 분|a few clicks, minutes⟧", 12, "var(--good)")
          + label(555, 150, "⟦설정값을 코드로 저장해 재현 가능|settings saved as code, reproducible⟧", 10.5, "var(--muted)")
-         + label(380, 220, "⟦선반·통로·일손 배분 전부를 설정으로 바꿔요|shelf layout, aisles, and staffing — all become settings⟧", 12, "var(--ink)")
+         + label(380, 220, "⟦SDDC에선 선반·통로·일손 배분 전부가 설정값이 돼요|in SDDC, shelf layout, aisles, and staffing all become settings⟧", 12, "var(--ink)")
          + label(380, 255, "⟦이 설정을 코드로 저장해두는 게 코드형 인프라예요|saving these settings as code is infrastructure as code⟧", 11, "var(--muted)"))
 
 # 5. 바닥의 실제 서버는 여전히 물리적으로 존재해요
 P5 = svg(300, sky(300, ground=False)
          + shelfzone(260, 180, 240, 70, 1.0)
          + person(380, 130, s=0.75, face=EYES, **MANAGER)
-         + label(380, 260, "⟦바닥의 실제 선반·배선은 여전히 물리적으로 있어요|the real shelves and wiring underneath still physically exist⟧", 12, "var(--ink)")
+         + label(380, 270, "⟦바닥의 실제 서버(선반)·배선은 여전히 물리적으로 있어요|the real servers (shelves) and wiring underneath still physically exist⟧", 12, "var(--ink)")
          + label(380, 40, "⟦설정 실수 하나가 창고 전체로 바로 퍼질 수도 있어요|one bad setting can spread across the whole warehouse at once⟧", 12.5, "var(--bad)"))
 
 STORE_I = icon('<rect x="10" y="20" width="44" height="30" rx="3" fill="var(--panel)" stroke="var(--good)" stroke-width="3"/><path d="M18 30 h28 M18 40 h28" stroke="var(--good)" stroke-width="2.5"/>')
@@ -73,7 +73,7 @@ PAGE = {
              (CODE_I, ("설정 자체를 코드로 저장", "Save the settings as code"), ("코드형 인프라예요", "infrastructure as code"), "warm"),
          ])},
         {"svg": P4, "alt": ("물리 레이아웃 변경(몇 주)과 소프트웨어 설정 변경(몇 분)을 나란히 비교함", "Physical reconfiguration (weeks) compared side by side with software reconfiguration (minutes)"),
-         "caption": ("선반·통로·일손 배분 전부를 설정으로 바꿔요.", "Shelf layout, aisles, and staffing all become settings."),
+         "caption": ("SDDC에선 선반·통로·일손 배분 전부가 설정값이 돼요.", "In SDDC, shelf layout, aisles, and staffing all become settings."),
          "small": ("이 설정을 코드로 저장해두는 게 코드형 인프라예요.", "Saving these settings as code is infrastructure as code.")},
         {"svg": P5, "alt": ("관리자가 화면 앞에 서 있지만, 바닥에는 여전히 실제 선반이 존재함", "The manager stands at the screen, but the real shelves still exist on the floor below"),
          "caption": ("바닥의 실제 서버·배선은 여전히 물리적으로 있어요.", "The real servers and wiring underneath still physically exist."),
@@ -90,7 +90,7 @@ PAGE = {
         ("코드형 인프라", "Infrastructure as Code", ("설정 자체를 코드로 저장.", "The settings themselves, saved as code."), ('SRE 세계에서도 핵심 도구예요. → <a href="iac-ko.html">코드로 짓는 놀이공원</a>', 'A core tool in the SRE world too. → <a href="iac-en.html">building the theme park with code</a>')),
         ("하이퍼컨버지드 인프라", "HCI", ("선반·통로·일손을 한 상자에.", "Shelf, aisle, and staffing bundled into one box."), ("SDDC를 더 작은 단위로 묶은 형태예요.", "A smaller, bundled form of SDDC.")),
         ("프라이빗 클라우드와의 관계", "Relation to Private Cloud", ("자체 창고를 클라우드처럼.", "Running your own warehouse like a cloud."), ("SDDC는 프라이빗 클라우드의 기반이 돼요.", "SDDC is the foundation many private clouds sit on.")),
-        ("블라스트 레이디어스", "Blast Radius", ("설정 실수가 퍼지는 범위.", "How far a misconfiguration spreads."), ("가상화된 만큼 파급 범위도 넓어져요.", "The more virtualized, the wider it can spread.")),
+        ("블라스트 레이디어스", "Blast Radius", ("설정 실수가 퍼지는 범위.", "How far a misconfiguration spreads."), ("설정 하나가 닿는 자원이 많아져 실수의 파급 범위도 넓어져요.", "One setting reaches more resources, so a mistake spreads further.")),
         ("자동 프로비저닝", "Automated Provisioning", ("요청 한 번으로 자원을 갖추기.", "Standing up resources from a single request."), ("설정 코드로 창고를 자동으로 갖춰요.", "Settings-as-code stands the warehouse up automatically.")),
     ],
 }

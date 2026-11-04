@@ -39,8 +39,8 @@ P4 = svg(320, sky(320)
 
 # 5. 한계: 단순하고 오래된 규칙이라 느리고, 지키는 사람도 없어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 130, s=0.75, face=EYES, **CLERK) + label(190, 255, "⟦한 번에 하나씩이라 느려요|one at a time, so it's slow⟧", 11, "var(--ink)")
-         + person(570, 130, s=0.75, face=FROWN, **CLERK) + label(570, 255, "⟦누구나 끼어들 수 있어요(보안 없음)|anyone can butt in — no security at all⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.75, face=EYES, **CLERK) + label(190, 255, "⟦우체국장이 한 번에 한 기계씩만 물어 느려요|the clerk asks one machine at a time, so it's slow⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.75, face=FROWN, **CLERK) + label(570, 255, "⟦누구나 쪽지에 끼어들 수 있어요(암호화·인증 없음)|anyone can slip in a note — no encryption or login⟧", 11, "var(--ink)")
          + label(380, 282, "⟦공장 안 통신용으로 만들어진 오래된 규칙, 요즘은 보안 대책을 따로 둬요|an old factory-floor rule — modern setups add security separately⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
@@ -54,7 +54,7 @@ PAGE = {
          "caption": ("공장 안 낡은 기계들이 서로 다른 말을 써요.", "Old factory machines all speak different languages."),
          "small": ("우체국장이 상태를 물어도 아무도 못 알아들어요.", "The clerk asks for a status, but nobody understands.")},
         {"svg": P2, "alt": ("기계 세 대가 동시에 말하려다 서로 뒤섞임", "Three machines all try to speak at once and get jumbled"),
-         "caption": ("누가 먼저 말할지도 정해야 해요.", "Who speaks first has to be decided too."),
+         "caption": ("기계 중 누가 먼저 말할지도 정해야 해요.", "Which machine speaks first has to be decided too."),
          "small": ("동시에 말하면 누구 말인지 알 수가 없어요.", "If everyone talks at once, no one can tell whose message is whose.")},
         {"svg": P3, "hero": True, "alt": ("우체국장이 기계 세 대에게 번호 순서대로 하나씩 쪽지를 보내고 각 기계가 차례로 답함", "The clerk sends notes to three machines one at a time by number, and each replies in turn"),
          "caption": ("Modbus = 번호 순서대로 하나씩 묻는 쪽지 규칙이에요.", "Modbus = a note rule asking one machine at a time, in order."),
@@ -67,10 +67,10 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("Modbus 쪽지 규칙 안내판: 마스터, 슬레이브, 레지스터, 단순함 네 줄", "A guide board listing master, slave, register, and simplicity for the Modbus note rule"),
          "caption": ("쪽지엔 정해진 규칙이 있어요.", "The note follows a fixed set of rules."),
-         "small": ("암호화도 없이 아주 가벼운 규칙이에요.", "It's a very light rule, with no encryption at all.")},
-        {"svg": P5, "alt": ("왼쪽: 한 번에 하나씩이라 느림. 오른쪽: 누구나 끼어들 수 있어 보안이 없음", "Left: one at a time, so it's slow. Right: anyone can butt in — no security"),
-         "caption": ("단순하고 오래된 규칙이라 한계도 있어요.", "Being simple and old, it has its limits."),
-         "small": ("요즘은 보안 대책을 따로 둬서 써요.", "Modern setups add security measures separately.")},
+         "small": ("Modbus는 암호화도 없는, 아주 가벼운 규칙이에요.", "Modbus is a very light rule, with no encryption at all.")},
+        {"svg": P5, "alt": ("왼쪽: 우체국장이 한 번에 한 기계씩만 물어 느림. 오른쪽: 누구나 쪽지에 끼어들 수 있어 보안이 없음", "Left: the clerk asks one machine at a time, so it's slow. Right: anyone can slip in a note — no security"),
+         "caption": ("Modbus는 단순하고 오래된 규칙이라 느리고 보안이 약해요.", "Being simple and old, Modbus is slow and weak on security."),
+         "small": ("그래서 요즘은 Modbus 통신에 보안 대책을 따로 둬요.", "So modern setups add security measures around Modbus separately.")},
     ],
     "summary": (("<b>Modbus</b> = 우체국장(마스터)이 기계(슬레이브)마다 <b>번호를 불러 순서대로</b> 묻고 답하는, 아주 단순한 쪽지 규칙.",
                  "<b>Modbus</b> = a very simple note rule where the clerk (master) calls each machine (slave) <b>by number, one at a time</b>."),
@@ -81,8 +81,8 @@ PAGE = {
         ("레지스터", "Register", ("값이 적히는 정해진 칸.", "The fixed slot where a value is written."), ("번호로 지정해 읽고 쓰는 공간이에요.", "A space read and written by a fixed number.")),
         ("요청/응답", "Request/Response", ("묻는 쪽지와 답하는 쪽지.", "The asking note and the replying note."), ("한 쌍으로 오가는 통신 구조예요.", "The paired back-and-forth structure of the protocol.")),
         ("Modbus TCP/RTU", "Modbus TCP/RTU", ("우체국망을 타는 버전과 전용선을 타는 버전.", "A version over the postal network, and one over a dedicated wire."), ("둘 다 같은 쪽지 규칙을 다른 통로로 보내요.", "Both carry the same note rule over different channels.")),
-        ("IPC(네트워크)", "Network IPC", ("공장 바깥, 프로세스끼리 주고받는 전용 편지함.", "The dedicated mailbox different processes use to talk, outside the factory floor."), ('Modbus도 결국 이 방식의 한 예예요. → <a href="ipc-ko.html">프로세스끼리 여는 전용 편지함</a>', 'Modbus is, in a sense, one example of this. → <a href="ipc-en.html">the dedicated mailbox between processes</a>')),
-        ("AMI(지능형 검침)", "AMI", ("계량기가 자동으로 값을 보고하는 망.", "The network where meters report their readings automatically."), ('산업 현장에서 비슷한 쪽지 방식이 쓰여요. → <a href="ami-ko.html">계량기가 자동으로 편지를 보내는 망</a>', 'A similar note-passing pattern shows up there too. → <a href="ami-en.html">the network where meters mail their own readings</a>')),
+        ("IPC(네트워크)", "Network IPC", ("공장 바깥, 프로세스끼리 주고받는 전용 편지함.", "The dedicated mailbox different processes use to talk, outside the factory floor."), ('Modbus TCP는 이 방식의 한 예예요. → <a href="ipc-ko.html">프로세스끼리 여는 전용 편지함</a>', 'Modbus TCP is one example of this. → <a href="ipc-en.html">the dedicated mailbox between processes</a>')),
+        ("AMI(지능형 검침)", "AMI", ("계량기가 자동으로 값을 보고하는 망.", "The network where meters report their readings automatically."), ('AMI에서도 비슷한 쪽지 방식이 쓰여요. → <a href="ami-ko.html">계량기가 자동으로 편지를 보내는 망</a>', 'A similar note-passing pattern shows up there too. → <a href="ami-en.html">the network where meters mail their own readings</a>')),
         ("OT/IoT 보안", "OT/IoT Security", ("오래된 공장 기계를 지키는 방법.", "How old factory machines get protected today."), ("다른 세계(보안)에서 다루는 주제예요.", "A topic covered in another world (Security).")),
         ("회선교환·패킷교환", "Circuit vs Packet Switching", ("쪽지를 전용선으로 보낼지, 조각내 보낼지.", "Whether the note travels a dedicated wire or gets split into pieces."), ('쪽지가 실제로 오가는 방식의 밑바탕이에요. → <a href="circuitpacket-ko.html">전용 도로냐, 조각내 보내기냐</a>', "The underlying way any note actually travels. → <a href=\"circuitpacket-en.html\">a dedicated road, or splitting it into pieces</a>")),
     ],

@@ -3,7 +3,7 @@ from _world import *
 
 # 1. 집집마다 계량기 숫자를 사람이 직접 적어옴
 P1 = svg(300, sky(300)
-         + person(220, 170, s=0.8, face=SWEAT + EYES, **CARRIER)
+         + person(220, 150, s=0.8, face=SWEAT + EYES, **CARRIER)
          + postoffice(460, 160, 0.6) + postoffice(560, 160, 0.5) + postoffice(360, 160, 0.5)
          + label(380, 40, "⟦집배원이 집집마다 계량기 숫자를 손으로 적어와야 해요|a carrier has to walk house to house, writing down each meter by hand⟧", 12, "var(--ink)")
          + label(380, 270, "⟦수천 집을 다 돌려면 한 달이 걸려요|visiting thousands of houses takes a whole month⟧", 13, "var(--bad)"))
@@ -11,7 +11,7 @@ P1 = svg(300, sky(300)
 # 2. 한 달에 한 번이라 중간에 뭔 일이 있었는지 몰라요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + postoffice(260, 150, 0.7) + envelope(260, 90, 0.4, text="⟦이번달 분|this month⟧")
-         + postoffice(520, 150, 0.7) + label(520, 230, "⟦중간에 새다가 멈췄는지 알 길이 없어요|no way to know if something leaked and stopped midway⟧", 10, "var(--ink)")
+         + postoffice(520, 150, 0.7) + label(520, 230, "⟦수도가 중간에 새다가 멈췄는지 알 길이 없어요|no way to know if the pipe leaked midway and then stopped⟧", 10, "var(--ink)")
          + label(380, 270, "⟦한 달에 한 번 적어선 중간 사정을 전혀 몰라요|checking once a month tells you nothing about what happened in between⟧", 12, "var(--ink)"))
 
 # 3. hero: AMI = 계량기가 스스로 편지를 써서 우체국에 자동으로 보내는 망
@@ -21,7 +21,7 @@ P3 = svg(340, sky(340)
          + postoffice(380, 240, 0.5) + envelope(380, 200, 0.35, registered=False)
          + postoffice(580, 230, 0.5) + envelope(580, 190, 0.35, registered=False)
          + label(380, 30, "⟦AMI = 집집마다 계량기가 스스로 편지를 써서 우체국에 자동으로 보내는 망|AMI = a network where every meter writes its own note and mails it automatically⟧", 12, "var(--ink)", cls="d")
-         + label(380, 320, "⟦사람이 돌지 않아도, 때마다 저절로 숫자가 도착해요|no one needs to walk around — the numbers arrive by themselves, on schedule⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦사람이 돌지 않아도, 정해진 때마다 저절로 계량기 숫자가 도착해요|no one needs to walk around — meter numbers arrive by themselves, on schedule⟧", 12, "var(--muted)"))
 
 I1 = icon('<circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="5"/><path d="M32 20 v12 l9 5" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/>')
 I2 = icon('<rect x="10" y="20" width="44" height="30" rx="4" fill="var(--panel)" stroke="var(--good)" stroke-width="4"/><path d="M10 20 l22 18 l22 -18" fill="none" stroke="var(--good)" stroke-width="4"/>')
@@ -30,7 +30,7 @@ I4 = icon('<rect x="10" y="14" width="44" height="36" rx="4" fill="var(--panel)"
 
 # 4. AMI가 자동으로 보고하는 네 가지
 P4 = svg(320, sky(320)
-         + routemap(60, 40, 640, 240, "⟦자동 보고 편지 내용|WHAT THE AUTO-NOTE SAYS⟧",
+         + routemap(60, 40, 640, 240, "⟦자동 편지가 하는 일|WHAT THE AUTO-NOTE DOES⟧",
                     ("⟦주기적 검침 — 정해진 때마다 저절로 숫자를 보내요|periodic reading — sends the number on a set schedule⟧",
                      "⟦양방향 — 반대로 우체국이 계량기에 지시도 보낼 수 있어요|two-way — the post office can send instructions back too⟧",
                      "⟦이상 감지 — 누수·정전 같은 이상도 바로 알려요|anomaly alert — flags a leak or an outage right away⟧",
@@ -52,24 +52,24 @@ PAGE = {
         {"svg": P1, "alt": ("집배원이 땀을 흘리며 집집마다 계량기 숫자를 손으로 적음", "A carrier sweats, writing down meter numbers house by house"),
          "caption": ("집배원이 집집마다 계량기 숫자를 손으로 적어와요.", "A carrier has to walk house to house, writing down each meter by hand."),
          "small": ("수천 집을 다 돌려면 한 달이 걸려요.", "Visiting thousands of houses takes a whole month.")},
-        {"svg": P2, "alt": ("우체국 두 곳 중 한 곳이 새다가 멈췄는지 알 길이 없음", "One of two post offices might have leaked and stopped, with no way to know"),
-         "caption": ("한 달에 한 번이라 중간 사정을 몰라요.", "Once a month means you don't know what happened in between."),
-         "small": ("중간에 새다가 멈췄는지 알 길이 없어요.", "No way to know if something leaked and stopped midway.")},
+        {"svg": P2, "alt": ("집 두 곳 중 한 곳에서 수도가 새다가 멈췄는지 알 길이 없음", "One of two houses may have had a leak that stopped, with no way to know"),
+         "caption": ("계량기를 한 달에 한 번 읽으니 그 사이 일을 몰라요.", "Reading the meter once a month tells you nothing about the time in between."),
+         "small": ("수도가 중간에 새다가 멈췄는지 알 길이 없어요.", "No way to know if the pipe leaked midway and then stopped.")},
         {"svg": P3, "hero": True, "alt": ("집집마다 계량기가 스스로 봉투를 써서 우체국으로 자동으로 보냄", "Every house's meter writes its own envelope and mails it automatically to the post office"),
          "caption": ("AMI = 계량기가 스스로 편지를 써서 자동으로 보내는 망이에요.", "AMI = a network where meters write and mail their own notes automatically."),
-         "small": ("사람이 돌지 않아도, 때마다 저절로 숫자가 도착해요.", "No one needs to walk around — the numbers arrive by themselves, on schedule."),
+         "small": ("사람이 돌지 않아도, 정해진 때마다 저절로 계량기 숫자가 도착해요.", "No one needs to walk around — meter numbers arrive by themselves, on schedule."),
          "tricks": (4, [
-             (I1, ("자동 검침", "Automatic Reading"), ("정해진 때마다 스스로", "sends itself on schedule")),
-             (I2, ("양방향 통신", "Two-Way"), ("우체국도 지시를 보내요", "the post office replies too"), "calm"),
+             (I1, ("자동 검침", "Automatic Reading"), ("정해진 때마다 계량기가 스스로 보내요", "the meter sends on its own schedule")),
+             (I2, ("양방향 통신", "Two-Way"), ("우체국도 계량기에 지시를 보내요", "the post office sends instructions too"), "calm"),
              (I3, ("이상 감지", "Anomaly Alert"), ("누수·정전을 바로 알려요", "flags a leak or outage fast"), "warm"),
-             (I4, ("데이터 분석", "Data Analysis"), ("사용 패턴을 모아 봐요", "gathers usage patterns")),
+             (I4, ("데이터 분석", "Data Analysis"), ("모인 숫자로 사용 패턴을 살펴요", "the collected readings reveal usage patterns")),
          ])},
-        {"svg": P4, "alt": ("자동 보고 편지 내용 안내판: 주기적 검침, 양방향, 이상 감지, 중계 네 줄", "A guide board for the auto-note's contents: periodic reading, two-way, anomaly alert, relay"),
-         "caption": ("자동 편지엔 네 가지가 담겨요.", "The auto-note carries four kinds of information."),
+        {"svg": P4, "alt": ("자동 편지가 하는 일 안내판: 주기적 검침, 양방향, 이상 감지, 중계 네 줄", "A guide board for the auto-note's jobs: periodic reading, two-way, anomaly alert, relay"),
+         "caption": ("자동 편지가 하는 일은 네 가지예요.", "The auto-note does four jobs."),
          "small": ("먼 집은 옆집 계량기를 거쳐 전달하기도 해요.", "A distant meter can hop through a neighbor's to get there.")},
         {"svg": P5, "alt": ("왼쪽: 사람이 돌지 않아도 돼서 편함. 오른쪽: 편지를 엿보거나 바꿔치기할 위험이 있어 암호로 잠금", "Left: convenient, no one needs to walk the route. Right: the note could be peeked at, so it's locked with encryption"),
-         "caption": ("편하지만 지켜야 할 것도 있어요.", "It's convenient, but there's something to guard too."),
-         "small": ("자동 편지도 암호로 잠가둬요.", "This automatic note gets locked with encryption too.")},
+         "caption": ("AMI는 편하지만 편지 내용을 지켜야 해요.", "AMI is convenient, but the notes' contents must be guarded."),
+         "small": ("엿보기·바꿔치기를 막으려고 자동 편지를 암호로 잠가둬요.", "To stop peeking and swapping, the automatic notes get locked with encryption.")},
     ],
     "summary": (("<b>AMI</b> = 사람이 돌지 않아도, 집집마다 계량기가 <b>스스로 편지를 써서 자동으로</b> 우체국에 보내는 검침망.",
                  "<b>AMI</b> = a metering network where every house's meter <b>writes and mails its own note automatically</b>, with no one walking the route."),

@@ -13,14 +13,14 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(200, 150, s=0.85, face=SMILE, **EDITOR)
          + bubble(140, 80, 200, 36, "⟦그냥 새로 쓰면 되잖아요|just write it from scratch again⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(560, 150, s=0.7, face=FROWN, **WRITER) + bubble(460, 80, 230, 36, "⟦그럼 20년 치를 다 다시 만들어야 해요|that means remaking twenty years of content⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 280, "⟦사라진 원본을 무시하고 새로 짓는 건 더 비싸요|ignoring the lost original and rebuilding from nothing costs more⟧", 12, "var(--ink)"))
+         + label(380, 280, "⟦완성본을 버려두고 처음부터 새로 쓰면, 되짚어 고치기보다 더 비쌀 수 있어요|ignoring the finished book and starting from nothing can cost more than tracing it back⟧", 12, "var(--ink)"))
 
 # 3. 역공학으로 개요를 되짚고, 재공학으로 다시 써 재출간 (hero)
 P3 = svg(340, sky(340)
          + person(380, 120, s=0.9, face=EYES, **WRITER)
-         + printplate(240, 190, 0.6, label_text="⟦완성본|finished book⟧")
+         + printplate(240, 190, 0.6) + label(240, 218, "⟦완성본|finished book⟧", 11, "var(--muted)")
          + manuscript(380, 260, 0.7, text="⟦되짚은 개요|outline reconstructed⟧")
-         + printplate(520, 190, 0.6, label_text="⟦재출간본|re-published⟧")
+         + printplate(520, 190, 0.6) + label(520, 218, "⟦재출간본|re-published⟧", 11, "var(--muted)")
          + label(380, 30, "⟦역공학 = 완성본만 보고 개요를 거꾸로 추정, 재공학 = 정리해서 요즘 말로 다시 써 재출간|reverse engineering = inferring the outline from the finished book; reengineering = reworking it and republishing⟧", 12, "var(--ink)", cls="d")
          + label(380, 320, "⟦역공학 → 재구조화 → 재공학, 이 순서를 3R이라고 불러요|reverse engineering → restructuring → reengineering — these three together are called 3R⟧", 12, "var(--muted)"))
 
@@ -32,14 +32,14 @@ P4 = svg(320, sky(320)
                        "⟦재공학 — 요즘 말로 다시 써서 재출간|reengineering — rewriting in today's language⟧",
                        "⟦순공학과 차이 — 순공학은 원고부터 새로 써요|vs forward engineering — writes a fresh manuscript⟧"), 1.0)
          + person(560, 150, s=0.75, face=EYES, **WRITER)
-         + label(560, 250, "⟦사라진 원본을 되살리는 복원 작업에 가까워요|closer to a restoration, bringing back what was lost⟧", 11, "var(--muted)")
+         + label(560, 250, "⟦3R은 사라진 원본을 되살리는 복원 작업에 가까워요|3R is closer to restoration, bringing back what was lost⟧", 11, "var(--muted)")
          + label(380, 300, "⟦되짚은 개요가 완벽히 맞다는 보장은 없어요|there's no guarantee the reconstructed outline is exactly right⟧", 12, "var(--ink)"))
 
 # 5. 새 책만큼 깔끔하진 않아요
 P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
-         + person(190, 130, s=0.8, face=EYES, **WRITER) + label(190, 260, "⟦오래된 책도 다시 살릴 수 있어요|it can revive even an old out-of-print book⟧", 11, "var(--ink)")
-         + person(570, 110, s=0.8, face=SMILE, **EDITOR) + manuscript(570, 200, 0.6) + label(570, 260, "⟦새 책만큼 깔끔하진 않을 수 있어요|but it may not come out as clean as a brand-new book⟧", 11, "var(--ink)")
-         + label(380, 315, "⟦재공학은 과거를 되살리는 일이지, 처음부터 완벽하게 새로 짓는 일은 아니에요|reengineering revives the past — it isn't building something perfectly new from scratch⟧", 12, "var(--ink)", cls="d"))
+         + person(190, 130, s=0.8, face=EYES, **WRITER) + label(190, 260, "⟦3R로 오래된 절판본도 다시 살릴 수 있어요|3R can revive even an old out-of-print book⟧", 11, "var(--ink)")
+         + person(570, 110, s=0.8, face=SMILE, **EDITOR) + manuscript(570, 200, 0.6) + label(570, 260, "⟦되살린 책은 새 책만큼 깔끔하진 않을 수 있어요|but a revived book may not be as clean as a brand-new one⟧", 11, "var(--ink)")
+         + label(380, 315, "⟦재공학은 기존 책을 되살리는 일이지, 처음부터 완벽하게 새로 짓는 일은 아니에요|reengineering revives an existing book — it isn't building something perfectly new from scratch⟧", 12, "var(--ink)", cls="d"))
 
 ANALYZE_I = icon('<rect x="12" y="10" width="28" height="36" rx="2" fill="#FFF8E7" stroke="#C9822B" stroke-width="3"/><circle cx="42" cy="40" r="12" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M51 49 l9 9" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/>')
 INFER_I = icon('<path d="M46 16 a20 20 0 1 0 4 28" stroke="var(--good)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M50 30 l0 -14 -14 0" stroke="var(--good)" stroke-width="5" fill="none" stroke-linecap="round"/>')
@@ -57,8 +57,8 @@ PAGE = {
          "caption": ("원본 원고는 사라지고, 인쇄된 책만 남아 있어요.", "The original manuscript is gone — only the printed book remains."),
          "small": ("그런데 이 책을 다시 손봐서 내고 싶어요.", "But we want to rework it and publish it again.")},
         {"svg": P2, "alt": ("편집장은 그냥 새로 쓰자고 하고, 작가는 그러면 20년 치를 다 다시 만들어야 한다고 반박함", "The editor suggests writing it fresh; the writer objects that it means remaking twenty years of content"),
-         "caption": ("그냥 새로 쓰자는 말, 그러면 더 비싸진다는 반박.", "A suggestion to just start fresh, met with the fact that doing so costs more."),
-         "small": ("사라진 원본을 무시하고 새로 짓는 건 더 비싸요.", "Ignoring the lost original and rebuilding from nothing costs more.")},
+         "caption": ("편집장은 그냥 새로 쓰자 하고, 작가는 20년 치를 다시 만들어야 해서 더 비싸다고 반박해요.", "The editor suggests starting fresh; the writer objects that remaking twenty years of content costs more."),
+         "small": ("완성본을 버려두고 처음부터 새로 쓰면, 되짚어 고치기보다 더 비쌀 수 있어요.", "Ignoring the finished book and starting from nothing can cost more than tracing it back.")},
         {"svg": P3, "hero": True, "alt": ("작가가 완성본을 보고 개요를 되짚어 재구성한 뒤, 새 재출간본을 만듦", "A writer studies the finished book, reconstructs its outline, and produces a newly republished edition"),
          "caption": ("역공학으로 개요를 되짚고, 재공학으로 다시 써 재출간해요.", "Reverse engineering traces back the outline; reengineering rewrites it and republishes."),
          "small": ("역공학 → 재구조화 → 재공학, 이 순서를 3R이라고 불러요.", "Reverse engineering → restructuring → reengineering — together these three are called 3R."),
@@ -69,11 +69,11 @@ PAGE = {
              (REWRITE_I, ("요즘 말로 다시 쓰기", "Rewrite in today's language"), ("바뀐 독자에 맞게 고쳐요", "adapting it for today's readers")),
          ])},
         {"svg": P4, "alt": ("3R 순서표: 역공학·재구조화·재공학·순공학과의 차이 네 항목", "A 3R order board: reverse engineering, restructuring, reengineering, and the contrast with forward engineering"),
-         "caption": ("3R은 이 순서로 진행돼요.", "The 3Rs proceed in this order."),
-         "small": ("사라진 원본을 되살리는 복원 작업에 가까워요.", "Closer to a restoration, bringing back what was lost.")},
+         "caption": ("3R은 역공학 → 재구조화 → 재공학 순서로 진행돼요.", "The 3Rs proceed in order: reverse engineering, restructuring, reengineering."),
+         "small": ("3R은 사라진 원본을 되살리는 복원 작업에 가까워요.", "3R is closer to restoration, bringing back what was lost.")},
         {"svg": P5, "alt": ("왼쪽: 작가가 오래된 책도 다시 살릴 수 있다고 말함. 오른쪽: 편집장이 새 책만큼 깔끔하진 않을 수 있다고 말함", "Left: the writer says even an old book can be revived. Right: the editor says it may not come out as clean as a new one"),
-         "caption": ("새 책만큼 깔끔하진 않을 수 있어요.", "It may not come out as clean as a brand-new book."),
-         "small": ("과거를 되살리는 일이지, 완벽하게 새로 짓는 일은 아니에요.", "It revives the past — it isn't building something perfectly new.")},
+         "caption": ("3R로 되살린 책은 새 책만큼 깔끔하진 않을 수 있어요.", "A book revived through 3R may not come out as clean as a brand-new one."),
+         "small": ("재공학은 기존 책을 되살리는 일이지, 완벽하게 새로 짓는 일은 아니에요.", "Reengineering revives an existing book — it isn't building something perfectly new.")},
     ],
     "summary": (("<b>재공학/역공학(3R)</b> = 사라진 원본을 <b>완성본에서 거꾸로 되짚어</b> 정리하고 <b>다시 써 재출간</b>하는 일.",
                  "<b>Re-engineering/reverse engineering (3R)</b> = <b>tracing a lost original backward</b> from the finished product, tidying it up, and <b>rewriting it for republication</b>."),
@@ -86,7 +86,7 @@ PAGE = {
         ("순공학", "Forward Engineering", ("원고부터 새로 써 내려가는 일.", "Writing a fresh manuscript from scratch."), ("3R과 반대 방향이에요.", "The opposite direction from 3R.")),
         ("레거시 시스템", "Legacy System", ("오래돼서 원본 자료가 부실한 책.", "An old book with poor surviving original materials."), ("3R이 다루는 대상이에요.", "What 3R work is applied to.")),
         ("형상관리", "Configuration Management", ("원고를 보관하는 서가.", "The shelf where manuscripts are kept."), ('원본이 잘 보관됐다면 3R 자체가 필요 없었을 거예요. → <a href="scmshelf-ko.html">원고를 지키는 보관 서가</a>', 'If the original had been kept properly, 3R might not have been needed at all. → <a href="scmshelf-en.html">the shelf that protects the manuscript</a>')),
-        ("기술 부채", "Technical Debt", ("나중으로 미룬 정리를 쌓아두는 일.", "Piling up cleanup that keeps getting postponed."), ("오래 쌓이면 3R이 더 커져요.", "The longer it piles up, the bigger the 3R job gets.")),
+        ("기술 부채", "Technical Debt", ("나중으로 미룬 정리를 쌓아두는 일.", "Piling up cleanup that keeps getting postponed."), ("미룬 정리가 오래 쌓이면 3R 작업도 더 커져요.", "The longer the cleanup piles up, the bigger the 3R job gets.")),
         ("GoF 디자인패턴", "GoF Design Patterns", ("검증된 글쓰기 공식들의 모음.", "A collection of proven writing formulas."), ('재공학으로 다시 쓸 때 이 공식들을 적용하곤 해요. → <a href="gofpattern-ko.html">검증된 글쓰기 공식집</a>', 'These formulas often get applied while reengineering a rewrite. → <a href="gofpattern-en.html">the collection of proven writing formulas</a>')),
     ],
 }

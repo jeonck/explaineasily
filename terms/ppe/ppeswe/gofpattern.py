@@ -12,18 +12,18 @@ P1 = svg(300, sky(300)
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(200, 150, s=0.85, face=SMILE, **EDITOR)
          + bubble(140, 80, 220, 36, "⟦그냥 각자 마음대로 쓰면 되죠|everyone can just write it their own way⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + person(560, 150, s=0.7, face=FROWN, **PROOFER) + bubble(460, 80, 230, 36, "⟦그럼 책마다 구조가 달라서 헷갈려요|then every book's structure is different and confusing⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 280, "⟦매번 새로 발명하면, 검증되지 않은 채로 쓰게 돼요|reinventing it every time means using something never proven⟧", 12, "var(--ink)"))
+         + person(560, 150, s=0.7, face=FROWN, **PROOFER) + bubble(445, 80, 260, 36, "⟦그럼 책마다 구조가 달라서 헷갈려요|then every book's structure is different and confusing⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + label(380, 280, "⟦복선 까는 법을 매번 새로 발명하면, 검증 안 된 방법으로 쓰게 돼요|reinventing the method every time means writing with one never proven⟧", 12, "var(--ink)"))
 
 # 3. GoF 디자인패턴 = 검증된 글쓰기 공식집 (hero)
 P3 = svg(340, sky(340)
-         + styleguide(60, 30, 280, 250, "⟦검증된 글쓰기 공식집|PROVEN WRITING FORMULAS⟧",
+         + styleguide(60, 50, 280, 230, "⟦검증된 글쓰기 공식집|PROVEN WRITING FORMULAS⟧",
                       ("⟦생성 — 등장인물을 만드는 법|creational — bringing a character to life⟧",
                        "⟦구조 — 챕터를 엮는 법|structural — weaving chapters together⟧",
                        "⟦행위 — 사건이 퍼지는 법|behavioral — how an event ripples outward⟧"), 1.0)
          + person(500, 150, s=0.9, face=EYES, **WRITER)
          + label(380, 30, "⟦GoF 디자인패턴 = 자주 반복되는 문제마다 검증된 해법을 모아둔 공식집|GoF design patterns = a formula book of proven solutions, one for each commonly repeated problem⟧", 12, "var(--ink)", cls="d")
-         + label(380, 320, "⟦네 명의 저자(Gang of Four)가 23가지 공식으로 정리했어요|four authors (the Gang of Four) organized them into 23 formulas⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦네 명의 저자(Gang of Four)가 패턴을 23가지 공식으로 정리했어요|four authors (the Gang of Four) organized the patterns into 23 formulas⟧", 12, "var(--muted)"))
 
 # 4. 세 갈래 공식
 P4 = svg(320, sky(320)
@@ -34,11 +34,11 @@ P4 = svg(320, sky(320)
                        "⟦모두 합쳐 23가지 공식|23 formulas in total⟧"), 1.0)
          + person(560, 150, s=0.75, face=EYES, **WRITER)
          + label(560, 250, "⟦공식을 외운다고 좋은 책이 되진 않아요|memorizing formulas alone doesn't make a good book⟧", 11, "var(--muted)")
-         + label(380, 300, "⟦맞지 않는 상황에 억지로 끼워 맞추면 오히려 이상해져요|forcing one where it doesn't fit makes things worse, not better⟧", 12, "var(--ink)"))
+         + label(380, 300, "⟦공식을 안 맞는 상황에 억지로 끼우면, 구조만 괜히 복잡해져요|forcing a formula where it doesn't fit only makes the structure needlessly complicated⟧", 12, "var(--ink)"))
 
 # 5. 어떤 공식을 쓸지는 여전히 작가의 판단이에요
 P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
-         + person(190, 130, s=0.8, face=EYES, **WRITER) + label(190, 260, "⟦글쓰기가 훨씬 빨라져요|it makes the writing go much faster⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.8, face=EYES, **WRITER) + label(190, 260, "⟦검증된 공식을 쓰면 처음부터 고민할 때보다 빨리 써요|a proven formula is faster than starting from scratch⟧", 11, "var(--ink)")
          + person(570, 110, s=0.8, face=SMILE, **PROOFER) + manuscript(570, 200, 0.6) + label(570, 260, "⟦어떤 공식을 쓸지는 작가가 판단해야 해요|but choosing which formula to use is still the writer's call⟧", 11, "var(--ink)")
          + label(380, 315, "⟦디자인패턴은 손에 쥔 연장이지, 언제 쓸지는 여전히 작가의 판단이에요|design patterns are tools in hand — knowing when to use them is still the writer's own judgment⟧", 12, "var(--ink)", cls="d"))
 
@@ -58,11 +58,11 @@ PAGE = {
          "caption": ("작가마다 복선 까는 법을 처음부터 다시 고민해요.", "Every writer reinvents how to plant a plot twist, from scratch."),
          "small": ("이미 많은 책이 풀어낸 문제인데도요.", "Even though many books have already solved this same problem.")},
         {"svg": P2, "alt": ("편집장은 각자 마음대로 쓰라 하고, 교정자는 책마다 구조가 달라 헷갈린다고 말함", "The editor says to write it any way; the proofreader says every book's structure ends up different and confusing"),
-         "caption": ("각자 마음대로 쓰면 되죠, 라는 말에 구조가 제각각이 돼요.", "A suggestion to write it any way ends up making every structure different."),
-         "small": ("매번 새로 발명하면, 검증되지 않은 채로 쓰게 돼요.", "Reinventing it every time means using something never proven.")},
+         "caption": ("각자 마음대로 쓰면 되죠, 라는 말에 책마다 구조가 제각각이 돼요.", "A suggestion that everyone write their own way ends up making every book's structure different."),
+         "small": ("복선 까는 법을 매번 새로 발명하면, 검증 안 된 방법으로 쓰게 돼요.", "Reinventing the method every time means writing with one never proven.")},
         {"svg": P3, "hero": True, "alt": ("작가가 검증된 글쓰기 공식집 앞에 서 있음: 생성·구조·행위 세 갈래", "A writer stands before a book of proven writing formulas: creational, structural, behavioral"),
          "caption": ("GoF 디자인패턴은 반복되는 문제마다 검증된 해법을 모은 공식집이에요.", "GoF design patterns are a formula book of proven solutions for repeated problems."),
-         "small": ("네 명의 저자(Gang of Four)가 23가지 공식으로 정리했어요.", "Four authors (the Gang of Four) organized them into 23 formulas."),
+         "small": ("네 명의 저자(Gang of Four)가 패턴을 23가지 공식으로 정리했어요.", "Four authors (the Gang of Four) organized the patterns into 23 formulas."),
          "tricks": (4, [
              (FORMULA_I, ("검증된 공식 찾기", "Find a proven formula"), ("이미 풀린 문제인지 먼저 봐요", "checking if the problem's already been solved"), "calm"),
              (CREATE_I, ("등장인물 만드는 법", "How to bring a character to life"), ("생성 패턴이 다뤄요", "handled by creational patterns")),
@@ -72,9 +72,9 @@ PAGE = {
         {"svg": P4, "alt": ("세 갈래 공식표: 생성·구조·행위 패턴과 총 23가지라는 항목", "A three-family pattern board: creational, structural, behavioral, totaling 23 formulas"),
          "caption": ("공식은 세 갈래로 나뉘어요.", "The formulas split into three families."),
          "small": ("공식을 외운다고 좋은 책이 되진 않아요.", "Memorizing formulas alone doesn't make a good book.")},
-        {"svg": P5, "alt": ("왼쪽: 작가가 글쓰기가 훨씬 빨라진다고 말함. 오른쪽: 교정자가 어떤 공식을 쓸지는 작가 몫이라고 말함", "Left: the writer says the writing goes much faster. Right: the proofreader says choosing the formula is still the writer's call"),
+        {"svg": P5, "alt": ("왼쪽: 작가가 검증된 공식을 쓰면 처음부터 고민할 때보다 빨리 쓴다고 말함. 오른쪽: 교정자가 어떤 공식을 쓸지는 작가 몫이라고 말함", "Left: the writer says a proven formula is faster than starting from scratch. Right: the proofreader says choosing the formula is still the writer's call"),
          "caption": ("어떤 공식을 쓸지는 여전히 작가의 판단이에요.", "Choosing which formula to use is still the writer's own judgment."),
-         "small": ("손에 쥔 연장이지, 언제 쓸지는 작가 몫이에요.", "They're tools in hand — when to use them is still up to the writer.")},
+         "small": ("패턴은 손에 쥔 연장이고, 언제 쓸지는 작가 몫이에요.", "Patterns are tools in hand — when to use them is still up to the writer.")},
     ],
     "summary": (("<b>GoF 디자인패턴</b> = 자주 반복되는 문제마다 <b>검증된 해법</b>을 모아둔 <b>23가지 공식집</b>.",
                  "<b>GoF design patterns</b> = a <b>book of 23 proven formulas</b>, one for each commonly repeated problem."),

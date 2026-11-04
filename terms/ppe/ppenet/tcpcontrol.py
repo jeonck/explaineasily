@@ -22,7 +22,7 @@ P3 = svg(340, sky(340)
          + person(260, 150, s=0.85, face=EYES, **CARRIER) + envelope(380, 140, 0.8, registered=True)
          + person(520, 180, s=0.85, face=SMILE, **RECEIVER)
          + label(380, 30, "⟦TCP 오류·흐름·혼잡 제어 = 등기 배송을 끝까지 안전하게 지키는 세 장치|TCP's error, flow, and congestion control = the three devices that guard a registered delivery to the end⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦잃어버리면 다시 보내고, 넘치면 늦추고, 막히면 수를 줄여요|resend what's lost, slow down if it's overflowing, cut back if it's jammed⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦봉투를 잃어버리면 다시 보내고, 우편함이 넘치면 늦추고, 길이 막히면 수를 줄여요|resend lost envelopes, slow down when the mailbox overflows, send fewer when the road jams⟧", 12, "var(--muted)"))
 
 # 4. 혼잡 제어 타임라인(점점 늘리다 줄이는 톱니)
 P4 = svg(300, sky(300, ground=False)
@@ -34,7 +34,7 @@ P4 = svg(300, sky(300, ground=False)
 
 # 5. 너무 조심하면 오히려 느려져요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 130, s=0.8, face=SMILE, **CARRIER) + label(190, 250, "⟦서류·결제는 이 세 장치 덕에 안전해요|papers and payments stay safe thanks to these three⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.8, face=SMILE, **CARRIER) + label(190, 250, "⟦서류·결제는 이 세 장치 덕에 안전해요|papers and payments stay safe thanks to these three devices⟧", 11, "var(--ink)")
          + person(570, 130, s=0.8, face=FROWN, **CARRIER) + label(570, 250, "⟦실시간 영상은 이 장치들 때문에 오히려 느려져요|live video gets slower precisely because of these devices⟧", 11, "var(--ink)")
          + label(380, 282, "⟦손실 좀 봐도 되는 건 일반봉투(UDP)가 더 맞을 수 있어요|where a little loss is fine, the plain envelope (UDP) can be the better fit⟧", 12, "var(--ink)", cls="d"))
 
@@ -54,22 +54,22 @@ PAGE = {
          "caption": ("쉬지 않고 등기봉투를 계속 보내요.", "The carrier keeps sending registered envelopes without a pause."),
          "small": ("봉투가 찢어지고, 우편함도 넘치고, 길도 막혀요.", "Envelopes tear, the mailbox overflows, and the road jams.")},
         {"svg": P2, "alt": ("봉투가 찢어지고, 우편함이 넘치고, 길에 트럭이 꽉 막힌 세 장면", "Three scenes: a torn envelope, an overflowing mailbox, and a road jammed with trucks"),
-         "caption": ("셋 다 동시에 터지면 더 나빠져요.", "All three failing at once makes it worse."),
+         "caption": ("세 사고가 동시에 터지면 하나씩 터질 때보다 훨씬 나빠요.", "Three failures at once are far worse than one at a time."),
          "small": ("훼손·분실, 우편함 넘침, 길 전체 막힘이 한꺼번에 와요.", "Damage and loss, an overflowing mailbox, and a jammed road all arrive together.")},
         {"svg": P3, "hero": True, "alt": ("집배원과 받는 사람 사이에서 등기봉투가 안전하게 오가는 모습", "A registered envelope passing safely between a carrier and a smiling receiver"),
-         "caption": ("등기 배송을 끝까지 지키는 세 장치예요.", "Three devices guard a registered delivery to the end."),
-         "small": ("잃어버리면 다시 보내고, 넘치면 늦추고, 막히면 수를 줄여요.", "Resend what's lost, slow down if overflowing, cut back if jammed."),
+         "caption": ("TCP의 오류·흐름·혼잡 제어는 등기 배송을 끝까지 지키는 세 장치예요.", "TCP's error, flow, and congestion control are three devices guarding a registered delivery to the end."),
+         "small": ("봉투를 잃어버리면 다시 보내고, 우편함이 넘치면 늦추고, 길이 막히면 수를 줄여요.", "Resend lost envelopes, slow down when the mailbox overflows, send fewer when the road jams."),
          "tricks": (4, [
-             (RESEND_I, ("오류 제어", "Error control"), ("확인이 없으면 다시 보내요(재전송)", "no acknowledgment means it gets resent"), "calm"),
+             (RESEND_I, ("오류 제어", "Error control"), ("확인이 없으면 다시 보내요(재전송)", "no acknowledgment means the envelope gets resent"), "calm"),
              (WINDOW_I, ("흐름 제어", "Flow control"), ("받는 우편함 크기만큼만 보내요(윈도)", "sends only as much as the mailbox can hold (window)")),
              (SLOW_I, ("혼잡 제어", "Congestion control"), ("길이 막히면 보내는 수를 줄여요", "cuts back the count when the road jams"), "warm"),
              (TIMEOUT_I, ("타임아웃", "Timeout"), ("일정 시간 답이 없으면 다시 보내요", "no reply in time also triggers a resend")),
          ])},
         {"svg": P4, "alt": ("보내는 트럭 수가 천천히 늘다가 막히면 뚝 줄어드는 톱니 모양 그래프", "A sawtooth graph where the number of trucks sent slowly climbs, then drops sharply on a jam"),
          "caption": ("혼잡 윈도는 늘렸다 줄이기를 반복해요.", "The congestion window grows, then cuts, again and again."),
-         "small": ("길이 버틸 수 있는 만큼만 천천히 늘리다가, 막히면 뚝 줄여요.", "It slowly grows only as much as the road can bear, then cuts sharply on a jam.")},
+         "small": ("보내는 쪽은 트럭 수를 천천히 늘리다가, 길이 막히면 뚝 줄여요.", "The sender slowly adds trucks, then cuts sharply when the road jams.")},
         {"svg": P5, "alt": ("왼쪽: 서류·결제는 세 장치 덕에 안전함. 오른쪽: 실시간 영상은 오히려 느려짐", "Left: papers and payments stay safe thanks to the three devices. Right: live video gets slower because of them"),
-         "caption": ("너무 조심하면 오히려 느려져요.", "Too much caution can slow things down."),
+         "caption": ("세 장치의 확인·재전송 때문에 실시간 영상은 오히려 늦어져요.", "The three devices' checks and resends can make live video lag."),
          "small": ("손실 좀 봐도 되는 건 일반봉투(UDP)가 더 맞을 수 있어요.", "Where a little loss is fine, the plain envelope (UDP) can be the better fit.")},
     ],
     "summary": (("TCP는 <b>오류 제어(잃어버리면 재전송)</b>, <b>흐름 제어(받는 쪽 속도에 맞추기)</b>, <b>혼잡 제어(길 막히면 속도 줄이기)</b> 세 장치로 등기 배송을 끝까지 지켜요.",

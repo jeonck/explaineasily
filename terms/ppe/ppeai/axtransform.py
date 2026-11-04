@@ -5,11 +5,11 @@ from _world import *
 P1 = svg(300, sky(300)
          + conveyor(80, 230, 300)
          + produce(180, 198, 1.0, "var(--good)") + produce(240, 198, 1.0, "var(--good)")
-         + gradeboard(140, 110, 120, 60, "", ("⟦AI 카메라 설치!|an AI camera, installed!⟧",), 0.8)
+         + gradeboard(140, 110, 120, 60, "", ("⟦AI 카메라 설치!|AI camera added!⟧",), 0.8)
          + person(480, 170, s=0.75, face=SWEAT + EYES, **OPERATOR)
-         + label(480, 270, "⟦분류함은 여전히 제가 손으로 날라요|but I still carry the bins by hand, same as always⟧", 11, "var(--muted)")
+         + label(480, 270, "⟦분류함은 여전히 제가 손으로 날라요|I still carry the bins by hand⟧", 11, "var(--muted)")
          + person(660, 170, s=0.7, face=FROWN, **INSPECTOR)
-         + label(660, 270, "⟦결재 서류도 그대로예요|and the paperwork's still the same too⟧", 11, "var(--muted)")
+         + label(660, 270, "⟦결재 서류도 그대로예요|the sign-off papers haven't changed⟧", 11, "var(--muted)")
          + label(380, 25, "⟦AI 카메라만 하나 얹었을 뿐, 나머지는 그대로예요|just one AI camera bolted on — everything else stays exactly the same⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 왜 어려운가: 도구만 바꾸고 일하는 방식은 그대로면, 병목은 그대로 남아요
@@ -27,7 +27,7 @@ P3 = svg(360, sky(360)
                   "⟦결재는 종이로, 한 단계씩|sign-off on paper, one step at a time⟧",
                   "⟦AI는 카메라 한 대로 거들 뿐|AI just helps out as one extra camera⟧"), 1.0)
          + gradeboard(400, 60, 300, 230, "⟦AX 이후|AFTER AX⟧",
-                 ("⟦AI가 보고 분류하고, 사람은 예외만|AI looks and sorts; a person handles only the exceptions⟧",
+                 ("⟦AI가 보고 분류하고, 사람은 예외만|AI looks and sorts; people handle only exceptions⟧",
                   "⟦결재는 실시간 데이터로 자동 흐름|sign-off flows automatically, on live data⟧",
                   "⟦역할·보고 체계까지 AI 중심으로 재설계|roles and reporting are redesigned around AI itself⟧"), 1.0)
          + f'<path d="M360 175 H400" stroke="var(--accent)" stroke-width="4" marker-end="url(#axa)"/>'
@@ -50,9 +50,9 @@ PAGE = {
          "small": ("분류함도, 결재 서류도 예전 그대로예요.", "The bins and the paperwork are still exactly as they were.")},
         {"svg": P2, "alt": ("판정은 빨라졌지만 결재는 여전히 사흘 걸리고 보고 체계도 그대로라는 세 사람의 말", "Judging got faster, but three people note sign-off still takes three days and reporting never changed"),
          "caption": ("도구만 바뀌고, 일하는 방식은 그대로예요.", "Only the tool changed — the way of working stayed the same."),
-         "small": ("병목은 그대로 남아요.", "The bottleneck stays right where it was.")},
+         "small": ("결재와 보고에 걸린 병목은 그대로 남아요.", "The bottleneck in sign-off and reporting stays right where it was.")},
         {"svg": P3, "hero": True, "alt": ("예전 방식 표에서 AX 이후 표로 화살표가 이어지며, 역할·결재·보고 체계가 통째로 재설계됨을 보여줌", "An arrow runs from the old-way board to the after-AX board, showing roles, sign-off, and reporting all redesigned together"),
-         "caption": ("AI를 중심에 놓고, 일하는 방식 자체를 처음부터 다시 설계하는 거예요.", "It puts AI at the center and redesigns the way of working itself, from the ground up."),
+         "caption": ("AX는 AI를 중심에 놓고, 일하는 방식 자체를 처음부터 다시 설계하는 거예요.", "AX puts AI at the center and redesigns the way of working itself, from the ground up."),
          "small": ("카메라 하나를 더하는 게 아니라, 검사장 전체의 그림을 다시 그려요.", "Not one more camera added on — the whole station's blueprint gets redrawn."),
          "tricks": (4, [
              (FLOW_I, ("업무 흐름 다시 그리기", "Redraw the workflow"), ("단계 자체를 다시 설계해요", "redesigning the steps themselves"), "calm"),
@@ -66,12 +66,12 @@ PAGE = {
                   "⟦AX — AI가 직접 판단하고, 일하는 구조 자체를 재설계함|AX — AI judges for itself, and the structure of work is redesigned⟧",
                   "⟦AX는 DX의 다음 단계가 아니라, 다른 질문에서 시작해요|AX isn't just the next step after DX — it starts from a different question⟧"), 1.0)),
          "alt": ("전산화·자동화(DX)·AX 세 단계를 적은 표", "A board laying out digitization, automation (DX), and AX as three stages"),
-         "caption": ("DX는 '기존 일을 더 빠르게', AX는 '일 자체를 다시'예요.", "DX asks 'how do we do the same work faster'; AX asks 'what should the work even be'."),
+         "caption": ("DX는 '기존 일을 어떻게 더 빠르게 할까'를, AX는 '일 자체를 어떻게 다시 짤까'를 물어요.", "DX asks 'how do we do the same work faster'; AX asks 'how should the work itself be restructured'."),
          "small": ("질문이 다르기 때문에, 조직과 역할까지 함께 바뀌어요.", "Because the question itself is different, the organization and its roles change along with it.")},
         {"svg": svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
                  + person(190, 130, s=0.8, face=FROWN, **OPERATOR) + label(190, 260, "⟦기술만 있으면 될 줄 알았어요|thought the technology alone would be enough⟧", 11, "var(--bad)")
                  + person(570, 130, s=0.8, face=SMILE, **TEACHER) + label(570, 260, "⟦사람들이 새 역할에 익숙해지는 게 먼저예요|getting people used to their new roles comes first⟧", 11, "var(--ink)")
-                 + label(380, 300, "⟦AX는 기술보다 변화관리가 더 어렵고, 되돌릴 땐 원칙판과 운영 지도가 먼저 있어야 해요|AX is harder as change management than as technology, and needs a charter and an operations map already in place⟧", 12, "var(--ink)", cls="d")),
+                 + label(380, 300, "⟦AX는 기술보다 변화관리가 더 어렵고, 구조를 바꾸기 전에 원칙판과 운영 지도가 있어야 해요|AX is harder as change management than as technology, and needs a charter and an operations map already in place⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 조작원이 기술만 있으면 될 줄 알았다고 후회함. 오른쪽: 교사가 사람들이 새 역할에 익숙해지는 게 먼저라고 말함", "Left: the operator regrets thinking technology alone would be enough. Right: the teacher says getting people used to new roles comes first"),
          "caption": ("AX는 기술보다 변화관리가 더 어려워요.", "AX is harder as change management than as technology."),
          "small": ("등급 원칙판과 운영 지도 없이 구조부터 바꾸면, 오히려 혼란만 커져요.", "Restructuring before the charter and the operations map are in place only breeds confusion.")},
@@ -84,10 +84,10 @@ PAGE = {
         ("AX(AI 전환)", "AX (AI transformation)", ("검사장 전체를 다시 설계하는 것.", "Redesigning the whole station from the ground up."), ("카메라 한 대를 얹는 것과는 완전히 달라요.", "Entirely different from just bolting on one camera.")),
         ("DX(디지털 전환)", "DX (digital transformation)", ("같은 일을 화면과 자동화로 더 빠르게 하는 것.", "Doing the same work faster, through screens and automation."), ("AX는 DX의 다음 단계가 아니라, 다른 질문에서 시작해요.", "AX isn't the next step after DX — it starts from a different question.")),
         ("업무 재설계", "Process redesign", ("일하는 단계 자체를 다시 그리는 것.", "Redrawing the steps of the work itself."), ("AX의 핵심 작업이에요.", "The core work of AX.")),
-        ("변화관리", "Change management", ("사람들이 새 역할에 익숙해지도록 돕는 것.", "Helping people get used to their new roles."), ("기술보다 이게 더 어려운 경우가 많아요.", "Often the harder part — harder than the technology itself.")),
+        ("변화관리", "Change management", ("사람들이 새 역할에 익숙해지도록 돕는 것.", "Helping people get used to their new roles."), ("기술 도입보다 변화관리가 더 어려운 경우가 많아요.", "Often harder than adopting the technology itself.")),
         ("AI 윤리기준·거버넌스", "AI ethics & governance", ("구조를 바꾸기 전에 먼저 있어야 할 원칙판.", "The charter that needs to exist before any restructuring."), ('AX가 기대는 원칙이에요. → <a href="aiethicsgov-ko.html">모든 검사장이 함께 쓰는 등급 원칙판</a>', 'The principle AX leans on. → <a href="aiethicsgov-en.html">The Grading Charter Every Station Shares</a>')),
         ("AI 리스크 관리 프레임워크", "AI risk management framework", ("구조를 바꾸는 동안에도 계속 도는 운영 지도.", "The operations map that keeps running even while the structure changes."), ('AX 과정에서도 멈추지 않아요. → <a href="airiskframe-ko.html">검사장 전체를 도는 운영 지도</a>', "Doesn't pause just because AX is underway. → <a href=\"airiskframe-en.html\">The Operations Map That Walks the Whole Station</a>")),
-        ("예외 처리", "Exception handling", ("AX 이후 사람에게 남는 몫.", "What's left for a person to do, after AX."), ("사람이 전부가 아니라, 드문 경우만 맡게 돼요.", "Not everything — just the rare cases that still need a person.")),
+        ("예외 처리", "Exception handling", ("AX 이후 사람에게 남는 몫.", "What's left for a person to do, after AX."), ("사람이 모든 작물을 보는 게 아니라, 드문 경우만 맡게 돼요.", "A person no longer checks everything — just the rare cases.")),
         ("데이터 기반 운영", "Data-driven operations", ("검사장 전체를 숫자로 보고 최적화하는 것.", "Seeing and optimizing the whole station through its numbers."), ("AX가 지향하는 운영 방식이에요.", "The operating style AX is aiming toward.")),
     ],
 }

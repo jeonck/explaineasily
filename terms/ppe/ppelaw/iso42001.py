@@ -17,11 +17,11 @@ P1 = svg(300, sky(300)
 P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
          + person(220, 135, s=0.8, face=SWEAT + EYES, **STUDENT) + label(220, 265, "⟦AI가 왜 저만 낮게 평가했는지 몰라요|I don't know why the AI graded only me low⟧", 11, "var(--bad)")
          + person(560, 135, s=0.8, face=FROWN, **REP) + label(560, 265, "⟦반마다 AI를 다르게 써서 기준이 다 달라요|every class uses the AI differently, with no common rule⟧", 11, "var(--bad)")
-         + label(380, 300, "⟦기준 없이 쓰면 편향되거나 설명 못 하는 사고가 남아요|without a standard, bias and unexplainable decisions slip through⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 300, "⟦기준 없이 AI를 쓰면 편향되거나 이유를 설명 못 하는 판단이 그대로 남아요|without a standard, biased or unexplainable AI decisions slip through⟧", 12, "var(--ink)", cls="d"))
 
 # 3. ISO/IEC 42001 = 학생회가 정한 AI 관리 인증 기준 (hero)
 P3 = svg(340, sky(340)
-         + label(380, 28, "⟦ISO/IEC 42001 = AI를 책임감 있게 관리하는지 확인하고 도장을 찍어주는 국제표준|ISO/IEC 42001 = the international standard that checks AI is managed responsibly, and stamps it⟧", 12, "var(--ink)", cls="d")
+         + label(380, 28, "⟦ISO/IEC 42001 = AI를 책임감 있게 관리하는지 확인해 인증 도장을 찍는 기준이 되는 국제표준|ISO/IEC 42001 = the international standard used to check AI is managed responsibly, and to certify it⟧", 12, "var(--ink)", cls="d")
          + person(170, 120, s=0.9, face=EYES, **PRESIDENT)
          + checkmachine(380, 185, 1.3)
          + '<circle cx="380" cy="230" r="34" fill="var(--good)"/><path d="M365 230 l10 10 l18 -22" stroke="#FFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' + label(380, 285, "⟦AIMS 인증|AIMS CERTIFIED⟧", 10, "var(--good)", cls="d")
@@ -38,9 +38,9 @@ P4 = svg(300, sky(300, ground=False)
 
 # 5. 인증받았다고 다 끝나는 건 아니에요
 P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
-         + person(190, 120, s=0.8, face=SMILE, **PRESIDENT) + label(190, 260, "⟦관리 체계는 갖췄어요|the management system is in place⟧", 11, "var(--ink)")
+         + person(190, 120, s=0.8, face=SMILE, **PRESIDENT) + label(190, 260, "⟦AI 관리 체계는 갖췄어요|the AI management system is in place⟧", 11, "var(--ink)")
          + person(570, 120, s=0.8, face=EYES, **STUDENT) + label(570, 260, "⟦근데 AI가 늘 맞게 판단하나요?|but does the AI always judge correctly?⟧", 11, "var(--ink)")
-         + label(380, 305, "⟦인증은 '관리한다'는 뜻이지 '완벽하다'는 뜻이 아니에요|certified means managed well — not that it's flawless⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 305, "⟦인증은 AI를 '관리한다'는 뜻이지 AI가 '완벽하다'는 뜻이 아니에요|certified means the AI is managed well — not that it's flawless⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "iso42001", "order": 7,
@@ -50,17 +50,17 @@ PAGE = {
             "ISO/IEC 42001, told as a story about the student council checking AI is managed responsibly, and stamping it."),
     "panels": [
         {"svg": P1, "alt": ("대표가 AI 학습도우미 앱을 들여도 될지 묻고, 선생님은 확인할 기준이 없다고 답함", "A rep asks whether an AI study helper can be brought in; a teacher says there's no standard to check it"),
-         "caption": ("AI 학습도우미를 들이려는데 공통 기준이 없어요.", "They want to bring in an AI helper, but there's no shared standard."),
+         "caption": ("학생회가 AI 학습도우미를 들이려는데 공통 기준이 없어요.", "The student council wants to bring in an AI helper, but there's no shared standard."),
          "small": ("학교에 AI를 들이는 공통 기준이 아직 없어요.", "There's no shared standard yet for bringing AI into school.")},
         {"svg": P2, "alt": ("학생은 AI가 왜 자신만 낮게 평가했는지 모르고, 대표는 반마다 기준이 다르다고 함", "A student doesn't know why the AI graded only them low; a rep says every class uses it differently"),
-         "caption": ("각자 마음대로 쓰다 사고가 남아요.", "Using it however each class likes leaves accidents behind."),
-         "small": ("기준 없이 쓰면 편향되거나 설명 못 하는 사고가 남아요.", "Without a standard, bias and unexplainable decisions slip through.")},
+         "caption": ("반마다 AI를 마음대로 쓰다 보니 억울한 평가 같은 사고가 생겨요.", "With each class using AI however it likes, mishaps like unfair grades follow."),
+         "small": ("기준 없이 AI를 쓰면 편향되거나 이유를 설명 못 하는 판단이 그대로 남아요.", "Without a standard, biased or unexplainable AI decisions slip through.")},
         {"svg": P3, "hero": True, "alt": ("학생회장이 자동 검사기로 확인하고 AIMS 인증 도장을 찍어줌", "The council president checks with an automatic machine and stamps an AIMS certification"),
-         "caption": ("ISO/IEC 42001은 AI를 책임감 있게 관리하는지 확인하고 도장을 찍어주는 국제표준이에요.", "ISO/IEC 42001 is the international standard that checks AI is managed responsibly, and stamps it."),
+         "caption": ("ISO/IEC 42001은 AI를 책임감 있게 관리하는지 확인해 인증 도장을 찍는 기준이 되는 국제표준이에요.", "ISO/IEC 42001 is the international standard used to check AI is managed responsibly, and to certify it."),
          "small": ("ISO 27001과 비슷한 구조로, 대상만 'AI 관리'예요.", "Structured like ISO 27001, but the target is \"managing AI.\""),
          "tricks": (4, [
              (RISK_I, ("위험 미리 찾기", "Find risk early"), ("편향 같은 AI 위험을요", "risks like bias, specifically"), "warm"),
-             (RECORD_I, ("설명 가능하게 기록", "Keep explainable records"), ("왜 그런 결과인지 남겨요", "why a result came out that way"), "calm"),
+             (RECORD_I, ("설명 가능하게 기록", "Keep explainable records"), ("왜 그런 결과인지 남겨요", "records why a result came out that way"), "calm"),
              (HUMAN_I, ("사람이 최종 확인", "A human has the final say"), ("AI 혼자 결정하지 않아요", "AI doesn't decide alone")),
              (LOOP_I, ("계속 점검하고 고치기", "Check and fix, continuously"), ("한 번으로 끝나지 않아요", "never a one-time thing")),
          ])},
@@ -68,11 +68,11 @@ PAGE = {
          "caption": ("ISO 27001과 ISO 42001은 구조가 닮았어요.", "ISO 27001 and ISO 42001 share a similar structure."),
          "small": ("구조는 닮았지만, 42001은 AI만의 위험(편향·설명가능성)을 더 봐요.", "Similar in structure, but 42001 adds AI-specific risks like bias and explainability.")},
         {"svg": P5, "alt": ("왼쪽: 관리 체계를 갖췄다고 웃는 학생회장. 오른쪽: AI가 늘 맞는지 묻는 학생", "Left: the president smiles, having set up the management system. Right: a student asks if the AI always judges correctly"),
-         "caption": ("인증받았다고 다 끝나는 건 아니에요.", "Being certified doesn't mean the job is done."),
-         "small": ("인증은 '관리한다'는 뜻이지 '완벽하다'는 뜻이 아니에요.", "Certified means managed well — not that it's flawless.")},
+         "caption": ("인증받았다고 AI 관리가 끝나는 건 아니에요.", "Being certified doesn't mean managing the AI is done."),
+         "small": ("인증은 AI를 '관리한다'는 뜻이지 AI가 '완벽하다'는 뜻이 아니에요.", "Certified means the AI is managed well — not that it's flawless.")},
     ],
-    "summary": (("<b>ISO/IEC 42001</b> = AI를 쓰는 조직이 <b>위험관리·설명가능성·사람의 확인</b>을 갖췄는지 확인하고 <b>인증 도장</b>을 찍어주는 국제표준.",
-                 "<b>ISO/IEC 42001</b> = the international standard that checks an organization using AI has <b>risk management, explainability, and human oversight</b> in place, and gives it a <b>certification stamp</b>."),
+    "summary": (("<b>ISO/IEC 42001</b> = AI를 쓰는 조직이 <b>위험관리·설명가능성·사람의 확인</b>을 갖췄는지 확인해 <b>인증 도장</b>을 찍는 기준이 되는 국제표준.",
+                 "<b>ISO/IEC 42001</b> = the international standard used to check that an organization using AI has <b>risk management, explainability, and human oversight</b> in place, and to award a <b>certification stamp</b>."),
                 ("ISO/IEC 42001:2023은 세계 최초의 AI 경영시스템(AIMS, AI Management System) 국제표준이에요. ISO 27001(정보보안 경영시스템)과 같은 PDCA 구조를 따르면서, AI 특유의 위험(편향, 설명가능성, 데이터 품질, 사람의 감독)을 추가로 요구해요. 인증은 조직이 AI를 '책임감 있게 관리하는 체계'를 갖췄다는 증거이지, AI의 모든 판단이 옳다는 보증은 아니에요.",
                  "ISO/IEC 42001:2023 is the world's first international standard for an AI Management System (AIMS). It follows the same PDCA structure as ISO 27001 (information security management) while adding requirements specific to AI — risk, explainability, data quality, and human oversight. Certification proves an organization has a system for managing AI responsibly — not that every decision the AI makes is correct.")),
     "glossary": [

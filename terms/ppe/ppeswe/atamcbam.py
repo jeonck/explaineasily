@@ -13,14 +13,14 @@ P2 = svg(330, '<rect width="760" height="330" fill="var(--bad-soft)"/>'
          + printplate(380, 140, 1.2)
          + person(380, 200, s=0.7, face=FROWN + SWEAT, **PRINTER)
          + bubble(260, 30, 280, 44, "⟦이 장정으론 전자책 전환이 안 돼요!|this binding can't convert to an e-book at all!⟧", 12, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 300, "⟦이미 다 찍은 뒤라 너무 늦었어요|it's already all printed — far too late⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 300, "⟦이미 다 찍은 뒤라 장정을 바꾸기엔 너무 늦었어요|it's already all printed — far too late to change the binding⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 인쇄 전, 시나리오로 미리 리허설 (hero)
 P3 = svg(365, sky(365)
          + person(230, 100, s=0.85, face=EYES, **EDITOR) + person(400, 100, s=0.85, face=EYES, **WRITER) + person(560, 100, s=0.85, face=EYES, **PRINTER)
          + styleguide(140, 225, 480, 90, "⟦시나리오: 내구성? 전자책 전환? 인쇄 속도?|SCENARIOS: durability? e-book conversion? print speed?⟧", (), 0.9)
          + label(380, 30, "⟦ATAM = 인쇄 전에 여러 시나리오로 트레이드오프를 미리 찾는 리허설|ATAM = rehearsing trade-offs against many scenarios, before the press ever runs⟧", 13, "var(--ink)", cls="d")
-         + label(380, 350, "⟦이해관계자들이 다 같이 모여, 설계 결정의 민감점을 찾아요|stakeholders gather together to find the sensitive points in a design decision⟧", 11, "var(--muted)"))
+         + label(380, 350, "⟦이해관계자들이 모여, 품질을 크게 좌우하는 설계 결정(민감점)을 찾아요|stakeholders gather to find the design decisions that swing quality most (sensitivity points)⟧", 11, "var(--muted)"))
 
 SCEN_I = icon('<rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 22 h20 M22 30 h20 M22 38 h12" stroke="#142033" stroke-width="2.5"/>')
 MAP_I = icon('<circle cx="24" cy="24" r="10" fill="var(--accent)"/><circle cx="44" cy="40" r="10" fill="var(--good)"/><path d="M30 30 L38 34" stroke="var(--ink)" stroke-width="3"/>')
@@ -34,19 +34,19 @@ PAGE = {
     "sub": ("전체 구성을 다 정한 뒤 인쇄 들어가기 직전, 여러 상황을 미리 리허설해 트레이드오프를 찾는 이야기예요.",
             "A story about rehearsing several scenarios right before the press runs, to surface trade-offs while there's still time."),
     "panels": [
-        {"svg": P1, "alt": ("인쇄판 앞에서 편집장과 인쇄 감독이 이 장정 그대로 가도 되는지 불안해함", "In front of the printing plate, the editor and print supervisor look nervous about whether to go with this binding"),
-         "caption": ("인쇄 직전, 다들 이대로 괜찮은지 불안해해요.", "Right before the press runs, everyone's nervous about whether this is okay."),
+        {"svg": P1, "alt": ("인쇄판 앞에서 편집장과 인쇄 감독이 지금 장정 그대로 찍어도 되는지 불안해함", "In front of the printing plate, the editor and print supervisor look nervous about printing with the current binding"),
+         "caption": ("인쇄 직전, 편집장과 인쇄 감독이 이 장정으로 찍어도 괜찮은지 불안해해요.", "Right before the press runs, the editor and print supervisor worry about printing with this binding."),
          "small": ("전체 구성이 다 정해진 뒤의 불안함이에요.", "The whole layout is already locked in — and now the nerves set in.")},
         {"svg": P2, "alt": ("인쇄가 다 끝난 뒤에야 이 장정으로는 전자책 전환이 안 된다는 걸 알게 됨", "Only after printing is done does everyone realize this binding can't be converted to an e-book"),
-         "caption": ("인쇄 다 되고 나서야 문제를 알게 돼요.", "The problem only surfaces after everything is printed."),
-         "small": ("이미 다 찍은 뒤라 너무 늦었어요.", "It's already all printed — far too late to fix.")},
+         "caption": ("인쇄가 다 끝나고 나서야 장정 문제를 알게 돼요.", "The binding problem only surfaces after everything is printed."),
+         "small": ("이미 다 찍은 뒤라 장정을 바꾸기엔 너무 늦었어요.", "It's already all printed — far too late to change the binding.")},
         {"svg": P3, "hero": True, "alt": ("편집장, 작가, 인쇄 감독이 모여 내구성·전자책 전환·인쇄 속도 같은 시나리오를 미리 점검함", "The editor, author, and print supervisor gather to check scenarios like durability, e-book conversion, and print speed ahead of time"),
          "caption": ("ATAM = 인쇄 전에 여러 시나리오로 트레이드오프를 미리 찾는 리허설이에요.", "ATAM = rehearsing trade-offs against many scenarios before the press ever runs."),
-         "small": ("이해관계자들이 다 같이 모여, 설계 결정의 민감점을 찾아요.", "Stakeholders gather together to find the sensitive points in a design decision."),
+         "small": ("이해관계자들이 모여, 품질을 크게 좌우하는 설계 결정(민감점)을 찾아요.", "Stakeholders gather to find the design decisions that swing quality most (sensitivity points)."),
          "tricks": (4, [
              (SCEN_I, ("품질 시나리오 모으기", "Gather quality scenarios"), ("내구성, 전환성, 속도 등", "durability, convertibility, speed, and more"), "calm"),
-             (MAP_I, ("설계 결정과 매핑", "Map to design decisions"), ("어떤 선택이 뭘 책임지는지", "which choice is responsible for what")),
-             (SENSE_I, ("민감점/트레이드오프 찾기", "Find sensitivity and trade-off points"), ("하나를 얻으면 뭘 잃는지", "what you lose to gain the other"), "warm"),
+             (MAP_I, ("설계 결정과 매핑", "Map to design decisions"), ("어떤 설계 선택이 어떤 시나리오를 좌우하는지", "which design choice drives which scenario")),
+             (SENSE_I, ("민감점/트레이드오프 찾기", "Find sensitivity and trade-off points"), ("품질 하나를 얻으면 다른 무엇을 잃는지", "what quality you lose when you gain another"), "warm"),
              (RISK_I, ("위험 미리 기록", "Record the risks early"), ("인쇄 전에 적어 둬요", "write them down before the press runs")),
          ])},
         {"svg": svg(320, sky(320)
@@ -54,17 +54,17 @@ PAGE = {
                                   ("⟦비용 — 낮음|cost — low⟧", "⟦전자책 전환 — 어려움|e-book conversion — hard⟧", "⟦인쇄 속도 — 빠름|print speed — fast⟧"), 1.0)
                      + styleguide(420, 40, 280, 240, "⟦옵션 B: 유연한 제본|OPTION B: flexible binding⟧",
                                   ("⟦비용 — 높음|cost — high⟧", "⟦전자책 전환 — 쉬움|e-book conversion — easy⟧", "⟦인쇄 속도 — 느림|print speed — slow⟧"), 1.0, hl=1)
-                     + label(380, 300, "⟦CBAM = 여기에 비용과 이득을 숫자로 더해 저울질하는 단계|CBAM = the step that adds cost and benefit numbers to weigh these options⟧", 12, "var(--ink)")),
+                     + label(380, 300, "⟦CBAM = ATAM에서 찾은 옵션에 비용과 이득을 숫자로 더해 저울질하는 단계|CBAM = the step that adds cost and benefit numbers to weigh the options ATAM found⟧", 12, "var(--ink)")),
          "alt": ("저렴한 제본(옵션 A)과 유연한 제본(옵션 B)의 비용·전환성·속도를 숫자로 비교", "Comparing a cheap binding (Option A) and a flexible binding (Option B) by cost, convertibility, and speed"),
-         "caption": ("여기에 비용과 이득까지 숫자로 따지면 CBAM이에요.", "Add cost and benefit numbers to this, and it becomes CBAM."),
-         "small": ("어느 쪽이 \'더 남는 장사\'인지 숫자로 비교해요.", "It compares, in numbers, which option actually pays off more.")},
+         "caption": ("ATAM에서 찾은 옵션에 비용과 이득까지 숫자로 따지면 CBAM이에요.", "Put cost and benefit numbers on the options ATAM found, and it becomes CBAM."),
+         "small": ("옵션 A와 B 중 어느 쪽이 \'더 남는 장사\'인지 숫자로 비교해요.", "CBAM compares, in numbers, whether Option A or B pays off more.")},
         {"svg": svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
-                     + person(190, 130, s=0.8, face=EYES, **PRINTER) + label(190, 260, "⟦눈을 뜨게 해줘요|it opens everyone's eyes⟧", 11, "var(--ink)")
+                     + person(190, 130, s=0.8, face=EYES, **PRINTER) + label(190, 260, "⟦평가를 하면 어떤 위험이 있는지 다들 알게 돼요|the evaluation shows everyone the risks⟧", 11, "var(--ink)")
                      + person(570, 130, s=0.8, face=EYES, **EDITOR) + label(570, 260, "⟦결정은 결국 편집장 몫이에요|the final call is still the editor's⟧", 11, "var(--ink)")
                      + label(380, 305, "⟦평가는 선택을 대신 안 해줘요, 무엇을 놓고 고민해야 할지 보여줄 뿐이에요|evaluation doesn't choose for you — it just shows what's worth weighing⟧", 12, "var(--ink)", cls="d")),
-         "alt": ("왼쪽: 평가가 눈을 뜨게 해줌. 오른쪽: 최종 결정은 여전히 편집장의 몫", "Left: the evaluation opens everyone's eyes. Right: the final decision is still the editor's to make"),
+         "alt": ("왼쪽: 평가로 어떤 위험이 있는지 다들 알게 됨. 오른쪽: 최종 결정은 여전히 편집장의 몫", "Left: the evaluation shows everyone the risks. Right: the final decision is still the editor's to make"),
          "caption": ("평가가 결정을 대신 해주진 않아요.", "Evaluation doesn't make the decision for you."),
-         "small": ("무엇을 놓고 고민해야 할지 보여줄 뿐, 선택은 여전히 사람 몫이에요.", "It only shows what's worth weighing — the choice is still a human's to make.")},
+         "small": ("평가는 무엇을 놓고 고민해야 할지 보여줄 뿐, 선택은 여전히 사람 몫이에요.", "The evaluation only shows what's worth weighing — the choice is still a human's to make.")},
     ],
     "summary": (("<b>ATAM</b>은 인쇄(개발) 전에 <b>품질 시나리오</b>로 설계의 트레이드오프와 위험을 미리 찾는 평가법이고, <b>CBAM</b>은 그 선택지마다 <b>비용과 이득</b>을 숫자로 더해 저울질하는 확장판이에요.",
                  "<b>ATAM</b> evaluates a design by rehearsing <b>quality scenarios</b> before the press runs, surfacing trade-offs and risks; <b>CBAM</b> extends this by adding <b>cost and benefit</b> numbers to weigh each option."),

@@ -25,8 +25,8 @@ def flow_chain(x, y, n, broken=True, s=1.0):
 # 1. 접수부터 출고까지 단계가 너무 많고 끊겨 있어요
 P1 = svg(300, sky(300)
          + flow_chain(60, 150, 4, broken=True)
-         + label(60, 110, "⟦접수|intake⟧", 11, "var(--muted)") + label(150, 110, "⟦대기|wait⟧", 11, "var(--muted)")
-         + label(240, 110, "⟦재진단|re-diagnose⟧", 11, "var(--muted)") + label(330, 110, "⟦재작성|re-write⟧", 11, "var(--muted)")
+         + label(95, 110, "⟦접수|intake⟧", 11, "var(--muted)") + label(211, 110, "⟦대기|wait⟧", 11, "var(--muted)")
+         + label(327, 110, "⟦재진단|re-diagnose⟧", 11, "var(--muted)") + label(443, 110, "⟦재작성|re-write⟧", 11, "var(--muted)")
          + person(650, 170, s=0.8, face=SWEAT, **CHIEF)
          + label(380, 40, "⟦차 한 대 고치는데 단계가 너무 많고 자꾸 끊겨요|fixing one car takes too many steps, each one stalling⟧", 13, "var(--ink)")
          + label(380, 270, "⟦옛날 방식을 그대로 두고 조금씩 손봐선 한계가 있어요|tweaking the old way bit by bit only goes so far⟧", 12, "var(--muted)"))
@@ -68,7 +68,7 @@ P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="
          + flow_chain(80, 150, 2, broken=False, s=0.9)
          + label(190, 220, "⟦공정도는 깔끔하게 다시 그렸어요|the process diagram is redrawn, clean⟧", 11, "var(--ink)")
          + person(570, 130, s=0.8, face=FROWN, **MECH2)
-         + label(570, 255, "⟦정비사가 새 방식에 익숙하지 않으면 소용없어요|but it's no use if mechanics aren't used to the new way⟧", 11, "var(--ink)")
+         + label(570, 255, "⟦정비사가 새 방식에 익숙하지 않으면 새 공정도는 소용없어요|but the new diagram is no use if mechanics don't know it⟧", 11, "var(--ink)")
          + label(380, 300, "⟦공정 재설계는 사람·교육·시스템이 같이 바뀌어야 해요|redesigning the process needs people, training, and systems to change together⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
@@ -79,10 +79,10 @@ PAGE = {
             "BPR, told as a story about redrawing a broken, overcomplicated repair process from scratch instead of tweaking it piece by piece."),
     "panels": [
         {"svg": P1, "alt": ("접수부터 출고까지 끊긴 네 단계 공정을 보며 정비반장이 진땀을 흘림", "The chief sweats over a four-step process from intake to pickup that keeps stalling"),
-         "caption": ("단계가 너무 많고 자꾸 끊겨요.", "There are too many steps, each one stalling."),
+         "caption": ("차 한 대 고치는 데 단계가 너무 많고 자꾸 끊겨요.", "Fixing one car takes too many steps, each one stalling."),
          "small": ("옛날 방식을 그대로 두고 조금씩 손봐선 한계가 있어요.", "Tweaking the old way bit by bit only goes so far.")},
         {"svg": P2, "alt": ("서류 다섯 장이 늘어서 있고 정비사가 한 단계를 빨리해도 전체가 느려짐에 좌절함", "Five separate papers lined up; the mechanic is frustrated that speeding up one step doesn't help"),
-         "caption": ("한 단계를 빨리해도 전체는 안 빨라져요.", "Speeding up one step doesn't speed up the whole."),
+         "caption": ("한 단계를 빨리해도 전체 공정은 안 빨라져요.", "Speeding up one step doesn't speed up the whole process."),
          "small": ("공정 전체를 처음부터 다시 그려야 할 때가 있어요.", "Sometimes the whole process needs redrawing from scratch.")},
         {"svg": P3, "hero": True, "alt": ("접수와 진단을 하나로 합친 두 단계짜리 새 공정도 앞에서 정비반장이 만족함", "The chief is pleased in front of a new two-step process that merges intake and diagnosis"),
          "caption": ("BPR은 공정을 처음부터 다시 설계하는 것이에요.", "BPR redesigns the process from scratch."),
@@ -94,7 +94,7 @@ PAGE = {
              (JUMP_I, ("단계적 아닌 도약", "A leap, not a step"), ("조금씩이 아니라 크게 바꿔요", "a big change, not a small tweak"), "calm"),
          ])},
         {"svg": P4, "alt": ("왼쪽: 조금씩 고치는 카이젠 방식(작은 개선). 오른쪽: BPR은 공정 자체를 재구성(큰 개선, 큰 위험)", "Left: kaizen's small tweaks. Right: BPR rebuilds the process itself — big gains, big risk"),
-         "caption": ("조금씩 고치기와 BPR은 접근이 달라요.", "Incremental tweaks and BPR take different approaches."),
+         "caption": ("카이젠은 기존 단계를 조금씩 고치고, BPR은 단계 자체를 다시 짜요.", "Kaizen tweaks existing steps a little; BPR rebuilds the steps themselves."),
          "small": ("BPR은 개선 폭이 크지만 위험도 더 커요.", "BPR offers bigger gains, but carries bigger risk too.")},
         {"svg": P5, "alt": ("왼쪽: 공정도는 깔끔하게 재설계됨. 오른쪽: 정비사가 새 방식에 적응하지 못하면 소용없음", "Left: the process diagram is cleanly redesigned. Right: it's useless if mechanics can't adapt"),
          "caption": ("다시 설계해도 사람이 못 따라오면 소용없어요.", "A redesign is useless if people can't keep up with it."),
@@ -109,7 +109,7 @@ PAGE = {
         ("카이젠(점진적 개선)", "Kaizen (Incremental Improvement)", ("기존 단계를 조금씩 빨리하는 것.", "Speeding up existing steps a little at a time."), ("BPR과 달리 큰 틀은 그대로 둬요.", "Unlike BPR, the overall structure stays the same.")),
         ("프로세스 혁신", "Process Innovation", ("BPR을 가리키는 다른 이름.", "Another name for BPR."), ("정보기술 활용이 자주 함께 와요.", "Often paired with the use of information technology.")),
         ("단계 통합", "Step Consolidation", ("여러 단계를 하나로 합치는 것.", "Merging several steps into one."), ("접수+진단 통합이 그 예예요.", "Merging intake and diagnosis is one example.")),
-        ("변화 관리", "Change Management", ("새 방식에 사람이 적응하도록 돕는 것.", "Helping people adapt to the new way."), ("이게 없으면 재설계가 실패해요.", "Without it, the redesign tends to fail.")),
+        ("변화 관리", "Change Management", ("새 방식에 사람이 적응하도록 돕는 것.", "Helping people adapt to the new way."), ("변화 관리가 없으면 재설계가 실패하기 쉬워요.", "Without change management, the redesign tends to fail.")),
         ("정보기술 지렛대", "IT as a Lever", ("디지털 전표처럼 기술로 단계를 줄이는 것.", "Using technology, like a digital slip, to cut steps."), ("BPR을 가능하게 하는 수단이에요.", "A key enabler of BPR.")),
         ("업무 재설계 위험", "Reengineering Risk", ("크게 바꾸는 만큼 실패 위험도 큼.", "Big change carries big failure risk too."), ("성공률이 낮다는 비판도 있어요.", "Often criticized for a low success rate.")),
         ("BPM(업무 프로세스 관리)", "BPM (Business Process Management)", ("재설계 이후 공정을 꾸준히 관리하는 것.", "Ongoing management of the process after redesign."), ("BPR은 한 번의 재설계, BPM은 지속 관리예요.", "BPR is a one-time redesign; BPM is continuous management.")),

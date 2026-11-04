@@ -5,8 +5,8 @@ from _world import *
 P1 = svg(320, sky(320)
          + building(60, 50, 1.0)
          + person(320, 175, s=0.8, face=EYES, **TENANT, extra='')
-         + bubble(380, 70, 300, 64, "⟦우리도 이 건물에 들어가서 비용을 아끼고 싶은데... 공공데이터인데 괜찮을까요?|we want in too, to save money — but this is public data, is it okay?⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 300, "⟦공공기관도 공유 건물에 들어가서 비용을 아끼고 싶어요|public agencies want in too, to save on cost⟧", 12, "var(--ink)"))
+         + bubble(370, 70, 360, 64, "⟦우리도 이 건물에 입주해 비용을 아끼고 싶은데... 공공데이터를 맡겨도 될까요?|we want in too, to save money — but can we put public data here?⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + label(380, 300, "⟦공공기관도 공유 건물에 들어가서 비용을 아끼고 싶어요|public agencies want to move into the shared building too, to save on cost⟧", 12, "var(--ink)"))
 
 # 2. 왜 어려운가: 아무 건물에나 입주하면 안 돼요 — 검증되지 않은 건물엔 위험해요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
@@ -18,12 +18,12 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 # 3. hero: 공공부문 클라우드 활용 = 검증된 건물에만, 등급에 맞춰 입주하는 조달 규정
 P3 = svg(340, sky(340)
          + building(40, 40, 1.15, label_text="⟦CSAP 인증 건물|CSAP-certified building⟧")
-         + '<rect x="40" y="20" width="24" height="24" fill="var(--good)"/>' + label(52, 38, "✓", 16, "#fff", cls="d")
+         + '<rect x="46" y="48" width="24" height="24" fill="var(--good)"/>' + label(58, 66, "✓", 16, "#fff", cls="d")
          + office(320, 210, 0.95, label_text="⟦상등급: 민감정보|high grade: sensitive⟧")
          + office(440, 210, 0.95, label_text="⟦하등급: 일반업무|low grade: general⟧")
          + person(650, 236, s=0.75, face=EYES, **MANAGER)
          + label(380, 30, "⟦검증된 건물의, 정해진 등급 칸에만 입주해요|move in only to a certified building, into the grade your data earns⟧", 14, "var(--ink)", cls="d")
-         + label(380, 325, "⟦이게 공공부문의 클라우드 조달·활용 규정이에요|this is how the public sector procures and adopts cloud⟧", 12, "var(--muted)"))
+         + label(380, 325, "⟦인증 건물·등급별 입주가 공공부문의 클라우드 조달·활용 규정이에요|certified building, matching grade: that's how the public sector adopts cloud⟧", 12, "var(--muted)"))
 
 # 4. 작동 디테일: 입주 전 절차 — 등급 분류 → 인증 확인 → 조달 → 입주 후 지속 점검
 P4 = svg(320, sky(320)
@@ -53,39 +53,39 @@ PAGE = {
             "Public-sector cloud adoption (CSAP, guidelines, audit), told as a procurement rule: move in only to a certified building, into the grade your data earns."),
     "panels": [
         {"svg": P1, "alt": ("공공기관 직원이 비용을 아끼기 위해 공유 건물에 입주하고 싶지만 공공데이터라 걱정하며 말함", "A public-agency worker wants to move into the shared building to save cost, but worries aloud about public data"),
-         "caption": ("공공기관도 공유 건물에 들어가서 비용을 아끼고 싶어요.", "Public agencies want in too, to save on cost."),
+         "caption": ("공공기관도 공유 건물에 들어가서 비용을 아끼고 싶어요.", "Public agencies want to move into the shared building too, to save on cost."),
          "small": ("근데 공공데이터라 아무 데나 들어갈 순 없어요.", "But it's public data — they can't just move in anywhere.")},
         {"svg": P2, "alt": ("두 건물을 가리키며 안전 점검을 받았는지 묻는 관리자가 땀을 흘림", "A sweating manager, pointing at two buildings, asks whether each was ever safety-inspected"),
-         "caption": ("아무 건물에나 입주하면 안전을 아무도 보장 못 해요.", "Move into just any building, and nobody can vouch for safety."),
+         "caption": ("아무 건물에나 입주하면 공공데이터가 안전한지 아무도 보장 못 해요.", "Move into just any building, and nobody can vouch that public data is safe."),
          "small": ("검증 없는 건물은 공공데이터엔 너무 위험해요.", "An uncertified building is too risky for public data.")},
         {"svg": P3, "hero": True, "alt": ("체크마크가 붙은 CSAP 인증 건물 안에 상등급 민감정보 사무실과 하등급 일반업무 사무실이 나뉘어 있고 관리자가 지켜봄", "Inside a check-marked CSAP-certified building, a high-grade sensitive-data office and a low-grade general office sit apart, watched by a manager"),
          "caption": ("검증된 건물의, 정해진 등급 칸에만 입주해요.", "Move in only to a certified building, into the grade your data earns."),
-         "small": ("이게 공공부문의 클라우드 조달·활용 규정이에요.", "This is how the public sector procures and adopts cloud."),
+         "small": ("인증 건물·등급별 입주가 공공부문의 클라우드 조달·활용 규정이에요.", "Certified building, matching grade: that's how the public sector procures and adopts cloud."),
          "tricks": (4, [
              (GRADE_I, ("데이터 등급부터 나눠요", "Classify the data's grade first"), ("상/중/하로요", "high / mid / low"), "calm"),
-             (CERT_I, ("CSAP 인증 건물인지 봐요", "Check for CSAP certification"), ("건물 자체의 안전검사예요", "the building's own safety check")),
-             (PROC_I, ("조달청 가이드대로 계약해요", "Contract per the procurement guide"), ("정해진 절차가 있어요", "there's a set process"), "warm"),
-             (AUDIT_I, ("입주 후에도 감리로 점검해요", "Keep checking after move-in, via audit"), ("한 번 인증으로 끝이 아니에요", "certification isn't a one-time thing")),
+             (CERT_I, ("CSAP 인증 건물인지 봐요", "Check for CSAP certification"), ("CSAP는 건물 자체의 안전검사예요", "CSAP is the building's own safety check")),
+             (PROC_I, ("조달청 가이드대로 계약해요", "Contract per the procurement guide"), ("가이드에 계약 절차가 정해져 있어요", "the guide sets the contract steps"), "warm"),
+             (AUDIT_I, ("입주 후에도 감리로 점검해요", "Keep checking after move-in, via audit"), ("한 번 인증받았다고 점검이 끝나지 않아요", "one certification doesn't end the checks")),
          ])},
         {"svg": P4, "alt": ("공공기관 입주 절차 안내판: 등급 분류 → 인증 확인 → 조달 계약 → 입주 후 지속 점검", "A board listing the public-sector move-in process: classify grade → check certification → procurement contract → ongoing audit after move-in"),
-         "caption": ("입주까지 네 단계를 거쳐요.", "Moving in goes through four steps."),
-         "small": ("등급이 높을수록 들어갈 수 있는 칸이 줄어요.", "The higher the grade, the fewer spots qualify.")},
+         "caption": ("공공기관은 등급 분류부터 입주 후 점검까지 네 단계를 거쳐요.", "Public agencies go through four steps, from grading data to post-move-in checks."),
+         "small": ("데이터 등급이 높을수록 입주할 수 있는 칸이 줄어요.", "The higher the data's grade, the fewer spots qualify.")},
         {"svg": P5, "alt": ("왼쪽: 건물 인증 체크마크는 안전검사까지만. 오른쪽: 입주사가 자기 문을 어떻게 잠그는지는 별개 책임", "Left: the building's certification checkmark covers only the safety inspection. Right: how the tenant locks their own door is a separate responsibility"),
-         "caption": ("건물 인증은 '안전검사'까지만이에요.", "The building's certification covers the safety inspection only."),
-         "small": ("입주사가 문을 어떻게 잠그는지는 입주사 책임이에요.", "How the tenant locks their own door is still the tenant's job.")},
+         "caption": ("건물 인증(CSAP)은 서비스 자체의 '안전검사'까지만 보증해요.", "The building's CSAP certification vouches only for the service's own safety inspection."),
+         "small": ("입주사가 문을 어떻게 잠그는지(접근 권한·계정 관리)는 입주사 책임이에요.", "How the tenant locks their own door (access and account settings) is still the tenant's job.")},
     ],
     "summary": (("<b>공공부문 클라우드 활용</b> = 검증된 건물(<b>CSAP 인증</b>)에만, 데이터 <b>등급에 맞는 칸</b>으로, <b>정해진 절차</b>를 거쳐 입주하는 것.",
                  "<b>Public-sector cloud adoption</b> means moving into a <b>certified building (CSAP)</b> only, into the <b>grade that fits your data</b>, through a <b>set procedure</b>."),
                 ("공공기관이 민간 클라우드를 쓰려면 CSAP(클라우드서비스 보안인증)를 받은 서비스 중에서, 데이터 등급(상·중·하)에 맞는 등급의 서비스를 조달청 가이드에 따라 계약해야 해요. 입주 이후에도 정보시스템 감리 등으로 지속적인 점검을 받아요. CSAP 인증 기준 자체(건물 안전검사의 세부 항목)는 별도 페이지에서 다뤄요.",
-                 "To use private cloud, public agencies must choose a CSAP (Cloud Security Assurance Program)-certified service at the grade matching their data's classification (high/mid/low), contracted per the procurement agency's guide. After moving in, ongoing checks continue through IS audits and similar reviews. The CSAP certification criteria itself — the building's own safety-inspection checklist — is covered on a separate page.")),
+                 "To use private-sector cloud, public agencies must choose a CSAP (Cloud Security Assurance Program)-certified service at the grade matching their data's classification (high/mid/low), contracted per the procurement agency's guide. After moving in, ongoing checks continue through IS audits and similar reviews. The CSAP certification criteria itself — the building's own safety-inspection checklist — is covered on a separate page.")),
     "glossary": [
         ("공공부문 클라우드 활용", "Public-sector cloud adoption", ("검증된 건물에, 등급 맞춰 입주하는 규정.", "The rule: move into a certified building, at the right grade."), ("조달 절차와 지속 점검까지 포함해요.", "Covers the procurement process and ongoing checks too.")),
         ("CSAP", "CSAP", ("건물 자체의 안전검사 인증.", "The building's own safety-inspection certification."), ("이 페이지는 입주 활용 쪽에 집중해요.", "This page focuses on the move-in/adoption side.")),
-        ("데이터 등급", "Data classification grade", ("상·중·하로 나눈 민감도.", "Sensitivity split into high / mid / low."), ("등급이 높을수록 들어갈 수 있는 칸이 줄어요.", "Higher grade, fewer qualifying spots.")),
+        ("데이터 등급", "Data classification grade", ("상·중·하로 나눈 민감도.", "Sensitivity split into high / mid / low."), ("데이터 등급이 높을수록 입주할 수 있는 칸이 줄어요.", "The higher the data's grade, the fewer spots qualify.")),
         ("조달청 가이드", "Procurement guide", ("계약 전에 따라야 하는 절차서.", "The procedure manual to follow before contracting."), ("공공기관이 임의로 계약할 수 없게 해줘요.", "Keeps agencies from contracting on their own terms.")),
         ("정보시스템 감리", "IS audit", ("입주 후에도 계속하는 점검.", "The ongoing check even after move-in."), ('다른 PPE 세계에서 자세히 다뤄요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'Covered in depth in another PPE world. → <a href="pmoaudit-en.html">the last checker before publication</a>')),
-        ("민간 클라우드 vs 공공 클라우드", "Private vs government cloud", ("아무나 입주 가능 건물 vs 인증받은 건물.", "A building anyone can rent vs a certified one."), ("공공데이터는 후자로만 가요.", "Public data goes into the certified kind only.")),
+        ("민간 클라우드 vs 공공 클라우드", "Private-sector vs government cloud", ("아무나 입주 가능 건물 vs 인증받은 건물.", "A building anyone can rent vs a certified one."), ("공공데이터는 인증받은 건물로만 가요.", "Public data goes into the certified kind only.")),
         ("클라우드 서비스 모델", "Cloud service model", ("뼈대만/인테리어까지/완제품.", "Bare shell / interior done / move-in ready."), ('어느 모델이든 등급 규정은 똑같이 적용돼요. → <a href="cloudmodel-ko.html">셋 중 골라 빌리기</a>', 'The grade rule applies no matter which model. → <a href="cloudmodel-en.html">pick one to rent</a>')),
-        ("멀티클라우드", "Multi-cloud", ("여러 건물에 나눠 입주하는 전략.", "The strategy of spreading across several buildings."), ('공공기관도 이중화를 위해 쓰기도 해요. → <a href="multicloud-ko.html">여러 건물에 동시 입주</a>', 'Agencies sometimes use this for redundancy too. → <a href="multicloud-en.html">moving into several buildings at once</a>')),
+        ("멀티클라우드", "Multi-cloud", ("여러 건물에 나눠 입주하는 전략.", "The strategy of spreading across several buildings."), ('공공기관도 서비스 이중화를 위해 멀티클라우드를 쓰기도 해요. → <a href="multicloud-ko.html">여러 건물에 동시 입주</a>', 'Agencies sometimes use multi-cloud for redundancy too. → <a href="multicloud-en.html">moving into several buildings at once</a>')),
     ],
 }

@@ -18,9 +18,9 @@ P1 = svg(390, sky(390)
 
 # 2. 사람이 손으로 다 확인하기엔 너무 늦어요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(230, 150, s=0.85, face=SWEAT + EYES, **TEACHER) + bubble(100, 60, 260, 50, "⟦반마다 서류를 일일이 손으로 확인하다 지쳤어요|exhausted from checking every class's paperwork by hand⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + person(230, 150, s=0.85, face=SWEAT + EYES, **TEACHER) + bubble(70, 60, 315, 50, "⟦반마다 서류를 일일이 손으로 확인하다 지쳤어요|exhausted from checking every class's paperwork by hand⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(590, 150, s=0.75, face=FROWN, **STUDENT) + label(590, 250, "⟦저희 반, 벌써 두 달째 규칙을 어기고 있었어요|our class had been breaking a rule for two months already⟧", 11, "var(--bad)")
-         + label(380, 285, "⟦손으로 확인하면 느리고, 어긴 걸 늦게 알아채요|checking by hand is slow — violations surface far too late⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 285, "⟦손으로 서류를 확인하면 느려서, 규칙 위반을 늦게 알아채요|checking paperwork by hand is slow, so violations surface far too late⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 레그테크 = 자동 검사기로 규칙 준수를 실시간으로 확인하는 기술 (hero)
 P3 = svg(360, sky(360)
@@ -28,21 +28,21 @@ P3 = svg(360, sky(360)
          + checkmachine(380, 150, 1.6)
          + rulesboard(70, 220, 140, 110, "⟦라이선스|LICENSE⟧", ("⟦✓ 통과|✓ pass⟧",), 0.75) + rulesboard(230, 230, 140, 100, "⟦품질|QUALITY⟧", ("⟦✓ 통과|✓ pass⟧",), 0.75)
          + rulesboard(400, 230, 140, 100, "⟦안전|SAFETY⟧", ("⟦△ 확인중|△ checking⟧",), 0.75) + rulesboard(560, 220, 140, 110, "⟦데이터|DATA⟧", ("⟦✓ 통과|✓ pass⟧",), 0.75)
-         + person(150, 140, s=0.8, face=EYES, **TEACHER) + person(610, 140, s=0.8, face=SMILE, **REP)
-         + label(380, 345, "⟦흩어진 규칙판 여러 개를 동시에, 바로바로 대조해요|checks many scattered rule boards at once, right away⟧", 11, "var(--muted)"))
+         + person(150, 115, s=0.8, face=EYES, **TEACHER) + person(610, 115, s=0.8, face=SMILE, **REP)
+         + label(380, 345, "⟦자동 검사기가 기록을 흩어진 규칙판 여러 개와 동시에, 바로바로 대조해요|the checker compares records against many scattered rule boards at once, right away⟧", 11, "var(--muted)"))
 
 # 4. 레그테크가 하는 네 단계
 P4 = svg(300, sky(300, ground=False)
          + rulesboard(60, 30, 640, 240, "⟦레그테크가 하는 일|WHAT REGTECH DOES⟧",
                       ("⟦1. 흩어진 기록을 자동으로 모으기|1. automatically gather scattered records⟧",
                        "⟦2. 규칙판과 바로 대조하기|2. check them against the rule board right away⟧",
-                       "⟦3. 어긋나면 바로 알리기|3. flag a mismatch immediately⟧",
+                       "⟦3. 기록이 규칙과 어긋나면 바로 알리기|3. flag any record that breaks a rule immediately⟧",
                        "⟦4. 최종 판단은 사람이 하기|4. a human still makes the final call⟧"), 1.0, hl=2)
-         + label(380, 288, "⟦기계가 거르고, 사람이 결정해요|the machine filters — the person decides⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 288, "⟦기계가 위반 의심 건을 거르고, 사람이 최종 결정해요|the machine filters out suspected violations — a person decides⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 레그테크도 모든 걸 다 잡아내진 못해요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + checkmachine(190, 140, 1.0) + label(190, 250, "⟦알고 있는 규칙은 빠르게 잡아내요|known rules get caught fast⟧", 11, "var(--ink)")
+         + checkmachine(190, 140, 1.0) + label(190, 250, "⟦이미 아는 유형의 위반은 빠르게 잡아내요|known kinds of violations get caught fast⟧", 11, "var(--ink)")
          + person(570, 140, s=0.8, face=EYES, **TEACHER) + label(570, 250, "⟦처음 보는 종류의 위반은 여전히 사람 몫이에요|a never-seen-before violation is still a human's job⟧", 11, "var(--ink)")
          + label(380, 285, "⟦규칙을 만드는 것과, 지키는지 확인하는 것은 다른 일이에요|making a rule and checking whether it's kept are two different jobs⟧", 12, "var(--ink)", cls="d"))
 
@@ -57,22 +57,22 @@ PAGE = {
          "caption": ("규칙이 해를 거듭할수록 너무 많이 쌓였어요.", "The rules have piled up, year after year."),
          "small": ("규칙판 하나하나는 다 옳지만, 전부 손으로 보기엔 너무 많아요.", "Each rule board is reasonable alone — there are just too many to check by hand.")},
         {"svg": P2, "alt": ("선생님이 반마다 서류를 손으로 확인하다 지쳤다고 말하고, 학생은 두 달째 규칙을 어기고 있었다고 속상해함", "A teacher says they're exhausted from checking every class's paperwork by hand; a student is upset to learn their class had broken a rule for two months"),
-         "caption": ("사람이 손으로 다 확인하기엔 너무 늦어요.", "Checking everything by hand is too slow to catch things in time."),
-         "small": ("손으로 확인하면 느리고, 어긴 걸 늦게 알아채요.", "Checking by hand is slow — violations surface far too late.")},
+         "caption": ("사람이 규칙 위반을 손으로 다 확인하면 너무 늦게 알게 돼요.", "Checking for rule violations by hand finds them too late."),
+         "small": ("손으로 서류를 확인하면 느려서, 규칙 위반을 늦게 알아채요.", "Checking paperwork by hand is slow, so violations surface far too late.")},
         {"svg": P3, "hero": True, "alt": ("큰 자동 검사기가 라이선스·품질·안전·데이터 규칙판 네 개를 동시에 대조하며 선생님과 대표가 지켜봄", "A large automatic checker cross-checks four rule boards — license, quality, safety, data — at once, while a teacher and rep watch"),
          "caption": ("레그테크는 자동 검사기로 규칙 준수를 실시간으로 확인하는 기술이에요.", "RegTech is technology that checks rule-following in real time, with an automatic checker."),
-         "small": ("흩어진 규칙판 여러 개를 동시에, 바로바로 대조해요.", "Checks many scattered rule boards at once, right away."),
+         "small": ("자동 검사기가 기록을 흩어진 규칙판 여러 개와 동시에, 바로바로 대조해요.", "The checker compares records against many scattered rule boards at once, right away."),
          "tricks": (4, [
              (COLLECT_I, ("자동으로 모으기", "Automatically gather"), ("흩어진 기록을 손대지 않고 모아요", "gathers scattered records without lifting a hand"), "calm"),
              (MATCH_I, ("규칙판과 바로 대조", "Check against the board right away"), ("사람보다 훨씬 빠르게 비교해요", "compares far faster than a person could"), "warm"),
              (ALERT_I, ("이상 신호 포착", "Flag anomalies"), ("어긋나면 바로 알려줘요", "flags a mismatch immediately")),
-             (HUMAN_I, ("최종 판단은 사람", "The final call is human"), ("기계는 거르고, 사람이 결정해요", "the machine filters, the person decides")),
+             (HUMAN_I, ("최종 판단은 사람", "The final call is human"), ("기계가 위반 의심 건을 거르고, 사람이 결정해요", "the machine filters suspected violations, a person decides")),
          ])},
         {"svg": P4, "alt": ("레그테크가 기록 모으기 → 규칙판 대조 → 이상 신호 알림 → 사람의 최종 판단 네 단계로 이어진다는 기준표", "A board showing RegTech's four steps: gather records → check against the rule board → flag anomalies → a human's final call"),
-         "caption": ("레그테크는 이 네 단계를 거쳐요.", "RegTech works through these four steps."),
-         "small": ("기계가 거르고, 사람이 결정해요.", "The machine filters — the person decides.")},
-        {"svg": P5, "alt": ("왼쪽: 자동 검사기가 알려진 규칙은 빠르게 잡아냄. 오른쪽: 선생님이 처음 보는 위반은 여전히 사람 몫이라고 말함", "Left: the automatic checker quickly catches known rules. Right: a teacher says a never-seen-before violation is still a human's job"),
-         "caption": ("레그테크도 모든 걸 다 잡아내진 못해요.", "RegTech can't catch absolutely everything either."),
+         "caption": ("레그테크는 기록 모으기, 규칙 대조, 어긋남 알리기, 사람의 판단 — 네 단계를 거쳐요.", "RegTech works through four steps: gather records, check against the rules, flag mismatches, and leave the final call to a person."),
+         "small": ("기계가 위반 의심 건을 거르고, 사람이 최종 결정해요.", "The machine filters out suspected violations — a person decides.")},
+        {"svg": P5, "alt": ("왼쪽: 자동 검사기가 이미 아는 유형의 위반은 빠르게 잡아냄. 오른쪽: 선생님이 처음 보는 위반은 여전히 사람 몫이라고 말함", "Left: the automatic checker quickly catches known kinds of violations. Right: a teacher says a never-seen-before violation is still a human's job"),
+         "caption": ("레그테크도 모든 위반을 다 잡아내진 못해요.", "RegTech can't catch every violation either."),
          "small": ("규칙을 만드는 것과, 지키는지 확인하는 것은 다른 일이에요.", "Making a rule and checking whether it's kept are two different jobs.")},
     ],
     "summary": (("<b>레그테크</b> = 흩어진 규칙(라이선스·품질·안전·데이터…)을 <b>자동 검사기</b>로 <b>실시간 대조</b>해, 어긋나면 <b>바로 알리고</b> 최종 판단은 사람에게 넘기는 기술.",

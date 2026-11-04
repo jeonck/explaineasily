@@ -27,14 +27,14 @@ P1 = svg(340, sky(340)
 # 2. 복잡하고 불편해도 다른 길이 없었어요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(220, 150, s=0.85, face=FROWN + SWEAT, **VILLAGER)
-         + bubble(60, 40, 260, 50, "⟦특별한 상자에 담아 늘 들고 다녀야 하고, 다른 성엔 못 써요|had to carry it around in a special box, and it wouldn't work at any other castle⟧", 10, "var(--panel)", "var(--line)", "bottom")
+         + bubble(50, 40, 320, 50, "⟦도장을 특별한 상자에 담아 다녀야 하고, 다른 성엔 못 써요|the seal rides in a special box and fails at other castles⟧", 10, "var(--panel)", "var(--line)", "bottom")
          + sealshop(560, 160, 1.1)
          + label(380, 282, "⟦불편해도 법이 그 도장집만 쓰라고 정해뒀어요|inconvenient as it was, the law said only that one shop counted⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 법이 바뀌어 도장집이 여럿 생겼어요 (hero)
 P3 = svg(340, sky(340)
          + sealshop(140, 170, 0.9, "var(--panel)") + label(140, 250, "⟦공동인증서(옛 공인인증서)|the Joint Certificate (the old mandatory one)⟧", 10, "var(--muted)")
-         + sealshop(380, 170, 0.9, "var(--good-soft)") + label(380, 250, "⟦카카오·토스 같은 민간 인증|private ones, like KakaoPay or Toss⟧", 10, "var(--muted)")
+         + sealshop(380, 170, 0.9, "var(--good-soft)") + label(380, 250, "⟦카카오·토스 같은 민간 인증|private certificates, like KakaoPay or Toss⟧", 10, "var(--muted)")
          + sealshop(620, 170, 0.9, "var(--accent-soft)") + label(620, 250, "⟦통신사 PASS 인증|carrier PASS authentication⟧", 10, "var(--muted)")
          + person(380, 70, s=0.6, face=SMILE, **VILLAGER) + label(380, 40, "⟦이제 아무 도장집이나 똑같이 통해요|now any of these shops carries equal weight⟧", 13, "var(--ink)", cls="d")
          + label(380, 320, "⟦전자서명법 개정(2020) = 법이 특혜를 없애고, 선택지를 열었어요|the amended Digital Signature Act (2020) ended the monopoly and opened up the choice⟧", 13, "var(--ink)", cls="d"))
@@ -54,9 +54,9 @@ PAGE = {
         {"svg": P1, "alt": ("나라가 정한 도장집이 성 한가운데 딱 하나 있고, 빵을 사거나 서류를 내려는 손님 모두 이곳을 거쳐야 함", "A single state-designated seal-shop sits at the center of the castle, and every villager — whether buying bread or filing a paper — must pass through it"),
          "caption": ("도장집이 딱 하나뿐이던 시절이 있었어요.", "There used to be exactly one state-designated seal-shop."),
          "small": ("공인인증서. 전자서명을 하려면 법이 정한 이 도장집만 써야 했어요.", "The 공인인증서 (accredited certificate). To sign anything electronically, the law said this one shop was the only option.")},
-        {"svg": P2, "alt": ("손님이 땀 흘리며 특별한 상자에 담아 늘 들고 다녀야 하고 다른 성엔 못 쓴다고 불평함", "A sweating villager complains about having to carry it in a special box, and that it wouldn't work at any other castle"),
-         "caption": ("복잡하고 불편해도 다른 길이 없었어요.", "Inconvenient as it was, there was no other way."),
-         "small": ("특별한 상자(보안 프로그램)에 담아 들고 다녀야 했고, 다른 컴퓨터로 옮기기도 번거로웠어요.", "It had to be carried around in a special box (security software), and moving it to another computer was a hassle.")},
+        {"svg": P2, "alt": ("손님이 땀 흘리며 도장을 특별한 상자에 담아 다녀야 하고 다른 성엔 못 쓴다고 불평함", "A sweating villager complains that the seal must ride in a special box and fails at other castles"),
+         "caption": ("인증서가 복잡하고 불편해도 다른 길이 없었어요.", "The certificate was inconvenient, but there was no other option."),
+         "small": ("인증서를 특별한 상자(보안 프로그램)에 담아 들고 다녀야 했고, 다른 컴퓨터로 옮기기도 번거로웠어요.", "The certificate had to be carried around in a special box (security software), and moving it to another computer was a hassle.")},
         {"svg": P3, "hero": True, "alt": ("법이 바뀌어 공동인증서, 카카오·토스 같은 민간 인증, 통신사 PASS 인증이 나란히 서 있고 손님이 아무거나 고를 수 있음", "After the law changed, the Joint Certificate, private certificates like KakaoPay or Toss, and carrier PASS authentication stand side by side, and the villager can pick any of them"),
          "caption": ("법이 바뀌어 도장집이 여럿 생겼어요.", "The law changed, and now there are several seal-shops."),
          "small": ('전자서명법 개정(2020)으로 공인인증서의 법적 특혜가 사라지고, <a href="mydataSec-ko.html">본인확인</a>에 쓰는 여러 민간 인증서가 똑같은 효력을 가지게 됐어요.',
@@ -64,7 +64,7 @@ PAGE = {
          "tricks": (4, [
              (LAW_I, ("법이 특혜를 없앴어요", "The law ended the privilege"), ("전자서명법 개정, 2020년", "the Digital Signature Act, amended in 2020"), "calm"),
              (MANY_I, ("여러 도장집이 생겼어요", "Several shops sprang up"), ("카카오페이, 토스, PASS, 네이버 등", "KakaoPay, Toss, PASS, Naver, and more")),
-             (EQUAL_I, ("법적 효력은 똑같아요", "Equal legal effect"), ("어느 걸 써도 서명으로 인정돼요", "any of them counts as a valid signature"), "warm"),
+             (EQUAL_I, ("법적 효력은 똑같아요", "Equal legal effect"), ("어느 인증서를 써도 서명으로 인정돼요", "any of these certificates counts as a valid signature"), "warm"),
              (TECH_I, ("기술(PKI)은 그대로예요", "The underlying tech (PKI) is unchanged"), ("바뀐 건 법이지, 암호 방식이 아니에요", "what changed was the law, not the cryptography")),
          ])},
         {"svg": svg(320, '<rect width="380" height="320" fill="var(--bad-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
@@ -75,10 +75,10 @@ PAGE = {
                     + idcard(190, 220) + idcard(570, 220)
                     + label(380, 290, "⟦신분증 자체는 그대로, 발급하는 곳이 늘었을 뿐이에요|the ID card itself didn't change — only who may issue it did⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 2020년 이전엔 공인인증서만 법적 효력. 오른쪽: 2020년 이후엔 여러 민간 인증서가 동등한 효력", "Left: before 2020, only the accredited certificate had legal effect. Right: after 2020, many private certificates carry equal effect"),
-         "caption": ("전과 후를 나란히 보면 이래요.", "Side by side, here's before and after."),
+         "caption": ("2020년 법 개정 전과 후를 나란히 보면 이래요.", "Before and after the 2020 amendment, side by side."),
          "small": ("신분증(인증서) 자체의 구조는 그대로예요. 달라진 건 누가 발급할 수 있느냐예요.", "The ID card (the certificate) itself is structurally unchanged — what changed is who's allowed to issue one.")},
         {"svg": svg(320, sky(320)
-                    + person(190, 150, s=0.85, **CLERK_A) + label(190, 270, "⟦도장 찍는 방식(PKI)은 여전히 똑같아요|the stamping mechanism (PKI) is still exactly the same⟧", 11, "var(--muted)")
+                    + person(190, 150, s=0.85, **CLERK_A) + label(190, 270, "⟦도장 찍는 방식(PKI)은 법 개정 전과 똑같아요|the stamping mechanism (PKI) is the same as before the amendment⟧", 11, "var(--muted)")
                     + person(560, 150, s=0.85, **CLERK_B) + label(560, 270, "⟦어느 도장집을 믿을지는 여전히 중요해요|which shop to trust still matters just as much⟧", 11, "var(--ink)")
                     + label(380, 305, "⟦바뀐 건 법이지, 왕의 도장이 찍히는 원리는 그대로예요|the law changed — the principle behind the king's seal did not⟧", 12, "var(--ink)", cls="d")),
          "alt": ("도장 찍는 방식(PKI)은 그대로이며, 어느 도장집을 믿을지는 여전히 중요함. 바뀐 건 법일 뿐 원리는 그대로", "The stamping mechanism (PKI) stayed the same, and which shop to trust still matters. Only the law changed, not the underlying principle"),

@@ -29,7 +29,7 @@ P1 = svg(355, sky(355) + castle(260, 40, 0.75)
 P2 = svg(280, '<rect width="760" height="280" fill="var(--bad-soft)"/>'
          + small_castle(80, 60, 0.55) + label(190, 212, "⟦우리 성|our castle⟧", 11, "var(--muted)")
          + person(430, 150, s=0.85, face=FROWN, **NEIGHBOR)
-         + bubble(360, 70, 260, 46, "⟦말로만 안전하다니, 저희 손님 정보를 맡기긴 좀…|just your word for it? I can\'t hand over our guests\' data⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(330, 70, 300, 46, "⟦말로만 안전하다니, 저희 손님 정보를 맡기긴 좀…|just your word for it? I can\'t hand over our guests\' data⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 258, "⟦증거가 없으면 이웃은 거래를 망설여요|without proof, neighbors hesitate to deal with you⟧", 13, "var(--ink)"))
 
 # 3. ISMS-P = 나라가 보낸 검사관이 성 전체에 거는 현판 (hero)
@@ -42,7 +42,7 @@ P3 = svg(340, sky(340) + castle(140, 60, 0.9)
          + person(500, 150, s=0.95, **INSPECTOR)
          + plaque(400, 110, 0.9)
          + label(380, 30, "⟦ISMS-P = 나라의 검사관이 성 전체를 다 돌아보고 거는 현판|ISMS-P = a government inspector checks the whole castle, then hangs the plaque⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦문 하나가 아니라 관리체계부터 손님정보 창고까지 전부예요|not just one door — the whole management system, down to the guest-info storeroom⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦검사 대상은 문 하나가 아니라 관리체계부터 손님정보 창고까지 전부예요|the inspector checks not one door but everything, from the management system to the guest-info storeroom⟧", 12, "var(--muted)"))
 
 # 4. 검사표 네 영역
 P4 = svg(300, sky(300)
@@ -50,10 +50,10 @@ P4 = svg(300, sky(300)
                ("⟦1. 관리체계 수립·운영 — 정책·조직·위험평가|1. Management system — policy, org, risk⟧",
                 "⟦2. 보호대책 요구사항 — 문단속·암호화 등|2. Protection measures — locks, encryption, etc.⟧",
                 "⟦3. 개인정보 처리단계별 요구사항 — 수집부터 파기까지|3. Personal-data lifecycle — collect to destroy⟧",
-                "⟦(3은 ISMS-P만 추가돼요|item 3 is added only for ISMS-P)⟧"), 11)
+                "⟦3번은 ISMS-P에만 추가돼요|item 3 is added only for ISMS-P⟧"), 11)
          + person(560, 120, s=0.85, **INSPECTOR)
          + label(560, 230, "⟦ISMS는 1·2만, ISMS-P는 3까지|ISMS covers 1–2 only; ISMS-P adds 3⟧", 12, "var(--muted)")
-         + label(380, 280, "⟦개인정보 창고가 있는 성은 3번까지 봐야 해요|a castle with a guest-info storeroom needs item 3 too⟧", 12, "var(--ink)"))
+         + label(380, 280, "⟦개인정보 보호까지 인증받으려는 성은 3번까지 봐야 해요|a castle certifying its guest-info storeroom too needs item 3⟧", 12, "var(--ink)"))
 
 # 5. 현판이 있어도 도둑은 와요
 P5 = svg(320, '<rect width="760" height="320" fill="var(--accent-soft)"/>'
@@ -75,29 +75,29 @@ PAGE = {
          "caption": ("성주가 \"우리 성 안전해요!\"라고 말만 해요.", "The lord just says our castle is safe."),
          "small": ("증거는 없고, 성주 혼자만의 말이에요.", "No proof — just the lord's own word.")},
         {"svg": P2, "alt": ("이웃 성 사람이 얼굴을 찡그리며 '말로만 안전하다니, 저희 손님 정보를 맡기긴 좀…'", "A neighboring castle's visitor frowns: just your word for it? I can't hand over our guests' data"),
-         "caption": ("이웃 성은 못 믿어요.", "The neighboring castle can't just take your word."),
+         "caption": ("이웃 성은 성주 말만 듣고는 못 믿어요.", "The neighboring castle can't just take your word."),
          "small": ("증거가 없으면 이웃은 거래를 망설여요.", "Without proof, neighbors hesitate to deal with you.")},
         {"svg": P3, "hero": True, "alt": ("검사관이 성 전체를 보고 초록 '통과' 현판을 거는 모습", "An inspector examines the whole castle and hangs a green PASSED plaque"),
          "caption": ("ISMS-P는 나라의 검사관이 성 전체를 다 돌아보고 거는 현판이에요.", "ISMS-P is the plaque a government inspector hangs after checking the whole castle."),
-         "small": ("문 하나가 아니라 관리체계부터 손님정보 창고까지 전부예요.", "Not just one door — the whole management system, down to the guest-info storeroom."),
+         "small": ("검사관은 문 하나가 아니라 관리체계부터 손님정보 창고까지 전부 봐요.", "The inspector checks not just one door, but everything from the management system to the guest-info storeroom."),
          "tricks": (4, [
              (WHOLE_I, ("성 전체를 봐요", "Checks the whole castle"), ("한 방이 아니라 전부", "not one room, all of it"), "calm"),
              (LIFECYCLE_I, ("손님정보는 끝까지", "Guest info, start to end"), ("모으고 쓰고 없애는 전 과정", "collect, use, and destroy — all of it"), "warm"),
-             (YEARLY_I, ("매년 다시 검사", "Re-checked every year"), ("한 번으로 안 끝나요", "one pass isn't the end")),
-             (LAW_I, ("법으로 정한 의무", "A legal requirement"), ("일정 규모 넘으면 꼭 받아야 해요", "mandatory past a certain size")),
+             (YEARLY_I, ("매년 다시 검사", "Re-checked every year"), ("한 번 통과로 안 끝나요", "one pass isn't the end")),
+             (LAW_I, ("법으로 정한 의무", "A legal requirement"), ("ISMS는 사업 규모가 일정 기준을 넘으면 꼭 받아야 해요", "ISMS is mandatory once a business passes a certain size")),
          ])},
         {"svg": P4, "alt": ("ISMS-P 점검표: 1. 관리체계 수립·운영 2. 보호대책 요구사항 3. 개인정보 처리단계별 요구사항(ISMS-P만 추가)", "The ISMS-P checklist: 1. management system 2. protection measures 3. personal-data lifecycle (added only for ISMS-P)"),
          "caption": ("점검표는 세 영역이에요.", "The checklist has three areas."),
-         "small": ("ISMS는 1·2만, ISMS-P는 3까지 봐요 — 개인정보 창고가 있는 성은 3번까지 필요해요.", "ISMS covers areas 1–2 only; ISMS-P adds area 3 — needed by any castle with a guest-info storeroom.")},
+         "small": ("ISMS는 1·2만, ISMS-P는 3까지 봐요 — 개인정보 보호까지 인증받으려는 성은 3번까지 필요해요.", "ISMS covers areas 1–2 only; ISMS-P adds area 3 — needed by a castle certifying its guest-info storeroom too.")},
         {"svg": P5, "alt": ("현판이 걸린 성벽을 가면 쓴 사람이 몰래 넘어오고, 서기가 땀을 흘리며 '현판 받았는데 왜 도둑이?'", "A masked figure sneaks over the wall of a castle bearing the plaque, while a clerk sweats: we got the plaque — why a thief?"),
          "caption": ("현판이 있어도 도둑은 와요.", "The plaque doesn't stop thieves."),
-         "small": ('현판은 "기준을 지켰다"는 뜻이지 "안전 보장"은 아니에요. 진짜 지키는 건 <a href="policy-ko.html">규칙 두루마리</a>와 평소 단속이에요.',
-                   'The plaque means the standard was met — not that nothing can go wrong. The real work is the <a href="policy-en.html">rule scroll</a> and everyday upkeep.')},
+         "small": ('현판은 "기준을 지켰다"는 뜻이지 "안전 보장"은 아니에요. 성을 실제로 지키는 건 <a href="policy-ko.html">규칙 두루마리</a>와 평소 단속이에요.',
+                   'The plaque means the standard was met — not that nothing can go wrong. What actually protects the castle is the <a href="policy-en.html">rule scroll</a> and everyday upkeep.')},
     ],
     "summary": (("<b>ISMS/ISMS-P</b> = 나라의 검사관이 성 전체의 <b>관리체계와 보호대책</b>을 보고 거는 <b>인증 현판</b>. ISMS-P는 <b>개인정보 처리 전 과정</b>까지 더 봐요.",
                  "<b>ISMS/ISMS-P</b> = the <b>certification plaque</b> a government inspector hangs after checking a castle's whole <b>management system and protection measures</b>. ISMS-P also checks the <b>entire personal-data lifecycle</b>."),
-                ("ISMS(정보보호 관리체계)와 ISMS-P(정보보호 및 개인정보보호 관리체계)는 한국인터넷진흥원(KISA) 등 인증기관이 심사해 주는 법정 인증 제도예요. 일정 규모 이상 사업자는 의무적으로 받아야 하고, 최초 인증 후 매년 사후심사를 받아요. ISMS는 보안 관리체계 전반을, ISMS-P는 개인정보 수집부터 파기까지의 처리 단계별 요구사항까지 추가로 심사해요.",
-                 "ISMS (Information Security Management System) and ISMS-P (adding Personal Information protection) are statutory certifications in Korea, audited by bodies such as KISA. Businesses past a certain size must obtain it, with an annual follow-up review after initial certification. ISMS covers the overall security management system; ISMS-P additionally reviews requirements across the full personal-data lifecycle, from collection to destruction.")),
+                ("ISMS(정보보호 관리체계)와 ISMS-P(정보보호 및 개인정보보호 관리체계)는 한국인터넷진흥원(KISA) 등 인증기관이 심사해 주는 법정 인증 제도예요. 일정 규모 이상 사업자는 ISMS를 의무적으로 받아야 하고, 최초 인증 후 매년 사후심사를 받아요. ISMS는 보안 관리체계 전반을, ISMS-P는 개인정보 수집부터 파기까지의 처리 단계별 요구사항까지 추가로 심사해요.",
+                 "ISMS (Information Security Management System) and ISMS-P (adding Personal Information protection) are statutory certifications in Korea, audited by bodies such as KISA. Businesses past a certain size must obtain ISMS, with an annual follow-up review after initial certification. ISMS covers the overall security management system; ISMS-P additionally reviews requirements across the full personal-data lifecycle, from collection to destruction.")),
     "glossary": [
         ("ISMS", "ISMS", ("보안 관리체계 인증.", "Security management system certification."), ("관리체계 수립·운영과 보호대책 요구사항을 심사해요.", "Reviews the management system and the protection measures.")),
         ("ISMS-P", "ISMS-P", ("ISMS + 개인정보 처리단계.", "ISMS plus the personal-data lifecycle."), ("손님정보를 모으고, 쓰고, 없애는 전 과정까지 추가로 봐요.", "Also reviews collecting, using, and destroying guest info, start to finish.")),
@@ -105,7 +105,7 @@ PAGE = {
         ("관리체계 수립·운영", "ISMS management process", ("정책·조직·위험평가.", "Policy, organization, risk assessment."), ('성 전체의 규칙과 담당자를 정하는 일. → <a href="policy-ko.html">성의 규칙 두루마리</a>', 'Setting the whole castle\'s rules and who owns what. → <a href="policy-en.html">the castle rule scroll</a>')),
         ("보호대책 요구사항", "Protection requirements", ("문단속 각 항목.", "Each lockdown item."), ("접근 통제, 암호화 같은 구체적 항목이에요.", "Specific items like access control and encryption.")),
         ("사후관리", "Follow-up review", ("매년 다시 검사.", "Re-checked every year."), ("최초 인증으로 끝이 아니라 해마다 다시 봐요.", "Initial certification isn't the end — it's reviewed annually.")),
-        ("법적 의무대상", "Mandatory scope", ("일정 규모 넘으면 의무.", "Mandatory past a certain size."), ("매출·이용자 수 등 기준을 넘는 사업자는 꼭 받아야 해요.", "Businesses over revenue or user thresholds must obtain it.")),
+        ("법적 의무대상", "Mandatory scope", ("규모가 일정 기준을 넘으면 ISMS는 의무.", "ISMS is mandatory past a certain size."), ("매출·이용자 수 등 기준을 넘는 사업자는 ISMS를 꼭 받아야 해요.", "Businesses over revenue or user thresholds must obtain ISMS.")),
         ("규정 준수", "Compliance", ("검사관이 증거를 봐요.", "The inspector checks the evidence."), ('ISMS-P도 결국 증거로 증명해요. → <a href="compliance-ko.html">이웃 나라 규칙 검사관</a>', 'ISMS-P is also proven with evidence. → <a href="compliance-en.html">the inspector from next door</a>')),
     ],
 }

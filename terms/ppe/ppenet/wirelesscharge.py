@@ -5,17 +5,17 @@ from _world import *
 P1 = svg(300, sky(300)
          + truck(260, 190, 1.0)
          + '<path d="M232 160 l20 20 l-20 20" stroke="var(--bad)" stroke-width="4" fill="none" stroke-linecap="round"/>'
-         + person(420, 190, s=0.8, face=SWEAT + EYES, **CARRIER)
-         + label(420, 250, "⟦선을 꽂고 기다려야 다시 출발해요|has to plug in and wait before heading out again⟧", 11, "var(--ink)")
+         + person(420, 120, s=0.8, face=SWEAT + EYES, **CARRIER)
+         + label(420, 250, "⟦트럭은 선을 꽂고 충전을 기다려야 다시 출발해요|the truck has to plug in and wait before heading out⟧", 11, "var(--ink)")
          + label(380, 30, "⟦배송 트럭도 배터리가 떨어지면 멈춰요|even a delivery truck stops when its battery runs out⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 선은 엉키고, 정확히 맞춰 꽂아야 해요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + truck(260, 190, 0.9)
          + '<path d="M240 170 q-20 20 10 40 q-30 -5 -20 30" stroke="#5A3B22" stroke-width="5" fill="none"/>'
-         + person(480, 190, s=0.8, face=FROWN, **CARRIER)
+         + person(480, 115, s=0.8, face=FROWN, **CARRIER)
          + label(480, 250, "⟦손으로 딱 맞춰 꽂아야만 충전돼요|only charges if you plug it in just right by hand⟧", 11, "var(--ink)")
-         + label(380, 280, "⟦선은 엉키고, 위치가 조금만 틀려도 안 돼요|cables tangle, and even a slight misalignment fails⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 280, "⟦충전선은 엉키고, 꽂는 위치가 조금만 틀려도 충전이 안 돼요|charging cables tangle, and even a slight misalignment means no charge⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 무선충전 = 충전판 위에 세우면 줄 없이 건너감 (hero)
 P3 = svg(340, sky(340)
@@ -23,7 +23,7 @@ P3 = svg(340, sky(340)
          + truck(380, 220, 1.0, fast=True)
          + '<path d="M300 258 q80 -40 160 0" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 5" fill="none"/>'
          + label(380, 30, "⟦무선충전 = 전용 충전판 위에 서면 줄 없이 전기가 건너가요|wireless charging = park on the pad and power crosses the air, no cable⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦자기장으로 가까이에서, 또는 공진으로 살짝 떨어져서도 전해져요|carried by a magnetic field up close, or by resonance even a little apart⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦전기는 자기장으로 가까이에서, 또는 공진으로 살짝 떨어져서도 전해져요|power travels by a magnetic field up close, or by resonance even a little apart⟧", 12, "var(--muted)"))
 
 # 4. 유선충전 vs 무선충전 비교
 P4 = svg(320, sky(320)
@@ -42,7 +42,7 @@ P4 = svg(320, sky(320)
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + truck(190, 190, 0.85, fast=True) + label(190, 260, "⟦줄 없이 세우기만 해도 충전돼요|just park — no cable needed to charge⟧", 11, "var(--ink)")
          + truck(570, 190, 0.7) + '<path d="M548 170 l10 -20" stroke="var(--bad)" stroke-width="3"/>' + label(570, 260, "⟦판에서 멀어지면 전기가 안 건너가요|move off the pad and the power stops crossing⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦편하지만 효율은 유선보다 낮고 자리를 꼭 지켜야 해요|convenient, but less efficient — and it has to stay right on the spot⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦무선충전은 편하지만 효율은 유선보다 낮고, 트럭이 판 위에 꼭 있어야 해요|wireless charging is convenient, but less efficient than wired — and the truck must stay on the pad⟧", 12, "var(--ink)", cls="d"))
 
 COIL_I = icon('<circle cx="22" cy="32" r="14" fill="none" stroke="var(--accent)" stroke-width="4"/><circle cx="42" cy="32" r="14" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M28 32 h8" stroke="var(--ink)" stroke-width="3" stroke-dasharray="3 3"/>')
 RESON_I = icon('<path d="M8 32 q8 -16 16 0 t16 0 t16 0" stroke="var(--accent)" stroke-width="4" fill="none"/><circle cx="32" cy="32" r="22" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="4 4"/>')
@@ -58,13 +58,13 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("배송 트럭이 배터리가 떨어져 멈추고, 집배원이 선을 꽂아야 한다고 걱정함", "A delivery truck stops out of battery, and a carrier worries about having to plug in"),
          "caption": ("트럭도 배터리가 떨어지면 멈춰요.", "Even a truck stops when its battery runs out."),
-         "small": ("선을 꽂고 기다려야 다시 출발해요.", "It has to plug in and wait before heading out again.")},
+         "small": ("트럭은 선을 꽂고 충전을 기다려야 다시 출발해요.", "The truck has to plug in and wait before heading out again.")},
         {"svg": P2, "alt": ("엉킨 충전선 때문에 집배원이 정확히 맞춰 꽂느라 찡그림", "A carrier frowns, struggling to plug in a tangled charging cable just right"),
          "caption": ("선은 엉키고, 정확히 맞춰 꽂아야 해요.", "Cables tangle, and plugging in has to be exact."),
-         "small": ("손으로 딱 맞춰야만 충전되고, 위치가 조금만 틀려도 안 돼요.", "It only charges when plugged in just right — even a slight miss fails.")},
+         "small": ("손으로 딱 맞춰 꽂아야 충전되고, 위치가 조금만 틀려도 충전이 안 돼요.", "The truck charges only when plugged in just right — even a slight miss means no charge.")},
         {"svg": P3, "hero": True, "alt": ("트럭이 빛나는 충전판 위에 서자 점선 화살로 전기가 건너가는 모습", "A truck parked on a glowing charging pad, with dashed arrows showing power crossing over"),
          "caption": ("충전판 위에 서면 줄 없이 전기가 건너가요.", "Park on the pad and power crosses the air, no cable."),
-         "small": ("자기장으로 가까이에서, 또는 공진으로 살짝 떨어져서도 전해져요.", "Carried by a magnetic field up close, or by resonance even a little apart."),
+         "small": ("전기는 자기장으로 가까이에서, 또는 공진으로 살짝 떨어져서도 전해져요.", "Power travels by a magnetic field up close, or by resonance even a little apart."),
          "tricks": (4, [
              (COIL_I, ("자기 유도", "Magnetic induction"), ("두 코일이 가까우면 전기가 건너가요", "two coils close together let power cross"), "calm"),
              (RESON_I, ("자기 공진", "Magnetic resonance"), ("주파수만 맞으면 조금 떨어져도 돼요", "matched frequencies work even a bit apart")),
@@ -75,15 +75,15 @@ PAGE = {
          "caption": ("유선과 무선은 네 가지가 달라요.", "Wired and wireless differ on four things."),
          "small": ("무선은 편하지만, 속도와 효율은 유선보다 조금 낮아요.", "Wireless is more convenient, but a bit slower and less efficient than wired.")},
         {"svg": P5, "alt": ("왼쪽: 트럭이 충전판 위에서 줄 없이 충전됨. 오른쪽: 판에서 벗어난 트럭은 충전이 끊김", "Left: a truck charges on the pad with no cable. Right: a truck off the pad loses the charge"),
-         "caption": ("효율은 더 낮고, 판 위에 서야만 해요.", "Efficiency is lower, and it must stay right on the pad."),
-         "small": ("편하지만 유선보다 덜 효율적이고 자리를 꼭 지켜야 해요.", "Convenient, but less efficient than wired — and it has to stay in place.")},
+         "caption": ("무선충전은 유선보다 효율이 낮고, 판 위에 서야만 해요.", "Wireless is less efficient than wired, and the truck must stay on the pad."),
+         "small": ("무선충전은 편하지만 유선보다 덜 효율적이고, 트럭이 판 위에 꼭 있어야 해요.", "Wireless charging is convenient, but less efficient than wired — and the truck must stay on the pad.")},
     ],
     "summary": (("<b>무선충전기술</b>은 <b>줄을 꽂지 않고도 충전판 위에 서는 것만으로</b> 전기가 공중으로 건너가게 하는 기술이에요.",
                  "<b>Wireless charging technology</b> lets electricity cross the air <b>just by parking on a pad — no cable plugged in</b>."),
                 ("무선충전은 자기 유도(magnetic induction, 가까운 거리에서 두 코일 사이 전자기 유도)나 자기 공진(magnetic resonance, 공진 주파수를 맞춰 조금 더 먼 거리에서) 방식으로 전력을 전달해요. 유선보다 효율은 낮지만 접점이 없어 안전하고 편리해, 전기차·로봇·모바일 기기 충전에 쓰여요.",
                  "Wireless charging transfers power through magnetic induction (two coils close together) or magnetic resonance (matched resonant frequencies, working over a slightly longer distance). It's less efficient than a wired connection, but safer and more convenient since there's no exposed contact — used for EVs, robots, and mobile devices.")),
     "glossary": [
-        ("무선충전", "Wireless charging", ("줄 없이 충전판 위에 서면 되는 충전.", "Charging that just needs parking on a pad, no cable."), ("비접촉이라 더 안전해요.", "Contactless, so it's safer too.")),
+        ("무선충전", "Wireless charging", ("줄 없이 충전판 위에 서면 되는 충전.", "Charging that just needs parking on a pad, no cable."), ("비접촉이라 드러난 접점이 없어 유선보다 안전해요.", "Contactless, with no exposed contacts, so safer than wired.")),
         ("자기 유도", "Magnetic induction", ("가까운 두 코일 사이로 건너가는 전기.", "Power crossing between two coils held close together."), ("거리가 짧을수록 효율이 좋아요.", "The shorter the distance, the better the efficiency.")),
         ("자기 공진", "Magnetic resonance", ("주파수를 맞춰 조금 떨어져도 되는 방식.", "A way that works even a bit apart, by matching frequency."), ("유도 방식보다 거리에 더 여유가 있어요.", "More tolerant of distance than plain induction.")),
         ("5G 특화망", "5G Private Network", ("한 공장만을 위한 전용 배송망.", "A delivery network dedicated to one factory."), ('공장 안에서 무선충전 로봇과 함께 쓰이기도 해요. → <a href="5gprivate-ko.html">공장 전용 배송망</a>', 'Often paired with wirelessly charged robots inside a factory. → <a href="5gprivate-en.html">a delivery network just for one factory</a>')),

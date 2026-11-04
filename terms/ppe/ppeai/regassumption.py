@@ -10,16 +10,16 @@ P1 = svg(300, sky(300)
 
 # 2. 저울이 어떤 상황에선 엉뚱하게 흔들려요
 P2 = svg(310, '<rect width="760" height="310" fill="var(--bad-soft)"/>'
-         + scale_(220, 210, 1.1, level=0.2) + label(220, 270, "⟦가벼울 땐 조용히 맞아요|light loads sit still and match⟧", 11, "var(--ink)")
-         + scale_(500, 210, 1.3, level=0.9) + label(500, 270, "⟦무거워지면 확 흔들려요|heavy loads make it swing wildly⟧", 11, "var(--bad)")
-         + label(380, 60, "⟦무게 구간마다 흔들리는 정도가 달라요 — 저울을 걸 때 지켜야 할 조건이 있어요|how much it wobbles changes by weight range — the scale needs certain conditions to hold⟧", 12, "var(--ink)"))
+         + scale_(220, 210, 1.1, level=0.2) + label(220, 270, "⟦가벼운 작물은 오차가 작아요|light crops: small error⟧", 11, "var(--ink)")
+         + scale_(500, 210, 1.3, level=0.9) + label(500, 270, "⟦무거운 작물은 오차가 확 커요|heavy crops: the error swings wide⟧", 11, "var(--bad)")
+         + label(380, 60, "⟦무게 구간마다 오차의 크기가 달라요 — 저울을 걸 때 지켜야 할 조건이 있어요|the error's size changes by weight range — the scale must meet certain conditions⟧", 12, "var(--ink)"))
 
 # 3. 회귀모형 가정 = 저울이 똑바로 걸리기 위한 네 가지 조건 (hero)
 P3 = svg(360, sky(360)
          + scale_(220, 200, 1.3, level=0.45)
          + gradeboard(380, 50, 300, 230, "⟦저울을 똑바로 거는 조건|CONDITIONS FOR A STRAIGHT SCALE⟧",
                       ("⟦① 선형성 — 관계가 직선이어야|① linearity — the relation is a straight line⟧", "⟦② 독립성 — 오차끼리 안 엮여야|② independence — errors don't entangle⟧",
-                       "⟦③ 등분산성 — 흔들림 크기가 일정해야|③ equal variance — the wobble stays the same size⟧", "⟦④ 정규성 — 오차가 고르게 퍼져야|④ normality — errors spread out evenly⟧"), 0.9)
+                       "⟦③ 등분산성 — 오차의 흔들림이 일정해야|③ equal variance — error wobble stays even⟧", "⟦④ 정규성 — 오차가 종모양으로 퍼져야|④ normality — errors form a bell shape⟧"), 0.9)
          + label(380, 28, "⟦회귀모형 가정 = 이 저울의 예측을 믿기 위해 지켜야 할 네 가지 전제|regression assumptions = four conditions the scale's prediction must meet to be trusted⟧", 13, "var(--ink)", cls="d")
          + label(380, 338, "⟦네 조건이 다 지켜져야 예측과 신뢰구간을 믿을 수 있어요|only when all four hold can the prediction and its confidence interval be trusted⟧", 12, "var(--muted)"))
 
@@ -32,7 +32,7 @@ BELL_I = icon('<path d="M10 48 Q32 10 54 48" stroke="var(--accent)" stroke-width
 P4 = svg(340, sky(340)
          + gradeboard(40, 20, 330, 300, "⟦선형성 · 독립성 깨짐|BROKEN LINEARITY · INDEPENDENCE⟧",
                       ("⟦관계가 휘어 있으면 직선 저울이 틀려요|a curved relation fools a straight-line scale⟧",
-                       "⟦어제 오차가 오늘 오차와 엮이면(시계열) 안 돼요|if yesterday's error entangles with today's (time series), it fails⟧"), 0.95)
+                       "⟦어제 오차가 오늘 오차와 엮이면(시계열) 안 돼요|day-linked errors (time series) break independence⟧"), 0.95)
          + gradeboard(390, 20, 330, 300, "⟦등분산성 · 정규성 깨짐|BROKEN EQUAL VARIANCE · NORMALITY⟧",
                       ("⟦무게가 늘수록 흔들림도 커지면(깔때기 모양) 안 돼요|if wobble grows with weight (a funnel shape), it fails⟧",
                        "⟦오차가 한쪽으로 몰리면 신뢰구간이 비뚤어져요|errors piling to one side skews the confidence interval⟧"), 0.95))
@@ -50,26 +50,26 @@ PAGE = {
     "sub": ("회귀모형 가정을, 무게로 가격을 예측하는 저울을 똑바로 걸기 위해 지켜야 할 네 가지 조건 이야기로 풀어봤어요.",
             "Regression assumptions, told as a story about four conditions a weight-to-price scale must meet to hang straight and be trusted."),
     "panels": [
-        {"svg": P1, "alt": ("훈련 교사가 무게로 가격을 예측하는 저울을 걸고, 검수반장이 아무 때나 믿어도 되는지 물음", "The trainer sets up a scale that predicts price from weight, and the inspector asks whether it can always be trusted"),
-         "caption": ("무게로 가격을 예측하는 저울을 걸었어요.", "A scale was set up to predict price from weight."),
-         "small": ("이 저울, 아무 때나 믿어도 되나요?", "Can I trust this scale no matter what?")},
+        {"svg": P1, "alt": ("훈련 교사가 무게로 가격을 예측하는 저울을 걸고, 아무 때나 믿어도 되는지 묻는 말풍선이 떠 있음", "The trainer sets up a scale that predicts price from weight, and a speech bubble asks whether it can always be trusted"),
+         "caption": ("훈련 교사가 무게로 가격을 예측하는 저울을 걸었어요.", "The teacher set up a scale to predict price from weight."),
+         "small": ("이 저울(회귀모형)의 예측을 아무 때나 믿어도 될까요?", "Can this scale's (regression model's) prediction be trusted no matter what?")},
         {"svg": P2, "alt": ("가벼운 작물에선 저울이 조용히 맞지만, 무거운 작물에선 크게 흔들림", "The scale sits still and matches for light crops, but swings wildly for heavy ones"),
-         "caption": ("저울이 어떤 상황에선 엉뚱하게 흔들려요.", "In some situations the scale swings off in strange ways."),
-         "small": ("무게 구간마다 흔들리는 정도가 달라요 — 저울을 걸 때 지켜야 할 조건이 있어요.", "How much it wobbles changes by weight range — the scale needs certain conditions to hold.")},
+         "caption": ("저울(회귀모형)의 예측 오차가 무거운 구간에서 유난히 크게 흔들려요.", "The scale's (model's) prediction error swings much wider in the heavy range."),
+         "small": ("무게 구간마다 오차의 크기가 달라요 — 저울을 걸 때 지켜야 할 조건이 있어요.", "The error's size changes by weight range — the scale must meet certain conditions.")},
         {"svg": P3, "hero": True, "alt": ("저울 옆에 선형성·독립성·등분산성·정규성 네 조건을 적은 체크판이 걸려 있음", "Beside the scale hangs a board listing four conditions: linearity, independence, equal variance, normality"),
          "caption": ("회귀모형 가정은 저울이 똑바로 걸리기 위한 네 가지 조건이에요.", "Regression assumptions are four conditions that keep the scale hanging straight."),
          "small": ("네 조건이 다 지켜져야 예측과 신뢰구간을 믿을 수 있어요.", "Only when all four hold can the prediction and its confidence interval be trusted."),
          "tricks": (4, [
              (LINE_I, ("선형성", "Linearity"), ("관계가 곡선이 아니라 직선이어야 해요", "the relation must be a straight line, not a curve"), "calm"),
-             (INDEP_I, ("독립성", "Independence"), ("오차끼리 서로 엮이면 안 돼요", "errors must not entangle with each other")),
-             (FUNNEL_I, ("등분산성", "Equal Variance"), ("흔들림 크기가 구간마다 같아야 해요", "the wobble size must stay the same across ranges"), "warm"),
+             (INDEP_I, ("독립성", "Independence"), ("한 오차가 다음 오차에 영향을 주면 안 돼요", "one error must not influence the next")),
+             (FUNNEL_I, ("등분산성", "Equal Variance"), ("오차의 흔들림 크기가 구간마다 같아야 해요", "the error's wobble must stay the same size across ranges"), "warm"),
              (BELL_I, ("정규성", "Normality"), ("오차가 종모양으로 고르게 퍼져야 해요", "errors should spread out in a bell-shaped curve")),
          ])},
         {"svg": P4, "alt": ("선형성·독립성이 깨진 모습과 등분산성·정규성이 깨진 모습을 각각 보여줌", "Shows what broken linearity/independence looks like, and what broken equal-variance/normality looks like"),
-         "caption": ("네 조건이 깨지면 이렇게 보여요.", "This is what it looks like when each condition breaks."),
-         "small": ("휘어진 관계, 엮인 오차, 깔때기 모양, 한쪽으로 몰린 오차 — 전부 신호예요.", "A curved relation, entangled errors, a funnel shape, lopsided errors — each is a warning sign.")},
+         "caption": ("네 조건이 깨지면 데이터와 오차에 이런 모습이 나타나요.", "When a condition breaks, the data and errors show these patterns."),
+         "small": ("휘어진 관계, 엮인 오차, 깔때기 모양, 한쪽으로 몰린 오차 — 전부 가정이 깨졌다는 신호예요.", "A curved relation, entangled errors, a funnel shape, lopsided errors — each is a sign an assumption has broken.")},
         {"svg": P5, "alt": ("저울은 어떤 상황에서도 예측 숫자를 내놓지만, 검수반장은 그 숫자의 신뢰 여부는 가정이 지켜졌는지에 달렸다고 말함", "The scale always outputs a predicted number, but the inspector notes how much to trust it depends on whether the conditions held"),
-         "caption": ("가정이 깨져도 숫자는 나오지만, 믿을 수는 없어요.", "Break the assumptions and a number still comes out — but it can't be trusted."),
+         "caption": ("가정이 깨져도 예측 숫자는 나오지만, 그 숫자를 믿을 수는 없어요.", "Break the assumptions and a predicted number still comes out — but it can't be trusted."),
          "small": ("오차범위·검정은 가정이 지켜졌을 때만 믿을 수 있어요.", "The error range and significance tests are only trustworthy when the assumptions hold.")},
     ],
     "summary": (("<b>회귀모형 가정</b> = 예측 저울을 믿으려면 지켜야 할 <b>선형성·독립성·등분산성·정규성</b> 네 조건. 깨져도 숫자는 나오지만, 믿을 순 없어요.",

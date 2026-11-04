@@ -5,7 +5,7 @@ from _world import *
 P1 = svg(320, sky(320)
          + shelfzone(260, 140, 300, 100, 0.9, n=3)
          + person(620, 180, s=0.8, face=SWEAT + EYES, **DRIVER)
-         + label(380, 90, "⟦이 창고 안에 뭐가 있는지 아무도 몰라요|nobody outside knows what's in this warehouse⟧", 12, "var(--bad)")
+         + label(380, 90, "⟦창고 밖 사람은 안에 뭐가 있는지 아무도 몰라요|nobody outside knows what's in this warehouse⟧", 12, "var(--bad)")
          + label(380, 280, "⟦문이 잠겨 있고, 안내문도 없어요|the door is locked, and there's no label either⟧", 13, "var(--ink)"))
 
 # 2. 왜 어려운가: 공개해도 제각각 형식이면 못 써요
@@ -13,8 +13,8 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + receipt(220, 150, 0.8, text="⟦사진으로만|photo only⟧")
          + receipt(380, 150, 0.8, text="⟦손글씨 표|handwritten table⟧")
          + receipt(540, 150, 0.8, text="⟦PDF 문서|PDF document⟧")
-         + label(380, 230, "⟦공개는 했지만 프로그램이 읽을 수 없어요|published, but no program can read it⟧", 12, "var(--bad)")
-         + label(380, 270, "⟦형식이 제각각이면 다시 쓰기 어려워요|mismatched formats make reuse hard⟧", 13, "var(--ink)"))
+         + label(380, 230, "⟦자료를 공개는 했지만 프로그램이 읽을 수 없어요|the data is published, but no program can read it⟧", 12, "var(--bad)")
+         + label(380, 270, "⟦자료 형식이 제각각이면 다시 쓰기 어려워요|when data formats don't match, reusing the data is hard⟧", 13, "var(--ink)"))
 
 # 3. hero: LOD/오픈 데이터 = 문을 열고, 표준 번호표를 달고, 끈으로 연결해 공개하는 것
 OPEN_I = icon('<path d="M10 54 V10 h30 l10 10 v34 z" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M10 54 L54 44" stroke="var(--accent)" stroke-width="4"/>')
@@ -27,12 +27,12 @@ P3 = svg(340, sky(340)
          + gate(150, 260, 0.55)
          + indexcard(460, 200, 0.8, tags=["URI"]) + indexcard(580, 200, 0.7, tags=["URI"])
          + person(680, 170, s=0.7, face=SMILE, **DRIVER)
-         + label(380, 30, "⟦오픈 데이터/LOD = 문을 열고, 표준 번호표를 달고, 끈으로 연결해 공개하는 것|open data/LOD = opening the door, tagging with a standard ID, and linking it for anyone⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦누구나 와서 꺼내 쓸 수 있어요|anyone can come and reuse it⟧", 12, "var(--muted)"))
+         + label(380, 30, "⟦오픈 데이터/LOD = 창고 문을 열고, 데이터에 표준 번호표를 달고, 끈으로 연결해 공개하는 것|open data/LOD = opening the door, tagging data with a standard ID, and linking it for anyone⟧", 13, "var(--ink)", cls="d")
+         + label(380, 320, "⟦누구나 와서 데이터를 꺼내 쓸 수 있어요|anyone can come and reuse the data⟧", 12, "var(--muted)"))
 
 # 4. 오픈 데이터 성숙도 사다리 (4단계)
 P4 = svg(320, sky(320, ground=False)
-         + label(380, 30, "⟦공개 데이터가 좋아지는 네 단계|four steps toward better open data⟧", 14, "var(--ink)", cls="d")
+         + label(380, 30, "⟦공개 데이터가 재사용하기 쉬워지는 네 단계|four steps that make open data easier to reuse⟧", 14, "var(--ink)", cls="d")
          + receipt(160, 230, 0.55, text="⟦①사진/PDF|①photo/PDF⟧")
          + receipt(300, 190, 0.6, text="⟦②표로 정리|②as a table⟧")
          + receipt(460, 150, 0.65, text="⟦③CSV 같은 열린 형식|③open format like CSV⟧")
@@ -42,9 +42,9 @@ P4 = svg(320, sky(320, ground=False)
 
 # 5. 한계: 공개한다고 품질까지 보장되진 않아요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + indexcard(190, 150, 1.0, tags=["URI"]) + label(190, 210, "⟦누구나 찾고 연결할 수 있어요|anyone can find and link it⟧", 11, "var(--ink)")
-         + receipt(570, 150, 0.9, void=True) + label(570, 240, "⟦낡았거나 틀린 데이터일 수도 있어요|it might still be stale or wrong⟧", 11, "var(--ink)")
-         + label(380, 280, "⟦공개는 형식의 문제지, 품질까지 보장하진 않아요|openness fixes format, not quality⟧", 12, "var(--ink)", cls="d"))
+         + indexcard(190, 150, 1.0, tags=["URI"]) + label(190, 210, "⟦누구나 데이터를 찾고 연결할 수 있어요|anyone can find and link the data⟧", 11, "var(--ink)")
+         + receipt(570, 150, 0.9, void=True) + label(570, 240, "⟦그 데이터가 낡았거나 틀렸을 수도 있어요|the data might still be stale or wrong⟧", 11, "var(--ink)")
+         + label(380, 280, "⟦표준 형식으로 공개하면 찾기 쉬워질 뿐, 내용의 품질까지 보장하진 않아요|open formats make data easy to find, but don't guarantee its quality⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "lodopendata", "order": 5,
@@ -54,27 +54,27 @@ PAGE = {
             "LOD (Linked Open Data) and open data, told as a story about a warehouse that opens its door and links its tags."),
     "panels": [
         {"svg": P1, "alt": ("배송 기사가 잠긴 창고 앞에서 안에 뭐가 있는지 몰라 진땀을 흘림", "A driver sweats outside a locked warehouse, not knowing what's inside"),
-         "caption": ("이 창고 안에 뭐가 있는지 아무도 몰라요.", "Nobody outside knows what's in this warehouse."),
+         "caption": ("창고 밖 사람은 안에 뭐가 있는지 아무도 몰라요.", "Nobody outside knows what's in this warehouse."),
          "small": ("문이 잠겨 있고, 안내문도 없어요.", "The door is locked, and there's no label either.")},
         {"svg": P2, "alt": ("사진, 손글씨 표, PDF처럼 제각각 형식으로 공개된 전표들", "Receipts published in mismatched formats: photo, handwritten table, PDF"),
-         "caption": ("공개는 했지만 프로그램이 읽을 수 없어요.", "Published, but no program can read it."),
-         "small": ("형식이 제각각이면 다시 쓰기 어려워요.", "Mismatched formats make reuse hard.")},
+         "caption": ("자료를 공개는 했지만 프로그램이 읽을 수 없어요.", "The data is published, but no program can read it."),
+         "small": ("자료 형식이 제각각이면 다시 쓰기 어려워요.", "When data formats don't match, reusing the data is hard.")},
         {"svg": P3, "hero": True, "alt": ("창고 관리자가 문을 열고, 번호표가 붙은 카드들이 서로 연결되어 배송 기사가 웃으며 찾아옴", "A manager opens the gate, tagged cards link to each other, and a driver smiles while finding one"),
-         "caption": ("LOD/오픈 데이터 = 문을 열고, 표준 번호표를 달고, 끈으로 연결해 공개하는 것이에요.", "Open data/LOD opens the door, tags with a standard ID, and links it for anyone."),
-         "small": ("누구나 와서 꺼내 쓸 수 있어요.", "Anyone can come and reuse it."),
+         "caption": ("LOD/오픈 데이터 = 창고 문을 열고, 데이터에 표준 번호표를 달고, 끈으로 연결해 공개하는 것이에요.", "Open data/LOD opens the warehouse door, tags data with a standard ID, and links it for anyone."),
+         "small": ("누구나 와서 데이터를 꺼내 쓸 수 있어요.", "Anyone can come and reuse the data."),
          "tricks": (4, [
-             (OPEN_I, ("문 열기", "Open the door"), ("누구나 볼 수 있게 공개해요", "make it visible to anyone"), "calm"),
-             (TABLE_I, ("표로 정리하기", "Organize as a table"), ("구조를 갖춰요", "give it structure")),
-             (URI_I, ("표준 번호표 달기", "Attach a standard tag"), ("프로그램 특정 형식에 안 묶여요", "not locked to one program's format"), "warm"),
-             (LINK_I, ("다른 창고와 연결하기", "Link to other warehouses"), ("끈으로 이어 더 풍부해져요", "linked data becomes richer")),
+             (OPEN_I, ("문 열기", "Open the door"), ("데이터를 누구나 볼 수 있게 공개해요", "publish the data for anyone to see"), "calm"),
+             (TABLE_I, ("표로 정리하기", "Organize as a table"), ("데이터에 행과 열 구조를 갖춰요", "give the data rows and columns")),
+             (URI_I, ("표준 번호표 달기", "Attach a standard tag"), ("어느 프로그램이든 같은 데이터를 가리켜요", "any program can point to the same data"), "warm"),
+             (LINK_I, ("다른 창고와 연결하기", "Link to other warehouses"), ("끈으로 이으면 함께 찾아볼 데이터가 늘어요", "links add more data to explore together")),
          ])},
-        {"svg": P4, "alt": ("사진/PDF에서 번호표가 붙어 서로 연결되는 데이터까지 좋아지는 네 단계", "Four steps from photo/PDF up to tagged, linked data"),
-         "caption": ("공개 데이터는 이 네 단계를 거쳐 좋아져요.", "Open data improves through these four steps."),
+        {"svg": P4, "alt": ("사진/PDF에서 번호표가 붙어 서로 연결되는 데이터까지 재사용하기 쉬워지는 네 단계", "Four steps, each easier to reuse, from photo/PDF up to tagged, linked data"),
+         "caption": ("공개 데이터는 사진/PDF에서 연결된 데이터까지 네 단계를 거치며 재사용하기 쉬워져요.", "Open data gets easier to reuse through four steps, from photo/PDF up to linked data."),
          "small": ("마지막 단계가 바로 LOD(연계 공개 데이터)예요.", "The last step is exactly LOD (Linked Open Data)."),
         },
-        {"svg": P5, "alt": ("왼쪽: 누구나 찾고 연결할 수 있음. 오른쪽: 무효 표시된 전표로 낡거나 틀린 데이터일 수 있음을 나타냄", "Left: anyone can find and link it. Right: a voided receipt shows it may still be stale or wrong"),
-         "caption": ("공개한다고 품질까지 보장되진 않아요.", "Openness doesn't guarantee quality."),
-         "small": ("공개는 형식의 문제지, 내용의 정확함을 보장하진 않아요.", "Openness fixes format, not the accuracy of the content.")},
+        {"svg": P5, "alt": ("왼쪽: 누구나 데이터를 찾고 연결할 수 있음. 오른쪽: 무효 표시된 전표로 낡거나 틀린 데이터일 수 있음을 나타냄", "Left: anyone can find and link the data. Right: a voided receipt shows the data may still be stale or wrong"),
+         "caption": ("데이터를 공개한다고 품질까지 보장되진 않아요.", "Publishing data openly doesn't guarantee its quality."),
+         "small": ("표준 형식으로 공개하면 찾기 쉬워질 뿐, 내용이 정확하다는 보장은 아니에요.", "Open formats make data easy to find, but don't guarantee the content is accurate.")},
     ],
     "summary": (("<b>오픈 데이터/LOD</b> = 창고 문을 <b>누구나 볼 수 있게 열고</b>, 상자에 <b>표준 번호표(URI)</b>를 달아 <b>다른 창고와 끈으로 연결</b>해 공개하는 것.",
                  "<b>Open data/LOD</b> opens the warehouse door to everyone, tags boxes with a <b>standard ID (URI)</b>, and <b>links them to other warehouses</b>."),
@@ -83,8 +83,8 @@ PAGE = {
     "glossary": [
         ("오픈 데이터", "Open Data", ("누구나 쓸 수 있게 연 창고.", "A warehouse opened for anyone to use."), ("라이선스까지 명확해야 진짜 오픈이에요.", "Real openness needs a clear license too.")),
         ("LOD(연계 공개 데이터)", "Linked Open Data", ("번호표를 달아 서로 연결한 창고.", "Warehouses tagged and linked to each other."), ("5성 등급 중 가장 높은 단계예요.", "The highest tier of the 5-star model.")),
-        ("5성 등급", "5-Star Open Data", ("창고가 좋아지는 다섯 단계.", "Five steps a warehouse improves through."), ("별이 늘수록 재사용이 쉬워져요.", "More stars, easier reuse.")),
-        ("URI", "URI", ("상자마다 달린 표준 번호표.", "The standard tag attached to every box."), ("프로그램이 서로 가리킬 수 있게 해요.", "Lets programs point to the same thing.")),
+        ("5성 등급", "5-Star Open Data", ("공개 데이터가 재사용하기 쉬워지는 다섯 단계.", "Five steps that make open data easier to reuse."), ("별이 늘수록 재사용이 쉬워져요.", "More stars, easier reuse.")),
+        ("URI", "URI", ("상자마다 달린 표준 번호표.", "The standard tag attached to every box."), ("여러 프로그램이 같은 상자를 가리킬 수 있게 해요.", "Lets different programs point to the same box.")),
         ("RDF", "RDF", ("상자와 상자를 잇는 끈의 규칙.", "The rule for the string linking box to box."), ("주어-서술어-목적어 형태로 적어요.", "Written as subject–predicate–object.")),
         ("NoSQL 모델링", "NoSQL Modeling", ("상자 모양에 맞춰 선반을 바꾸는 창고.", "A warehouse reshaping shelves to fit each box."), ('그래프형 NoSQL은 연결 표현에 잘 맞아요. → <a href="nosqltype-ko.html">자유로운 선반 창고</a>', 'Graph-type NoSQL fits linked data well. → <a href="nosqltype-en.html">the free-shelf warehouse</a>')),
         ("정규화", "Normalization", ("선반 한 칸에 한 번만 적는 규칙.", "Writing shared info on one shelf once."), ('공개 데이터도 중복을 줄이면 더 다루기 쉬워요. → <a href="normalization-ko.html">한 칸에 한 번만 적는 규칙</a>', 'Open data is easier to manage with less duplication too. → <a href="normalization-en.html">the rule of writing it once</a>')),

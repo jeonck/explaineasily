@@ -6,13 +6,13 @@ P1 = svg(320, sky(320)
          + person(140, 160, s=0.8, face=SWEAT + EYES, **MANAGER)
          + shelfzone(260, 140, 440, 110, 1.0, n=6)
          + label(480, 110, "⟦상자가 너무 많아서 찾는 데 한참 걸려요|so many boxes that finding one takes forever⟧", 12, "var(--bad)")
-         + label(380, 290, "⟦창고 하나로는 감당이 안 돼요|one single warehouse can't keep up⟧", 13, "var(--ink)"))
+         + label(380, 290, "⟦창고 하나로는 늘어난 상자와 요청을 못 받아내요|one warehouse alone can't handle all the boxes and requests⟧", 13, "var(--ink)"))
 
 # 2. 왜 어려운가: 어디로 나눌지가 문제예요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + shelfzone(190, 120, 380, 100, 0.9, n=4, bad=2)
          + person(640, 180, s=0.75, face=FROWN, **MANAGER)
-         + label(380, 90, "⟦아무렇게나 나누면 한 구역에만 몰려요|splitting randomly piles everything into one zone⟧", 12, "var(--bad)")
+         + label(380, 90, "⟦나누는 기준을 아무렇게나 정하면 상자가 한 구역에만 몰려요|pick a careless split rule, and the boxes pile into one zone⟧", 12, "var(--bad)")
          + label(380, 260, "⟦나누는 기준(키)을 잘 골라야 해요|the splitting key has to be chosen carefully⟧", 13, "var(--ink)"))
 
 # 3. hero: 샤딩 = 창고를 여러 구역(서버)으로 쪼개는 것
@@ -47,8 +47,8 @@ P5 = svg(300, '<rect width="760" height="300" fill="var(--accent-soft)"/>'
          + shelfzone(100, 130, 180, 80, 0.8, n=2, label_text="⟦구역 A|zone A⟧")
          + shelfzone(320, 130, 180, 80, 0.8, n=2, label_text="⟦구역 B|zone B⟧")
          + person(620, 150, s=0.8, face=FROWN, **DRIVER)
-         + bubble(534, 58, 220, 40, "⟦두 구역을 다 뒤져야 해요(조인)|has to search both zones — a join⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 270, "⟦나눌수록 빨라지지만, 걸친 질문은 오히려 느려져요|splitting helps speed, but cross-zone questions get slower⟧", 12, "var(--ink)", cls="d"))
+         + bubble(534, 58, 220, 40, "⟦두 구역을 다 뒤져야 해요(조인)|I have to search both zones — a join⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + label(380, 270, "⟦구역을 나누면 한 구역 조회는 빨라지지만, 여러 구역에 걸친 질문은 느려져요|lookups in one zone get faster, but questions spanning zones get slower⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "dbsharding", "order": 3,
@@ -59,25 +59,25 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("창고 관리자가 상자로 가득 찬 거대한 선반 앞에서 진땀을 흘림", "A manager sweats before a huge shelf packed with boxes"),
          "caption": ("상자가 너무 많아서 찾는 데 한참 걸려요.", "So many boxes that finding one takes forever."),
-         "small": ("창고 하나로는 감당이 안 돼요.", "One single warehouse can't keep up.")},
-        {"svg": P2, "alt": ("창고 관리자가 아무렇게나 나눈 선반 한 구역에 상자가 몰린 것을 보고 찡그림", "A manager frowns at a randomly split shelf where boxes pile into one zone"),
-         "caption": ("아무렇게나 나누면 한 구역에만 몰려요.", "Splitting randomly piles everything into one zone."),
+         "small": ("창고 하나로는 늘어난 상자와 요청을 못 받아내요.", "One warehouse alone can't handle all the boxes and requests.")},
+        {"svg": P2, "alt": ("창고 관리자가 아무렇게나 나눈 선반 한 구역에 상자가 몰린 것을 보고 찡그림", "A manager frowns at a carelessly split shelf where boxes pile into one zone"),
+         "caption": ("나누는 기준을 아무렇게나 정하면 상자가 한 구역에만 몰려요.", "Pick a careless split rule, and the boxes pile into one zone."),
          "small": ("나누는 기준(키)을 잘 골라야 해요.", "The splitting key has to be chosen carefully.")},
         {"svg": P3, "hero": True, "alt": ("창고 관리자가 창고를 구역 A와 구역 B로 나누고, 배송 기사가 자기 몫의 구역을 찾아감", "A manager splits the warehouse into zone A and zone B, and a driver heads to the right zone"),
          "caption": ("샤딩 = 창고를 여러 구역(서버)으로 쪼개는 것이에요.", "Sharding splits the warehouse into several zones (servers)."),
          "small": ("각 구역은 자기 몫의 상자만 책임져요.", "Each zone only handles its own share of boxes."),
          "tricks": (4, [
-             (HKEY_I, ("샤딩 키 고르기", "Choose a shard key"), ("어느 구역으로 갈지 정해요", "decides which zone it goes to"), "calm"),
+             (HKEY_I, ("샤딩 키 고르기", "Choose a shard key"), ("상자가 어느 구역으로 갈지 정해요", "decides which zone each box goes to"), "calm"),
              (VSPLIT_I, ("수직/수평 나누기", "Split vertically or horizontally"), ("열 기준, 행 기준", "by column, or by row")),
-             (ROUTE_I, ("올바른 구역으로 안내", "Route to the right zone"), ("배송 기사가 헤매지 않아요", "the driver doesn't wander"), "warm"),
-             (JOIN_I, ("걸친 질문은 느려짐", "Cross-zone queries slow down"), ("여러 구역을 다 봐야 해요", "has to check every zone")),
+             (ROUTE_I, ("올바른 구역으로 안내", "Route to the right zone"), ("배송 기사(요청)가 맞는 구역으로 바로 가요", "the driver (request) goes straight to the right zone"), "warm"),
+             (JOIN_I, ("걸친 질문은 느려짐", "Cross-zone queries slow down"), ("그 질문은 여러 구역을 다 봐야 해요", "each such query has to check several zones")),
          ])},
         {"svg": P4, "alt": ("샤딩과 파티셔닝을 비교하는 표", "A table comparing sharding and partitioning"),
-         "caption": ("샤딩은 서버를 나누고, 파티셔닝은 한 창고 안 구역을 나눠요.", "Sharding splits servers; partitioning splits zones within one warehouse."),
+         "caption": ("샤딩은 데이터를 여러 서버로 나누고, 파티셔닝은 한 창고(서버) 안의 구역을 나눠요.", "Sharding splits data across servers; partitioning splits zones within one warehouse (server)."),
          "small": ("둘 다 나누는 기준이 핵심이에요.", "Both hinge on choosing the right split key.")},
         {"svg": P5, "alt": ("배송 기사가 두 구역을 다 뒤져야 해서 찡그림", "A driver frowns because the request has to search both zones"),
-         "caption": ("나눌수록 빨라지지만, 걸친 질문은 느려져요.", "Splitting helps speed, but cross-zone questions get slower."),
-         "small": ("조인이 필요한 질문일수록 더 그래요.", "Especially true for queries that need a join.")},
+         "caption": ("구역을 나누면 한 구역 조회는 빨라지지만, 여러 구역에 걸친 질문은 느려져요.", "Lookups in one zone get faster, but questions spanning zones get slower."),
+         "small": ("여러 구역을 합쳐 봐야 하는 조인은 특히 느려요.", "Joins, which combine several zones, slow down the most.")},
     ],
     "summary": (("<b>샤딩/파티셔닝</b> = 너무 커진 창고를 <b>여러 구역(또는 서버)</b>으로 나눠, 각자 자기 몫만 책임지게 하는 것.",
                  "<b>Sharding/partitioning</b> splits an overgrown warehouse into zones (or servers), each responsible for its own share."),
@@ -86,9 +86,9 @@ PAGE = {
     "glossary": [
         ("샤딩", "Sharding", ("여러 서버(창고)로 나누는 것.", "Splitting across several servers (warehouses)."), ("샤딩 키 선택이 가장 중요해요.", "Choosing the shard key matters most.")),
         ("파티셔닝", "Partitioning", ("한 창고 안에서 구역만 나누는 것.", "Splitting zones within one warehouse."), ("수평/수직 두 방향 모두 가능해요.", "Can go horizontal or vertical.")),
-        ("샤딩 키", "Shard Key", ("어느 구역으로 보낼지 정하는 번호표.", "The tag deciding which zone it goes to."), ("잘못 고르면 한쪽만 몰려요.", "Pick it wrong and one zone gets overloaded.")),
-        ("조인 비용", "Join Cost", ("여러 구역을 다 뒤지는 수고.", "The work of searching every zone."), ("샤딩이 깊어질수록 커져요.", "Grows as sharding gets more fine-grained.")),
-        ("분산 시스템 관점의 샤딩", "Sharding (Distributed Systems View)", ("놀이공원 세계의 더 깊은 이야기.", "The deeper story from the amusement-park world."), ('복제·합의·CAP까지 다루는 쪽은 따로 있어요. → <a href="sharding-ko.html">분산 시스템의 샤딩</a>', 'Replication, consensus, and CAP are covered there in depth. → <a href="sharding-en.html">sharding in distributed systems</a>')),
+        ("샤딩 키", "Shard Key", ("상자를 어느 구역으로 보낼지 정하는 번호표.", "The tag deciding which zone a box goes to."), ("잘못 고르면 상자가 한 구역에만 몰려요.", "Pick it wrong and the boxes overload one zone.")),
+        ("조인 비용", "Join Cost", ("여러 구역을 다 뒤지는 수고.", "The work of searching every zone."), ("데이터를 잘게 나눌수록 커져요.", "Grows as the data is split into more zones.")),
+        ("분산 시스템 관점의 샤딩", "Sharding (Distributed Systems View)", ("놀이공원 세계의 더 깊은 이야기.", "The deeper story from the amusement-park world."), ('복제·합의·CAP은 놀이공원 세계에서 더 깊이 다뤄요. → <a href="sharding-ko.html">분산 시스템의 샤딩</a>', 'Replication, consensus, and CAP are covered there in depth. → <a href="sharding-en.html">sharding in distributed systems</a>')),
         ("병행제어", "Concurrency Control", ("동시에 손대도 안 부딪히게 막는 규칙.", "Rules that stop simultaneous edits from colliding."), ('구역이 나뉘어도 안에서는 이 규칙이 필요해요. → <a href="concurrency-ko.html">동시에 안 부딪히는 규칙</a>', "Still needed inside each zone. → <a href=\"concurrency-en.html\">the no-collision rule</a>")),
         ("NoSQL 모델링", "NoSQL Modeling", ("자유로운 선반 창고.", "The free-shelf warehouse."), ('샤딩을 수월하게 지원하는 경우가 많아요. → <a href="nosqltype-ko.html">자유로운 선반 창고</a>', 'Often makes sharding easier. → <a href="nosqltype-en.html">the free-shelf warehouse</a>')),
         ("정규화", "Normalization", ("선반 한 칸에 한 번만 적는 규칙.", "Writing shared info on one shelf once."), ('정규화를 너무 따르면 조인이 늘어 샤딩과 부딪혀요. → <a href="normalization-ko.html">한 칸에 한 번만 적는 규칙</a>', 'Too much normalization means more joins, clashing with sharding. → <a href="normalization-en.html">the rule of writing it once</a>')),

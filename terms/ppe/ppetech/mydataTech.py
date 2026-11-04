@@ -50,18 +50,18 @@ MD_RECOMMEND = icon('<path d="M32 10 l6 14 h-12z" fill="var(--accent)"/><rect x=
 
 # 4. 데이터 흐름
 P4 = svg(360, sky(360, ground=False)
-         + infoboard(130, 30, 500, 290, "⟦마이데이터 흐름|HOW IT FLOWS⟧",
+         + infoboard(55, 30, 500, 230, "⟦마이데이터 흐름|HOW IT FLOWS⟧",
                      ("⟦은행·통신·병원 — 흩어진 내 정보|bank, telecom, hospital — my scattered data⟧",
                       "⟦내가 동의 — 어디로 보낼지 내가 정해요|I consent — I decide where it goes⟧",
                       "⟦마이데이터 사업자 — 표준 API로 모아요|a MyData provider — gathers it via a standard API⟧",
-                      "⟦내 통합 대시보드 — 한눈에 보여요|my unified dashboard — sees it all at once⟧"), 1.3)
-         + label(380, 345, "⟦동의 없이는 이 흐름이 시작되지 않아요|nothing moves without my consent, first⟧", 12, "var(--ink)"))
+                      "⟦내 통합 대시보드 — 내 정보가 한눈에 보여요|my unified dashboard — shows all my data at once⟧"), 1.3)
+         + label(380, 345, "⟦내가 동의하지 않으면 내 정보는 움직이지 않아요|without my consent, my data doesn't move⟧", 12, "var(--ink)"))
 
 # 5. 한계: 동의해도 유출 위험, 모든 기관이 다 참여하진 않아요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + dashboard(140, 150, 1.3) + label(190, 90, "⟦동의해도 유출 위험은 남아요|consenting doesn't erase breach risk⟧", 11, "var(--ink)")
-         + datadrawer(600, 150, 1.0, "⟦표준 안 맞으면 못 가져와요|can't import it if standards don't match⟧", "var(--muted)")
-         + label(380, 282, "⟦모든 기관이 다 참여하는 건 아니에요|not every institution participates⟧", 12, "var(--ink)", cls="d"))
+         + datadrawer(600, 150, 1.0, "⟦표준 안 맞으면 정보를 못 가져와요|can't import data if standards differ⟧", "var(--muted)")
+         + label(380, 282, "⟦모든 기관이 마이데이터에 참여하는 건 아니에요|not every institution participates in MyData⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "mydataTech", "order": 11,
@@ -72,25 +72,25 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("은행·병원·통신사 서랍에 각각 내 정보가 흩어져 있고, 관람객은 한눈에 보지 못함", "My data sits scattered in separate drawers for bank, hospital, and telecom, and the visitor can't see it all"),
          "caption": ("내 정보인데, 나는 한눈에 못 봐요.", "It's my own data, but I can't see it all at once."),
-         "small": ("각 기관에 뿔뿔이 흩어져 있어요.", "It's scattered across each institution.")},
+         "small": ("내 정보는 은행·병원·통신사에 뿔뿔이 흩어져 있어요.", "My data is scattered across the bank, the hospital, and the telecom.")},
         {"svg": P2, "alt": ("은행은 은행 것만, 병원은 병원 것만 보여줌", "The bank shows only its own data, and the hospital shows only its own"),
          "caption": ("각 기관은 자기네 것만 보여줘요.", "Each institution shows only its own data."),
          "small": ("나는 내 정보를 다른 곳으로 옮길 방법이 없었어요.", "I had no way to move my own data elsewhere.")},
         {"svg": P3, "hero": True, "alt": ("관람객이 동의하자 은행·병원·통신사의 정보가 선으로 이어져 통합 대시보드로 모임", "The visitor consents, and lines from bank, hospital, and telecom gather into a unified dashboard"),
          "caption": ("마이데이터는 내가 허락해서, 내 정보를 한곳에 모아보고 다른 곳으로 옮길 수도 있는 제도예요.", "MyData means that, with my consent, my data gathers into one view — and can move elsewhere too."),
-         "small": ("'내 정보는 나의 것'이라는 생각에서 출발해요.", "It starts from the idea that 'my data is mine.'"),
+         "small": ("마이데이터는 '내 정보는 나의 것'이라는 생각에서 출발해요.", "MyData starts from the idea that 'my data is mine.'"),
          "tricks": (4, [
-             (MD_CONSENT, ("본인이 동의해야 이동", "Moves only with my consent"), ("내가 허락해야 움직여요", "it moves only if I say yes"), "calm"),
+             (MD_CONSENT, ("본인이 동의해야 이동", "Moves only with my consent"), ("내가 허락해야 내 정보가 움직여요", "my data moves only if I say yes"), "calm"),
              (MD_API, ("표준 API로 전송", "Transferred via standard API"), ("오픈뱅킹 같은 방식이에요", "like open banking")),
              (MD_UNIFY, ("한곳에서 통합 조회", "Viewed all in one place"), ("여러 기관 정보를 한눈에", "several institutions, one view")),
-             (MD_RECOMMEND, ("맞춤 서비스 추천", "Personalized recommendations"), ("모은 정보로 더 맞게요", "tailored from the gathered data"), "warm"),
+             (MD_RECOMMEND, ("맞춤 서비스 추천", "Personalized recommendations"), ("모은 정보로 내게 맞는 서비스를 골라줘요", "services picked for me from the gathered data"), "warm"),
          ])},
         {"svg": P4, "alt": ("흩어진 정보가 동의를 거쳐 마이데이터 사업자를 통해 통합 대시보드로 흐르는 과정도", "A flow diagram: scattered data, consent, a MyData provider, then a unified dashboard"),
-         "caption": ("동의 없이는 이 흐름이 시작되지 않아요.", "Nothing moves without my consent, first."),
-         "small": ("표준화된 API로 흐르고, 마지막엔 내 대시보드에 모여요.", "It flows through a standard API and ends up on my own dashboard.")},
+         "caption": ("내가 동의하지 않으면 내 정보는 움직이지 않아요.", "Without my consent, my data doesn't move."),
+         "small": ("내 정보는 표준화된 API로 흘러, 마지막엔 내 대시보드에 모여요.", "My data flows through a standard API and ends up on my own dashboard.")},
         {"svg": P5, "alt": ("왼쪽: 동의해도 유출 위험이 남음. 오른쪽: 표준이 안 맞으면 정보를 못 가져옴", "Left: consenting doesn't erase breach risk. Right: mismatched standards mean data can't be imported"),
-         "caption": ("동의해도 유출 위험은 남고, 모든 기관이 다 참여하는 건 아니에요.", "Consenting doesn't erase breach risk, and not every institution participates."),
-         "small": ("표준이 안 맞으면 가져올 수가 없어요.", "If the standards don't match, it can't be imported.")},
+         "caption": ("동의해도 유출 위험은 남고, 모든 기관이 마이데이터에 참여하는 건 아니에요.", "Consenting doesn't erase breach risk, and not every institution participates in MyData."),
+         "small": ("기관의 데이터 표준이 안 맞으면 정보를 가져올 수 없어요.", "If an institution's data standard doesn't match, the data can't be imported.")},
     ],
     "summary": (("<b>마이데이터</b>는 '<b>내 정보는 나의 것</b>'이라는 생각에서, 내가 직접 동의해 여러 기관의 내 정보를 한곳에 모아보고 다른 곳으로 옮길 수도 있게 하는 제도예요.",
                  "<b>MyData</b> starts from the idea that '<b>my data is mine</b>' — letting me consent to gather my own information from several institutions into one view, and move it elsewhere too."),
@@ -99,11 +99,11 @@ PAGE = {
     "glossary": [
         ("마이데이터", "MyData", ("내 정보를 내가 모아보는 제도.", "A system letting me gather my own data."), ("본인 동의가 시작점이에요.", "It all starts with my own consent.")),
         ("개인정보 이동권", "Data Portability Right", ("내 데이터 전송을 내가 요구할 권리.", "My right to request my own data be transferred."), ("마이데이터 제도의 법적 기반이에요.", "The legal basis MyData rests on.")),
-        ("오픈뱅킹", "Open Banking", ("표준 API로 은행 데이터를 주고받는 방식.", "Exchanging bank data via a standard API."), ("마이데이터의 대표적인 적용 사례예요.", "A leading example of MyData in practice.")),
+        ("오픈뱅킹", "Open Banking", ("표준 API로 은행 데이터를 주고받는 방식.", "Exchanging bank data via a standard API."), ("마이데이터처럼 표준 API를 쓰는 비슷한 사례예요.", "A similar case that also uses standard APIs, as MyData does.")),
         ("마이데이터 사업자", "MyData Provider", ("여러 기관의 데이터를 모아주는 중개자.", "The go-between that gathers data from several institutions."), ("표준 API로 데이터를 연결해요.", "Connects the data through standard APIs.")),
-        ("데이터 유출", "Data Breach", ("동의해도 사라지지 않는 위험.", "A risk that doesn't vanish just because I consented."), ("마이데이터도 예외는 아니에요.", "MyData is no exception.")),
-        ("스마트시티", "Smart City", ("도시 곳곳의 데이터를 모아 조율하는 것.", "Gathering citywide data to coordinate services."), ('개인정보 수집 범위 고민이 여기와 맞닿아요. → <a href="smartcity-ko.html">스마트시티 부스</a>', "Shares the same personal-data concern. → <a href=\"smartcity-en.html\">the Smart City booth</a>")),
-        ("표준화", "Standardization", ("기관마다 형식이 달라 못 맞는 부분.", "The format mismatch between institutions."), ("표준이 안 맞으면 데이터를 못 가져와요.", "Without matching standards, data can't be imported.")),
+        ("데이터 유출", "Data Breach", ("내 정보가 밖으로 새는 사고, 동의해도 위험은 남아요.", "An accident where my data leaks out; consenting doesn't remove the risk."), ("마이데이터도 예외는 아니에요.", "MyData is no exception.")),
+        ("스마트시티", "Smart City", ("도시 곳곳의 데이터를 모아 조율하는 것.", "Gathering citywide data to coordinate services."), ('개인정보 수집 범위 고민이 여기와 맞닿아요. → <a href="smartcity-ko.html">스마트시티 부스</a>', "Raises the same concern about how much personal data gets collected. → <a href=\"smartcity-en.html\">the Smart City booth</a>")),
+        ("표준화", "Standardization", ("기관마다 다른 데이터 형식을 하나로 맞추는 것.", "Making institutions' different data formats match."), ("표준이 안 맞으면 데이터를 못 가져와요.", "Without matching standards, data can't be imported.")),
         ("개인정보보호법", "Personal Data Protection Law", ("동의와 이동권을 뒷받침하는 법.", "The law behind consent and portability rights."), ("마이데이터 제도 운영의 근거예요.", "The legal ground MyData operates on.")),
     ],
 }

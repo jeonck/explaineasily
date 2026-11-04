@@ -18,22 +18,22 @@ def clipboard(x, y, s=1.0):
 
 # 1. 관청이 바깥 창고를 빌리고 싶은데
 P1 = svg(320, sky(320)
-         + person(190, 130, s=0.85, face=EYES, **CLERK) + bubble(60, 40, 240, 42, "⟦우리 장부를 바깥 창고에 맡겨도 될까요?|can we trust our records to an outside warehouse?⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + warehouse(500, 160, 1.0) + person(560, 220, s=0.6, face=SMILE, **KEEPER) + label(500, 260, "⟦빌린 창고(클라우드)|the rented warehouse (cloud)⟧", 11, "var(--muted)"))
+         + person(190, 130, s=0.85, face=EYES, **CLERK) + bubble(60, 40, 270, 42, "⟦우리 장부를 바깥 창고에 맡겨도 될까요?|can we trust our records to an outside warehouse?⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + warehouse(500, 160, 1.0) + person(560, 220, s=0.6, face=SMILE, **KEEPER) + label(470, 260, "⟦빌린 창고(클라우드)|the rented warehouse (cloud)⟧", 11, "var(--muted)"))
 
 # 2. 창고마다 안전하다고만 말해요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + warehouse(170, 160) + person(230, 220, s=0.55, face=SMILE, **KEEPER) + bubble(60, 60, 200, 36, "⟦저희 창고 완전 안전해요!|our warehouse is totally safe!⟧", 10, "var(--panel)", "var(--line)", "bottom")
          + warehouse(460, 160) + person(520, 220, s=0.55, face=SMILE, **KEEPER) + bubble(390, 60, 200, 36, "⟦저희도 안전한데요!|so is ours!⟧", 10, "var(--panel)", "var(--line)", "bottom")
          + person(670, 130, s=0.7, face=FROWN, **CLERK)
-         + label(380, 282, "⟦다 안전하다는데, 기준이 없어 확인할 길이 없어요|everyone claims it's safe, but there's no shared standard to check it against⟧", 11, "var(--ink)", cls="d"))
+         + label(380, 297, "⟦다 안전하다는데, 기준이 없어 확인할 길이 없어요|everyone claims it's safe, but there's no shared standard to check it against⟧", 11, "var(--ink)", cls="d"))
 
 # 3. CSAP = 왕의 점검관이 검사하고 도장을 찍어줌 (hero)
 P3 = svg(340, sky(340)
          + person(170, 140, s=0.85, face=EYES, **INSPECTOR) + clipboard(280, 110, 0.9)
          + warehouse(470, 170, 1.1, stamped=True)
          + '<path d="M250 150 L410 160" stroke="var(--good)" stroke-width="3" stroke-dasharray="5 5"/>'
-         + person(620, 230, s=0.7, face=EYES, **CLERK) + label(620, 325, "⟦이 도장 찍힌 창고만 관청이 빌려요|only a stamped warehouse may be rented by a government office⟧", 11, "var(--good)")
+         + person(620, 190, s=0.7, face=EYES, **CLERK) + label(620, 290, "⟦도장 찍힌 창고만 관청이 빌려요|offices rent only stamped warehouses⟧", 11, "var(--good)")
          + label(380, 320, "⟦CSAP = 왕의 점검관이 정해진 표로 검사하고 도장을 찍는 제도|CSAP = the king's inspector checks against a fixed list and stamps it⟧", 13, "var(--ink)", cls="d"))
 
 LIST_I = icon('<rect x="12" y="10" width="40" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 22 h24 M20 30 h24 M20 38 h16" stroke="#142033" stroke-width="2.5" stroke-linecap="round"/>')
@@ -55,12 +55,12 @@ PAGE = {
          "caption": ("창고마다 안전하다고만 말해요.", "Every warehouse just claims to be safe."),
          "small": ("저마다 안전하다고 하는데, 공통 기준이 없어서 뭘 믿어야 할지 알 수 없어요.", "Everyone says they're safe, but with no common standard, there's no way to know who to believe.")},
         {"svg": P3, "hero": True, "alt": ("왕의 점검관이 점검표를 들고 창고를 검사해 도장을 찍고, 도장 찍힌 창고만 관청이 빌릴 수 있음", "The king's inspector checks the warehouse with a checklist and stamps it, and only a stamped warehouse may be rented by a government office"),
-         "caption": ("CSAP는 왕의 점검관이 검사하고 도장을 찍는 제도예요.", "CSAP is the king's inspector checking it and stamping it."),
-         "small": ('정해진 점검표로 검사하고 통과한 창고에만 도장을 찍어요. → <a href="cspm-ko.html">빌린 창고 문단속 점검</a>은 도장을 찍은 뒤에도 계속해요.',
-                   'It checks against a fixed list and stamps only the ones that pass. → <a href="cspm-en.html">ongoing door-checks on the rented warehouse</a> continue even after the stamp.'),
+         "caption": ("CSAP는 왕의 점검관이 빌린 창고를 정해진 표로 검사하고 도장을 찍는 제도예요.", "CSAP is the king's inspector checking a rented warehouse against a fixed list and stamping it."),
+         "small": ('점검관은 정해진 점검표로 검사하고 통과한 창고에만 도장을 찍어요. → <a href="cspm-ko.html">빌린 창고 문단속 점검</a>은 도장을 찍은 뒤에도 계속해요.',
+                   'The inspector checks against a fixed list and stamps only the warehouses that pass. → <a href="cspm-en.html">ongoing door-checks on the rented warehouse</a> continue even after the stamp.'),
          "tricks": (4, [
              (LIST_I, ("정해진 점검표로 확인", "Checked against a fixed list"), ("물리 보안·접근통제·분리 등", "physical security, access control, isolation"), "calm"),
-             (TIER_I, ("등급을 나눠요", "Graded into tiers"), ("상·중·하 등급으로 나뉘어요", "split into high/medium/low tiers")),
+             (TIER_I, ("창고 등급을 나눠요", "Warehouses are graded into tiers"), ("상·중·하 등급으로 나뉘어요", "split into high/medium/low tiers")),
              (GOV_I, ("공공기관은 의무예요", "Mandatory for public agencies"), ("도장 없는 창고는 못 빌려요", "no stamp, no rental"), "warm"),
              (RECHECK_I, ("주기적으로 다시 검사", "Re-inspected periodically"), ("도장은 영원하지 않아요", "the stamp doesn't last forever")),
          ])},
@@ -79,8 +79,8 @@ PAGE = {
                     + person(560, 150, s=0.85, face=EYES, **INSPECTOR) + label(560, 270, "⟦도장이 다가 아니에요, 계속 점검해야 해요|the stamp isn't the finish line — checking continues⟧", 11, "var(--bad)")
                     + label(380, 305, "⟦우리나라만의 제도라, 해외 창고는 별도 기준을 따로 봐야 해요|a Korea-specific system — a warehouse abroad needs its own separate standard checked⟧", 12, "var(--ink)", cls="d")),
          "alt": ("관청엔 의무, 민간은 참고용. 도장 이후에도 지속적인 점검이 필요하고, 다른 나라 창고는 별도 기준이 필요함", "Mandatory for government, a reference for private firms. Checking continues even after the stamp, and warehouses abroad need their own separate standard"),
-         "caption": ("도장 하나로 끝나는 게 아니에요.", "The stamp alone doesn't end the story."),
-         "small": ('우리나라 제도라 해외엔 안 통하고, 도장 이후에도 <a href="cspm-ko.html">문단속 점검</a>은 계속돼요.',
+         "caption": ("도장을 받아도 점검은 끝나지 않아요.", "Getting the stamp doesn't end the checking."),
+         "small": ('CSAP는 우리나라 제도라 해외엔 안 통하고, 도장 이후에도 <a href="cspm-ko.html">문단속 점검</a>은 계속돼요.',
                    'It\'s a Korea-specific system that doesn\'t carry abroad, and the <a href="cspm-en.html">door-checking</a> continues even after the stamp.')},
     ],
     "summary": (("<b>CSAP</b> = 왕의 점검관이 빌린 창고(클라우드)를 <b>정해진 표</b>로 검사해 <b>도장</b>을 찍는 제도. <b>도장 없는 창고는 관청이 못 빌려요.</b>",
@@ -92,9 +92,9 @@ PAGE = {
         ("KISA", "KISA", ("점검하는 왕의 점검관.", "The king's inspector who checks it."), ("한국인터넷진흥원. 실제 심사를 맡아요.", "The Korea Internet & Security Agency, which runs the actual review.")),
         ("다등급제", "Multi-tier system", ("창고를 안전도별로 나눈 것.", "Grading warehouses by how safe they are."), ("다루는 정보의 민감도에 따라 받을 수 있는 등급이 달라요.", "Which tier you can earn depends on how sensitive the data is.")),
         ("공공기관 의무화", "Mandatory for public agencies", ("도장 없는 창고는 관청이 못 빌려요.", "No stamp, and a government office can't rent it."), ("공공 클라우드 전환의 전제 조건이에요.", "A precondition for any public-sector cloud migration.")),
-        ("CSPM", "CSPM", ("도장 이후에도 계속하는 문단속.", "The door-checking that continues after the stamp."), ('CSAP는 한 번의 인증, CSPM은 이후의 지속 점검이에요. → <a href="cspm-ko.html">빌린 창고 문단속 점검</a>', 'CSAP is a one-time certification; CSPM is the ongoing check afterward. → <a href="cspm-en.html">door-checking the rented warehouse</a>')),
+        ("CSPM", "CSPM", ("도장 이후에도 계속하는 문단속.", "The door-checking that continues after the stamp."), ('CSAP는 기한마다 다시 받는 인증, CSPM은 그 사이에도 계속하는 점검이에요. → <a href="cspm-ko.html">빌린 창고 문단속 점검</a>', 'CSAP is a certification renewed at set intervals; CSPM is the continuous check in between. → <a href="cspm-en.html">door-checking the rented warehouse</a>')),
         ("클라우드", "Cloud", ("빌린 창고.", "The rented warehouse."), ("성 밖에 두고 빌려 쓰는 창고예요.", "A warehouse kept outside the castle and rented for use.")),
         ("물리 보안", "Physical security", ("창고 건물 자체의 안전.", "The safety of the warehouse building itself."), ("점검표의 한 항목이에요.", "One of the items on the inspector's checklist.")),
-        ("규정 준수", "Compliance", ("점검관이 확인해주는 것 전반.", "The broader idea of being checked and confirmed."), ('CSAP는 클라우드에 한정된 규정 준수 제도예요. → <a href="compliance-ko.html">이웃 나라 규칙 검사관</a>', 'CSAP is a compliance program specific to the cloud. → <a href="compliance-en.html">the inspector from the neighboring kingdom</a>')),
+        ("규정 준수", "Compliance", ("규칙을 지켰는지 점검관이 확인하는 일 전반.", "The broader idea of an inspector confirming the rules were followed."), ('CSAP는 클라우드에 한정된 규정 준수 제도예요. → <a href="compliance-ko.html">이웃 나라 규칙 검사관</a>', 'CSAP is a compliance program specific to the cloud. → <a href="compliance-en.html">the inspector from the neighboring kingdom</a>')),
     ],
 }

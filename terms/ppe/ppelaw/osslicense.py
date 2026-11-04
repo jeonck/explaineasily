@@ -39,18 +39,18 @@ P3 = svg(340, sky(340)
 # 4. 두 종류의 라벨
 P4 = svg(320, sky(320, ground=False)
          + rulesboard(40, 40, 320, 240, "⟦허용적 라이선스 (MIT 등)|PERMISSIVE (MIT, etc.)⟧",
-                      ("⟦그냥 써도 돼요|just use it⟧", "⟦출처만 적으면 끝|just credit the source⟧", "⟦다시 나눠줄 때 비공개도 OK|can keep the new version closed⟧"), 1.0)
+                      ("⟦자유롭게 써도 돼요|free to use⟧", "⟦출처만 적으면 끝|just credit the source⟧", "⟦고쳐서 나눠줄 때 소스 비공개도 OK|may keep your modified source closed⟧"), 1.0)
          + rulesboard(400, 40, 320, 240, "⟦카피레프트 (GPL)|COPYLEFT (GPL)⟧",
-                      ("⟦자유롭게 써도 돼요|free to use too⟧", "⟦근데 고쳐서 나눠줄 땐|but when you reshare a fix⟧", "⟦너도 소스를 공개해야 해요|you must open your source too⟧"), 1.0)
-         + label(380, 300, "⟦섞어 쓰면 규칙이 충돌할 수 있어요 — 조합을 꼭 확인해요|mixing them can clash — always check the combination⟧", 12, "var(--ink)", cls="d"))
+                      ("⟦자유롭게 써도 돼요|free to use too⟧", "⟦근데 고쳐서 나눠줄 땐|but when you share a modified copy⟧", "⟦너도 소스를 공개해야 해요|you must open your source too⟧"), 1.0)
+         + label(380, 300, "⟦두 종류를 한 프로그램에 섞어 쓰면 규칙이 충돌할 수 있어요 — 조합을 꼭 확인해요|mixing licenses in one program can clash — always check the combination⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 라벨은 법적 효력이 있어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
          + person(190, 140, s=0.8, face=FROWN, **STUDENT) + gavel(190, 215, 0.9)
-         + label(190, 260, "⟦규칙을 어기면 못 쓰게 돼요|break it, and you lose the right to use it⟧", 11, "var(--bad)")
+         + label(190, 260, "⟦라이선스를 어기면 그 코드를 못 쓰게 될 수 있어요|break the license, and you can lose the right to use the code⟧", 11, "var(--bad)")
          + person(570, 140, s=0.8, face=SMILE, **REP) + checkmachine(570, 215, 0.9)
          + label(570, 260, "⟦재료표로 어떤 라벨이 섞였는지 추적해요|a parts list tracks which tags got mixed in⟧", 11, "var(--good)")
-         + label(380, 285, "⟦라벨은 법적 효력이 있어요 — 추적 도구는 다른 세계에도 있어요|the tag has legal force — a tracking tool exists in another world too⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 285, "⟦라이선스는 법적 효력이 있어요 — 섞인 라이선스는 재료표(SBOM)로 추적해요|a license has legal force — an SBOM parts list tracks which licenses got mixed in⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "osslicense", "order": 1,
@@ -63,10 +63,10 @@ PAGE = {
          "caption": ("학생회는 학교 규칙과 표준을 정하는 곳이에요.", "The student council is where the school's rules and standards get made."),
          "small": ("공용 준비물 상자에 아직 규칙 라벨이 없어요.", "The shared supply box has no rule tag yet.")},
         {"svg": P2, "alt": ("한 학생은 베낀 걸 자기 것이라 하고, 다른 학생은 출처가 없다고 지적함", "One student claims a copy as their own; another points out there's no credit"),
-         "caption": ("라벨이 없으면 서로 다르게 알아들어요.", "Without a tag, everyone understands it differently."),
+         "caption": ("규칙 라벨이 없으면 쓰는 사람마다 복사·재배포 규칙을 다르게 알아들어요.", "Without a rule tag, each user understands the copy and reshare rules differently."),
          "small": ("규칙이 없으면 누가 만들었는지도, 뭘 지켜야 하는지도 몰라요.", "Without rules, nobody knows who made it or what to follow.")},
         {"svg": P3, "hero": True, "alt": ("학생회장이 공용 준비물 상자에 규칙 라벨을 붙임", "The student council president puts a rule tag on the shared supply box"),
-         "caption": ("오픈소스 라이선스는 공용 준비물에 붙이는 규칙 라벨이에요.", "An open-source license is the rule tag on shared supplies."),
+         "caption": ("오픈소스 라이선스는 공개된 코드(공용 준비물)에 붙이는 규칙 라벨이에요.", "An open-source license is the rule tag on shared code (the shared supplies)."),
          "small": ("자유롭게 쓰되, 라벨에 적힌 대로 지켜야 해요.", "Free to use — but only by what the tag says."),
          "tricks": (4, [
              (FREE_I, ("자유롭게 쓰기", "Free to use"), ("복제·수정·배포 허용", "copy, modify, redistribute"), "calm"),
@@ -75,19 +75,19 @@ PAGE = {
              (NOCLAIM_I, ("내 것인 척 하지 않기", "Don't claim it as yours"), ("저작권 표시는 그대로", "copyright notice stays")),
          ])},
         {"svg": P4, "alt": ("허용적 라이선스와 카피레프트 라이선스를 나란히 비교한 규칙판 두 개", "Two rule boards comparing permissive and copyleft licenses side by side"),
-         "caption": ("라벨은 크게 두 종류예요.", "Tags come in two broad kinds."),
-         "small": ("섞어 쓰면 규칙이 충돌할 수 있어요 — 조합을 꼭 확인해요.", "Mixing them can clash — always check the combination.")},
+         "caption": ("오픈소스 라벨은 크게 허용적과 카피레프트, 두 종류예요.", "Open-source tags come in two broad kinds: permissive and copyleft."),
+         "small": ("두 종류를 한 프로그램에 섞어 쓰면 규칙이 충돌할 수 있어요 — 조합을 꼭 확인해요.", "Mixing licenses in one program can clash — always check the combination.")},
         {"svg": P5, "alt": ("왼쪽: 규칙을 어겨 혼나는 학생. 오른쪽: 자동 검사기로 라벨을 추적하는 대표", "Left: a student scolded for breaking the rule. Right: a rep tracking tags with an automatic checker"),
-         "caption": ("라벨은 법적 효력이 있어요.", "The tag has legal force."),
-         "small": ("규칙을 어기면 못 쓰게 돼요. 재료표로 추적하는 도구는 다른 세계에도 있어요.", "Break it, and you lose the right to use it. A tracking tool exists in another world too.")},
+         "caption": ("라이선스 라벨은 법적 효력이 있어요.", "The license tag has legal force."),
+         "small": ("라이선스를 어기면 그 코드를 못 쓰게 될 수 있어요. 어떤 라이선스가 섞였는지는 재료표(SBOM)로 추적해요.", "Break the license, and you can lose the right to use the code. An SBOM parts list tracks which licenses got mixed in.")},
     ],
-    "summary": (("<b>오픈소스 라이선스</b> = 공용 준비물에 붙이는 <b>규칙 라벨</b>. 자유롭게 쓰되, 라벨이 정한 대로 출처를 밝히고 다시 나눠줄 때의 규칙을 지켜야 해요.",
-                 "<b>Open-source license</b> = the <b>rule tag</b> on shared supplies. Free to use, but you must credit the source and follow the tag's rule when you pass it on."),
+    "summary": (("<b>오픈소스 라이선스</b> = 공개된 코드(공용 준비물)에 붙이는 <b>규칙 라벨</b>. 자유롭게 쓰되, 라벨이 정한 대로 출처를 밝히고 다시 나눠줄 때의 규칙을 지켜야 해요.",
+                 "<b>Open-source license</b> = the <b>rule tag</b> on shared code (the shared supplies). Free to use, but you must credit the source and follow the tag's rule when you pass it on."),
                 ("오픈소스 라이선스는 소스코드의 이용·수정·배포 조건을 정한 법적 문서예요. MIT/BSD/Apache처럼 조건이 가벼운 '허용적(permissive) 라이선스'와, GPL처럼 수정본도 같은 조건으로 공개해야 하는 '카피레프트(copyleft) 라이선스'로 크게 나뉘어요. 라이선스를 어기면 저작권 침해로 법적 책임을 질 수 있어요.",
                  "Open-source licenses are legal terms governing how source code may be used, modified, and redistributed. They range from lightweight 'permissive' licenses like MIT/BSD/Apache to 'copyleft' licenses like GPL, which require derivative works to be released under the same terms. Breaking a license can mean legal liability for copyright infringement.")),
     "glossary": [
         ("오픈소스", "Open Source", ("소스코드를 공개해 자유롭게 쓰고 고치게 하는 것.", "Publishing source code so anyone can use and change it."), ("다만 '자유'의 범위는 라이선스마다 달라요.", "But how free depends on which license.")),
-        ("카피레프트", "Copyleft (e.g. GPL)", ("고치면 너도 공개해야 하는 라벨.", "The tag that says: fix it, and you must open it too."), ("섞어 쓰면 전체가 공개 대상이 될 수 있어요(전염성).", "Mix it in, and the whole thing may have to open up too.")),
+        ("카피레프트", "Copyleft (e.g. GPL)", ("고쳐서 나눠주면 소스도 공개해야 하는 라벨.", "The tag that says: share a modified version, and you must open its source too."), ("한 프로그램에 섞어 쓰면 프로그램 전체가 공개 대상이 될 수 있어요(전염성).", "Mix it into a program, and the whole program may have to open up too.")),
         ("허용적 라이선스", "Permissive License (MIT/BSD/Apache)", ("출처만 적으면 자유로운 라벨.", "The tag that's free as long as you credit it."), ("독점 소프트웨어에 섞어도 괜찮아요.", "Safe to mix into closed, proprietary software.")),
         ("라이선스 호환성", "License Compatibility", ("서로 다른 라벨을 섞어도 되는지.", "Whether two different tags can be mixed."), ("섞으면 안 되는 조합도 있어요.", "Some combinations simply can't be mixed.")),
         ("고지 의무", "Attribution / Notice Obligation", ("누가 만들었는지 꼭 적기.", "Always writing down who made it."), ("라벨 대부분이 요구하는 최소 조건이에요.", "The minimum almost every tag asks for.")),

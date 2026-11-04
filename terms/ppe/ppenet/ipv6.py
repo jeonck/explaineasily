@@ -11,7 +11,7 @@ P1 = svg(345, sky(345)
 # 2. 한 번지수를 여러 집이 억지로 나눠 써요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + postoffice(380, 150, 0.8, "⟦번지 1.2.3.4|address 1.2.3.4⟧")
-         + person(280, 230, s=0.55, face=EYES, **SENDER) + person(380, 240, s=0.55, face=EYES, **RECEIVER) + person(480, 230, s=0.55, face=EYES, **CLERK)
+         + person(280, 190, s=0.55, face=EYES, **SENDER) + person(380, 195, s=0.55, face=EYES, **RECEIVER) + person(480, 190, s=0.55, face=EYES, **CLERK)
          + label(380, 282, "⟦새 집은 번지수를 못 받고, 임시방편(공유 주소)도 한계가 있어요|a new house can't get its own address — and sharing one is only a stopgap⟧", 12, "var(--ink)", cls="d"))
 
 # 3. IPv6 = 번지수 체계를 훨씬 길게 늘린 것 (hero)
@@ -30,14 +30,14 @@ P4 = svg(320, sky(320)
          + routemap(390, 40, 310, 250, "⟦IPv6|IPv6⟧",
                     ("⟦길이 — 8덩이(128비트)|length — 8 groups (128 bits)⟧",
                      "⟦개수 — 거의 무한|count — practically endless⟧",
-                     "⟦NAT — 필요 없음|NAT — not needed⟧",
+                     "⟦NAT — 대부분 필요 없음|NAT — mostly not needed⟧",
                      "⟦표기 — 2001:...:7334|notation — 2001:...:7334⟧"), 1.0, hl=1))
 
 # 5. 아직 완전히 바뀌진 않았어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + postoffice(190, 170, 0.6, "⟦IPv6 우체국|IPv6 office⟧") + postoffice(570, 170, 0.6, "⟦IPv4 우체국|IPv4 office⟧")
          + '<path d="M250 200 Q380 160 510 200" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 5" fill="none"/>'
-         + label(380, 282, "⟦당분간은 두 체계를 함께 쓰는 과도기예요(듀얼스택)|for now, both systems run side by side — a transition period (dual-stack)⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦당분간은 IPv4와 IPv6를 함께 쓰는 과도기예요(듀얼스택)|for now, IPv4 and IPv6 run side by side — a transition period (dual-stack)⟧", 12, "var(--ink)", cls="d"))
 
 LEN_I = icon('<path d="M10 32 h44" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/><path d="M10 24 v16 M54 24 v16" stroke="var(--accent)" stroke-width="3"/>')
 INF_I = icon('<path d="M20 32 a10 10 0 1 1 0 .1z" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M44 32 a10 10 0 1 1 0 .1z" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M30 32 h4" stroke="var(--good)" stroke-width="4"/>')
@@ -56,7 +56,7 @@ PAGE = {
          "small": ("번지수 체계(IPv4)의 숫자가 다 쓰였어요.", "The numbers in the old address system (IPv4) are all used up.")},
         {"svg": P2, "alt": ("한 번지수 아래 세 사람이 억지로 함께 몰려 있음", "Three people crowded together under one single address"),
          "caption": ("한 번지수를 여러 집이 억지로 나눠 써요.", "Several houses are forced to share one address."),
-         "small": ("새 집은 번지수를 못 받고, 임시방편도 한계가 있어요.", "A new house can't get its own address, and sharing one is only a stopgap.")},
+         "small": ("새 집은 번지수를 못 받고, 한 번지수를 나눠 쓰는 임시방편(NAT)도 한계가 있어요.", "A new house can't get its own address, and sharing one (NAT) is only a stopgap.")},
         {"svg": P3, "hero": True, "alt": ("짧은 IPv4 번지수 옆에 훨씬 긴 IPv6 번지수가 나란히 놓임", "A short IPv4 address next to a much longer IPv6 address"),
          "caption": ("IPv6는 번지수 체계를 훨씬 길게 늘린 거예요.", "IPv6 stretches the address system far longer."),
          "small": ("4덩이에서 8덩이로 늘려 사실상 무한한 새 주소를 만들었어요.", "Stretched from 4 groups to 8, creating addresses that are practically endless."),
@@ -64,14 +64,14 @@ PAGE = {
              (LEN_I, ("훨씬 긴 주소", "A much longer address"), ("32비트에서 128비트로 늘었어요", "grew from 32 bits to 128 bits"), "calm"),
              (INF_I, ("거의 무한한 개수", "Practically endless count"), ("지구 모래알보다 많아요", "more addresses than grains of sand on Earth")),
              (AUTO_I, ("자동 주소 할당", "Self-assigning addresses"), ("스스로 주소를 만들어 받기도 해요", "a device can generate its own address"), "warm"),
-             (BRIDGE_I, ("호환 작업 필요", "Needs compatibility work"), ("옛 체계와 당장은 안 섞여요", "doesn't mix with the old system right away")),
+             (BRIDGE_I, ("호환 작업 필요", "Needs compatibility work"), ("IPv4와 직접 통하지 않아 연결 작업이 필요해요", "can't talk directly to IPv4, so it needs a bridge")),
          ])},
         {"svg": P4, "alt": ("IPv4와 IPv6를 길이·개수·NAT 필요 여부·표기법으로 비교한 두 안내판", "Two boards comparing IPv4 and IPv6 by length, count, NAT need, and notation"),
          "caption": ("IPv4와 IPv6는 네 가지가 달라요.", "IPv4 and IPv6 differ on four things."),
-         "small": ("IPv6는 훨씬 길고 많고, NAT도 필요 없어요.", "IPv6 is far longer, far more plentiful, and doesn't need NAT.")},
+         "small": ("IPv6 주소는 IPv4보다 훨씬 길고 개수도 많아, NAT도 대부분 필요 없어요.", "IPv6 addresses are far longer and more plentiful than IPv4's, so NAT is mostly unneeded.")},
         {"svg": P5, "alt": ("IPv6 우체국과 IPv4 우체국이 점선으로 연결돼 나란히 함께 운영됨", "An IPv6 post office and an IPv4 post office running side by side, linked by a dashed line"),
-         "caption": ("아직 완전히 바뀌진 않았어요.", "The switch isn't complete yet."),
-         "small": ("당분간은 두 체계를 함께 쓰는 과도기예요(듀얼스택).", "For now, both systems run side by side — a transition period (dual-stack).")},
+         "caption": ("인터넷이 아직 IPv6로 다 바뀌진 않았어요.", "The internet hasn't fully switched to IPv6 yet."),
+         "small": ("당분간은 IPv4와 IPv6를 함께 쓰는 과도기예요(듀얼스택).", "For now, IPv4 and IPv6 run side by side — a transition period (dual-stack).")},
     ],
     "summary": (("<b>IPv6</b>는 <b>번지수 체계를 32비트에서 128비트로 훨씬 길게 늘려</b>, 사실상 <b>무한에 가까운 새 주소</b>를 만든 것이에요.",
                  "<b>IPv6</b> stretches the <b>address system from 32 bits to a far longer 128 bits</b>, creating a <b>practically endless supply of new addresses</b>."),

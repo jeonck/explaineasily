@@ -23,7 +23,7 @@ P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
          + person(300, 130, s=0.7, face=EYES, **OPERATOR) + label(300, 250, "⟦선별기 쪽 위험|risk in the sorter⟧", 10, "var(--muted)")
          + person(480, 130, s=0.7, face=EYES, **TEACHER) + label(480, 250, "⟦운영 쪽 위험|risk in operations⟧", 10, "var(--muted)")
          + person(650, 130, s=0.7, face=EYES, **CHEATER) + label(650, 250, "⟦바깥 농장 쪽 위험|risk from outside farms⟧", 10, "var(--muted)")
-         + label(380, 295, "⟦위험이 곳곳에 흩어져 있으면, 같은 위험도 매번 다르게 다뤄져요|with risk scattered everywhere, the same risk gets handled differently each time⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 295, "⟦위험이 곳곳에 흩어져 있으면, 같은 위험도 담당자마다 다르게 대응해요|with risk scattered everywhere, each person in charge responds to the same risk differently⟧", 12, "var(--ink)", cls="d"))
 
 # 3. AI 리스크 관리 프레임워크 = 검사장 전체를 도는 4단계 운영 지도 (hero)
 P3 = svg(400, sky(400)
@@ -31,8 +31,8 @@ P3 = svg(400, sky(400)
          + label(380, 30, "⟦AI 리스크 관리 프레임워크 = 검사장 전체를 도는 4단계 운영 지도예요|an AI risk management framework is a four-stage map that walks the whole station⟧", 13, "var(--ink)", cls="d")
          + gradeboard(110, 70, 220, 130, "⟦①거버넌스|① GOVERN⟧", ("⟦원칙 세우기|set the principles⟧",))
          + gradeboard(430, 70, 220, 130, "⟦②위험 지도화|② MAP⟧", ("⟦어디에 위험 있는지 찾기|find where risk hides⟧",))
-         + gradeboard(430, 240, 220, 130, "⟦③측정|③ MEASURE⟧", ("⟦크기와 빈도 재기|size it and track it⟧",))
-         + gradeboard(110, 240, 220, 130, "⟦④관리|④ MANAGE⟧", ("⟦줄이고 다시 살피기|reduce it, then look again⟧",))
+         + gradeboard(430, 240, 220, 130, "⟦③측정|③ MEASURE⟧", ("⟦위험 크기와 빈도 재기|measure risk size, frequency⟧",))
+         + gradeboard(110, 240, 220, 130, "⟦④관리|④ MANAGE⟧", ("⟦위험 줄이고 다시 살피기|reduce risk, then look again⟧",))
          + f'<path d="M330 135 H430" stroke="var(--accent)" stroke-width="4" marker-end="url(#rfa)"/>'
          + f'<path d="M540 200 V240" stroke="var(--accent)" stroke-width="4" marker-end="url(#rfa)"/>'
          + f'<path d="M430 305 H330" stroke="var(--accent)" stroke-width="4" marker-end="url(#rfa)"/>'
@@ -51,19 +51,19 @@ PAGE = {
             "An AI risk management framework, told as a story about an operations map that walks the whole station routinely — not just after something breaks."),
     "panels": [
         {"svg": P1, "alt": ("상한 작물이 컨베이어를 지나가자 검수반장이 진땀을 흘리며 사고가 터졌다고 외침", "A rotten item slips down the belt, and the sweating inspector shouts that an accident just happened"),
-         "caption": ("사고가 터진 뒤에야 허둥지둥 대응해요.", "Only after an accident hits does anyone scramble to react."),
+         "caption": ("검사장은 사고가 터진 뒤에야 허둥지둥 대응해요.", "The station scrambles to react only after an accident hits."),
          "small": ("평소엔 아무도 위험을 미리 들여다보지 않았어요.", "Nobody had looked ahead at the risk beforehand.")},
         {"svg": P2, "alt": ("농부·조작원·교사·몰래 섞는 사람 각자의 자리에 씨앗·선별기·운영·바깥 농장 위험이 따로 흩어져 있음", "Risk sits scattered across the farmer, the operator, the teacher, and the outside world — in the seed, the sorter, operations, and other farms"),
          "caption": ("위험은 씨앗부터 바깥 농장까지 곳곳에 흩어져 있어요.", "Risk is scattered everywhere — from the seed to outside farms."),
-         "small": ("같은 위험도 자리마다 다르게 다뤄져요.", "The same kind of risk gets handled differently depending on where it's found.")},
+         "small": ("같은 종류의 위험도 담당자마다 대응 방식이 달라요.", "The same kind of risk gets a different response from each person in charge.")},
         {"svg": P3, "hero": True, "alt": ("거버넌스·위험 지도화·측정·관리 네 상자가 화살표로 이어져 순환하는 운영 지도", "Four boxes — govern, map, measure, manage — linked by arrows into a running loop"),
-         "caption": ("검사장 전체를 도는 4단계 운영 지도예요.", "A four-stage map that walks the whole station."),
-         "small": ("한 바퀴 돌고 나면, 다시 처음부터 돌아요 — 끝나는 지도가 아니에요.", "After one loop, it starts over — this map never really finishes."),
+         "caption": ("AI 리스크 관리 프레임워크는 검사장 전체를 도는 4단계 운영 지도예요.", "An AI risk management framework is a four-stage map that walks the whole station."),
+         "small": ("네 단계를 한 바퀴 돌고 나면, 다시 처음부터 돌아요 — 한 번으로 끝나는 절차가 아니에요.", "After one loop through the four stages, it starts over — this isn't a one-time procedure."),
          "tricks": (4, [
              (GOV_I, ("①거버넌스", "① Govern"), ("원칙과 책임을 먼저 세워요", "setting principles and accountability first"), "calm"),
              (MAP_I, ("②위험 지도화", "② Map"), ("어디에 위험 있는지 찾아요", "finding where risk hides"), "calm"),
-             (MEASURE_I, ("③측정", "③ Measure"), ("크기와 빈도를 재요", "sizing it and tracking it"), "warm"),
-             (MANAGE_I, ("④관리", "④ Manage"), ("줄이고 다시 살펴요", "reducing it, then looking again"), "warm"),
+             (MEASURE_I, ("③측정", "③ Measure"), ("위험의 크기와 빈도를 재요", "measuring the risk's size and frequency"), "warm"),
+             (MANAGE_I, ("④관리", "④ Manage"), ("위험을 줄이고 다시 살펴요", "reducing the risk, then looking again"), "warm"),
          ])},
         {"svg": svg(300, sky(300) + gradeboard(60, 20, 640, 260, "⟦단계별로 하는 일|WHAT EACH STAGE ACTUALLY DOES⟧",
                  ("⟦거버넌스 — 책임자·점검 주기를 정함|govern — names who's accountable, how often it's reviewed⟧",
@@ -74,12 +74,12 @@ PAGE = {
          "caption": ("네 단계는 각각 구체적인 할 일을 가지고 있어요.", "Each of the four stages has its own concrete job."),
          "small": ("원칙만 있고 실행이 없으면, 지도는 벽에 걸린 그림일 뿐이에요.", "Principles without execution are just a map hanging on the wall.")},
         {"svg": svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
-                 + person(190, 130, s=0.8, face=SMILE, **INSPECTOR) + label(190, 260, "⟦위험을 0으로 만들진 못해요|doesn't bring risk to zero⟧", 11, "var(--ink)")
-                 + person(570, 130, s=0.8, face=EYES, **TEACHER) + label(570, 260, "⟦대신 다룰 수 있는 크기로 줄여요|but shrinks it to a manageable size instead⟧", 11, "var(--ink)")
+                 + person(190, 130, s=0.8, face=SMILE, **INSPECTOR) + label(190, 260, "⟦프레임워크도 위험을 0으로 만들진 못해요|the framework can't bring risk to zero⟧", 11, "var(--ink)")
+                 + person(570, 130, s=0.8, face=EYES, **TEACHER) + label(570, 260, "⟦대신 위험을 다룰 수 있는 크기로 줄여요|but it shrinks risk to a manageable size⟧", 11, "var(--ink)")
                  + label(380, 300, "⟦리스크 관리는 위험을 없애는 게 아니라, 체계적으로 다루는 일이에요|risk management isn't about erasing risk — it's about handling it systematically⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 검수반장이 위험을 0으로 만들 순 없다고 말함. 오른쪽: 교사가 대신 다룰 수 있는 크기로 줄인다고 말함", "Left: the inspector says risk can't be zeroed out. Right: the teacher says it's shrunk to a manageable size instead"),
          "caption": ("프레임워크가 위험을 완전히 없애주진 않아요.", "The framework doesn't make risk disappear entirely."),
-         "small": ("원칙(윤리기준)과 법적 최저선(AI기본법)은 이 지도 위에서 함께 움직여요.", "Ethics principles and the legal baseline both move along this same map.")},
+         "small": ("지도의 각 단계는 원칙(윤리기준)과 법적 최저선(AI기본법)을 함께 따라요.", "Each stage of the map follows both the ethics principles and the legal floor (the AI Basic Act).")},
     ],
     "summary": (("<b>AI 리스크 관리 프레임워크</b> = 검사장 전체를 <b>거버넌스·위험지도화·측정·관리</b> 네 단계로 도는 운영 지도.",
                  "<b>An AI risk management framework</b> = an operations map that walks the whole station through <b>govern, map, measure, and manage</b>."),
@@ -87,12 +87,12 @@ PAGE = {
                  "An AI risk management framework identifies (Map), measures (Measure), and mitigates (Manage) the risks of an AI system, run repeatedly inside an organization-wide accountability structure (Govern). The US NIST AI RMF's four functions — Govern, Map, Measure, Manage — are the best-known model, and the risk-assessment and safety-assurance requirements in Korea's AI Basic Act follow the same flow. It isn't a one-time pass — it loops again every time the model or its environment changes.")),
     "glossary": [
         ("AI 리스크 관리 프레임워크", "AI risk management framework", ("검사장 전체를 도는 운영 지도.", "The operations map that walks the whole station."), ("한 바퀴로 끝나지 않고 계속 돌아요.", "It doesn't finish after one loop — it keeps going.")),
-        ("NIST AI RMF", "NIST AI RMF", ("거버넌스·위험지도화·측정·관리 네 기능.", "The four functions: govern, map, measure, manage."), ("이 분야에서 가장 널리 쓰이는 틀이에요.", "The most widely used framework in this field.")),
+        ("NIST AI RMF", "NIST AI RMF", ("거버넌스·위험지도화·측정·관리 네 기능.", "The four functions: govern, map, measure, manage."), ("이 분야의 대표적인 틀이에요.", "A leading framework in this field.")),
         ("AI 윤리기준·거버넌스", "AI ethics & governance", ("①거버넌스 단계가 기대는 원칙판.", "The charter the govern stage leans on."), ('이 지도의 출발점이 되는 원칙이에요. → <a href="aiethicsgov-ko.html">모든 검사장이 함께 쓰는 등급 원칙판</a>', 'The starting principle this map is built on. → <a href="aiethicsgov-en.html">The Grading Charter Every Station Shares</a>')),
         ("위험 평가", "Risk assessment", ("②③단계(위험 지도화·측정)를 합친 말.", "A term that bundles together the map and measure stages."), ("어디에 얼마나 큰 위험이 있는지를 함께 답해요.", "Answers both where the risk is and how big it is.")),
         ("완화 조치", "Mitigation", ("④관리 단계에서 적용하는 실제 조치.", "The concrete action applied in the manage stage."), ("측정된 위험을 줄이기 위한 실행이에요.", "The execution step that shrinks a measured risk.")),
-        ("인공지능기본법", "AI Basic Act", ("법이 강제하는 최소한의 위험 관리 의무.", "The minimum risk-management duty the law itself enforces."), ("고영향 AI는 이 지도를 법적 의무로 요구받아요.", "High-impact AI is legally required to walk this same map.")),
-        ("잔여 위험", "Residual risk", ("관리한 뒤에도 남는 위험.", "The risk still left after managing it."), ("0이 되지 않는다는 걸 인정하고 받아들이는 부분이에요.", "The part that admits risk never quite reaches zero.")),
-        ("공급망 위험", "Supply-chain risk", ("바깥 농장에서 들어오는 위험.", "Risk arriving from outside farms."), ("②위험 지도화 단계가 내 농장 바깥까지 살펴야 하는 이유예요.", "Why the map stage has to look past the station's own fence.")),
+        ("인공지능기본법", "AI Basic Act", ("법이 강제하는 최소한의 위험 관리 의무.", "The minimum risk-management duty the law itself enforces."), ("고영향 AI는 이런 위험 관리를 법적 의무로 요구받아요.", "High-impact AI is legally required to run this kind of risk management.")),
+        ("잔여 위험", "Residual risk", ("관리한 뒤에도 남는 위험.", "The risk still left after managing it."), ("위험이 0이 되지 않는다는 걸 인정하고 받아들이는 부분이에요.", "The part that admits risk never quite reaches zero.")),
+        ("공급망 위험", "Supply-chain risk", ("바깥 농장에서 들어오는 위험.", "Risk arriving from outside farms."), ("②위험 지도화 단계가 우리 검사장 바깥까지 살펴야 하는 이유예요.", "Why the map stage has to look past the station's own fence.")),
     ],
 }

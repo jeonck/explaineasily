@@ -13,10 +13,10 @@ P1 = svg(320, sky(320)
 # 2. 공용망으론 속도·보안을 보장 못 해요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + postoffice(200, 160, 0.8)
-         + person(360, 190, s=0.75, face=FROWN, **CLERK)
-         + label(360, 250, "⟦오늘은 바빠서 순서가 밀려요|busy today — your turn got pushed back⟧", 11, "var(--ink)")
-         + person(560, 190, s=0.75, face=SWEAT + EYES, **SENDER)
-         + label(560, 250, "⟦우리 설계도가 남의 우체국 선반에 섞여요|our blueprints sit mixed on a stranger's shelf⟧", 11, "var(--ink)")
+         + person(320, 125, s=0.75, face=FROWN, **CLERK)
+         + label(340, 250, "⟦오늘은 바빠서 순서가 밀려요|busy today — your turn got pushed back⟧", 11, "var(--ink)")
+         + person(570, 125, s=0.75, face=SWEAT + EYES, **SENDER)
+         + label(590, 250, "⟦우리 설계도가 남의 우체국 선반에 섞여요|our blueprints sit mixed on a stranger's shelf⟧", 11, "var(--ink)")
          + label(380, 282, "⟦공용망은 속도도 보안도 이 공장만을 위해 보장해주지 않아요|a shared network can't promise speed or privacy to just one factory⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 5G 특화망 = 이 공장만을 위한 전용 배송망 (hero)
@@ -35,16 +35,16 @@ P4 = svg(320, sky(320)
                      "⟦비용 — 저렴|cost — cheap⟧",
                      "⟦범위 — 전국|coverage — nationwide⟧"), 1.0)
          + routemap(390, 40, 310, 250, "⟦5G 특화망|5G Private Network⟧",
-                    ("⟦속도 — 이 공장만 보장|speed — guaranteed just for us⟧",
+                    ("⟦속도 — 이 공장만 보장|speed — guaranteed for this factory⟧",
                      "⟦보안 — 전용, 안 섞임|security — dedicated, no mixing⟧",
                      "⟦비용 — 비쌈|cost — expensive⟧",
                      "⟦범위 — 공장 안만|coverage — campus only⟧"), 1.0, hl=0))
 
 # 5. 특화망도 만능은 아니에요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + truck(190, 160, 0.85, fast=True) + label(190, 240, "⟦공장 안에서는 1등으로 빨라요|inside the campus, it's the fastest there is⟧", 11, "var(--ink)")
-         + postoffice(570, 170, 0.6) + label(570, 260, "⟦공장 밖으로는 안 나가요, 전국망이 아니에요|it doesn't leave the campus — not a nationwide network⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦좁지만 확실한 길이지, 세상 전체로 가는 길은 아니에요|a narrow but certain road — not a road to the whole world⟧", 12, "var(--ink)", cls="d"))
+         + truck(190, 160, 0.85, fast=True) + label(190, 240, "⟦공장 안에서는 공용망보다 확실히 빨라요|inside the campus, it's reliably faster than the public network⟧", 11, "var(--ink)")
+         + postoffice(570, 170, 0.6) + label(570, 260, "⟦특화망은 공장 밖으로 안 나가요, 전국망이 아니에요|the private network stops at the campus — it's not nationwide⟧", 11, "var(--ink)")
+         + label(380, 282, "⟦특화망은 좁지만 확실한 길이지, 세상 전체로 가는 길은 아니에요|a private network is a narrow but certain road — not a road to the whole world⟧", 12, "var(--ink)", cls="d"))
 
 FREQ_I = icon('<rect x="8" y="30" width="48" height="4" fill="var(--line)"/><path d="M8 32 q8 -20 16 0 t16 0 t16 0" stroke="var(--accent)" stroke-width="4" fill="none"/>')
 ROUTE_I = icon('<path d="M12 52 L30 12 L52 52" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="30" cy="12" r="6" fill="var(--accent)"/>')
@@ -63,7 +63,7 @@ PAGE = {
          "small": ("공장은 1초도 늦으면 안 되는데, 공용망은 모두가 같이 써요.", "The factory can't afford a second's delay — but the public network is shared.")},
         {"svg": P2, "alt": ("우체국장은 바쁘다고 말하고, 보내는 사람은 설계도가 남과 섞인다고 걱정함", "The postmaster says it's busy, and the sender worries the blueprints sit mixed with strangers' mail"),
          "caption": ("공용망으론 속도도 보안도 보장받지 못해요.", "A shared network can't guarantee speed or security."),
-         "small": ("오늘은 바빠서 밀리고, 우리 설계도가 남의 선반에 섞여요.", "Busy today means delays, and our blueprints sit mixed with others'.")},
+         "small": ("공용 우체국이 바쁘면 공장 소포가 밀리고, 공장 설계도가 남의 선반에 섞여요.", "When the public post office is busy, factory parcels wait, and the factory's blueprints sit on a shelf with strangers' mail.")},
         {"svg": P3, "hero": True, "alt": ("이 공장 전용 우체국과 전용 트럭이 전용 도로를 빠르게 달림", "A private post office and private truck race down a road built just for this factory"),
          "caption": ("5G 특화망은 이 공장만을 위한 전용 배송망이에요.", "A 5G private network is a delivery network laid down just for this factory."),
          "small": ("길도 트럭도 우체국도 전부 이 공장 전용이에요.", "The roads, the trucks, the post office — all dedicated to this one factory."),
@@ -75,10 +75,10 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("공용 배송망과 5G 특화망을 속도·보안·비용·범위로 비교한 지도", "A map comparing public network vs 5G private network by speed, security, cost, coverage"),
          "caption": ("공용망과 특화망은 네 가지가 달라요.", "Public and private networks differ on four things."),
-         "small": ("특화망은 속도·보안은 좋지만 비싸고 공장 안으로만 좁아요.", "Private is faster and more secure, but pricier and limited to the campus.")},
-        {"svg": P5, "alt": ("왼쪽: 공장 안에서 특화망 트럭이 최고로 빠름. 오른쪽: 공장 밖으로는 안 나가는 우체국", "Left: inside the campus the private truck is the fastest. Right: the post office never serves outside the campus"),
+         "small": ("특화망은 공용망보다 속도·보안이 확실하지만, 더 비싸고 공장 안에서만 쓸 수 있어요.", "A private network is faster and more secure than the public one, but pricier and usable only on the campus.")},
+        {"svg": P5, "alt": ("왼쪽: 공장 안에서 특화망 트럭이 공용망보다 빠름. 오른쪽: 공장 밖으로는 안 나가는 우체국", "Left: inside the campus the private truck beats the public network. Right: the post office never serves outside the campus"),
          "caption": ("특화망도 만능은 아니에요.", "A private network isn't a cure-all."),
-         "small": ("좁지만 확실한 길이지, 세상 전체로 가는 길은 아니에요.", "A narrow but certain road — not a road to the whole world.")},
+         "small": ("특화망은 좁지만 확실한 길이지, 세상 전체로 가는 길은 아니에요.", "A private network is a narrow but certain road — not a road to the whole world.")},
     ],
     "summary": (("<b>5G 특화망</b>은 한 공장·건물·캠퍼스만을 위해 <b>따로 깔아둔 전용 5G망</b>으로, 공용망과 안 섞여 속도와 보안을 보장해요.",
                  "A <b>5G private network</b> is a <b>dedicated 5G network laid down for one factory, building, or campus</b> — never mixed with the public network, so speed and security can be guaranteed."),
@@ -89,8 +89,8 @@ PAGE = {
         ("주파수 대역", "Frequency band", ("배송 트럭이 달리는 전용 차로.", "The dedicated lane the delivery trucks run on."), ("공용망과 섞이지 않는 전파 구간이에요.", "A radio range that never mixes with the public network.")),
         ("5G 코어망", "5G Core", ("배송 전체를 지휘하는 본사.", "The headquarters directing the whole delivery."), ("특화망은 이 본사도 따로 둬요.", "A private network keeps its own separate headquarters too.")),
         ("네트워크 슬라이싱", "Network slicing", ("한 도로를 용도별 차선으로 나누는 것.", "Splitting one road into lanes by purpose."), ('특화망 안에서도 더 잘게 나눌 수 있어요. → <a href="5gslicing-ko.html">도로를 차선으로 나누기</a>', 'Can be split even finer inside a private network. → <a href="5gslicing-en.html">splitting the road into lanes</a>')),
-        ("엣지 컴퓨팅", "Edge computing", ("본사까지 안 가고 공장 안에서 바로 처리하는 것.", "Processing right at the factory instead of sending it all the way to HQ."), ("그래서 지연이 더 짧아져요.", "That's part of why the delay gets even shorter.")),
-        ("SDN/NFV", "SDN/NFV", ("소프트웨어로 길을 바꾸는 관제탑.", "The control tower that reroutes roads with software."), ('특화망도 이 기술로 유연하게 운영돼요. → <a href="sdnnfv-ko.html">관제탑이 소프트웨어로 길을 바꾸는 법</a>', 'Private networks run flexibly on this too. → <a href="sdnnfv-en.html">a control tower rerouting roads in software</a>')),
+        ("엣지 컴퓨팅", "Edge computing", ("본사까지 안 가고 공장 안에서 바로 처리하는 것.", "Processing right at the factory instead of sending it all the way to HQ."), ("본사까지 오가지 않으니 그만큼 지연이 짧아져요.", "With no trip to HQ and back, the delay gets shorter.")),
+        ("SDN/NFV", "SDN/NFV", ("소프트웨어로 길을 바꾸는 관제탑.", "The control tower that reroutes roads with software."), ('특화망도 이 기술로 길과 기능을 소프트웨어로 바꿀 수 있어요. → <a href="sdnnfv-ko.html">관제탑이 소프트웨어로 길을 바꾸는 법</a>', 'Private networks can use it too, changing roads and functions in software. → <a href="sdnnfv-en.html">a control tower rerouting roads in software</a>')),
         ("RAN", "Radio Access Network", ("동네마다 서 있는 중계 우체통.", "The relay mailbox standing in each neighborhood."), ("단말기가 실제로 전파를 주고받는 구간이에요.", "The segment where the device actually exchanges radio signals.")),
         ("VPN", "VPN", ("남의 길을 몰래 안전하게 빌려 쓰는 터널.", "A tunnel that safely borrows someone else's road."), ('소프트웨어로 사설망 흉내를 내는 다른 방법이에요. → <a href="vpn-ko.html">몰래 파는 안전한 터널</a>', 'A software way to fake a private network instead. → <a href="vpn-en.html">the secret safe tunnel</a>')),
     ],

@@ -25,12 +25,12 @@ P1 = svg(300, sky(300)
          + person(220, 160, s=0.9, face=EYES, **MECH1) + car(200, 230, 0.7)
          + car(520, 200, 0.9, color="var(--bad)")
          + label(520, 140, "⟦빵빵!|HONK!⟧", 20, "var(--bad)", cls="d")
-         + label(380, 40, "⟦타이어를 갈던 중인데 갑자기 급한 차가 끼어들어요|mid-tire-change, and an urgent car suddenly honks⟧", 13, "var(--ink)")
-         + label(380, 280, "⟦지금 하던 일을 계속할지, 멈추고 봐줄지 정해야 해요|keep working, or stop and look — a decision is needed⟧", 12, "var(--muted)"))
+         + label(380, 40, "⟦타이어를 갈던 중인데 갑자기 급한 차가 경적을 울려요|mid-tire-change, and an urgent car suddenly honks⟧", 13, "var(--ink)")
+         + label(380, 280, "⟦정비사는 하던 일을 계속할지, 멈추고 봐줄지 정해야 해요|the mechanic must decide: keep working, or stop and look⟧", 12, "var(--muted)"))
 
 # 2. 계속 흘깃흘깃 쳐다보는 건 비효율적이에요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(300, 160, s=0.9, face=FROWN, **MECH1) + car(280, 230, 0.7)
+         + person(300, 140, s=0.9, face=FROWN, **MECH1) + car(280, 210, 0.7)
          + "".join(f'<path d="M{330 + i * 0} 140 q40 {-10 if i % 2 else 10} 80 0" stroke="var(--accent)" stroke-width="2" fill="none" stroke-dasharray="3 3"/>' for i in range(1))
          + label(500, 110, "⟦급한 차 왔나?...안 왔나?...|urgent car yet?... not yet?...⟧", 12, "var(--accent)", cls="d")
          + label(380, 50, "⟦틈틈이 계속 쳐다보기만 해도(폴링) 일손이 뺏겨요|just glancing over and over (polling) steals your attention⟧", 13, "var(--ink)")
@@ -39,10 +39,10 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 # 3. 인터럽트 처리 과정 = 벨이 울리면 하던 일을 적어두고 바로 달려가는 것 (hero)
 P3 = svg(340, sky(340)
          + person(170, 160, s=0.85, face=EYES, **MECH1) + car(150, 230, 0.6)
-         + notepad(260, 110, 0.9, ("⟦하던 일 적어두기|jot down where I was⟧", ""))
+         + notepad(260, 110, 0.9, "⟦하던 일 적어두기|jot down where I was⟧")
          + person(430, 130, s=0.9, face=SWEAT, **CHIEF) + car(430, 230, 0.85, color="var(--bad)")
          + label(380, 30, "⟦인터럽트 처리 = 벨이 울리면 하던 일을 적어두고 바로 달려가는 것|handling an interrupt: jot down your place, then run to the bell⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦급한 일을 끝내면 적어둔 자리부터 다시 이어서 해요|once done, pick back up exactly where you left off⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦급한 일을 끝내면 적어둔 자리부터 다시 이어서 해요|once the urgent job is done, pick back up where you left off⟧", 12, "var(--muted)"))
 
 BELL_I = icon('<path d="M32 10 a16 16 0 0 1 16 16 v10 l6 8 h-44 l6 -8 v-10 a16 16 0 0 1 16 -16z" fill="var(--bad)"/><circle cx="32" cy="50" r="4" fill="var(--bad)"/>')
 SAVE_I = icon('<rect x="12" y="10" width="40" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 24 h24 M20 32 h24 M20 40 h14" stroke="#142033" stroke-width="2.5"/>')
@@ -55,19 +55,19 @@ P4 = svg(320, sky(320)
                      ("⟦① 벨 울림 — 인터럽트 발생|① bell rings — interrupt occurs⟧",
                       "⟦② 하던 자리 적어두기 — 상태 저장|② jot down the spot — save state⟧",
                       "⟦③ 벨 종류별 담당표 확인 — 인터럽트 벡터|③ check the bell-type board — vector table⟧",
-                      "⟦④ 담당자가 처리(ISR)|④ the right handler deals with it (ISR)⟧",
+                      "⟦④ 담당자가 급한 일을 처리(ISR)|④ the bell's handler does the urgent job (ISR)⟧",
                       "⟦⑤ 적어둔 자리부터 복귀 — 상태 복원|⑤ resume from the saved spot — restore state⟧"), hl=2)
          + signboard(410, 60, 300, 90, "⟦벨 종류별 담당표|bell-type board⟧",
                      ("⟦타이어 벨 → 1번 정비사|tire bell → mechanic 1⟧", "⟦엔진 벨 → 2번 정비사|engine bell → mechanic 2⟧"))
-         + label(560, 210, "⟦같은 벨도 항상 같은 담당자가 맡아요|the same bell always reaches the same handler⟧", 11, "var(--muted)"))
+         + label(560, 210, "⟦같은 종류의 벨은 항상 같은 담당자가 맡아요|the same bell type always reaches the same handler⟧", 11, "var(--muted)"))
 
 # 5. 네트워크 인터럽트와는 다른 이야기예요
 P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
          + person(190, 130, s=0.8, face=SMILE, **MECH1)
-         + label(190, 260, "⟦여기선 어떤 벨이든 — 일반적인 처리 순서예요|here: any bell at all — the general handling sequence⟧", 11, "var(--ink)")
+         + label(190, 260, "⟦이 페이지: 어떤 벨이든 통하는 일반 처리 순서|this page: the general sequence for any bell⟧", 11, "var(--ink)")
          + person(570, 130, s=0.8, face=EYES, **MECH2)
-         + label(570, 260, "⟦네트워크 카드 벨만 따로 다루는 이야기는 다른 세계에 있어요|the network-card bell alone is covered in another world⟧", 11, "var(--ink)")
-         + label(380, 305, "⟦순서는 같아요 — 저장하고, 처리하고, 복귀해요|the sequence is the same — save, handle, resume⟧", 12, "var(--ink)", cls="d"))
+         + label(570, 260, "⟦네트워크 카드 벨만 다룬 이야기는 네트워크 분야에 있어요|the network-card bell alone is covered in the networking field⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦어느 벨이든 순서는 같아요 — 저장하고, 처리하고, 복귀해요|every bell follows the same sequence — save, handle, resume⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "interruptproc", "order": 14,
@@ -77,14 +77,14 @@ PAGE = {
             "Interrupt handling, told as a story about a mechanic who jots down their place and runs to an urgent bell."),
     "panels": [
         {"svg": P1, "alt": ("정비사가 타이어를 갈던 중 급한 손님 차가 경적을 울림", "A mechanic mid-tire-change as an urgent customer car honks"),
-         "caption": ("일하는데 갑자기 급한 차가 빵빵 울려요.", "An urgent car suddenly honks while work is underway."),
-         "small": ("지금 하던 일을 계속할지, 멈추고 봐줄지 정해야 해요.", "A decision is needed — keep working, or stop and look.")},
+         "caption": ("정비사가 일하는데 갑자기 급한 차가 빵빵 울려요.", "An urgent car suddenly honks while the mechanic is working."),
+         "small": ("정비사는 하던 일을 계속할지, 멈추고 봐줄지 정해야 해요.", "The mechanic must decide: keep working, or stop and look.")},
         {"svg": P2, "alt": ("정비사가 급한 차가 왔는지 계속 흘깃거리느라 지쳐함", "The mechanic tires out from constantly glancing over for the urgent car"),
-         "caption": ("계속 흘깃거리기만 하는 건 비효율적이에요.", "Just glancing over again and again is inefficient."),
+         "caption": ("급한 차가 왔는지 계속 흘깃거리면 정비사의 일손이 낭비돼요.", "A mechanic glancing over again and again for an urgent car wastes working time."),
          "small": ("급한 차가 직접 알려주는 방법이 필요해요.", "We need the urgent car to signal in directly.")},
         {"svg": P3, "hero": True, "alt": ("정비사가 메모지에 하던 일을 적고 급한 벨이 울린 차로 달려감", "The mechanic jots their place on a notepad and runs to the honking car"),
          "caption": ("벨이 울리면 하던 일을 적어두고 바로 달려가요.", "When the bell rings, jot down your place and run to it."),
-         "small": ("급한 일을 끝내면 적어둔 자리부터 다시 이어서 해요.", "Once done, pick back up exactly where you left off."),
+         "small": ("급한 일을 끝내면 적어둔 자리부터 다시 이어서 해요.", "Once the urgent job is done, pick back up exactly where you left off."),
          "tricks": (4, [
              (BELL_I, ("① 인터럽트 발생", "① Interrupt occurs"), ("벨이 울려요", "the bell rings"), "warm"),
              (SAVE_I, ("② 상태 저장", "② Save state"), ("하던 자리를 적어둬요", "jot down the current spot")),
@@ -92,14 +92,14 @@ PAGE = {
              (RESUME_I, ("④⑤ 처리 후 복귀", "④⑤ Handle, then resume"), ("적어둔 자리부터 이어가요", "continue from the jotted spot"), "calm"),
          ])},
         {"svg": P4, "alt": ("인터럽트 발생부터 상태 저장, 벡터 확인, ISR 처리, 상태 복원까지 다섯 단계 순서표", "A five-step board: interrupt occurs, save state, check vector, ISR handles it, restore state"),
-         "caption": ("처리 순서는 다섯 단계예요.", "The handling sequence has five steps."),
-         "small": ("같은 벨도 항상 같은 담당자가 맡아요.", "The same bell always reaches the same handler.")},
+         "caption": ("인터럽트 처리는 ①~⑤ 다섯 단계예요.", "Handling an interrupt takes these five steps, ① to ⑤."),
+         "small": ("같은 종류의 벨은 항상 같은 담당자가 맡아요.", "The same bell type always reaches the same handler.")},
         {"svg": P5, "alt": ("왼쪽: 일반적인 인터럽트 처리 순서. 오른쪽: 네트워크 카드 벨만 다루는 이야기는 다른 곳에 있음", "Left: the general interrupt-handling sequence. Right: the network-card bell alone is covered elsewhere"),
-         "caption": ("네트워크 벨만 따로 다루는 이야기와는 달라요.", "This differs from the story about the network-card bell alone."),
-         "small": ("순서는 같아요 — 저장하고, 처리하고, 복귀해요.", "The sequence is the same — save, handle, resume.")},
+         "caption": ("이 페이지는 네트워크 벨만 다룬 이야기와 달리, 모든 벨의 공통 순서를 다뤄요.", "Unlike the network-card bell story, this page covers the sequence common to every bell."),
+         "small": ("어느 벨이든 순서는 같아요 — 저장하고, 처리하고, 복귀해요.", "Every bell follows the same sequence — save, handle, resume.")},
     ],
     "summary": (("<b>인터럽트 처리</b>는 벨(신호)이 울리면 <b>하던 일을 적어두고</b> 담당자에게 달려가 처리한 뒤, <b>원래 자리부터 다시 이어가는</b> 순서예요.",
-                 "<b>Interrupt handling</b> is the sequence of <b>jotting down your place</b> when a signal fires, letting the right handler deal with it, then <b>resuming exactly where you left off</b>."),
+                 "<b>Interrupt handling</b> is the sequence of <b>jotting down your place</b> when a signal fires, letting the right handler do the urgent job, then <b>resuming exactly where you left off</b>."),
                 ("인터럽트는 CPU가 현재 실행 중인 명령을 잠시 멈추고 다른 긴급한 작업을 처리하도록 하는 신호예요. 처리 과정은 ①인터럽트 발생 ②현재 레지스터·프로그램 카운터를 스택에 저장 ③인터럽트 벡터 테이블에서 해당 ISR(인터럽트 서비스 루틴) 주소 확인 ④ISR 실행 ⑤저장해둔 상태를 복원하고 원래 실행 흐름으로 복귀하는 순서로 이뤄져요. 계속 상태를 확인하는 폴링 방식보다 CPU 자원을 아낄 수 있어요.",
                  "An interrupt is a signal that makes the CPU pause its current instruction stream to handle something urgent. The sequence is: ① interrupt occurs ② current registers and program counter are pushed to the stack ③ the interrupt vector table is consulted for the matching ISR (interrupt service routine) address ④ the ISR runs ⑤ the saved state is restored and execution resumes where it left off. This saves CPU resources compared to constantly polling for status.")),
     "glossary": [

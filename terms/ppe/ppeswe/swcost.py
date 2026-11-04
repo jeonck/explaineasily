@@ -20,7 +20,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + label(380, 30, "⟦감으로만 부르면 — 분쟁이 나요|price it by feel alone — and disputes follow⟧", 13, "var(--ink)", cls="d")
          + coinbag(230, 150, 1.0) + label(230, 220, "⟦너무 싸요 — 작가가 손해|too cheap — the writer loses out⟧", 11, "var(--ink)")
          + coinbag(530, 150, 1.4) + label(530, 230, "⟦너무 비싸요 — 발주자가 손해|too pricey — the client loses out⟧", 11, "var(--ink)")
-         + label(380, 280, "⟦기준이 없으면 둘 다 억울해요|with no standard, both sides end up unhappy⟧", 12, "var(--muted)"))
+         + label(380, 280, "⟦값을 매기는 기준이 없으면 작가도 발주자도 억울해요|with no pricing standard, both writer and client end up unhappy⟧", 12, "var(--muted)"))
 
 # 3. 대가산정 = 규모 × 단가로 공정하게 값 매기기 (hero)
 RULER_I = icon('<rect x="8" y="26" width="48" height="14" rx="2" fill="#E9B44C"/><rect x="18" y="26" width="2" height="14" fill="#C9822B"/><rect x="28" y="26" width="2" height="14" fill="#C9822B"/><rect x="38" y="26" width="2" height="14" fill="#C9822B"/>')
@@ -49,7 +49,7 @@ PAGE = {
          "small": ("원고료를 부르는 기준이 저마다 달라요.", "Everyone names a price by their own rule of thumb.")},
         {"svg": P2, "alt": ("작은 돈주머니 옆에 '너무 싸요', 큰 돈주머니 옆에 '너무 비싸요'라고 적힘", "A small money bag labeled too cheap, and a big one labeled too pricey"),
          "caption": ("감(느낌)으로 부르면 너무 싸거나 너무 비싸요.", "Pricing by feel alone ends up too cheap or too pricey."),
-         "small": ("기준이 없으면 둘 다 억울해요.", "With no standard, both sides end up unhappy.")},
+         "small": ("값을 매기는 기준이 없으면 작가도 발주자도 억울해요.", "With no pricing standard, both writer and client end up unhappy.")},
         {"svg": P3, "hero": True, "alt": ("자(규모)와 돈주머니(단가)를 곱해서 인쇄 감독에게 값을 건네는 장면", "A ruler (size) multiplied by a money bag (unit rate), handing the result to the print supervisor"),
          "caption": ("대가산정은 규모 × 단가로 공정하게 값을 매기는 거예요.", "Cost estimation prices things fairly as size times a unit rate."),
          "small": ("감이 아니라, 잰 규모에 정해진 단가를 곱해서 값을 매겨요.", "Not a guess — the measured size times a fixed rate."),
@@ -62,26 +62,26 @@ PAGE = {
         {"svg": svg(320, '<rect width="760" height="320" fill="var(--good-soft)"/>'
                     + styleguide(60, 30, 640, 240, "⟦대가산정 공식|THE COST FORMULA⟧",
                                  ("⟦소프트웨어 개발비 = 기능점수 × 기능점수단가|software dev cost = function points × unit rate per FP⟧",
-                                  "⟦+ 난이도·규모·지역 등 보정계수|+ adjustments for difficulty, scale, region⟧",
+                                  "⟦× 규모·복잡도 등 보정계수|× adjustment factors for scale, complexity, and more⟧",
                                   "⟦+ 기술료(이윤) + 직접경비|+ technology fee (profit) + direct expenses⟧",
                                   "⟦= 소프트웨어사업 대가|= the total software project cost⟧"), 1.0)),
-         "alt": ("기능점수 × 단가에 보정계수와 기술료, 직접경비를 더해 최종 대가를 구하는 공식 안내판", "A guide to the formula: function points × rate, plus adjustments, technology fee, and direct expenses, for the final cost"),
-         "caption": ("이렇게 더해서 최종 대가가 나와요.", "Adding these up gives the final cost."),
-         "small": ("규모값에 보정과 기술료, 실제 경비까지 더해야 비로소 값이 완성돼요.", "The size value needs adjustments, a technology fee, and real expenses added before the price is complete.")},
+         "alt": ("기능점수 × 단가에 보정계수를 곱하고 기술료와 직접경비를 더해 최종 대가를 구하는 공식 안내판", "A guide to the formula: function points × rate × adjustment factors, plus technology fee and direct expenses, for the final cost"),
+         "caption": ("기능점수 × 단가를 보정하고 기술료와 경비를 더하면 최종 대가가 나와요.", "Function points × rate, adjusted, plus the fee and expenses, gives the final cost."),
+         "small": ("규모 × 단가에 보정계수를 곱하고 기술료와 실제 경비까지 더해야 비로소 값이 완성돼요.", "Size × rate needs adjusting, and then a technology fee and real expenses added, before the price is complete.")},
         {"svg": svg(300, sky(300)
                     + person(190, 150, s=0.8, face=SMILE, **EDITOR) + label(190, 265, "⟦기준표는 참고치예요|the rate table is a reference⟧", 11, "var(--ink)")
                     + person(560, 150, s=0.8, face=EYES, **PRINTER) + label(560, 265, "⟦최종 값은 계약으로 정해요|the final price still comes from the contract⟧", 11, "var(--ink)")
-                    + label(380, 30, "⟦기준표가 전부를 정해주진 않아요|the rate table doesn't decide everything⟧", 13, "var(--bad)", cls="d")
+                    + label(380, 30, "⟦기준표가 최종 값까지 정해주진 않아요|the rate table doesn't set the final price⟧", 13, "var(--bad)", cls="d")
                     + label(380, 280, "⟦값을 매긴 뒤엔, 이 계획이 다른 책들에 끼칠 영향도 봐야 해요|once priced, you still have to weigh its effect on the other books too⟧", 11, "var(--muted)")),
          "alt": ("편집장은 기준표가 참고치라 말하고, 인쇄 감독은 최종 값은 계약으로 정한다고 말함", "The editor says the rate table is a reference; the print supervisor says the final price still comes from the contract"),
-         "caption": ("기준표가 전부를 정해주진 않아요.", "The rate table doesn't decide everything."),
+         "caption": ("기준표가 최종 값까지 정해주진 않아요.", "The rate table doesn't set the final price."),
          "small": ('공정한 기준표가 있어도 발주자-수행사 협상은 남아요. 다음 이야기: 값을 매긴 뒤 <a href="swimpact-ko.html">다른 책들에 끼칠 영향 보기</a>.',
-                   "A fair rate table still leaves room for negotiation. Next: once priced, <a href=\"swimpact-en.html\">checking its effect on the other books</a>.")},
+                   "A fair rate table still leaves room for client-contractor negotiation. Next: once priced, <a href=\"swimpact-en.html\">checking its effect on the other books</a>.")},
     ],
-    "summary": (("<b>SW 사업 대가산정</b> = 작가마다 다르게 부르던 원고료 대신, <b>규모(기능점수) × 단가</b>에 <b>보정계수와 기술료</b>를 더해 공정하게 값을 매기는 일.",
-                 "<b>Software project cost estimation</b> = instead of writers each naming their own price, pricing fairly as <b>size (function points) × unit rate</b>, plus <b>adjustments and a technology fee</b>."),
-                ("SW 사업 대가산정은 기능점수(FP) 같은 규모 지표에 공인된 단가(기능점수당 단가)를 곱하고, 난이도·규모·지역 보정계수와 기술료, 직접경비를 더해 소프트웨어 개발비를 산출하는 과정이에요. 한국에서는 '소프트웨어 사업 대가기준'(한국소프트웨어산업협회 고시)이 참고 기준으로 쓰여요.",
-                 "Software project cost estimation multiplies a size metric like function points by a certified unit rate, then adds adjustments for difficulty, scale, and region plus a technology fee and direct expenses, to arrive at the development cost. In Korea, the published 'Software Project Cost Standard' serves as the reference guide.")),
+    "summary": (("<b>SW 사업 대가산정</b> = 작가마다 다르게 부르던 원고료 대신, <b>규모(기능점수) × 단가</b>를 <b>보정계수로 조정하고 기술료</b>를 더해 공정하게 값을 매기는 일.",
+                 "<b>Software project cost estimation</b> = instead of writers each naming their own price, pricing fairly as <b>size (function points) × unit rate</b>, <b>adjusted by factors, plus a technology fee</b>."),
+                ("SW 사업 대가산정은 기능점수(FP) 같은 규모 지표에 공인된 단가(기능점수당 단가)를 곱하고, 규모·복잡도 등 보정계수로 조정한 뒤 기술료와 직접경비를 더해 소프트웨어 개발비를 산출하는 과정이에요. 한국에서는 '소프트웨어 사업 대가기준'(한국소프트웨어산업협회 고시)이 참고 기준으로 쓰여요.",
+                 "Software project cost estimation multiplies a size metric like function points by a certified unit rate, adjusts it by factors such as scale and complexity, then adds a technology fee and direct expenses, to arrive at the development cost. In Korea, the published 'Software Project Cost Standard' serves as the reference guide.")),
     "glossary": [
         ("SW 사업 대가산정", "Software Cost Estimation", ("매수를 돈으로 바꾸는 계산.", "Turning page count into money."), ("규모 × 단가가 기본 뼈대예요.", "Size times rate is the basic skeleton.")),
         ("기능점수단가", "Rate per Function Point", ("자로 잰 분량 한 단위의 값.", "The price for one unit of measured size."), ('규모는 → <a href="fpruler-ko.html">매수를 재는 자</a>로 먼저 재요.', 'Size is measured first with → <a href="fpruler-en.html">the ruler that measures page count</a>.')),

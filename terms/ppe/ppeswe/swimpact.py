@@ -27,7 +27,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + '<path d="M100 205 Q290 245 460 205" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 4" fill="none"/>'
          + '<path d="M170 205 Q290 230 530 205" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 4" fill="none"/>'
          + '<path d="M240 205 Q400 260 600 205" stroke="var(--bad)" stroke-width="3" stroke-dasharray="5 4" fill="none"/>'
-         + label(380, 280, "⟦손댈 때마다 뭐가 흔들릴지 아무도 몰라요|nobody knows what will shake loose with each change⟧", 12, "var(--bad)"))
+         + label(380, 280, "⟦한 권을 고칠 때마다 어느 책 내용이 어긋날지 아무도 몰라요|nobody knows which book will stop matching after each change⟧", 12, "var(--bad)"))
 
 # 3. 영향평가 = 고치기 전에 연결 지도를 그려보는 것 (hero)
 LINK_I = icon('<circle cx="18" cy="32" r="9" fill="var(--accent)"/><circle cx="46" cy="18" r="9" fill="var(--good)"/><circle cx="46" cy="46" r="9" fill="var(--bad)"/><path d="M18 32 L46 18 M18 32 L46 46" stroke="var(--muted)" stroke-width="3"/>')
@@ -38,9 +38,9 @@ STAKE_I = icon('<circle cx="22" cy="24" r="8" fill="var(--accent)"/><path d="M22
 P3 = svg(340, sky(340)
          + label(380, 30, "⟦영향평가 = 고치기 전에 연결 지도를 그려보는 것|impact assessment = mapping the connections before you touch anything⟧", 13, "var(--ink)", cls="d")
          + seriesbooks(290, 110, 1.0, hl=0)
-         + '<path d="M326 188 Q400 230 480 190" stroke="var(--accent)" stroke-width="3" stroke-dasharray="4 4" fill="none"/>'
+         + '<path d="M326 214 Q400 250 480 214" stroke="var(--accent)" stroke-width="3" stroke-dasharray="4 4" fill="none"/>'
          + person(150, 210, s=0.6, face=EYES, **EDITOR) + label(150, 300, "⟦1권을 고치기 전에|before changing book 1⟧", 11, "var(--muted)")
-         + person(640, 210, s=0.6, face=EYES, **PRINTER) + label(640, 300, "⟦어디까지 번지는지 먼저 봐요|first check how far it reaches⟧", 11, "var(--muted)"))
+         + person(640, 210, s=0.6, face=EYES, **PRINTER) + label(640, 300, "⟦변경이 어디까지 번지는지 먼저 봐요|first check how far the change reaches⟧", 11, "var(--muted)"))
 
 PAGE = {
     "slug": "swimpact", "order": 18,
@@ -53,11 +53,11 @@ PAGE = {
          "caption": ("1권만 고쳤는데 2권에서 모순이 생겼어요.", "Only book one changed, but now book two contradicts it."),
          "small": ("작은 설정 하나가 뒷이야기 전체에 번졌어요.", "One small setting change rippled through the rest of the story.")},
         {"svg": P2, "alt": ("점점 늘어나는 시리즈 책들 사이에 점선 연결선이 어지럽게 얽혀 있음", "A growing stack of series books with tangled dashed lines connecting them"),
-         "caption": ("시리즈가 커질수록 연결이 안 보여요.", "The bigger the series, the harder it is to see the links."),
-         "small": ("손댈 때마다 뭐가 흔들릴지 아무도 몰라요.", "Nobody knows what will shake loose with each change.")},
+         "caption": ("시리즈가 커질수록 책들 사이 연결이 안 보여요.", "The bigger the series, the harder it is to see the links between books."),
+         "small": ("한 권을 고칠 때마다 어느 책 내용이 어긋날지 아무도 몰라요.", "Nobody knows which book will stop matching after each change.")},
         {"svg": P3, "hero": True, "alt": ("편집장과 인쇄 감독이 1권을 고치기 전, 다른 책으로 이어지는 점선을 함께 확인함", "The editor and print supervisor check a dashed line from book one to the next book before making the change"),
          "caption": ("영향평가는 고치기 전에 연결 지도를 그려보는 거예요.", "Impact assessment maps the connections before you change anything."),
-         "small": ("1권을 고치기 전에, 어디까지 번지는지 먼저 봐요.", "Before changing book one, first check how far it reaches."),
+         "small": ("1권을 고치기 전에, 변경이 어디까지 번지는지 먼저 봐요.", "Before changing book one, first check how far the change reaches."),
          "tricks": (4, [
              (LINK_I, ("연결점 찾기", "Find the connections"), ("이 변경이 어디로 이어지는지 찾아요", "trace where this change leads"), "calm"),
              (SCOPE_I, ("영향 범위 그리기", "Map the scope"), ("번질 수 있는 범위를 동그라미로 그려요", "circle how far it could spread")),
@@ -71,17 +71,17 @@ PAGE = {
                                   "⟦간접 영향: 3권 캐릭터 — 위험 중간|indirect impact: book 3's character — medium risk⟧",
                                   "⟦무관: 외전 — 위험 없음|unaffected: the side story — no risk⟧"), 1.0)),
          "alt": ("변경 대상과 직접·간접 영향, 무관한 부분을 나눠 적은 영향평가 매트릭스", "An impact matrix separating the change target, direct and indirect impact, and the unaffected part"),
-         "caption": ("영향을 등급별로 나눠 적어요.", "Impact gets written down by grade."),
+         "caption": ("변경의 영향을 위험 등급별로 나눠 적어요.", "A change's impact gets written down by risk grade."),
          "small": ("직접 영향, 간접 영향, 무관 — 이렇게 나누면 어디부터 손봐야 할지 보여요.", "Direct, indirect, and unaffected — sorted this way, it's clear where to start.")},
         {"svg": svg(300, sky(300)
-                    + person(190, 150, s=0.8, face=EYES, **PRINTER) + label(190, 265, "⟦큰 사고는 막아줘요|it does stop the big accidents⟧", 11, "var(--ink)")
-                    + person(560, 150, s=0.8, face=SWEAT, **EDITOR) + label(560, 265, "⟦작은 수정까지 매번 하면 느려져요|do it for every tiny fix and things slow down⟧", 11, "var(--ink)")
-                    + label(380, 30, "⟦영향평가가 다 해결해주진 않아요|impact assessment doesn't solve everything⟧", 13, "var(--bad)", cls="d")
+                    + person(190, 150, s=0.8, face=EYES, **PRINTER) + label(190, 265, "⟦영향평가는 책끼리 어긋나는 큰 사고를 막아줘요|impact assessment stops big clashes between books⟧", 11, "var(--ink)")
+                    + person(560, 150, s=0.8, face=SWEAT, **EDITOR) + label(560, 265, "⟦작은 수정까지 매번 평가하면 출간이 느려져요|assessing every tiny fix slows publishing down⟧", 11, "var(--ink)")
+                    + label(380, 30, "⟦영향평가에도 시간이 들어요|impact assessment takes time too⟧", 13, "var(--bad)", cls="d")
                     + label(380, 280, "⟦변경 규모에 맞춰, 얼마나 깊이 볼지 정해요|how deep you look should match the size of the change⟧", 12, "var(--muted)")),
-         "alt": ("인쇄 감독은 영향평가가 큰 사고를 막아준다 말하고, 편집장은 작은 수정까지 매번 하면 느려진다고 땀 흘리며 말함", "The print supervisor says it stops big accidents; the sweating editor says doing it for every tiny fix slows things down"),
-         "caption": ("영향평가가 다 해결해주진 않아요.", "Impact assessment doesn't solve everything."),
-         "small": ('너무 자주 하면 느려지고, 너무 안 하면 사고가 나요. 적절한 기준은 → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>이 함께 정해요.',
-                   "Do it too often and you slow down; too rarely and accidents happen. The right balance is set together with → <a href=\"pmoaudit-en.html\">the last checker before publication</a>.")},
+         "alt": ("인쇄 감독은 영향평가가 큰 사고를 막아준다 말하고, 편집장은 작은 수정까지 매번 하면 느려진다고 땀 흘리며 말함", "The print supervisor says it stops big accidents; the sweating editor says assessing every tiny fix slows publishing down"),
+         "caption": ("영향평가에도 시간이 들어요.", "Impact assessment takes time too."),
+         "small": ('영향평가를 너무 자주 하면 출간이 느려지고, 너무 안 하면 사고가 나요. 적절한 기준은 → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>이 함께 정해요.',
+                   "Assess too often and publishing slows down; too rarely and accidents happen. The right balance is set together with → <a href=\"pmoaudit-en.html\">the last checker before publication</a>.")},
     ],
     "summary": (("<b>SW사업 영향평가</b> = 시리즈 중 한 권을 고치기 전에, <b>다른 책들로 번질 범위와 위험</b>을 미리 그려보는 연결 지도.",
                  "<b>Software project impact assessment</b> = before changing one book in a series, drawing a connection map of <b>how far it spreads and how risky that is</b>."),

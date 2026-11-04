@@ -26,15 +26,15 @@ P1 = svg(300, sky(300)
 # 2. 각자 말만으론 비교할 방법이 없어요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + manuscript(200, 140, 0.8) + manuscript(380, 140, 0.8) + manuscript(560, 140, 0.8)
-         + label(380, 230, "⟦원고마다 자기 기준으로만 말하니 비교가 안 돼요|each one only speaks to its own standard — nothing lines up⟧", 12, "var(--ink)")
-         + label(380, 270, "⟦확인해 줄 바깥 눈이 필요해요|we need an outside eye to check⟧", 12, "var(--muted)"))
+         + label(380, 230, "⟦출판사마다 자기 기준으로만 말하니 세 원고를 비교할 수 없어요|each publisher speaks only to its own standard, so the three manuscripts can't be compared⟧", 12, "var(--ink)")
+         + label(380, 270, "⟦같은 기준으로 확인해 줄 바깥 기관이 필요해요|we need an outside body to check them all by one standard⟧", 12, "var(--muted)"))
 
 # 3. 품질인증 = 바깥 기관이 공통 기준으로 검사해 마크를 줌 (hero)
 P3 = svg(340, sky(340)
          + person(360, 110, s=0.9, face=EYES, **CERTIFIER) + seal(470, 90, 0.6)
          + printplate(300, 220, 0.9, "⟦시험용 표본|sample copy⟧")
-         + label(380, 30, "⟦품질인증 = 바깥 기관이 공통 기준으로 검사해 주는 공식 마크예요|Quality certification = an outside body checks it against one shared standard⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦내가 좋다고 말하는 게 아니라, 밖에서 확인해 줘요|Not self-proclaimed — it's confirmed from the outside⟧", 12, "var(--muted)"))
+         + label(380, 30, "⟦품질인증 = 바깥 기관이 공통 기준으로 검사해 주는 공식 마크예요|Quality certification = an official mark from an outside body checking against one shared standard⟧", 13, "var(--ink)", cls="d")
+         + label(380, 320, "⟦출판사가 스스로 좋다고 말하는 게 아니라, 바깥 기관이 확인해 줘요|Not the publisher's own claim — an outside body confirms the quality⟧", 12, "var(--muted)"))
 
 STANDARD_I = icon('<rect x="10" y="8" width="44" height="48" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 20 h24 M20 28 h24 M20 36 h16" stroke="#142033" stroke-width="2.5"/><path d="M24 46 l6 6 l12 -14" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/>')
 SAMPLE_I = icon('<rect x="14" y="16" width="36" height="28" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><circle cx="30" cy="30" r="8" fill="none" stroke="var(--accent)" stroke-width="3"/><path d="M37 37 l9 9" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>')
@@ -49,12 +49,12 @@ P4 = svg(320, sky(320)
                        "⟦사용성 — 쓰기 편한가|usability — is it easy to use?⟧",
                        "⟦보안성 — 함부로 안 새나|security — nothing leaks?⟧"), 1.0)
          + person(560, 150, s=0.75, face=EYES, **CERTIFIER)
-         + label(560, 250, "⟦이 네 가지를 똑같은 기준으로 봐요|the same four items, checked the same way every time⟧", 11, "var(--muted)")
+         + label(560, 250, "⟦심사관은 네 항목을 어느 책이든 같은 기준으로 봐요|the examiner checks all four items the same way for every book⟧", 11, "var(--muted)")
          + label(380, 300, "⟦사용성만 깊게 보는 시험도 따로 있어요|there's a whole separate test just for usability⟧", 12, "var(--ink)"))
 
 # 5. 마크가 있어도 완벽을 뜻하진 않아요
 P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
-         + seal(190, 140, 0.7) + label(190, 260, "⟦완벽을 보장하진 않아요|doesn't guarantee perfection⟧", 11, "var(--ink)")
+         + seal(190, 140, 0.7) + label(190, 260, "⟦인증 마크가 완벽을 보장하진 않아요|the mark doesn't guarantee perfection⟧", 11, "var(--ink)")
          + person(570, 125, s=0.8, face=SMILE, **READER) + label(570, 265, "⟦그래도 최소 기준은 확인됐어요|but a minimum standard is confirmed⟧", 11, "var(--ink)")
          + label(380, 300, "⟦인증은 '이 기준은 통과했다'는 뜻이지, 모든 문제가 없다는 뜻은 아니에요|certification means the standard was met — not that every problem is gone⟧", 12, "var(--ink)", cls="d"))
 
@@ -67,25 +67,25 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("두 출판사가 서로 자기 책이 최고라고 우기고, 독자는 헷갈려함", "Two publishers each insist their own book is best, and a reader looks confused"),
          "caption": ("출판사마다 자기 책이 최고라고 말해요.", "Every publisher claims its own book is the best."),
-         "small": ("뭘 믿고 사야 하는지 아무도 몰라요.", "Nobody knows which claim to trust.")},
+         "small": ("독자는 어느 말을 믿고 사야 할지 몰라요.", "The reader doesn't know which claim to trust.")},
         {"svg": P2, "alt": ("원고 세 뭉치가 각자 다른 기준을 내세우고 있음", "Three manuscripts, each pointing to its own standard"),
-         "caption": ("각자 말만으론 비교가 안 돼요.", "Self-declared claims alone can't be compared."),
-         "small": ("확인해 줄 바깥 눈이 필요해요.", "An outside eye is needed to check.")},
+         "caption": ("출판사 각자의 말만으론 책을 비교할 수 없어요.", "Publishers' own claims alone can't compare one book with another."),
+         "small": ("같은 기준으로 확인해 줄 바깥 기관이 필요해요.", "An outside body is needed to check them all by one standard.")},
         {"svg": P3, "hero": True, "alt": ("심사관이 표본 한 부를 검사하고 인증 마크를 준비함", "An examiner inspects a sample copy and prepares a certification seal"),
          "caption": ("품질인증은 바깥 기관이 공통 기준으로 검사해 마크를 주는 거예요.", "Quality certification is an outside body checking against one shared standard, then awarding a mark."),
-         "small": ("내가 좋다고 말하는 게 아니라, 밖에서 확인해 줘요.", "Not self-proclaimed — it's confirmed from the outside."),
+         "small": ("출판사가 스스로 좋다고 말하는 게 아니라, 바깥 기관이 확인해 줘요.", "Not the publisher's own claim — an outside body confirms the quality."),
          "tricks": (4, [
              (STANDARD_I, ("고정된 공통 기준", "A fixed, shared standard"), ("누구 책이든 같은 표로 봐요", "the same checklist for every book"), "calm"),
              (SAMPLE_I, ("표본만 시험", "Tests a sample"), ("책 한 부를 떼어 확인해요", "pulls one copy to check")),
-             (VALID_I, ("유효기간이 있어요", "Comes with an expiry date"), ("몇 년 뒤엔 다시 받아야 해요", "needs renewing after a few years"), "warm"),
-             (TRUST_I, ("다른 서점도 믿어줘요", "Other bookstores trust it too"), ("매번 다시 확인할 필요가 없어요", "no need to re-check it each time")),
+             (VALID_I, ("유효기간이 있어요", "Comes with an expiry date"), ("마크는 몇 년 뒤엔 다시 받아야 해요", "the mark needs renewing after a few years"), "warm"),
+             (TRUST_I, ("다른 서점도 믿어줘요", "Other bookstores trust it too"), ("서점마다 책을 다시 확인할 필요가 없어요", "each store needn't re-check the book")),
          ])},
         {"svg": P4, "alt": ("품질 심사표: 기능 적합성·신뢰성·사용성·보안성 네 항목을 심사관이 확인함", "A quality checklist: functionality, reliability, usability, security — an examiner checks each"),
-         "caption": ("심사표는 이 네 가지를 같은 기준으로 봐요.", "The checklist covers these four items, the same way every time."),
+         "caption": ("심사표는 기능·신뢰성·사용성·보안성 네 가지를 같은 기준으로 봐요.", "The checklist covers functionality, reliability, usability, and security, the same way for every book."),
          "small": ("사용성만 깊게 보는 시험도 따로 있어요.", "There's also a separate, deeper test just for usability.")},
         {"svg": P5, "alt": ("왼쪽: 마크가 완벽을 보장하진 않음. 오른쪽: 그래도 최소 기준은 확인됨", "Left: the mark doesn't guarantee perfection. Right: a minimum standard is still confirmed"),
          "caption": ("마크가 있어도 완벽을 뜻하진 않아요.", "Having the mark doesn't mean it's perfect."),
-         "small": ("'이 기준은 통과했다'는 뜻일 뿐이에요.", "It only means the standard was met.")},
+         "small": ("마크는 '이 기준은 통과했다'는 뜻일 뿐이에요.", "The mark only means the standard was met.")},
     ],
     "summary": (("<b>SW 품질인증</b> = 출판사가 아니라 <b>바깥 기관</b>이, 모든 책에 <b>같은 기준</b>으로 검사해 주는 공식 마크.",
                  "<b>Software quality certification</b> = an official mark from an <b>outside body</b>, applying the <b>same standard</b> to every book, not the publisher's own word."),
@@ -97,7 +97,7 @@ PAGE = {
         ("CMMI", "CMMI", ("책 한 권이 아니라 출판사 전체의 일하는 수준을 매기는 등급.", "A maturity rating for the whole publishing house's way of working, not one book."), ("조직 성숙도를 보는 인증이에요.", "It certifies organizational maturity.")),
         ("ISO/IEC 25010", "ISO/IEC 25010", ("심사표 항목들이 따르는 국제 품질특성 표준.", "The international standard the checklist's categories follow."), ("기능적합성·신뢰성·사용성·보안성 등 8가지예요.", "Eight characteristics, including functionality, reliability, usability, and security.")),
         ("품질보증(QA)", "QA", ("교정자가 날마다 하는 내부 품질 활동.", "The proofreader's day-to-day internal quality work."), ("인증은 바깥에서 가끔 확인하는 거예요.", "Certification is an outside check, done only now and then.")),
-        ("정보시스템 감리/PMO", "IS Audit / PMO", ("그 책 한 권의 진행 과정을 들여다봐요.", "Looks into how one book's process is going, from the inside out."), ('인증은 결과물이 기준을 통과했는지만 봐요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'Certification only checks whether the finished result meets the standard. → <a href="pmoaudit-en.html">the last checker before publication</a>')),
+        ("정보시스템 감리/PMO", "IS Audit / PMO", ("책 한 권이 만들어지는 진행 과정을 들여다봐요.", "Looks into how one book's making is going, step by step."), ('인증은 결과물이 기준을 통과했는지만 봐요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'Certification only checks whether the finished result meets the standard. → <a href="pmoaudit-en.html">the last checker before publication</a>')),
         ("사용성평가", "Usability Test", ("심사표 속 '사용성' 항목을 깊게 파고드는 시험.", "A test that digs deep into the checklist's one 'usability' item."), ('→ <a href="usability-ko.html">독자가 책을 쓱 넘겨보는 시험</a>', '→ <a href="usability-en.html">the test where a reader just tries the book cold</a>')),
         ("방법론 테일러링", "Methodology Tailoring", ("편집 규칙을 책마다 다르게 적용하는 것.", "Applying editing rules differently from book to book."), ('인증 기준은 공통이어도, 일하는 방식은 책마다 달라도 돼요. → <a href="tailoring-ko.html">책마다 다른 편집 규칙</a>', 'The certification standard is shared, but how each book gets made can still differ. → <a href="tailoring-en.html">different editing rules for each book</a>')),
     ],

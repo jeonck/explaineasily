@@ -27,31 +27,31 @@ def blockarrow(x1, y1, x2, y2, ok=False):
 # 1. 등급 사다리가 있는 성
 P1 = svg(320, sky(320)
          + ladder(360, 60, 220)
-         + rung(360, 60, 128, "⟦등급3: 왕의 비밀 방|rank 3: the king's secret room⟧") + person(390, 20, s=0.5, **HIGH) + scroll(330, 45)
-         + rung(360, 150, 128, "⟦등급2: 장군의 방|rank 2: the general's room⟧") + person(390, 110, s=0.5, **MID) + scroll(330, 135)
-         + rung(360, 240, 128, "⟦등급1: 서기의 방|rank 1: the clerk's room⟧") + person(390, 200, s=0.5, **LOW) + scroll(330, 225)
+         + rung(360, 60, 128, "⟦등급3: 왕의 비밀 방|rank 3: the king's secret room⟧") + person(390, 20, s=0.5, **HIGH) + scroll(330, 37)
+         + rung(360, 150, 128, "⟦등급2: 장군의 방|rank 2: the general's room⟧") + person(390, 110, s=0.5, **MID) + scroll(330, 127)
+         + rung(360, 240, 128, "⟦등급1: 서기의 방|rank 1: the clerk's room⟧") + person(390, 200, s=0.5, **LOW) + scroll(330, 217)
          + label(380, 300, "⟦성의 방마다 비밀 등급이 매겨져 있어요|every room in the castle carries its own secrecy rank⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 아무 규칙 없이 오르내리면 둘 다 곤란해요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(170, 110, s=0.7, **LOW) + scroll(230, 90) + blockarrow(240, 90, 400, 60) + person(430, 60, s=0.55, **HIGH)
-         + label(260, 170, "⟦낮은 등급이 왕의 비밀을 엿봐요|a low rank peeks at the king's secret⟧", 11, "var(--bad)")
+         + label(190, 210, "⟦낮은 등급이 왕의 비밀을 엿봐요|a low rank peeks at the king's secret⟧", 11, "var(--bad)")
          + person(590, 110, s=0.7, **HIGH) + scroll(540, 90) + blockarrow(530, 90, 370, 150) + person(340, 170, s=0.55, **LOW)
-         + label(500, 170, "⟦높은 등급이 비밀을 낮은 장부에 적어요|a high rank writes the secret into a low ledger⟧", 11, "var(--bad)")
-         + label(380, 270, "⟦둘 다 결국 비밀이 아래로 새는 길이에요|both end up leaking the secret downward⟧", 12, "var(--ink)", cls="d"))
+         + label(610, 210, "⟦높은 등급이 비밀을 낮은 장부에 적어요|a high rank writes the secret into a low ledger⟧", 11, "var(--bad)")
+         + label(380, 270, "⟦엿보기도 내려적기도 결국 비밀이 아래로 새는 길이에요|peeking up and writing down both leak the secret to lower ranks⟧", 12, "var(--ink)", cls="d"))
 
 # 3. BLP와 Biba — 거꾸로 짝지은 두 규칙 (hero)
 P3 = svg(360, '<rect width="380" height="360" fill="var(--good-soft)"/><rect x="380" width="380" height="360" fill="var(--accent-soft)"/>'
          + label(190, 34, "⟦BLP — 비밀이 안 새게|BLP — no leaking secrets⟧", 14, "var(--ink)", cls="d")
          + person(140, 110, s=0.55, **HIGH) + person(140, 230, s=0.55, **LOW)
-         + blockarrow(170, 230, 170, 130) + label(100, 180, "⟦못 올려보기|no read up⟧", 11, "var(--bad)")
+         + blockarrow(170, 230, 170, 130) + label(80, 180, "⟦못 올려보기|no read up⟧", 11, "var(--bad)")
          + blockarrow(120, 110, 120, 210) + label(230, 180, "⟦못 내려적기|no write down⟧", 11, "var(--bad)")
-         + label(190, 300, "⟦기밀성 — 비밀을 지켜요|confidentiality — keeps secrets secret⟧", 12, "var(--ink)")
+         + label(190, 312, "⟦기밀성 — 비밀을 지켜요|confidentiality — keeps secrets secret⟧", 12, "var(--ink)")
          + label(570, 34, "⟦Biba — 거짓이 안 섞이게|Biba — no corrupting the clean⟧", 14, "var(--ink)", cls="d")
          + person(520, 110, s=0.55, **HIGH) + person(520, 230, s=0.55, **LOW)
          + blockarrow(495, 110, 495, 210, ok=False) + label(420, 180, "⟦못 내려읽기|no read down⟧", 11, "var(--bad)")
          + blockarrow(545, 230, 545, 130, ok=False) + label(620, 180, "⟦못 올려적기|no write up⟧", 11, "var(--bad)")
-         + label(570, 300, "⟦무결성 — 깨끗함을 지켜요|integrity — keeps clean records clean⟧", 12, "var(--ink)")
+         + label(570, 312, "⟦무결성 — 기록이 오염되지 않게 지켜요|integrity — keeps clean records clean⟧", 12, "var(--ink)")
          + label(380, 338, "⟦같은 사다리, 서로 반대 방향의 규칙이에요|the same ladder, with mirror-image rules⟧", 13, "var(--ink)", cls="d"))
 
 UP_I = icon('<path d="M32 50 V16 M20 28 L32 14 L44 28" fill="none" stroke="var(--good)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>')
@@ -68,11 +68,11 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("성의 방이 사다리처럼 등급 1(서기)·2(장군)·3(왕)로 나뉘어 있고 각 방에 두루마리가 있음", "The castle's rooms sit like ladder rungs: rank 1 (the clerk), rank 2 (the general), rank 3 (the king), each holding its own scroll"),
          "caption": ("성의 방마다 비밀 등급이 매겨져 있어요.", "Every room in the castle carries its own secrecy rank."),
-         "small": ('<a href="accesscontrolppe-ko.html">MAC</a>(강제적 접근통제)에서는 이 등급을 아무도 마음대로 못 바꿔요.',
-                   'Under <a href="accesscontrolppe-en.html">MAC</a> (Mandatory Access Control), nobody can change this ranking at will.')},
+         "small": ('<a href="accesscontrolppe-ko.html">MAC</a>(강제적 접근통제)에서는 방의 비밀 등급을 아무도 마음대로 못 바꿔요.',
+                   'Under <a href="accesscontrolppe-en.html">MAC</a> (Mandatory Access Control), nobody can change a room\'s rank at will.')},
         {"svg": P2, "alt": ("낮은 등급이 왕의 비밀을 엿보고, 높은 등급이 비밀을 낮은 장부에 적어 둘 다 비밀이 새는 상황", "A low rank peeks at the king's secret, and a high rank writes the secret into a low-rank ledger — both leak the secret downward"),
-         "caption": ("아무 규칙 없이 오르내리면 둘 다 곤란해요.", "Climb the ladder either way with no rule, and both end badly."),
-         "small": ("엿봐도 새고, 적어 내려도 새요. 비밀은 결국 아래로 흘러가요.", "Peek up, and it leaks. Write down, and it leaks. Either way, the secret flows downward.")},
+         "caption": ("등급 사이를 규칙 없이 오르내리면 비밀이 새요.", "With no rule for moving between ranks, the secret leaks."),
+         "small": ("낮은 등급이 위를 엿봐도, 높은 등급이 아래에 적어도 비밀이 새요. 비밀은 결국 낮은 등급으로 흘러가요.", "A low rank peeking up leaks the secret, and so does a high rank writing it down. Either way, the secret reaches lower ranks.")},
         {"svg": P3, "hero": True, "alt": ("왼쪽 BLP는 못 올려보기·못 내려적기로 비밀을 지키고, 오른쪽 Biba는 못 내려읽기·못 올려적기로 깨끗함을 지킴", "Left, BLP keeps secrets with no-read-up and no-write-down; right, Biba keeps things clean with no-read-down and no-write-up"),
          "caption": ("BLP와 Biba는 거꾸로 짝지은 두 규칙이에요.", "BLP and Biba are two rules, paired as mirror images."),
          "small": ('BLP(1973)는 <a href="ciatriad-ko.html">기밀성</a>을, Biba(1977)는 <a href="ciatriad-ko.html">무결성</a>을 지켜요. 둘 다 같은 등급 사다리 위의 규칙이에요.',
@@ -94,13 +94,13 @@ PAGE = {
          "caption": ("네 가지 규칙을 나란히 보면 이래요.", "Side by side, here are the four rules."),
          "small": ("BLP는 비밀이 아래로 새는 걸, Biba는 거짓이 위로 섞이는 걸 막아요.", "BLP blocks a secret leaking downward; Biba blocks something untrustworthy creeping upward.")},
         {"svg": svg(330, sky(330)
-                    + person(190, 125, s=0.85, **HIGH) + label(190, 260, "⟦규칙이 엄격해서 쓰기 불편해요|strict rules make day-to-day work awkward⟧", 11, "var(--ink)")
-                    + person(560, 125, s=0.85, **MID) + label(560, 260, "⟦보통은 역할(RBAC)과 같이 섞어 써요|usually blended with role-based access (RBAC) in practice⟧", 11, "var(--ink)")
-                    + label(380, 305, "⟦원래 군사·기밀 시스템에서 나온, MAC의 구체적인 규칙이에요|born in military and classified systems — the concrete rules behind MAC⟧", 12, "var(--ink)", cls="d")),
-         "alt": ("규칙이 엄격해 쓰기 불편하고, 실제로는 RBAC와 섞어 씀. 군사·기밀 시스템에서 나온 MAC의 구체적 규칙", "The strict rules make daily use awkward, so in practice they're blended with RBAC. Born in military/classified systems as the concrete rules behind MAC"),
-         "caption": ("엄격한 만큼, 실제론 다른 모델과 섞어 써요.", "Strict as they are, they're usually blended with other models in practice."),
-         "small": ('<a href="accesscontrolppe-ko.html">MAC</a>의 구체적인 규칙이 바로 이거예요. 회사 시스템은 보통 <a href="rbac-ko.html">RBAC</a>를 더 많이 써요.',
-                   'These are the concrete rules behind <a href="accesscontrolppe-en.html">MAC</a>. Most company systems lean more on <a href="rbac-en.html">RBAC</a> instead.')},
+                    + person(190, 125, s=0.85, **HIGH) + label(190, 260, "⟦BLP·Biba 규칙이 엄격해서 일상 업무에 쓰기 불편해요|the strict BLP/Biba rules make everyday work awkward⟧", 11, "var(--ink)")
+                    + person(560, 125, s=0.85, **MID) + label(560, 260, "⟦그래서 보통 역할 기반(RBAC)과 섞어 써요|so they're usually blended with role-based access (RBAC)⟧", 11, "var(--ink)")
+                    + label(380, 305, "⟦BLP·Biba는 군사·기밀 시스템에서 나온, MAC의 구체적인 규칙이에요|BLP and Biba were born in military and classified systems — the concrete rules behind MAC⟧", 12, "var(--ink)", cls="d")),
+         "alt": ("BLP·Biba 규칙이 엄격해 일상 업무에 쓰기 불편하고, 실제로는 RBAC와 섞어 씀. 군사·기밀 시스템에서 나온 MAC의 구체적 규칙", "The strict rules make daily use awkward, so in practice they're blended with RBAC. Born in military/classified systems as the concrete rules behind MAC"),
+         "caption": ("BLP·Biba는 엄격한 만큼, 실제론 다른 모델과 섞어 써요.", "Strict as they are, BLP and Biba are usually blended with other models in practice."),
+         "small": ('BLP·Biba가 바로 <a href="accesscontrolppe-ko.html">MAC</a>의 구체적인 규칙이에요. 회사 시스템은 보통 <a href="rbac-ko.html">RBAC</a>를 더 많이 써요.',
+                   'BLP and Biba are the concrete rules behind <a href="accesscontrolppe-en.html">MAC</a>. Most company systems lean more on <a href="rbac-en.html">RBAC</a> instead.')},
     ],
     "summary": (("<b>BLP</b>는 등급 사다리에서 <b>못 올려보고(no read up) 못 내려적어서(no write down)</b> 비밀이 새지 않게 하고, <b>Biba</b>는 정반대로 <b>못 내려읽고 못 올려적어서</b> 거짓이 섞이지 않게 해요.",
                  "<b>BLP</b> keeps a secret from leaking by letting nobody <b>read up or write down</b> the rank ladder; <b>Biba</b> mirrors it exactly, letting nobody <b>read down or write up</b>, to keep clean records clean."),
@@ -114,6 +114,6 @@ PAGE = {
         ("No Read Down / No Write Up", "No Read Down / No Write Up", ("Biba의 정반대 규칙 한 쌍.", "Biba's mirror-image pair of rules."), ("무결성을 지키기 위해 BLP와 반대 방향으로 막아요.", "Blocks the opposite direction from BLP, to protect integrity instead.")),
         ("MAC", "Mandatory Access Control", ("왕의 등급표, 아무도 못 바꿔요.", "The king's rank-list — nobody can override it."), ('BLP/Biba는 이 MAC을 실제로 구현하는 구체적 규칙이에요. → <a href="accesscontrolppe-ko.html">열쇠 주인을 정하는 세 가지 방식</a>', 'BLP/Biba are the concrete rules that actually implement MAC. → <a href="accesscontrolppe-en.html">three ways to decide who holds the key</a>')),
         ("기밀성 · 무결성", "Confidentiality · Integrity", ("못 보게 · 못 바꾸게.", "No peeking · no tampering."), ('CIA 3요소 중 두 가지예요. → <a href="ciatriad-ko.html">지키는 것 세 가지</a>', 'Two of the three legs of the CIA triad. → <a href="ciatriad-en.html">three things to keep</a>')),
-        ("RBAC", "RBAC", ("실제 조직이 더 많이 쓰는 모델.", "The model real organizations lean on more."), ('BLP/Biba는 엄격해서, 보통 역할 기반과 섞어 써요. → <a href="rbac-ko.html">모자마다 열쇠 꾸러미</a>', 'BLP/Biba are strict enough that they\'re usually blended with role-based rules. → <a href="rbac-en.html">a key ring for every hat</a>')),
+        ("RBAC", "RBAC", ("실제 조직이 BLP·Biba보다 더 많이 쓰는 모델.", "The model real organizations lean on more than BLP/Biba."), ('BLP/Biba는 엄격해서, 보통 역할 기반과 섞어 써요. → <a href="rbac-ko.html">모자마다 열쇠 꾸러미</a>', 'BLP/Biba are strict enough that they\'re usually blended with role-based rules. → <a href="rbac-en.html">a key ring for every hat</a>')),
     ],
 }

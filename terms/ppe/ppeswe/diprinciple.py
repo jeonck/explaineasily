@@ -26,7 +26,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + '<rect x="400" y="150" width="90" height="80" rx="4" fill="#7A3B3B"/>' + label(445, 250, "⟦고장!|broken!⟧", 13, "var(--bad)", cls="d")
          + plug_cable(298, 190, 400, 190, "var(--bad)")
          + label(380, 70, "⟦다른 기계로 바꾸려면 원고를 다 뜯어고쳐야 해요|switching machines means rewriting the manuscript itself⟧", 12, "var(--ink)")
-         + label(380, 270, "⟦너무 꽉 묶여 있어서 꼼짝을 못 해요|too tightly wired in to move at all⟧", 12, "var(--bad)"))
+         + label(380, 270, "⟦원고가 그 기계에 꽉 묶여 있어서, 작가는 꼼짝을 못 해요|the manuscript is wired so tightly to that machine, the writer can't move at all⟧", 12, "var(--bad)"))
 
 # 3. DI/DIP = 표준 콘센트만 알고, 기계는 바깥에서 꽂아줘요 (hero)
 P3 = svg(340, sky(340)
@@ -59,8 +59,8 @@ P4 = svg(320, '<rect width="380" height="320" fill="var(--bad-soft)"/><rect x="3
 P5 = svg(300, sky(300)
          + socket(220, 160, 0.9) + socket(320, 140, 0.7) + socket(400, 190, 0.6) + socket(480, 150, 0.8) + socket(560, 170, 0.65)
          + person(640, 160, s=0.75, face=SWEAT + EYES, **WRITER)
-         + label(380, 30, "⟦콘센트가 너무 많아지면 뭐가 뭔지 헷갈려요|too many sockets, and it gets confusing which is which⟧", 13, "var(--ink)")
-         + label(380, 280, "⟦필요한 곳에만 규격을 둬야, 바꿔 끼우기도 쉬워요|standards earn their keep only where they're actually needed⟧", 12, "var(--muted)"))
+         + label(380, 30, "⟦콘센트(규격)가 너무 많아지면 어떤 걸 써야 할지 헷갈려요|too many sockets (standards), and it's confusing which one to use⟧", 13, "var(--ink)")
+         + label(380, 280, "⟦필요한 곳에만 규격을 둬야, 바꿔 끼우기도 쉬워요|put standards only where they're needed, and swapping stays easy⟧", 12, "var(--muted)"))
 
 PAGE = {
     "slug": "diprinciple", "order": 45,
@@ -72,24 +72,24 @@ PAGE = {
         {"svg": P1, "alt": ("작가가 특정 인쇄기 한 대에 직접 배선된 원고를 씀", "A writer's manuscript is wired directly into one specific press"),
          "caption": ("작가가 특정 기계 한 대에 꽉 맞춰 원고를 써요.", "The writer writes to fit one exact machine."),
          "small": ("원고가 그 기계 배선에 그대로 박혀 있어요.", "The manuscript is wired straight into that one machine.")},
-        {"svg": P2, "alt": ("그 기계가 고장 나자 작가가 진땀을 흘림", "The machine breaks down, and the writer breaks into a sweat"),
-         "caption": ("그 기계가 고장 나면 작가도 올스톱이에요.", "If that one machine breaks, the writer is stuck too."),
-         "small": ("너무 꽉 묶여 있어서 꼼짝을 못 해요.", "Too tightly wired in to move at all.")},
+        {"svg": P2, "alt": ("A사 전용 기계가 고장 나자 작가가 진땀을 흘림", "Press Model A breaks down, and the writer breaks into a sweat"),
+         "caption": ("A사 전용 기계가 고장 나면 작가도 올스톱이에요.", "If Press Model A breaks, the writer is stuck too."),
+         "small": ("원고가 그 기계에 꽉 묶여 있어서, 작가는 꼼짝을 못 해요.", "The manuscript is wired so tightly to that machine, the writer can't move at all.")},
         {"svg": P3, "hero": True, "alt": ("작가는 표준 콘센트만 쓰고, 편집장이 바깥에서 인쇄기 B를 꽂아줌", "The writer uses only a standard socket, while the editor plugs in Press B from outside"),
          "caption": ("DI/DIP는 작가가 표준 콘센트만 알고 쓰고, 어떤 기계를 꽂을지는 바깥에서 정하는 거예요.", "DI/DIP means the writer only knows the standard socket, while what gets plugged in is decided from outside."),
-         "small": ("편집장이 바깥에서 알맞은 기계를 꽂아 줘요.", "The editor plugs in the right machine from outside — that's injection."),
+         "small": ("편집장이 바깥에서 알맞은 기계를 꽂아 줘요(주입).", "The editor plugs in the right machine from outside — that's injection."),
          "tricks": (4, [
              (ABSTRACT_I, ("규격(추상)에만 의존", "Depends only on the standard"), ("세부 기계는 몰라도 돼요", "doesn't need to know the machine's details"), "calm"),
-             (INJECT_I, ("바깥에서 꽂아줘요", "Plugged in from outside"), ("작가가 직접 고르지 않아요", "the writer doesn't pick it themselves")),
+             (INJECT_I, ("바깥에서 꽂아줘요", "Plugged in from outside"), ("작가가 기계를 직접 고르지 않아요", "the writer doesn't pick the machine themselves")),
              (SWAP_I, ("교체가 쉬워요", "Easy to swap"), ("테스트용 가짜 기계도 꽂을 수 있어요", "even a fake test stand-in can be plugged in"), "warm"),
-             (INVERT_I, ("방향이 뒤집혀요", "The dependency is inverted"), ("둘 다 규격을 바라봐요", "both sides answer to the same standard")),
+             (INVERT_I, ("방향이 뒤집혀요", "The dependency is inverted"), ("작가와 기계 둘 다 콘센트 규격만 바라봐요", "writer and machine both answer to the same standard")),
          ])},
         {"svg": P4, "alt": ("왼쪽: 직접 배선된 기계는 바꾸기 어려움. 오른쪽: 표준 콘센트는 어떤 기계든 꽂을 수 있음", "Left: a directly wired machine is hard to change. Right: a standard socket accepts any machine"),
          "caption": ("직접 배선 대신 표준 콘센트를 두면 바꿔 끼우기 쉬워요.", "A standard socket, instead of direct wiring, makes swapping easy."),
          "small": ("고수준 작가와 저수준 기계, 둘 다 콘센트 규격만 바라봐요.", "Both the high-level writer and the low-level machine answer to the same socket spec.")},
         {"svg": P5, "alt": ("콘센트가 너무 많아져서 작가가 헷갈려함", "Too many sockets appear, and the writer looks overwhelmed"),
          "caption": ("규격을 너무 많이 두면 오히려 헷갈려요.", "Too many standards, and it gets confusing instead."),
-         "small": ("필요한 곳에만 규격을 둬야, 바꿔 끼우기도 쉬워요.", "A standard earns its keep only where it's actually needed.")},
+         "small": ("필요한 곳에만 규격을 둬야, 바꿔 끼우기도 쉬워요.", "Put standards only where they're needed, and swapping stays easy.")},
     ],
     "summary": (("<b>DI/DIP</b> = 작가(고수준)가 기계(저수준)에 직접 매이지 않고, 둘 다 <b>표준 콘센트(추상)</b>만 보게 하고 기계는 <b>바깥에서 꽂아주는</b> 원칙.",
                  "<b>DI/DIP</b> is a principle where the writer (high-level) isn't tied directly to the machine (low-level) — both sides look only at a <b>standard socket (an abstraction)</b>, and the machine is <b>plugged in from outside</b>."),
@@ -97,7 +97,7 @@ PAGE = {
                  "The Dependency Inversion Principle (DIP) says high-level modules shouldn't depend on low-level modules — both should depend on an abstraction (an interface). Dependency Injection (DI) is the implementation technique that passes (injects) a concrete implementation of that abstraction from outside, instead of an object creating it itself. DIP is the 'D' in the SOLID principles.")),
     "glossary": [
         ("DIP(의존성 역전 원칙)", "Dependency Inversion Principle", ("고수준과 저수준이 둘 다 규격만 바라보게 하는 원칙.", "A principle where both high- and low-level sides answer only to a standard."), ("SOLID 원칙의 D예요.", "It's the D in SOLID.")),
-        ("DI(의존성 주입)", "Dependency Injection", ("기계를 바깥에서 꽂아주는 방법.", "The technique of plugging the machine in from outside."), ("작가가 직접 만들거나 고르지 않아요.", "The writer never creates or picks it themselves.")),
+        ("DI(의존성 주입)", "Dependency Injection", ("기계를 바깥에서 꽂아주는 방법.", "The technique of plugging the machine in from outside."), ("작가가 기계를 직접 만들거나 고르지 않아요.", "The writer never creates or picks the machine themselves.")),
         ("인터페이스(추상)", "Interface / Abstraction", ("표준 콘센트 그 자체.", "The standard socket itself."), ("세부 기계가 아니라 규격만 약속해요.", "It promises only the spec, not the machine's internals.")),
         ("결합도(Coupling)", "Coupling", ("작가와 기계가 묶인 정도.", "How tightly the writer and machine are tied together."), ("직접 배선은 강한 결합, 콘센트는 느슨한 결합이에요.", "Direct wiring is tight coupling; a socket is loose coupling.")),
         ("정보은닉/캡슐화", "Encapsulation", ("세부 기계를 작가 눈에 안 보이게 감추는 것.", "Hiding the machine's details from the writer's view."), ('DIP가 기대는 또 다른 원칙이에요. → <a href="encapsulation-ko.html">작가의 잠긴 서랍</a>', "Another principle DIP leans on. → <a href=\"encapsulation-en.html\">the writer's locked drawer</a>")),

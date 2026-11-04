@@ -5,8 +5,8 @@ from _world import *
 P1 = svg(300, sky(300)
          + person(170, 170, s=0.8, face=SWEAT + EYES, **FARMER)
          + produce(280, 230, 0.8) + produce(310, 240, 0.8) + produce(340, 225, 0.8)
-         + bubble(380, 80, 240, 56, "⟦선별기를 직접 만들려니 너무 비싸고 복잡해요|building my own sorter is way too costly and complicated⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 280, "⟦작은 농가마다 큰 기계를 들이긴 부담스러워요|a big machine is a heavy lift for every small farm⟧", 12, "var(--ink)"))
+         + bubble(360, 80, 310, 56, "⟦선별기를 직접 만들려니 너무 비싸고 복잡해요|building my own sorter is way too costly and complicated⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + label(380, 280, "⟦큰 선별기를 농가마다 사들이기엔 돈이 너무 많이 들어요|buying a big sorter for every small farm costs too much⟧", 12, "var(--ink)"))
 
 # 2. 중앙 검사장이 선별기를 빌려줘요
 P2 = svg(310, '<rect width="760" height="310" fill="var(--good-soft)"/>'
@@ -43,7 +43,7 @@ P5 = svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="3
          + label(190, 260, "⟦인터넷이 끊기면 등급을 못 받아요|no network, no grade back⟧", 11, "var(--bad)")
          + person(570, 130, s=0.8, face=EYES, **FARMER)
          + label(570, 260, "⟦내 작물 사진이 남의 서버에 가 있어요|my crop photos sit on someone else's server⟧", 11, "var(--ink)")
-         + label(380, 305, "⟦빠른 응답이나 민감한 자료가 중요하면 온디바이스 쪽도 같이 생각해요|if speed or sensitive data matters most, weigh on-device too⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 305, "⟦빠른 응답이나 민감한 자료가 중요하면 온디바이스 AI도 함께 검토해요|if fast response or sensitive data matters most, consider on-device AI too⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "aiaas", "order": 17,
@@ -54,7 +54,7 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("작은 농가 주인이 선별기를 직접 만들기엔 너무 비싸고 복잡하다며 땀을 흘림", "A small farmer sweats, saying building their own sorter is too expensive and complicated"),
          "caption": ("작은 농가는 선별기를 직접 만들기 어려워요.", "A small farm struggles to build its own sorter."),
-         "small": ("작은 농가마다 큰 기계를 들이긴 부담스러워요.", "A big machine is a heavy lift for every small farm.")},
+         "small": ("큰 선별기를 농가마다 사들이기엔 돈이 너무 많이 들어요.", "Buying a big sorter for every small farm costs too much.")},
         {"svg": P2, "alt": ("중앙 검사장이 선별 서비스를 내놓고, 여러 농가가 사진을 보내 등급을 받아옴", "A central station offers a sorting service, and several farms send photos and get grades back"),
          "caption": ("중앙 검사장이 선별기를 빌려줘요.", "The central station rents out its sorter."),
          "small": ("여러 농가가 같은 선별기를 인터넷으로 나눠 써요.", "Many farms share the same sorter over the network.")},
@@ -69,10 +69,10 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("선별기를 직접 만드는 쪽과 AIaaS를 구독하는 쪽을 초기비용·유지보수·확장성·통제권 네 항목으로 비교", "A side-by-side comparison of building your own sorter versus subscribing to AIaaS across upfront cost, maintenance, scaling, and control"),
          "caption": ("직접 만들기와 AIaaS를 나란히 비교해요.", "Building your own is compared side by side with AIaaS."),
-         "small": ("초기비용과 유지보수는 줄지만, 통제권은 제공자 규칙을 따라야 해요.", "Upfront cost and maintenance drop, but control follows the provider's rules.")},
+         "small": ("AIaaS를 쓰면 초기비용과 유지보수 부담은 줄지만, 쓰는 방식은 제공자 규칙을 따라야 해요.", "With AIaaS, upfront cost and maintenance drop, but how you use it follows the provider's rules.")},
         {"svg": P5, "alt": ("왼쪽: 인터넷이 끊겨 등급을 못 받는 농가. 오른쪽: 내 작물 사진이 남의 서버에 가 있다고 걱정하는 농가", "Left: a farm can't get a grade back because the network is down. Right: a farm worries its crop photos sit on someone else's server"),
-         "caption": ("한계도 있어요.", "There are limits too."),
-         "small": ("빠른 응답이나 민감한 자료가 중요하면 온디바이스 쪽도 같이 생각해요.", "If speed or sensitive data matters most, weigh on-device too.")},
+         "caption": ("AIaaS에는 인터넷에 기대고, 데이터가 밖으로 나간다는 한계도 있어요.", "AIaaS has limits too: it depends on the network, and your data leaves the farm."),
+         "small": ("빠른 응답이나 민감한 자료가 중요하면 온디바이스 AI도 함께 검토해요.", "If fast response or sensitive data matters most, consider on-device AI too.")},
     ],
     "summary": (("<b>AIaaS</b> = 선별기(모델)를 <b>직접 만들거나 소유하지 않고</b>, <b>구독료나 건당 요금</b>으로 인터넷 너머의 AI를 빌려 쓰는 방식.",
                  "<b>AIaaS</b> = using AI <b>without building or owning the model yourself</b> — renting it over the network for a <b>subscription or per-use fee</b>."),
@@ -81,7 +81,7 @@ PAGE = {
     "glossary": [
         ("API", "API", ("사진을 보내고 등급표를 받는 창구.", "The counter where you send a photo and get a grade back."), ("요청과 응답이 오가는 정해진 통로예요.", "A fixed channel for requests and responses.")),
         ("클라우드", "Cloud", ("선별기가 실제로 놓인 중앙 검사장.", "The central station where the sorter actually sits."), ("기계와 전기·공간은 전부 거기 있어요.", "The machine, power, and space all live there.")),
-        ("벤더 종속", "Vendor Lock-in", ("한 중앙 검사장에만 익숙해지는 것.", "Getting used to only one central station."), ("다른 서비스로 옮기기 번거로워질 수 있어요.", "Switching to another provider can become a hassle.")),
+        ("벤더 종속", "Vendor Lock-in", ("한 제공자(중앙 검사장)에 묶여 떠나기 어려워지는 것.", "Getting tied to one provider (central station) and finding it hard to leave."), ("다른 서비스로 옮기기 번거로워질 수 있어요.", "Switching to another provider can become a hassle.")),
         ("온디바이스 AI", "On-device AI", ("내 농장 창고 안의 작은 선별기.", "A small sorter inside your own farm shed."), ('빌리지 않고 직접 갖는 선택지예요. → <a href="ondeviceai-ko.html">자세히 보기</a>', "The option of owning it yourself instead of renting. → <a href=\"ondeviceai-en.html\">see it in full</a>")),
         ("AI 개인정보보호", "AI Data-Privacy Compliance", ("남의 서버로 간 작물 사진을 지키는 서류함.", "The paperwork cabinet protecting photos sent to someone else's server."), ('AIaaS를 쓸 때 꼭 같이 봐야 해요. → <a href="aiprivacyppe-ko.html">자세히 보기</a>', 'A must-check whenever you use AIaaS. → <a href="aiprivacyppe-en.html">see it in full</a>')),
         ("추론", "Inference", ("선별기가 실제로 등급을 매기는 순간.", "The moment the sorter actually assigns a grade."), ('AI 세계의 기본 개념이에요. → <a href="inference-ko.html">자세히 보기</a>', 'A core AI concept. → <a href="inference-en.html">see it in full</a>')),

@@ -23,12 +23,12 @@ P1 = svg(340, sky(340)
          + shelfbox(140, 160, 60, 50, "P3", filled=False) + shelfbox(210, 160, 60, 50, "P4") + shelfbox(280, 160, 60, 50, "P5")
          + person(70, 215, s=0.8, face=EYES, **MECH1)
          + label(380, 30, "⟦내 선반인데, P3 칸을 열어보니 비어 있어요|it's my own shelf — but slot P3 is empty when I open it⟧", 13, "var(--ink)", cls="d")
-         + label(380, 330, "⟦분명 \"내 선반\"이라고 들었는데, 실제로 다 차 있진 않아요|I was told it's \"my own shelf\" — but it's not all really there⟧", 12, "var(--ink)"))
+         + label(380, 330, "⟦분명 \"내 선반\"이라고 들었는데, 실제로 다 차 있진 않아요|I was told it's \"my own shelf\" — but not every slot is really filled⟧", 12, "var(--ink)"))
 
 # 2. 모두에게 진짜 전용 창고를 다 줄 순 없어요
 P2 = svg(340, '<rect width="760" height="340" fill="var(--bad-soft)"/>'
-         + person(140, 140, s=0.75, face=FROWN, **MECH1) + shelfbox(70, 250, 140, 50, "⟦정비사1 전용|MECH1 ONLY⟧", True, 0.9)
-         + person(440, 140, s=0.75, face=FROWN, **MECH2) + shelfbox(370, 250, 140, 50, "⟦정비사2 전용|MECH2 ONLY⟧", True, 0.9)
+         + person(140, 140, s=0.75, face=FROWN, **MECH1) + shelfbox(70, 250, 140, 50, "⟦정비사1 전용|MECHANIC 1 ONLY⟧", True, 0.9)
+         + person(440, 140, s=0.75, face=FROWN, **MECH2) + shelfbox(370, 250, 140, 50, "⟦정비사2 전용|MECHANIC 2 ONLY⟧", True, 0.9)
          + person(680, 150, s=0.6, face=FROWN, **CUSTOMER)
          + label(380, 40, "⟦모두에게 진짜 창고를 통째로 하나씩 줄 순 없어요|you can't give everyone a whole real warehouse of their own⟧", 13, "var(--ink)", cls="d")
          + label(380, 330, "⟦정비사가 늘어날수록 진짜 선반 공간은 금방 부족해져요|real shelf space runs out fast as more mechanics join⟧", 12, "var(--ink)"))
@@ -57,12 +57,12 @@ P4 = svg(340, sky(340)
 
 # 5. 너무 자주 들락날락하면 — 스와핑으로 오히려 느려져요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
-         + shelfbox(140, 110, 100, 40, "⟦딱 맞게 올라와 있어요|just enough is loaded⟧", True, 0.8)
-         + label(190, 190, "⟦선반에 다 있으면|when it's all on the shelf⟧", 11, "var(--ink)")
+         + shelfbox(138, 110, 130, 40, "⟦딱 맞게 올라와 있어요|just enough is loaded⟧", True, 0.8)
+         + label(190, 190, "⟦필요한 칸이 선반에 다 있으면|when needed slots are all on the shelf⟧", 11, "var(--ink)")
          + label(190, 208, "⟦빠르게 일해요|work moves fast⟧", 11, "var(--ink)")
-         + shelfbox(520, 110, 100, 40, "⟦계속 들락날락|constant swap in/out⟧", False, 0.8)
-         + label(570, 190, "⟦디스크를 너무 자주 오가면|too many trips to disk⟧", 11, "var(--ink)")
-         + label(570, 208, "⟦스와핑으로 더 느려요|swapping slows it down⟧", 11, "var(--ink)")
+         + shelfbox(518, 110, 130, 40, "⟦계속 들락날락|constant swap in/out⟧", False, 0.8)
+         + label(570, 190, "⟦칸이 디스크를 너무 자주 오가면|too many slot trips to disk⟧", 11, "var(--ink)")
+         + label(570, 208, "⟦스와핑 때문에 오히려 느려요|swapping slows the work down⟧", 11, "var(--ink)")
          + label(380, 265, "⟦가상메모리는 \'더 많아 보이게\'는 해도, 진짜 선반 속도를 늘려주진 않아요|virtual memory makes it look bigger — it doesn't make the real shelf faster⟧", 12, "var(--ink)", cls="d"))
 
 MAP_I = icon('<rect x="10" y="10" width="44" height="44" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M18 20 h28 M18 30 h28 M18 40 h18" stroke="#142033" stroke-width="2.5"/>')
@@ -79,7 +79,7 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("정비사가 자기 선반인 줄 알고 P3 칸을 열었는데 비어 있음", "A mechanic opens slot P3 on what they think is their own shelf, and it's empty"),
          "caption": ("내 선반인데, 한 칸을 열어보니 비어 있어요.", "It's my own shelf — but one slot is empty when I open it."),
-         "small": ("\"내 선반\"이라고 들었는데, 실제로 다 차 있진 않아요.", "I was told it's mine — but it's not all really there.")},
+         "small": ("\"내 선반\"이라고 들었는데, 실제로 다 차 있진 않아요.", "I was told it's mine — but not every slot is really filled.")},
         {"svg": P2, "alt": ("정비사마다 전용 창고를 통째로 주려 하지만, 창고 공간이 금방 부족해짐", "Trying to give each mechanic a whole private warehouse quickly runs out of real shelf space"),
          "caption": ("모두에게 진짜 창고를 통째로 줄 순 없어요.", "You can't give everyone a whole real warehouse."),
          "small": ("정비사가 늘수록 진짜 선반 공간은 금방 부족해져요.", "Real shelf space runs out fast as more mechanics join.")},
@@ -96,16 +96,16 @@ PAGE = {
          "caption": ("페이지 테이블이 가상 페이지를 실제 프레임에 연결해요.", "The page table maps virtual pages to real frames."),
          "small": ("P2를 찾으면 \"페이지 폴트\" — 디스크에서 올려와요.", "Looking for P2 triggers a \"page fault\" — fetched from disk.")},
         {"svg": P5, "alt": ("왼쪽: 필요한 만큼만 선반에 있어 빠름. 오른쪽: 너무 자주 디스크를 오가 스와핑으로 느려짐", "Left: just enough is on the shelf — fast. Right: too much back-and-forth with disk — swapping slows it down"),
-         "caption": ("너무 자주 들락날락하면 오히려 느려져요.", "Too much back-and-forth actually slows things down."),
-         "small": ("가상메모리는 \'더 많아 보이게\'는 해도, 진짜 속도를 늘려주진 않아요.", "Virtual memory makes it look bigger — it doesn't make the real shelf faster.")},
+         "caption": ("칸이 선반과 디스크를 너무 자주 오가면 오히려 느려져요.", "Slots moving too often between shelf and disk actually slow the work down."),
+         "small": ("가상메모리는 \'더 많아 보이게\'는 해도, 진짜 선반 속도를 늘려주진 않아요.", "Virtual memory makes it look bigger — it doesn't make the real shelf faster.")},
     ],
     "summary": (("<b>가상메모리</b> = 창고(메모리)가 작아도 모두에게 <b>전용 창고처럼 보이는 가짜 지도</b>를 주고, <b>페이지</b> 단위로 필요한 것만 실제 선반에 올리는 방법.",
                  "<b>Virtual memory</b> = giving everyone a fake map that looks like their own warehouse, even though the real one is small, and loading only what's needed onto the real shelf in <b>page</b>-sized chunks."),
                 ("가상메모리는 프로세스마다 독립된 가상 주소 공간을 주어, 물리 메모리보다 커 보이게 하고 프로세스끼리 서로의 메모리를 침범하지 못하게 해요. 페이징은 가상/물리 메모리를 고정 크기 페이지로 나눠 페이지 테이블로 매핑하고, 필요한 페이지가 물리 메모리에 없으면 페이지 폴트가 나서 디스크(스왑 영역)에서 가져와요. 폴트가 너무 잦으면 스래싱(thrashing)이 일어나 전체 성능이 떨어져요.",
                  "Virtual memory gives each process its own independent virtual address space — making memory look larger than it physically is, and keeping processes from touching each other's memory. Paging splits virtual and physical memory into fixed-size pages mapped through a page table; a needed page missing from physical memory triggers a page fault, fetched from disk (swap space). Too many faults cause thrashing, which drags down overall performance.")),
     "glossary": [
-        ("가상 주소", "Virtual Address", ("내가 보는 가짜 지도의 번지.", "The address on the fake map I see."), ("진짜 선반 위치와는 따로 움직여요.", "It moves independently of the real shelf location.")),
-        ("페이지/프레임", "Page/Frame", ("지도의 칸(페이지)과 진짜 선반 칸(프레임).", "A map square (page) and a real shelf slot (frame)."), ("같은 크기로 잘라서 맞춰요.", "Both are cut to the same size so they line up.")),
+        ("가상 주소", "Virtual Address", ("내가 보는 가짜 지도의 번지.", "The address on the fake map I see."), ("진짜 선반 위치가 바뀌어도 이 번지는 그대로예요.", "It stays the same even if the real shelf location changes.")),
+        ("페이지/프레임", "Page/Frame", ("지도의 칸(페이지)과 진짜 선반 칸(프레임).", "A map square (page) and a real shelf slot (frame)."), ("페이지와 프레임은 같은 크기로 잘라서 맞춰요.", "Pages and frames are cut to the same size so they line up.")),
         ("페이지 테이블", "Page Table", ("가상 칸과 진짜 칸의 대응표.", "The table matching virtual slots to real ones."), ("반장(OS)이 관리해요.", "Managed by the chief (the OS).")),
         ("페이지 폴트/스와핑", "Page Fault/Swapping", ("찾는 칸이 없어 디스크에서 올려오는 일.", "Fetching a missing slot's contents up from disk."), ("너무 잦으면 스래싱으로 느려져요.", "Too often, and it turns into slow thrashing.")),
         ("캐시 메모리", "Cache Memory", ("자주 쓰는 공구만 담는 작은 공구함.", "A small toolbox holding only the frequent tools."), ('더 빠른 층위의 \'가까운 저장공간\'이에요. → <a href="cachemem-ko.html">자주 쓰는 공구만 담는 공구함</a>', 'A faster, closer storage layer. → <a href="cachemem-en.html">the toolbox that holds only the frequent tools</a>')),

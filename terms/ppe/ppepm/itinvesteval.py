@@ -7,7 +7,7 @@ P1 = svg(320, sky(320)
          + person(180, 170, s=0.85, face=EYES, **SPONSOR) + contract(260, 150, 0.8)
          + bubble(40, 70, 260, 50, "⟦우리 돈, 값을 했나요?|did our money pay off?⟧", 12, "var(--panel)", "var(--line)", "bottom")
          + person(560, 180, s=0.8, face=SWEAT + EYES, **DIRECTOR)
-         + label(380, 300, "⟦공연은 끝났는데 숫자로 답할 게 없어요|the show is over, but there's no number to answer with⟧", 13, "var(--ink)"))
+         + label(380, 300, "⟦공연은 끝났는데, 후원사 질문에 답할 숫자가 없어요|the show is over, but the company has no number to answer the sponsor with⟧", 13, "var(--ink)"))
 
 # 2. 왜: "관객이 좋아했어요"만으론 후원사를 설득 못 해요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
@@ -15,11 +15,12 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + bubble(70, 70, 230, 46, "⟦관객들이 엄청 좋아했어요!|the audience loved it so much!⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(570, 150, s=0.8, face=FROWN, **SPONSOR)
          + bubble(460, 70, 230, 46, "⟦그래서 제 돈은 얼마나 돌아왔나요?|so how much of my money came back?⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 282, "⟦느낌만으론 안 돼요, 돈과 숫자로 보여줘야 해요|feelings aren't enough — it has to be shown in money and numbers⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦관객 반응만으론 부족해요, 성과를 돈과 숫자로 보여줘야 해요|audience reactions aren't enough — results have to be shown in money and numbers⟧", 12, "var(--ink)", cls="d"))
 
 # 3. hero: IT 투자성과 평가 = 공연 끝난 뒤 돈과 숫자로 매기는 성적표
 P3 = svg(340, sky(340)
-         + ticket(230, 150, 1.1, text="⟦투자 1억|invested $100k⟧") + ticket(380, 150, 1.1, text="⟦매출 1.4억|revenue $140k⟧")
+         + '<g transform="translate(230,150) scale(1.7,1.1)">' + ticket(0, 0) + '</g>' + label(230, 154, "⟦투자 1억|invested $100k⟧", 11, "#142033")
+         + '<g transform="translate(380,150) scale(1.7,1.1)">' + ticket(0, 0) + '</g>' + label(380, 154, "⟦매출 1.4억|revenue $140k⟧", 11, "#142033")
          + person(540, 180, s=0.85, face=SMILE, **DIRECTOR)
          + label(380, 30, "⟦IT 투자성과 평가 = 공연 끝난 뒤 돈과 숫자로 매기는 성적표|IT investment evaluation = a scorecard for the show, written in money and numbers afterward⟧", 13, "var(--ink)", cls="d")
          + label(380, 320, "⟦투자한 만큼 돌아왔는지, 숫자로 확인해요|checking, in numbers, whether the investment paid off⟧", 12, "var(--muted)"))
@@ -31,19 +32,19 @@ QUAL_I = icon('<path d="M32 14 l6 14 l15 2 l-11 10 l3 15 l-13 -8 l-13 8 l3 -15 l
 
 # 4. 평가 지표 네 가지 비교표
 P4 = svg(320, sky(320, ground=False)
-         + checklist(60, 30, 300, 260, "⟦평가 지표|METRICS⟧",
+         + checklist(60, 30, 300, 250, "⟦평가 지표|METRICS⟧",
                      ("⟦ROI — 투자 대비 얼마 벌었나|ROI — how much earned per dollar⟧",
-                      "⟦NPV — 지금 돈 가치로 환산하면|NPV — value in today's money⟧",
+                      "⟦NPV — 미래 수익을 지금 돈 가치로|NPV — future earnings in today's money⟧",
                       "⟦BSC — 재무·관객·운영·성장 네 각도|BSC — finance, audience, ops, growth⟧",
                       "⟦정성 효과 — 브랜드·평판|qualitative — brand, reputation⟧"), 1.0)
          + person(560, 170, s=0.8, face=EYES, **DIRECTOR)
-         + label(380, 300, "⟦숫자(정량) + 느낌(정성)을 같이 봐요|look at numbers and intangibles together⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 300, "⟦투자성과는 숫자(정량)와 브랜드·평판(정성)을 같이 봐요|weigh the numbers together with intangibles like brand and reputation⟧", 12, "var(--ink)", cls="d"))
 
-# 5. 한계: 숫자만으론 못 보는 것도 있어요
+# 5. 한계: 투자 효과 중엔 숫자만으론 못 보는 것도 있어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + ticket(190, 150, 0.9, text="⟦매출 +40%|revenue +40%⟧") + label(190, 240, "⟦숫자로 바로 보여요|shows up right in the numbers⟧", 11, "var(--ink)")
+         + '<g transform="translate(190,150) scale(1.4,0.9)">' + ticket(0, 0) + '</g>' + label(190, 154, "⟦매출 +40%|revenue +40%⟧", 10, "#142033") + label(190, 240, "⟦매출 증가는 숫자로 바로 보여요|a revenue increase shows up right in the numbers⟧", 11, "var(--ink)")
          + person(570, 150, s=0.8, face=SMILE, **FAN) + bubble(490, 70, 170, 46, "⟦이 투어 팬 됐어요|now I'm a fan of this tour⟧", 10, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 282, "⟦팬심·신뢰 같은 가치는 숫자 하나로 못 담아요, 그래도 평가는 계속돼요|things like fan loyalty don't fit one number — but the evaluation keeps happening⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦팬심·신뢰 같은 가치는 숫자 하나로 못 담아요, 그래도 평가에서 빼지 않고 따로 챙겨요|things like fan loyalty don't fit one number — but the evaluation still tracks them separately⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "itinvesteval", "order": 1,
@@ -53,26 +54,26 @@ PAGE = {
             "IT investment evaluation, told as a story about answering a sponsor in numbers once the tour is over."),
     "panels": [
         {"svg": P1, "alt": ('후원사가 투자금의 성과를 묻지만 투어 기획사는 답할 숫자가 없음', "The sponsor asks about the investment's payoff, but the tour company has no number to answer with"),
-         "caption": ("후원사가 거액을 댔는데, 공연 끝나고 나니 값을 했는지 몰라요.", "The sponsor paid a lot, and once the show's over, nobody knows if it paid off."),
+         "caption": ("후원사가 거액을 댔는데, 공연이 끝나도 그 돈이 값을 했는지 아무도 몰라요.", "The sponsor paid a lot, and once the show's over, nobody knows if that money paid off."),
          "small": ("이 투어 기획사가 곧 IT 프로젝트 조직이에요.", "This tour company IS the IT project organization.")},
         {"svg": P2, "alt": ('기획자는 관객 반응이 좋았다고 말하지만 후원사는 돈 얘기를 물음', 'The planner says the audience loved it, while the sponsor asks about the money'),
          "caption": ("\"관객이 좋아했어요\"만으론 후원사를 설득 못 해요.", "\"The audience loved it\" alone can't convince the sponsor."),
-         "small": ("느낌만으론 안 돼요, 돈과 숫자로 보여줘야 해요.", "Feelings aren't enough — it has to be shown in money and numbers.")},
+         "small": ("관객 반응만으론 부족해요, 성과를 돈과 숫자로 보여줘야 해요.", "Audience reactions aren't enough — results have to be shown in money and numbers.")},
         {"svg": P3, "hero": True, "alt": ('투자금과 매출 티켓을 나란히 들고 감독관이 웃음', 'The director smiles, holding the investment and revenue tickets side by side'),
          "caption": ("IT 투자성과 평가는 공연 끝난 뒤 돈과 숫자로 매기는 성적표예요.", "IT investment evaluation is a scorecard for the show, written in money and numbers afterward."),
          "small": ("투자한 만큼 돌아왔는지, 숫자로 확인해요.", "Checking, in numbers, whether the investment paid off."),
          "tricks": (4, [
              (ROI_I, ("ROI 따지기", "Check ROI"), ("투자 대비 수익률이에요", "return per dollar invested"), "calm"),
-             (NPV_I, ("NPV 따지기", "Check NPV"), ("미래 돈을 지금 가치로요", "future money, valued today")),
-             (BSC_I, ("BSC로 넓게 보기", "Widen with BSC"), ("재무·관객·운영·성장 네 각도", "finance, audience, ops, growth"), "warm"),
+             (NPV_I, ("NPV 따지기", "Check NPV"), ("미래에 벌 돈을 지금 가치로 따져요", "value future earnings in today's money")),
+             (BSC_I, ("BSC로 넓게 보기", "Widen with BSC"), ("재무·관객·운영·성장 네 각도로 봐요", "look from four angles: finance, audience, ops, growth"), "warm"),
              (QUAL_I, ("정성 효과도 보기", "Weigh qualitative gains"), ("브랜드·평판도 효과예요", "brand and reputation count too")),
          ])},
         {"svg": P4, "alt": ('네 가지 평가 지표 체크리스트를 감독관이 점검함', 'The director checks a four-item evaluation metrics checklist'),
-         "caption": ("평가는 이 네 가지를 같이 봐요.", "Evaluation looks at these four things together."),
-         "small": ("숫자(정량) + 느낌(정성)을 같이 봐요.", "Look at numbers and intangibles together.")},
+         "caption": ("투자성과 평가는 ROI·NPV·BSC·정성 효과 네 가지를 같이 봐요.", "Investment evaluation looks at ROI, NPV, BSC, and qualitative gains together."),
+         "small": ("투자성과는 숫자(정량)와 브랜드·평판(정성)을 같이 봐요.", "Weigh the numbers together with intangibles like brand and reputation.")},
         {"svg": P5, "alt": ('왼쪽: 매출 증가가 숫자로 드러남. 오른쪽: 관객이 팬이 됐다고 말하지만 숫자로 못 담음', 'Left: the revenue increase shows up in numbers. Right: a fan says they love the tour, but no single number captures it'),
-         "caption": ("숫자만으론 못 보는 것도 있어요.", "There's value a single number can't capture."),
-         "small": ("팬심·신뢰 같은 가치는 숫자 하나로 못 담아요, 그래도 평가는 계속돼요.", "Things like fan loyalty don't fit one number — but the evaluation keeps happening.")},
+         "caption": ("투자 효과 중엔 숫자만으론 못 보는 것도 있어요.", "Some investment gains can't be captured by a number alone."),
+         "small": ("팬심·신뢰 같은 가치는 숫자 하나로 못 담아요, 그래도 평가에서 빼지 않고 따로 챙겨요.", "Things like fan loyalty don't fit one number — but the evaluation still tracks them separately.")},
     ],
     "summary": (("<b>IT 투자성과 평가</b> = 프로젝트(공연)가 끝난 뒤 <b>투자한 돈만큼 돌아왔는지</b> 숫자와 정성 효과로 함께 확인하는 일.",
                  "<b>IT investment evaluation</b> = after the project (show) ends, checking — in both numbers and intangibles — whether the investment paid off."),
@@ -85,7 +86,7 @@ PAGE = {
         ("정성적 효과", "Qualitative Benefit", ("팬심·신뢰처럼 숫자로 못 담는 가치.", "Value like fan loyalty that doesn't fit a number."), ("무시하지 않고 별도로 챙겨요.", "Not ignored — tracked separately instead.")),
         ("프로젝트 위험관리", "Project Risk Mgmt", ("공연 당일 날씨에 대비하는 우산.", "The umbrella that prepares for show-day weather."), ('투자 결정 전에도 위험을 따져요. → <a href="projrisk-ko.html">돌발 상황에 대비하는 우산</a>', 'Risk is weighed before the investment decision too. → <a href="projrisk-en.html">the umbrella for surprises</a>')),
         ("운영 성과관리", "Ops Performance Mgmt", ("공연 끝난 뒤 시설이 계속 잘 굴러가는지 보는 일.", "Watching whether the facilities keep running well after the show."), ('투자 평가는 운영 단계에서도 계속돼요. → <a href="opsperf-ko.html">공연 끝난 뒤의 운영실</a>', 'Evaluation keeps happening through the operations stage too. → <a href="opsperf-en.html">the ops room after the show</a>')),
-        ("감리/PMO", "IS Audit/PMO", ("전체를 바깥에서 점검하는 역할.", "A role that checks everything from the outside."), ('다른 세계(출판사)에서 자세히 다뤄요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'Covered in depth in another world (publishing house). → <a href="pmoaudit-en.html">the last checker before publication</a>')),
-        ("계약·협상", "Negotiation & Contract", ("출연 계약서에 조건을 적는 일.", "Writing terms into the performance contract."), ('투자 결정은 계약 조건과도 맞물려요. → <a href="negotiation-ko.html">조건을 조율해 서명하기</a>', 'Investment decisions tie into contract terms too. → <a href="negotiation-en.html">tuning terms until both sign</a>')),
+        ("감리/PMO", "IS Audit/PMO", ("프로젝트 전체를 바깥에서 점검하는 역할.", "A role that checks the whole project from the outside."), ('다른 페이지(출판사 이야기)에서 자세히 다뤄요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'Covered in depth on another page (the publishing-house story). → <a href="pmoaudit-en.html">the last checker before publication</a>')),
+        ("계약·협상", "Negotiation & Contract", ("출연 계약서에 조건을 적는 일.", "Writing terms into the performance contract."), ('계약 조건이 달라지면 투자 비용과 효과도 달라져요. → <a href="negotiation-ko.html">조건을 조율해 서명하기</a>', 'Contract terms change what the investment costs and returns. → <a href="negotiation-en.html">tuning terms until both sign</a>')),
     ],
 }

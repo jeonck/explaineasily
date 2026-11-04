@@ -21,8 +21,8 @@ SHELF_I = icon('<rect x="8" y="10" width="48" height="44" rx="2" fill="#5A3B22"/
 LINK_I = icon('<rect x="6" y="22" width="20" height="20" rx="3" fill="none" stroke="var(--accent)" stroke-width="4"/><rect x="38" y="22" width="20" height="20" rx="3" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M26 32 H38" stroke="var(--accent)" stroke-width="4"/>')
 
 P3 = svg(340, sky(340)
-         + label(380, 30, "⟦기능점수(FP) = 내용을 세는 표준 자|Function Point = a standard ruler that counts content⟧", 14, "var(--ink)", cls="d")
-         + ruler(290, 110, 1.8, text="⟦쪽수 대신 기능을 세요|count functions, not pages⟧")
+         + label(380, 30, "⟦기능점수(FP) = 원고가 하는 일(기능)을 세는 표준 자|Function Point = a standard ruler that counts what a manuscript does⟧", 14, "var(--ink)", cls="d")
+         + ruler(290, 110, 1.8) + label(380, 168, "⟦쪽수 대신 기능을 세요|count functions, not pages⟧", 18, "var(--muted)")
          + person(140, 220, s=0.75, face=EYES, **EDITOR) + manuscript(230, 230, 0.6)
          + person(620, 220, s=0.75, face=SMILE, **PRINTER) + printplate(560, 280, 0.5)
          + label(380, 320, "⟦작가 솜씨나 글씨체와 상관없이, 같은 기준으로 규모를 재요|size is measured the same way, no matter the writer's style⟧", 12, "var(--muted)"))
@@ -41,7 +41,7 @@ PAGE = {
          "caption": ("쪽수는 공정한 자가 아니에요.", "Page count isn't a fair ruler."),
          "small": ("쪽수만 봐서는 일의 양을 공정하게 잴 수 없어요.", "Page count alone can't fairly measure the amount of work.")},
         {"svg": P3, "hero": True, "alt": ("커다란 자 옆에 편집장과 인쇄 감독이 원고와 인쇄판을 들고 서 있음", "A giant ruler beside an editor holding a manuscript and a print supervisor holding a print plate"),
-         "caption": ("기능점수(FP)는 내용을 세는 표준 자예요.", "A Function Point is a standard ruler that counts content."),
+         "caption": ("기능점수(FP)는 쪽수 대신 원고가 하는 일(기능)을 세는 표준 자예요.", "A Function Point is a standard ruler that counts what a manuscript does (its functions), not its pages."),
          "small": ("작가 솜씨나 글씨체와 상관없이, 같은 기준으로 규모를 재요.", "Size is measured the same way, no matter the writer's style."),
          "tricks": (4, [
              (INBOX_I, ("입력 세기", "Count the inputs"), ("원고에 써넣는 칸이 몇 개인지", "how many fields get written in"), "calm"),
@@ -61,14 +61,14 @@ PAGE = {
          "caption": ("FP는 이렇게 계산해요.", "This is how FP gets calculated."),
          "small": ("개수 × 가중치를 더해 UFP를 구하고, 보정계수를 곱해 최종 FP를 얻어요.", "Count × weight gives UFP; multiplying by the adjustment factor gives the final FP.")},
         {"svg": svg(300, sky(300)
-                    + person(190, 130, s=0.8, face=EYES, **EDITOR) + label(190, 250, "⟦규모는 쟀어요|we measured the size⟧", 11, "var(--ink)")
-                    + person(560, 130, s=0.8, face=EYES, **PRINTER) + label(560, 250, "⟦이걸로 비용·일정을 가늠해요|now we gauge cost and schedule⟧", 11, "var(--ink)")
+                    + person(190, 130, s=0.8, face=EYES, **EDITOR) + label(190, 250, "⟦원고 규모는 쟀어요|we've measured the manuscript's size⟧", 11, "var(--ink)")
+                    + person(560, 130, s=0.8, face=EYES, **PRINTER) + label(560, 250, "⟦그 규모로 비용·일정을 가늠해요|now we gauge cost and schedule from that size⟧", 11, "var(--ink)")
                     + label(380, 30, "⟦자로 재는 건 시작일 뿐이에요|measuring with the ruler is only the start⟧", 13, "var(--bad)", cls="d")
-                    + label(380, 280, "⟦작가 숙련도와 도구에 따라 실제 속도는 달라요|actual speed still varies by writer skill and tools⟧", 12, "var(--muted)")),
+                    + label(380, 280, "⟦같은 규모라도 작가 숙련도와 도구에 따라 쓰는 속도는 달라요|even at the same size, writing speed varies by writer skill and tools⟧", 12, "var(--muted)")),
          "alt": ("편집장은 규모를 쟀다 말하고, 인쇄 감독은 그걸로 비용과 일정을 가늠한다고 말함", "The editor says the size was measured; the print supervisor says it's now used to gauge cost and schedule"),
          "caption": ("자로 재는 건 시작일 뿐이에요.", "Measuring with the ruler is only the start."),
-         "small": ('작가 숙련도와 도구에 따라 실제 속도는 달라요. 다음 이야기: 잰 분량을 돈으로 바꾸는 <a href="swcost-ko.html">대가산정</a>.',
-                   'Actual speed still varies by skill and tools. Next: turning that size into money — <a href="swcost-en.html">cost estimation</a>.')},
+         "small": ('같은 규모라도 작가 숙련도와 도구에 따라 쓰는 속도는 달라요. 다음 이야기: 잰 분량을 돈으로 바꾸는 <a href="swcost-ko.html">대가산정</a>.',
+                   'Even at the same size, writing speed varies by writer skill and tools. Next: turning that size into money — <a href="swcost-en.html">cost estimation</a>.')},
     ],
     "summary": (("<b>기능점수(FP)</b> = 쪽수가 아니라 <b>입력·출력·조회·저장·연계</b> 개수로 원고 분량을 재는 표준 자.",
                  "<b>Function Point (FP)</b> = a standard ruler that measures a manuscript by counting <b>inputs, outputs, inquiries, storage, and links</b> — not pages."),

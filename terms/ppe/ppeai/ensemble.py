@@ -5,8 +5,8 @@ from _world import *
 P1 = svg(300, sky(300)
          + person(220, 170, s=0.9, face=SWEAT + EYES, **OPERATOR)
          + produce(360, 230, 0.8) + stamp2(430, 190, 0.7, ok=False)
-         + label(430, 250, "⟦어? 이거 틀렸는데|oh — that one was wrong⟧", 11, "var(--bad)")
-         + label(380, 285, "⟦한 명(모델) 판단만 믿기엔 가끔 불안해요|trusting just one operator's call sometimes feels shaky⟧", 12, "var(--ink)"))
+         + label(460, 250, "⟦어? 이거 틀렸는데|oh — that one was wrong⟧", 11, "var(--bad)")
+         + label(380, 285, "⟦한 명(모델) 판단만 믿기엔 가끔 불안해요|trusting just one operator's (model's) call sometimes feels shaky⟧", 12, "var(--ink)"))
 
 # 2. 세 조작원에게 물어보니 답이 다 달라요
 P2 = svg(310, '<rect width="760" height="310" fill="var(--bad-soft)"/>'
@@ -14,12 +14,12 @@ P2 = svg(310, '<rect width="760" height="310" fill="var(--bad-soft)"/>'
          + person(380, 170, s=0.7, face=EYES, **TEACHER) + bubble(320, 100, 150, 34, "⟦불합격!|fail!⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(620, 170, s=0.7, face=EYES, **INSPECTOR) + bubble(560, 100, 130, 34, "⟦합격!|pass!⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + produce(380, 260, 0.7)
-         + label(380, 290, "⟦같은 작물인데 세 사람 말이 다 달라요 — 누굴 믿죠?|same crop, three different calls — who do we trust?⟧", 12, "var(--ink)"))
+         + label(380, 290, "⟦같은 작물인데 세 사람 판정이 갈려요 — 누굴 믿죠?|same crop, but the three calls split — who do we trust?⟧", 12, "var(--ink)"))
 
 # 3. 앙상블 = 여러 조작원의 판정을 모아 다수결/평균으로 최종 결정 (hero)
 P3 = svg(360, sky(360)
          + person(130, 180, s=0.75, face=SMILE, **OPERATOR) + person(240, 180, s=0.75, face=FROWN, **TEACHER) + person(350, 180, s=0.75, face=SMILE, **INSPECTOR)
-         + label(130, 260, "⟦합격|pass⟧", 12, "var(--good)") + label(240, 260, "⟦불합격|fail⟧", 12, "var(--bad)") + label(350, 260, "⟦합격|pass⟧", 12, "var(--good)")
+         + label(152, 284, "⟦합격|pass⟧", 12, "var(--good)") + label(262, 284, "⟦불합격|fail⟧", 12, "var(--bad)") + label(372, 284, "⟦합격|pass⟧", 12, "var(--good)")
          + gradeboard(460, 70, 240, 150, "⟦최종 결정|FINAL CALL⟧", ("⟦2 대 1 → 합격|2 vs 1 → PASS⟧", "⟦다수결로 정해요|decided by majority⟧"), 0.9)
          + label(380, 30, "⟦앙상블 = 여러 조작원의 판정을 모아 다수결/평균으로 최종 결정하는 것|an ensemble = pooling several operators' calls and deciding by majority vote or average⟧", 13, "var(--ink)", cls="d")
          + label(380, 338, "⟦한 명보다 여럿의 평균이 더 안정적일 때가 많아요|the pooled average is often steadier than any single operator⟧", 12, "var(--muted)"))
@@ -41,10 +41,10 @@ P4 = svg(340, sky(340)
 # 5. 느려지고, 왜 그렇게 결정했는지 설명하기 어려워져요
 P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
          + person(140, 150, s=0.7, face=EYES, **OPERATOR) + person(230, 150, s=0.7, face=EYES, **TEACHER) + person(320, 150, s=0.7, face=EYES, **INSPECTOR)
-         + label(230, 250, "⟦세 명이 다 봐야 하니 느려져요|three checks mean it's slower⟧", 11, "var(--ink)")
+         + label(230, 250, "⟦세 명이 다 봐야 하니 판정이 느려져요|three checks make judging slower⟧", 11, "var(--ink)")
          + person(570, 130, s=0.8, face=EYES, **FARMER)
          + label(570, 262, "⟦왜 합격인지 한마디로 설명하기 어려워요|hard to explain the pass in one simple reason⟧", 11, "var(--ink)")
-         + label(380, 300, "⟦앙상블은 더 안정적이지만, 더 느리고 설명은 더 어려워져요|an ensemble is steadier, but slower and harder to explain⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 300, "⟦앙상블은 모델 하나보다 더 안정적이지만, 더 느리고 설명하기도 더 어려워요|compared to one model, an ensemble is steadier, but slower and harder to explain⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "ensemble", "order": 23,
@@ -55,25 +55,25 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("조작원 한 명이 작물을 틀리게 판정해 땀을 흘림", "A single operator misjudges a crop and sweats"),
          "caption": ("조작원 한 명의 판단만 믿기엔 불안해요.", "Trusting just one operator's call feels shaky."),
-         "small": ("한 명(모델) 판단만 믿기엔 가끔 불안해요.", "Trusting just one operator's call sometimes feels shaky.")},
-        {"svg": P2, "alt": ("같은 작물을 두고 세 조작원이 합격, 불합격, 합격으로 서로 다르게 답함", "Three operators give different calls — pass, fail, pass — on the very same crop"),
-         "caption": ("세 조작원에게 물어보니 답이 다 달라요.", "Asking three operators gets three different answers."),
-         "small": ("같은 작물인데 세 사람 말이 다 달라요 — 누굴 믿죠?", "Same crop, three different calls — who do we trust?")},
+         "small": ("한 명(모델)은 가끔 틀리는데, 그 판단만 믿으면 오류가 그대로 결과가 돼요.", "One operator (model) sometimes errs, and relying on that call alone passes the error straight into the result.")},
+        {"svg": P2, "alt": ("같은 작물을 두고 세 조작원이 합격, 불합격, 합격으로 서로 다르게 답함", "Three operators split their calls — pass, fail, pass — on the very same crop"),
+         "caption": ("같은 작물을 세 조작원에게 물어보니 답이 갈려요.", "Ask three operators about the same crop, and their answers split."),
+         "small": ("같은 작물인데 세 사람 판정이 갈려요 — 누굴 믿죠?", "Same crop, but the three calls split — who do we trust?")},
         {"svg": P3, "hero": True, "alt": ("세 조작원의 판정(합격·불합격·합격)을 모아 2대1 다수결로 최종 합격을 결정하는 표", "A board tallies the three operators' calls — pass, fail, pass — into a final 2-to-1 pass decision"),
          "caption": ("앙상블은 여러 조작원의 판정을 모아 다수결/평균으로 최종 결정해요.", "An ensemble pools several operators' calls into a majority vote or average."),
          "small": ("한 명보다 여럿의 평균이 더 안정적일 때가 많아요.", "The pooled average is often steadier than any single operator."),
          "tricks": (4, [
              (BAG_I, ("배깅 — 각자 다르게 훈련", "Bagging — train each differently"), ("작물을 다르게 나눠 맡겨요", "split the crops differently for each"), "calm"),
-             (BOOST_I, ("부스팅 — 순서대로 보완", "Boosting — fix in sequence"), ("앞사람이 틀린 걸 다음이 집중", "the next one focuses on the last one's misses")),
+             (BOOST_I, ("부스팅 — 순서대로 보완", "Boosting — fix in sequence"), ("앞사람이 틀린 작물을 다음 사람이 집중해서 봐요", "the next one focuses on the last one's misses")),
              (VOTE_I, ("보팅 — 다수결 결정", "Voting — majority decides"), ("가장 많이 나온 답을 최종으로", "the most common answer wins"), "warm"),
-             (DIVERSE_I, ("다양성 — 서로 다르게 섞기", "Diversity — mix different kinds"), ("비슷한 사람만 모으면 소용없어요", "pooling similar operators doesn't help")),
+             (DIVERSE_I, ("다양성 — 서로 다르게 섞기", "Diversity — mix different kinds"), ("비슷한 모델만 모으면 같은 실수를 해서 소용없어요", "similar models make the same mistakes, so pooling them doesn't help")),
          ])},
         {"svg": P4, "alt": ("배깅(각자 다른 작물로 동시에 훈련해 평균/투표)과 부스팅(앞사람의 실수를 다음이 순서대로 보완)을 나란히 비교", "Bagging (training each separately on different crops, then averaging/voting) is compared with boosting (each in sequence fixing the last one's mistakes)"),
-         "caption": ("섞는 방식에도 여러 가지가 있어요.", "There's more than one way to pool them."),
-         "small": ("배깅은 동시에 여럿을, 부스팅은 순서대로 하나씩 보완해요.", "Bagging grows several at once; boosting fixes one after another, in sequence.")},
+         "caption": ("여러 모델을 섞는 방식에도 배깅·부스팅 등 여러 가지가 있어요.", "There's more than one way to pool models, such as bagging and boosting."),
+         "small": ("배깅은 여러 모델을 동시에 따로 훈련하고, 부스팅은 앞 모델의 실수를 다음 모델이 순서대로 보완해요.", "Bagging trains several models separately at once; boosting has each next model fix the previous one's mistakes, in order.")},
         {"svg": P5, "alt": ("왼쪽: 세 조작원이 다 봐야 해서 판정이 느려짐. 오른쪽: 왜 합격인지 한마디로 설명하기 어려워함", "Left: having three operators check everything slows the process down. Right: it becomes hard to explain the pass in one simple reason"),
-         "caption": ("느려지고, 설명하기 어려워져요.", "It gets slower, and harder to explain."),
-         "small": ("앙상블은 더 안정적이지만, 더 느리고 설명은 더 어려워져요.", "An ensemble is steadier, but slower and harder to explain.")},
+         "caption": ("앙상블을 쓰면 판정이 느려지고, 판정 이유를 설명하기 어려워져요.", "With an ensemble, calls get slower and the reason behind them gets harder to explain."),
+         "small": ("앙상블은 모델 하나보다 더 안정적이지만, 더 느리고 설명하기도 더 어려워요.", "Compared to one model, an ensemble is steadier, but slower and harder to explain.")},
     ],
     "summary": (("<b>앙상블 기법</b> = <b>여러 모델(조작원)의 판정을 모아</b> <b>다수결이나 평균</b>으로 최종 결정하면, <b>한 모델보다 더 안정적</b>이라는 아이디어.",
                  "<b>Ensemble methods</b> pool the calls of <b>several models</b> into a <b>majority vote or average</b>, on the idea that the result is <b>steadier than any single model</b>."),

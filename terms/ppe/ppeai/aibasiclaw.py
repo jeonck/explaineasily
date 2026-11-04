@@ -25,7 +25,7 @@ P3 = svg(360, sky(360)
          + person(90, 230, s=0.7, face=SMILE, **INSPECTOR)
          + person(660, 230, s=0.6, face=EYES, **OPERATOR)
          + label(380, 22, "⟦인공지능기본법 = 모든 검사장이 지켜야 할 법적 최저선이에요|the AI Basic Act is the legal floor every station has to clear⟧", 13, "var(--ink)", cls="d")
-         + label(380, 330, "⟦생명·안전·기본권에 크게 영향을 주면, 고영향 AI로 더 무거운 의무를 져요|when life, safety, or basic rights are heavily at stake, it's high-impact AI — and the duties get heavier⟧", 12, "var(--muted)"))
+         + label(380, 330, "⟦AI가 생명·안전·기본권에 크게 영향을 주면, 고영향 AI로 더 무거운 의무를 져요|an AI that heavily affects life, safety, or basic rights is high-impact AI, with heavier duties⟧", 12, "var(--muted)"))
 
 NOTICE_I = icon('<rect x="10" y="14" width="44" height="36" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M32 24 v10 M32 40 v2" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/>')
 ASSESS_I = icon('<path d="M14 50 L14 30 L26 30 L26 50 M30 50 V18 L42 18 V50 M46 50 V38 L58 38 V50" fill="var(--accent)"/>')
@@ -43,16 +43,16 @@ PAGE = {
          "caption": ("검사장마다 제멋대로 기준을 정하던 시절이 있었어요.", "There was a time when every station just made up its own rules."),
          "small": ("손님은 어느 검사장이 안전한지 알 길이 없었어요.", "Customers had no way to know which station was actually safe.")},
         {"svg": P2, "alt": ("농부가 누구 책임인지 묻지만, 조작원도 기댈 법이 없어 할 말이 없음", "A farmer asks whose fault it is, but the operator has no law to point to and no answer either"),
-         "caption": ("법이 없던 틈에는, 책임을 묻기 어려웠어요.", "Without a law to lean on, pinning down responsibility was hard."),
+         "caption": ("법이 없던 시절엔, AI 사고가 나도 책임을 묻기 어려웠어요.", "With no law to lean on, pinning down responsibility after an AI accident was hard."),
          "small": ("사고가 나도, 누구 탓인지 가릴 공통 기준이 없었어요.", "Even after an accident, there was no shared standard for deciding whose fault it was.")},
         {"svg": P3, "hero": True, "alt": ("인공지능기본법이라는 큰 등급판이 모든 검사장 위에 걸려 있고, 고영향 AI는 추가 의무를 더 진다고 적혀 있음", "A large AI Basic Act charter hangs above every station, noting that high-impact AI carries extra duties on top"),
-         "caption": ("모든 검사장이 지켜야 할 법적 최저선이에요.", "The legal floor every station has to clear."),
-         "small": ("생명·안전·기본권에 크게 영향을 주면, 고영향 AI로 분류돼 의무가 더 무거워져요.", "When life, safety, or basic rights are heavily at stake, it's classified as high-impact AI — with heavier duties."),
+         "caption": ("인공지능기본법은 모든 검사장이 지켜야 할 법적 최저선이에요.", "The AI Basic Act is the legal floor every station has to clear."),
+         "small": ("AI가 생명·안전·기본권에 크게 영향을 주면, 고영향 AI로 분류돼 의무가 더 무거워져요.", "An AI that heavily affects life, safety, or basic rights is classified as high-impact AI, with heavier duties."),
          "tricks": (4, [
              (NOTICE_I, ("사전 고지하기", "Give advance notice"), ("이건 AI가 판정해요, 라고 먼저 알려요", "telling people up front that AI is making the call"), "calm"),
-             (ASSESS_I, ("위험평가 하기", "Run a risk assessment"), ("고영향 AI는 이게 의무예요", "mandatory for high-impact AI")),
+             (ASSESS_I, ("위험평가 하기", "Run a risk assessment"), ("고영향 AI는 위험평가가 의무예요", "risk assessment is mandatory for high-impact AI")),
              (SAFE_I, ("안전성 확보조치 하기", "Put safety measures in place"), ("사고를 막을 장치를 실제로 둬요", "actually putting safeguards in place"), "warm"),
-             (HUMAN_I, ("사람 개입 보장하기", "Guarantee human intervention"), ("기계 혼자 끝내지 않게 해요", "making sure a machine never finishes the call alone")),
+             (HUMAN_I, ("사람 개입 보장하기", "Guarantee human intervention"), ("AI 혼자 최종 판정을 끝내지 않게 해요", "making sure AI never makes the final call alone")),
          ])},
         {"svg": svg(300, sky(300) + gradeboard(60, 20, 640, 260, "⟦일반 AI vs 고영향 AI|ORDINARY AI vs HIGH-IMPACT AI⟧",
                  ("⟦일반 AI — 기본 의무(투명성·기록 보관)만 지면 됨|ordinary AI — only the basic duties (transparency, record-keeping)⟧",
@@ -61,13 +61,13 @@ PAGE = {
                   "⟦예 — 의료·채용·신용평가·사법 판단을 돕는 AI|e.g. AI assisting medical, hiring, credit, or judicial decisions⟧"), 1.0)),
          "alt": ("일반 AI와 고영향 AI의 의무 차이를 적은 표", "A board laying out the difference in duties between ordinary AI and high-impact AI"),
          "caption": ("모든 AI가 같은 무게의 의무를 지는 건 아니에요.", "Not every AI carries the same weight of duty."),
-         "small": ("영향이 클수록, 법이 요구하는 안전장치도 늘어나요.", "The bigger the stakes, the more safeguards the law demands.")},
+         "small": ("AI가 사람에게 주는 영향이 클수록, 법이 요구하는 안전장치도 늘어나요.", "The more an AI affects people, the more safeguards the law demands.")},
         {"svg": svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
                  + person(190, 130, s=0.8, face=SMILE, **INSPECTOR) + label(190, 260, "⟦법은 최저선을 그어줘요|the law draws the floor⟧", 11, "var(--ink)")
-                 + person(570, 130, s=0.8, face=EYES, **TEACHER) + label(570, 260, "⟦그 위를 채우는 건 각 검사장 몫이에요|filling in above that is each station's own job⟧", 11, "var(--ink)")
+                 + person(570, 130, s=0.8, face=EYES, **TEACHER) + label(570, 260, "⟦최저선 위를 채우는 건 각 검사장 몫이에요|what goes above the floor is each station's own job⟧", 11, "var(--ink)")
                  + label(380, 300, "⟦법은 최저선일 뿐이에요 — 실제 안전은 윤리기준·리스크 관리가 채워야 해요|the law is only the floor — real safety still comes from ethics standards and risk management⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 검수반장이 법은 최저선을 긋는다고 말함. 오른쪽: 교사가 그 위는 각 검사장 몫이라고 말함", "Left: the inspector says the law draws the floor. Right: the teacher says filling in above it is each station's own job"),
-         "caption": ("법을 지킨다고 저절로 안전해지진 않아요.", "Obeying the law doesn't automatically make things safe."),
+         "caption": ("법을 지킨다고 AI가 저절로 안전해지진 않아요.", "Obeying the law doesn't automatically make an AI safe."),
          "small": ("법 위의 등급 원칙과 운영 지도는 각 검사장이 스스로 채워야 해요.", "The grading principles and operations map above the legal floor are still each station's own responsibility.")},
     ],
     "summary": (("<b>인공지능기본법</b> = 모든 검사장이 지켜야 할 <b>법적 최저선</b>, <b>고영향 AI</b>는 그 위에 <b>더 무거운 의무</b>를 지는 것.",
@@ -80,7 +80,7 @@ PAGE = {
         ("사전 고지 의무", "Advance notice duty", ("이건 AI가 판정해요, 라고 먼저 알리는 것.", "Telling people up front that AI is making the call."), ("손님이 알고 선택할 수 있게 해요.", "Lets the customer know and choose with open eyes.")),
         ("위험평가 의무", "Risk assessment duty", ("고영향 AI에게 추가되는 평가 절차.", "An assessment procedure added for high-impact AI."), ('운영 지도의 ②③단계와 같은 작업이에요. → <a href="airiskframe-ko.html">검사장 전체를 도는 운영 지도</a>', 'The same work as stages ② and ③ of the operations map. → <a href="airiskframe-en.html">The Operations Map That Walks the Whole Station</a>')),
         ("안전성 확보조치", "Safety assurance measures", ("사고를 막을 실제 장치.", "Actual safeguards put in place to prevent accidents."), ("원칙만으론 부족하고, 실행이 뒤따라야 해요.", "Principle alone isn't enough — execution has to follow.")),
-        ("사람의 개입·감독", "Human oversight", ("기계 혼자 끝내지 않게 하는 장치.", "The mechanism that keeps a machine from finishing the call alone."), ('AI 윤리기준이 보장하는 사람 재검토와 같은 뿌리예요. → <a href="aiethicsgov-ko.html">모든 검사장이 함께 쓰는 등급 원칙판</a>', 'Shares its roots with the human review the ethics charter guarantees. → <a href="aiethicsgov-en.html">The Grading Charter Every Station Shares</a>')),
+        ("사람의 개입·감독", "Human oversight", ("AI 혼자 최종 판정을 끝내지 않게 하는 장치.", "The mechanism that keeps AI from making the final call alone."), ('AI 윤리기준이 보장하는 사람 재검토와 같은 뿌리예요. → <a href="aiethicsgov-ko.html">모든 검사장이 함께 쓰는 등급 원칙판</a>', 'Shares its roots with the human review the ethics charter guarantees. → <a href="aiethicsgov-en.html">The Grading Charter Every Station Shares</a>')),
         ("법적 최저선", "Legal floor", ("법이 보장하는 최소한의 수준.", "The minimum level the law guarantees."), ("이 위는 각 조직의 윤리기준과 리스크 관리가 채워야 해요.", "What's built above it is up to each organization's own ethics and risk management.")),
         ("과징금·제재", "Fines & penalties", ("의무를 어겼을 때 따르는 법적 책임.", "The legal consequence of failing these duties."), ("법이 그냥 권고가 아니라 강제력을 갖게 하는 장치예요.", "What makes the law a real requirement, not just a suggestion.")),
     ],

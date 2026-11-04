@@ -9,14 +9,14 @@ NAME_I = icon('<path d="M10 22 h36 l8 10 l-8 10 h-36z" fill="#FFF8E7" stroke="#C
 
 # 1. 반마다 출석부 적는 방식이 달라요
 P1 = svg(300, sky(300)
-         + person(170, 150, s=0.85, face=EYES, **REP) + bubble(90, 70, 200, 40, "⟦우리 반은 O/X로 적어요|our class marks it O/X⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + person(560, 150, s=0.8, face=SMILE, **REP) + bubble(460, 70, 220, 40, "⟦저흰 1/0 숫자로 적는데요|we use numbers, 1 or 0⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + person(170, 150, s=0.85, face=EYES, **REP) + bubble(80, 70, 220, 40, "⟦우리 반은 출석을 O/X로 적어요|our class marks attendance O/X⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + person(560, 150, s=0.8, face=SMILE, **REP) + bubble(460, 70, 220, 40, "⟦저흰 출석을 1/0 숫자로 적는데요|we mark attendance as 1 or 0⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦반마다 출석부 적는 방식이 달라요|every class marks attendance a different way⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 합치려니 숫자가 안 맞아요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(220, 150, s=0.85, face=SWEAT + EYES, **PRESIDENT) + bubble(130, 70, 240, 44, "⟦반마다 다르게 적어서 합계가 안 맞아요|each class marks it differently — the totals don't add up⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + person(590, 150, s=0.75, face=FROWN, **REP) + label(590, 250, "⟦저희 반이 2반보다 훨씬 많아 보이는데요?|our class looks way bigger than class 2's?⟧", 11, "var(--bad)")
+         + person(220, 150, s=0.85, face=SWEAT + EYES, **PRESIDENT) + bubble(75, 70, 320, 44, "⟦반마다 출석을 다르게 적어서 합계가 안 맞아요|classes mark attendance differently, so totals don't add up⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + person(590, 150, s=0.75, face=FROWN, **REP) + label(590, 250, "⟦저희 반 출석이 2반보다 훨씬 많아 보이는데요?|our class's attendance looks way higher than class 2's?⟧", 11, "var(--bad)")
          + label(380, 285, "⟦형식이 다르면 숫자를 믿고 합칠 수 없어요|different formats mean the combined numbers can't be trusted⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 데이터 표준화 = 전교 공통 기준표 (hero)
@@ -36,9 +36,9 @@ P4 = svg(300, sky(300, ground=False)
          + rulesboard(60, 30, 640, 240, "⟦표준화 전 → 후|BEFORE → AFTER STANDARDIZING⟧",
                       ("⟦1반 O/X, 2반 1/0, 3반 출석/결석 — 합산 불가|class1 O/X, class2 1/0, class3 present/absent — can't be summed⟧",
                        "⟦→ 모두 \"1=출석, 0=결석\"으로 통일|→ unified to \"1=present, 0=absent\" everywhere⟧",
-                       "⟦이제 전교 출석률을 그냥 더해서 계산해요|now the school-wide rate is just added up⟧",
+                       "⟦이제 모든 반의 1을 더해 전교 출석 수를 구해요|now adding every class's 1s gives the school-wide count⟧",
                        "⟦코드 하나 안 맞으면 자동 검사기가 바로 잡아내요|one mismatched code, and the automatic checker flags it right away⟧"), 1.0, hl=2)
-         + label(380, 288, "⟦숫자가 아니라 '약속'을 맞추는 일이에요|it's not the numbers that change — it's the agreement behind them⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 288, "⟦표준화는 출석 사실을 바꾸지 않고, 적는 '약속'만 맞춰요|standardizing doesn't change who attended — only the agreement on how to write it⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 표준도 계속 고쳐 나가야 해요
 P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
@@ -56,9 +56,9 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("두 반 대표가 출석을 각각 O/X와 1/0으로 다르게 적는다고 말함", "Two class reps describe marking attendance differently — one with O/X, the other with 1/0"),
          "caption": ("반마다 출석부 적는 방식이 달라요.", "Every class marks attendance a different way."),
-         "small": ("처음엔 각자 편한 대로 적었을 뿐이에요.", "At first, everyone just wrote it however was convenient.")},
+         "small": ("처음엔 반마다 편한 대로 적었을 뿐이에요.", "At first, each class just wrote attendance however was convenient.")},
         {"svg": P2, "alt": ("학생회장이 반마다 다른 기록 때문에 합계가 안 맞는다고 땀을 흘리며 말하고, 대표는 숫자가 이상하다고 함", "The council president sweats, saying the totals don't add up because each class records differently; a rep says the numbers look off"),
-         "caption": ("합치려니 숫자가 안 맞아요.", "Trying to combine them, the numbers don't add up."),
+         "caption": ("반별 출석을 합치려니 숫자가 안 맞아요.", "Adding up each class's attendance, the numbers don't match."),
          "small": ("형식이 다르면 숫자를 믿고 합칠 수 없어요.", "Different formats mean the combined numbers can't be trusted.")},
         {"svg": P3, "hero": True, "alt": ("학생회장이 전교 공통 기준표를 들고, 대표가 옆에서 웃으며 지켜봄", "The council president holds up a school-wide standard table while a rep smiles alongside"),
          "caption": ("데이터 표준화는 전교가 함께 쓰는 공통 용어·형식·코드표예요.", "Data standardization is a shared glossary, format, and code table the whole school uses."),
@@ -70,8 +70,8 @@ PAGE = {
              (NAME_I, ("이름 짓는 규칙 정하기", "Set naming rules"), ("코드·변수 이름도 규칙대로", "even code names follow one rule")),
          ])},
         {"svg": P4, "alt": ("표준화 전 세 반의 서로 다른 기록 방식이, 표준화 후 하나의 코드로 통일되어 자동 검사기가 어긋남을 잡아냄", "Before, three classes record differently; after standardizing, one unified code lets the automatic checker catch mismatches"),
-         "caption": ("표준화 전후를 비교하면 이렇게 돼요.", "Here's what changes before and after standardizing."),
-         "small": ("숫자가 아니라 '약속'을 맞추는 일이에요.", "It's not the numbers that change — it's the agreement behind them.")},
+         "caption": ("표준화하면 따로 적던 세 반의 출석을 하나로 더할 수 있어요.", "After standardizing, three classes' separately kept attendance can be added into one total."),
+         "small": ("표준화는 출석 사실을 바꾸지 않고, 적는 '약속'만 맞춰요.", "Standardizing doesn't change who attended — only the agreement on how to write it.")},
         {"svg": P5, "alt": ("왼쪽: 새 동아리 코드가 기준표에 없어 곤란한 대표. 오른쪽: 학생회장이 자동 검사기로 기준표를 계속 고쳐 나감", "Left: a rep stuck because the new club's code isn't in the standard. Right: the president keeps refining the standard with an automatic checker"),
          "caption": ("표준도 계속 고쳐 나가야 해요.", "Even a standard has to keep being refined."),
          "small": ("새 상황마다 기준표를 다시 다듬어야 해요.", "Every new situation means refining the standard again.")},
@@ -81,13 +81,13 @@ PAGE = {
                 ("데이터 표준화는 여러 시스템이 같은 의미의 데이터를 같은 용어(표준용어)·같은 형식과 범위(표준도메인)·같은 코드값(코드표준)·같은 명명규칙으로 다루게 맞추는 작업이에요. 기관 간 데이터를 연계·통합할 때 표준이 없으면 같은 값도 다르게 해석되어 통계와 연계가 무너져요. 표준은 데이터 사전에 모아 공개하고, 새로운 상황이 생길 때마다 계속 보완해야 해요.",
                  "Data standardization aligns how multiple systems represent the same meaning — standard terminology, standard domain (format/range), standard codes, and naming conventions. Without it, linking or integrating data across organizations breaks down, because the same value gets interpreted differently. Standards are published in a data dictionary and must keep being revised as new situations arise.")),
     "glossary": [
-        ("데이터표준화", "Data Standardization", ("전교가 같은 말·형식·코드를 쓰게 맞추는 일.", "Getting the whole school to use the same words, format, and codes."), ("숫자를 믿고 합칠 수 있게 해줘요.", "Lets the combined numbers be trusted.")),
+        ("데이터표준화", "Data Standardization", ("전교가 같은 말·형식·코드를 쓰게 맞추는 일.", "Getting the whole school to use the same words, format, and codes."), ("표준화하면 반별 숫자를 믿고 합칠 수 있어요.", "Standardizing lets the combined numbers be trusted.")),
         ("표준용어", "Standard Terminology", ("같은 뜻은 같은 이름으로 부르는 것.", "Calling the same meaning by the same name."), ("반마다 다른 이름을 쓰면 헷갈려요.", "Different names per class cause confusion.")),
         ("표준도메인", "Standard Domain", ("값이 올 수 있는 형식·범위를 정하는 것.", "Fixing the format and range a value can take."), ("날짜 형식을 YYYY-MM-DD로 맞추는 것 같은 일이에요.", "Like agreeing dates are always YYYY-MM-DD.")),
         ("코드표준", "Code Standard", ("같은 값은 같은 코드로 적는 것.", "Writing the same value with the same code."), ("1=출석처럼 숫자 코드로 통일해요.", "Unifies it to a numeric code, like 1 = present.")),
         ("명명규칙", "Naming Convention", ("이름을 짓는 공통 방식.", "A shared way of naming things."), ("코드명·변수명도 이 규칙을 따라요.", "Code and variable names follow this rule too.")),
         ("데이터 사전", "Data Dictionary", ("전교 기준표를 한 곳에 모아둔 목록.", "The list collecting the whole school's standard in one place."), ("누구나 찾아볼 수 있게 공개해요.", "Published so anyone can look it up.")),
-        ("데이터 품질", "Data Quality", ("표준을 지켜야 믿을 수 있는 숫자가 나와요.", "Only data that follows the standard can be trusted."), ('소프트웨어의 \'좋음\' 기준과 닮았어요. → <a href="iso25000-ko.html">좋은 준비물의 기준표</a>', 'It echoes software\'s own standard for "good." → <a href="iso25000-en.html">the standard for good supplies</a>')),
-        ("공공데이터 개방", "Open Data", ("표준을 지킨 데이터라야 바깥에도 공개할 수 있어요.", "Only standardized data is fit to open up to the outside."), ('다른 세계에도 비슷한 창고가 있어요. → <a href="lodopendata-ko.html">문을 열고 번호표를 달아 연결해두는 창고</a>', 'A similar warehouse exists in another world. → <a href="lodopendata-en.html">the warehouse that opens its door and links its tags</a>')),
+        ("데이터 품질", "Data Quality", ("데이터가 정확하고 믿을 만한 정도 — 표준을 지켜야 높아져요.", "How accurate and trustworthy data is — following the standard raises it."), ('소프트웨어의 \'좋음\' 기준과 닮았어요. → <a href="iso25000-ko.html">좋은 준비물의 기준표</a>', 'It echoes software\'s own standard for "good." → <a href="iso25000-en.html">the standard for good supplies</a>')),
+        ("공공데이터 개방", "Open Data", ("공공기관 데이터를 누구나 쓰게 공개하는 것 — 표준을 지켜야 다시 쓰기 쉬워요.", "Publishing agency data for anyone to use — standardized data is easier to reuse."), ('공개 데이터를 서로 잇는 방법은 다른 세계의 창고 이야기로 다뤄요. → <a href="lodopendata-ko.html">문을 열고 번호표를 달아 연결해두는 창고</a>', 'How open data gets linked is told through a warehouse in another world. → <a href="lodopendata-en.html">the warehouse that opens its door and links its tags</a>')),
     ],
 }

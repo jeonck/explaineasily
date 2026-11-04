@@ -56,21 +56,21 @@ PAGE = {
                                  ("⟦요청 항목: 어떤 자료를, 어떤 조건으로|request fields: which data, under what conditions⟧",
                                   "⟦응답 형식: 정해진 모양으로 돌려줘요|response format: comes back in a fixed shape⟧",
                                   "⟦이용키: 신청하면 자동으로 발급|usage key: issued automatically on request⟧",
-                                  "⟦이 명세서만 보면, 코드를 몰라도 신청할 수 있어요|read just this spec, and you can request it without knowing any code⟧"), 1.0)),
+                                  "⟦이 명세서만 보면, 우리 내부 코드를 몰라도 자료를 신청할 수 있어요|read just this spec, and you can request data without seeing our internal code⟧"), 1.0)),
          "alt": ("요청 항목, 응답 형식, 이용키 발급 절차를 적은 신청서식 명세서", "A spec sheet listing request fields, response format, and the usage-key issuing process"),
-         "caption": ("이 명세서 하나로 누구나 신청할 수 있어요.", "This one spec sheet lets anyone make a request."),
-         "small": ("무엇을 어떻게 요청하고, 무엇을 돌려받는지 미리 다 적혀 있어요.", "What to ask for and how, and what comes back — all written down in advance.")},
+         "caption": ("신청서식 명세서 하나로 누구나 자료를 신청할 수 있어요.", "One spec sheet for the request form lets anyone ask for data."),
+         "small": ("명세서에 무엇을 어떻게 요청하고, 무엇을 돌려받는지 미리 다 적혀 있어요.", "The spec writes down in advance what to ask for, how, and what comes back.")},
         {"svg": svg(300, sky(300)
                     + person(190, 150, s=0.8, face=SMILE, **EDITOR) + label(190, 265, "⟦열람실은 열었어요|the reading room is open⟧", 11, "var(--ink)")
-                    + person(560, 150, s=0.8, face=EYES, **PRINTER) + label(560, 265, "⟦몰리는 줄은 안내소가 따로 맡아요|the front gate handles the crowding, separately⟧", 11, "var(--ink)")
-                    + label(380, 30, "⟦여는 것과 줄 세우는 건 다른 일이에요|opening it and managing the line are different jobs⟧", 13, "var(--bad)", cls="d")),
-         "alt": ("편집장은 열람실을 열었다 말하고, 인쇄 감독은 몰리는 줄은 안내소가 따로 맡는다고 말함", "The editor says the reading room is open; the print supervisor says the crowding is handled separately, by the front gate"),
-         "caption": ("여는 것과 줄 세우는 건 다른 일이에요.", "Opening it and managing the line are different jobs."),
+                    + person(560, 150, s=0.8, face=EYES, **PRINTER) + label(560, 265, "⟦몰려드는 요청 줄은 정문 안내소(API 게이트웨이)가 따로 맡아요|the front gate (API gateway) handles the crowd of requests⟧", 11, "var(--ink)")
+                    + label(380, 30, "⟦열람실을 여는 것과 몰리는 줄을 세우는 건 다른 일이에요|opening the reading room and managing the line are different jobs⟧", 13, "var(--bad)", cls="d")),
+         "alt": ("편집장은 열람실을 열었다 말하고, 인쇄 감독은 몰려드는 요청 줄은 정문 안내소가 따로 맡는다고 말함", "The editor says the reading room is open; the print supervisor says the crowd of requests is handled separately, by the front gate"),
+         "caption": ("열람실을 여는 것과 몰리는 줄을 세우는 건 다른 일이에요.", "Opening the reading room and managing the line are different jobs."),
          "small": ('개방형 API는 무엇을 공개할지의 정책이고, 몰려드는 요청을 실제로 다루는 건 → <a href="apigateway-ko.html">정문 안내소</a> 쪽 몫이에요.',
                    'Open API is the policy of what to make public — handling the flood of requests itself is the job of → <a href="apigateway-en.html">the front gate information booth</a>.')},
     ],
     "summary": (("<b>개방형 API(Open API)</b> = 전화로 매번 따로 부탁하는 대신, <b>표준 신청서식</b>을 미리 공개해서 <b>누구나 같은 방식으로</b> 자료를 빌려볼 수 있게 하는 것.",
-                 "<b>Open API</b> = instead of everyone calling in separately, publishing a <b>standard request form</b> in advance so <b>anyone can use the same way</b> to borrow the data."),
+                 "<b>Open API</b> = instead of everyone calling in separately, publishing a <b>standard request form</b> in advance so <b>anyone can borrow the data the same way</b>."),
                 ("개방형 API는 공공기관이나 기업이 보유한 데이터·기능을 표준화된 명세(요청 형식, 응답 형식, 인증 방식)로 외부에 공개해, 누구나 이 명세대로 요청하면 이용할 수 있게 하는 정책이자 기술 방식이에요. OpenAPI(Swagger) 같은 명세 표준으로 문서화하고, 이용키 발급과 쿼터로 이용 범위를 관리해요. 공공데이터포털의 '오픈API'가 대표적인 예예요.",
                  "An Open API is both a policy and a technical approach: a public institution or company publishes its data or functionality externally through a standardized spec (request format, response format, authentication method), so that anyone following that spec can use it. It's documented with a spec standard like OpenAPI (Swagger), with usage keys and quotas managing how much gets used. Korea's public data portal 'Open API' is a well-known example.")),
     "glossary": [
@@ -78,7 +78,7 @@ PAGE = {
         ("API 명세(스펙)", "API Specification", ("신청서식 그 자체를 적은 문서.", "The document that writes down the request form itself."), ('OpenAPI(Swagger) 같은 표준으로 적어요.', 'Written using a standard like OpenAPI (Swagger).')),
         ("이용키(인증키)", "API Key", ("누가 빌려 가는지 확인하는 열쇠.", "The key that confirms who's borrowing."), ("신청하면 자동으로 발급돼요.", "Issued automatically once you apply.")),
         ("공공데이터포털", "Public Data Portal", ("정부가 연 가장 큰 열람실.", "The government's biggest reading room of all."), ("수많은 기관의 개방형 API가 여기 모여 있어요.", "Open APIs from many agencies are gathered here.")),
-        ("데이터 표준화", "Data Standardization", ("응답 모양을 다 같이 맞추는 것.", "Making the response shape the same for everyone."), ("모양이 다르면 서식이 있어도 쓰기 어려워요.", "Even with a form, a mismatched shape is hard to use.")),
+        ("데이터 표준화", "Data Standardization", ("응답 모양을 다 같이 맞추는 것.", "Making the response shape the same for everyone."), ("응답 모양이 제각각이면, 서식이 있어도 받은 자료를 쓰기 어려워요.", "Even with a form, responses in mismatched shapes are hard to use.")),
         ("API 게이트웨이", "API Gateway", ("몰려드는 요청을 실제로 다루는 안내소.", "The booth that actually handles the flood of requests."), ('개방형 API는 정책, 게이트웨이는 그 요청을 다루는 인프라예요 → <a href="apigateway-ko.html">정문 안내소</a>.', 'Open API is the policy; the gateway is the infrastructure that handles the requests → <a href="apigateway-en.html">the front gate information booth</a>.')),
         ("EIF(외부연계파일)", "External Interface File", ("다른 출판사 자료를 참고하는 연결점.", "The connection point for referencing another publisher's data."), ('규모를 잴 때 이 연결도 하나로 세어요 → <a href="fpruler-ko.html">매수를 재는 자</a>.', 'This kind of link gets counted too, when sizing up the work → <a href="fpruler-en.html">the ruler that measures page count</a>.')),
         ("이용 쿼터", "Usage Quota", ("한 열쇠로 하루에 빌릴 수 있는 한도.", "The daily limit on how much one key can borrow."), ("너무 많이 요청하면 그날은 더 못 빌려요.", "Ask too much, and that key is done for the day.")),

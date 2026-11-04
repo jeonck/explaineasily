@@ -40,14 +40,14 @@ PAGE = {
          "caption": ("모든 경우를 다 검사하려면 평생 걸려요.", "Checking every single case would take a lifetime."),
          "small": ("나이 칸 하나에도 경우의 수가 수천 가지예요.", "Just one age field has thousands of possible values.")},
         {"svg": P2, "alt": ("나이 칸에 넣을 수 있는 값이 -1부터 200까지 끝없이 이어지고, 교정자가 찡그리며 서 있음", "Possible values for an age field stretch endlessly from -1 to 200, while the proofreader frowns"),
-         "caption": ("입력 가짓수는 사실상 무한해요.", "The number of possible inputs is practically infinite."),
+         "caption": ("나이 칸에 넣을 수 있는 값의 가짓수는 사실상 무한해요.", "The number of values an age field could take is practically infinite."),
          "small": ("하나하나 다 넣어보는 건 애초에 불가능해요.", "Trying every single value just isn't possible.")},
         {"svg": P3, "hero": True, "alt": ("작성 규칙서 안내판 옆에서 교정자가 적은 수의 원고만 들고 검사함", "Beside a rulebook sign, the proofreader tests with only a few manuscripts in hand"),
          "caption": ("명세기반 테스트설계는 규칙서만 보고 대표 사례를 고르는 거예요.", "Spec-based test design picks representative cases from the rulebook alone."),
          "small": ("원고를 다 읽지 않고도, 규칙만 보고 적은 수의 대표 사례로 검사해요.", "Without reading the whole manuscript, you test with just a few cases picked from the rules."),
          "tricks": (4, [
              (PART_I, ("동등분할", "Equivalence partitioning"), ("비슷한 것끼리 묶어 하나만 검사해요", "group similar inputs and test just one"), "calm"),
-             (BOUND_I, ("경계값분석", "Boundary value analysis"), ("기준선 바로 위아래만 봐요", "check just above and below the line")),
+             (BOUND_I, ("경계값분석", "Boundary value analysis"), ("허용 범위 경계선 바로 위아래 값만 봐요", "check just above and below the allowed range's edge")),
              (TABLE_I, ("결정테이블", "Decision table testing"), ("규칙 조합을 표로 만들어 검사해요", "test rule combinations laid out in a table")),
              (STATE_I, ("상태전이테스트", "State transition testing"), ("이야기 단계가 바뀔 때마다 검사해요", "test every time the story moves to a new stage"), "warm"),
          ])},
@@ -56,16 +56,16 @@ PAGE = {
                                  ("⟦동등분할: 정상(50), 범위 밖(-1), 범위 밖(200)|partition: normal (50), out of range (-1), out of range (200)⟧",
                                   "⟦경계값: 0, -1, 150, 151 — 선 바로 위아래|boundary: 0, -1, 150, 151 — just either side of the line⟧",
                                   "⟦모든 나이를 다 넣어보지 않아요|not every single age gets tried⟧",
-                                  "⟦이 몇 개만으로도 규칙 위반을 대부분 잡아요|just these few catch most rule violations⟧"), 1.0)),
+                                  "⟦위 사례 몇 개만으로도 나이 규칙 위반을 대부분 잡아요|just these few cases catch most age-rule violations⟧"), 1.0)),
          "alt": ("나이 칸 0~150 규칙에 대한 동등분할·경계값 테스트 사례 목록", "A list of equivalence-partition and boundary-value test cases for the 0–150 age rule"),
-         "caption": ("몇 개만 골라도 규칙 위반은 대부분 잡혀요.", "Just a handful of cases catches most rule violations."),
-         "small": ("정상 범위 하나, 범위 밖 둘, 경계선 바로 위아래 — 이 정도면 충분해요.", "One normal case, two out-of-range cases, just either side of the boundary — that's usually enough.")},
+         "caption": ("대표 사례 몇 개만 골라도 규칙 위반은 대부분 잡혀요.", "Just a handful of representative cases catches most rule violations."),
+         "small": ("정상 범위 하나, 범위 밖 둘, 경계선 바로 위아래 값 — 이 정도 사례면 충분할 때가 많아요.", "One normal case, two out-of-range cases, and the values just either side of the boundary — that's usually enough.")},
         {"svg": svg(300, sky(300)
-                    + person(190, 150, s=0.8, face=EYES, **PROOFER) + label(190, 265, "⟦빠르고 적은 사례로 검사해요|fast, with just a few cases⟧", 11, "var(--ink)")
-                    + person(560, 150, s=0.8, face=EYES, **WRITER) + label(560, 265, "⟦드문 조합은 놓칠 수 있어요|rare combinations can still slip through⟧", 11, "var(--ink)")
-                    + label(380, 30, "⟦규칙서만으로 전부를 잡진 못해요|the rulebook alone doesn't catch everything⟧", 13, "var(--bad)", cls="d")),
+                    + person(190, 150, s=0.8, face=EYES, **PROOFER) + label(190, 265, "⟦전수 검사보다 빠르고, 적은 사례로 검사해요|faster than testing everything, with just a few cases⟧", 11, "var(--ink)")
+                    + person(560, 150, s=0.8, face=EYES, **WRITER) + label(560, 265, "⟦규칙에 없던 드문 조합은 놓칠 수 있어요|rare combinations the rules never mention can slip through⟧", 11, "var(--ink)")
+                    + label(380, 30, "⟦규칙서만으로 모든 오류를 잡진 못해요|the rulebook alone doesn't catch every error⟧", 13, "var(--bad)", cls="d")),
          "alt": ("교정자는 빠르고 적은 사례로 검사한다 말하고, 작가는 드문 조합은 놓칠 수 있다고 말함", "The proofreader says testing is fast with few cases; the writer says rare combinations can still slip through"),
-         "caption": ("규칙서만으로 전부를 잡진 못해요.", "The rulebook alone doesn't catch everything."),
+         "caption": ("규칙서만으로 모든 오류를 잡진 못해요.", "The rulebook alone doesn't catch every error."),
          "small": ("규칙에 없던 드문 조합은 탐색적 테스트 같은 다른 방법과 함께 봐야 해요.", "Rare combinations the rules never anticipated still need other methods, like exploratory testing, alongside this.")},
     ],
     "summary": (("<b>명세기반 테스트 설계기법</b> = 원고를 전부 읽는 대신, <b>작성 규칙서</b>만 보고 <b>적은 수의 대표 사례</b>를 골라 검사하는 방법.",

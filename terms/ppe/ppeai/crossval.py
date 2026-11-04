@@ -7,21 +7,21 @@ P1 = svg(300, sky(300)
          + bin_(300, 230, 0.9, "⟦훈련에 쓴 작물 그대로|same crops used in training⟧")
          + stamp2(430, 160, 0.8, ok=True) + label(430, 220, "⟦100점!|100%!⟧", 16, "var(--good)", cls="d")
          + bubble(520, 70, 200, 46, "⟦완벽하네요, 바로 써도 될까요?|perfect — can we ship it as is?⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 280, "⟦근데 이 시험, 훈련 때 본 작물 그대로예요|but this test used the exact same crops it trained on⟧", 12, "var(--ink)"))
+         + label(380, 280, "⟦근데 이 시험 문제는 선별기가 훈련 때 본 작물 그대로예요|but this test used the exact same crops the sorter trained on⟧", 12, "var(--ink)"))
 
 # 2. 검수반장이 그건 진짜 시험이 아니라고 지적해요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(220, 160, s=0.85, face=FROWN, **INSPECTOR)
-         + bubble(90, 70, 260, 50, "⟦외운 문제로 시험 보면 100점은 당연해요, 처음 보는 작물로 다시 해봐요|of course it's 100% on memorized questions — try crops it's never seen⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(30, 70, 370, 50, "⟦외운 문제로 시험 보면 100점은 당연해요, 처음 보는 작물로 다시 해봐요|of course it's 100% on memorized questions — try crops it's never seen⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(560, 170, s=0.8, face=SWEAT + EYES, **TEACHER)
          + label(380, 280, "⟦훈련에 쓴 데이터로 평가하면 성적이 부풀려져요|grading on the training data itself inflates the score⟧", 12, "var(--ink)"))
 
 # 3. 교차검증 = 조를 나눠, 한 조씩 번갈아 '처음 보는 시험지'로 쓰는 것 (hero)
 P3 = svg(360, sky(360)
          + bin_(140, 200, 0.75, "⟦1조|GROUP 1⟧") + bin_(260, 200, 0.75, "⟦2조|GROUP 2⟧") + bin_(380, 200, 0.75, "⟦3조|GROUP 3⟧", color="var(--bad)") + bin_(500, 200, 0.75, "⟦4조|GROUP 4⟧") + bin_(620, 200, 0.75, "⟦5조|GROUP 5⟧")
-         + label(380, 150, "⟦이번엔 3조가 시험지, 나머지로 훈련|this round group 3 is the test, the rest train it⟧", 13, "var(--bad)", cls="d")
+         + label(380, 150, "⟦이번엔 3조가 시험지, 나머지로 훈련|this round group 3 is the test, the rest train the sorter⟧", 13, "var(--bad)", cls="d")
          + label(380, 30, "⟦교차검증 = 데이터를 여러 조로 나눠, 한 조씩 번갈아 처음 보는 시험지로 쓰는 것|cross validation = splitting data into groups and rotating which one serves as the never-seen test⟧", 13, "var(--ink)", cls="d")
-         + label(380, 338, "⟦5번 돌아가며 전부 한 번씩 시험지가 돼요|it rotates five times, so every group gets a turn as the test⟧", 12, "var(--muted)"))
+         + label(380, 338, "⟦5번 돌아가며 다섯 조가 전부 한 번씩 시험지가 돼요|the test rotates five times, so every group gets a turn⟧", 12, "var(--muted)"))
 
 SPLIT_I = icon('<rect x="8" y="22" width="12" height="20" fill="var(--accent)"/><rect x="24" y="22" width="12" height="20" fill="var(--accent)"/><rect x="40" y="22" width="12" height="20" fill="var(--bad)"/><rect x="24" y="22" width="12" height="20" fill="var(--accent)" opacity="0"/>')
 HOLDOUT_I = icon('<rect x="14" y="14" width="36" height="36" rx="4" fill="none" stroke="var(--bad)" stroke-width="4" stroke-dasharray="6 4"/><path d="M26 32 h12" stroke="var(--bad)" stroke-width="4"/>')
@@ -39,7 +39,7 @@ P4 = svg(340, sky(340)
 P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
          + person(190, 130, s=0.8, face=SWEAT + EYES, **TEACHER) + label(190, 260, "⟦다섯 번 훈련하느라 시간이 더 들어요|training five times over takes longer⟧", 11, "var(--ink)")
          + person(570, 130, s=0.8, face=EYES, **INSPECTOR) + label(570, 260, "⟦수확 날짜 순서가 있는 데이터는 순서를 지켜 나눠야 해요|data with a harvest-date order must be split in order⟧", 11, "var(--ink)")
-         + label(380, 305, "⟦교차검증은 평가를 더 믿을 만하게 하지만, 공짜는 아니에요|cross validation makes evaluation more trustworthy, but it isn't free⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 305, "⟦교차검증은 한 번 시험보다 평가를 더 믿을 만하게 하지만, 훈련을 여러 번 하는 비용이 들어요|cross validation is more trustworthy than a single test, but costs repeated training⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "crossval", "order": 22,
@@ -49,14 +49,14 @@ PAGE = {
             "Cross validation, told as a story about an inspector who distrusts a 100% score on memorized questions, and instead splits the data into groups to take turns as the never-seen test."),
     "panels": [
         {"svg": P1, "alt": ("훈련 교사가 선별기를 훈련에 쓴 작물 그대로 시험해 100점을 받고 기뻐함", "The trainer tests the sorter on the very crops it trained on and gets a perfect score"),
-         "caption": ("외운 문제로 시험 봐서 100점이 나왔어요.", "Testing on memorized questions scored a perfect 100."),
-         "small": ("이 시험, 훈련 때 본 작물 그대로예요.", "This test used the exact same crops it trained on.")},
+         "caption": ("선별기가 외운 문제로 시험 봐서 100점이 나왔어요.", "The sorter scored a perfect 100 on questions it had memorized."),
+         "small": ("이 시험 문제는 선별기가 훈련 때 본 작물 그대로예요.", "This test used the exact same crops the sorter trained on.")},
         {"svg": P2, "alt": ("검수반장이 외운 문제로는 당연히 100점이라며 처음 보는 작물로 다시 시험해보라고 지적함", "The inspector points out that scoring 100% on memorized questions is meaningless, and asks for a retest on unseen crops"),
-         "caption": ("검수반장이 그건 진짜 시험이 아니라고 지적해요.", "The inspector points out that this wasn't a real test."),
+         "caption": ("검수반장이 외운 문제로 본 시험은 진짜 시험이 아니라고 지적해요.", "The inspector points out that a test on memorized crops isn't a real test."),
          "small": ("훈련에 쓴 데이터로 평가하면 성적이 부풀려져요.", "Grading on the training data itself inflates the score.")},
         {"svg": P3, "hero": True, "alt": ("작물 더미가 다섯 조로 나뉘어 있고, 그중 3조가 빨간색으로 표시되어 이번 회차의 시험지 조임을 보여줌", "The crop pile is split into five groups, with group 3 highlighted red as this round's test group"),
          "caption": ("교차검증은 조를 나눠 한 조씩 번갈아 처음 보는 시험지로 써요.", "Cross validation splits into groups and rotates which one serves as the never-seen test."),
-         "small": ("5번 돌아가며 전부 한 번씩 시험지가 돼요.", "It rotates five times, so every group gets a turn as the test."),
+         "small": ("5번 돌아가며 다섯 조가 전부 한 번씩 시험지가 돼요.", "The test rotates five times, so every group gets a turn."),
          "tricks": (4, [
              (SPLIT_I, ("조 나누기", "Split into groups"), ("데이터를 k개 조로 쪼개요", "split the data into k groups"), "calm"),
              (HOLDOUT_I, ("한 조는 숨겨두기", "Hold one group back"), ("그 조는 훈련에 안 써요", "that group never enters training")),
@@ -64,11 +64,11 @@ PAGE = {
              (AVG_I, ("평균 성적으로 판단", "Judge by the average"), ("한 번이 아니라 전체 평균을 봐요", "it's the overall average that counts")),
          ])},
         {"svg": P4, "alt": ("다섯 번의 회차별 시험 점수(92, 88, 95, 90, 91)와 그 평균 91.2점을 보여주는 표", "A table of five rounds' test scores (92, 88, 95, 90, 91) and their 91.2 average"),
-         "caption": ("다섯 번 돌아가며 평균을 내요.", "Five rounds are averaged together."),
+         "caption": ("다섯 번 돌아가며 본 시험 점수의 평균을 내요.", "The scores from all five rounds are averaged."),
          "small": ("한 번의 운 좋은 점수가 아니라, 다섯 번의 평균을 진짜 실력으로 봐요.", "Not one lucky score, but the five-round average, is taken as the real skill.")},
         {"svg": P5, "alt": ("왼쪽: 다섯 번 훈련하느라 시간이 더 걸림. 오른쪽: 수확 날짜 순서가 있는 데이터는 순서를 지켜 나눠야 함", "Left: training five times over takes more time. Right: data with a harvest-date order must be split in order"),
-         "caption": ("계산이 더 들고, 순서가 있는 데이터엔 조심해야 해요.", "It costs more compute, and ordered data needs special care."),
-         "small": ("교차검증은 평가를 더 믿을 만하게 하지만, 공짜는 아니에요.", "Cross validation makes evaluation more trustworthy, but it isn't free.")},
+         "caption": ("교차검증은 계산이 더 들고, 시간 순서가 있는 데이터엔 조심해야 해요.", "Cross validation costs more compute, and time-ordered data needs special care."),
+         "small": ("교차검증은 한 번 시험보다 평가를 더 믿을 만하게 하지만, 훈련을 여러 번 하는 비용이 들어요.", "Cross validation is more trustworthy than a single test, but costs repeated training.")},
     ],
     "summary": (("<b>교차검증</b> = 데이터를 <b>여러 조로 나눠</b>, 한 조씩 번갈아 <b>처음 보는 시험지</b>로 쓰고 나머지로 훈련한 뒤, <b>평균 성적</b>으로 진짜 실력을 가늠하는 방법.",
                  "<b>Cross validation</b> splits data into <b>several groups</b>, rotates which one serves as the <b>never-seen test</b> while the rest trains the model, and judges real skill by the <b>average score</b>."),

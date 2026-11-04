@@ -18,7 +18,7 @@ def passstamp(x, y, s=1.0, ok=True):
 
 # 1. 이웃 나라마다 다른 문단속
 P1 = svg(320, sky(320)
-         + person(140, 160, s=0.8, **MERCHANT) + ledgerbook(140, 90) + label(140, 275, "⟦손님 장부를 이웃 성에 팔고 싶어요|wants to carry the guest ledger to a neighboring castle⟧", 11, "var(--muted)")
+         + person(140, 160, s=0.8, **MERCHANT) + ledgerbook(140, 90) + label(140, 275, "⟦손님 장부를 이웃 성으로 옮기고 싶어요|wants to carry the guest ledger to a neighboring castle⟧", 11, "var(--muted)")
          + small_castle(360, 90, 0.5) + label(440, 230, "⟦이웃 성 A|neighbor castle A⟧", 11, "var(--muted)")
          + small_castle(540, 90, 0.5) + label(620, 230, "⟦이웃 성 B|neighbor castle B⟧", 11, "var(--muted)")
          + label(380, 40, "⟦나라마다 국경 규칙이 다 달라요|every kingdom's border rule is different⟧", 13, "var(--ink)", cls="d"))
@@ -32,11 +32,11 @@ P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
 
 # 3. CBPR = 여러 나라가 미리 인정한 통행증 (hero)
 P3 = svg(340, sky(340)
-         + person(130, 130, s=0.8, **INSPECTOR) + label(130, 220, "⟦독립 검사관이 한 번만 봐요|an independent inspector checks just once⟧", 11, "var(--muted)")
+         + person(130, 130, s=0.8, **INSPECTOR) + label(130, 238, "⟦독립 검사관이 한 번만 봐요|an independent inspector checks just once⟧", 11, "var(--muted)")
          + person(280, 160, s=0.75, **MERCHANT) + ledgerbook(280, 90) + passstamp(340, 70, 0.9)
          + small_castle(460, 100, 0.5) + small_castle(590, 100, 0.5) + small_castle(680, 150, 0.35)
          + '<path d="M360 60 C420 20 520 20 560 60 M360 60 C460 10 620 10 690 70" stroke="var(--good)" stroke-width="3" stroke-dasharray="4 4" fill="none"/>'
-         + label(600, 230, "⟦미리 동의한 나라들 모두에서 통해요|accepted in advance by every member kingdom⟧", 11, "var(--good)")
+         + label(600, 230, "⟦그 통행증은 미리 동의한 나라 모두에서 통해요|that pass works in every member kingdom⟧", 11, "var(--good)")
          + label(380, 320, "⟦CBPR = 여러 나라가 미리 인정하기로 한 통행 증명|CBPR = a pass several kingdoms agreed in advance to honor⟧", 13, "var(--ink)", cls="d"))
 
 CHECK1_I = icon('<circle cx="32" cy="32" r="22" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M22 32 l7 7 l14 -16" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/>')
@@ -51,43 +51,43 @@ PAGE = {
     "sub": ("CBPR(국경 간 프라이버시 규칙)을, 여러 이웃 나라가 미리 인정하기로 한 통행 증명 이야기로 풀어봤어요.",
             "CBPR (Cross-Border Privacy Rules), told as a story about a pass several neighboring kingdoms agreed in advance to honor."),
     "panels": [
-        {"svg": P1, "alt": ("상인이 손님 장부를 이웃 성 A와 B로 팔러 가고 싶어하지만, 나라마다 국경 규칙이 다름", "A merchant wants to carry a guest ledger to neighbor castles A and B, but every kingdom's border rule is different"),
+        {"svg": P1, "alt": ("상인이 손님 장부를 이웃 성 A와 B로 옮기고 싶어하지만, 나라마다 국경 규칙이 다름", "A merchant wants to carry a guest ledger to neighbor castles A and B, but every kingdom's border rule is different"),
          "caption": ("이웃 나라마다 국경 규칙이 다 달라요.", "Every neighboring kingdom has a different border rule."),
          "small": ("손님 장부(개인정보)를 들고 다른 나라에 가려는데, 나라마다 규칙이 제각각이에요.", "A merchant wants to carry a guest ledger (personal data) abroad — but every kingdom's rule is its own.")},
         {"svg": P2, "alt": ("상인이 국경 A와 B에서 각각 서류를 처음부터 다시 내야 함", "At border A and border B, the merchant has to file the papers from scratch each time"),
          "caption": ("국경마다 처음부터 다시 검사받아야 했어요.", "Each border meant starting the inspection all over again."),
-         "small": ("국경 A를 통과해도, 국경 B에선 또 처음부터예요. 느리고 들쭉날쭉해요.", "Clear border A, and border B still starts from zero. Slow, and inconsistent.")},
+         "small": ("국경 A를 통과해도, 국경 B에선 또 처음부터예요. 그래서 장부 옮기기는 느리고, 나라마다 기준도 들쭉날쭉해요.", "Clear border A, and border B still starts from zero. So moving the ledger is slow, and the standard shifts at each border.")},
         {"svg": P3, "hero": True, "alt": ("독립 검사관이 한 번만 검사해 통행증을 주고, 그 통행증이 여러 이웃 성 모두에서 통함", "An independent inspector checks once and issues a pass, and that pass works at every neighboring castle"),
          "caption": ("CBPR은 여러 나라가 미리 인정한 통행 증명이에요.", "CBPR is a pass several kingdoms agreed in advance to honor."),
-         "small": ('독립 검사관(책임 대리인)이 한 번 검사하고 나면, 미리 동의한 나라들 전부에서 다시 안 물어봐요. → <a href="compliance-ko.html">규정 준수</a>의 국제판이에요.',
-                   'An independent inspector (an accountability agent) checks once, and every pre-agreed kingdom accepts it — no re-asking. → the cross-border version of <a href="compliance-en.html">compliance</a>.'),
+         "small": ('독립 검사관(책임 대리인)이 한 번 검사하고 나면, 미리 동의한 나라들 전부에서 다시 검사하지 않아요. → <a href="compliance-ko.html">규정 준수</a>의 국제판이에요.',
+                   'An independent inspector (an accountability agent) checks once, and every pre-agreed kingdom accepts the result — no second inspection. → the cross-border version of <a href="compliance-en.html">compliance</a>.'),
          "tricks": (4, [
              (CHECK1_I, ("한 번만 검사해요", "Inspected just once"), ("독립 검사관이 확인해요", "by an independent inspector"), "calm"),
              (MAP_I, ("여러 나라에서 통해요", "Works across many kingdoms"), ("미리 동의한 곳들 전부에서요", "wherever the members pre-agreed")),
-             (OWNER_I, ("손님 것은 여전히 손님 것", "The guest's data is still the guest's"), ("동의·목적은 그대로 지켜요", "consent and purpose still apply"), "warm"),
-             (PENALTY_I, ("어기면 벌칙도 있어요", "Breaking it still has a penalty"), ("통행증이 취소될 수 있어요", "the pass can be revoked")),
+             (OWNER_I, ("손님 것은 여전히 손님 것", "The guest's data is still the guest's"), ("손님 동의와 이용 목적은 그대로 지켜요", "the guest's consent and the stated purpose still apply"), "warm"),
+             (PENALTY_I, ("규칙을 어기면 벌칙도 있어요", "Breaking the rules has a penalty"), ("통행증이 취소될 수 있어요", "the pass can be revoked")),
          ])},
         {"svg": svg(320, '<rect width="380" height="320" fill="var(--bad-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
                     + label(190, 30, "⟦CBPR 없이|without CBPR⟧", 13, "var(--ink)", cls="d")
                     + label(190, 80, "⟦국경마다 따로 서류|separate papers per border⟧", 11, "var(--ink)") + label(190, 110, "⟦나라마다 기준이 달라요|standards differ by kingdom⟧", 11, "var(--ink)")
-                    + label(190, 140, "⟦느리고 비용이 커요|slow, and costly⟧", 11, "var(--bad)")
+                    + label(190, 140, "⟦서류를 다시 내느라 느리고 비용이 커요|re-filing papers is slow and costly⟧", 11, "var(--bad)")
                     + label(570, 30, "⟦CBPR 인증 후|with CBPR⟧", 13, "var(--ink)", cls="d")
-                    + label(570, 80, "⟦인증 한 번|certified once⟧", 11, "var(--ink)") + label(570, 110, "⟦회원국 모두가 인정|every member recognizes it⟧", 11, "var(--ink)")
-                    + label(570, 140, "⟦이동이 빨라져요|data moves faster⟧", 11, "var(--good)")
+                    + label(570, 80, "⟦인증 한 번|certified once⟧", 11, "var(--ink)") + label(570, 110, "⟦회원국 모두가 인증을 인정|every member recognizes the certificate⟧", 11, "var(--ink)")
+                    + label(570, 140, "⟦손님 장부가 국경을 더 빨리 넘어요|the ledger crosses faster than with per-border papers⟧", 11, "var(--good)")
                     + passstamp(190, 220, 1.1, ok=False) + passstamp(570, 220, 1.1, ok=True)
-                    + label(380, 300, "⟦같은 국경, 미리 합의했는지만 달라요|the same border — the difference is whether it was pre-agreed⟧", 12, "var(--ink)", cls="d")),
+                    + label(380, 300, "⟦같은 국경, 나라들이 미리 합의했는지만 달라요|the same border — the difference is whether the kingdoms pre-agreed⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: CBPR 없이 국경마다 따로 느린 서류. 오른쪽: CBPR 인증 후 회원국 모두가 빠르게 인정", "Left: without CBPR, slow separate paperwork at every border. Right: with CBPR, every member recognizes it quickly"),
-         "caption": ("있고 없고의 차이는 이래요.", "Here's the difference it makes."),
-         "small": ("같은 국경이지만, 미리 합의했는지에 따라 속도가 완전히 달라져요.", "The same border crossing — but whether it was pre-agreed changes the speed completely.")},
+         "caption": ("CBPR이 있고 없고의 차이는 이래요.", "Here's the difference CBPR makes."),
+         "small": ("같은 국경이지만, 나라들이 미리 합의했는지에 따라 장부가 넘어가는 속도가 완전히 달라져요.", "The same border crossing — but whether the kingdoms pre-agreed changes how fast the ledger gets through.")},
         {"svg": svg(300, sky(300)
                     + small_castle(140, 110, 0.45) + label(140, 230, "⟦CBPR 회원국끼리만 통해요|only works among CBPR member kingdoms⟧", 11, "var(--muted)")
                     + small_castle(420, 110, 0.45) + label(420, 230, "⟦가입 안 한 나라엔 안 통해요|doesn't reach non-member kingdoms⟧", 11, "var(--muted)")
-                    + person(620, 160, s=0.8, **INSPECTOR) + label(620, 250, "⟦우리 성 자체 법은 그대로 지켜야 해요|the castle's own law still applies on top⟧", 11, "var(--ink)")
-                    + label(380, 280, "⟦APEC 회원국 중 가입한 나라끼리만 서로 인정해요|only recognized among the APEC members that opted in⟧", 12, "var(--ink)", cls="d")),
+                    + person(620, 160, s=0.8, **INSPECTOR) + label(620, 265, "⟦우리 성 자체 법은 그대로 지켜야 해요|the castle's own law still applies on top⟧", 11, "var(--ink)")
+                    + label(380, 280, "⟦CBPR은 APEC 회원국 중 가입한 나라끼리만 서로 인정해요|CBPR is recognized only among the APEC members that opted in⟧", 12, "var(--ink)", cls="d")),
          "alt": ("CBPR 회원국끼리만 통행이 되고, 가입 안 한 나라엔 안 통함. 자국 법은 그대로 지켜야 함", "CBPR works only among member kingdoms; it doesn't reach non-members. Local law still applies"),
-         "caption": ("아무 나라에나 다 통하진 않아요.", "It doesn't work with every kingdom."),
-         "small": ('APEC 회원국 중 가입한 나라끼리만 통해요. 우리 성 자체 개인정보 법은 그대로 지켜야 해요 → <a href="data3law-ko.html">데이터 3법 개정</a>, <a href="privacy-ko.html">개인정보 보호</a>',
-                   'It only works among the APEC members that opted in. The castle\'s own privacy law still applies on top → <a href="data3law-en.html">the Three Data Acts</a>, <a href="privacy-en.html">privacy</a>')},
+         "caption": ("CBPR 통행 증명이 아무 나라에나 다 통하진 않아요.", "The CBPR pass doesn't work with every kingdom."),
+         "small": ('CBPR은 APEC 회원국 중 가입한 나라끼리만 통해요. 우리 성 자체 개인정보 법은 그대로 지켜야 해요 → <a href="data3law-ko.html">데이터 3법 개정</a>, <a href="privacy-ko.html">개인정보 보호</a>',
+                   'CBPR only works among the APEC members that opted in. The castle\'s own privacy law still applies on top → <a href="data3law-en.html">the Three Data Acts</a>, <a href="privacy-en.html">privacy</a>')},
     ],
     "summary": (("<b>CBPR</b> = 여러 이웃 나라가 <b>미리 인정하기로 한</b> 개인정보 이동 통행 증명. 독립 검사관이 <b>한 번</b> 검사하면, 가입국 <b>전부</b>에서 다시 안 물어봐요.",
                  "<b>CBPR</b> = a pass for moving personal data that several neighboring kingdoms <b>agreed in advance</b> to honor. An independent inspector checks <b>once</b>, and every member kingdom accepts it without asking again."),

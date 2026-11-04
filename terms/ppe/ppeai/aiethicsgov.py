@@ -6,7 +6,7 @@ P1 = svg(300, sky(300)
          + person(120, 90, s=0.65, face=EYES, **OPERATOR)
          + gradeboard(50, 185, 140, 64, "", ("⟦대충 통과|anything passes⟧",), 0.7) + label(120, 275, "⟦1검사장 기준|station #1's rule⟧", 11, "var(--muted)")
          + person(380, 90, s=0.65, face=FROWN, **OPERATOR)
-         + gradeboard(310, 185, 140, 64, "", ("⟦무조건 불합격|almost nothing passes⟧",), 0.7) + label(380, 275, "⟦2검사장 기준|station #2's rule⟧", 11, "var(--muted)")
+         + gradeboard(310, 185, 140, 64, "", ("⟦무조건 불합격|nothing passes⟧",), 0.7) + label(380, 275, "⟦2검사장 기준|station #2's rule⟧", 11, "var(--muted)")
          + person(640, 90, s=0.65, face=EYES, **OPERATOR)
          + gradeboard(570, 185, 140, 64, "", ("⟦그날그날 달라요|changes day to day⟧",), 0.7) + label(640, 275, "⟦3검사장 기준|station #3's rule⟧", 11, "var(--muted)")
          + label(380, 25, "⟦검사장마다 등급 기준이 제각각이에요|every station grades by its own rule⟧", 13, "var(--ink)", cls="d"))
@@ -26,7 +26,7 @@ P3 = svg(360, sky(360)
                   "⟦사람 재검토 — 이의 제기 통로|human review — a path to appeal⟧"), 1.0)
          + person(90, 220, s=0.7, face=SMILE, **INSPECTOR)
          + person(660, 220, s=0.6, face=EYES, **OPERATOR)
-         + label(380, 25, "⟦AI 윤리기준·거버넌스 = 모든 검사장이 함께 지킬 등급 원칙과 책임 체계예요|a shared charter every station follows for grading principles and accountability⟧", 13, "var(--ink)", cls="d"))
+         + label(380, 25, "⟦AI 윤리기준·거버넌스 = 모든 검사장이 함께 지킬 등급 원칙과 책임 체계예요|AI ethics and governance = grading principles and accountability every station shares⟧", 13, "var(--ink)", cls="d"))
 
 FAIR_I = icon('<path d="M32 10 v20 M14 30 h36" stroke="#142033" stroke-width="4"/><circle cx="18" cy="38" r="10" fill="none" stroke="var(--good)" stroke-width="4"/><circle cx="46" cy="38" r="10" fill="none" stroke="var(--good)" stroke-width="4"/>')
 EXPLAIN_I = icon('<rect x="12" y="10" width="40" height="44" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 24 h24 M20 32 h24 M20 40 h16" stroke="#142033" stroke-width="2.5"/>')
@@ -40,15 +40,15 @@ PAGE = {
     "sub": ("AI 윤리기준·거버넌스를, 여러 품질검사장이 공통으로 지킬 등급 원칙과 책임 체계로 풀어봤어요.",
             "AI ethics and governance, told as a story about a shared grading charter that every inspection station follows — principles and accountability together."),
     "panels": [
-        {"svg": P1, "alt": ("세 검사장이 저마다 다른 등급 기준을 씀 — 대충 통과, 무조건 불합격, 그날그날 다름", "Three stations each grade by a different rule — one lets everything pass, one fails almost everything, one changes day to day"),
+        {"svg": P1, "alt": ("세 검사장이 저마다 다른 등급 기준을 씀 — 대충 통과, 무조건 불합격, 그날그날 다름", "Three stations each grade by a different rule — one lets everything pass, one fails everything, one changes day to day"),
          "caption": ("검사장마다 등급 기준이 제각각이에요.", "Every station grades by its own rule."),
          "small": ("같은 작물인데도 검사장에 따라 합격·불합격이 갈려요.", "The same produce passes at one station and fails at another.")},
         {"svg": P2, "alt": ("농부가 왜 자기 작물만 불합격인지 묻지만, 선별기 조작원도 진땀을 흘리며 설명하지 못함", "A farmer asks why only their produce failed, but the sweating operator can't explain it either"),
-         "caption": ("기준이 안 적히면, 아무도 설명하지 못해요.", "Without a written standard, nobody can explain it."),
-         "small": ("왜 그런 등급인지, 누가 책임지는지도 알 수 없어요.", "Why the grade came out that way, and who's responsible, stays a mystery.")},
+         "caption": ("등급 기준이 안 적혀 있으면, 왜 그 등급인지 아무도 설명하지 못해요.", "Without a written grading standard, nobody can explain why a grade came out as it did."),
+         "small": ("오판했을 때 누가 책임지는지도 알 수 없어요.", "Who answers for a wrong grade stays a mystery too.")},
         {"svg": P3, "hero": True, "alt": ("검수반장과 조작원 사이에 걸린 큰 등급 원칙판에 공정성·설명가능성·책임소재·사람 재검토가 적혀 있음", "A large grading charter between the inspector and the operator lists fairness, explainability, accountability, and human review"),
-         "caption": ("모든 검사장이 함께 지킬 등급 원칙과 책임 체계예요.", "A shared charter every station follows — principles and accountability together."),
-         "small": ("개별 선별기 하나의 규칙이 아니라, 검사장 전체가 따르는 틀이에요.", "Not one sorter's private rule — the frame the whole station operates inside."),
+         "caption": ("AI 윤리기준·거버넌스는 모든 검사장이 함께 지킬 등급 원칙과 책임 체계예요.", "AI ethics and governance is a shared charter every station follows — principles and accountability together."),
+         "small": ("원칙판은 개별 선별기 하나의 규칙이 아니라, 검사장 전체가 따르는 틀이에요.", "The charter isn't one sorter's private rule — it's the frame the whole station operates inside."),
          "tricks": (4, [
              (FAIR_I, ("공정성 지키기", "Keep it fair"), ("작물 종류로 차별 않기", "no bias by produce type"), "calm"),
              (EXPLAIN_I, ("설명 가능하게 하기", "Make it explainable"), ("등급 이유를 남겨요", "recording why a grade was given")),
@@ -63,12 +63,12 @@ PAGE = {
          "small": ("등급을 매긴 근거가 남아 있어야, 재검토도 가능해요.", "Review only works if the reason for the grade was recorded in the first place.")},
         {"svg": svg(380, '<rect width="380" height="380" fill="var(--good-soft)"/><rect x="380" width="380" height="380" fill="var(--accent-soft)"/>'
                  + gradeboard(60, 40, 270, 90, "⟦원칙판 — 벽에 걸려 있음|CHARTER — ON THE WALL⟧", ("⟦작물 종류로 차별 않기|no bias by produce type⟧",))
-                 + person(150, 170, s=0.6, face=SMILE, **INSPECTOR) + label(150, 265, "⟦지키면 작동해요|it works when it's followed⟧", 11, "var(--ink)")
+                 + person(150, 170, s=0.6, face=SMILE, **INSPECTOR) + label(150, 265, "⟦원칙판을 지키면 등급이 일관돼요|follow the charter and grades stay consistent⟧", 11, "var(--ink)")
                  + person(560, 170, s=0.6, face=FROWN, **OPERATOR)
-                 + label(560, 265, "⟦원칙판을 안 보고 그냥 등급 매겼어요|graded without even looking at it⟧", 11, "var(--bad)")
+                 + label(560, 265, "⟦원칙판을 안 보고 그냥 등급 매겼어요|graded without even looking at the charter⟧", 11, "var(--bad)")
                  + label(380, 345, "⟦주방 세계의 AI 거버넌스는 보안 운영 각도를, 여긴 윤리·규제 준수 각도를 봐요|the kitchen world's AI governance looks from a security-ops angle — this page looks from an ethics and regulatory-compliance angle⟧", 12, "var(--ink)", cls="d")),
-         "alt": ("왼쪽: 검수반장이 원칙판을 지켜 등급이 잘 작동함. 오른쪽: 조작원이 원칙판을 안 보고 그냥 등급을 매김", "Left: the inspector follows the charter and grading works. Right: the operator grades without even consulting it"),
-         "caption": ("원칙판이 있어도, 안 지키면 소용없어요.", "Having a charter doesn't help if nobody follows it."),
+         "alt": ("왼쪽: 검수반장이 원칙판을 지켜 등급이 일관되게 매겨짐. 오른쪽: 조작원이 원칙판을 안 보고 그냥 등급을 매김", "Left: the inspector follows the charter and grades stay consistent. Right: the operator grades without even consulting it"),
+         "caption": ("원칙판이 있어도 검사장이 안 지키면 소용없어요.", "Having a charter doesn't help if the station doesn't follow it."),
          "small": ("이 페이지는 윤리·규제 준수 각도, 주방 세계 쪽은 보안 운영 각도예요.", "This page takes the ethics/compliance angle; the kitchen world's page takes the security-ops angle.")},
     ],
     "summary": (("<b>AI 윤리기준·거버넌스</b> = 모든 검사장이 함께 지킬 <b>공정성·설명가능성·책임소재</b>를 정한 등급 원칙판.",

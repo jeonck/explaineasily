@@ -17,10 +17,10 @@ def box_stack(x, y, labels, s=1.0, gap=38):
 
 # 1. 상자 더미에서 딱 그것만 콕 집어 꺼내야 해요
 P1 = svg(300, sky(300)
-         + box_stack(200, 230, ["D", "C", "B", "A"], 1.0, 44)
+         + box_stack(200, 230, ["A", "B", "C", "D"], 1.0, 44)
          + person(380, 160, s=0.8, face=SWEAT + EYES, **MECH1)
          + bubble(440, 80, 230, 42, "⟦B 상자가 필요한데, 맨 위는 D예요|I need box B, but D is on top⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 285, "⟦아무렇게나 쌓으면 원하는 걸 바로 못 꺼내요|a messy pile means you can't grab what you need right away⟧", 12, "var(--ink)"))
+         + label(380, 285, "⟦아무렇게나 쌓으면 원하는 상자를 바로 못 꺼내요|a messy pile means you can't grab the box you need right away⟧", 12, "var(--ink)"))
 
 # 2. 그렇다고 순서를 안 정해도 결과가 뒤죽박죽이에요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
@@ -53,9 +53,9 @@ P4 = svg(320, sky(320)
 
 # 5. 쌓다 보면 넘치고, 줄이 안 줄면 끝없이 길어져요
 P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--bad-soft)"/>'
-         + box_stack(190, 210, ["C", "B", "A"], 0.9, 36) + label(190, 248, "⟦규칙대로면 빠르고 단순해요|follow the rule, and it's fast and simple⟧", 11, "var(--ink)")
-         + box_stack(570, 230, ["?", "F", "E", "D", "C", "B", "A"], 0.65, 24) + label(570, 268, "⟦너무 쌓으면 넘쳐요(스택 오버플로)|stack too high, and it overflows⟧", 11, "var(--ink)")
-         + label(380, 302, "⟦규칙은 단순하지만, 한도를 넘기면 둘 다 문제가 생겨요|the rule is simple — but push either one past its limit, and trouble follows⟧", 12, "var(--ink)", cls="d"))
+         + box_stack(190, 210, ["C", "B", "A"], 0.9, 36) + label(190, 248, "⟦맨 위로만 넣고 꺼내면 빠르고 단순해요|using only the top is fast and simple⟧", 11, "var(--ink)")
+         + box_stack(570, 230, ["A", "B", "C", "D", "E", "F", "?"], 0.65, 24) + label(570, 268, "⟦너무 쌓으면 넘쳐요(스택 오버플로)|stack too high, and it overflows⟧", 11, "var(--ink)")
+         + label(380, 302, "⟦규칙은 단순해도, 스택과 큐 모두 정해진 크기를 넘기면 문제가 생겨요|the rule is simple — but push a stack or queue past its size limit, and trouble follows⟧", 12, "var(--ink)", cls="d"))
 
 PUSH_I = icon('<rect x="16" y="28" width="32" height="20" rx="3" fill="var(--accent)"/><path d="M32 22 v-12 M26 16 l6 -6 l6 6" stroke="var(--accent)" stroke-width="3" fill="none"/>')
 POP_I = icon('<rect x="16" y="16" width="32" height="20" rx="3" fill="var(--muted)"/><path d="M32 42 v12 M26 48 l6 6 l6 -6" stroke="var(--bad)" stroke-width="3" fill="none"/>')
@@ -70,14 +70,14 @@ PAGE = {
             "Stacks and queues, told as a story about the right way to stack parts boxes and line up cars."),
     "panels": [
         {"svg": P1, "alt": ("상자가 아무렇게나 쌓여 있어 필요한 B 상자를 바로 못 꺼냄", "Boxes are piled randomly, so the needed box B can't be grabbed right away"),
-         "caption": ("상자 더미에서 딱 그것만 콕 집어 꺼내야 해요.", "You need to grab exactly the one box you want from a pile."),
-         "small": ("아무렇게나 쌓으면 원하는 걸 바로 못 꺼내요.", "A messy pile means you can't grab what you need right away.")},
+         "caption": ("상자 더미에서 필요한 B 상자만 콕 집어 꺼내야 해요.", "You need to grab just box B from the pile."),
+         "small": ("아무렇게나 쌓으면 원하는 상자를 바로 못 꺼내요.", "A messy pile means you can't grab the box you need right away.")},
         {"svg": P2, "alt": ("상자들이 규칙 없이 어지럽게 흩어져 있음", "Boxes are scattered with no rule to how they're placed"),
          "caption": ("규칙 없이 쌓고 꺼내면 순서가 매번 달라져요.", "Pile and grab without a rule, and the order changes every time."),
          "small": ("\'넣은 순서\'와 \'꺼내는 순서\' 사이에 규칙이 있어야 해요.", "There has to be a rule linking the order in to the order out.")},
         {"svg": P3, "hero": True, "alt": ("왼쪽: 상자가 위로 쌓인 스택(LIFO). 오른쪽: 차가 옆으로 늘어선 큐(FIFO)", "Left: boxes stacked upward — a LIFO stack. Right: cars lined up sideways — a FIFO queue"),
          "caption": ("선형 자료구조 = 물건을 쌓거나 줄 세우는 정해진 규칙이에요.", "Linear data structures = fixed rules for stacking or lining things up."),
-         "small": ("꺼내는 쪽이 달라요 — 꼭대기냐, 맨 앞이냐.", "They differ in where you take from — the top, or the front."),
+         "small": ("스택과 큐는 꺼내는 쪽이 달라요 — 꼭대기냐, 맨 앞이냐.", "Stacks and queues differ in where you take from — the top, or the front."),
          "tricks": (4, [
              (PUSH_I, ("push", "push"), ("상자를 맨 위에 올려요", "place a box on top")),
              (POP_I, ("pop", "pop"), ("맨 위 상자부터 내려요", "take the top box off"), "warm"),
@@ -85,11 +85,11 @@ PAGE = {
              (DEQ_I, ("dequeue", "dequeue"), ("줄 맨 앞부터 나가요", "leave from the front of the line")),
          ])},
         {"svg": P4, "alt": ("push·pop·enqueue·dequeue 네 동작을 적은 순서판과, 번호로 바로 찾는 배열 상자", "A board naming push, pop, enqueue, dequeue, plus an array box found directly by index"),
-         "caption": ("동작마다 이름이 따로 있어요.", "Each operation has its own name."),
+         "caption": ("넣기와 꺼내기 동작마다 이름이 따로 있어요.", "Each put-in and take-out operation has its own name."),
          "small": ("배열처럼 \'번호로 바로 찾는\' 구조도 같이 알아두면 좋아요.", "An array — finding things directly by index — is worth knowing too.")},
         {"svg": P5, "alt": ("왼쪽: 적당히 쌓은 상자는 빠르고 단순함. 오른쪽: 너무 높이 쌓은 상자가 스택 오버플로로 넘침", "Left: a reasonably stacked pile stays fast and simple. Right: stacking too high overflows — a stack overflow"),
          "caption": ("쌓다 보면 넘치고, 줄이 안 줄면 끝없이 길어져요.", "Stack it too high and it overflows; let a queue grow unchecked and it never stops."),
-         "small": ("규칙은 단순해도, 한도를 넘기면 둘 다 문제가 생겨요.", "The rule is simple — but push either one past its limit, and trouble follows.")},
+         "small": ("규칙은 단순해도, 스택과 큐 모두 정해진 크기를 넘기면 문제가 생겨요.", "The rule is simple — but push a stack or queue past its size limit, and trouble follows.")},
     ],
     "summary": (("<b>스택</b> = 상자를 <b>위로 쌓고 위에서부터 꺼내는</b>(LIFO) 규칙. <b>큐</b> = 차를 <b>줄 세우고 앞에서부터 내보내는</b>(FIFO) 규칙.",
                  "<b>Stack</b> = stack boxes up and take from the top (LIFO). <b>Queue</b> = line cars up and send them off from the front (FIFO)."),

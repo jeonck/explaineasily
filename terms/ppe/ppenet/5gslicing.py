@@ -4,19 +4,19 @@ from _world import *
 # 1. 수술 로봇 소포가 일반 소포 뒤에서 기다려요
 P1 = svg(300, sky(300)
          + '<rect x="0" y="230" width="760" height="20" fill="#8B5E3C"/>'
-         + envelope(560, 210, 0.9, text="⟦수술 로봇 신호|surgery robot signal⟧")
-         + envelope(420, 210, 0.7) + envelope(480, 210, 0.7) + envelope(500, 220, 0.6)
+         + envelope(560, 185, 0.9, text="⟦수술 로봇 신호|surgery robot signal⟧")
+         + envelope(420, 195, 0.7) + envelope(480, 195, 0.7) + envelope(500, 205, 0.6)
          + person(620, 160, s=0.8, face=SWEAT + EYES, **RECEIVER)
          + label(380, 30, "⟦수술 로봇 소포가 일반 소포들 뒤에 줄 서서 기다려요|the surgery-robot parcel waits in line behind ordinary ones⟧", 13, "var(--ink)", cls="d")
-         + label(380, 280, "⟦같은 길을 다 같이 쓰다 보니 급한 것도 순서를 기다려요|sharing one road means even the urgent one waits its turn⟧", 12, "var(--muted)"))
+         + label(380, 280, "⟦같은 길을 다 같이 쓰다 보니 급한 소포도 순서를 기다려요|sharing one road means even the urgent parcel waits its turn⟧", 12, "var(--muted)"))
 
 # 2. 길 하나를 모두를 위해 새로 깔 순 없어요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(260, 170, s=0.8, face=FROWN, **CLERK)
-         + label(260, 240, "⟦수술용 전용 도로를 따로 깔면 돈이 너무 들어요|a whole separate road just for surgery would cost too much⟧", 11, "var(--ink)")
-         + person(520, 170, s=0.8, face=EYES, **CLERK)
-         + label(520, 240, "⟦그렇다고 전부 한 줄로 세우면 급한 게 늦어요|but one single line makes the urgent ones late⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦한 도로, 서로 다른 급함 — 둘 다 만족시켜야 해요|one road, different urgencies — both have to be satisfied⟧", 12, "var(--ink)", cls="d"))
+         + person(185, 110, s=0.8, face=FROWN, **CLERK)
+         + label(210, 240, "⟦수술용 전용 도로를 따로 깔면 돈이 너무 들어요|a whole separate road just for surgery would cost too much⟧", 11, "var(--ink)")
+         + person(535, 110, s=0.8, face=EYES, **CLERK)
+         + label(560, 240, "⟦그렇다고 전부 한 줄로 세우면 급한 소포가 늦어요|but one single line makes the urgent parcels late⟧", 11, "var(--ink)")
+         + label(380, 282, "⟦도로 비용은 아끼면서, 급한 소포도 늦지 않게 해야 해요|keep road costs low and still get urgent parcels there on time⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 네트워크 슬라이싱 = 한 도로를 전용 차선으로 나누기 (hero)
 P3 = svg(340, '<rect width="760" height="340" fill="var(--sky)"/>'
@@ -36,7 +36,7 @@ P4 = svg(320, sky(320)
 
 # 5. 도로 용량 자체가 늘어난 건 아니에요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 130, s=0.8, face=SMILE, **CLERK) + label(190, 255, "⟦각자 보장된 몫으로 안전하게 달려요|each one runs safely within its guaranteed share⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.8, face=SMILE, **CLERK) + label(190, 255, "⟦차선마다 보장된 몫 안에서 안전하게 달려요|each lane runs safely within its guaranteed share⟧", 11, "var(--ink)")
          + truck(570, 180, 0.7) + '<path d="M548 160 l10 -20" stroke="var(--bad)" stroke-width="3"/>' + label(570, 250, "⟦도로 전체가 꽉 차면 차선도 같이 밀려요|if the whole road fills up, every lane slows together⟧", 11, "var(--ink)")
          + label(380, 282, "⟦나눈 건 차선일 뿐, 트럭과 길의 숫자는 그대로예요|only the lanes are split — the trucks and the road stay the same⟧", 12, "var(--ink)", cls="d"))
 
@@ -54,10 +54,10 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("수술 로봇 신호 소포가 일반 소포들 뒤에 줄 서서 기다림", "A surgery-robot signal parcel waits in line behind ordinary parcels"),
          "caption": ("급한 소포도 일반 소포들 뒤에서 기다려요.", "Even the urgent parcel waits behind ordinary ones."),
-         "small": ("같은 길을 다 같이 쓰다 보니 급한 것도 순서를 기다려요.", "Sharing one road means even the urgent one waits its turn.")},
+         "small": ("같은 길을 다 같이 쓰다 보니 급한 소포도 순서를 기다려요.", "Sharing one road means even the urgent parcel waits its turn.")},
         {"svg": P2, "alt": ("우체국장 둘이 전용 도로의 비용과 한 줄 세우기의 지연 사이에서 고민함", "Two postmasters weigh the cost of a dedicated road against the delay of one shared line"),
-         "caption": ("길 하나를 모두를 위해 새로 깔 순 없어요.", "You can't lay a whole new road for everyone."),
-         "small": ("한 도로, 서로 다른 급함 — 둘 다 만족시켜야 해요.", "One road, different urgencies — both have to be satisfied.")},
+         "caption": ("용도마다 길을 새로 깔 순 없어요.", "You can't lay a whole new road for every purpose."),
+         "small": ("도로 비용은 아끼면서, 급한 소포도 늦지 않게 해야 해요.", "Keep road costs low and still get urgent parcels there on time.")},
         {"svg": P3, "hero": True, "alt": ("같은 도로가 초저지연·대용량·일반 세 개의 색깔 차선으로 나뉨", "The same road split into three colored lanes: ultra-low-latency, high-bandwidth, and standard"),
          "caption": ("한 도로에 전용 차선을 나눠 각자 보장된 속도로 달려요.", "One road, split into lanes, each guaranteed its own speed."),
          "small": ("도로는 하나지만, 차선은 여러 개예요.", "One physical road, several logical lanes."),
@@ -65,13 +65,13 @@ PAGE = {
              (LANE_I, ("전용 차선 분리", "Lane separation"), ("용도마다 차선이 따로 있어요", "a separate lane for each purpose"), "calm"),
              (GUAR_I, ("보장된 속도", "Guaranteed performance"), ("각 차선의 속도·지연이 약속돼요", "speed and latency per lane are promised")),
              (ISOLATE_I, ("독립 운영", "Isolated operation"), ("한 차선 사고가 다른 차선에 안 번져요", "trouble in one lane doesn't spread"), "warm"),
-             (PURPOSE_I, ("용도별 맞춤", "Purpose-built"), ("초저지연·대용량·일반 각각 달라요", "ultra-low-latency, high-bandwidth, standard — each tuned differently")),
+             (PURPOSE_I, ("용도별 맞춤", "Purpose-built"), ("초저지연·대용량·일반 차선의 보장 내용이 각각 달라요", "ultra-low-latency, high-bandwidth, standard lanes — each guarantees something different")),
          ])},
         {"svg": P4, "alt": ("세 차선 각각 무엇을 보장하는지 적은 안내판: 초저지연, 대용량, 일반", "A board listing what each lane guarantees: ultra-low-latency, high-bandwidth, standard"),
          "caption": ("슬라이스마다 보장하는 게 달라요.", "Each slice guarantees something different."),
          "small": ("초저지연은 수술 로봇, 대용량은 동영상, 일반은 소포에 맞춰요.", "Ultra-low-latency for surgery robots, high-bandwidth for video, standard for ordinary mail.")},
         {"svg": P5, "alt": ("왼쪽: 각 차선이 안전하게 보장된 몫으로 달림. 오른쪽: 도로 전체가 꽉 차면 차선도 함께 밀림", "Left: each lane runs safely within its guaranteed share. Right: when the whole road fills up, every lane slows"),
-         "caption": ("도로 용량 자체가 늘어난 건 아니에요.", "The road's total capacity hasn't grown."),
+         "caption": ("슬라이싱을 해도 도로 용량 자체가 늘진 않아요.", "Slicing doesn't grow the road's total capacity."),
          "small": ("나눈 건 차선일 뿐, 트럭과 길의 숫자는 그대로예요.", "Only the lanes are split — the trucks and the road stay the same.")},
     ],
     "summary": (("<b>5G 네트워크 슬라이싱</b>은 <b>하나의 물리 배송망을 여러 전용 차선(가상 망)으로 나눠</b>, 각 차선에 <b>보장된 성능</b>을 주는 기술이에요.",

@@ -7,20 +7,20 @@ P1 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + '<path d="M160 30 l-10 24 M200 20 l-10 24 M280 20 l-10 24 M320 30 l-10 24" stroke="#5B9BD5" stroke-width="4" stroke-linecap="round"/>'
          + label(380, 282, "⟦공연 당일, 비가 쏟아지는데 아무 대비가 없어요|rain pours down on show day, with nothing prepared⟧", 12, "var(--ink)", cls="d"))
 
-# 2. 왜: 안 터지면 낭비로 보이고, 터지면 이미 늦어요
+# 2. 왜: 위험 대비는 사고가 안 터지면 낭비로 보이고, 터진 뒤에 하면 이미 늦어요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(190, 150, s=0.8, face=EYES, **SPONSOR)
          + bubble(60, 70, 240, 46, "⟦우산은 왜 미리 사둬요? 돈 낭비예요|why buy an umbrella in advance? that's a waste⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(560, 150, s=0.8, face=FROWN + SWEAT, **PLANNER)
          + bubble(440, 70, 240, 46, "⟦근데 이미 다 젖어버렸어요|but everyone's already soaked now⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 282, "⟦안 보이는 위험이 제일 무서워요, 보일 땐 이미 늦어요|the risk you can't see is the scary one — by the time you see it, it's too late⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦안 보이는 위험이 제일 무서워요, 눈앞에 닥친 뒤엔 대비하기 늦어요|the risk you can't see is the scary one — once it hits, it's too late to prepare⟧", 12, "var(--ink)", cls="d"))
 
 # 3. hero: 위험관리 = 안 써도 늘 챙겨두는 우산
 P3 = svg(340, sky(340)
          + person(260, 200, s=0.9, face=SMILE, **PLANNER) + umbrella(287, 195, 0.9)
          + person(480, 210, s=0.75, face=SMILE, **ARTIST)
          + label(380, 30, "⟦위험관리 = 안 써도 늘 챙겨두는 우산|risk management = the umbrella you always bring, even unused⟧", 14, "var(--ink)", cls="d")
-         + label(380, 320, "⟦써먹을 일이 없는 날이 제일 좋은 날이에요|the day you never open it is the best day⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦우산을 펼 일이 없는 날이 제일 좋은 날이에요|the day you never open the umbrella is the best day⟧", 12, "var(--muted)"))
 
 ID_I = icon('<circle cx="32" cy="26" r="16" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M44 38 l14 14" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/>')
 RANK_I = icon('<rect x="10" y="38" width="12" height="16" fill="var(--good)"/><rect x="26" y="26" width="12" height="28" fill="var(--accent)"/><rect x="42" y="12" width="12" height="42" fill="var(--bad)"/>')
@@ -29,11 +29,11 @@ WATCH_I = icon('<circle cx="32" cy="34" r="20" fill="none" stroke="var(--accent)
 
 # 4. 위험 대응전략 네 가지 비교
 P4 = svg(320, sky(320, ground=False)
-         + checklist(60, 30, 300, 260, "⟦위험 대응 전략|RESPONSE STRATEGY⟧",
+         + checklist(60, 30, 300, 250, "⟦위험 대응 전략|RESPONSE STRATEGY⟧",
                      ("⟦회피 — 아예 야외공연을 접어요|avoid — cancel the outdoor show⟧",
-                      "⟦전가 — 보험·외주로 떠넘겨요|transfer — shift it via insurance⟧",
-                      "⟦완화 — 천막을 쳐서 줄여요|mitigate — a tent cuts the impact⟧",
-                      "⟦수용 — 작은 위험은 그냥 안고 가요|accept — small risk, just carry it⟧"), 1.0)
+                      "⟦전가 — 보험·외주로 위험을 떠넘겨요|transfer — insure or outsource the risk⟧",
+                      "⟦완화 — 천막을 쳐서 비 피해를 줄여요|mitigate — a tent cuts the rain damage⟧",
+                      "⟦수용 — 작은 위험은 그냥 안고 가요|accept — just live with a small risk⟧"), 1.0)
          + umbrella(560, 150, 1.1)
          + label(380, 300, "⟦위험마다 다른 전략을 골라요|pick a different strategy for each risk⟧", 12, "var(--ink)", cls="d"))
 
@@ -53,13 +53,13 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ('공연 당일 비가 쏟아지지만 기획자는 대비가 없어 당황함', 'Rain pours on show day, and the planner panics with nothing prepared'),
          "caption": ("공연 당일, 비가 쏟아지는데 아무 대비가 없어요.", "Rain pours down on show day, with nothing prepared."),
-         "small": ("완벽한 체크리스트를 짜도 당일 변수는 늘 남아요.", "Even a perfect checklist always leaves something unaccounted for on the day.")},
+         "small": ("완벽한 체크리스트를 짜도 날씨 같은 당일 변수는 늘 남아요.", "Even a perfect checklist always leaves show-day surprises like the weather.")},
         {"svg": P2, "alt": ('후원사는 우산 준비가 낭비라고 말하지만, 비가 오자 이미 다 젖어버림', 'The sponsor calls the umbrella a waste, then everyone gets soaked once the rain starts'),
-         "caption": ("안 터지면 낭비로 보이고, 터지면 이미 늦어요.", "If it never happens it looks wasteful — if it does, it's already too late."),
-         "small": ("안 보이는 위험이 제일 무서워요, 보일 땐 이미 늦어요.", "The risk you can't see is the scary one — by the time you see it, it's too late.")},
+         "caption": ("위험 대비는 사고가 안 터지면 낭비로 보이고, 터진 뒤에 하면 이미 늦어요.", "If trouble never comes, preparing looks wasteful — if it does come, it's too late to start."),
+         "small": ("안 보이는 위험이 제일 무서워요, 눈앞에 닥친 뒤엔 대비하기 늦어요.", "The risk you can't see is the scary one — once it hits, it's too late to prepare.")},
         {"svg": P3, "hero": True, "alt": ('기획자가 우산을 쓰고 맑은 날에도 웃으며 준비하고 있음', 'The planner holds an umbrella and smiles, prepared even on a clear day'),
-         "caption": ("위험관리는 안 써도 늘 챙겨두는 우산이에요.", "Risk management is the umbrella you always bring, even unused."),
-         "small": ("써먹을 일이 없는 날이 제일 좋은 날이에요.", "The day you never open it is the best day."),
+         "caption": ("위험관리는 안 써도 늘 챙겨두는 우산처럼, 일이 터지기 전에 대비책을 마련해두는 일이에요.", "Like an umbrella you always bring even if unused, risk management prepares a response before trouble hits."),
+         "small": ("우산을 펼 일이 없는 날이 제일 좋은 날이에요.", "The day you never open the umbrella is the best day."),
          "tricks": (4, [
              (ID_I, ("위험 식별하기", "Identify risk"), ("무엇이 터질 수 있는지 목록 뽑기", "list what could go wrong"), "calm"),
              (RANK_I, ("위험 분석하기", "Analyze risk"), ("확률 × 영향으로 순위 매기기", "rank by likelihood × impact")),
@@ -71,7 +71,7 @@ PAGE = {
          "small": ("큰 위험은 피하거나 떠넘기고, 작은 위험은 줄이거나 안고 가요.", "Big risks get avoided or transferred — small ones get reduced or accepted.")},
         {"svg": P5, "alt": ('왼쪽: 우산 없이 비를 맞아 속상함. 오른쪽: 우산 덕에 비를 맞아도 젖지 않음', 'Left: caught in the rain without an umbrella, upset. Right: the rain still falls, but the umbrella keeps them dry'),
          "caption": ("우산 챙겼다고 비가 안 오는 게 아니에요.", "Carrying the umbrella doesn't stop the rain."),
-         "small": ("위험관리는 없애는 게 아니라 대응할 여지를 남기는 거예요.", "Risk management isn't erasing the risk — it's leaving room to respond.")},
+         "small": ("위험관리는 위험을 없애는 게 아니라 대응할 여지를 남기는 거예요.", "Risk management isn't erasing the risk — it's leaving room to respond.")},
     ],
     "summary": (("<b>프로젝트 위험관리</b> = 공연 날씨처럼 <b>미리 알 수 없는 변수</b>를 찾아내 <b>대응할 여지를 남겨두는</b> 일.",
                  "<b>Project risk management</b> = finding variables you can't foresee — like show-day weather — and leaving room to respond to them."),

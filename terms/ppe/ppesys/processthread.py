@@ -24,25 +24,25 @@ P3 = svg(340, sky(340)
          + person(540, 160, s=0.7, face=EYES, **CUSTOMER)
          + label(590, 100, "⟦완전히 다른 트렁크예요(프로세스)|a completely separate trunk (a process)⟧", 10, "var(--muted)")
          + label(380, 25, "⟦스레드 = 같은 차 안에서 같이 일하는 손, 프로세스 = 각자 다른 차|threads = hands working inside the same car, processes = separate cars entirely⟧", 13, "#142033", cls="d")
-         + label(380, 325, "⟦같은 차 안 손들은 트렁크를 공유하지만, 다른 차는 서로를 못 봐요|hands in one car share the trunk — but a different car can't see into it at all⟧", 11, "var(--muted)"))
+         + label(380, 325, "⟦같은 차 안의 손들은 트렁크를 공유하지만, 다른 차의 트렁크는 못 봐요|hands in one car share the trunk — but a different car can't see into it at all⟧", 11, "var(--muted)"))
 
 # 4. 프로세스 vs 스레드 비교
 P4 = svg(340, sky(340)
          + queueboard(50, 30, 320, 230, "⟦프로세스 vs 스레드|PROCESS vs THREAD⟧",
-                      ["프로세스: ⟦독립된 차, 독립된 트렁크|its own car, its own trunk⟧",
-                       "프로세스: ⟦만들기 무겁고, 느려요|heavy to set up, slow⟧",
-                       "스레드: ⟦같은 차, 같은 트렁크 공유|same car, shared trunk⟧",
-                       "스레드: ⟦만들기 가볍고, 빨라요|light to spin up, fast⟧"], 1.0)
+                      ["⟦프로세스: 독립된 차, 독립된 트렁크|Process: its own car, its own trunk⟧",
+                       "⟦프로세스: 만들기 무겁고, 느려요|Process: heavy to set up, slow⟧",
+                       "⟦스레드: 같은 차, 같은 트렁크 공유|Thread: same car, shared trunk⟧",
+                       "⟦스레드: 만들기 가볍고, 빨라요|Thread: light to spin up, fast⟧"], 1.0)
          + person(640, 150, s=0.8, face=EYES, **MECH1)
-         + label(640, 275, "⟦무엇을 공유하느냐가 핵심 차이예요|what's shared is the key difference⟧", 11, "var(--muted)")
+         + label(570, 275, "⟦메모리(트렁크)를 공유하느냐가 핵심 차이예요|whether memory (the trunk) is shared is the key difference⟧", 11, "var(--muted)")
          + label(380, 320, "⟦스레드는 프로세스 안에서 돌아가는, 실제 스케줄링의 단위예요|a thread runs inside a process — it's the real unit the scheduler moves⟧", 12, "var(--ink)"))
 
 # 5. 트렁크를 같이 쓰면 빠르지만, 부딪히면 둘 다 다쳐요
 P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--bad-soft)"/>'
          + person(140, 130, s=0.75, face=SMILE, **MECH1) + person(240, 130, s=0.75, face=SMILE, **MECH2)
-         + label(190, 250, "⟦같이 쓰니까 훨씬 빨라요|sharing makes it much faster⟧", 11, "var(--ink)")
+         + label(190, 250, "⟦트렁크를 같이 쓰니 따로 챙길 때보다 훨씬 빨라요|sharing the trunk beats setting up separate ones⟧", 11, "var(--ink)")
          + person(540, 130, s=0.75, face=FROWN, **MECH1) + person(630, 130, s=0.75, face=FROWN, **MECH2)
-         + label(585, 250, "⟦동시에 손대면 서로 부딪혀요|touch it at once, and they collide⟧", 11, "var(--ink)")
+         + label(585, 250, "⟦같은 부품에 동시에 손대면 서로 부딪혀요|touch the same part at once, and they collide⟧", 11, "var(--ink)")
          + label(380, 295, "⟦그래서 같이 쓰는 트렁크엔 동기화 규칙이 꼭 필요해요|that's why a shared trunk always needs a synchronization rule⟧", 12, "var(--ink)", cls="d"))
 
 PROC_I = icon('<rect x="10" y="12" width="20" height="40" rx="3" fill="var(--accent)"/><rect x="34" y="12" width="20" height="40" rx="3" fill="var(--good)"/>')
@@ -65,7 +65,7 @@ PAGE = {
          "small": ("차마다 공구함·트렁크를 따로 챙겨야 해서 번거로워요.", "Each car needs its own full toolbox and trunk — a lot of overhead.")},
         {"svg": P3, "hero": True, "alt": ("왼쪽: 같은 차 안에서 정비사 둘이 같은 트렁크를 공유하며 일함(스레드). 오른쪽: 완전히 다른 차 한 대(프로세스)", "Left: two mechanics share the same trunk inside one car (threads). Right: an entirely separate car (a process)"),
          "caption": ("스레드 = 같은 차 안 여러 손, 프로세스 = 각자 다른 차예요.", "Threads = many hands in one car; processes = separate cars entirely."),
-         "small": ("같은 차 손들은 트렁크를 공유하지만, 다른 차는 서로를 못 봐요.", "Hands in one car share the trunk — a different car can't see into it."),
+         "small": ("같은 차 안의 손들은 트렁크를 공유하지만, 다른 차의 트렁크는 못 봐요.", "Hands in one car share the trunk — a different car can't see into it."),
          "tricks": (4, [
              (PROC_I, ("프로세스", "Process"), ("독립된 차, 독립된 메모리 공간", "an independent car, an independent memory space")),
              (THREAD_I, ("스레드", "Thread"), ("같은 차 안에서 함께 일하는 손", "hands working inside the same car"), "calm"),
@@ -73,10 +73,10 @@ PAGE = {
              (SHARE_I, ("공유 메모리 위험", "Shared-Memory Risk"), ("같은 트렁크를 같이 쓰다 부딪혀요", "sharing one trunk means you can collide")),
          ])},
         {"svg": P4, "alt": ("프로세스는 독립된 차·무거운 생성 비용, 스레드는 공유된 차·가벼운 생성 비용임을 보여주는 순서판", "A board contrasting a process's separate car and heavy setup cost with a thread's shared car and light setup cost"),
-         "caption": ("무엇을 공유하느냐가 핵심 차이예요.", "What's shared is the key difference."),
+         "caption": ("메모리(트렁크)를 공유하느냐가 핵심 차이예요.", "Whether memory (the trunk) is shared is the key difference."),
          "small": ("스레드는 프로세스 안에서 돌아가는, 실제 스케줄링의 단위예요.", "A thread runs inside a process — the real unit the scheduler moves.")},
         {"svg": P5, "alt": ("왼쪽: 같은 트렁크를 같이 써서 빨라짐. 오른쪽: 동시에 손대다 부딪힘", "Left: sharing the trunk makes work faster. Right: touching it at the same time causes a collision"),
-         "caption": ("트렁크를 같이 쓰면 빠르지만, 부딪히면 둘 다 다쳐요.", "Sharing the trunk is fast — but a collision hurts both sides."),
+         "caption": ("트렁크를 같이 쓰면 빠르지만, 부딪히면 둘 다 일을 망쳐요.", "Sharing the trunk is fast — but a collision ruins the work of both."),
          "small": ("그래서 같이 쓰는 트렁크엔 동기화 규칙이 꼭 필요해요.", "That's why a shared trunk always needs a synchronization rule.")},
     ],
     "summary": (("<b>프로세스</b> = 각자 <b>독립된 차</b>(독립된 메모리). <b>스레드</b> = <b>같은 차 안에서 트렁크(메모리)를 같이 쓰며</b> 일하는 여러 손.",

@@ -30,7 +30,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + partbox(450, 200, 0.75, "54") + partbox(510, 200, 0.75, "63")
          + person(630, 150, s=0.75, face=EYES, **MECH1)
          + label(380, 40, "⟦작은 것부터 큰 것까지 한 줄로 늘어놔도|even lined up smallest to largest, in one row⟧", 13, "var(--ink)", cls="d")
-         + label(380, 280, "⟦맨 앞부터 하나씩 짚어가야 하는 건 똑같아요|you still have to step through from the front, one at a time⟧", 12, "var(--ink)"))
+         + label(380, 280, "⟦맨 앞부터 따라가면 하나씩 짚어가야 하는 건 똑같아요|follow the row from the front, and it's still one box at a time⟧", 12, "var(--ink)"))
 
 # 3. 이진트리 탐색 = 갈림길에서 반씩 줄여가는 선반 지도 (hero)
 P3 = svg(340, sky(340)
@@ -38,11 +38,11 @@ P3 = svg(340, sky(340)
          + branch(230, 170, 140, 250) + branch(230, 170, 320, 250)
          + branch(530, 170, 440, 250) + branch(530, 170, 620, 250)
          + partbox(380, 90, 1.0, "31")
-         + partbox(230, 170, 0.9, "12") + partbox(530, 170, 0.9, "47")
+         + partbox(230, 170, 0.9, "12") + partbox(530, 170, 0.9, "54")
          + partbox(140, 250, 0.8, "8") + partbox(320, 250, 0.8, "19", hl=True)
-         + partbox(440, 250, 0.8, "27") + partbox(620, 250, 0.8, "54")
-         + label(380, 25, "⟦이진트리 탐색 = 갈림길마다 왼쪽·오른쪽만 골라 반씩 줄여가는 지도|binary search = pick left or right at every fork, halving the search each time⟧", 13, "var(--ink)", cls="d")
-         + label(380, 325, "⟦19를 찾을 땐 31→작으니 왼쪽→12→크니 오른쪽→19|looking for 19: 31→smaller, go left→12→bigger, go right→19⟧", 11, "var(--muted)"))
+         + partbox(440, 250, 0.8, "47") + partbox(620, 250, 0.8, "63")
+         + label(380, 25, "⟦이진트리 탐색 = 갈림길마다 왼쪽·오른쪽을 골라 후보를 반씩 줄여가는 지도|binary tree search = pick left or right at every fork, halving the candidates⟧", 13, "var(--ink)", cls="d")
+         + label(380, 325, "⟦19를 찾을 땐: 31보다 작으니 왼쪽 → 12보다 크니 오른쪽 → 19|looking for 19: smaller than 31, go left → bigger than 12, go right → 19⟧", 11, "var(--muted)"))
 
 # 4. 작은 쪽은 왼쪽, 큰 쪽은 오른쪽
 P4 = svg(320, sky(320)
@@ -52,7 +52,7 @@ P4 = svg(320, sky(320)
          + label(260, 200, "⟦작으면 왼쪽|smaller goes left⟧", 11, "var(--muted)")
          + label(500, 200, "⟦크면 오른쪽|bigger goes right⟧", 11, "var(--muted)")
          + queueboard(560, 230, 160, 70, "⟦BST 규칙|BST RULE⟧", ["⟦왼쪽 &lt; 나 &lt; 오른쪽|left &lt; me &lt; right⟧"], 0.95)
-         + label(190, 280, "⟦이 규칙을 모든 갈림길에서 똑같이 지켜요|every single fork follows this same rule⟧", 12, "var(--ink)"))
+         + label(190, 280, "⟦작은 값은 왼쪽, 큰 값은 오른쪽 규칙을 모든 갈림길에서 지켜요|every fork follows this rule: smaller left, bigger right⟧", 12, "var(--ink)"))
 
 # 5. 한쪽으로 쏠리면 다시 한 줄처럼 느려져요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
@@ -60,10 +60,10 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="
          + branch(140, 150, 115, 210) + branch(140, 150, 165, 210)
          + partbox(190, 90, 0.7, "31") + partbox(140, 150, 0.6, "12") + partbox(240, 150, 0.6, "47")
          + partbox(115, 210, 0.5, "8") + partbox(165, 210, 0.5, "19")
-         + label(190, 250, "⟦균형 잡힌 트리는 매번 반씩 줄어요|a balanced tree halves it every step⟧", 11, "var(--ink)")
+         + label(190, 250, "⟦균형 잡힌 트리는 매번 후보가 반씩 줄어요|a balanced tree halves the candidates every step⟧", 11, "var(--ink)")
          + branch(570, 90, 570, 140) + branch(570, 140, 570, 180) + branch(570, 180, 570, 220)
          + partbox(570, 90, 0.6, "8") + partbox(570, 140, 0.55, "12") + partbox(570, 180, 0.5, "19") + partbox(570, 220, 0.45, "27")
-         + label(570, 255, "⟦한쪽으로만 쏠리면 다시 한 줄이 돼요|lean all one way, and it's a line again⟧", 11, "var(--ink)")
+         + label(570, 255, "⟦트리가 한쪽으로만 쏠리면 다시 한 줄이 돼요|a tree leaning all one way is just a line again⟧", 11, "var(--ink)")
          + label(380, 282, "⟦그래서 트리의 균형을 맞추는 알고리즘도 따로 있어요|that's why algorithms exist just to rebalance the tree⟧", 12, "var(--ink)", cls="d"))
 
 NODE_I = icon('<circle cx="32" cy="32" r="18" fill="var(--accent)"/>')
@@ -79,25 +79,25 @@ PAGE = {
             "Binary trees and BSTs, told as a story about a shelf map where every fork picks left or right to find a part."),
     "panels": [
         {"svg": P1, "alt": ("번호가 뒤죽박죽인 부품 상자들 사이에서 정비사가 #27을 찾으려 진땀을 흘림", "A mechanic sweats, searching for part #27 among jumbled, out-of-order boxes"),
-         "caption": ("번호를 모르면 한 줄로 늘어선 박스를 하나씩 다 열어봐야 해요.", "Without a map, you open boxes one by one down the line."),
-         "small": ("운 나쁘면 끝까지 다 봐야 해요.", "Worst case, you check every single one.")},
+         "caption": ("번호가 뒤죽박죽이면 한 줄로 늘어선 상자를 하나씩 다 열어봐야 해요.", "With jumbled numbers, you open boxes one by one down the line."),
+         "small": ("운 나쁘면 마지막 상자까지 다 열어봐야 해요.", "Worst case, you open every single box.")},
         {"svg": P2, "alt": ("부품 상자가 작은 번호부터 큰 번호까지 한 줄로 가지런히 정렬되어 있음", "Boxes are neatly lined up from smallest to largest number"),
-         "caption": ("한 줄로 가지런히 정렬해도 여전히 하나씩 짚어가야 해요.", "Even sorted in a neat row, you still step through one at a time."),
-         "small": ("맨 앞부터 하나씩 짚어가야 하는 건 똑같아요.", "You still have to go front to back, one at a time.")},
+         "caption": ("한 줄로 가지런히 정렬해도, 앞에서부터 따라가면 여전히 하나씩 짚어요.", "Even sorted in a neat row, following it from the front is still one box at a time."),
+         "small": ("맨 앞부터 따라가면 하나씩 짚어가야 하는 건 똑같아요.", "Follow the row from the front, and it's still one box at a time.")},
         {"svg": P3, "hero": True, "alt": ("31을 뿌리로 왼쪽엔 더 작은 수, 오른쪽엔 더 큰 수가 갈라지는 나무 모양 지도", "A tree-shaped map rooted at 31, branching smaller numbers left and bigger numbers right"),
-         "caption": ("이진트리 탐색 = 갈림길마다 반씩 줄여가는 선반 지도예요.", "Binary search = a map that halves the search at every fork."),
-         "small": ("19를 찾을 땐 31→작으니 왼쪽→12→크니 오른쪽→19예요.", "Looking for 19: 31→smaller, left→12→bigger, right→19."),
+         "caption": ("이진트리 탐색 = 갈림길마다 후보를 반씩 줄여가는 선반 지도예요.", "Binary tree search = a map that halves the candidates at every fork."),
+         "small": ("19를 찾을 땐: 31보다 작으니 왼쪽 → 12보다 크니 오른쪽 → 19예요.", "Looking for 19: smaller than 31, go left → bigger than 12, go right → 19."),
          "tricks": (4, [
              (NODE_I, ("노드", "Node"), ("갈림길 하나, 부품 번호가 적힌 칸", "one fork, a square with a part number")),
-             (LR_I, ("왼쪽<나<오른쪽", "Left < Me < Right"), ("작으면 왼쪽, 크면 오른쪽", "smaller goes left, bigger goes right"), "calm"),
+             (LR_I, ("왼쪽<나<오른쪽", "Left < Me < Right"), ("찾는 번호가 작으면 왼쪽, 크면 오른쪽", "a smaller number goes left, a bigger one right"), "calm"),
              (HALVE_I, ("매번 반씩", "Halving Each Step"), ("한 번 갈 때마다 후보가 절반으로", "each step cuts the candidates in half"), "warm"),
-             (BALANCE_I, ("균형(Balance)", "Balance"), ("한쪽으로 쏠리면 효과가 사라져요", "lean too far, and the benefit vanishes")),
+             (BALANCE_I, ("균형(Balance)", "Balance"), ("트리가 쏠리면 반씩 줄이는 효과가 사라져요", "a lopsided tree loses the halving benefit")),
          ])},
         {"svg": P4, "alt": ("뿌리 31에서 왼쪽은 더 작은 값, 오른쪽은 더 큰 값이라는 이진탐색트리 규칙을 보여줌", "The root 31 shows the BST rule: smaller values go left, bigger values go right"),
          "caption": ("작은 쪽은 왼쪽, 큰 쪽은 오른쪽이에요.", "Smaller goes left, bigger goes right."),
-         "small": ("이 규칙을 모든 갈림길에서 똑같이 지켜요.", "Every single fork follows this same rule.")},
+         "small": ("작은 값은 왼쪽, 큰 값은 오른쪽 규칙을 모든 갈림길에서 지켜요.", "Every fork follows this rule: smaller left, bigger right.")},
         {"svg": P5, "alt": ("왼쪽: 균형 잡힌 나무가 매번 반씩 줄어듦. 오른쪽: 한쪽으로 쏠린 나무가 한 줄처럼 늘어짐", "Left: a balanced tree halves the search each step. Right: a lopsided tree stretches out like a plain line"),
-         "caption": ("한쪽으로 쏠리면 다시 한 줄처럼 느려져요.", "Lean too far one way, and it slows back down to a line."),
+         "caption": ("트리가 한쪽으로 쏠리면 탐색이 다시 한 줄처럼 느려져요.", "A tree leaning one way makes the search as slow as a plain line again."),
          "small": ("그래서 트리의 균형을 맞추는 알고리즘도 따로 있어요.", "That's why algorithms exist just to rebalance the tree.")},
     ],
     "summary": (("<b>이진트리</b> = 갈림길마다 <b>왼쪽·오른쪽 둘로만</b> 갈라지는 지도. <b>이진탐색트리(BST)</b>는 거기에 <b>왼쪽은 작은 값, 오른쪽은 큰 값</b>이라는 규칙을 더한 것.",

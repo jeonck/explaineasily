@@ -18,7 +18,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(570, 150, s=0.8, face=FROWN, **PROOFER)
          + manuscript(570, 230, 0.6, marks=3)
          + bubble(460, 70, 220, 40, "⟦규칙을 대충 쓰다 오탈자가 쏟아져요|skipping the rules, typos pour in⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 282, "⟦모든 책에 같은 규칙을 강제하면, 어느 쪽도 좋지 않아요|forcing the same rules on every book helps neither side⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦모든 책에 같은 규칙을 강제하면, 작가도 교정자도 곤란해요|forcing the same rules on every book troubles both writer and proofreader⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 편집장이 책마다 필요한 규칙만 골라 맞춤 (hero)
 P3 = svg(340, sky(340)
@@ -44,15 +44,15 @@ PAGE = {
          "caption": ("그림책도 사전과 똑같은 규칙집을 다 따라야 할까요?", "Does a picture book really need the same rulebook as a dictionary?"),
          "small": ("규칙집은 하나인데, 책은 다 달라요.", "There's one rulebook, but every book is different.")},
         {"svg": P2, "alt": ("왼쪽은 규칙을 다 지키다 마감을 놓침, 오른쪽은 규칙을 대충 쓰다 오탈자가 쏟아짐", "Left: following every rule misses the deadline. Right: skipping rules lets typos pour in"),
-         "caption": ("그대로 적용하면 둘 다 문제가 생겨요.", "Applying it as-is causes problems either way."),
-         "small": ("모든 책에 같은 규칙을 강제하면, 어느 쪽도 좋지 않아요.", "Forcing the same rules on every book helps neither side.")},
+         "caption": ("모든 책에 규칙집을 그대로 들이대면, 마감을 놓치거나 규칙을 대충 써서 오탈자가 쏟아져요.", "Force the whole rulebook on every book, and either deadlines slip or rules get skimped and typos pour in."),
+         "small": ("모든 책에 같은 규칙을 강제하면, 작가도 교정자도 곤란해요.", "Forcing the same rules on every book troubles both writer and proofreader.")},
         {"svg": P3, "hero": True, "alt": ("편집장이 그림책용 규칙표와 사전용 규칙표를 따로 만듦", "The editor builds a separate, shorter rule card for the picture book and a fuller one for the dictionary"),
          "caption": ("테일러링 = 책 종류에 맞게 규칙집에서 필요한 것만 고르는 거예요.", "Tailoring = picking only what each kind of book needs from the rulebook."),
-         "small": ("뼈대는 남기고, 나머지는 책에 맞게 줄이거나 더해요.", "The core stays — the rest shrinks or grows to fit the book."),
+         "small": ("뼈대(핵심 기준)는 남기고, 나머지 규칙은 책에 맞게 줄이거나 더해요.", "The core standard stays — the other rules shrink or grow to fit the book."),
          "tricks": (4, [
              (SCALE_I, ("기준 먼저 보기", "Check the criteria first"), ("규모·중요도·인력부터", "size, criticality, team first"), "calm"),
              (TRIM_I, ("필요한 것만 남기기", "Keep only what's needed"), ("안 맞는 절차는 줄여요", "trim steps that don't fit")),
-             (NOTE_I, ("근거를 기록하기", "Record the reasoning"), ("왜 뺐는지 적어둬요", "write down why it was dropped"), "warm"),
+             (NOTE_I, ("근거를 기록하기", "Record the reasoning"), ("어떤 절차를 왜 뺐는지 적어둬요", "write down why each step was dropped"), "warm"),
              (CHECK_I, ("핵심 기준은 유지", "Keep the core standard"), ("뼈대까지 빼진 않아요", "never cut the backbone itself")),
          ])},
         {"svg": svg(300, sky(300)
@@ -60,17 +60,17 @@ PAGE = {
                                   ("⟦표지 심사만|cover review only⟧", "⟦교열 1단계|1-pass proofing⟧", "⟦색인 생략|no index⟧"), 1.0)
                      + styleguide(410, 40, 300, 220, "⟦사전용 규칙표|DICTIONARY RULES⟧",
                                   ("⟦표지+내지 심사|cover + interior review⟧", "⟦교열 3단계|3-pass proofing⟧", "⟦색인 필수|index required⟧"), 1.0)
-                     + label(380, 290, "⟦같은 규칙집에서 나왔지만, 최종 결과물은 서로 달라요|from the same rulebook, but the final checklists differ⟧", 12, "var(--ink)")),
+                     + label(380, 290, "⟦두 규칙표는 같은 규칙집에서 나왔지만, 최종 체크리스트는 서로 달라요|both rule cards come from the same rulebook, but the final checklists differ⟧", 12, "var(--ink)")),
          "alt": ("그림책용 규칙표(간단)와 사전용 규칙표(상세)를 나란히 비교", "Side by side: a simple picture-book rule card and a detailed dictionary rule card"),
          "caption": ("규칙표는 책마다 달라져요.", "The rule card ends up different for each book."),
-         "small": ("같은 규칙집에서 나왔지만, 최종 체크리스트는 서로 달라요.", "Drawn from the same rulebook, but the final checklist differs.")},
+         "small": ("두 규칙표는 같은 규칙집에서 나왔지만, 최종 체크리스트는 서로 달라요.", "Both rule cards come from the same rulebook, but the final checklists differ.")},
         {"svg": svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
-                     + person(190, 130, s=0.8, face=FROWN, **EDITOR) + label(190, 260, "⟦다 빼면: 품질에 구멍이 생겨요|strip too much: quality gaps appear⟧", 11, "var(--ink)")
-                     + person(570, 130, s=0.8, face=SMILE, **EDITOR) + label(570, 260, "⟦균형을 맞추면: 빠르고 안전해요|balance it: fast and still safe⟧", 11, "var(--ink)")
-                     + label(380, 305, "⟦테일러링은 규칙을 없애는 게 아니라, 책에 맞게 고르는 기술이에요|tailoring isn't deleting rules — it's the skill of choosing them⟧", 12, "var(--ink)", cls="d")),
-         "alt": ("왼쪽: 규칙을 다 빼서 품질 구멍 발생. 오른쪽: 균형 잡힌 규칙으로 빠르고 안전함", "Left: stripping too much opens quality gaps. Right: a balanced set of rules stays fast and safe"),
-         "caption": ("테일러링도 지나치면 위험해요.", "Even tailoring can go too far."),
-         "small": ("규칙을 없애는 게 아니라, 책에 맞게 고르는 기술이에요.", "It isn't about deleting rules — it's choosing them to fit the book.")},
+                     + person(190, 130, s=0.8, face=FROWN, **EDITOR) + label(190, 260, "⟦규칙을 다 빼면: 오탈자를 거를 단계가 사라져요|strip too many rules: no step is left to catch typos⟧", 11, "var(--ink)")
+                     + person(570, 130, s=0.8, face=SMILE, **EDITOR) + label(570, 260, "⟦필요한 규칙만 남기면: 마감도 품질도 지켜요|keep just the needed rules: deadline and quality both hold⟧", 11, "var(--ink)")
+                     + label(380, 305, "⟦테일러링은 규칙을 없애는 게 아니라, 책에 맞게 고르는 기술이에요|tailoring isn't deleting rules — it's the skill of choosing them to fit the book⟧", 12, "var(--ink)", cls="d")),
+         "alt": ("왼쪽: 규칙을 다 빼서 오탈자를 거를 단계가 사라짐. 오른쪽: 필요한 규칙만 남겨 마감과 품질을 지킴", "Left: stripping too many rules leaves no step to catch typos. Right: keeping just the needed rules holds both deadline and quality"),
+         "caption": ("규칙을 너무 많이 빼면 테일러링도 위험해요.", "Cut too many rules, and even tailoring gets risky."),
+         "small": ("테일러링은 규칙을 없애는 게 아니라, 책에 맞게 고르는 기술이에요.", "Tailoring isn't about deleting rules — it's choosing them to fit the book.")},
     ],
     "summary": (("<b>개발방법론 테일러링</b> = 정해진 개발 규칙(생명주기·산출물·검토 절차)에서, <b>프로젝트 특성에 맞게</b> 필요한 것만 골라 쓰는 조정 작업.",
                  "<b>Methodology tailoring</b> = adjusting a fixed set of development rules (lifecycle, artifacts, review steps) by choosing only what fits <b>this project's characteristics</b>."),

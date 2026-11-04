@@ -15,9 +15,9 @@ P1 = svg(300, sky(300)
 
 # 2. 절차 없이 가져가면 나중에 다 무효가 돼요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
-         + person(220, 150, s=0.85, face=FROWN, **PRESIDENT) + bubble(130, 70, 250, 44, "⟦허락도 없이 가져간 거라 못 써요|it was taken without permission — it can't be used⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + person(220, 150, s=0.85, face=FROWN, **PRESIDENT) + bubble(100, 70, 295, 44, "⟦허락 없이 가져간 휴대폰은 증거로 못 써요|a phone taken without permission can't be evidence⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(570, 150, s=0.75, face=SWEAT + EYES, **TEACHER) + label(570, 250, "⟦분명 진짜 증거였는데…|but it really was the real evidence…⟧", 11, "var(--bad)")
-         + label(380, 285, "⟦제대로 된 절차 없이 가져가면, 나중에 증거로 못 써요|take it without proper procedure, and it can't be used as evidence later⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 285, "⟦제대로 된 절차 없이 휴대폰을 가져가면, 나중에 증거로 못 써요|take the phone without proper procedure, and it can't be used as evidence later⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 법적 증거수집 절차 = 권한 받고, 범위 정하고, 입회하고, 기록하는 것 (hero)
 P3 = svg(360, sky(360)
@@ -29,19 +29,19 @@ P3 = svg(360, sky(360)
                        "⟦3. 학생 입회 아래 수거|3. collected with the student present⟧",
                        "⟦4. 누가·언제 받았는지 기록|4. record who took it, and when⟧"), 0.95)
          + person(640, 160, s=0.8, face=EYES, **STUDENT)
-         + label(380, 335, "⟦기술로 보존하는 것과는 다른, '정당하게 얻었는가'의 문제예요|different from preserving it technically — this is about whether it was obtained lawfully⟧", 11, "var(--muted)"))
+         + label(380, 335, "⟦증거를 기술로 보존하는 일과 달리, 이 절차는 '정당하게 얻었는가'를 따져요|unlike preserving evidence technically, this procedure asks whether it was obtained lawfully⟧", 11, "var(--muted)"))
 
 # 4. 절차를 지켰을 때 vs 안 지켰을 때
 P4 = svg(320, sky(320, ground=False)
          + rulesboard(50, 40, 320, 230, "⟦절차를 지켰을 때|FOLLOWED THE PROCEDURE⟧", ("⟦위원회가 증거로 인정해요|the committee accepts it as evidence⟧", "⟦학생도 결과에 승복하기 쉬워요|the student finds it easier to accept the result⟧"), 1.0)
          + rulesboard(400, 40, 320, 230, "⟦절차를 안 지켰을 때|SKIPPED THE PROCEDURE⟧", ("⟦\"위법하게 얻었다\"며 증거가 빠져요|thrown out as \"unlawfully obtained\"⟧", "⟦진짜였어도 못 써서 사건 전체가 흔들려요|even if real, it can't be used — the whole case wobbles⟧"), 1.0)
-         + label(380, 295, "⟦내용이 진짜인가와, 정당하게 얻었는가는 서로 다른 질문이에요|is it real? and was it lawfully obtained? are two different questions⟧", 11, "var(--ink)", cls="d"))
+         + label(380, 295, "⟦증거 내용이 진짜인가와, 정당하게 얻었는가는 서로 다른 질문이에요|\"is the evidence real?\" and \"was it lawfully obtained?\" are two different questions⟧", 11, "var(--ink)", cls="d"))
 
 # 5. 절차를 지켜도 내용 판단은 또 다른 문제예요
 P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
-         + person(190, 130, s=0.8, face=SMILE, **PRESIDENT) + label(190, 260, "⟦절차는 지켰으니 증거로 받아들여요|the procedure was followed, so it's admitted⟧", 11, "var(--ink)")
-         + person(570, 130, s=0.8, face=EYES, **TEACHER) + label(570, 260, "⟦근데 이게 무슨 뜻인지는 또 따져봐야죠|but what it actually means still needs figuring out⟧", 11, "var(--ink)")
-         + label(380, 305, "⟦정당하게 얻었다고 해서 결론까지 저절로 정해지진 않아요|lawfully obtained doesn't mean the conclusion is automatic⟧", 12, "var(--ink)", cls="d"))
+         + person(190, 130, s=0.8, face=SMILE, **PRESIDENT) + label(190, 260, "⟦절차는 지켰으니 증거로 받아들여요|the procedure was followed, so the evidence is admitted⟧", 11, "var(--ink)")
+         + person(570, 130, s=0.8, face=EYES, **TEACHER) + label(570, 260, "⟦근데 이 기록이 무슨 뜻인지는 또 따져봐야죠|but what this record means still needs figuring out⟧", 11, "var(--ink)")
+         + label(380, 305, "⟦증거를 정당하게 얻었다고 해서 사건의 결론까지 저절로 정해지진 않아요|lawfully obtained evidence doesn't decide the case by itself⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "forensiclaw", "order": 16,
@@ -52,35 +52,35 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("선생님이 당장 휴대폰을 압수하겠다 하고, 학생은 그냥 가져가도 되냐고 땀 흘리며 되물음", "A teacher demands the phone be handed over immediately; a sweating student asks if that's really allowed"),
          "caption": ("조사 위원이 당장 휴대폰부터 가져가려 해요.", "An investigator wants to grab the phone right away."),
-         "small": ("급하다고 그냥 가져가도 되는 걸까요?", "Is grabbing it right away, just because it's urgent, really okay?")},
+         "small": ("급하다고 휴대폰을 그냥 가져가도 되는 걸까요?", "Is grabbing the phone right away, just because it's urgent, really okay?")},
         {"svg": P2, "alt": ("학생회장이 허락 없이 가져간 거라 못 쓴다고 말하고, 선생님은 진짜 증거였는데 하며 땀 흘림", "The council president says it can't be used because it was taken without permission; the teacher sweats, insisting it really was the evidence"),
-         "caption": ("절차 없이 가져가면 나중에 다 무효가 돼요.", "Take it without proper procedure, and it all becomes invalid later."),
-         "small": ("제대로 된 절차 없이 가져가면, 나중에 증거로 못 써요.", "Take it without proper procedure, and it can't be used as evidence later.")},
+         "caption": ("절차 없이 휴대폰을 가져가면 나중에 증거가 무효가 될 수 있어요.", "Take the phone without proper procedure, and the evidence can become invalid later."),
+         "small": ("제대로 된 절차 없이 휴대폰을 가져가면, 나중에 증거로 못 써요.", "Take the phone without proper procedure, and it can't be used as evidence later.")},
         {"svg": P3, "hero": True, "alt": ("선생님이 허락서·범위·입회·기록 네 단계가 적힌 절차표를 들고, 학생이 그 옆에서 지켜봄", "A teacher holds up a four-step procedure board — permission, scope, witness, record — while a student looks on"),
          "caption": ("법적 증거수집 절차는 권한 받고, 범위 정하고, 입회하고, 기록하는 것이에요.", "Legal evidence collection means getting permission, setting the scope, collecting it with a witness, and keeping a record."),
-         "small": ("기술로 보존하는 것과는 다른, '정당하게 얻었는가'의 문제예요.", "Different from preserving it technically — this is about whether it was obtained lawfully."),
+         "small": ("증거를 기술로 보존하는 일과 달리, 이 절차는 '정당하게 얻었는가'를 따져요.", "Unlike preserving evidence technically, this procedure asks whether it was obtained lawfully."),
          "tricks": (4, [
              (PERMIT_I, ("허락서 먼저", "Get permission first"), ("영장과 같은 역할이에요", "plays the same role as a warrant"), "warm"),
              (SCOPE_I, ("범위 한정하기", "Limit the scope"), ("꼭 필요한 것만 거둬요", "collects only what's needed")),
-             (WITNESS_I, ("입회 아래 거두기", "Collect with a witness"), ("몰래 거두지 않아요", "never collected in secret")),
+             (WITNESS_I, ("입회 아래 거두기", "Collect with a witness"), ("당사자가 보는 앞에서 거둬요", "collected in front of the affected party")),
              (CHAIN_I, ("누가·언제 기록", "Record who, and when"), ("관리 연속성을 남겨요", "keeps the chain of custody"), "calm"),
          ])},
         {"svg": P4, "alt": ("왼쪽 기준표는 절차를 지켜 증거가 받아들여지는 경우, 오른쪽은 절차를 어겨 위법하게 얻었다며 증거가 빠지는 경우를 비교함", "Left board: procedure followed, evidence accepted. Right board: procedure skipped, evidence thrown out as unlawfully obtained"),
-         "caption": ("절차를 지켰을 때와 안 지켰을 때는 이렇게 갈려요.", "Following the procedure or not makes this much difference."),
-         "small": ("내용이 진짜인가와, 정당하게 얻었는가는 서로 다른 질문이에요.", "Is it real? and was it lawfully obtained? are two different questions.")},
+         "caption": ("절차를 지키면 증거로 인정되고, 안 지키면 진짜 증거도 빠질 수 있어요.", "Follow the procedure and the evidence is accepted; skip it and even genuine evidence can be thrown out."),
+         "small": ("증거 내용이 진짜인가와, 정당하게 얻었는가는 서로 다른 질문이에요.", "\"Is the evidence real?\" and \"was it lawfully obtained?\" are two different questions.")},
         {"svg": P5, "alt": ("왼쪽: 학생회장이 절차를 지켰으니 증거로 받아들인다고 말함. 오른쪽: 선생님이 내용의 의미는 또 따져봐야 한다고 말함", "Left: the president says it's admitted since procedure was followed. Right: the teacher says what it means still needs figuring out"),
          "caption": ("절차를 지켜도 내용 판단은 또 다른 문제예요.", "Even with procedure followed, judging the content is a separate matter."),
-         "small": ("정당하게 얻었다고 해서 결론까지 저절로 정해지진 않아요.", "Lawfully obtained doesn't mean the conclusion is automatic.")},
+         "small": ("증거를 정당하게 얻었다고 해서 사건의 결론까지 저절로 정해지진 않아요.", "Lawfully obtained evidence doesn't decide the case by itself.")},
     ],
     "summary": (("<b>디지털 증거수집의 법적 절차</b> = <b>권한(영장)</b>을 받고 <b>범위를 한정</b>해, <b>당사자 참여</b> 아래 <b>관리 연속성을 기록</b>하며 거둬서, 나중에 증거로 인정받게(증거능력) 하는 일.",
                  "<b>Legal digital evidence procedure</b> = obtaining <b>authorization (a warrant)</b>, keeping the <b>scope limited</b>, collecting it with the <b>affected party present</b>, and <b>documenting the chain of custody</b> — so it later counts as admissible evidence."),
                 ("디지털 증거수집은 기술적 보존(이미징·해시)과는 별개로, 압수수색영장 등 적법한 권한 안에서, 필요 최소 범위로, 당사자의 참여권을 보장하며 수행되어야 해요. 이 요건을 어기면 '위법수집증거배제법칙'에 따라 내용이 진짜라도 법정에서 증거능력이 부정될 수 있어요. 관리 연속성(chain of custody)이 끊기지 않게 문서화하는 것도 핵심 요건이에요.",
                  "Separate from technical preservation (imaging, hashing), digital evidence collection must be carried out under lawful authority (such as a search warrant), limited to the minimum necessary scope, and with the affected party's right to be present respected. Violating these requirements can make even genuine evidence inadmissible in court under the exclusionary rule for unlawfully obtained evidence. Documenting an unbroken chain of custody is also a core requirement.")),
     "glossary": [
-        ("적법절차", "Due Process", ("정해진 순서를 제대로 밟는 것.", "Properly following the set sequence of steps."), ("순서를 건너뛰면 결과가 무효가 될 수 있어요.", "Skip a step, and the result can be voided.")),
+        ("적법절차", "Due Process", ("정해진 순서를 제대로 밟는 것.", "Properly following the set sequence of steps."), ("순서를 건너뛰면 그 결과가 무효가 될 수 있어요.", "Skip a step, and the result can be voided.")),
         ("증거능력", "Admissibility of Evidence", ("법정(위원회)이 증거로 받아줄 자격.", "Whether a court (or committee) will accept it as evidence at all."), ("내용이 맞고 틀리고와는 다른 문제예요.", "A separate question from whether the content is true.")),
         ("위법수집증거배제법칙", "Exclusionary Rule", ("잘못 거둔 증거는 진짜여도 못 쓰는 원칙.", "The rule that improperly collected evidence can't be used, even if genuine."), ("절차가 왜 중요한지의 핵심 이유예요.", "The core reason procedure matters so much.")),
-        ("압수수색영장", "Search Warrant", ("학교의 허락서 같은 공식 권한.", "An official authorization, like the school's permission slip."), ("권한 없이 거두면 처음부터 무효예요.", "Collect without it, and it's invalid from the start.")),
+        ("압수수색영장", "Search Warrant", ("학교의 허락서 같은 공식 권한.", "An official authorization, like the school's permission slip."), ("권한 없이 거두면 증거로 인정받지 못할 수 있어요.", "Collect without it, and the evidence may be rejected.")),
         ("참여권", "Right to Be Present", ("당사자가 몰래가 아니라 지켜보며 입회하는 권리.", "The right to witness collection, not have it happen in secret."), ("나중에 \"몰래 조작했다\"는 의심을 막아줘요.", "Prevents later claims of secret tampering.")),
         ("관리연속성", "Chain of Custody", ("누가 언제 받아 누구에게 넘겼는지 기록.", "A record of who held it, and handed it to whom, when."), ('기술적으로 굳히는 작업과 짝을 이뤄요. → <a href="forensics-ko.html">발자국을 굳혀서 보관하기</a>', 'Pairs with the technical side of setting evidence in place. → <a href="forensics-en.html">setting the footprint in plaster</a>')),
         ("비례원칙", "Principle of Proportionality", ("필요한 만큼만 거두고, 더는 건드리지 않는 것.", "Collecting only as much as needed, and no more."), ("사생활 보호와 조사 필요성 사이의 균형이에요.", "Balances privacy against the need to investigate.")),

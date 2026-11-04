@@ -18,7 +18,7 @@ def mini_shelf(x, y, s, fill, border="#8B5E3C"):
 P1 = svg(300, sky(300)
          + shelf_box(260, 150, 240, 70, 5)
          + person(560, 160, s=0.85, face=SWEAT, **MECH1)
-         + label(380, 60, "⟦이 칸에 새 부품을 넣기 전에 통째로 비워야 해요|this slot must be emptied whole before new parts go in⟧", 13, "var(--ink)")
+         + label(380, 60, "⟦이 창고(NAND)는 새 부품을 넣기 전에 상자째 비워야 해요|this warehouse (NAND) must clear a whole box before new parts go in⟧", 13, "var(--ink)")
          + label(380, 270, "⟦자주 바꿔야 하는 부품엔 좀 느리고 번거로워요|a bit slow and fussy for parts that change often⟧", 12, "var(--muted)"))
 
 # 2. 더 빠르게 바로바로 바꿔 쓸 창고는 없을까
@@ -26,7 +26,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(260, 150, s=0.85, face=EYES, **CHIEF)
          + shelf_box(400, 150, 200, 60, 4)
          + label(500, 230, "⟦지우고 다시 쓰는데 시간이 걸려요|erasing and rewriting takes time⟧", 12, "var(--bad)", cls="d")
-         + label(380, 70, "⟦더 빠르게 바로바로 바꿔 쓰는 창고는 없을까요?|isn't there a faster, swap-in-place warehouse?⟧", 13, "var(--ink)")
+         + label(380, 70, "⟦지우지 않고 바로바로 바꿔 쓰는 창고는 없을까요?|isn't there a warehouse that swaps in place, with no erasing?⟧", 13, "var(--ink)")
          + label(380, 260, "⟦저장 방식 자체가 다른 차세대 창고들이 있어요|there are next-gen warehouses with a different storage trick⟧", 12, "var(--muted)"))
 
 # 3. 차세대 비휘발성 메모리 = 다른 방식으로 꺼져도 기억하는 새 창고들 (hero)
@@ -34,8 +34,8 @@ P3 = svg(340, sky(340)
          + mini_shelf(160, 170, 1.3, "#5B9BD5") + label(160, 230, "⟦FeRAM|FeRAM⟧", 13, "var(--ink)", cls="d")
          + mini_shelf(380, 170, 1.3, "#7B3FA0") + label(380, 230, "⟦MRAM|MRAM⟧", 13, "var(--ink)", cls="d")
          + mini_shelf(600, 170, 1.3, "#C9822B") + label(600, 230, "⟦PRAM|PRAM⟧", 13, "var(--ink)", cls="d")
-         + label(380, 30, "⟦차세대 비휘발성 메모리 = 다른 방식으로 꺼져도 기억하는 새 창고들|next-gen NVM: new warehouses that remember off-power, by different tricks⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦통째로 안 지워도 바로바로 바꿔 쓸 수 있어요|swap parts in place without erasing the whole slot⟧", 12, "var(--muted)"))
+         + label(380, 30, "⟦차세대 비휘발성 메모리 = NAND와 다른 방식으로 꺼져도 기억하는 새 창고들|next-gen NVM: new warehouses that remember off-power, by tricks other than NAND's⟧", 13, "var(--ink)", cls="d")
+         + label(380, 320, "⟦상자째 안 지워도 부품을 바로바로 바꿔 쓸 수 있어요|swap parts in place without erasing a whole box⟧", 12, "var(--muted)"))
 
 FAST_I = icon('<path d="M14 50 L34 14 L34 32 L50 14 L30 50 L30 32 Z" fill="var(--accent)"/>')
 DURABLE_I = icon('<circle cx="32" cy="32" r="22" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M22 32 l7 8 l14 -18" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/>')
@@ -49,7 +49,7 @@ P4 = svg(340, sky(340)
                        "⟦카드·계량기 등에 써요|used in cards, meters⟧"), 1.0)
          + queueboard(400, 40, 320, 270, "⟦MRAM — 자기 방식|MRAM — magnetic⟧",
                       ("⟦쓰기 내구성이 매우 높아요|very high write endurance⟧", "⟦속도도 빠른 편이에요|fairly fast too⟧",
-                       "⟦값은 아직 비싸요|still pricier⟧"), 1.0, hl=0))
+                       "⟦값은 아직 NAND보다 비싸요|still pricier than NAND⟧"), 1.0, hl=0))
 
 # 5. PRAM까지 — 쓰임새는 상황에 따라 달라요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
@@ -66,17 +66,17 @@ PAGE = {
     "sub": ("FeRAM·MRAM·PRAM 같은 차세대 비휘발성 메모리를, 지우지 않고도 바로바로 바꿔 쓸 수 있는 새 창고 이야기로 풀어봤어요.",
             "Next-gen non-volatile memory — FeRAM, MRAM, PRAM — told as a story about new warehouses that swap parts in place, no erasing needed."),
     "panels": [
-        {"svg": P1, "alt": ("NAND 창고에서 한 칸을 통째로 비워야 새 부품을 넣을 수 있어 정비사가 번거로워함", "The mechanic finds it fussy that a NAND slot must be emptied whole before new parts fit"),
-         "caption": ("지금 창고는 쓰기 전에 꼭 지워야 해요.", "The current warehouse must be erased before writing."),
+        {"svg": P1, "alt": ("NAND 창고에서 상자째 비워야 새 부품을 넣을 수 있어 정비사가 번거로워함", "The mechanic finds it fussy that a whole NAND box must be cleared before new parts fit"),
+         "caption": ("지금 창고(NAND)는 쓰기 전에 꼭 지워야 해요.", "The current warehouse (NAND) must be erased before writing."),
          "small": ("자주 바꿔야 하는 부품엔 좀 느리고 번거로워요.", "A bit slow and fussy for parts that change often.")},
-        {"svg": P2, "alt": ("정비반장이 더 빠르게 바로 바꿔 쓸 수 있는 창고를 고민함", "The chief mechanic wonders if a faster, swap-in-place warehouse exists"),
-         "caption": ("더 빠르게 바로바로 바꿔 쓸 창고는 없을까요?", "Isn't there a faster, swap-in-place warehouse?"),
+        {"svg": P2, "alt": ("정비반장이 지우지 않고 바로 바꿔 쓸 수 있는 창고를 고민함", "The chief mechanic wonders if a warehouse exists that swaps in place, with no erasing"),
+         "caption": ("지우지 않고 바로바로 바꿔 쓸 창고는 없을까요?", "Isn't there a warehouse that swaps in place, with no erasing?"),
          "small": ("저장 방식 자체가 다른 차세대 창고들이 있어요.", "There are next-gen warehouses with a different storage trick.")},
         {"svg": P3, "hero": True, "alt": ("FeRAM, MRAM, PRAM 세 가지 새 창고가 나란히 서 있음", "Three new warehouses — FeRAM, MRAM, PRAM — stand side by side"),
-         "caption": ("차세대 비휘발성 메모리는 다른 방식으로 꺼져도 기억하는 새 창고들이에요.", "Next-gen NVM is new warehouses that remember off-power, by different tricks."),
-         "small": ("통째로 안 지워도 바로바로 바꿔 쓸 수 있어요.", "You can swap parts in place without erasing the whole slot."),
+         "caption": ("차세대 비휘발성 메모리는 NAND와 다른 방식으로 꺼져도 기억하는 새 창고들이에요.", "Next-gen NVM is new warehouses that remember off-power, by tricks other than NAND's."),
+         "small": ("상자째 안 지워도 부품을 바로바로 바꿔 쓸 수 있어요.", "You can swap parts in place without erasing a whole box."),
          "tricks": (4, [
-             (FAST_I, ("쓰기 속도", "Write speed"), ("지우지 않고 바로 바꿔 빨라요", "swaps in place — no erase needed, so it's fast"), "calm"),
+             (FAST_I, ("쓰기 속도", "Write speed"), ("지우지 않고 바로 바꾸니 NAND보다 빨라요", "swaps in place — no erase, so faster than NAND"), "calm"),
              (DURABLE_I, ("쓰기 내구성", "Write endurance"), ("몇 번이고 다시 써도 오래가요", "holds up through many rewrites")),
              (DENSE_I, ("저장 밀도", "Storage density"), ("한 칸에 얼마나 많이 담기는지예요", "how much fits in one slot")),
              (PRICE_I, ("가격", "Price"), ("아직은 NAND보다 비싼 편이에요", "still pricier than NAND"), "warm"),
@@ -85,7 +85,7 @@ PAGE = {
          "caption": ("FeRAM과 MRAM은 강점이 서로 달라요.", "FeRAM and MRAM each have different strengths."),
          "small": ("FeRAM은 속도, MRAM은 내구성이 강점이에요.", "FeRAM's strength is speed; MRAM's is endurance.")},
         {"svg": P5, "alt": ("왼쪽: PRAM은 속도와 밀도의 균형이 좋음. 오른쪽: NAND는 여전히 가장 싸고 큰 대용량 창고임", "Left: PRAM balances speed and density well. Right: NAND remains the cheapest, biggest bulk warehouse"),
-         "caption": ("PRAM까지 — 쓰임새는 상황에 따라 달라요.", "And PRAM — the right choice depends on the situation."),
+         "caption": ("PRAM은 속도와 밀도의 균형이 좋지만, 맞는 창고는 쓰임새에 따라 달라요.", "PRAM balances speed and density well, but the right warehouse depends on the job."),
          "small": ("완벽한 창고는 없어요, 속도·내구성·용량·가격을 저울질해요.", "No perfect warehouse — it's a trade-off of speed, endurance, size, and price.")},
     ],
     "summary": (("<b>차세대 비휘발성 메모리</b>는 <b>FeRAM·MRAM·PRAM</b>처럼, 플래시(NAND/NOR)와는 <b>다른 저장 방식</b>으로 꺼져도 기억하면서 <b>빠르고 오래 쓸 수 있는</b> 새 메모리들이에요.",

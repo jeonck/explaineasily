@@ -5,7 +5,7 @@ from _world import *
 P1 = svg(300, sky(300)
          + person(140, 150, s=0.8, face=SWEAT + EYES, **EDITOR)
          + manuscript(260, 120, 0.7) + manuscript(340, 160, 0.7) + manuscript(430, 110, 0.7) + manuscript(520, 160, 0.7)
-         + label(380, 230, "⟦손에 잡히는 대로 책을 벌이기 시작했어요|books get started on whatever's at hand⟧", 12, "var(--bad)")
+         + label(380, 230, "⟦편집장이 손에 잡히는 대로 책을 벌이기 시작했어요|the editor starts books on whatever's at hand⟧", 12, "var(--bad)")
          + label(380, 280, "⟦뭐가 먼저 나와야 할지 아무도 몰라요|nobody knows what should come out first⟧", 13, "var(--ink)"))
 
 # 2. 베스트셀러만 좇다가, 출판사 전체 방향을 잃어요
@@ -17,13 +17,13 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 
 # 3. ISP/ISMP = 출판 로드맵을 그리는 사람 (hero)
 P3 = svg(340, sky(340)
-         + styleguide(60, 30, 280, 250, "⟦출판 로드맵|PUBLISHING ROADMAP⟧",
+         + styleguide(60, 50, 280, 230, "⟦출판 로드맵|PUBLISHING ROADMAP⟧",
                       ("⟦1년차 — 그림책 시리즈|year 1 — picture-book series⟧",
                        "⟦2년차 — 청소년 소설|year 2 — YA novels⟧",
                        "⟦3년차 — 해외 번역본|year 3 — translated editions⟧"), 1.0)
          + person(500, 150, s=0.9, face=EYES, **EDITOR)
          + label(380, 30, "⟦ISP/ISMP = 무엇을 먼저, 어떤 순서로 낼지 큰 그림부터 그리는 일|ISP/ISMP = drawing the big picture of what to publish, and in what order⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦감리(출간 전 점검)보다 훨씬 앞선, 계획 그 자체예요|it comes long before audit — it's the plan itself⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦ISP/ISMP는 감리(출간 전 점검)보다 훨씬 앞선, 계획 그 자체예요|ISP/ISMP comes long before audit (the pre-publication check) — it's the plan itself⟧", 12, "var(--muted)"))
 
 # 4. 로드맵을 그릴 때 보는 것들
 P4 = svg(320, sky(320)
@@ -37,9 +37,9 @@ P4 = svg(320, sky(320)
 
 # 5. 로드맵이 책을 대신 써주진 않아요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **EDITOR) + label(190, 258, "⟦어떤 책을 언제 낼지는 정해줘요|it decides which book comes out when⟧", 11, "var(--ink)")
+         + person(190, 150, s=0.8, face=EYES, **EDITOR) + label(190, 258, "⟦로드맵은 어떤 책을 언제 낼지 정해줘요|the roadmap decides which book comes out when⟧", 11, "var(--ink)")
          + person(570, 150, s=0.8, face=SMILE, **WRITER) + manuscript(652, 205, 0.5) + label(570, 272, "⟦써야 하는 건 여전히 작가예요|but the writer still has to write it⟧", 11, "var(--ink)")
-         + label(380, 294, "⟦ISP/ISMP는 방향을 정하는 지도고, 원고 한 줄 한 줄은 아니에요|ISP/ISMP is the map, not the manuscript itself⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 294, "⟦ISP/ISMP는 방향을 정하는 지도고, 원고 한 줄 한 줄은 아니에요|ISP/ISMP is the map that sets direction, not the manuscript itself⟧", 12, "var(--ink)", cls="d"))
 
 MAP_I = icon('<path d="M12 14 l16 -6 16 6 8 -4 v38 l-8 4 -16 -6 -16 6 -8 -4 z" fill="#FFF8E7" stroke="#C9822B" stroke-width="3"/><path d="M28 8 v38 M44 14 v38" stroke="#C9822B" stroke-width="2"/>')
 READERS_I = icon('<circle cx="24" cy="26" r="9" fill="var(--accent)"/><circle cx="42" cy="26" r="9" fill="var(--accent)"/><path d="M10 52 q14 -16 28 0 M24 52 q14 -16 28 0" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round"/>')
@@ -54,14 +54,14 @@ PAGE = {
             "ISP (information strategy planning) and ISMP (information system master plan), told as a story about mapping out what a publishing house will put out ahead of time."),
     "panels": [
         {"svg": P1, "alt": ("편집장이 어떤 책부터 낼지 몰라 진땀을 흘리며 여러 원고를 늘어놓음", "An editor sweats, surrounded by scattered manuscripts with no idea what to publish first"),
-         "caption": ("손에 잡히는 대로 책을 벌이기 시작했어요.", "Books get started on whatever's at hand."),
+         "caption": ("편집장이 손에 잡히는 대로 책을 벌이기 시작했어요.", "The editor starts books on whatever's at hand."),
          "small": ("뭐가 먼저 나와야 할지 아무도 몰라요.", "Nobody knows what should come out first.")},
         {"svg": P2, "alt": ("편집장이 요즘 잘 팔리는 장르만 좇자고 말함", "The editor says to chase whichever genre is selling right now"),
          "caption": ("베스트셀러만 좇다가, 출판사 전체 방향을 잃어요.", "Chasing only bestsellers loses the house's overall direction."),
          "small": ("유행만 따라가면, 출판사의 진짜 색깔은 안 보여요.", "Chasing trends alone loses the house's own identity.")},
         {"svg": P3, "hero": True, "alt": ("편집장이 출판 로드맵 안내판 앞에 서 있음: 1년차 그림책, 2년차 청소년 소설, 3년차 번역본", "An editor stands by a publishing-roadmap board: year 1 picture books, year 2 YA novels, year 3 translations"),
          "caption": ("ISP/ISMP는 무엇을 먼저, 어떤 순서로 낼지 큰 그림부터 그리는 일이에요.", "ISP/ISMP draws the big picture of what to publish, and in what order."),
-         "small": ("감리보다 훨씬 앞선, 계획 그 자체예요.", "It comes long before audit — it's the plan itself."),
+         "small": ("ISP/ISMP는 감리보다 훨씬 앞선, 계획 그 자체예요.", "ISP/ISMP comes long before audit — it's the plan itself."),
          "tricks": (4, [
              (MAP_I, ("큰 그림 먼저 그리기", "Draw the big picture first"), ("몇 년치 출판 방향", "years of publishing direction ahead"), "calm"),
              (READERS_I, ("독자층 살피기", "Study the readership"), ("누구에게 팔 것인가", "who we're selling to")),
@@ -73,7 +73,7 @@ PAGE = {
          "small": ("ISP는 출판사 전체, ISMP는 그 로드맵을 더 잘게 쪼갠 실행 계획이에요.", "ISP covers the whole house; ISMP breaks that roadmap into a finer execution plan.")},
         {"svg": P5, "alt": ("왼쪽: 편집장이 어떤 책을 언제 낼지 정함. 오른쪽: 결국 쓰는 건 작가", "Left: the editor decides which book comes out when. Right: the writer still has to write it"),
          "caption": ("로드맵이 책을 대신 써주진 않아요.", "The roadmap doesn't write the book for you."),
-         "small": ("방향을 정하는 지도고, 원고 한 줄 한 줄은 아니에요.", "It's the map, not the manuscript itself.")},
+         "small": ("로드맵은 방향을 정하는 지도이고, 원고를 대신 쓰진 않아요.", "The roadmap is a map that sets direction, not the manuscript itself.")},
     ],
     "summary": (("<b>ISP/ISMP</b> = 출판사가 <b>무엇을, 어떤 순서로</b> 낼지 몇 년 앞서 그려두는 <b>큰 그림 로드맵</b>.",
                  "<b>ISP/ISMP</b> = a <b>big-picture roadmap</b> drawn years ahead, deciding <b>what</b> to publish and <b>in what order</b>."),

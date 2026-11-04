@@ -38,8 +38,8 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 # 3. 해시 알고리즘 = 번호를 계산해 바로 칸을 짚는 규칙 (hero)
 P3 = svg(340, sky(340)
          + bins(80, 160, 5, hl=4)
-         + wrench(394, 120, 1.0, color="var(--good)", num=14)
-         + label(394, 100, "⟦14 % 5 = 4|14 mod 5 = 4⟧", 13, "var(--accent)", cls="d")
+         + wrench(427, 120, 1.0, color="var(--good)", num=14)
+         + label(427, 76, "⟦14를 5로 나눈 나머지 = 4|14 mod 5 = 4⟧", 13, "var(--accent)", cls="d")
          + person(560, 170, s=0.85, face=SMILE, **MECH2)
          + label(380, 30, "⟦해시 알고리즘 = 번호를 계산해 바로 칸을 짚는 규칙|hash algorithm: compute a number, point straight at the slot⟧", 13, "var(--ink)", cls="d")
          + label(380, 320, "⟦뒤질 필요 없이 계산 한 번으로 칸을 알아요|one calculation tells you the slot — no searching⟧", 12, "var(--muted)"))
@@ -50,11 +50,11 @@ COLLIDE_I = icon('<circle cx="24" cy="32" r="10" fill="var(--accent)"/><circle c
 CHAIN_I = icon('<rect x="8" y="24" width="18" height="16" rx="3" fill="var(--accent)"/><path d="M26 32 h10" stroke="var(--ink)" stroke-width="3"/><circle cx="44" cy="32" r="9" fill="var(--line)"/>')
 
 # 4. 두 공구가 같은 칸을 가리킬 때(충돌) 처리법
-P4 = svg(320, sky(320)
-         + bins(100, 60, 5, hl=2)
-         + wrench(230, 20, 0.8, color="var(--accent)", num=7) + wrench(280, 20, 0.8, color="var(--bad)", num=22)
-         + label(250, 0, "⟦7 % 5 = 2, 22 % 5 = 2 — 같은 칸!|7 mod 5 = 2, 22 mod 5 = 2 — same slot!⟧", 12, "var(--bad)", cls="d")
-         + queueboard(60, 160, 640, 130, "⟦충돌 처리법|handling the collision⟧",
+P4 = svg(350, sky(350)
+         + bins(100, 90, 5, hl=2)
+         + wrench(265, 50, 0.8, color="var(--accent)", num=7) + wrench(315, 50, 0.8, color="var(--bad)", num=22)
+         + label(290, 18, "⟦7과 22는 5로 나눈 나머지가 둘 다 2 — 같은 칸!|7 mod 5 = 2, 22 mod 5 = 2 — same slot!⟧", 12, "var(--bad)", cls="d")
+         + queueboard(60, 190, 640, 130, "⟦충돌 처리법|handling the collision⟧",
                       ("⟦체이닝 — 같은 칸에 줄줄이 매달아 두기|chaining — hang them one after another in the slot⟧",
                        "⟦오픈 어드레싱 — 옆 빈 칸을 찾아 넣기|open addressing — slide into the next empty slot⟧"), 1.0))
 
@@ -64,7 +64,7 @@ P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="
          + label(190, 255, "⟦칸이 넉넉하면 거의 계산 한 번으로 끝나요|with enough slots, one calculation nearly always suffices⟧", 11, "var(--ink)")
          + person(560, 130, s=0.8, face=FROWN, **CHIEF)
          + label(560, 255, "⟦공구함이 꽉 차면 충돌이 늘어 다시 뒤지게 돼요|a full box means more collisions and more searching⟧", 11, "var(--ink)")
-         + label(380, 300, "⟦빠르려면 칸 수를 공구 수보다 넉넉히 둬야 해요|staying fast means keeping more slots than tools⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 300, "⟦빨리 찾으려면 칸 수를 공구 수보다 넉넉히 둬야 해요|fast lookup means keeping more slots than tools⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "hashalgo", "order": 20,
@@ -83,17 +83,17 @@ PAGE = {
          "caption": ("해시 알고리즘은 번호를 계산해 바로 칸을 짚는 규칙이에요.", "A hash algorithm computes a number to point straight at the slot."),
          "small": ("뒤질 필요 없이 계산 한 번으로 칸을 알아요.", "One calculation tells you the slot — no searching."),
          "tricks": (4, [
-             (CALC_I, ("해시 함수로 계산", "Compute with a hash function"), ("번호를 규칙대로 계산해요", "computes a number by a fixed rule"), "calm"),
+             (CALC_I, ("해시 함수로 계산", "Compute with a hash function"), ("공구 번호를 규칙대로 계산해요", "computes the tool's number by a fixed rule"), "calm"),
              (SLOT_I, ("칸을 바로 짚기", "Point straight at a slot"), ("계산값이 곧 칸 번호예요", "the result is the slot number itself")),
              (COLLIDE_I, ("가끔 겹침(충돌)", "Occasional collisions"), ("두 공구가 같은 칸을 가리킬 수 있어요", "two tools can point to the same slot"), "warm"),
              (CHAIN_I, ("겹치면 줄줄이 매달기", "Chain them when collided"), ("같은 칸에 여러 개를 매달아요", "hangs several items in one slot")),
          ])},
         {"svg": P4, "alt": ("렌치 7과 22가 둘 다 같은 칸(2번)을 계산해 충돌이 생기고, 체이닝과 오픈 어드레싱 두 해결법을 보여줌", "Wrenches 7 and 22 both compute slot 2, a collision — shown with two fixes: chaining and open addressing"),
          "caption": ("두 공구가 같은 칸을 가리킬 수 있어요(충돌).", "Two tools can point to the same slot — a collision."),
-         "small": ("체이닝으로 줄줄이 매달거나, 옆 빈 칸을 찾아 넣어요.", "Handle it by chaining them together, or sliding into the next empty slot.")},
+         "small": ("겹친 공구를 같은 칸에 줄줄이 매달거나(체이닝), 옆 빈 칸을 찾아 넣어요.", "Chain the colliding tools in one slot, or slide one into the next empty slot.")},
         {"svg": P5, "alt": ("왼쪽: 칸이 넉넉하면 계산 한 번으로 끝남. 오른쪽: 칸이 꽉 차면 충돌이 늘어 다시 뒤지게 됨", "Left: with enough slots, one calculation suffices. Right: a full box means more collisions and searching"),
-         "caption": ("칸이 꽉 차면 다시 느려져요.", "A full toolbox slows things back down."),
-         "small": ("빠르려면 칸 수를 공구 수보다 넉넉히 둬야 해요.", "Staying fast means keeping more slots than tools.")},
+         "caption": ("칸이 꽉 차면 공구 찾기가 다시 느려져요.", "A full toolbox slows tool lookup back down."),
+         "small": ("빨리 찾으려면 칸 수를 공구 수보다 넉넉히 둬야 해요.", "Fast lookup means keeping more slots than tools.")},
     ],
     "summary": (("<b>해시 알고리즘</b>은 데이터로 <b>번호를 계산</b>해 저장할 <b>칸(버킷)을 바로 짚는</b> 규칙으로, 거의 계산 한 번에 찾고 저장할 수 있게 해줘요.",
                  "A <b>hash algorithm</b> <b>computes a number</b> from the data to <b>point straight at a storage slot (bucket)</b>, so lookup and storage take roughly one calculation."),
@@ -105,7 +105,7 @@ PAGE = {
         ("버킷(슬롯)", "Bucket (Slot)", ("계산된 번호가 가리키는 칸.", "The slot the computed number points to."), ("해시값이 바로 칸 번호가 돼요.", "The hash value becomes the slot number.")),
         ("충돌", "Collision", ("서로 다른 공구가 같은 칸을 가리키는 것.", "Different tools pointing to the same slot."), ("체이닝이나 오픈 어드레싱으로 풀어요.", "Resolved with chaining or open addressing.")),
         ("체이닝", "Chaining", ("같은 칸에 줄줄이 매달아 두는 방식.", "Hanging multiple items one after another in the slot."), ("충돌한 공구를 리스트로 연결해요.", "Links the colliding items in a list.")),
-        ("오픈 어드레싱", "Open Addressing", ("옆 빈 칸을 찾아 넣는 방식.", "Sliding into the next empty slot."), ("칸이 꽉 차면 찾기 어려워져요.", "Gets harder to find a spot as the table fills up.")),
+        ("오픈 어드레싱", "Open Addressing", ("옆 빈 칸을 찾아 넣는 방식.", "Sliding into the next empty slot."), ("칸이 꽉 찰수록 빈 칸 찾기가 어려워져요.", "Gets harder to find an empty slot as the table fills up.")),
         ("적재율", "Load Factor", ("칸 수 대비 들어있는 공구 비율.", "The ratio of tools stored to the number of slots."), ("너무 높아지면 충돌이 늘어요.", "Too high, and collisions rise.")),
         ("선형 탐색", "Linear Search", ("처음부터 하나씩 다 뒤지는 방식.", "Checking items one by one from the start."), ("해시 테이블보다 훨씬 느려요(O(n)).", "Much slower than a hash table — O(n).")),
     ],

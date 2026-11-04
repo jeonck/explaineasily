@@ -24,7 +24,7 @@ P3 = svg(340, sky(340)
          + '<rect x="510" y="150" width="60" height="22" rx="4" fill="var(--good)"/>' + label(540, 166, "⟦:443|:443⟧", 11, "#fff", cls="d")
          + '<path d="M280 200 Q380 150 500 200" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 5" fill="none"/>'
          + label(380, 30, "⟦소켓 = 집주소(IP)+호실번호(포트)로 만든, 이 대화 전용 구멍|a socket = a hole made from a house address (IP) plus a room number (port), dedicated to this one conversation⟧", 13, "var(--ink)", cls="d")
-         + label(380, 322, "⟦구멍 하나가 한 쌍의 연결을 통째로 책임져요|one hole handles exactly one pairing, start to finish⟧", 12, "var(--muted)"))
+         + label(380, 322, "⟦소켓 구멍 하나가 한 쌍의 대화(연결)를 처음부터 끝까지 맡아요|one socket hole carries one pairing (connection) from start to finish⟧", 12, "var(--muted)"))
 
 # 4. 소켓 구조도
 P4 = svg(300, sky(300, ground=False)
@@ -33,9 +33,9 @@ P4 = svg(300, sky(300, ground=False)
 
 # 5. 소켓은 구멍일 뿐, 등기냐 일반이냐는 또 다른 선택이에요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + envelope(190, 160, 0.7, registered=True) + label(190, 240, "⟦같은 구멍으로 등기봉투(TCP)도 보내고|the same hole can send a registered envelope (TCP)⟧", 11, "var(--ink)")
-         + envelope(570, 160, 0.7) + label(570, 240, "⟦같은 구멍으로 일반봉투(UDP)도 보내요|or a plain one (UDP), through that same hole⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦소켓은 구멍일 뿐, 어떤 봉투를 쓸지는 다른 선택이에요|a socket is just the hole — which envelope to use is a separate choice⟧", 12, "var(--ink)", cls="d"))
+         + envelope(190, 160, 0.7, registered=True) + label(190, 240, "⟦소켓을 열 때 등기봉투(TCP)용을 고르거나|open a socket for registered envelopes (TCP)⟧", 11, "var(--ink)")
+         + envelope(570, 160, 0.7) + label(570, 240, "⟦일반봉투(UDP)용을 골라요|or open one for plain envelopes (UDP)⟧", 11, "var(--ink)")
+         + label(380, 282, "⟦소켓은 구멍이고, 어떤 봉투를 쓸지는 구멍을 만들 때 따로 골라요|a socket is the hole — which envelope it uses is chosen when the hole is made⟧", 12, "var(--ink)", cls="d"))
 
 ADDR_I = icon('<path d="M32 10 L54 26 V54 H10 V26 Z" fill="var(--panel)" stroke="var(--ink)" stroke-width="3"/><rect x="24" y="36" width="16" height="18" fill="var(--accent)"/>')
 ROOM_I = icon('<rect x="14" y="14" width="36" height="36" rx="4" fill="var(--panel)" stroke="var(--ink)" stroke-width="2"/>' + label(32, 38, "80", 16, "#142033", cls="d"))
@@ -53,11 +53,11 @@ PAGE = {
          "caption": ("한 집에 여러 사람이 살아요.", "Several people share one house."),
          "small": ("집 주소만으론 몇 호에 사는 누구인지 구분이 안 돼요.", "The house address alone can't tell apart who's inside.")},
         {"svg": P2, "alt": ("한 우체국에서 여러 편지가 동시에 오가며 뒤섞임", "Several letters at one post office cross paths and get tangled"),
-         "caption": ("여러 프로그램이 동시에 통신하면 뒤섞여요.", "Several programs talking at once get tangled."),
-         "small": ("주소만으론 어느 대화가 어느 것인지 알 수 없어요.", "The address alone can't tell which conversation is which.")},
+         "caption": ("여러 프로그램이 동시에 통신하면 편지가 뒤섞여요.", "Several programs talking at once get their letters tangled."),
+         "small": ("집 주소만으론 어느 편지가 어느 프로그램의 대화인지 알 수 없어요.", "The house address alone can't tell which letter belongs to which program's conversation.")},
         {"svg": P3, "hero": True, "alt": ("두 우체국이 각각 IP와 포트 번호 꼬리표를 달고 점선으로 연결됨", "Two post offices, each tagged with an IP and port number, linked by a dashed line"),
          "caption": ("소켓은 집주소와 호실번호로 만든 전용 구멍이에요.", "A socket is a dedicated hole made from an address and a room number."),
-         "small": ("구멍 하나가 한 쌍의 연결을 통째로 책임져요.", "One hole handles exactly one pairing, start to finish."),
+         "small": ("소켓 구멍 하나가 한 쌍의 대화(연결)를 처음부터 끝까지 맡아요.", "One socket hole carries one pairing (connection) from start to finish."),
          "tricks": (4, [
              (ADDR_I, ("IP 주소", "IP address"), ("어느 집인지 알려줘요", "says which house it is"), "calm"),
              (ROOM_I, ("포트 번호", "Port number"), ("몇 호실인지 알려줘요", "says which room number"), ),
@@ -67,12 +67,12 @@ PAGE = {
         {"svg": P4, "alt": ("보내는 쪽 소켓(IP와 포트)과 받는 쪽 소켓(IP와 포트)을 나란히 적은 안내판", "A board listing the sender's socket (IP, port) and the receiver's socket (IP, port) side by side"),
          "caption": ("소켓은 양쪽 끝에 하나씩 있어요.", "A socket sits at each end."),
          "small": ("보내는 쪽 IP+포트, 받는 쪽 IP+포트가 한 쌍으로 연결을 이뤄요.", "The sender's IP+port and the receiver's IP+port together form the connection.")},
-        {"svg": P5, "alt": ("같은 소켓 구멍으로 등기봉투(TCP)도, 일반봉투(UDP)도 보낼 수 있음", "The same socket hole can send either a registered envelope (TCP) or a plain one (UDP)"),
-         "caption": ("소켓은 구멍일 뿐, 봉투 선택은 따로예요.", "A socket is just the hole — the envelope choice is separate."),
-         "small": ("같은 구멍으로 등기봉투(TCP)도, 일반봉투(UDP)도 보낼 수 있어요.", "The same hole can send a registered envelope (TCP) or a plain one (UDP).")},
+        {"svg": P5, "alt": ("소켓 구멍은 등기봉투(TCP)용이나 일반봉투(UDP)용으로 만들 수 있음", "A socket hole can be made for registered envelopes (TCP) or plain ones (UDP)"),
+         "caption": ("소켓은 구멍이고, 봉투 종류는 만들 때 따로 골라요.", "A socket is the hole — the envelope type is chosen when it's made."),
+         "small": ("소켓을 열 때 등기봉투(TCP)용으로 할지 일반봉투(UDP)용으로 할지 정해요.", "When a socket is opened, it's set up for registered envelopes (TCP) or plain ones (UDP).")},
     ],
     "summary": (("<b>소켓</b>은 <b>IP 주소(어느 집)와 포트 번호(몇 호실)</b>로 만든, <b>한 쌍의 대화만을 책임지는 전용 우편함 구멍</b>이에요.",
-                 "A <b>socket</b> is a <b>dedicated mailbox hole</b> made from an <b>IP address (which house) and a port number (which room)</b>, responsible for exactly one pairing of talk."),
+                 "A <b>socket</b> is a <b>dedicated mailbox hole</b> made from an <b>IP address (which house) and a port number (which room)</b>, responsible for exactly one conversation."),
                 ("소켓은 운영체제가 네트워크 통신을 위해 제공하는 종단점(endpoint)으로, IP 주소+포트 번호의 조합(소켓 주소)으로 식별돼요. 프로그램은 소켓을 열어(bind/connect) 데이터를 읽고 쓰며, TCP 소켓이면 연결 지향, UDP 소켓이면 비연결형으로 동작해요. 한 호스트 안의 여러 프로그램이 같은 IP를 쓰더라도 포트 번호가 다르면 서로 다른 소켓으로 구분돼요.",
                  "A socket is the endpoint the operating system provides for network communication, identified by the combination of an IP address and a port number (the socket address). A program opens a socket (bind/connect) to read and write data — a TCP socket behaves connection-oriented, a UDP socket connectionless. Multiple programs on the same host sharing one IP are still told apart as long as their port numbers differ.")),
     "glossary": [

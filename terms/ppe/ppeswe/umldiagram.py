@@ -5,19 +5,19 @@ from _world import *
 P1 = svg(300, sky(300)
          + person(140, 150, s=0.8, face=SWEAT + EYES, **WRITER)
          + manuscript(260, 130, 0.8, marks=3) + manuscript(380, 150, 0.8, marks=2) + manuscript(480, 120, 0.8, marks=1)
-         + label(380, 230, "⟦설계 지도 없이 바로 쓰다가 등장인물 관계가 꼬였어요|writing straight in without a map, the characters' relationships got tangled⟧", 12, "var(--bad)")
-         + label(380, 280, "⟦누가 누구의 형제인지 뒤늦게 헷갈렸어요|it got confusing, too late, who was whose sibling⟧", 13, "var(--ink)"))
+         + label(380, 230, "⟦설계 지도 없이 바로 쓰다가 등장인물 관계가 꼬였어요|writing without a map, the characters' relationships got tangled⟧", 12, "var(--bad)")
+         + label(380, 280, "⟦작가도 누가 누구의 형제인지 뒤늦게 헷갈렸어요|even the writer lost track, too late, of who was whose sibling⟧", 13, "var(--ink)"))
 
 # 2. 그냥 쓰라는 말, 그림 없인 설명 못 한다는 반박
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(200, 150, s=0.85, face=SMILE, **EDITOR)
-         + bubble(140, 80, 220, 36, "⟦그림 그릴 시간에 그냥 쓰세요|spend that drawing time just writing instead⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + person(560, 150, s=0.7, face=FROWN, **WRITER) + bubble(460, 80, 230, 36, "⟦그림 없인 이 구조를 설명 못 해요|without a diagram I can't explain this structure⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + bubble(140, 80, 220, 36, "⟦그림 그릴 시간에 그냥 쓰세요|spend that drawing time just writing⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + person(560, 150, s=0.7, face=FROWN, **WRITER) + bubble(460, 80, 230, 36, "⟦그림 없인 이 구조를 설명 못 해요|no diagram, no way to explain this structure⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦말로만 설명하면, 다른 사람은 같은 그림을 못 떠올려요|explained only in words, no one else pictures the same thing⟧", 12, "var(--ink)"))
 
 # 3. UML 다이어그램 = 쓰기 전에 그려보는 설계 지도 (hero)
 P3 = svg(340, sky(340)
-         + styleguide(60, 30, 280, 250, "⟦쓰기 전 설계 지도|THE MAP DRAWN BEFORE WRITING⟧",
+         + styleguide(60, 44, 280, 236, "⟦쓰기 전 설계 지도|THE MAP DRAWN BEFORE WRITING⟧",
                       ("⟦관계도 — 등장인물들 사이 관계|relationship map — how characters relate⟧",
                        "⟦순서도 — 사건이 일어나는 차례|sequence — the order events happen in⟧",
                        "⟦할 일 목록 — 독자가 할 수 있는 일|use-case list — what readers can do⟧"), 1.0)
@@ -25,9 +25,9 @@ P3 = svg(340, sky(340)
          + label(380, 30, "⟦UML 다이어그램 = 쓰기 전에 구조를 그림으로 미리 그려보는 설계 지도|UML diagrams = a design map that draws out the structure in pictures, before writing begins⟧", 12, "var(--ink)", cls="d")
          + label(380, 320, "⟦약속된 그림 기호로, 말로 설명하기 어려운 구조를 또렷하게 보여줘요|using agreed-upon symbols to show clearly a structure that's hard to explain in words⟧", 12, "var(--muted)"))
 
-# 4. 자주 쓰는 UML 세 가지
+# 4. 자주 쓰는 UML 네 가지
 P4 = svg(320, sky(320)
-         + styleguide(60, 40, 320, 240, "⟦자주 쓰는 UML 세 가지|THREE COMMON UML DIAGRAMS⟧",
+         + styleguide(60, 40, 320, 240, "⟦자주 쓰는 UML 네 가지|FOUR COMMON UML DIAGRAMS⟧",
                       ("⟦클래스 다이어그램 — 등장인물 관계도|class diagram — character relationship map⟧",
                        "⟦시퀀스 다이어그램 — 사건이 일어나는 순서|sequence diagram — the order events happen in⟧",
                        "⟦유스케이스 다이어그램 — 독자가 할 수 있는 일|use-case diagram — what readers can do⟧",
@@ -38,8 +38,8 @@ P4 = svg(320, sky(320)
 
 # 5. 지도를 그렸다고 책이 저절로 써지진 않아요
 P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
-         + person(190, 130, s=0.8, face=EYES, **WRITER) + label(190, 260, "⟦구조를 또렷하게 보여줘요|it shows the structure clearly⟧", 11, "var(--ink)")
-         + person(570, 110, s=0.8, face=SMILE, **EDITOR) + manuscript(570, 200, 0.6) + label(570, 260, "⟦그래도 실제로 쓰는 건 작가 몫이에요|but actually writing it is still up to the writer⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.8, face=EYES, **WRITER) + label(190, 260, "⟦UML은 구조를 또렷하게 보여줘요|UML shows the structure clearly⟧", 11, "var(--ink)")
+         + person(570, 110, s=0.8, face=SMILE, **EDITOR) + manuscript(570, 200, 0.6) + label(570, 260, "⟦그래도 실제로 쓰는 건 작가 몫이에요|but actually writing the book is still up to the writer⟧", 11, "var(--ink)")
          + label(380, 315, "⟦UML은 쓰기 전 지도일 뿐, 지도를 그렸다고 책이 저절로 써지진 않아요|UML is just the map drawn before writing — drawing it doesn't write the book for you⟧", 12, "var(--ink)", cls="d"))
 
 RELATION_I = icon('<rect x="8" y="14" width="18" height="16" rx="2" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><rect x="38" y="34" width="18" height="16" rx="2" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2"/><path d="M26 22 l12 20" stroke="var(--ink)" stroke-width="2"/>')
@@ -56,9 +56,9 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("작가가 설계 지도 없이 바로 써서, 등장인물 관계가 꼬여버린 원고들", "A writer writes straight in without a design map, and the manuscripts end up with tangled character relationships"),
          "caption": ("설계 지도 없이 바로 쓰다가 등장인물 관계가 꼬였어요.", "Writing straight in without a map, the characters' relationships got tangled."),
-         "small": ("누가 누구의 형제인지 뒤늦게 헷갈렸어요.", "It got confusing, too late, who was whose sibling.")},
+         "small": ("작가도 누가 누구의 형제인지 뒤늦게 헷갈렸어요.", "Even the writer lost track, too late, of who was whose sibling.")},
         {"svg": P2, "alt": ("편집장은 그림 그릴 시간에 그냥 쓰라 하고, 작가는 그림 없인 설명 못 한다고 반박함", "The editor says to spend that drawing time writing instead; the writer says a diagram is needed to explain it"),
-         "caption": ("그냥 쓰라는 말, 그림 없인 설명 못 한다는 반박.", "A push to just write, met with the fact that a diagram is needed to explain it."),
+         "caption": ("편집장은 그림 그릴 시간에 쓰라 하고, 작가는 그림 없인 구조를 설명 못 한다고 반박해요.", "The editor says to just write; the writer objects that the structure can't be explained without a diagram."),
          "small": ("말로만 설명하면, 다른 사람은 같은 그림을 못 떠올려요.", "Explained only in words, no one else pictures the same thing.")},
         {"svg": P3, "hero": True, "alt": ("작가가 관계도·순서도·할 일 목록이 적힌 설계 지도 안내판 앞에 섬", "A writer stands by a design-map board listing relationship map, sequence, and use-case list"),
          "caption": ("UML 다이어그램은 쓰기 전에 그려보는 설계 지도예요.", "UML diagrams are the design map drawn before writing."),
@@ -67,12 +67,12 @@ PAGE = {
              (RELATION_I, ("관계 그려보기", "Draw out the relationships"), ("등장인물들 사이를 선으로 이어요", "connecting characters with lines"), "calm"),
              (SEQUENCE_I, ("순서 그려보기", "Draw out the sequence"), ("사건이 일어나는 차례를 보여요", "showing the order events happen in")),
              (USECASE_I, ("할 일 목록 그려보기", "Draw out the use cases"), ("독자가 할 수 있는 일을 늘어놔요", "laying out what readers can do"), "warm"),
-             (STATE_I, ("마음 변화 그려보기", "Draw out the state changes"), ("바뀌는 과정을 보여요", "showing how it changes over time")),
+             (STATE_I, ("마음 변화 그려보기", "Draw out the state changes"), ("등장인물 마음이 바뀌는 과정을 보여요", "showing how a character's state changes over time")),
          ])},
-        {"svg": P4, "alt": ("UML 세 가지 비교표: 클래스·시퀀스·유스케이스·상태 다이어그램 네 항목", "A comparison board of UML types: class, sequence, use-case, state diagrams"),
-         "caption": ("자주 쓰는 UML에는 이런 종류가 있어요.", "These are the commonly used kinds of UML diagrams."),
+        {"svg": P4, "alt": ("자주 쓰는 UML 네 가지 비교표: 클래스·시퀀스·유스케이스·상태 다이어그램", "A comparison board of four common UML types: class, sequence, use-case, state diagrams"),
+         "caption": ("자주 쓰는 UML에는 클래스·시퀀스·유스케이스·상태 다이어그램이 있어요.", "Commonly used UML diagrams are the class, sequence, use-case, and state diagrams."),
          "small": ("그림마다 보여주려는 게 달라요, 하나로 다 담진 않아요.", "Each diagram shows something different — no single one covers it all.")},
-        {"svg": P5, "alt": ("왼쪽: 작가가 구조를 또렷하게 보여준다고 말함. 오른쪽: 편집장이 그래도 쓰는 건 작가 몫이라고 말함", "Left: the writer says it shows the structure clearly. Right: the editor says writing it is still up to the writer"),
+        {"svg": P5, "alt": ("왼쪽: 작가가 구조를 또렷하게 보여준다고 말함. 오른쪽: 편집장이 그래도 쓰는 건 작가 몫이라고 말함", "Left: the writer says UML shows the structure clearly. Right: the editor says writing the book is still up to the writer"),
          "caption": ("지도를 그렸다고 책이 저절로 써지진 않아요.", "Drawing the map doesn't write the book for you."),
          "small": ("UML은 쓰기 전 지도일 뿐이에요.", "UML is just the map drawn before writing.")},
     ],

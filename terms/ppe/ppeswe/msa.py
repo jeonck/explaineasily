@@ -12,14 +12,14 @@ P1 = svg(300, sky(300)
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(200, 150, s=0.85, face=SMILE, **EDITOR)
          + bubble(140, 80, 220, 36, "⟦그냥 더 빨리 써서 맞추면 되잖아요|just write faster to make the deadline⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + person(560, 150, s=0.7, face=FROWN, **WRITER) + bubble(460, 80, 230, 36, "⟦전부 한 책에 묶여서 따로 낼 수가 없어요|it's all bound into one book — we can't release any part separately⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 280, "⟦하나로 묶여 있으면, 일부만 먼저 낼 방법이 없어요|when everything's bound together, there's no way to release just part of it early⟧", 12, "var(--ink)"))
+         + person(560, 150, s=0.7, face=FROWN, **WRITER) + bubble(445, 80, 260, 36, "⟦전부 한 책에 묶여서 따로 낼 수가 없어요|it's all one bound book — no part can ship alone⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + label(380, 280, "⟦책이 하나로 묶여 있으면, 일부만 먼저 낼 방법이 없어요|when the whole book is bound together, there's no way to release just part of it early⟧", 12, "var(--ink)"))
 
 # 3. 마이크로서비스 아키텍처 = 두꺼운 책을 작은 소책자들로 쪼개기 (hero)
 P3 = svg(340, sky(340)
-         + person(230, 130, s=0.65, face=SMILE, **WRITER) + printplate(230, 245, 0.5, label_text="⟦동물편|animals⟧")
-         + person(380, 130, s=0.65, face=SMILE, **PROOFER) + printplate(380, 245, 0.5, label_text="⟦역사편|history⟧")
-         + person(530, 130, s=0.65, face=SMILE, **PRINTER) + printplate(530, 245, 0.5, label_text="⟦과학편|science⟧")
+         + person(230, 130, s=0.65, face=SMILE, **WRITER) + printplate(230, 245, 0.5) + label(230, 274, "⟦동물편|animals⟧", 11, "var(--muted)")
+         + person(380, 130, s=0.65, face=SMILE, **PROOFER) + printplate(380, 245, 0.5) + label(380, 274, "⟦역사편|history⟧", 11, "var(--muted)")
+         + person(530, 130, s=0.65, face=SMILE, **PRINTER) + printplate(530, 245, 0.5) + label(530, 274, "⟦과학편|science⟧", 11, "var(--muted)")
          + label(380, 30, "⟦마이크로서비스 아키텍처 = 두꺼운 책 한 권을 작은 소책자들로 쪼개, 각자 따로 쓰고 따로 찍는 구조|microservices architecture = splitting one thick book into small standalone volumes, each written and printed independently⟧", 12, "var(--ink)", cls="d")
          + label(380, 320, "⟦소책자끼리는 목차로 서로를 가리킬 뿐, 내용을 안 섞어요|the volumes only point to each other through a shared index — they never mix content⟧", 12, "var(--muted)"))
 
@@ -29,14 +29,14 @@ P4 = svg(320, sky(320)
                       ("⟦독립 출간 — 한 편만 먼저 낼 수 있어요|independent release — one volume can ship alone⟧",
                        "⟦독립 팀 — 편마다 전담 팀이 따로 있어요|independent teams — each volume has its own team⟧",
                        "⟦목차로 연결 — 차례로만 서로 참조해요|connected by index — refers via table of contents only⟧",
-                       "⟦분량도 따로 — 잘 팔리는 편만 더 찍어요|sized independently — a popular volume alone gets reprinted⟧"), 1.0)
+                       "⟦분량도 따로 — 잘 팔리는 편만 더 찍어요|separate sizing — a popular volume alone gets reprinted⟧"), 1.0)
          + person(560, 150, s=0.75, face=EYES, **EDITOR)
-         + label(560, 250, "⟦소책자 수만큼 조율할 목차도 늘어나요|the more volumes, the more index-coordination there is⟧", 11, "var(--muted)")
-         + label(380, 300, "⟦작은 출판사엔 오히려 버거울 수 있어요|for a small publishing house, this can be more than it can handle⟧", 12, "var(--ink)"))
+         + label(560, 250, "⟦소책자 수만큼 조율할 목차도 늘어나요|the more volumes, the more indexes to coordinate⟧", 11, "var(--muted)")
+         + label(380, 300, "⟦소책자 구조는 작은 출판사엔 오히려 버거울 수 있어요|the split structure can be more than a small publishing house can handle⟧", 12, "var(--ink)"))
 
 # 5. 묶임을 풀면, 조율이라는 새 일이 생겨요
 P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
-         + person(190, 130, s=0.8, face=EYES, **EDITOR) + label(190, 260, "⟦한 편이 안 팔려도 다른 편엔 안 번져요|if one volume flops, it doesn't spread to the others⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.8, face=EYES, **EDITOR) + label(190, 260, "⟦한 편에 문제가 생겨도 다른 편엔 안 번져요|a problem in one volume doesn't spread to the others⟧", 11, "var(--ink)")
          + person(570, 110, s=0.8, face=SMILE, **PRINTER) + manuscript(570, 200, 0.6) + label(570, 260, "⟦목차를 맞추는 조율 비용은 늘어나요|but the cost of coordinating the index goes up⟧", 11, "var(--ink)")
          + label(380, 315, "⟦마이크로서비스는 묶임을 푸는 대신, 조율이라는 새 일을 만들어요|microservices trade away being bound together — but create a new job: coordination⟧", 12, "var(--ink)", cls="d"))
 
@@ -53,11 +53,11 @@ PAGE = {
             "Microservices architecture, told as a story about splitting one thick encyclopedia into small standalone volumes — animals, history, science — each written and printed on its own."),
     "panels": [
         {"svg": P1, "alt": ("인쇄 감독이 진땀을 흘리며 오탈자 하나 때문에 책 전체를 다시 찍어야 하는 상황을 봄", "A print supervisor sweats, realizing a single typo means reprinting the whole encyclopedia"),
-         "caption": ("오탈자 하나 고치려 해도 책 전체를 다시 찍어야 해요.", "Fixing even one chapter means reprinting the entire encyclopedia."),
+         "caption": ("오탈자 하나 고치려 해도 백과사전 전체를 다시 찍어야 해요.", "Fixing even a single typo means reprinting the entire encyclopedia."),
          "small": ("한 부분이 늦어지면, 책 전체 출간이 다 늦어져요.", "If one part falls behind, the whole book's release falls behind too.")},
         {"svg": P2, "alt": ("편집장은 더 빨리 쓰라 하고, 작가는 한 책에 묶여 따로 낼 수 없다고 반박함", "The editor says to write faster; the writer objects that it's all bound into one book"),
-         "caption": ("더 빨리 쓰라는 말, 묶여 있어서 따로 낼 수 없다는 반박.", "A push to write faster, met with the fact that it's all bound together."),
-         "small": ("하나로 묶여 있으면, 일부만 먼저 낼 방법이 없어요.", "When everything's bound together, there's no way to release just part of it early.")},
+         "caption": ("편집장은 더 빨리 쓰라 하고, 작가는 한 권으로 묶여 있어 따로 낼 수 없다고 맞서요.", "The editor says write faster; the writer answers that everything's bound into one book, so no part can ship alone."),
+         "small": ("책이 하나로 묶여 있으면, 일부만 먼저 낼 방법이 없어요.", "When the whole book is bound together, there's no way to release just part of it early.")},
         {"svg": P3, "hero": True, "alt": ("동물편·역사편·과학편 세 소책자를 각각 다른 작가팀이 따로 만듦", "Three separate teams each make their own volume — animals, history, science"),
          "caption": ("마이크로서비스 아키텍처는 두꺼운 책을 작은 소책자들로 쪼개요.", "Microservices architecture splits one thick book into small standalone volumes."),
          "small": ("소책자끼리는 목차로 서로를 가리킬 뿐, 내용을 안 섞어요.", "The volumes only point to each other through a shared index — they never mix content."),
@@ -69,10 +69,10 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("소책자 구조 특징표: 독립 출간·독립 팀·목차 연결·독립 분량 네 항목", "A board of split-structure traits: independent release, independent teams, index-only links, independent sizing"),
          "caption": ("소책자 구조는 이런 특징을 가져요.", "The split structure has these traits."),
-         "small": ("소책자 수만큼 조율할 목차도 늘어나요.", "The more volumes, the more index-coordination there is.")},
-        {"svg": P5, "alt": ("왼쪽: 편집장이 한 편이 안 팔려도 다른 편엔 안 번진다고 말함. 오른쪽: 인쇄 감독이 조율 비용은 늘어난다고 말함", "Left: the editor says one failing volume doesn't spread to others. Right: the print supervisor says coordination cost still rises"),
-         "caption": ("묶임을 풀면, 조율이라는 새 일이 생겨요.", "Untying the bundle creates a new job: coordination."),
-         "small": ("공짜로 얻는 구조는 아니에요.", "It isn't a structure that comes for free.")},
+         "small": ("소책자 수만큼 조율할 목차도 늘어나요.", "The more volumes, the more indexes to coordinate.")},
+        {"svg": P5, "alt": ("왼쪽: 편집장이 한 편에 문제가 생겨도 다른 편엔 안 번진다고 말함. 오른쪽: 인쇄 감독이 조율 비용은 늘어난다고 말함", "Left: the editor says a problem in one volume doesn't spread to others. Right: the print supervisor says coordination cost still rises"),
+         "caption": ("책을 소책자로 풀면, 조율이라는 새 일이 생겨요.", "Splitting the book into volumes creates a new job: coordination."),
+         "small": ("소책자 구조의 장점은 조율 비용을 치르고 얻는 거예요.", "The split structure's benefits are paid for with coordination costs.")},
     ],
     "summary": (("<b>마이크로서비스 아키텍처</b> = 두꺼운 책 한 권을 <b>독립된 소책자들</b>로 쪼개, <b>목차로만 연결</b>하는 구조.",
                  "<b>Microservices architecture</b> = splitting one thick book into <b>independent standalone volumes</b>, <b>linked only through a shared index</b>."),

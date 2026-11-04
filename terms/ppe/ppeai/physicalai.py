@@ -18,10 +18,10 @@ P1 = svg(300, sky(300)
          + conveyor(80, 220, 300)
          + produce(230, 188, 1.4, "var(--good)")
          + gripper_arm(230, 150, 1.0, open_claw=False, color="var(--bad)")
-         + label(230, 260, "⟦너무 세게 쥐어서 터졌어요|squeezed too hard — it burst⟧", 11, "var(--bad)")
+         + label(230, 260, "⟦집게가 너무 세게 쥐어 사과가 터졌어요|the gripper squeezed too hard — the apple burst⟧", 11, "var(--bad)")
          + person(560, 170, s=0.75, face=SWEAT + EYES, **OPERATOR)
          + label(560, 270, "⟦사진으로 보던 거랑 또 다르네요|this is different from just looking at a photo⟧", 11, "var(--muted)")
-         + label(380, 25, "⟦사진으로 분류만 하던 눈이, 이제 직접 집어서 옮기래요|an eye that used to just classify photos is now asked to pick things up itself⟧", 13, "var(--ink)", cls="d"))
+         + label(380, 25, "⟦사진으로 분류만 하던 선별기에게, 이제 작물을 직접 집어서 옮기라고 해요|a sorter that used to just classify photos is now asked to pick up and move produce⟧", 13, "var(--ink)", cls="d"))
 
 # 2. 왜 어려운가: 실제 세계엔 무게·마찰·타이밍이 있어요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
@@ -57,13 +57,13 @@ PAGE = {
             "Physical AI, told as a story about a sorter that used to just classify photos, now given a body to pick things up and move them itself."),
     "panels": [
         {"svg": P1, "alt": ("로봇 집게가 사과를 너무 세게 쥐어 터뜨리고, 선별기 조작원이 사진으로 보던 것과 다르다며 진땀을 흘림", "A robot gripper squeezes an apple too hard and bursts it, while the operator sweats, noting it's different from just looking at a photo"),
-         "caption": ("사진으로 분류만 하던 눈이, 이제 직접 집어서 옮기래요.", "An eye that used to just classify photos is now asked to pick things up."),
-         "small": ("너무 세게 쥐어서 터졌어요.", "It squeezed too hard — and the apple burst.")},
+         "caption": ("사진으로 분류만 하던 선별기에게, 이제 작물을 직접 집어서 옮기라고 해요.", "A sorter that used to just classify photos is now asked to pick up and move produce."),
+         "small": ("로봇 집게가 사과를 너무 세게 쥐어서 터뜨렸어요.", "The robot gripper squeezed too hard and burst the apple.")},
         {"svg": P2, "alt": ("사진 속 사과는 무게도 마찰도 없지만, 진짜 검사장의 사과는 무게·마찰·타이밍을 모두 가짐", "The apple inside a photo has no weight or friction, while the one in the real station carries weight, friction, and timing all at once"),
          "caption": ("사진 속 세계와 진짜 세계는 달라요.", "The world inside a photo and the real world aren't the same."),
          "small": ("진짜 세계는 무게·마찰·타이밍까지 다뤄야 해요.", "The real world demands handling weight, friction, and timing too.")},
         {"svg": P3, "hero": True, "alt": ("집게가 사과를 집으며, 보고 느끼고 다시 보는 화살표 루프가 옆에 그려짐", "A gripper picks up an apple while a looping arrow beside it reads see, feel, look again"),
-         "caption": ("보고 판단하는 AI에, 느끼고 움직이는 능력을 더한 것이에요.", "It adds sensing and moving to an AI that already sees and judges."),
+         "caption": ("피지컬 AI는 보고 판단하는 AI에, 느끼고 움직이는 능력을 더한 것이에요.", "Physical AI adds sensing and moving to an AI that already sees and judges."),
          "small": ("지각→판단→행동을 쉬지 않고 반복하는, 몸을 가진 AI예요.", "An AI with a body, cycling through sense, decide, and act without a pause."),
          "tricks": (4, [
              (SENSE_I, ("센서로 느끼기", "Sense with sensors"), ("촉각·힘·거리를 직접 느껴요", "feeling touch, force, and distance directly"), "calm"),
@@ -80,12 +80,12 @@ PAGE = {
          "caption": ("화면 안에서 끝나는 AI와, 몸으로 결과를 내는 AI는 달라요.", "An AI that stays on screen is different from one that acts out its results in the real world."),
          "small": ("실수의 결과가 되돌릴 수 없을 때, 안전장치는 선택이 아니라 필수예요.", "When a mistake can't be undone, safeguards aren't optional — they're required.")},
         {"svg": svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-                 + gripper_arm(190, 140, 1.0) + produce(190, 188, 1.1, "var(--good)") + label(190, 250, "⟦CNN의 눈을 그대로 빌려 써요|borrows the same CNN eye, unchanged⟧", 11, "var(--ink)")
-                 + person(570, 150, s=0.75, face=EYES, **INSPECTOR) + label(570, 250, "⟦생명·안전과 닿으면 고영향 AI예요|touching life or safety makes it high-impact AI⟧", 11, "var(--ink)")
-                 + label(380, 282, "⟦피지컬 AI는 몸이 생명·안전과 직접 닿기 때문에, 법·안전 기준이 한층 더 엄격해져요|because a physical body touches life and safety directly, the legal and safety bar rises accordingly⟧", 12, "var(--ink)", cls="d")),
-         "alt": ("왼쪽: 집게가 CNN의 눈을 그대로 쓴다는 설명. 오른쪽: 검수반장이 생명·안전과 닿으면 고영향 AI라고 말함", "Left: a note that the gripper borrows the same CNN eye. Right: the inspector notes that touching life or safety makes it high-impact AI"),
-         "caption": ("보는 눈은 그대로, 다만 몸이 더해져요.", "The eye stays the same — only a body gets added."),
-         "small": ("몸이 생명·안전과 직접 닿기 때문에, 법·안전 기준이 한층 더 엄격해져요.", "Because a physical body touches life and safety directly, the legal and safety bar rises accordingly.")},
+                 + gripper_arm(190, 140, 1.0) + produce(190, 188, 1.1, "var(--good)") + label(190, 250, "⟦집게 로봇은 CNN의 눈을 그대로 빌려 써요|the gripper borrows the same CNN eye⟧", 11, "var(--ink)")
+                 + person(570, 150, s=0.75, face=EYES, **INSPECTOR) + label(570, 250, "⟦AI가 생명·안전에 크게 영향을 주면 고영향 AI예요|an AI heavily affecting life or safety is high-impact⟧", 11, "var(--ink)")
+                 + label(380, 282, "⟦로봇의 몸은 사람의 생명·안전에 직접 영향을 줄 수 있어서, 법·안전 기준이 한층 더 엄격해져요|because a robot's body can directly affect human life and safety, the legal and safety bar rises⟧", 12, "var(--ink)", cls="d")),
+         "alt": ("왼쪽: 집게가 CNN의 눈을 그대로 쓴다는 설명. 오른쪽: 검수반장이 생명·안전에 크게 영향을 주면 고영향 AI라고 말함", "Left: a note that the gripper borrows the same CNN eye. Right: the inspector notes that heavily affecting life or safety makes an AI high-impact"),
+         "caption": ("피지컬 AI는 보는 눈(CNN)은 그대로 쓰고, 몸만 더해진 거예요.", "Physical AI keeps the same seeing eye (a CNN) and only adds a body."),
+         "small": ("로봇의 몸은 사람의 생명·안전에 직접 영향을 줄 수 있어서, 법·안전 기준이 한층 더 엄격해져요.", "Because a robot's body can directly affect human life and safety, the legal and safety bar rises.")},
     ],
     "summary": (("<b>피지컬 AI</b> = 보고 판단하는 AI에 <b>센서로 느끼고 몸으로 움직이는</b> 능력을 더한 것.",
                  "<b>Physical AI</b> = an AI that already sees and judges, with <b>sensing and physical movement</b> added on top."),
@@ -99,6 +99,6 @@ PAGE = {
         ("힘 제한·비상정지", "Force limiting & e-stop", ("너무 세게 쥐거나 부딪히면 즉시 멈추는 안전장치.", "A safeguard that stops everything the instant it grips or hits too hard."), ("되돌릴 수 없는 실수를 막는 핵심 장치예요.", "The core safeguard against a mistake that can't be undone.")),
         ("고영향 AI", "High-impact AI", ("생명·안전에 직접 닿는 AI 분류.", "The classification for AI that touches life and safety directly."), ('몸을 가진 AI는 이쪽으로 분류되기 쉬워요. → <a href="aibasiclaw-ko.html">나라가 정한 최소 등급 기준</a>', 'An AI with a body is especially likely to fall into this category. → <a href="aibasiclaw-en.html">The Minimum Grading Rule the Country Itself Sets</a>')),
         ("시뮬레이션 학습", "Simulation training", ("진짜 작물을 터뜨리기 전에, 가짜 환경에서 먼저 연습하는 것.", "Practicing in a fake environment before ever bursting a real piece of produce."), ("실수의 비용이 큰 피지컬 AI에서 특히 중요해요.", "Especially important when physical AI's mistakes are this costly.")),
-        ("혼동행렬", "Confusion matrix", ("피지컬 AI의 판단 성능도 이 표로 확인해요.", "Physical AI's own judgment is checked the same way, with this table."), ('다만 틀렸을 때의 대가가 훨씬 더 커요. → <a href="confmatrix-ko.html">네 칸으로 나눈 도장 기록부</a>', "Only the cost of being wrong runs much higher. → <a href=\"confmatrix-en.html\">The Four-Box Stamp Ledger</a>")),
+        ("혼동행렬", "Confusion matrix", ("피지컬 AI의 판단 성능도 이 표로 확인해요.", "Physical AI's own judgment is checked the same way, with this table."), ('다만 피지컬 AI는 틀렸을 때의 대가가 화면 속 AI보다 훨씬 커요. → <a href="confmatrix-ko.html">네 칸으로 나눈 도장 기록부</a>', "Only the cost of being wrong runs much higher than for a screen-bound AI. → <a href=\"confmatrix-en.html\">The Four-Box Stamp Ledger</a>")),
     ],
 }

@@ -5,14 +5,14 @@ from _world import *
 P1 = svg(320, sky(320)
          + person(170, 150, s=0.8, face=SWEAT + EYES, **PACKER)
          + receipt(380, 160, 0.9, text="⟦상자 꺼냄 ✓, 장부 기록 ✗|box taken ✓, ledger write ✗⟧")
-         + label(380, 260, "⟦정전이 나서 절반만 처리됐어요|the power cut out — only half got done⟧", 12, "var(--bad)")
+         + label(380, 260, "⟦정전이 나서 전표 작업이 절반만 처리됐어요|the power cut out — only half of the receipt's work got done⟧", 12, "var(--bad)")
          + label(380, 300, "⟦상자는 없어졌는데 장부엔 그대로예요|the box is gone but the ledger still shows it⟧", 13, "var(--ink)"))
 
 # 2. 왜 어려운가: 절반짜리 작업은 믿을 수 없어요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + receipt(240, 150, 0.9, void=True, text="⟦반쪽짜리 전표|a half-done receipt⟧")
          + person(480, 150, s=0.8, face=FROWN, **AUDITOR)
-         + label(380, 250, "⟦다음에 누가 봐도 믿을 수 없는 장부가 돼요|the next person can't trust the ledger either⟧", 12, "var(--ink)"))
+         + label(380, 258, "⟦장부와 실제 상자 수가 달라서 다음 사람도 장부를 못 믿어요|the ledger and the real boxes disagree, so the next person can't trust it⟧", 12, "var(--ink)"))
 
 # 3. hero: ACID = 출납 전표가 지키는 네 가지 약속
 ALL_I = icon('<rect x="10" y="10" width="44" height="44" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 32 l8 8 l16 -18" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/>')
@@ -40,9 +40,9 @@ P4 = svg(320, sky(320, ground=False)
 
 # 5. 한계: ACID를 다 지키려면 느려질 수 있어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + receipt(190, 150, 0.9) + label(190, 240, "⟦ACID를 다 지키면 믿을 수 있어요|fully ACID means you can trust it⟧", 11, "var(--ink)")
-         + fastdesk(570, 150, 1.0) + label(570, 200, "⟦대신 특급 출고대처럼 빠르진 않아요|but it's not as fast as the express desk⟧", 11, "var(--ink)")
-         + label(380, 270, "⟦안전과 속도는 종종 맞바꿔야 해요|safety and speed often trade off⟧", 12, "var(--ink)", cls="d"))
+         + receipt(190, 150, 0.9) + label(190, 240, "⟦ACID를 다 지키면 장부를 믿을 수 있어요|fully keeping ACID means you can trust the ledger⟧", 11, "var(--ink)")
+         + fastdesk(570, 150, 1.0) + label(570, 200, "⟦대신 특급 출고대(인메모리 DB)보다 느릴 수 있어요|but it can run slower than the express desk (in-memory DB)⟧", 11, "var(--ink)")
+         + label(380, 270, "⟦장부 안전과 처리 속도는 종종 맞바꿔야 해요|ledger safety and processing speed often trade off⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "acid", "order": 6,
@@ -52,26 +52,26 @@ PAGE = {
             "Transactions and ACID, told as a story about the four promises a receipt must keep."),
     "panels": [
         {"svg": P1, "alt": ("포장 담당이 정전으로 절반만 처리된 전표를 보고 진땀을 흘림", "A packer sweats over a receipt that's only half-processed because of a power cut"),
-         "caption": ("정전이 나서 절반만 처리됐어요.", "The power cut out — only half got done."),
+         "caption": ("정전이 나서 전표 작업이 절반만 처리됐어요.", "The power cut out — only half of the receipt's work got done."),
          "small": ("상자는 없어졌는데 장부엔 그대로예요.", "The box is gone but the ledger still shows it.")},
         {"svg": P2, "alt": ("무효 표시된 반쪽짜리 전표를 보고 감사원이 찡그림", "An auditor frowns at a voided, half-done receipt"),
-         "caption": ("반쪽짜리 작업은 믿을 수 없어요.", "A half-done piece of work can't be trusted."),
-         "small": ("다음에 누가 봐도 믿을 수 없는 장부가 돼요.", "The next person can't trust the ledger either.")},
+         "caption": ("반쪽짜리 작업이 남으면 장부를 믿을 수 없어요.", "A half-done job leaves a ledger nobody can trust."),
+         "small": ("장부와 실제 상자 수가 달라서 다음 사람도 장부를 못 믿어요.", "The ledger and the real boxes disagree, so the next person can't trust it.")},
         {"svg": P3, "hero": True, "alt": ("창고 관리자가 온전한 전표 한 장을 두고 네 가지 약속을 설명함", "A manager stands by a complete receipt, explaining the four promises"),
          "caption": ("ACID = 출납 전표가 반드시 지키는 네 가지 약속이에요.", "ACID is the four promises every receipt must keep."),
          "small": ("네 가지를 다 지켜야 진짜 믿을 수 있는 전표예요.", "Only a receipt keeping all four can truly be trusted."),
          "tricks": (4, [
-             (ALL_I, ("Atomicity", "Atomicity"), ("전부 되거나 전부 취소돼요", "all or nothing"), "calm"),
+             (ALL_I, ("Atomicity", "Atomicity"), ("전표 작업이 전부 되거나 전부 취소돼요", "every step of the receipt happens, or none does"), "calm"),
              (RULE_I, ("Consistency", "Consistency"), ("장부 규칙을 어기지 않아요", "never breaks the ledger's rules")),
              (CURTAIN_I, ("Isolation", "Isolation"), ("남의 작업에 섞이지 않아요", "doesn't bleed into others' work"), "warm"),
              (STAMP_I, ("Durability", "Durability"), ("도장 찍히면 사라지지 않아요", "once stamped, it stays")),
          ])},
         {"svg": P4, "alt": ("Atomicity, Consistency, Isolation, Durability 네 글자를 설명하는 표", "A table explaining the four letters: atomicity, consistency, isolation, durability"),
-         "caption": ("ACID는 네 글자의 약속이에요.", "ACID is a promise spelled out in four letters."),
+         "caption": ("ACID의 네 글자는 약속을 하나씩 뜻해요.", "Each of ACID's four letters stands for one promise."),
          "small": ("Isolation은 격리 수준으로 세밀하게 조절해요.", "Isolation is fine-tuned via isolation levels.")},
         {"svg": P5, "alt": ("왼쪽: 온전한 전표가 믿을 수 있음을 보여줌. 오른쪽: 특급 출고대가 더 빠르지만 ACID를 다 지키진 않음", "Left: a full receipt shows it can be trusted. Right: the express desk is faster but doesn't fully keep ACID"),
-         "caption": ("ACID를 다 지키면 믿을 수 있지만, 느려질 수 있어요.", "Fully keeping ACID means trust, but can mean slower."),
-         "small": ("안전과 속도는 종종 맞바꿔야 해요.", "Safety and speed often trade off.")},
+         "caption": ("ACID를 다 지키면 장부를 믿을 수 있지만, 전표 처리는 느려질 수 있어요.", "Fully keeping ACID makes the ledger trustworthy, but receipt processing can slow down."),
+         "small": ("장부 안전과 처리 속도는 종종 맞바꿔야 해요.", "Ledger safety and processing speed often trade off.")},
     ],
     "summary": (("<b>ACID</b> = 출납 전표(트랜잭션)가 지켜야 할 <b>원자성·일관성·고립성·지속성</b> 네 가지 약속.",
                  "<b>ACID</b> is the four promises a receipt (transaction) must keep: <b>atomicity, consistency, isolation, durability</b>."),
@@ -82,7 +82,7 @@ PAGE = {
         ("원자성(Atomicity)", "Atomicity", ("전부 되거나 전부 취소.", "All or nothing."), ("중간에 멈추는 상태가 없어요.", "No stopping halfway.")),
         ("일관성(Consistency)", "Consistency", ("장부 규칙을 어기지 않는 것.", "Never breaking the ledger's rules."), ("제약조건을 항상 지켜요.", "Always honors the constraints.")),
         ("고립성(Isolation)", "Isolation", ("남의 작업에 섞이지 않는 것.", "Not bleeding into someone else's work."), ('격리 수준으로 세밀하게 조절해요. → <a href="isolevel-ko.html">동시에 손댈 때 얼마나 가려 볼지</a>', 'Fine-tuned by isolation level. → <a href="isolevel-en.html">how much to hide when hands overlap</a>')),
-        ("지속성(Durability)", "Durability", ("도장 찍히면 사라지지 않는 것.", "Once stamped, it never disappears."), ("정전이 나도 장부에 남아요.", "Survives even a power outage.")),
+        ("지속성(Durability)", "Durability", ("도장 찍히면 사라지지 않는 것.", "Once stamped, it never disappears."), ("도장 찍힌 기록은 정전이 나도 장부에 남아요.", "Stamped records survive even a power outage.")),
         ("병행제어", "Concurrency Control", ("동시에 손대도 안 부딪히게 막는 방법.", "The method that stops simultaneous edits colliding."), ('ACID의 I(고립성)를 실제로 구현하는 방법이에요. → <a href="concurrency-ko.html">동시에 안 부딪히는 규칙</a>', 'How isolation is actually implemented. → <a href="concurrency-en.html">the no-collision rule</a>')),
         ("인메모리 DB", "In-Memory DB", ("디스크 대신 바로 꺼내는 출고대.", "A desk that skips the deep shelf and serves from memory."), ('속도를 위해 지속성을 일부 타협하기도 해요. → <a href="inmemorydb-ko.html">특급 출고대</a>', 'Sometimes trades off durability for speed. → <a href="inmemorydb-en.html">the express pickup desk</a>')),
         ("NoSQL 모델링", "NoSQL Modeling", ("상자 모양에 맞춰 선반을 바꾸는 창고.", "A warehouse reshaping shelves to fit the box."), ('보통 ACID를 관계형 창고만큼 엄격히 지키지 않아요. → <a href="nosqltype-ko.html">자유로운 선반 창고</a>', "Usually doesn't keep ACID as strictly as the relational warehouse. → <a href=\"nosqltype-en.html\">the free-shelf warehouse</a>")),

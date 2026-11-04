@@ -34,9 +34,9 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 P3 = svg(340, sky(340)
          + canvas(310, 90, 1.4)
          + glyph(430, 130, 1.1, STAMP_P)
-         + person(600, 220, s=0.8, face=SMILE, **VISITOR)
+         + person(670, 220, s=0.8, face=SMILE, **VISITOR)
          + label(380, 30, "⟦NFT = 그림은 그대로 두고, 그 그림에 '이건 진짜예요'라는 증명서만 따로 붙이는 것|NFT = leaving the picture as-is, but attaching a separate 'this one is the real one' certificate⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦증명서는 모두가 함께 적는 장부에 기록돼 위조할 수 없어요|the certificate is written into a shared ledger everyone keeps, so it can't be forged⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦증명서는 모두가 함께 적는 장부(블록체인)에 기록돼 위조할 수 없어요|the certificate goes into a shared ledger (blockchain) everyone keeps, so it can't be forged⟧", 12, "var(--muted)"))
 
 # 4. 증명서에는 무엇이 적히나요
 P4 = svg(320, sky(320)
@@ -51,10 +51,10 @@ P4 = svg(320, sky(320)
 # 5. 한계 - 증명서만 유일할 뿐, 그림 자체는 막을 수 없어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
          + glyph(166, 110, 1.3, STAMP_P)
-         + label(190, 250, "⟦'누가 갖고 있나'는 확실하게 증명돼요|it does prove, for certain, who holds it⟧", 11, "var(--ink)")
+         + label(190, 250, "⟦증명서로 '누가 갖고 있나'는 확실히 증명돼요|the certificate proves, for certain, who holds the work⟧", 11, "var(--ink)")
          + canvas(550, 110, 1.0) + glyph(560, 170, 0.6, COPY_P)
-         + label(570, 270, "⟦그림 자체는 여전히 누구나 내려받고 복사할 수 있어요|the picture itself can still be downloaded and copied by anyone⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦원본의 '소유 증명'이지, 복제를 막는 자물쇠가 아니에요|it's proof of ownership, not a lock against copying⟧", 12, "var(--ink)", cls="d"))
+         + label(570, 262, "⟦그림 자체는 여전히 누구나 내려받고 복사할 수 있어요|the picture itself can still be downloaded and copied by anyone⟧", 11, "var(--ink)")
+         + label(380, 282, "⟦NFT는 원본의 '소유 증명'이지, 복제를 막는 자물쇠가 아니에요|an NFT is proof of ownership, not a lock against copying⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "nft", "order": 19,
@@ -71,19 +71,19 @@ PAGE = {
          "small": ("그림이 열 장 복사돼도, 어느 게 '진짜'인지 구별이 안 돼요.", "Even with ten copies, there's no way to tell which one is 'the real one.'")},
         {"svg": P3, "hero": True, "alt": ("그림 옆에 위조 방지 도장이 찍힌 증명서가 붙고, 관람객이 흐뭇해함", "A tamper-proof certificate is stamped beside the picture while a visitor looks pleased"),
          "caption": ("NFT는 그림은 그대로 두고 '이건 진짜예요'라는 증명서만 따로 붙이는 거예요.", "An NFT leaves the picture as-is, but attaches a separate 'this one is real' certificate."),
-         "small": ("증명서는 모두가 함께 적는 장부에 기록돼 위조할 수 없어요.", "The certificate is written into a shared ledger everyone keeps, so it can't be forged."),
+         "small": ("증명서는 모두가 함께 적는 장부(블록체인)에 기록돼 위조할 수 없어요.", "The certificate is written into a shared ledger (blockchain) everyone keeps, so it can't be forged."),
          "tricks": (4, [
              (PAINT_I, ("원본은 그대로", "The artwork stays as-is"), ("그림 자체는 안 바뀌어요", "the picture itself doesn't change")),
              (STAMP_I, ("증명서 붙이기", "Attach a certificate"), ("고유 번호를 하나 붙여요", "attaches one unique ID"), "calm"),
              (CHAIN_I, ("모두의 장부에 기록", "Record on a shared ledger"), ("다 같이 적어서 위조가 안 돼요", "everyone keeps the record, so it can't be forged")),
-             (COPY_I, ("그래도 복사는 돼요", "Still copyable"), ("그림 파일 자체는 못 막아요", "it can't stop the image file itself"), "warm"),
+             (COPY_I, ("그래도 복사는 돼요", "Still copyable"), ("그림 파일 복사 자체는 못 막아요", "it can't stop the image file from being copied"), "warm"),
          ])},
         {"svg": P4, "alt": ("증명서 설명판: 고유 번호, 현재 소유자, 거래 기록, 작품 자체는 아님", "A board lists what the certificate records: unique ID, current owner, history, and that it is not the artwork itself"),
          "caption": ("증명서에는 번호와 소유자, 거래 기록이 적혀요.", "The certificate records an ID, the owner, and its history."),
          "small": ("그림 파일은 여전히 누구나 볼 수 있고 복사할 수 있어요.", "The image file itself can still be viewed and copied by anyone.")},
         {"svg": P5, "alt": ("왼쪽: 증명서가 소유자를 확실히 보여줌. 오른쪽: 그림은 여전히 복사됨", "Left: the certificate clearly shows the owner. Right: the picture is still copied"),
-         "caption": ("증명서만 유일할 뿐, 그림 자체는 막을 수 없어요.", "Only the certificate is unique — the picture itself can't be locked down."),
-         "small": ("원본의 '소유 증명'이지, 복제를 막는 자물쇠가 아니에요.", "It's proof of ownership, not a lock against copying.")},
+         "caption": ("증명서만 유일할 뿐, 그림 복사 자체는 막을 수 없어요.", "Only the certificate is unique — it can't stop the picture from being copied."),
+         "small": ("NFT는 원본의 '소유 증명'이지, 복제를 막는 자물쇠가 아니에요.", "An NFT is proof of ownership, not a lock against copying.")},
     ],
     "summary": (("<b>NFT</b> = 디지털 작품에 <b>위조 못 하는 고유 번호</b>를 붙여, <b>누가 원본을 소유하는지</b>만 증명하는 기술.",
                  "<b>NFT</b> = a technology that attaches an <b>unforgeable unique ID</b> to a digital work, proving only <b>who owns the original</b>."),

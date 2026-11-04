@@ -45,19 +45,19 @@ MUT_I = icon('<circle cx="32" cy="32" r="14" fill="var(--line)"/><path d="M32 10
 # 4. 세대를 거듭하는 과정
 P4 = svg(320, sky(320)
          + queueboard(60, 40, 640, 240, "⟦한 세대가 하는 일|what happens in one generation⟧",
-                      ("⟦① 여러 설정(개체군)을 만들어요|① create many settings (population)⟧",
+                      ("⟦① 처음에 여러 설정(개체군)을 만들어요|① first, create many settings (population)⟧",
                        "⟦② 잘 나가는 정도(적합도)를 점수 매겨요|② score how well each one runs (fitness)⟧",
-                       "⟦③ 잘 나가는 것끼리 섞어요(교배)|③ mix the good ones together (crossover)⟧",
-                       "⟦④ 가끔 무작위로 살짝 비틀어요(돌연변이)|④ occasionally twist one randomly (mutation)⟧",
-                       "⟦⑤ 다음 세대로 반복해요|⑤ repeat for the next generation⟧"), 1.0))
+                       "⟦③ 잘 나가는 설정끼리 섞어요(교배)|③ mix the good settings together (crossover)⟧",
+                       "⟦④ 가끔 새 설정을 무작위로 살짝 비틀어요(돌연변이)|④ occasionally twist a new setting at random (mutation)⟧",
+                       "⟦⑤ 새 설정들을 다음 세대로 삼아 ②부터 반복해요|⑤ make these the next generation, repeat from ②⟧"), 1.0))
 
 # 5. 항상 완벽한 설정을 찾는 건 아니에요
 P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
          + dial(190, 150, 1.1, 88, "var(--good)")
-         + label(190, 255, "⟦여러 세대 뒤 꽤 좋은 설정을 찾아요|after many generations, finds a pretty good setting⟧", 11, "var(--ink)")
+         + label(190, 255, "⟦여러 세대 뒤 꽤 좋은 설정을 찾아요|many generations later, a pretty good setting turns up⟧", 11, "var(--ink)")
          + person(570, 130, s=0.8, face=EYES, **CHIEF)
-         + label(570, 255, "⟦다만 '가장 완벽한 설정'이라고 보장하진 않아요|but it never guarantees the single perfect setting⟧", 11, "var(--ink)")
-         + label(380, 300, "⟦경우의 수가 너무 많을 때 '꽤 괜찮은 답'을 빠르게 찾는 방법이에요|a way to find a pretty good answer fast, when there are too many options⟧", 12, "var(--ink)", cls="d"))
+         + label(570, 255, "⟦다만 '가장 완벽한 설정'이라고 보장하진 않아요|but the single perfect setting is never guaranteed⟧", 11, "var(--ink)")
+         + label(380, 300, "⟦유전 알고리즘은 경우의 수가 너무 많을 때 '꽤 괜찮은 답'을 전부 시험하는 것보다 빨리 찾아요|with too many options, a genetic algorithm finds a pretty good answer faster than trying them all⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "geneticalgo", "order": 18,
@@ -77,16 +77,16 @@ PAGE = {
          "small": ("여러 세대를 거치며 점점 더 좋은 설정에 가까워져요.", "Over many generations, it edges closer to the best setting."),
          "tricks": (4, [
              (POP_I, ("개체군 만들기", "Create a population"), ("여러 설정을 한꺼번에 만들어요", "makes many settings at once"), "calm"),
-             (FIT_I, ("적합도 점수 매기기", "Score fitness"), ("얼마나 잘 나가는지 매겨요", "scores how well each runs")),
-             (CROSS_I, ("교배(섞기)", "Crossover"), ("잘 나가는 둘을 섞어 자식을 만들어요", "mixes two good ones into a child")),
-             (MUT_I, ("돌연변이(비틀기)", "Mutation"), ("가끔 무작위로 살짝 바꿔요", "occasionally twists one at random"), "warm"),
+             (FIT_I, ("적합도 점수 매기기", "Score fitness"), ("설정마다 엔진이 얼마나 잘 나가는지 매겨요", "scores how well the engine runs on each setting")),
+             (CROSS_I, ("교배(섞기)", "Crossover"), ("잘 나가는 두 설정을 섞어 새 설정을 만들어요", "mixes two good settings into a new one")),
+             (MUT_I, ("돌연변이(비틀기)", "Mutation"), ("가끔 설정 하나를 무작위로 살짝 바꿔요", "occasionally twists a setting at random"), "warm"),
          ])},
         {"svg": P4, "alt": ("개체군 생성, 적합도 평가, 교배, 돌연변이, 반복으로 이어지는 한 세대의 다섯 단계", "The five steps of one generation: population, fitness, crossover, mutation, repeat"),
          "caption": ("한 세대는 다섯 단계를 거쳐요.", "One generation goes through five steps."),
-         "small": ("이 과정을 세대마다 반복해요.", "This process repeats generation after generation.")},
+         "small": ("점수 매기기부터 비틀기까지를 세대마다 반복해요.", "Scoring through twisting repeats generation after generation.")},
         {"svg": P5, "alt": ("왼쪽: 여러 세대 뒤 꽤 좋은 설정을 찾음. 오른쪽: 가장 완벽한 설정이라는 보장은 없음", "Left: after many generations, a pretty good setting is found. Right: it's never guaranteed to be the perfect one"),
-         "caption": ("항상 완벽한 설정을 찾는 건 아니에요.", "It doesn't always find the single perfect setting."),
-         "small": ("경우의 수가 너무 많을 때 꽤 괜찮은 답을 빠르게 찾는 방법이에요.", "A way to find a pretty good answer fast, when there are too many options.")},
+         "caption": ("유전 알고리즘이 항상 완벽한 설정을 찾는 건 아니에요.", "A genetic algorithm doesn't always find the single perfect setting."),
+         "small": ("유전 알고리즘은 경우의 수가 너무 많을 때 꽤 괜찮은 답을 전부 시험하는 것보다 빨리 찾아요.", "With too many options, a genetic algorithm finds a pretty good answer faster than trying them all.")},
     ],
     "summary": (("<b>유전 알고리즘</b>은 여러 설정(개체군) 중 <b>잘 나가는 것끼리 섞고</b>, 가끔 <b>무작위로 비틀며</b>, 세대를 거듭해 <b>점점 더 나은 답</b>을 찾는 방법이에요.",
                  "A <b>genetic algorithm</b> <b>mixes well-performing settings</b> from a population, occasionally applies a <b>random twist</b>, and across generations searches for a <b>progressively better answer</b>."),
@@ -96,9 +96,9 @@ PAGE = {
         ("개체군", "Population", ("한 세대에 있는 여러 다이얼 설정들.", "The many dial settings in one generation."), ("후보 해들의 모임이에요.", "A collection of candidate solutions.")),
         ("적합도 함수", "Fitness Function", ("얼마나 잘 나가는지 매기는 점수표.", "The scorecard for how well a setting performs."), ("어떤 개체를 남길지 정하는 기준이에요.", "Decides which individuals survive.")),
         ("선택", "Selection", ("잘 나가는 설정을 골라내는 것.", "Picking out the well-performing settings."), ("적합도가 높을수록 뽑힐 확률이 높아요.", "Higher fitness means a higher chance of being picked.")),
-        ("교배(교차)", "Crossover", ("두 설정을 섞어 새 설정을 만드는 것.", "Mixing two settings into a new one."), ("부모의 좋은 특징을 물려받아요.", "Inherits good traits from both parents.")),
-        ("돌연변이", "Mutation", ("가끔 무작위로 설정을 살짝 바꾸는 것.", "Occasionally twisting a setting at random."), ("다양성을 유지해 막다른 길을 피해요.", "Keeps diversity, avoiding dead ends.")),
-        ("세대", "Generation", ("개체군을 한 번 갱신하는 단위.", "One cycle of updating the population."), ("세대를 거듭할수록 점점 나아져요.", "Gets better generation after generation.")),
+        ("교배(교차)", "Crossover", ("두 설정을 섞어 새 설정을 만드는 것.", "Mixing two settings into a new one."), ("새 설정이 부모의 좋은 특징을 물려받아요.", "The new setting inherits good traits from both parents.")),
+        ("돌연변이", "Mutation", ("가끔 무작위로 설정을 살짝 바꾸는 것.", "Occasionally twisting a setting at random."), ("설정이 한 곳에 몰리지 않게 다양성을 유지해요.", "Keeps the settings diverse, so they don't all crowd around one spot.")),
+        ("세대", "Generation", ("개체군을 한 번 갱신하는 단위.", "One cycle of updating the population."), ("세대를 거듭할수록 개체군의 점수가 대체로 나아져요.", "The population's scores generally improve generation after generation.")),
         ("지역 최적해", "Local Optimum", ("꽤 좋지만 가장 좋진 않은 설정.", "A pretty good setting, but not the very best."), ("유전 알고리즘이 여기 갇힐 수도 있어요.", "A genetic algorithm can get stuck here.")),
         ("메타휴리스틱", "Metaheuristic", ("완벽한 답 대신 괜찮은 답을 빨리 찾는 전략군.", "A family of strategies for a good-enough answer, fast."), ("유전 알고리즘이 여기 속해요.", "Genetic algorithms belong to this family.")),
     ],

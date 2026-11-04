@@ -15,12 +15,12 @@ P1 = svg(300, sky(300)
 # 2. 왜 어려운가: 눈여겨보지 않으면 평균이 끌려가거나, 진짜 중요한 신호를 놓쳐요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(160, 150, s=0.8, face=EYES, **INSPECTOR)
-         + label(160, 250, "⟦평균 무게가 확 끌려 올라가요|the average weight gets dragged way up⟧", 11, "var(--ink)")
+         + label(160, 258, "⟦평균 무게가 확 끌려 올라가요|the average weight gets dragged way up⟧", 11, "var(--ink)")
          + person(420, 150, s=0.8, face=FROWN, **OPERATOR)
-         + label(420, 250, "⟦근데 이게 저울 고장 신호일 수도 있어요|but this could be a sign the scale is broken⟧", 11, "var(--ink)")
+         + label(420, 258, "⟦근데 저울 고장 신호일 수도 있어요|but a big value may mean a broken scale⟧", 11, "var(--ink)")
          + person(640, 150, s=0.8, face=EYES, **TEACHER)
-         + label(640, 250, "⟦아니면 정말 귀한 품종일 수도 있고요|or it might just be a genuinely rare variety⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦눈여겨보지 않으면 숫자가 끌려가고, 무조건 버리면 진짜 신호를 놓쳐요|ignore it and the numbers get dragged; discard it blindly and a real signal gets lost⟧", 12, "var(--bad)", cls="d"))
+         + label(640, 258, "⟦아니면 정말 귀한 품종일 수도 있고요|or it might just be a genuinely rare variety⟧", 11, "var(--ink)")
+         + label(380, 285, "⟦이상치를 눈여겨보지 않으면 평균이 끌려가고, 무조건 버리면 진짜 신호를 놓쳐요|ignore an outlier and the average gets dragged; discard it blindly and a real signal gets lost⟧", 12, "var(--bad)", cls="d"))
 
 CLUSTER_PTS = [(260, 180), (300, 170), (340, 185), (270, 220), (320, 215)]
 
@@ -47,26 +47,26 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("컨베이어 위 비슷한 크기의 사과들 사이에 세 배쯤 큰 사과가 하나 있고, 선별기 조작원이 이를 바라봄", "Among similarly sized apples on the belt, one apple sits about three times bigger, and the operator looks on"),
          "caption": ("비슷한 크기 사과들 사이에, 유난히 큰 작물이 있어요.", "Among similarly sized apples, one stands out — much bigger."),
-         "small": ("딱 봐도 나머지와 달라요.", "Even at a glance, it's clearly different from the rest.")},
+         "small": ("큰 작물 하나는 딱 봐도 나머지와 달라요.", "Even at a glance, the big one is clearly different from the rest.")},
         {"svg": P2, "alt": ("검수반장은 평균이 끌려 올라간다고, 조작원은 저울 고장일 수도 있다고, 교사는 귀한 품종일 수도 있다고 각각 말함", "The inspector says it drags the average up, the operator says it might mean a broken scale, and the teacher says it might just be a rare variety"),
-         "caption": ("무시하면 숫자가 끌려가고, 버리면 신호를 놓쳐요.", "Ignore it and the numbers skew; discard it and a signal might be lost."),
+         "caption": ("이상치를 무시하면 평균이 끌려가고, 무조건 버리면 중요한 신호를 놓쳐요.", "Ignore an outlier and the average skews; discard it blindly and an important signal may be lost."),
          "small": ("이상치는 실수의 흔적일 수도, 진짜 중요한 신호일 수도 있어요.", "An outlier might be a mistake — or it might be a genuinely important signal.")},
         {"svg": P3, "hero": True, "alt": ("점선 원 안에 비슷한 크기의 사과 다섯 개가 모여 있고, 원 밖 멀리 떨어진 곳에 훨씬 큰 사과 하나가 점선으로 연결됨", "Five similarly sized apples cluster inside a dashed circle, while a much bigger apple sits far outside it, connected by a dashed line"),
-         "caption": ("나머지 무리와 통계적으로 확연히 다른 데이터 포인트예요.", "A data point that's statistically, clearly unlike the rest of the group."),
+         "caption": ("이상치는 나머지 무리와 통계적으로 확연히 다른 데이터 포인트예요.", "An outlier is a data point that's statistically, clearly unlike the rest of the group."),
          "small": ("'다르다'는 건 느낌이 아니라, 거리나 흩어진 정도로 재는 거예요.", "'Different' isn't a feeling — it's measured by distance or spread."),
          "tricks": (4, [
              (DIST_I, ("거리로 보기", "Look at distance"), ("무리 중심에서 얼마나 먼지요", "how far from the group's center"), "calm"),
-             (ZSCORE_I, ("표준편차로 보기", "Look at standard deviation"), ("평균에서 몇 걸음 벗어났는지요(Z-점수)", "how many steps from average (Z-score)")),
-             (IQR_I, ("사분위수로 보기", "Look at quartiles"), ("가운데 뭉치 바깥인지요(IQR)", "outside the middle bulk of the data (IQR)"), "warm"),
+             (ZSCORE_I, ("표준편차로 보기", "Look at standard deviation"), ("평균에서 표준편차 몇 배만큼 벗어났는지요(Z-점수)", "how many standard deviations from average (Z-score)")),
+             (IQR_I, ("사분위수로 보기", "Look at quartiles"), ("가운데 뭉치에서 크게 벗어났는지요(IQR)", "far outside the middle bulk of the data (IQR)"), "warm"),
              (CHECK_I, ("이유부터 확인하기", "Check the reason first"), ("무조건 버리지 않아요", "not just tossing it out automatically")),
          ])},
         {"svg": svg(300, sky(300) + gradeboard(60, 20, 640, 260, "⟦세 가지 찾는 방법|THREE WAYS TO FIND ONE⟧",
                  ("⟦거리 기반 — 군집 중심에서 먼 정도로 판단|distance-based — judged by distance from a cluster's center⟧",
                   "⟦Z-점수 — 평균에서 표준편차 몇 배 떨어졌는지(보통 3 이상)|Z-score — standard deviations from the mean (often past 3)⟧",
-                  "⟦IQR(사분위) — 가운데 50% 범위 바깥인지로 판단|IQR — whether it falls outside the middle 50% range⟧",
+                  "⟦IQR(사분위) — 가운데 50% 범위에서 크게 벗어났는지로 판단|IQR — whether it falls far outside the middle 50% range⟧",
                   "⟦세 방법 모두, 절대적인 정답보다는 기준선을 정하는 약속이에요|all three are a matter of agreeing on a cutoff, not an absolute truth⟧"), 1.0)),
          "alt": ("거리 기반·Z-점수·IQR 세 가지 이상치 탐지 방법을 적은 표", "A board listing distance-based, Z-score, and IQR as three ways to detect an outlier"),
-         "caption": ("찾는 방법은 여러 가지지만, 공통점은 '기준선을 정한다'는 거예요.", "Different methods — but they all come down to agreeing on a cutoff line."),
+         "caption": ("이상치를 찾는 방법은 여러 가지지만, 공통점은 '기준선을 정한다'는 거예요.", "There are different ways to find an outlier — but they all come down to agreeing on a cutoff line."),
          "small": ("기준선을 어디에 긋느냐에 따라, 같은 작물도 이상치가 되거나 안 되거나 해요.", "Where that line is drawn decides whether the very same item counts as an outlier or not.")},
         {"svg": svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
                  + produce(190, 150, 1.6, "var(--bad)") + label(190, 240, "⟦저울이 고장났던 거였어요 — 지워야 해요|turned out the scale was broken — this should be removed⟧", 11, "var(--bad)")
@@ -78,8 +78,8 @@ PAGE = {
     ],
     "summary": (("<b>이상치</b> = 거리나 표준편차로 쟀을 때, <b>나머지 무리와 확연히 다른</b> 데이터 포인트.",
                  "<b>An outlier</b> = a data point that, measured by distance or standard deviation, is <b>clearly unlike the rest</b> of the group."),
-                ("이상치(Outlier)는 거리 기반(군집 중심과의 거리), Z-점수(평균에서 표준편차 몇 배 떨어졌는지), IQR(사분위 범위 바깥인지) 같은 통계적 기준으로 찾아내는, 나머지 데이터와 뚜렷이 다른 값이에요. 센서 오류나 입력 실수의 흔적일 수도 있고, 드물지만 진짜 중요한 신호(사기 거래, 희귀 질환, 공격 흔적)일 수도 있어서, 발견했다고 무조건 지우기보다 원인부터 확인하는 게 원칙이에요. 군집분석의 DBSCAN이 찾아내는 '노이즈'도 이상치의 한 모습이에요.",
-                 "An outlier is a value clearly unlike the rest of the data, found using statistical criteria like distance from a cluster's center, Z-score (standard deviations from the mean), or being outside the IQR (interquartile range). It can be the trace of a sensor error or a data-entry mistake — or it can be a rare but genuinely important signal, like a fraudulent transaction, a rare disease, or the trace of an attack. The rule of thumb is to investigate the cause before deleting it, not the other way around. The 'noise' that DBSCAN clustering sets aside is itself one face of an outlier.")),
+                ("이상치(Outlier)는 거리 기반(군집 중심과의 거리), Z-점수(평균에서 표준편차 몇 배 떨어졌는지), IQR(사분위 범위에서 크게 벗어났는지) 같은 통계적 기준으로 찾아내는, 나머지 데이터와 뚜렷이 다른 값이에요. 센서 오류나 입력 실수의 흔적일 수도 있고, 드물지만 진짜 중요한 신호(사기 거래, 희귀 질환, 공격 흔적)일 수도 있어서, 발견했다고 무조건 지우기보다 원인부터 확인하는 게 원칙이에요. 군집분석의 DBSCAN이 찾아내는 '노이즈'도 이상치의 한 모습이에요.",
+                 "An outlier is a value clearly unlike the rest of the data, found using statistical criteria like distance from a cluster's center, Z-score (standard deviations from the mean), or falling far outside the IQR (interquartile range). It can be the trace of a sensor error or a data-entry mistake — or it can be a rare but genuinely important signal, like a fraudulent transaction, a rare disease, or the trace of an attack. The rule of thumb is to investigate the cause before deleting it, not the other way around. The 'noise' that DBSCAN clustering sets aside is itself one face of an outlier.")),
     "glossary": [
         ("이상치", "Outlier", ("무리에서 유난히 튀는 작물.", "The piece of produce that stands out from the crowd."), ("거리나 표준편차로 측정해 찾아요.", "Found by measuring distance or standard deviation.")),
         ("Z-점수", "Z-score", ("평균에서 표준편차 몇 배 떨어졌는지 재는 숫자.", "The number of standard deviations a value sits from the mean."), ("보통 절댓값 3을 넘으면 이상치로 봐요.", "An absolute value past 3 is commonly treated as an outlier.")),

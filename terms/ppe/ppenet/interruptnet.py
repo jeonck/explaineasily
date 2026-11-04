@@ -7,14 +7,14 @@ P1 = svg(300, sky(300)
          + person(440, 170, s=0.85, face=EYES, **SORTER)
          + envelope(360, 230, 0.6) + '<circle cx="330" cy="150" r="14" fill="var(--accent)"/>' + label(330, 154, "⟦땡!|DING!⟧", 10, "#fff", cls="d")
          + label(380, 30, "⟦소포가 도착할 때마다 벨이 울려 직원이 하던 일을 멈춰요|a bell rings on every arrival, pulling the clerk off whatever they were doing⟧", 13, "var(--ink)", cls="d")
-         + label(380, 280, "⟦하나하나 즉시 알려주니 놓치는 일은 없어요|nothing gets missed — every arrival is flagged right away⟧", 12, "var(--muted)"))
+         + label(380, 280, "⟦벨이 소포마다 즉시 알려주니 놓치는 소포가 없어요|the bell flags every arrival right away, so nothing gets missed⟧", 12, "var(--muted)"))
 
 # 2. 트럭이 너무 빨라지면 벨이 쉴 새 없이 울려요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + truck(260, 200, 0.9, fast=True)
          + person(460, 170, s=0.85, face=SWEAT + EYES, **SORTER)
          + '<circle cx="400" cy="140" r="12" fill="var(--bad)"/><circle cx="420" cy="150" r="12" fill="var(--bad)"/><circle cx="440" cy="140" r="12" fill="var(--bad)"/>'
-         + label(460, 250, "⟦벨이 쉴 새 없이 울려 다른 일을 전혀 못 해요|the bell never stops — there's no time for anything else⟧", 11, "var(--ink)")
+         + label(460, 283, "⟦벨이 쉴 새 없이 울려 다른 일을 전혀 못 해요|the bell never stops — there's no time for anything else⟧", 11, "var(--ink)")
          + label(380, 30, "⟦초고속 트럭이 초당 수천 통을 배달하면 벨이 폭주해요|an ultra-fast truck delivering thousands a second floods the bell⟧", 13, "var(--ink)", cls="d"))
 
 # 3. 네트워크 인터럽트 = 도착 벨, 너무 잦으면 모아서 울림 (hero)
@@ -24,26 +24,26 @@ P3 = svg(340, sky(340)
          + envelope(360, 210, 0.5) + envelope(385, 225, 0.5) + envelope(410, 215, 0.5)
          + '<circle cx="330" cy="150" r="14" fill="var(--accent)"/>' + label(330, 154, "⟦땡!|DING!⟧", 10, "#fff", cls="d")
          + label(380, 30, "⟦네트워크 인터럽트 = 소포 도착을 즉시 알리는 벨소리|a network interrupt = the bell announcing an arrival right away⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦너무 자주 울리면 오히려 방해되니, 모아서 한 번에 울리기도 해요(인터럽트 코얼레싱)|too frequent becomes a nuisance — so sometimes several ring as one (interrupt coalescing)⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦벨이 너무 자주 울리면 직원 일을 방해하니, 소포를 모아 한 번만 울리기도 해요(인터럽트 코얼레싱)|a bell ringing too often disrupts the clerk, so several parcels can share one ring (interrupt coalescing)⟧", 12, "var(--muted)"))
 
 # 4. 매번 벨 vs 모아서 벨 비교
 P4 = svg(320, sky(320)
          + routemap(60, 40, 310, 250, "⟦매번 벨(코얼레싱 없음)|Ring every time (no coalescing)⟧",
                     ("⟦소포 1통마다 벨 1번|one ring per parcel⟧",
-                     "⟦개별 소식은 즉시 앎|know about each one instantly⟧",
+                     "⟦소포별 도착을 즉시 앎|each arrival is known instantly⟧",
                      "⟦트럭 빨라지면 벨 폭주|a faster truck floods the bell⟧",
                      "⟦직원이 다른 일 못 함|clerk can't do anything else⟧"), 1.0)
          + routemap(390, 40, 310, 250, "⟦모아서 벨(코얼레싱)|Coalesced ring⟧",
                     ("⟦소포 여러 통에 벨 1번|one ring for several parcels⟧",
                      "⟦전체 처리량은 늘어남|overall throughput improves⟧",
-                     "⟦개별 소식은 살짝 늦게 앎|each one is known a bit later⟧",
+                     "⟦소포별 도착은 살짝 늦게 앎|each arrival is known a bit later⟧",
                      "⟦직원이 다른 일도 할 수 있음|clerk can handle other work too⟧"), 1.0, hl=1))
 
 # 5. 지연과 처리량은 맞바꾸는 관계예요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + person(190, 135, s=0.8, face=SMILE, **SORTER) + label(190, 260, "⟦모아서 울리면 전체 일은 더 잘 처리해요|coalescing lets the clerk handle the overall load better⟧", 11, "var(--ink)")
+         + person(190, 135, s=0.8, face=SMILE, **SORTER) + label(190, 260, "⟦모아서 울리면 직원이 같은 시간에 더 많이 처리해요|coalescing lets the clerk clear more parcels in the same time⟧", 11, "var(--ink)")
          + envelope(570, 135, 0.6) + label(570, 260, "⟦대신 소포 한 통 한 통은 조금 늦게 알려져요|but each single parcel is flagged a little later⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦CPU가 프로그램 실행 중 멈추는 인터럽트(시스템SW 세계)와는 또 다른 이야기예요|a different story from the interrupt that pauses a CPU mid-program (the Systems world)⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦인터럽트 일반 원리는 시스템SW 세계에서 다루고, 여기서는 네트워크 카드의 벨만 봐요|interrupts in general live in the Systems world; here we look only at the network card's bell⟧", 12, "var(--ink)", cls="d"))
 
 BELL_I = icon('<path d="M32 12 a14 14 0 0 1 14 14 v8 l6 10 h-40 l6 -10 v-8 a14 14 0 0 1 14 -14z" fill="var(--accent)"/><circle cx="32" cy="50" r="4" fill="var(--ink)"/>')
 STOP_I = icon('<rect x="14" y="14" width="36" height="36" rx="6" fill="none" stroke="var(--bad)" stroke-width="4"/><path d="M22 32 h20" stroke="var(--bad)" stroke-width="4"/>')
@@ -59,30 +59,30 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("소포가 도착하자 벨이 울리고 분류소 직원이 하던 일을 멈춤", "A bell rings as a parcel arrives, and the sorting clerk stops what they were doing"),
          "caption": ("소포가 도착할 때마다 벨이 울려요.", "A bell rings every time a parcel arrives."),
-         "small": ("하나하나 즉시 알려주니 놓치는 일은 없어요.", "Nothing gets missed — every arrival is flagged right away.")},
+         "small": ("벨이 소포마다 즉시 알려주니 놓치는 소포가 없어요.", "The bell flags every arrival right away, so nothing gets missed.")},
         {"svg": P2, "alt": ("초고속 트럭이 쏟아내는 소포에 벨이 연달아 세 번 울려 직원이 진땀을 흘림", "An ultra-fast truck unloads parcels so fast the bell rings three times in a row, and the clerk sweats"),
          "caption": ("트럭이 너무 빨라지면 벨이 쉴 새 없이 울려요.", "A faster truck makes the bell ring nonstop."),
          "small": ("초당 수천 통을 배달하면 벨이 폭주해요.", "Delivering thousands a second floods the bell.")},
         {"svg": P3, "hero": True, "alt": ("소포가 도착하자 벨이 울리고, 소포 여러 통이 모여 있는 모습", "A bell rings on arrival, and several parcels are shown gathered together"),
-         "caption": ("도착을 즉시 알리는 벨소리, 너무 잦으면 모아서 울려요.", "The bell announces arrivals right away — or, when too frequent, several ring as one."),
-         "small": ("너무 자주 울리면 오히려 방해되니, 모아서 한 번에 울리기도 해요.", "Too frequent becomes a nuisance, so sometimes several ring as one."),
+         "caption": ("벨은 소포 도착을 즉시 알리고, 너무 잦으면 소포를 모아 한 번만 울려요.", "The bell announces each arrival right away — or, when that's too frequent, rings once for several parcels."),
+         "small": ("벨이 너무 자주 울리면 직원 일을 방해하니, 소포를 모아 한 번만 울리기도 해요.", "A bell ringing too often disrupts the clerk, so several parcels can share one ring."),
          "tricks": (4, [
-             (BELL_I, ("즉시 알림", "Immediate notification"), ("도착 즉시 벨이 울려요", "the bell rings the instant it arrives"), "calm"),
-             (STOP_I, ("하던 일 중단", "Interrupts current work"), ("직원이 하던 일을 멈추고 처리해요", "the clerk stops what they're doing to handle it")),
-             (STORM_I, ("인터럽트 폭주", "Interrupt storm"), ("너무 잦으면 업무가 마비돼요", "too frequent, and all other work stalls"), "warm"),
+             (BELL_I, ("즉시 알림", "Immediate notification"), ("도착 즉시 벨이 울려요", "the bell rings the instant a parcel arrives"), "calm"),
+             (STOP_I, ("하던 일 중단", "Interrupts current work"), ("직원이 하던 일을 멈추고 소포부터 받아요", "the clerk stops what they're doing to take in the parcel")),
+             (STORM_I, ("인터럽트 폭주", "Interrupt storm"), ("벨이 너무 잦으면 직원의 다른 일이 멈춰요", "when the bell rings too often, all other work stalls"), "warm"),
              (BATCH_I, ("모아서 처리(코얼레싱)", "Coalescing"), ("소포 여럿이 모이면 벨 한 번만 울려요", "several parcels gathered trigger just one ring")),
          ])},
         {"svg": P4, "alt": ("매번 벨 울리기와 모아서 벨 울리기(코얼레싱)를 비교한 두 안내판", "Two boards comparing ringing every time versus coalesced ringing"),
-         "caption": ("매번 울리기와 모아서 울리기는 다르게 작동해요.", "Ringing every time and coalescing work differently."),
-         "small": ("모아서 울리면 전체 처리량은 늘지만, 개별 소식은 조금 늦어요.", "Coalescing improves overall throughput, but each single arrival is known a bit later.")},
-        {"svg": P5, "alt": ("왼쪽: 모아서 울리면 전체 일을 더 잘 처리함. 오른쪽: 소포 한 통의 소식은 조금 늦게 알려짐", "Left: coalescing lets the clerk handle the overall load better. Right: a single parcel's news comes a bit later"),
-         "caption": ("지연과 처리량은 맞바꾸는 관계예요.", "Latency and throughput trade off against each other."),
-         "small": ("CPU가 프로그램 실행 중 멈추는 인터럽트(시스템SW 세계)와는 또 다른 이야기예요.", "A different story from the interrupt that pauses a CPU mid-program, covered in the Systems world.")},
+         "caption": ("매번 울리면 직원이 바쁘고, 모아서 울리면 도착 소식이 조금 늦어요.", "Ringing every time swamps the clerk; ringing in batches delays the news a little."),
+         "small": ("모아서 울리면 매번 울릴 때보다 전체 처리량은 늘지만, 소포별 도착 소식은 조금 늦어요.", "Coalescing raises overall throughput compared to ringing every time, but each arrival is known a bit later.")},
+        {"svg": P5, "alt": ("왼쪽: 모아서 울리면 같은 시간에 더 많이 처리함. 오른쪽: 소포 한 통의 소식은 조금 늦게 알려짐", "Left: coalescing lets the clerk clear more parcels in the same time. Right: a single parcel's news comes a bit later"),
+         "caption": ("소포 알림의 지연과 전체 처리량은 맞바꾸는 관계예요.", "Notification latency and overall throughput trade off against each other."),
+         "small": ("인터럽트 일반 원리는 시스템SW 세계에서 다루고, 여기서는 네트워크 카드의 벨만 봐요.", "Interrupts in general live in the Systems world; here we look only at the network card's bell.")},
     ],
     "summary": (("네트워크 I/O의 <b>인터럽트</b>는 <b>소포(패킷)가 도착했다고 즉시 알리는 벨소리</b>이고, 너무 잦으면 <b>모아서 한 번에 울리기(코얼레싱)</b>도 해요.",
                  "A network I/O <b>interrupt</b> is <b>the bell that announces a parcel (packet) has arrived right away</b> — and when it rings too often, several are <b>coalesced into one ring</b> instead."),
-                ("네트워크 카드(NIC)는 패킷이 도착할 때마다 CPU에 인터럽트를 걸어 즉시 처리하게 해요. 트래픽이 아주 많아지면 인터럽트가 너무 잦아져 CPU가 다른 일을 못 하는 '인터럽트 폭풍'이 생기는데, 이를 막기 위해 패킷 여러 개를 모았다가 인터럽트를 한 번만 거는 '인터럽트 코얼레싱(interrupt coalescing)'을 써요. 지연은 조금 늘지만 전체 처리량(throughput)은 좋아져요. 이건 CPU가 프로그램 실행 중 입출력 신호로 멈추는 일반적인 인터럽트와는 별개로, 네트워크 I/O에 특화된 이야기예요.",
-                 "A network interface card (NIC) raises a CPU interrupt on every packet arrival so it gets handled right away. Under very heavy traffic, interrupts fire so often the CPU can't do anything else — an 'interrupt storm.' To prevent this, interrupt coalescing batches several packets and raises just one interrupt for the group, trading a bit of latency for better overall throughput. This is distinct from the general CPU interrupt that pauses a running program for I/O — this one is specific to network I/O.")),
+                ("네트워크 카드(NIC)는 패킷이 도착할 때마다 CPU에 인터럽트를 걸어 즉시 처리하게 해요. 트래픽이 아주 많아지면 인터럽트가 너무 잦아져 CPU가 다른 일을 못 하는 '인터럽트 폭풍'이 생기는데, 이를 막기 위해 패킷 여러 개를 모았다가 인터럽트를 한 번만 거는 '인터럽트 코얼레싱(interrupt coalescing)'을 써요. 지연은 조금 늘지만 전체 처리량(throughput)은 좋아져요. CPU가 실행 중인 프로그램을 멈추고 신호를 처리하는 인터럽트 일반 원리 위에서, 네트워크 I/O에 특화된 이야기예요.",
+                 "A network interface card (NIC) raises a CPU interrupt on every packet arrival so it gets handled right away. Under very heavy traffic, interrupts fire so often the CPU can't do anything else — an 'interrupt storm.' To prevent this, interrupt coalescing batches several packets and raises just one interrupt for the group, trading a bit of latency for better overall throughput. It builds on the general CPU interrupt that pauses a running program, applied specifically to network I/O.")),
     "glossary": [
         ("네트워크 인터럽트", "Network interrupt", ("소포 도착을 즉시 알리는 벨소리.", "The bell that announces a parcel's arrival right away."), ("NIC가 CPU에 거는 신호예요.", "A signal the NIC raises to the CPU.")),
         ("인터럽트 폭풍", "Interrupt storm", ("벨이 쉴 새 없이 울려 업무가 마비되는 것.", "The bell ringing nonstop until all other work stalls."), ("트래픽이 아주 많을 때 생겨요.", "Happens under very heavy traffic.")),

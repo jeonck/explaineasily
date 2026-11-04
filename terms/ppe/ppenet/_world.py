@@ -12,7 +12,7 @@ def envelope(x, y, s=1.0, registered=False, text=None):
     """봉투(패킷). registered=True 면 등기(TCP) 표시."""
     out = f'<g transform="translate({x},{y}) scale({s})"><rect x="-26" y="-18" width="52" height="36" rx="2" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><path d="M-26 -18 L0 0 L26 -18" fill="none" stroke="#C9A86A" stroke-width="2"/>'
     if registered:
-        out += '<circle cx="18" cy="10" r="8" fill="var(--accent)"/>' + label(18, 13, "등기", 7, "#fff")
+        out += '<circle cx="18" cy="10" r="8" fill="var(--accent)"/>' + label(18, 13, "⟦등기|Reg⟧", 7, "#fff")
     if text:
         out += label(0, 30, text, 10, "var(--muted)")
     return out + '</g>'

@@ -35,8 +35,8 @@ P1 = svg(320, sky(320)
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + drone(380, 110, 1.2)
          + label(380, 170, "✕", 28, "var(--bad)", cls="d")
-         + label(380, 250, "⟦작고, 낮게 날고, 금속도 적어서 레이더가 잘 못 봐요|small, low-flying, little metal — hard for radar to catch⟧", 12, "var(--ink)")
-         + label(380, 282, "⟦보통 방공망으로는 놓치기 쉬워요|easy to slip past ordinary air defenses⟧", 11, "var(--muted)"))
+         + label(380, 250, "⟦드론은 작고, 낮게 날고, 금속도 적어서 레이더가 잘 못 봐요|drones are small, fly low, and carry little metal, so radar often misses them⟧", 12, "var(--ink)")
+         + label(380, 282, "⟦그래서 보통 방공망은 이런 드론을 놓치기 쉬워요|so ordinary air defenses easily miss these drones⟧", 11, "var(--muted)"))
 
 # 3. 안티드론 = 탐지→식별→무력화 (hero)
 P3 = svg(340, sky(340)
@@ -45,7 +45,7 @@ P3 = svg(340, sky(340)
          + person(300, 220, s=0.8, face=EYES, **DEMO)
          + net(560, 150, 1.0)
          + label(380, 30, "⟦안티드론 = 침입 드론을 탐지하고, 식별하고, 무력화하는 기술 묶음|Anti-Drone = a set of techs that detects, identifies, and disables an intruding drone⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦레이더·카메라로 찾고, 그물이나 전파로 막아요|found by radar and camera, stopped by net or jamming⟧", 12, "var(--muted)"))
+         + label(380, 328, "⟦레이더·카메라로 드론을 찾고, 그물이나 전파로 막아요|radar and cameras find the drone; a net or jamming stops it⟧", 12, "var(--muted)"))
 
 AD_DETECT = icon('<path d="M-10 0 A18 18 0 0 1 10 0" fill="none" stroke="var(--good)" stroke-width="3" transform="translate(32,40)"/><circle cx="32" cy="40" r="3" fill="var(--good)"/><path d="M20 16 l24 -8" stroke="var(--line)" stroke-width="2" opacity="0.5"/>')
 AD_ID = icon('<rect x="16" y="14" width="32" height="32" rx="4" fill="none" stroke="var(--accent)" stroke-width="3"/><circle cx="32" cy="30" r="6" fill="var(--accent)"/><path d="M22 40 q10 -8 20 0" stroke="var(--accent)" stroke-width="3" fill="none"/>')
@@ -54,19 +54,19 @@ AD_CATCH = icon('<path d="M18 14 h28 v22 l-14 10 l-14 -10z" fill="none" stroke="
 
 # 4. 단계별 방법
 P4 = svg(360, sky(360, ground=False)
-         + infoboard(130, 30, 500, 290, "⟦안티드론 3단계|THE THREE STAGES⟧",
+         + infoboard(55, 30, 500, 230, "⟦안티드론 3단계|THE THREE STAGES⟧",
                      ("⟦탐지 — 레이더·카메라·전파로 찾기|detect — with radar, camera, radio⟧",
                       "⟦식별 — 아군기인지 침입 드론인지 가려내기|identify — friend or intruder⟧",
                       "⟦무력화 — 전파 교란(재밍)으로 조종을 끊기|disable — jam the control signal⟧",
                       "⟦또는 — 그물 포획·격추로 직접 막기|or — net capture or takedown⟧"), 1.3)
-         + label(380, 345, "⟦순서를 건너뛰면 엉뚱한 드론을 막을 수도 있어요|skip a stage, and you might stop the wrong drone⟧", 12, "var(--ink)"))
+         + label(380, 345, "⟦식별을 건너뛰면 허가받은 드론을 막아 버릴 수도 있어요|skip the identify stage, and you might stop an authorized drone⟧", 12, "var(--ink)"))
 
 # 5. 한계: 오인식, 전파 교란의 부작용
 P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--bad-soft)"/>'
          + drone(190, 150, 1.1, color="var(--good)") + label(190, 260, "⟦일반 드론을 침입자로 착각할 수 있어요|an ordinary drone can be mistaken for an intruder⟧", 11, "var(--ink)")
          + person(570, 125, s=0.85, face=FROWN, **GUIDE)
          + label(570, 260, "⟦전파 교란은 주변 통신에도 영향을 줘요|jamming can disrupt nearby communications too⟧", 11, "var(--ink)")
-         + label(380, 305, "⟦그래서 사용엔 법적 제한이 따라요|that's why its use comes with legal limits⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 305, "⟦그래서 안티드론 장비 사용엔 법적 제한이 따라요|that's why using anti-drone gear comes with legal limits⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "antidrone", "order": 12,
@@ -79,11 +79,11 @@ PAGE = {
          "caption": ("저거 허가받은 드론 맞아요?", "Is that drone even authorized?"),
          "small": ("작고 빠른 드론은 막기 어려워요.", "Small, fast drones are hard to stop.")},
         {"svg": P2, "alt": ("드론이 레이더에 잘 잡히지 않음을 보여줌", "Showing a drone slipping past radar detection"),
-         "caption": ("레이더에도 잘 안 잡혀요.", "It's hard for radar to catch too."),
-         "small": ("작고, 낮게 날고, 금속도 적어서 보통 방공망으로는 놓치기 쉬워요.", "Small, low-flying, with little metal — easy to slip past ordinary air defenses.")},
+         "caption": ("작은 드론은 레이더에도 잘 안 잡혀요.", "Small drones are hard for radar to catch too."),
+         "small": ("드론은 작고, 낮게 날고, 금속도 적어서 보통 방공망이 놓치기 쉬워요.", "Drones are small, fly low, and carry little metal, so ordinary air defenses easily miss them.")},
         {"svg": P3, "hero": True, "alt": ("드론이 침입하자 레이더파가 탐지하고, 요원이 그물로 무력화를 준비함", "A drone intrudes as radar waves detect it and an operator readies a net"),
          "caption": ("안티드론은 침입 드론을 탐지하고, 식별하고, 무력화하는 기술 묶음이에요.", "Anti-drone is a set of technologies that detects, identifies, and disables an intruding drone."),
-         "small": ("레이더·카메라로 찾고, 그물이나 전파로 막아요.", "Found by radar and camera, stopped by net or jamming."),
+         "small": ("레이더·카메라로 드론을 찾고, 그물이나 전파로 막아요.", "Radar and cameras find the drone; a net or jamming stops it."),
          "tricks": (4, [
              (AD_DETECT, ("탐지하기", "Detect it"), ("레이더·카메라·전파로요", "with radar, camera, radio"), "calm"),
              (AD_ID, ("식별하기", "Identify it"), ("아군기인지 가려내요", "friend or intruder?")),
@@ -91,11 +91,11 @@ PAGE = {
              (AD_CATCH, ("포획·격추하기", "Capture or take it down"), ("그물이나 직접 무력화로요", "with a net or direct takedown")),
          ])},
         {"svg": P4, "alt": ("탐지·식별·무력화 세 단계와 각 단계의 방법을 보여주는 설명판", "A board showing the detect-identify-disable stages and methods for each"),
-         "caption": ("탐지→식별→무력화, 순서대로 진행돼요.", "It goes in order: detect, then identify, then disable."),
-         "small": ("순서를 건너뛰면 엉뚱한 드론을 막을 수도 있어요.", "Skip a stage, and you might stop the wrong drone.")},
+         "caption": ("안티드론은 탐지→식별→무력화 순서로 진행돼요.", "Anti-drone work goes in order: detect, then identify, then disable."),
+         "small": ("식별을 건너뛰면 허가받은 드론을 막아 버릴 수도 있어요.", "Skip the identify stage, and you might stop an authorized drone.")},
         {"svg": P5, "alt": ("왼쪽: 일반 드론을 침입자로 오인식함. 오른쪽: 전파 교란이 주변 통신에 영향을 줌", "Left: an ordinary drone mistaken for an intruder. Right: jamming disrupts nearby communications"),
-         "caption": ("오인식 위험과 전파 교란의 부작용이 있어요.", "There's a risk of false positives, and jamming has side effects."),
-         "small": ("그래서 사용엔 법적 제한이 따라요.", "That's why its use comes with legal limits.")},
+         "caption": ("안티드론은 일반 드론을 잘못 막을 수 있고, 전파 교란은 주변 통신까지 방해할 수 있어요.", "Anti-drone systems can wrongly stop an ordinary drone, and jamming can disrupt nearby communications."),
+         "small": ("그래서 안티드론 장비 사용엔 법적 제한이 따라요.", "That's why using anti-drone gear comes with legal limits.")},
     ],
     "summary": (("<b>안티드론</b>은 침입 드론을 <b>탐지→식별→무력화</b>하는 기술 묶음으로, 오인식과 전파 교란의 부작용을 함께 관리해야 해요.",
                  "<b>Anti-drone</b> is a set of technologies that <b>detects, identifies, and disables</b> an intruding drone — while managing the risk of false positives and jamming side effects."),
@@ -107,7 +107,7 @@ PAGE = {
         ("재밍(전파 교란)", "Jamming", ("드론과 조종기 사이 신호를 끊는 방법.", "Cutting the signal between drone and controller."), ("주변 통신에도 영향을 줄 수 있어요.", "Can affect nearby communications too.")),
         ("저RCS(낮은 레이더 반사 면적)", "Low RCS", ("레이더에 잘 안 잡히는 성질.", "Being hard for radar to catch."), ("소형 드론 탐지가 어려운 이유예요.", "Why small drones are hard to detect.")),
         ("MEC", "MEC", ("기지국 옆에서 빠르게 계산하는 기술.", "Computing nearby a base station for speed."), ('탐지 데이터를 빠르게 처리할 때 비슷한 개념이 쓰여요. → <a href="mec-ko.html">MEC 부스</a>', "A similar idea helps process detection data fast. → <a href=\"mec-en.html\">the MEC booth</a>")),
-        ("스마트시티", "Smart City", ("도시 곳곳 데이터로 안전을 지키는 것.", "Using citywide data to keep things safe."), ('재난 조기경보처럼, 안전 서비스의 한 사례예요. → <a href="smartcity-ko.html">스마트시티 부스</a>', "A safety-service example, like early disaster warning. → <a href=\"smartcity-en.html\">the Smart City booth</a>")),
+        ("스마트시티", "Smart City", ("도시 곳곳 데이터로 안전을 지키는 것.", "Using citywide data to keep the city safe."), ('재난 조기경보 같은 도시 안전 서비스를 다루는 부스예요. → <a href="smartcity-ko.html">스마트시티 부스</a>', "A booth on city safety services, like early disaster warning. → <a href=\"smartcity-en.html\">the Smart City booth</a>")),
         ("오인식(false positive)", "False Positive", ("일반 드론을 침입자로 잘못 보는 것.", "Mistaking an ordinary drone for an intruder."), ("식별 단계를 건너뛰면 생기기 쉬워요.", "Easy to get if the identify stage is skipped.")),
         ("항공 안전 규정", "Aviation Safety Regulation", ("드론·안티드론 모두를 제한하는 법.", "The law that limits both drones and anti-drone use."), ("재밍 사용 범위도 여기에 달려 있어요.", "Governs how far jamming may be used too.")),
     ],
