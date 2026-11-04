@@ -109,6 +109,6 @@ PAGE = {
         ("MEC", "MEC", ("기지국 옆에서 빠르게 계산하는 기술.", "Computing nearby a base station for speed."), ('탐지 데이터를 빠르게 처리할 때 비슷한 개념이 쓰여요. → <a href="mec-ko.html">MEC 부스</a>', "A similar idea helps process detection data fast. → <a href=\"mec-en.html\">the MEC booth</a>")),
         ("스마트시티", "Smart City", ("도시 곳곳 데이터로 안전을 지키는 것.", "Using citywide data to keep the city safe."), ('재난 조기경보 같은 도시 안전 서비스를 다루는 부스예요. → <a href="smartcity-ko.html">스마트시티 부스</a>', "A booth on city safety services, like early disaster warning. → <a href=\"smartcity-en.html\">the Smart City booth</a>")),
         ("오인식(false positive)", "False Positive", ("일반 드론을 침입자로 잘못 보는 것.", "Mistaking an ordinary drone for an intruder."), ("식별 단계를 건너뛰면 생기기 쉬워요.", "Easy to get if the identify stage is skipped.")),
-        ("항공 안전 규정", "Aviation Safety Regulation", ("드론·안티드론 모두를 제한하는 법.", "The law that limits both drones and anti-drone use."), ("재밍 사용 범위도 여기에 달려 있어요.", "Governs how far jamming may be used too.")),
+        ("항공 안전 규정", "Aviation Safety Regulation", ("드론이 어디서 어떻게 날 수 있는지 정한 법.", "The law setting where and how drones may fly."), ("재밍은 따로 전파법의 제한을 받아요(한국은 제29조).", "Jamming is limited separately by radio law (in Korea, Radio Waves Act Art. 29).")),
     ],
 }

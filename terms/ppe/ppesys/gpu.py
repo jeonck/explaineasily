@@ -24,7 +24,7 @@ P1 = svg(320, sky(320)
          + person(130, 160, s=0.85, face=SWEAT + EYES, **CHIEF)
          + tire(300, 240) + tire(340, 250) + tire(380, 235) + tire(420, 255) + tire(460, 240) + tire(500, 250) + tire(540, 235)
          + label(380, 30, "⟦차 수백 대, 똑같이 타이어만 점검하면 돼요|hundreds of cars, each needing the exact same tire check⟧", 13, "var(--ink)", cls="d")
-         + label(380, 295, "⟦반장 혼자서는 하나씩 밖에 못 봐요|the chief alone can only check them one at a time⟧", 12, "var(--ink)"))
+         + label(380, 295, "⟦반장(CPU) 혼자서는 하나씩밖에 못 봐요|the chief (CPU) alone can only check them one at a time⟧", 12, "var(--ink)"))
 
 # 2. 더 뛰어난 정비사 한 명을 데려와도 여전히 한 대씩이에요
 P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
@@ -73,7 +73,7 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("차 수백 대가 똑같은 타이어 점검을 기다리고, 반장 혼자서는 감당 못 함", "Hundreds of cars wait for the identical tire check, and the chief alone can't keep up"),
          "caption": ("똑같은 타이어 점검이 산더미처럼 쌓여요.", "The same tire check piles up by the hundreds."),
-         "small": ("반장 혼자서는 하나씩밖에 못 봐요.", "The chief alone can only check them one at a time.")},
+         "small": ("반장(CPU) 혼자서는 하나씩밖에 못 봐요.", "The chief (CPU) alone can only check them one at a time.")},
         {"svg": P2, "alt": ("더 뛰어난 정비사 한 명을 데려와도 여전히 타이어를 한 대씩만 점검함", "Bringing in one far more skilled mechanic still checks tires one car at a time"),
          "caption": ("더 뛰어난 정비사 한 명을 데려와도 한 번에 한 대씩인 건 같아요.", "Even a far better single mechanic still checks one car at a time."),
          "small": ("쌓인 점검을 빨리 끝내려면 뛰어난 한 명보다 많은 손이 필요해요.", "Clearing the piled-up checks fast takes many hands, not one better one.")},
@@ -95,14 +95,14 @@ PAGE = {
     ],
     "summary": (("<b>GPU</b> = 똑같이 단순한 일을 <b>수백~수천 개의 작은 손이 한번에</b> 나눠 처리하는 보조 정비팀. <b>GPGPU</b>는 이 팀을 그림 작업 말고 일반 계산에도 쓰는 것.",
                  "<b>GPU</b> = a crew of hundreds to thousands of small hands doing the same simple task all at once. <b>GPGPU</b> is putting that crew to work on general computation, not just graphics."),
-                ("GPU(Graphics Processing Unit)는 수많은 단순 코어로 동일 연산을 여러 데이터에 동시에 적용하는 SIMD(Single Instruction, Multiple Data) 구조예요. 원래 픽셀·정점 연산을 병렬 처리하려고 만들어졌지만, 행렬 연산이 많은 딥러닝 등 범용 계산에도 쓰이게 되면서 GPGPU(General-Purpose computing on GPU)라는 말이 생겼어요. CPU는 적은 수의 강력한 코어로 분기·순차 로직을 빠르게 처리하는 데, GPU는 많은 수의 약한 코어로 처리량(throughput)을 극대화하는 데 강해요.",
-                 "A GPU (Graphics Processing Unit) applies the same instruction to many data items at once across thousands of simple cores — a SIMD (Single Instruction, Multiple Data) design. Built originally for parallel pixel and vertex math, it's now used for general computation too, especially matrix-heavy workloads like deep learning — hence the term GPGPU (General-Purpose computing on GPU). A CPU excels at fast, branching, sequential logic with few powerful cores; a GPU excels at maximizing throughput with many simple ones.")),
+                ("GPU(Graphics Processing Unit)는 수많은 단순 코어로 동일 연산을 여러 데이터에 동시에 적용하는 SIMD(Single Instruction, Multiple Data) 구조예요. 원래 픽셀·정점 연산을 병렬 처리하려고 만들어졌지만, 그래픽 말고 다른 계산에도 쓰이면서 GPGPU(General-Purpose computing on GPU)라는 말이 생겼고, 지금은 행렬 연산이 많은 딥러닝에 특히 널리 쓰여요. CPU는 적은 수의 강력한 코어로 분기·순차 로직을 빠르게 처리하는 데, GPU는 많은 수의 약한 코어로 처리량(throughput)을 극대화하는 데 강해요.",
+                 "A GPU (Graphics Processing Unit) applies the same instruction to many data items at once across thousands of simple cores — a SIMD (Single Instruction, Multiple Data) design. Built originally for parallel pixel and vertex math, it also took on non-graphics calculations, which gave rise to the term GPGPU (General-Purpose computing on GPU); today matrix-heavy deep learning is its best-known use. A CPU excels at fast, branching, sequential logic with few powerful cores; a GPU excels at maximizing throughput with many simple ones.")),
     "glossary": [
         ("SIMD", "SIMD", ("모두에게 같은 동작을 동시에 시키는 것.", "Giving everyone the same move at once."), ("GPU 병렬 처리의 핵심 방식이에요.", "The core pattern behind GPU parallelism.")),
         ("GPGPU", "GPGPU", ("그림용 보조팀을 계산에도 쓰는 것.", "Putting the graphics crew to work on general math."), ("딥러닝 학습이 대표적인 예예요.", "Deep-learning training is the classic example.")),
-        ("처리량(Throughput)", "Throughput", ("한 번에 얼마나 많이 처리하는지.", "How much gets processed at once."), ("GPU 설계가 가장 중시하는 값이에요.", "This is what GPU design optimizes for.")),
+        ("처리량(Throughput)", "Throughput", ("일정 시간에 얼마나 많이 처리하는지.", "How much gets processed in a given time."), ("GPU 설계가 가장 중시하는 값이에요.", "This is what GPU design optimizes for.")),
         ("AI 가속기(TPU·NPU)", "AI Accelerator (TPU/NPU)", ("한 가지 계산만을 위한 전용 로봇팔.", "A robot arm built for exactly one calculation."), ('GPU보다 한 걸음 더 특화된 보조 도구예요. → <a href="aiaccel-ko.html">오직 그 계산 하나만을 위한 전용 로봇팔</a>', 'An even more specialized step beyond the GPU. → <a href="aiaccel-en.html">the robot arm built for one calculation</a>')),
-        ("CPU 스케줄링", "CPU Scheduling", ("리프트에 누가 먼저 올라갈지 정하는 규칙.", "The rule deciding who gets the lift first."), ('반장(CPU)이 일을 나눠 맡기는 또 다른 이야기예요. → <a href="cpusched-ko.html">리프트에 누가 먼저 올라갈까</a>', 'Another story about the chief (CPU) handing out work. → <a href="cpusched-en.html">who gets the lift first</a>')),
+        ("CPU 스케줄링", "CPU Scheduling", ("리프트에 누가 먼저 올라갈지 정하는 규칙.", "The rule deciding who gets the lift first."), ('CPU 차례를 정하는 이야기예요. 그 페이지의 반장은 CPU가 아니라 운영체제예요. → <a href="cpusched-ko.html">리프트에 누가 먼저 올라갈까</a>', 'How CPU turns get decided; on that page the chief is the OS, not the CPU. → <a href="cpusched-en.html">who gets the lift first</a>')),
         ("프로세스/스레드", "Process/Thread", ("같은 차를 같이 고치는 여러 손.", "Several hands working the same car."), ('여러 손으로 일을 나누는 점은 닮았지만, GPU는 같은 계산을 한꺼번에 돌리는 데 특화됐어요. → <a href="processthread-ko.html">같은 차, 여러 손</a>', 'Both split work among many hands, but a GPU specializes in running the same calculation at once. → <a href="processthread-en.html">one car, many hands</a>')),
         ("복잡도(Big-O)", "Time Complexity", ("일이 늘 때 시간이 느는 정도를 재는 자.", "The ruler for how fast time grows as work piles up."), ('병렬로 나누면 같은 Big-O도 체감 속도가 달라져요. → <a href="bigofunc-ko.html">차가 많아질 때 얼마나 느려질까</a>', 'Splitting work in parallel changes the felt speed even at the same Big-O. → <a href="bigofunc-en.html">how much slower as cars pile up</a>')),
         ("AI 분야의 GPU", "GPU in the AI World", ("AI 모델(앵무새)을 돌리는 빠른 장비(횃대).", "The fast hardware (perch) that runs an AI model (the parrot)."), ('AI 분야(앵무새 세계)에서는 추론 비용 관점으로 짧게 다뤄요. → <a href="inference-ko.html">AI 추론</a>', 'The AI world (the parrot world) covers it briefly, from the inference-cost angle. → <a href="inference-en.html">AI inference</a>')),

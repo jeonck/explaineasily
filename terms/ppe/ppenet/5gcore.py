@@ -39,7 +39,7 @@ P4 = svg(320, sky(320)
 P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
          + postoffice(190, 140, 0.8) + label(190, 230, "⟦도로(기지국)가 안 닿는 곳은 차선도 없어요|no road (base station) reach means no lane either⟧", 11, "var(--ink)")
          + truck(570, 180, 0.9, fast=True) + label(570, 240, "⟦길찾기(라우팅)는 5G와 별개의 기술이에요|finding the route (routing) is a separate technology⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦5G는 4G보다 빠른 길을 깔아줄 뿐, 교통정리·길찾기는 다른 기술이 해요|5G just lays a road faster than 4G's — traffic control and routing are other technologies' jobs⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦5G는 4G보다 빠른 무선 도로를 깔지만, 인터넷 구간의 길찾기는 다른 기술이 해요|5G lays a faster radio road than 4G, but routing across the internet is other technologies' job⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "5gcore", "order": 13,
@@ -68,14 +68,14 @@ PAGE = {
          "small": ("이름은 어렵지만, 넷 다 '소포 종류별로 길을 나눈다'는 이야기예요.", "The names sound hard, but all four are about splitting the road by parcel type.")},
         {"svg": P5, "alt": ("왼쪽: 도로(기지국)가 없으면 차선도 소용없음. 오른쪽: 트럭은 빠르지만 길찾기는 별개 문제", "Left: no road (base station) means no lane either. Right: the truck is fast, but routing is a separate problem"),
          "caption": ("차선이 있어도 도로 자체가 없으면 소용없어요.", "A lane is useless without the road reaching there at all."),
-         "small": ("5G는 4G보다 빠른 길을 깔아줄 뿐, 교통정리·길찾기는 다른 기술이 해요.", "5G just lays a road faster than 4G's — traffic control and routing are other technologies' jobs.")},
+         "small": ("5G는 4G보다 빠른 무선 도로를 깔지만, 인터넷 구간의 길찾기는 다른 기술이 해요.", "5G lays a faster radio road than 4G, but routing across the internet is other technologies' job.")},
     ],
     "summary": (("<b>5G 핵심기술</b> = 큰 짐·응급·대량 소형 소포마다 <b>전용 차선(슬라이스)</b>을 깔아주는, 4G보다 빠른 배송망.",
                  "<b>Key 5G technology</b> = a delivery network, faster than 4G, that lays a dedicated lane (slice) for big, urgent, and massive tiny-parcel traffic alike."),
-                ("5G 핵심기술은 eMBB(초고속·대용량), URLLC(초저지연·고신뢰), mMTC(대량 사물 연결)라는 세 가지 서비스 요구사항을, 네트워크 슬라이싱으로 하나의 물리망 위에서 논리적으로 분리해 동시에 만족시키는 기술이에요.",
-                 "Key 5G technology satisfies three service requirements — eMBB (ultra-fast, high-bandwidth), URLLC (ultra-low-latency, high-reliability), and mMTC (massive device connectivity) — at once, by logically splitting a single physical network through network slicing.")),
+                ("5G 핵심기술은 eMBB(초고속·대용량), URLLC(초저지연·고신뢰), mMTC(대량 사물 연결)라는 세 가지 서비스 요구사항을, 네트워크 슬라이싱으로 하나의 물리망 위에서 논리적으로 분리해 동시에 만족시키는 기술이에요. 도로 자체를 넓히는 무선 기술로는 밀리미터파·Massive MIMO·빔포밍이 함께 쓰여요.",
+                 "Key 5G technology satisfies three service requirements — eMBB (ultra-fast, high-bandwidth), URLLC (ultra-low-latency, high-reliability), and mMTC (massive device connectivity) — at once, by logically splitting a single physical network through network slicing. Radio techniques such as millimeter wave, massive MIMO, and beamforming widen the road itself.")),
     "glossary": [
-        ("eMBB", "eMBB", ("대용량 짐 전용 빠른 차선.", "The fast lane for heavy, bulky traffic."), ("초고속 모바일 브로드밴드예요.", "Enhanced Mobile Broadband.")),
+        ("eMBB", "eMBB", ("대용량 짐 전용 빠른 차선.", "The fast lane for heavy, bulky traffic."), ("향상된 모바일 광대역(Enhanced Mobile Broadband)이에요.", "Enhanced Mobile Broadband.")),
         ("URLLC", "URLLC", ("응급약 전용 즉시 차선.", "The instant lane for urgent traffic."), ("초저지연·초고신뢰 통신이에요.", "Ultra-Reliable Low-Latency Communication.")),
         ("mMTC", "mMTC", ("센서 소포 대량 전용 차선.", "The lane built for millions of tiny parcels."), ("대규모 사물 통신(IoT)이에요.", "massive Machine-Type Communication for IoT.")),
         ("네트워크 슬라이싱", "Network Slicing", ("도로를 차선으로 쪼개는 기술.", "The technology that splits the road into lanes."), ("하나의 망을 논리적으로 여러 개처럼 써요.", "Lets one physical network act like several logical ones.")),

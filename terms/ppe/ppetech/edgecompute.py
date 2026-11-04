@@ -88,7 +88,7 @@ PAGE = {
          "small": ("중앙 서버까지 갔다 오는 거리 자체가 지연이에요.", "The round trip to the central server is itself the delay.")},
         {"svg": P2, "alt": ("장난감 차가 장애물에 부딪힘, 서버 응답이 늦었기 때문", "The toy car crashes into an obstacle because the server's reply came too late"),
          "caption": ("데이터를 멀리 보낼수록 차의 판단이 늦어요.", "The farther data travels, the later the car decides."),
-         "small": ("이 지연은 자율주행·공장 로봇처럼 급한 판단엔 치명적이에요.", "That delay is fatal for urgent decisions in self-driving cars or factory robots.")},
+         "small": ("서버까지 왕복하는 지연은 자율주행·공장 로봇처럼 급한 판단엔 치명적이에요.", "A round-trip delay to the server is fatal for urgent decisions in self-driving cars or factory robots.")},
         {"svg": P3, "hero": True, "alt": ("차 바로 옆에 작은 엣지 서버가 있어 즉시 반응함", "A small edge server sits right next to the car and reacts instantly"),
          "caption": ("엣지 컴퓨팅은 데이터를 멀리 안 보내고 기기 바로 가까이서 계산하는 거예요.", "Edge computing means computing right near the device instead of sending data far away."),
          "small": ("'장애물이에요!' — 바로 옆 엣지 서버가 즉시 판단해요.", "'Obstacle!' — the edge server next door decides instantly."),

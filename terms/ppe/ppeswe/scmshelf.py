@@ -3,7 +3,7 @@ from _world import *
 
 # 1. 작가 셋이 같은 원고를 각자 고쳤어요
 P1 = svg(300, sky(300)
-         + person(130, 150, s=0.8, face=SWEAT, **WRITER) + bubble(84, 70, 140, 36, "⟦내 PC에서 고쳤어요|edited on my laptop⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + person(130, 150, s=0.8, face=SWEAT, **WRITER) + bubble(84, 70, 140, 36, "⟦내 PC에서 고쳤어요|edited on my PC⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(380, 150, s=0.8, face=EYES, **EDITOR) + bubble(324, 70, 160, 36, "⟦USB로 가져왔어요|brought it in on a USB⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(600, 150, s=0.8, face=FROWN, **PROOFER) + bubble(529, 70, 190, 36, "⟦이메일로 받았어요|got it by email⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 30, "⟦작가·편집장·교정자가 같은 원고를 각자 고쳤어요|the writer, editor, and proofreader each edited the same manuscript on their own⟧", 13, "var(--ink)", cls="d")
@@ -38,7 +38,7 @@ PAGE = {
     "sub": ("형상관리를, 원고의 모든 판을 번호 매겨 지키는 보관 서가 이야기로 풀어봤어요.",
             "Configuration management, told as a story about a storage shelf that keeps every numbered edition of a manuscript safe."),
     "panels": [
-        {"svg": P1, "alt": ("작가·편집장·교정자가 각자 PC·USB·이메일로 같은 원고를 고침", "The writer, editor, and proofreader each edit the same manuscript — on a laptop, a USB drive, and by email"),
+        {"svg": P1, "alt": ("작가·편집장·교정자가 각자 PC·USB·이메일로 같은 원고를 고침", "The writer, editor, and proofreader each edit the same manuscript — on a PC, a USB drive, and by email"),
          "caption": ("작가·편집장·교정자가 같은 원고를 각자 고쳤어요.", "The writer, editor, and proofreader each edited the same manuscript on their own."),
          "small": ("어느 게 최신판인지 아무도 몰라요.", "Nobody knows which copy is the newest.")},
         {"svg": P2, "alt": ("두 원고가 부딪치고, 작가가 찡그린 채 앉아 있음", "Two manuscript copies collide, and a writer sits frowning"),
@@ -62,7 +62,7 @@ PAGE = {
                     + manuscript(400, 220, 0.6, marks=1, text="⟦고쳐 봤어요|tried a change⟧")
                     + '<path d="M365 220 Q270 260 180 160" stroke="var(--good)" stroke-width="4" fill="none" stroke-dasharray="6 5"/>'
                     + label(380, 285, "⟦사본에서 고친 내용이 잘 되면 원본 서가로 다시 합쳐요|if the copy's edits work, they merge back into the shelf⟧", 12, "var(--muted)")),
-         "alt": ("보관 서가에서 실험용 사본이 갈라져 나왔다가, 수정 후 다시 서가로 합쳐짐", "An test copy branches off the shelf, gets edited, then merges back in"),
+         "alt": ("보관 서가에서 실험용 사본이 갈라져 나왔다가, 수정 후 다시 서가로 합쳐짐", "A test copy branches off the shelf, gets edited, then merges back in"),
          "caption": ("가지치기(브랜치)와 합치기(병합)로 실험해요.", "You experiment with a branch, then merge it back."),
          "small": ("원본은 그대로 두고 복사본에서 고쳐 보고, 잘 되면 다시 하나로 합쳐요.", "The original stays untouched while you try changes on a copy — then fold it back in if it works.")},
         {"svg": svg(300, sky(300)
@@ -83,10 +83,10 @@ PAGE = {
         ("형상관리(SCM)", "Configuration Management", ("원고의 모든 판을 지키는 서가.", "The shelf that keeps every edition safe."), ("식별·통제·감사·기록의 네 활동으로 이뤄져요.", "Made up of identification, control, audit, and status accounting.")),
         ("버전관리(VCS)", "Version Control System", ("서가를 실제로 운영하는 도구.", "The tool that actually runs the shelf."), ("Git 같은 도구가 대표적이에요.", "Git is the best-known example.")),
         ("베이스라인", "Baseline", ("공식적으로 확정한 판.", "The edition officially locked in."), ("이후 변경은 전부 이 기준과 비교해요.", "Every later change is compared against this point.")),
-        ("브랜치", "Branch", ("실험용 사본이 갈라져 나온 가지.", "A branch where an test copy forks off."), ("원본을 건드리지 않고 따로 고쳐 봐요.", "Lets you try changes without touching the original.")),
+        ("브랜치", "Branch", ("실험용 사본이 갈라져 나온 가지.", "A branch where a test copy forks off."), ("원본을 건드리지 않고 따로 고쳐 봐요.", "Lets you try changes without touching the original.")),
         ("병합(merge)", "Merge", ("실험이 끝나면 다시 합치는 일.", "Folding the branch back in once it works."), ('병합이 자동 배포까지 이어지면 → <a href="gitops-ko.html">서고 자체가 운영 기준이 되는 방식</a>.', 'When merging extends into automatic deployment → <a href="gitops-en.html">using the shelf itself as the operating source of truth</a>.')),
         ("롤백(rollback)", "Rollback", ("예전 판을 그대로 꺼내 쓰는 일.", "Pulling an old edition back out, as-is."), ('새 판에 문제가 생기면 이전 칸으로 되돌려요 → <a href="rollback-ko.html">놀이공원 세계의 되돌리기</a>.', 'If a new edition has a problem, step back to the earlier slot → <a href="rollback-en.html">the rewind in the theme-park world</a>.')),
         ("형상통제위원회(CCB)", "Change Control Board", ("어떤 변경을 받아들일지 결정하는 모임.", "The group that decides which changes get accepted."), ("중요한 변경은 아무나 서가에 바로 꽂지 못해요.", "Important changes can't just be slotted in by anyone.")),
-        ("형상감사", "Configuration Audit", ("서가가 기준대로 정리됐는지 확인하는 일.", "Checking the shelf is organized to standard."), ('감리가 점검하는 항목 중 하나예요 → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>.', 'One of the things audit checks → <a href="pmoaudit-en.html">the last checker before publication</a>.')),
+        ("형상감사", "Configuration Audit", ("서가의 판이 승인된 문서·요구와 맞는지 확인하는 일.", "Checking that a shelved edition matches its approved documents and requirements."), ('감리가 점검하는 항목 중 하나예요 → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>.', 'One of the things audit checks → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>.')),
     ],
 }

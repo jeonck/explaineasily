@@ -59,3 +59,4 @@
 | osi7 | 7단계로 나뉜 배송 공정 |
 | transportlayer | 포트를 나누고 신뢰도를 고르는 단계 |
 | sctp | 한 계약, 여러 개의 전용 차선 |
+| manchestercode | 우체국 전선에 박자까지 싣는 신호 |

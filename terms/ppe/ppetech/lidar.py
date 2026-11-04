@@ -56,12 +56,12 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="
          + glyph(166, 110, 1.3, CLOUD3D_P)
          + label(190, 250, "⟦맑은 날엔 LiDAR가 아주 작은 오차로 거리를 재요|on a clear day LiDAR measures distance with tiny error⟧", 11, "var(--ink)")
          + spinner(570, 150, 1.2)
-         + label(570, 250, "⟦비·안개에 레이저가 흩어지고, 장비도 비싸요|rain and fog scatter the laser, and the gear is pricey⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦LiDAR는 거리를 정확히 재지만, 날씨와 가격이라는 벽은 남아 있어요|LiDAR measures distance precisely, but weather and cost remain real walls⟧", 12, "var(--ink)", cls="d"))
+         + label(570, 250, "⟦비·안개에 레이저가 흩어지고, 값도 카메라보다 비싸요|rain and fog scatter the laser; it costs more than a camera⟧", 11, "var(--ink)")
+         + label(380, 282, "⟦LiDAR는 거리를 정확히 재지만, 날씨와 비용 부담은 남아 있어요|LiDAR measures distance precisely, but weather and cost still hold it back⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "lidar", "order": 20,
-    "title": ("레이저로 거리를 재는 회전하는 눈", "The Spinning Eye That Measures Distance with Lasers"),
+    "title": ("레이저로 거리를 재는 눈", "The Eye That Measures Distance with Lasers"),
     "h1": ("<em>LiDAR</em>가 뭐예요?", "What is <em>LiDAR</em>?"),
     "sub": ("LiDAR를, 레이저를 쏘고 돌아오는 시간으로 거리를 정확히 재는 회전하는 눈 이야기로 풀어봤어요.",
             "LiDAR, told as a story about a spinning eye that times a laser's round trip to measure distance exactly."),
@@ -85,20 +85,20 @@ PAGE = {
          "caption": ("레이저 점들이 모여 3D 지도가 돼요.", "The laser points together form a 3D map."),
          "small": ("거리 점들의 모임을 '포인트 클라우드'라고 불러요.", "A cluster of distance points is called a point cloud.")},
         {"svg": P5, "alt": ("왼쪽: 맑은 날 정확한 3D 점구름. 오른쪽: 비 오는 날 레이저가 흩어짐", "Left: a crisp 3D point cloud on a clear day. Right: the laser scattering in the rain"),
-         "caption": ("LiDAR는 비나 안개엔 약하고, 장비도 비싸요.", "LiDAR is weak in rain or fog, and the gear is pricey."),
-         "small": ("LiDAR는 거리를 정확히 재지만, 날씨와 가격이라는 벽은 남아 있어요.", "LiDAR measures distance precisely, but weather and cost remain real walls.")},
+         "caption": ("LiDAR는 비나 안개엔 약하고, 값도 보통 카메라보다 비싸요.", "LiDAR is weak in rain or fog, and usually costs more than a camera."),
+         "small": ("LiDAR는 거리를 정확히 재지만, 날씨와 비용 부담은 남아 있어요.", "LiDAR measures distance precisely, but weather and cost still hold it back.")},
     ],
     "summary": (("<b>LiDAR</b> = 레이저를 쏘고 돌아오는 <b>시간을 재서</b>, 사방의 <b>정확한 거리</b>를 포인트 클라우드로 그려내는 센서.",
                  "<b>LiDAR</b> = a sensor that times a laser's return trip to draw out the <b>exact distance</b> in every direction, as a point cloud."),
-                ("LiDAR(Light Detection and Ranging)는 레이저 펄스를 쏘고 반사되어 돌아오는 시간을 측정해 주변 물체까지의 거리를 정밀하게 계산하는 센서예요. 수많은 거리 점(포인트 클라우드)을 모아 3차원 지도를 만들며, 자율주행차·로봇·측량 등에 널리 쓰여요. 단, 비·안개·눈 같은 악천후에는 성능이 떨어지고 비용도 높아요.",
-                 "LiDAR (Light Detection and Ranging) is a sensor that fires laser pulses and measures the time it takes for them to bounce back, precisely calculating distance to surrounding objects. It gathers huge numbers of distance points — a point cloud — into a 3D map, widely used in self-driving cars, robotics, and surveying. Its performance drops in rain, fog, or snow, and it remains costly.")),
+                ("LiDAR(Light Detection and Ranging)는 레이저 펄스를 쏘고 반사되어 돌아오는 시간을 측정해 주변 물체까지의 거리를 정밀하게 계산하는 센서예요. 수많은 거리 점(포인트 클라우드)을 모아 3차원 지도를 만들며, 자율주행차·로봇·측량 등에 널리 쓰여요. 단, 비·안개·눈 같은 악천후에는 성능이 떨어져요. 값은 빠르게 내려가고 있지만 보통 카메라보다는 비싸요.",
+                 "LiDAR (Light Detection and Ranging) is a sensor that fires laser pulses and measures the time it takes for them to bounce back, precisely calculating distance to surrounding objects. It gathers huge numbers of distance points — a point cloud — into a 3D map, widely used in self-driving cars, robotics, and surveying. Its performance drops in rain, fog, or snow, and though prices are falling fast, it usually still costs more than a camera.")),
     "glossary": [
         ("포인트 클라우드", "Point Cloud", ("거리 점들이 모인 구름.", "A cloud made of distance points."), ("점이 많이 모일수록 지도가 선명해져요.", "The more points gathered, the sharper the map.")),
-        ("ToF(비행시간)", "Time of Flight", ("빛이 갔다 오는 시간을 재는 원리.", "The principle of timing light's round trip."), ("LiDAR가 거리를 재는 바로 그 방법이에요.", "The very method LiDAR uses to measure distance.")),
+        ("ToF(비행시간)", "Time of Flight", ("빛이 갔다 오는 시간을 재는 원리.", "The principle of timing light's round trip."), ("대부분의 LiDAR가 거리를 재는 방법이에요.", "The method most LiDARs use to measure distance.")),
         ("3D 스캐닝", "3D Scanning", ("실제 공간을 입체로 옮기는 것.", "Transferring real space into 3D form."), ("LiDAR는 이 스캐닝의 한 방법이에요.", "LiDAR is one way of doing this kind of scanning.")),
         ("자율주행", "Autonomous Driving", ("LiDAR를 눈으로 쓰는 대표적인 곳.", "A prime place where LiDAR serves as the eyes."), ('LiDAR를 많이 쓰는 이웃 부스예요. → <a href="autodrive-ko.html">자율주행</a>', 'The neighboring booth that relies heavily on LiDAR. → <a href="autodrive-en.html">Autonomous Driving</a>')),
         ("디지털 트윈", "Digital Twin", ("실제 공간을 그대로 옮긴 쌍둥이 화면.", "A twin screen that mirrors real space exactly."), ('포인트 클라우드가 이 쌍둥이의 재료가 돼요. → <a href="cps-ko.html">사이버물리시스템(CPS)</a>', "Point clouds become the raw material for that twin. → <a href=\"cps-en.html\">Cyber-Physical Systems</a>")),
-        ("드론 보안위협", "Drone Security Threats", ("드론도 LiDAR로 주변을 살펴봐요.", "A drone, too, scans its surroundings with LiDAR."), ('그 드론을 노리는 위협은 다른 페이지에서 다뤄요. → <a href="dronesecurity-ko.html">보이지 않는 줄로 매달린 드론</a>', 'What threatens that drone is covered on another page. → <a href="dronesecurity-en.html">the drone held up by an invisible string</a>')),
+        ("드론 보안위협", "Drone Security Threats", ("드론의 무선 조종 신호를 노리는 위협.", "Threats that target a drone's wireless control link."), ('LiDAR를 단 드론도 이런 위협을 받아요. → <a href="dronesecurity-ko.html">보이지 않는 줄로 매달린 드론</a>', 'A drone carrying LiDAR faces these threats too. → <a href="dronesecurity-en.html">the drone held up by an invisible string</a>')),
         ("레이더/카메라", "Radar/Camera", ("LiDAR와 함께 쓰이는 다른 센서들.", "Other sensors used alongside LiDAR."), ("레이더는 악천후에 강하고 카메라는 색·글자를 잘 읽지만, 거리 정밀도는 LiDAR보다 낮아요.", "Radar handles bad weather and cameras read color and text, but both measure distance less precisely than LiDAR.")),
         ("4차 산업혁명", "4th Industrial Revolution", ("여러 신기술이 모여 만드는 큰 흐름.", "The big wave made when many new technologies combine."), ('이 전시장 전체를 아우르는 이야기예요. → <a href="fourthindustry-ko.html">4차 산업혁명</a>', 'The story that frames this whole exhibit hall. → <a href="fourthindustry-en.html">the 4th Industrial Revolution</a>')),
     ],

@@ -68,7 +68,7 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("위험 등급별 검증 강도표: 낮음·중간·높음·최고 네 등급", "A verification-intensity table by risk grade: low, medium, high, highest"),
          "caption": ("위험 등급에 따라 검증 강도가 달라요.", "Verification intensity changes with the risk grade."),
-         "small": ("같은 오탈자라도, 책에 따라 위험 크기가 달라요.", "The same typo is more dangerous in some books than in others.")},
+         "small": ("같은 오탈자라도 책에 따라 위험 크기가 달라요. 표의 네 등급은 쉽게 줄인 예시이고, 실제 요구는 표준마다 달라요.", "The same typo is more dangerous in some books than in others. The table's four grades are a simplified example; real requirements vary by standard.")},
         {"svg": P5, "alt": ("왼쪽: 교정자가 몇 겹의 검증이 위험을 크게 낮춘다고 말함. 오른쪽: 편집장이 위험이 0이 될 때까지 출간을 미룰 순 없다고 말함", "Left: the proofreader says layered checks lower the risk a lot. Right: the editor says the book can't wait for zero risk"),
          "caption": ("검증해도 위험이 0이 되진 않아요.", "Verification doesn't bring risk down to zero."),
          "small": ("안전은 위험을 감당할 수 있는 수준까지 낮추는 일이에요.", "Safety means lowering risk to a level you can live with.")},
@@ -79,12 +79,12 @@ PAGE = {
                  "Functional safety ensures that even if a system fails, people aren't harmed — by applying verification levels (like SIL grades) in proportion to risk. The higher the risk, the more layered safeguards are required: independent review, redundancy, real-world trials. The goal isn't perfect zero-defect — it's lowering risk to an acceptable level.")),
     "glossary": [
         ("기능안전", "Functional Safety", ("고장나도 사람이 다치지 않게 하는 설계.", "Designing so a failure doesn't hurt anyone."), ("위험 등급별로 요구 수준이 달라요.", "Requirements differ by risk grade.")),
-        ("안전무결성수준(SIL)", "Safety Integrity Level", ("위험 등급을 나누는 눈금.", "The scale that grades risk."), ("등급이 높을수록 검증이 엄격해져요.", "A higher level demands stricter verification.")),
+        ("안전무결성수준(SIL)", "Safety Integrity Level", ("안전 기능이 얼마나 믿을 만해야 하는지 나눈 1~4 눈금.", "The 1–4 scale for how reliable a safety function must be."), ("IEC 61508의 등급으로, 4가 가장 높고 높을수록 검증이 엄격해져요.", "From IEC 61508: level 4 is highest, and a higher level demands stricter verification.")),
         ("독립 검증", "Independent Verification", ("원래 팀과 다른 팀이 다시 보는 일.", "A separate team checking it again."), ("한쪽의 맹점을 다른 쪽이 잡아줘요.", "One side's blind spot gets caught by the other.")),
         ("이중화", "Redundancy", ("하나가 실패해도 다른 하나가 버티게 하는 구조.", "A structure where one failing still leaves another standing."), ("교차 확인과 비슷한 원리예요.", "Works on a similar principle to cross-checking.")),
         ("위험 분석", "Risk Analysis", ("어떤 책이 더 위험한지 먼저 가늠하는 일.", "Gauging in advance which books carry more risk."), ("등급을 나누기 전에 해요.", "Done before grading risk.")),
         ("화이트박스/블랙박스 테스트", "White-box/Black-box Testing", ("속을 볼지 겉만 볼지로 나눈 검토법.", "Checking methods split by looking inside or only outside."), ('위험이 클수록 이 둘을 더 깊게, 더 많이 해요. → <a href="wbblacktest-ko.html">속을 펼쳐 볼지, 겉만 읽을지</a>', 'The higher the risk, the deeper and more often both get done. → <a href="wbblacktest-en.html">looking inside, or just reading the outside</a>')),
-        ("정보시스템 감리/PMO", "IS Audit/PMO", ("출간 전 마지막 검수관.", "The last checker before publication."), ('위험 등급이 높은 책일수록 감리도 더 깐깐해져요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'The higher the risk grade, the stricter the audit gets too. → <a href="pmoaudit-en.html">the last checker before publication</a>')),
+        ("정보시스템 감리/PMO", "IS Audit/PMO", ("출간 과정을 곁에서 살피는 검수관.", "The checker who watches the whole publishing run."), ('안전 검증이 계획대로 됐는지 감리가 볼 수도 있어요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'Audit can also check that safety verification went as planned. → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
         ("안전 사례(Safety Case)", "Safety Case", ("이만큼 안전하다는 근거를 모아 둔 서류.", "The dossier gathering evidence that it's safe enough."), ("검증 기록을 모아 외부에 설명할 때 써요.", "Compiles verification records to explain to outsiders.")),
     ],
 }

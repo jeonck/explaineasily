@@ -49,10 +49,10 @@ def stamp2(x, y, s=1.0, ok=True):
 def gradeboard(x, y, w, h, title, rows, s=1.0, hl=-1):
     """등급표 / 평가표 — 공통 크림색 스타일."""
     out = (f'<g transform="translate({x},{y}) scale({s})"><rect width="{w}" height="{h}" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/>'
-           f'<rect width="{w}" height="26" rx="6" fill="#C9A86A"/>' + label(w / 2, 18, title, 12, "#142033", cls="d"))
+           f'<rect width="{w}" height="26" rx="6" fill="#C9A86A"/>' + label(w / 2, 18, title, fit(12, s), "#142033", cls="d"))
     for i, r in enumerate(rows):
         yy = 50 + i * 24
         if i == hl:
             out += f'<rect x="6" y="{yy - 15}" width="{w - 12}" height="22" rx="4" fill="var(--accent-soft)"/>'
-        out += label(14, yy, r, 12, "#142033", "start")
+        out += label(14, yy, r, fit(12, s), "#142033", "start")
     return out + '</g>'

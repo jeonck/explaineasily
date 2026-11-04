@@ -33,13 +33,13 @@ P4 = svg(320, sky(320)
          + routemap(60, 40, 640, 240, "⟦창구 운영 규칙|COUNTER RULES⟧",
                     ("⟦버리기 — 폴리싱은 넘치면 그냥 버려요|drop — policing simply discards the overflow⟧",
                      "⟦쟁이기 — 쉐이핑은 버퍼에 쌓아뒀다 보내요|queue — shaping buffers it and sends later⟧",
-                     "⟦지연 — 쉐이핑은 버리진 않지만 늦어져요|delay — shaping doesn't drop packages, but they leave late⟧",
+                     "⟦지연 — 쉐이핑은 버퍼가 찰 때까진 안 버리지만 늦어져요|delay — shaping drops nothing until its buffer fills, but packages leave late⟧",
                      "⟦평균속도 — 둘 다 결국 평균 접수량을 정해진 선 아래로 맞춰요|average rate — both keep average intake under an agreed limit⟧"), 1.0))
 
 # 5. 한계: 접수량 조절이 길(라우팅) 자체를 고쳐주진 않아요
 P5 = svg(300, '<rect width="760" height="300" fill="var(--accent-soft)"/>'
          + person(240, 130, s=0.8, face=EYES, **CLERK) + label(240, 260, "⟦창구 혼잡은 줄였어요|the counter is less jammed now⟧", 11, "var(--ink)")
-         + postoffice(520, 150, 0.7) + label(520, 240, "⟦그런데 우체국 자체가 느리면 소용없어요|but a slow post office still slows everything⟧", 11, "var(--ink)")
+         + postoffice(520, 150, 0.7) + label(520, 240, "⟦그래도 우체국 자체가 느리면 배송은 늦어요|but a slow post office still slows delivery⟧", 11, "var(--ink)")
          + label(380, 282, "⟦폴리싱·쉐이핑은 접수량만 조절할 뿐, 경로나 우체국 속도 자체는 못 바꿔요|policing and shaping only control intake — they can't change the route or an office's raw speed⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
@@ -65,9 +65,9 @@ PAGE = {
              (I4, ("목표 = 평균속도 맞추기", "Goal = Match a Rate"), ("접수량을 정해진 선 아래로 맞춰요", "keeps intake under an agreed limit")),
          ])},
         {"svg": P4, "alt": ("창구 운영 규칙표: 버리기·쟁이기·지연·평균속도 네 줄", "A counter-rule board listing drop, queue, delay, and average rate"),
-         "caption": ("창구 운영 규칙의 핵심은 네 가지예요.", "The counter rules come down to four points."),
+         "caption": ("창구 규칙의 핵심은 버리기·쟁이기·지연·평균속도 네 가지예요.", "The counter rules come down to four points: drop, queue, delay, and average rate."),
          "small": ("폴리싱·쉐이핑 둘 다 결국 평균 접수량을 정해진 선 아래로 맞추는 게 목표예요.", "Policing and shaping both aim to keep the average intake under one agreed limit.")},
-        {"svg": P5, "alt": ("왼쪽: 창구 혼잡이 줄었음. 오른쪽: 우체국 자체가 느리면 소용없음", "Left: the counter is less jammed. Right: a slow post office itself still slows things"),
+        {"svg": P5, "alt": ("왼쪽: 창구 혼잡이 줄었음. 오른쪽: 우체국 자체가 느리면 배송은 늦음", "Left: the counter is less jammed. Right: a slow post office itself still slows delivery"),
          "caption": ("접수량 조절이 길 자체를 고쳐주진 않아요.", "Controlling the flow doesn't fix the road itself."),
          "small": ("폴리싱·쉐이핑은 접수량만 조절할 뿐, 경로나 우체국 속도 자체는 못 바꿔요.", "Policing and shaping only control intake — they can't change the route or an office's raw speed.")},
     ],
@@ -77,7 +77,7 @@ PAGE = {
                  "Traffic policing instantly drops (or marks) packets that exceed an agreed rate to protect the network, while traffic shaping buffers them and releases them smoothly at that rate instead. Policing accepts loss; shaping accepts delay.")),
     "glossary": [
         ("트래픽 폴리싱", "Traffic Policing", ("넘치면 바로 버리는 규칙.", "The rule that drops overflow right away."), ("손실을 감수하고 즉시 처리해요.", "Accepts loss in exchange for instant handling.")),
-        ("트래픽 쉐이핑", "Traffic Shaping", ("넘치면 줄 세워 쟁이는 규칙.", "The rule that queues overflow in line."), ("지연을 감수하고 손실은 피해요.", "Accepts delay to avoid loss.")),
+        ("트래픽 쉐이핑", "Traffic Shaping", ("넘치면 줄 세워 쟁이는 규칙.", "The rule that queues overflow in line."), ("지연을 감수하고 손실을 줄여요.", "Accepts delay to reduce loss.")),
         ("버스트(Burst)", "Burst", ("한꺼번에 쏟아지는 택배 더미.", "The sudden pile of packages arriving at once."), ("잠깐 몰리는 트래픽 폭증이에요.", "A short spike in traffic volume.")),
         ("버퍼(큐)", "Buffer/Queue", ("택배를 쟁여두는 대기줄.", "The waiting line where packages are stacked."), ("쉐이핑이 쓰는 저장 공간이에요.", "The storage shaping relies on.")),
         ("QoS", "QoS", ("창구마다 다른 대우를 해주는 것.", "Giving different counters different treatment."), ("이 규칙을 실현하는 더 큰 틀이에요.", "The broader framework these rules serve.")),

@@ -32,12 +32,12 @@ P4 = svg(320, sky(320)
                     ("⟦초저지연 — 수술 로봇, 지연 최우선|ultra-low-latency — surgery robot, latency first⟧",
                      "⟦대용량 — 동영상, 속도 최우선|high-bandwidth — video, throughput first⟧",
                      "⟦일반 — 소포, 기본 보장만|standard — ordinary mail, basic guarantee only⟧",
-                     "⟦한 차선 문제가 다른 차선에 안 번져요|trouble in one lane doesn't spread to another⟧"), 1.0))
+                     "⟦한 차선 문제가 다른 차선에 번지지 않게 막아요|keeps trouble in one lane from spreading to another⟧"), 1.0))
 
 # 5. 도로 용량 자체가 늘어난 건 아니에요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + person(190, 130, s=0.8, face=SMILE, **CLERK) + label(190, 255, "⟦차선마다 보장된 몫 안에서 안전하게 달려요|each lane runs safely within its guaranteed share⟧", 11, "var(--ink)")
-         + truck(570, 180, 0.7) + '<path d="M548 160 l10 -20" stroke="var(--bad)" stroke-width="3"/>' + label(570, 250, "⟦도로 전체가 꽉 차면 차선도 같이 밀려요|if the whole road fills up, every lane slows together⟧", 11, "var(--ink)")
+         + truck(570, 180, 0.7) + '<path d="M548 160 l10 -20" stroke="var(--bad)" stroke-width="3"/>' + label(570, 250, "⟦도로 전체 용량을 넘기면 차선 보장도 흔들려요|past the road's total capacity, lane guarantees weaken⟧", 11, "var(--ink)")
          + label(380, 282, "⟦나눈 건 차선일 뿐, 트럭과 길의 숫자는 그대로예요|only the lanes are split — the trucks and the road stay the same⟧", 12, "var(--ink)", cls="d"))
 
 LANE_I = icon('<rect x="8" y="10" width="48" height="44" rx="4" fill="var(--panel)" stroke="var(--ink)" stroke-width="2"/><path d="M8 24 h48 M8 40 h48" stroke="var(--line)" stroke-width="2"/>')
@@ -64,13 +64,13 @@ PAGE = {
          "tricks": (4, [
              (LANE_I, ("전용 차선 분리", "Lane separation"), ("용도마다 차선이 따로 있어요", "a separate lane for each purpose"), "calm"),
              (GUAR_I, ("보장된 속도", "Guaranteed performance"), ("각 차선의 속도·지연이 약속돼요", "speed and latency per lane are promised")),
-             (ISOLATE_I, ("독립 운영", "Isolated operation"), ("한 차선 사고가 다른 차선에 안 번져요", "trouble in one lane doesn't spread"), "warm"),
+             (ISOLATE_I, ("독립 운영", "Isolated operation"), ("한 차선 사고가 다른 차선에 번지지 않게 막아요", "keeps one lane's trouble from spreading"), "warm"),
              (PURPOSE_I, ("용도별 맞춤", "Purpose-built"), ("초저지연·대용량·일반 차선의 보장 내용이 각각 달라요", "ultra-low-latency, high-bandwidth, standard lanes — each guarantees something different")),
          ])},
         {"svg": P4, "alt": ("세 차선 각각 무엇을 보장하는지 적은 안내판: 초저지연, 대용량, 일반", "A board listing what each lane guarantees: ultra-low-latency, high-bandwidth, standard"),
          "caption": ("슬라이스마다 보장하는 게 달라요.", "Each slice guarantees something different."),
          "small": ("초저지연은 수술 로봇, 대용량은 동영상, 일반은 소포에 맞춰요.", "Ultra-low-latency for surgery robots, high-bandwidth for video, standard for ordinary mail.")},
-        {"svg": P5, "alt": ("왼쪽: 각 차선이 안전하게 보장된 몫으로 달림. 오른쪽: 도로 전체가 꽉 차면 차선도 함께 밀림", "Left: each lane runs safely within its guaranteed share. Right: when the whole road fills up, every lane slows"),
+        {"svg": P5, "alt": ("왼쪽: 각 차선이 안전하게 보장된 몫으로 달림. 오른쪽: 도로 전체 용량을 넘기면 차선 보장도 흔들림", "Left: each lane runs safely within its guaranteed share. Right: past the road's total capacity, lane guarantees weaken"),
          "caption": ("슬라이싱을 해도 도로 용량 자체가 늘진 않아요.", "Slicing doesn't grow the road's total capacity."),
          "small": ("나눈 건 차선일 뿐, 트럭과 길의 숫자는 그대로예요.", "Only the lanes are split — the trucks and the road stay the same.")},
     ],

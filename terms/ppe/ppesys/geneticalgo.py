@@ -44,7 +44,7 @@ MUT_I = icon('<circle cx="32" cy="32" r="14" fill="var(--line)"/><path d="M32 10
 
 # 4. 세대를 거듭하는 과정
 P4 = svg(320, sky(320)
-         + queueboard(60, 40, 640, 240, "⟦한 세대가 하는 일|what happens in one generation⟧",
+         + queueboard(60, 40, 640, 240, "⟦세대를 거듭하는 순서|the generation-by-generation cycle⟧",
                       ("⟦① 처음에 여러 설정(개체군)을 만들어요|① first, create many settings (population)⟧",
                        "⟦② 잘 나가는 정도(적합도)를 점수 매겨요|② score how well each one runs (fitness)⟧",
                        "⟦③ 잘 나가는 설정끼리 섞어요(교배)|③ mix the good settings together (crossover)⟧",
@@ -73,7 +73,7 @@ PAGE = {
          "caption": ("하나씩 손으로 맞춰보면 끝이 없어요.", "Trying each combo by hand never ends."),
          "small": ("잘 나가는 설정끼리 섞어보는 방법이 필요해요.", "We need a way to mix the good settings together.")},
         {"svg": P3, "hero": True, "alt": ("잘 나가는 두 다이얼 설정이 섞여 더 나은 2세대 설정이 됨", "Two well-performing dial settings mix into a better second-generation setting"),
-         "caption": ("유전 알고리즘은 잘 나가는 설정끼리 섞고 비틀어 찾는 것이에요.", "A genetic algorithm mixes the best settings, twisting occasionally, to search for better ones."),
+         "caption": ("유전 알고리즘은 잘 나가는 설정끼리 섞고 비틀어 더 나은 설정을 찾는 방법이에요.", "A genetic algorithm mixes the best settings, twisting occasionally, to search for better ones."),
          "small": ("여러 세대를 거치며 점점 더 좋은 설정에 가까워져요.", "Over many generations, it edges closer to the best setting."),
          "tricks": (4, [
              (POP_I, ("개체군 만들기", "Create a population"), ("여러 설정을 한꺼번에 만들어요", "makes many settings at once"), "calm"),
@@ -81,8 +81,8 @@ PAGE = {
              (CROSS_I, ("교배(섞기)", "Crossover"), ("잘 나가는 두 설정을 섞어 새 설정을 만들어요", "mixes two good settings into a new one")),
              (MUT_I, ("돌연변이(비틀기)", "Mutation"), ("가끔 설정 하나를 무작위로 살짝 바꿔요", "occasionally twists a setting at random"), "warm"),
          ])},
-        {"svg": P4, "alt": ("개체군 생성, 적합도 평가, 교배, 돌연변이, 반복으로 이어지는 한 세대의 다섯 단계", "The five steps of one generation: population, fitness, crossover, mutation, repeat"),
-         "caption": ("한 세대는 다섯 단계를 거쳐요.", "One generation goes through five steps."),
+        {"svg": P4, "alt": ("개체군 생성, 적합도 평가, 교배, 돌연변이, 반복으로 이어지는 다섯 단계", "The five steps of the cycle: population, fitness, crossover, mutation, repeat"),
+         "caption": ("처음에 설정들을 만든 뒤, ②~⑤를 세대마다 되풀이해요.", "After creating the first settings, steps ② to ⑤ repeat each generation."),
          "small": ("점수 매기기부터 비틀기까지를 세대마다 반복해요.", "Scoring through twisting repeats generation after generation.")},
         {"svg": P5, "alt": ("왼쪽: 여러 세대 뒤 꽤 좋은 설정을 찾음. 오른쪽: 가장 완벽한 설정이라는 보장은 없음", "Left: after many generations, a pretty good setting is found. Right: it's never guaranteed to be the perfect one"),
          "caption": ("유전 알고리즘이 항상 완벽한 설정을 찾는 건 아니에요.", "A genetic algorithm doesn't always find the single perfect setting."),

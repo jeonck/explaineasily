@@ -43,7 +43,7 @@ P3 = svg(340, sky(340)
          + label(230, 270, "⟦부품 창고(플래시 메모리)|parts warehouse (flash memory)⟧", 12, "var(--muted)")
          + person(460, 140, s=0.85, face=SMILE, **MECH2)
          + label(380, 30, "⟦플래시 메모리 = 전원이 꺼져도 부품을 기억하는 창고|flash memory = a warehouse that remembers parts even off power⟧", 14, "var(--ink)", cls="d")
-         + label(380, 320, "⟦묶음째 다루는 NAND와 한 칸씩 다루는 NOR, 두 방식이 있어요|two styles: NAND handles slots in bundles, NOR one at a time⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦묶음째 읽는 NAND와 한 칸씩 바로 읽는 NOR, 두 방식이 있어요|two styles: NAND reads in bundles, NOR reads one slot directly⟧", 12, "var(--muted)"))
 
 BLOCK_I = icon('<rect x="8" y="16" width="20" height="18" rx="2" fill="var(--accent)"/><rect x="34" y="16" width="20" height="18" rx="2" fill="var(--accent)"/><rect x="8" y="38" width="46" height="10" rx="2" fill="#5A3B22"/>')
 DRAWER_I = icon('<rect x="10" y="10" width="18" height="14" rx="2" fill="var(--good)"/><rect x="34" y="10" width="18" height="14" rx="2" fill="var(--good)"/><rect x="10" y="30" width="18" height="14" rx="2" fill="var(--good)"/><rect x="34" y="30" width="18" height="14" rx="2" fill="var(--good)"/>')
@@ -63,7 +63,7 @@ P4 = svg(320, sky(320)
 # 5. 어디에 쓰이는지가 달라요 / 한계
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + shelf_box(100, 150, 160, 50, 4)
-         + label(190, 240, "⟦NAND는 대용량 저장 — 읽기는 빠르지만 쓰기 전엔 지워야 해요|NAND: bulk storage — fast reads, but must erase before writing⟧", 11, "var(--ink)")
+         + label(190, 240, "⟦NAND는 대용량 저장 — 다시 쓰기 전엔 상자째 지워야 해요|NAND: bulk storage — must erase a whole box before rewriting⟧", 11, "var(--ink)")
          + drawer_cab(500, 150, 2, 4)
          + label(590, 240, "⟦NOR는 작은 코드 저장 — 바로 실행되지만 비싸요|NOR: small code storage — runs in place, but costly⟧", 11, "var(--ink)")
          + label(380, 282, "⟦SSD 안에서 NAND 창고를 관리하는 소프트웨어(FTL)가 따로 있어요|separate software inside an SSD (the FTL) manages the NAND warehouse⟧", 12, "var(--ink)", cls="d"))
@@ -83,7 +83,7 @@ PAGE = {
          "small": ("그래서 전원이 꺼져도 안 사라지는 창고가 따로 필요해요.", "So a separate warehouse that survives power-off is needed.")},
         {"svg": P3, "hero": True, "alt": ("부품 창고가 환한 낮에도 서 있고 정비사가 만족스러워함", "The parts warehouse stands in daylight, the mechanic satisfied"),
          "caption": ("플래시 메모리는 전원이 꺼져도 부품을 기억하는 창고예요.", "Flash memory is a warehouse that remembers parts even off power."),
-         "small": ("플래시 메모리에는 묶음째 다루는 NAND와 한 칸씩 다루는 NOR, 두 방식이 있어요.", "Flash memory comes in two styles: NAND handles slots in bundles, NOR one at a time."),
+         "small": ("플래시 메모리에는 묶음째 읽는 NAND와 한 칸씩 바로 읽는 NOR, 두 방식이 있어요.", "Flash memory comes in two styles: NAND reads in bundles, NOR reads one slot directly."),
          "tricks": (4, [
              (BLOCK_I, ("NAND — 페이지·블록 단위", "NAND — page/block access"), ("묶음으로 읽고 쓰고, 상자째 지워요", "reads and writes in bundles, erases whole boxes"), "calm"),
              (DRAWER_I, ("NOR — 바이트 단위", "NOR — byte access"), ("한 칸씩 바로 꺼내요", "grab a single drawer directly")),
@@ -99,14 +99,14 @@ PAGE = {
     ],
     "summary": (("<b>플래시 메모리</b>는 <b>전원이 꺼져도 부품을 기억하는 창고</b>로, 묶음(페이지)째 읽고 쓰고 블록째 지우는 <b>NAND</b>와 칸마다 바로 꺼내는 <b>NOR</b> 두 방식이 있어요.",
                  "<b>Flash memory</b> is a warehouse that <b>remembers its contents even off power</b> — in two styles: <b>NAND</b>, which reads and writes whole pages and erases whole blocks, and <b>NOR</b>, which yields single bytes directly."),
-                ("플래시 메모리는 전기 없이도 데이터를 유지하는 비휘발성 반도체 저장장치예요. NAND는 페이지 단위로 읽고 쓰며 블록 단위로 지우고, 저렴하고 대용량이라 SSD·USB·메모리카드에 쓰여요. NOR는 바이트 단위 임의 접근과 제자리 실행(XIP)이 가능해 작은 용량의 펌웨어 저장에 주로 쓰여요. SSD에서 이 NAND 칩을 효율적으로 쓰도록 주소를 매핑·마모 관리하는 소프트웨어 계층이 FTL이에요.",
-                 "Flash memory is non-volatile semiconductor storage that keeps data without power. NAND reads and writes by the page and erases by the block; it's cheap and high-capacity — used in SSDs, USB drives, and memory cards. NOR allows byte-level random access and execute-in-place (XIP), making it common for small firmware storage. The software layer that maps addresses and manages wear on NAND chips inside an SSD is the FTL.")),
+                ("플래시 메모리는 전기 없이도 데이터를 유지하는 비휘발성 반도체 저장장치예요. NAND는 페이지 단위로 읽고 쓰며 블록 단위로 지우고, 저렴하고 대용량이라 SSD·USB·메모리카드에 쓰여요. NOR는 바이트 단위로 바로 읽고 제자리 실행(XIP)이 가능해 작은 용량의 펌웨어 저장에 주로 쓰여요. 다만 NOR도 지울 때는 블록 단위예요. SSD에서 이 NAND 칩을 효율적으로 쓰도록 주소를 매핑·마모 관리하는 소프트웨어 계층이 FTL이에요.",
+                 "Flash memory is non-volatile semiconductor storage that keeps data without power. NAND reads and writes by the page and erases by the block; it's cheap and high-capacity — used in SSDs, USB drives, and memory cards. NOR allows byte-level random reads and execute-in-place (XIP), making it common for small firmware storage, though it also erases by the block. The software layer that maps addresses and manages wear on NAND chips inside an SSD is the FTL.")),
     "glossary": [
         ("NAND 플래시", "NAND Flash", ("묶음(페이지)째 꺼내고 상자(블록)째 지우는 큰 창고.", "A big warehouse that yields whole bundles (pages) and erases whole boxes (blocks)."), ("싸고 용량이 커서 SSD에 쓰여요.", "Cheap and roomy — used in SSDs.")),
         ("NOR 플래시", "NOR Flash", ("칸(바이트)마다 바로 꺼내는 서랍장.", "A drawer cabinet that yields a single byte at a time."), ("비싸지만 즉시 실행이 가능해요.", "Costlier, but allows execute-in-place.")),
         ("비휘발성 메모리", "Non-Volatile Memory", ("전원이 꺼져도 내용이 남는 저장장치.", "Storage that keeps its contents when power is off."), ("플래시가 대표적인 예예요.", "Flash is a prime example.")),
         ("블록/페이지", "Block/Page", ("창고의 상자와 상자 속 칸.", "The warehouse's boxes and the slots inside them."), ("NAND는 블록 단위로 지우고, 페이지 단위로 써요.", "NAND erases by the block and writes by the page.")),
-        ("쓰기 전 지우기", "Erase-before-Write", ("새 부품을 넣기 전에 상자를 비워야 함.", "The box must be emptied before new parts go in."), ("NAND의 대표적인 제약이에요.", "A well-known NAND constraint.")),
+        ("쓰기 전 지우기", "Erase-before-Write", ("새 부품을 넣기 전에 상자를 비워야 함.", "The box must be emptied before new parts go in."), ("NOR에도 있는 플래시 공통 제약이에요.", "A constraint across flash; NOR has it too.")),
         ("XIP(제자리 실행)", "Execute-in-Place", ("코드를 서랍(NOR)에서 바로 실행하는 것.", "Running code straight from the drawer (NOR)."), ("NOR의 장점이에요, NAND는 못 해요.", "A NOR advantage — NAND can't do this.")),
         ("SSD", "SSD", ("NAND 창고로 만든 저장장치.", "A storage drive built from NAND warehouses."), ("안에서 FTL이 블록을 관리해요.", "Inside, the FTL manages its blocks.")),
         ("FTL(플래시 변환계층)", "FTL (Flash Translation Layer)", ("창고 안 상자 번호를 바꿔 쓰는 관리 소프트웨어.", "The software that remaps which boxes are used inside the warehouse."), ('메모리 칸의 종류가 아니라 이걸 관리하는 소프트웨어예요. → <a href="ftl-ko.html">덮어쓰지 않는 부품 창고 관리인</a>', 'Not the cell type itself, but the software managing it. → <a href="ftl-en.html">the parts-warehouse manager who never overwrites</a>')),

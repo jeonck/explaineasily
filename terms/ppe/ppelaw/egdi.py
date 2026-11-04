@@ -32,10 +32,10 @@ P3 = svg(340, sky(340)
 P4 = svg(320, sky(320, ground=False)
          + rulesboard(60, 40, 640, 240, "⟦EGDI = 세 지수의 평균|EGDI = THE AVERAGE OF THREE INDEXES⟧",
                       ("⟦OSI(온라인서비스지수) — 웹사이트·서비스 수준|OSI (Online Service Index) — website and service quality⟧",
-                       "⟦TII(통신인프라지수) — 인터넷 환경(와이파이·회선)|TII (Telecom Infrastructure Index) — internet environment (wifi, lines)⟧",
+                       "⟦TII(통신인프라지수) — 인터넷 이용·이동통신 가입·요금 부담|TII (Telecom Infrastructure Index) — internet use, mobile plans, affordability⟧",
                        "⟦HCI(인적자본지수) — 구성원의 교육 수준·문해력|HCI (Human Capital Index) — people's education and literacy⟧",
                        "⟦셋을 평균 내 하나의 EGDI 점수로|all three averaged into one EGDI score⟧"), 1.0)
-         + label(380, 295, "⟦온라인 서비스가 좋아도, 회선이 느리면 EGDI 점수가 낮아져요|great online services won't lift the EGDI score if the connection is slow⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 295, "⟦온라인 서비스가 좋아도, 인터넷 쓰는 사람이 적으면 EGDI 점수가 낮아져요|great online services won't lift the EGDI score if few people are online⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 점수가 전부는 아니에요
 P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
@@ -61,25 +61,25 @@ PAGE = {
          "small": ("모든 학교가 같은 세 가지 잣대로 비교당해요.", "Every school gets compared by the same three measures."),
          "tricks": (4, [
              (OSI_I, ("온라인서비스지수(OSI)", "Online Service Index"), ("웹사이트·서비스 수준을 재요", "measures website and service quality"), "calm"),
-             (TII_I, ("통신인프라지수(TII)", "Telecom Infrastructure Index"), ("와이파이·회선 환경을 재요", "measures the internet environment")),
+             (TII_I, ("통신인프라지수(TII)", "Telecom Infrastructure Index"), ("인터넷 이용·가입·요금 부담을 재요", "measures internet use, plans, and affordability")),
              (HCI_I, ("인적자본지수(HCI)", "Human Capital Index"), ("교육 수준·문해력을 재요", "measures education and literacy"), "warm"),
              (RULER_I, ("같은 잣대로 비교", "Same ruler for everyone"), ("전 세계 나라를 공통 기준으로 재요", "every country, one shared standard")),
          ])},
         {"svg": P4, "alt": ("EGDI가 OSI·TII·HCI 세 지수의 평균으로 계산된다는 기준표", "A board showing EGDI calculated as the average of OSI, TII, and HCI"),
          "caption": ("EGDI는 세 지수를 평균 낸 점수예요.", "EGDI is the average of three sub-indexes."),
-         "small": ("온라인 서비스가 좋아도, 회선이 느리면 EGDI 점수가 낮아져요.", "Great online services won't lift the EGDI score if the connection is slow.")},
+         "small": ("온라인 서비스가 좋아도, 인터넷 쓰는 사람이 적으면 EGDI 점수가 낮아져요.", "Great online services won't lift the EGDI score if few people are online.")},
         {"svg": P5, "alt": ("왼쪽: 선생님이 같은 잣대라 공정하다고 말함. 오른쪽: 대표가 실제 만족도는 다른 얘기라고 말함", "Left: the teacher says the same ruler makes it fair. Right: the rep says real satisfaction is a different story"),
          "caption": ("EGDI 점수가 전부는 아니에요.", "The EGDI score isn't everything."),
          "small": ("EGDI 점수는 2년마다 한 번 찍는 사진이지, 매일의 진짜 모습은 아니에요.", "The EGDI score is a snapshot taken every two years — not the everyday reality.")},
     ],
     "summary": (("<b>EGDI</b> = UN이 <b>온라인서비스(OSI)·통신인프라(TII)·인적자본(HCI)</b> 세 지수를 <b>같은 잣대로 평균</b> 내 전 세계 전자정부 수준을 비교하는 지표.",
                  "<b>EGDI</b> = a UN index that compares e-government maturity worldwide by <b>averaging three sub-indexes, measured by the same ruler</b> — <b>Online Service (OSI), Telecom Infrastructure (TII), and Human Capital (HCI)</b>."),
-                ("UN 전자정부 평가(E-Government Development Index)는 UN DESA(유엔 경제사회국)가 2년마다 193개 회원국을 대상으로 발표하는 지표예요. 온라인서비스지수(OSI, 정부 웹사이트·서비스 수준)·통신인프라지수(TII, 인터넷 보급·속도)·인적자본지수(HCI, 교육 수준·문해율)를 각각 측정해 평균을 내요. 국가 간 전자정부 수준을 같은 기준으로 비교할 수 있게 해주지만, 2년 주기 스냅샷이라 실시간 변화나 실제 이용 만족도까지는 담지 못해요.",
-                 "The UN E-Government Development Index is published every two years by UN DESA for 193 member states. It averages three sub-indexes: the Online Service Index (OSI, government websites and services), the Telecommunication Infrastructure Index (TII, internet penetration and speed), and the Human Capital Index (HCI, education and literacy). It lets countries be compared by a shared standard, but being a two-year snapshot, it can't capture real-time change or actual user satisfaction.")),
+                ("UN 전자정부 평가(E-Government Development Index)는 UN DESA(유엔 경제사회국)가 2년마다 193개 회원국을 대상으로 발표하는 지표예요. 온라인서비스지수(OSI, 정부 웹사이트·서비스 수준)·통신인프라지수(TII, 인터넷 이용률·이동통신 가입·요금 부담)·인적자본지수(HCI, 교육 수준·문해율)를 각각 측정해 평균을 내요. 국가 간 전자정부 수준을 같은 기준으로 비교할 수 있게 해주지만, 2년 주기 스냅샷이라 실시간 변화나 실제 이용 만족도까지는 담지 못해요.",
+                 "The UN E-Government Development Index is published every two years by UN DESA for 193 member states. It averages three sub-indexes: the Online Service Index (OSI, government websites and services), the Telecommunication Infrastructure Index (TII, internet use, mobile subscriptions, and affordability), and the Human Capital Index (HCI, education and literacy). It lets countries be compared by a shared standard, but being a two-year snapshot, it can't capture real-time change or actual user satisfaction.")),
     "glossary": [
         ("EGDI", "EGDI (E-Government Development Index)", ("같은 잣대로 모든 나라를 재는 평가.", "An index that measures every country by the same ruler."), ("2년마다 UN이 다시 발표해요.", "Re-published by the UN every two years.")),
         ("OSI", "OSI (Online Service Index)", ("웹사이트·서비스 수준을 재는 지수.", "Measures the quality of websites and services."), ("세 지수 중 사람들이 직접 쓰는 서비스를 재요.", "Of the three, it rates the services people directly use.")),
-        ("TII", "TII (Telecommunication Infrastructure Index)", ("와이파이·회선 환경을 재는 지수.", "Measures the internet and connectivity environment."), ("서비스가 좋아도 통신 환경이 나쁘면 EGDI 점수가 낮아져요.", "Even with great services, weak connectivity lowers the EGDI score.")),
+        ("TII", "TII (Telecommunication Infrastructure Index)", ("인터넷 이용률·이동통신 가입·요금 부담을 재는 지수.", "Measures internet use, mobile subscriptions, and affordability."), ("서비스가 좋아도 통신 환경이 나쁘면 EGDI 점수가 낮아져요.", "Even with great services, weak connectivity lowers the EGDI score.")),
         ("HCI", "HCI (Human Capital Index)", ("쓰는 사람의 역량(교육·문해율)을 재는 지수.", "Measures the capacity of the people — education and literacy."), ("기술이 좋아도 사람들이 쓸 줄 모르면 소용없어요.", "Great tech is wasted if people can't use it.")),
         ("UN DESA", "UN DESA", ("이 평가를 실제로 발표하는 기관.", "The body that actually publishes this index."), ("유엔 경제사회국이에요.", "The UN Department of Economic and Social Affairs.")),
         ("전자정부", "e-Government", ("행정 서비스를 온라인으로 제공하는 것.", "Delivering administrative services online."), ("EGDI가 재는 대상 그 자체예요.", "The very thing EGDI is measuring.")),

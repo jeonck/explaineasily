@@ -27,7 +27,7 @@ P3 = svg(340, sky(340)
          + fastdesk(230, 280, 1.1)
          + person(560, 170, s=0.7, face=SMILE, **DRIVER)
          + label(380, 30, "⟦인메모리 DB = 깊은 선반 대신 바로 꺼내는 특급 출고대|in-memory DB = an express desk that skips the deep shelf⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦데이터를 메모리에 올려두니 꺼내는 데 거의 시간이 안 걸려요|data is kept in memory, so pickup takes almost no time⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦데이터를 메모리에 올려두니 디스크보다 훨씬 빨리 꺼내요|data is kept in memory, so pickup is far faster than from disk⟧", 12, "var(--muted)"))
 
 # 4. 쓰임새 비교
 def _row(y, a, b):
@@ -37,7 +37,7 @@ P4 = svg(320, sky(320, ground=False)
          + label(380, 34, "⟦인메모리 DB / IMDG 쓰임새|how in-memory DB / IMDG gets used⟧", 14, "var(--ink)", cls="d")
          + '<rect x="200" y="54" width="360" height="2" fill="var(--line)"/>'
          + _row(80, "⟦캐시로 — 깊은 선반 조회를 줄임|as a cache — cuts deep-shelf lookups⟧", "⟦예: Redis|e.g. Redis⟧")
-         + _row(116, "⟦세션/순위판처럼 빠른 조회|fast lookups like sessions, leaderboards⟧", "⟦지연이 거의 없어요|near-zero latency⟧")
+         + _row(116, "⟦세션/순위판처럼 빠른 조회|fast lookups like sessions, leaderboards⟧", "⟦디스크보다 훨씬 빠름|far faster than disk⟧")
          + _row(152, "⟦IMDG — 여러 대의 메모리를 묶음|IMDG — pools memory across many machines⟧", "⟦샤딩으로 규모를 키움|grows by sharding⟧")
          + _row(188, "⟦휘발성 — 전원이 나가면 데이터 사라짐|volatile — data vanishes if power is lost⟧", "⟦로그/스냅샷으로 보완|backed up via log/snapshot⟧"))
 
@@ -62,11 +62,11 @@ PAGE = {
          "small": ("자주 찾는 상품은 가까이 둘 수 없을까요?", "Couldn't frequently-needed items stay close by?")},
         {"svg": P3, "hero": True, "alt": ("포장 담당이 특급 출고대에서 바로 꺼내주고 배송 기사가 웃으며 금방 받아감", "A packer hands it over instantly from the express desk, and the driver smiles, getting it right away"),
          "caption": ("인메모리 DB = 깊은 선반 대신 바로 꺼내는 특급 출고대예요.", "An in-memory DB is an express desk that skips the deep shelf."),
-         "small": ("데이터를 메모리에 올려두니 꺼내는 데 거의 시간이 안 걸려요.", "Data is kept in memory, so pickup takes almost no time."),
+         "small": ("데이터를 메모리에 올려두니 디스크보다 훨씬 빨리 꺼내요.", "Data is kept in memory, so pickup is far faster than from disk."),
          "tricks": (4, [
              (MEM_I, ("데이터를 메모리에 바로 두기", "Keep data right in memory"), ("디스크까지 안 가요", "skips the trip to disk"), "calm"),
-             (FAST_I, ("빠른 꺼내기", "Instant pickup"), ("지연이 거의 없어요", "near-zero latency")),
-             (VOLATILE_I, ("휘발성 위험", "Volatility risk"), ("전원이 나가면 데이터가 사라져요", "data vanishes if power is lost"), "warm"),
+             (FAST_I, ("빠른 꺼내기", "Instant pickup"), ("디스크보다 지연이 훨씬 짧아요", "far lower latency than disk")),
+             (VOLATILE_I, ("휘발성 위험", "Volatility risk"), ("전원이 나가면 메모리의 데이터가 사라져요", "data in memory vanishes if power is lost"), "warm"),
              (GRID_I, ("IMDG — 여러 대 묶기", "IMDG — pool many machines"), ("여러 대의 메모리를 모아 큰 저장소로 써요", "pools memory into one big store")),
          ])},
         {"svg": P4, "alt": ("캐시, 빠른 조회, IMDG, 휘발성 네 가지 쓰임새를 비교하는 표", "A table comparing cache use, fast lookups, IMDG, and volatility"),
@@ -76,17 +76,17 @@ PAGE = {
          "caption": ("메모리는 디스크보다 비싸서 데이터를 전부 올리긴 어려워요.", "Memory costs more than disk, so moving all the data into memory is hard."),
          "small": ("그래서 자주 쓰는 데이터만 골라 올리기도 해요(캐시).", "So often only frequently-used data gets loaded into memory — that's a cache.")},
     ],
-    "summary": (("<b>인메모리 DB/IMDG</b> = 깊은 선반(디스크)까지 가지 않고, <b>메모리에 바로 올려 둬서</b> 거의 지연 없이 꺼내 쓰는 방식.",
-                 "<b>In-memory DB/IMDG</b> keeps data right in memory instead of making the trip to the deep shelf (disk), so it can be fetched with almost no delay."),
-                ("인메모리 DB는 디스크가 아닌 주기억장치(RAM)에 데이터를 상주시켜 I/O 지연을 없애는 데이터베이스이고, IMDG(In-Memory Data Grid)는 여러 노드의 메모리를 묶어 분산된 대용량 인메모리 저장소로 쓰는 것이에요. 휘발성이 약점이라 로그 선행기록(WAL)·스냅샷·복제로 내구성을 보완해요.",
-                 "An in-memory DB keeps data resident in RAM instead of disk, eliminating I/O latency. An IMDG (In-Memory Data Grid) pools memory across multiple nodes into a large distributed in-memory store. Volatility is its weak point, so write-ahead logging, snapshots, and replication back up its durability.")),
+    "summary": (("<b>인메모리 DB/IMDG</b> = 깊은 선반(디스크)까지 가지 않고, <b>메모리에 바로 올려 둬서</b> 디스크보다 훨씬 빨리 꺼내 쓰는 방식.",
+                 "<b>In-memory DB/IMDG</b> keeps data right in memory instead of making the trip to the deep shelf (disk), so it can be fetched far faster than from disk."),
+                ("인메모리 DB는 디스크가 아닌 주기억장치(RAM)에 데이터를 상주시켜 디스크 I/O 지연을 크게 줄이는 데이터베이스이고, IMDG(In-Memory Data Grid)는 여러 노드의 메모리를 묶어 분산된 대용량 인메모리 저장소로 쓰는 것이에요. 휘발성이 약점이라 로그 선행기록(WAL)·스냅샷·복제로 내구성을 보완해요.",
+                 "An in-memory DB keeps data resident in RAM instead of disk, greatly cutting disk I/O latency. An IMDG (In-Memory Data Grid) pools memory across multiple nodes into a large distributed in-memory store. Volatility is its weak point, so write-ahead logging, snapshots, and replication back up its durability.")),
     "glossary": [
-        ("인메모리 DB", "In-Memory Database", ("메모리에 바로 데이터를 두는 창고.", "A warehouse that keeps data right in memory."), ("디스크 I/O 지연이 거의 없어요.", "Almost no disk I/O latency.")),
+        ("인메모리 DB", "In-Memory Database", ("메모리에 바로 데이터를 두는 창고.", "A warehouse that keeps data right in memory."), ("데이터를 읽을 때 디스크 I/O 지연이 거의 없어요.", "Almost no disk I/O latency on reads.")),
         ("IMDG", "In-Memory Data Grid", ("여러 대의 메모리를 묶은 창고.", "A warehouse pooling memory across many machines."), ('샤딩과 함께 규모를 키워요. → <a href="dbsharding-ko.html">구역으로 쪼갠 창고</a>', 'Scales together with sharding. → <a href="dbsharding-en.html">the warehouse split into zones</a>')),
         ("캐시", "Cache", ("자주 찾는 것만 가까이 두는 것.", "Keeping only the frequently-needed items close by."), ("전체 데이터가 아니라 일부만 메모리에 올려요.", "Holds only a portion of the data in memory.")),
         ("휘발성", "Volatility", ("전원이 나가면 사라지는 성질.", "The trait of vanishing when power is lost."), ("사라진 데이터는 로그/스냅샷으로 복구해요.", "Lost data is recovered via log or snapshot.")),
-        ("지속성(Durability)", "Durability", ("도장 찍히면 사라지지 않는 약속.", "The promise that once stamped, it stays."), ('인메모리 DB는 이 약속을 일부 타협해요. → <a href="acid-ko.html">전표가 지키는 네 약속</a>', 'In-memory DBs trade off some of this promise. → <a href="acid-en.html">the four promises a receipt keeps</a>')),
-        ("NoSQL 모델링", "NoSQL Modeling", ("상자 모양에 맞춰 선반을 바꾸는 창고.", "A warehouse reshaping shelves to fit the box."), ('Key-Value형과 자주 함께 쓰여요. → <a href="nosqltype-ko.html">자유로운 선반 창고</a>', 'Often paired with the key-value type. → <a href="nosqltype-en.html">the free-shelf warehouse</a>')),
+        ("지속성(Durability)", "Durability", ("도장 찍히면 사라지지 않는 약속.", "The promise that once stamped, it stays."), ('일부 인메모리 DB는 속도를 위해 이 약속을 타협해요. → <a href="acid-ko.html">전표가 지키는 네 약속</a>', 'Some in-memory DBs trade off this promise for speed. → <a href="acid-en.html">the four promises a receipt keeps</a>')),
+        ("NoSQL 모델링", "NoSQL Modeling", ("상자 모양에 맞춰 선반을 바꾸는 창고.", "A warehouse reshaping shelves to fit the box."), ('Redis처럼 Key-Value형이면서 인메모리인 제품도 있어요. → <a href="nosqltype-ko.html">자유로운 선반 창고</a>', 'Some products, like Redis, are both key-value and in-memory. → <a href="nosqltype-en.html">the free-shelf warehouse</a>')),
         ("캐싱(놀이공원 세계)", "Caching (Amusement-Park World)", ("놀이공원 세계에서 다루는 캐시 이야기.", "The caching story from the amusement-park world."), ('분산 시스템 관점의 캐싱은 그쪽에서 더 다뤄요. → <a href="caching-ko.html">캐싱</a>', 'The distributed-systems view of caching is covered there. → <a href="caching-en.html">caching</a>')),
         ("병행제어", "Concurrency Control", ("동시에 손대도 안 부딪히게 막는 규칙.", "Rules that stop simultaneous edits from colliding."), ('메모리 위에서도 이 규칙은 그대로 필요해요. → <a href="concurrency-ko.html">동시에 안 부딪히는 규칙</a>', 'Still needed even when everything lives in memory. → <a href="concurrency-en.html">the no-collision rule</a>')),
     ],

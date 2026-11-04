@@ -33,7 +33,7 @@ P4 = svg(340, sky(340)
          + gradeboard(40, 30, 680, 290, "⟦5번의 시험 결과|FIVE ROUNDS OF TESTING⟧",
                       ("⟦1회차 — 1조 시험 → 92점|round 1 — group 1 tested → 92⟧", "⟦2회차 — 2조 시험 → 88점|round 2 — group 2 tested → 88⟧",
                        "⟦3회차 — 3조 시험 → 95점|round 3 — group 3 tested → 95⟧", "⟦4회차 — 4조 시험 → 90점|round 4 — group 4 tested → 90⟧",
-                       "⟦5회차 — 5조 시험 → 91점|round 5 — group 5 tested → 91⟧", "⟦→ 평균 91.2점을 진짜 실력으로 봐요|→ the 91.2 average is taken as the real score⟧"), 0.9))
+                       "⟦5회차 — 5조 시험 → 91점|round 5 — group 5 tested → 91⟧", "⟦→ 평균 91.2점을 실력의 추정값으로 봐요|→ the 91.2 average is the estimate of real skill⟧"), 0.9))
 
 # 5. 계산이 더 들고, 순서가 있는 데이터엔 조심해야 해요
 P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
@@ -44,7 +44,7 @@ P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x
 PAGE = {
     "slug": "crossval", "order": 22,
     "title": ("조를 돌아가며 시험지로 쓰는 검수반장", "The Inspector Who Rotates Which Group Becomes the Test"),
-    "h1": ("<em>교차검증</em>이/가 뭐예요?", "What is <em>Cross Validation</em>?"),
+    "h1": ("<em>교차검증</em>이 뭐예요?", "What is <em>Cross Validation</em>?"),
     "sub": ("교차검증을, 외운 문제로 본 100점을 의심하고 조를 나눠 번갈아 '처음 보는 시험지'로 다시 시험하는 검수반장 이야기로 풀어봤어요.",
             "Cross validation, told as a story about an inspector who distrusts a 100% score on memorized questions, and instead splits the data into groups to take turns as the never-seen test."),
     "panels": [
@@ -65,7 +65,7 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("다섯 번의 회차별 시험 점수(92, 88, 95, 90, 91)와 그 평균 91.2점을 보여주는 표", "A table of five rounds' test scores (92, 88, 95, 90, 91) and their 91.2 average"),
          "caption": ("다섯 번 돌아가며 본 시험 점수의 평균을 내요.", "The scores from all five rounds are averaged."),
-         "small": ("한 번의 운 좋은 점수가 아니라, 다섯 번의 평균을 진짜 실력으로 봐요.", "Not one lucky score, but the five-round average, is taken as the real skill.")},
+         "small": ("한 번의 운 좋은 점수가 아니라, 다섯 번의 평균으로 실력을 가늠해요.", "Not one lucky score, but the five-round average, is used to estimate real skill.")},
         {"svg": P5, "alt": ("왼쪽: 다섯 번 훈련하느라 시간이 더 걸림. 오른쪽: 수확 날짜 순서가 있는 데이터는 순서를 지켜 나눠야 함", "Left: training five times over takes more time. Right: data with a harvest-date order must be split in order"),
          "caption": ("교차검증은 계산이 더 들고, 시간 순서가 있는 데이터엔 조심해야 해요.", "Cross validation costs more compute, and time-ordered data needs special care."),
          "small": ("교차검증은 한 번 시험보다 평가를 더 믿을 만하게 하지만, 훈련을 여러 번 하는 비용이 들어요.", "Cross validation is more trustworthy than a single test, but costs repeated training.")},

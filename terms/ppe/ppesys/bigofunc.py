@@ -95,11 +95,11 @@ PAGE = {
     "glossary": [
         ("O(1)", "O(1)", ("번호판으로 바로 찾기, 늘 똑같은 시간.", "Found directly by plate number — always the same time."), ("입력이 늘어도 시간이 그대로예요.", "Time stays flat no matter how much input grows.")),
         ("O(log n)", "O(log n)", ("매번 반씩 줄여가는 탐색.", "A search that halves the candidates each step."), ("입력이 늘어도 시간은 아주 천천히 늘어나요.", "Time grows very, very slowly as the input grows.")),
-        ("O(n)", "O(n)", ("한 줄로 서서 하나씩 확인하기.", "Checking one by one, down the line."), ("시간이 입력 크기에 비례해 늘어나요.", "Time grows exactly in step with the input size.")),
+        ("O(n)", "O(n)", ("한 줄로 서서 하나씩 확인하기.", "Checking one by one, down the line."), ("시간이 입력 크기에 비례해 늘어나요.", "Time grows in proportion to the input size.")),
         ("O(n²)", "O(n²)", ("모든 차끼리 서로 다 비교하기.", "Comparing every car against every other."), ("n이 커지면 시간이 감당 못 할 만큼 가파르게 늘어요.", "Time steepens out of hand as n grows.")),
         ("이진트리 탐색(O(log n)의 예)", "Binary Tree Search (an O(log n) example)", ("갈림길마다 반씩 줄여가는 선반 지도.", "A shelf map that halves the search at every fork."), ('O(log n)이 실제로 어떻게 생기는지 여기서 봐요. → <a href="bintree-ko.html">갈림길에서 반씩 줄여가는 선반 지도</a>', 'See what O(log n) actually looks like. → <a href="bintree-en.html">the shelf map that halves the search at every fork</a>')),
         ("스택·큐의 push/pop(O(1)의 예)", "Stack/Queue push-pop (an O(1) example)", ("상자를 쌓거나 줄 세우는 규칙.", "The rule for stacking boxes or lining up cars."), ('push/pop·enqueue/dequeue는 보통 O(1)이에요. → <a href="stackqueue-ko.html">상자는 쌓고, 차는 줄 세우고</a>', 'push/pop and enqueue/dequeue are usually O(1). → <a href="stackqueue-en.html">boxes get stacked, cars get queued</a>')),
-        ("캐시 적중/미스", "Cache Hit/Miss", ("자주 쓰는 공구만 담는 작은 공구함.", "A small toolbox holding only the frequent tools."), ('같은 O(1) 조회도 적중이냐 미스냐로 실제 속도가 갈려요. → <a href="cachemem-ko.html">자주 쓰는 공구만 담는 공구함</a>', 'Even at the same O(1), a hit and a miss feel very different in practice. → <a href="cachemem-en.html">the toolbox that holds only the frequent tools</a>')),
+        ("캐시 적중/미스", "Cache Hit/Miss", ("찾는 공구가 공구함에 있으면 적중, 없으면 미스.", "A hit: the tool is in the toolbox. A miss: it isn't."), ('같은 O(1) 조회도 적중이냐 미스냐로 실제 속도가 갈려요. → <a href="cachemem-ko.html">자주 쓰는 공구만 담는 공구함</a>', 'Even at the same O(1), a hit and a miss feel very different in practice. → <a href="cachemem-en.html">the toolbox that holds only the frequent tools</a>')),
         ("CPU 스케줄링", "CPU Scheduling", ("리프트에 누가 먼저 올라갈지 정하는 규칙.", "The rule deciding who gets the lift first."), ('순서판을 정렬·검색하는 비용도 이 자로 재요. → <a href="cpusched-ko.html">리프트에 누가 먼저 올라갈까</a>', 'Sorting or searching the job board is measured with this same ruler. → <a href="cpusched-en.html">who gets the lift first</a>')),
     ],
 }

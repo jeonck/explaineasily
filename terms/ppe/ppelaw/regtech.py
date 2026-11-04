@@ -11,7 +11,7 @@ HUMAN_I = icon('<circle cx="32" cy="18" r="10" fill="var(--good)"/><rect x="18" 
 P1 = svg(390, sky(390)
          + rulesboard(60, 40, 150, 220, "⟦라이선스|LICENSE⟧", ("⟦출처 표기|credit⟧",), 0.75)
          + rulesboard(230, 60, 150, 200, "⟦망중립|NEUTRAL⟧", ("⟦차별 금지|no bias⟧",), 0.75)
-         + rulesboard(400, 40, 150, 220, "⟦품질|QUALITY⟧", ("⟦8대 기준|8 traits⟧",), 0.75)
+         + rulesboard(400, 40, 150, 220, "⟦품질|QUALITY⟧", ("⟦특성별 기준|by trait⟧",), 0.75)
          + rulesboard(570, 60, 150, 200, "⟦안전|SAFETY⟧", ("⟦등급 기준|grading⟧",), 0.75)
          + person(380, 290, s=0.7, face=SWEAT + EYES, **TEACHER)
          + label(380, 18, "⟦규칙이 해를 거듭할수록 너무 많이 쌓였어요|the rules have piled up, year after year⟧", 13, "var(--ink)", cls="d"))
@@ -44,7 +44,7 @@ P4 = svg(300, sky(300, ground=False)
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + checkmachine(190, 140, 1.0) + label(190, 250, "⟦이미 아는 유형의 위반은 빠르게 잡아내요|known kinds of violations get caught fast⟧", 11, "var(--ink)")
          + person(570, 140, s=0.8, face=EYES, **TEACHER) + label(570, 250, "⟦처음 보는 종류의 위반은 여전히 사람 몫이에요|a never-seen-before violation is still a human's job⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦규칙을 만드는 것과, 지키는지 확인하는 것은 다른 일이에요|making a rule and checking whether it's kept are two different jobs⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 285, "⟦검사기는 위반 의심 건을 골라줄 뿐, 처음 보는 위반과 최종 판단은 사람 몫이에요|the checker only flags suspects — new kinds of violations and final calls stay human⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "regtech", "order": 21,
@@ -73,17 +73,17 @@ PAGE = {
          "small": ("기계가 위반 의심 건을 골라내고, 사람이 최종 결정해요.", "The machine flags suspected violations — a person decides.")},
         {"svg": P5, "alt": ("왼쪽: 자동 검사기가 이미 아는 유형의 위반은 빠르게 잡아냄. 오른쪽: 선생님이 처음 보는 위반은 여전히 사람 몫이라고 말함", "Left: the automatic checker quickly catches known kinds of violations. Right: a teacher says a never-seen-before violation is still a human's job"),
          "caption": ("레그테크도 모든 위반을 다 잡아내진 못해요.", "RegTech can't catch every violation either."),
-         "small": ("규칙을 만드는 것과, 지키는지 확인하는 것은 다른 일이에요.", "Making a rule and checking whether it's kept are two different jobs.")},
+         "small": ("검사기는 위반 의심 건을 골라줄 뿐, 처음 보는 위반과 최종 판단은 사람 몫이에요.", "The checker only flags suspects — new kinds of violations and final calls stay human.")},
     ],
     "summary": (("<b>레그테크</b> = 흩어진 규칙(라이선스·품질·안전·데이터…)을 <b>자동 검사기</b>로 <b>실시간 대조</b>해, 어긋나면 <b>바로 알리고</b> 최종 판단은 사람에게 넘기는 기술.",
                  "<b>RegTech</b> = technology that <b>cross-checks scattered rules</b> (license, quality, safety, data...) with an <b>automatic checker</b>, <b>flags a mismatch right away</b>, and hands the final call to a person."),
-                ("레그테크(Regulatory Technology)는 규제 준수(컴플라이언스)를 자동화하는 기술이에요. 여러 시스템의 기록을 자동 수집하고, 규제 기준과 실시간으로 대조해 이상 징후를 조기에 탐지함으로써, 사람이 모든 서류를 수작업으로 대조하던 방식보다 훨씬 빠르고 촘촘하게 위반을 찾아내요. 다만 알려진 패턴 기반의 탐지라 처음 보는 유형의 위반이나 애매한 판단은 여전히 사람의 몫이고, 오탐·누락 가능성도 남아 있어요.",
-                 "RegTech (Regulatory Technology) automates regulatory compliance. It automatically gathers records across systems and checks them in real time against regulatory standards, catching anomalies far faster and more thoroughly than manual, document-by-document checking ever could. Still, because it detects known patterns, a never-before-seen type of violation or an ambiguous judgment call remains a human's job, and some risk of false positives or missed cases remains.")),
+                ("레그테크(Regulatory Technology)는 규제 준수(컴플라이언스)를 자동화하는 기술로, 금융권을 중심으로 널리 쓰여요. 여러 시스템의 기록을 자동 수집하고, 규제 기준과 실시간에 가깝게 대조해 이상 징후를 조기에 탐지함으로써, 사람이 모든 서류를 수작업으로 대조하던 방식보다 훨씬 빠르고 촘촘하게 위반을 찾아내요. 다만 주로 정해진 규칙과 알려진 패턴으로 탐지하기 때문에 처음 보는 유형의 위반이나 애매한 판단은 여전히 사람의 몫이고, 오탐·누락 가능성도 남아 있어요.",
+                 "RegTech (Regulatory Technology) automates regulatory compliance and is used mainly in financial services. It automatically gathers records across systems and checks them in near real time against regulatory standards, catching anomalies far faster and more thoroughly than manual, document-by-document checking ever could. Still, because it mostly relies on set rules and known patterns, a never-before-seen type of violation or an ambiguous judgment call remains a human's job, and some risk of false positives or missed cases remains.")),
     "glossary": [
         ("레그테크", "RegTech", ("자동 검사기로 규칙 준수를 확인하는 기술.", "Technology that checks rule-following with an automatic checker."), ("규제와 기술(Regulation + Technology)의 합성어예요.", "A blend of \"regulation\" and \"technology.\"")),
         ("자동 규제준수", "Automated Compliance", ("손이 아니라 기계가 규정을 대조하는 것.", "Having a machine, not hands, check against the rules."), ("레그테크가 하는 핵심 작업이에요.", "The core job RegTech performs.")),
         ("실시간 모니터링", "Real-Time Monitoring", ("기록이 쌓이자마자 바로바로 확인하는 것.", "Checking records the moment they're created."), ("늦게 발견하던 위반을 조기에 잡아줘요.", "Catches violations early that used to surface late.")),
-        ("이상탐지", "Anomaly Detection", ("평소와 다른 패턴을 자동으로 찾아내는 것.", "Automatically spotting a pattern that doesn't match the usual."), ("알려진 규칙 패턴 기반이라 완벽하진 않아요.", "Pattern-based, so it isn't foolproof.")),
+        ("이상탐지", "Anomaly Detection", ("평소와 다른 패턴을 자동으로 찾아내는 것.", "Automatically spotting a pattern that doesn't match the usual."), ("평소 패턴과 다른 것을 찾는 방식이라 잘못 울리거나 놓칠 수 있어요.", "It looks for what differs from the usual, so false alarms and misses can happen.")),
         ("컴플라이언스", "Compliance", ("조직이 외부 규정을 지키는 상태 그 자체.", "An organization actually following external rules."), ('레그테크가 자동으로 확인해주는 대상이에요. → <a href="compliance-ko.html">이웃 나라 규칙 검사관</a>', 'The very thing RegTech automatically verifies. → <a href="compliance-en.html">the inspector from the neighboring kingdom</a>')),
         ("오픈소스 라이선스", "Open-Source License", ("레그테크가 자동으로 대조하는 규칙판 중 하나.", "One of the rule boards RegTech cross-checks automatically."), ('섞어 쓴 라이선스를 자동 검사기가 추적해요. → <a href="osslicense-ko.html">다 같이 쓰는 준비물 규칙 라벨</a>', 'An automatic checker tracks which licenses got mixed in. → <a href="osslicense-en.html">the rule tag on shared supplies</a>')),
         ("데이터 표준화", "Data Standardization", ("기록 형식이 같아야 자동 대조가 가능해요.", "Automatic cross-checking only works if record formats already match."), ('레그테크는 이 표준 위에서 작동해요. → <a href="datastd-ko.html">전교가 함께 쓰는 공통 기준표</a>', 'RegTech runs on top of this standard. → <a href="datastd-en.html">the shared standard the whole school uses</a>')),

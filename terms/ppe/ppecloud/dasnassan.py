@@ -69,7 +69,7 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("안내판: DAS는 직접 연결로 혼자, NAS는 복도망으로 파일 단위 공유, SAN은 전용망으로 블록 단위, 공유 범위가 넓을수록 연결·권한 설정이 늘어남", "A board: DAS connects directly for one user, NAS shares files over the hallway network, SAN uses a dedicated block-level network, and wider sharing means more connections and permissions to set up"),
          "caption": ("DAS·NAS·SAN은 연결 방식과 공유 범위로 갈려요.", "Connection method and sharing scope split DAS, NAS, and SAN apart."),
-         "small": ("공유 범위를 넓히면 비용이 올라요. 속도는 일반 네트워크를 타는 NAS가 보통 가장 느려요.", "Wider sharing costs more. Speed is usually lowest on NAS, which runs over a regular network.")},
+         "small": ("공유 범위를 넓히면 장비 비용이 올라요. 속도는 일반 네트워크를 타는 NAS가 보통 가장 느려요.", "Wider sharing raises equipment cost. Speed is usually lowest on NAS, which runs over a regular network.")},
         {"svg": P5, "alt": ("왼쪽: 작은 사무실은 책상 서랍(DAS)으로 충분해 웃음. 오른쪽: 전용 창고망(SAN)은 설치·관리가 복잡하고 비싸 땀 흘림", "Left: a small office is fine with just a desk drawer (DAS), tenant smiling. Right: a dedicated storage network (SAN) is complex and costly, tenant sweating"),
          "caption": ("작은 사무실엔 전용 창고망(SAN)이 오히려 과해요.", "A dedicated storage network (SAN) is overkill for a small office."),
          "small": ("사무실 규모에 맞는 저장 방식을 고르는 게 중요해요.", "Picking the storage that fits the office's size matters.")},

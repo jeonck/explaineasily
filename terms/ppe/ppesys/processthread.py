@@ -76,7 +76,7 @@ PAGE = {
          "caption": ("메모리(트렁크)를 공유하느냐가 핵심 차이예요.", "Whether memory (the trunk) is shared is the key difference."),
          "small": ("스레드는 프로세스 안에서 돌아가는, 실제 스케줄링의 단위예요.", "A thread runs inside a process — the real unit the scheduler moves.")},
         {"svg": P5, "alt": ("왼쪽: 같은 트렁크를 같이 써서 빨라짐. 오른쪽: 동시에 손대다 부딪힘", "Left: sharing the trunk makes work faster. Right: touching it at the same time causes a collision"),
-         "caption": ("손 둘이 트렁크를 같이 쓰면 빠르지만, 부딪히면 둘 다 일을 망쳐요.", "Two hands sharing the trunk work fast — but a collision ruins the work of both."),
+         "caption": ("손 둘이 트렁크를 같이 쓰면 따로 챙길 때보다 빠르지만, 부딪히면 둘 다 일을 망쳐요.", "Two hands sharing the trunk beat setting up separate ones — but a collision ruins the work of both."),
          "small": ("그래서 같이 쓰는 트렁크엔 동기화 규칙이 꼭 필요해요.", "That's why a shared trunk always needs a synchronization rule.")},
     ],
     "summary": (("<b>프로세스</b> = 각자 <b>독립된 차</b>(독립된 메모리). <b>스레드</b> = <b>같은 차 안에서 트렁크(메모리)를 같이 쓰며</b> 일하는 여러 손.",

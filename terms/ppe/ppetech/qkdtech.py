@@ -40,7 +40,7 @@ P3 = svg(340, '<rect width="760" height="340" fill="var(--night)"/>'
          + photonbeam(230, 190, 530, 190, broken=True)
          + eavesdrop(380, 110, 0.9)
          + label(380, 70, "⟦엿보려는 순간, 광자 상태가 변해 흔적이 남아요|the instant someone peeks, the photon's state changes and leaves a trace⟧", 12, "#F5E6B8")
-         + label(380, 30, "⟦QKD = 빛(광자) 한 알에 열쇠를 실어 보내, 엿보면 반드시 들통나는 열쇠 나눔 방식|QKD = sends the key riding on single photons, so any peek is bound to be caught⟧", 13, "#F5E6B8", cls="d")
+         + label(380, 30, "⟦QKD = 빛(광자) 한 알에 열쇠를 실어 보내, 엿보면 오류가 늘어 들통나는 열쇠 나눔 방식|QKD = sends the key riding on single photons, so a peek adds errors and gets caught⟧", 13, "#F5E6B8", cls="d")
          + label(380, 320, "⟦도청이 들통난 열쇠는 버리고 새 열쇠를 나눠요|a key caught being snooped is discarded, and a new one is shared⟧", 12, "#C9D5E6"))
 
 QKD_PHOTON = icon('<circle cx="32" cy="32" r="8" fill="var(--accent)"/><path d="M14 32 h8 M42 32 h8" stroke="var(--accent)" stroke-width="3"/>')
@@ -64,10 +64,10 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="
 
 PAGE = {
     "slug": "qkdtech", "order": 13,
-    "title": ("엿보면 반드시 들통나는 빛의 열쇠", "The Light-Key That Always Gets Caught When Peeked At"),
+    "title": ("엿보면 들통나는 빛의 열쇠", "The Light-Key That Shows When It's Been Peeked At"),
     "h1": ("<em>양자키분배(QKD)</em>가 뭐예요?", "What is <em>Quantum Key Distribution (QKD)</em>?"),
-    "sub": ("QKD를, 빛(광자) 한 알 한 알에 열쇠를 실어 보내 엿보면 반드시 들통나는 이야기로 풀어봤어요.",
-            "QKD, told as a story about sending a key riding on single photons of light, so that any attempt to peek is always caught."),
+    "sub": ("QKD를, 빛(광자) 한 알 한 알에 열쇠를 실어 보내 엿보면 들통나는 이야기로 풀어봤어요.",
+            "QKD, told as a story about sending a key riding on single photons of light, so that a peek gets caught."),
     "panels": [
         {"svg": P1, "alt": ("누군가 암호키 전달을 몰래 엿듣지만 아무 흔적도 남지 않음", "Someone secretly eavesdrops on a key exchange, leaving no trace at all"),
          "caption": ("도청자가 암호키를 몰래 엿봤는데, 아무 흔적도 안 남아요.", "An eavesdropper snooped on the key and left no trace at all."),
@@ -76,7 +76,7 @@ PAGE = {
          "caption": ("지금 쓰는 암호키는 지금은 안전해 보여요.", "Today's encryption keys look safe for now."),
          "small": ("미래의 양자컴퓨터가 이 열쇠를 풀어버릴 수도 있어요.", "A future quantum computer might crack this very key.")},
         {"svg": P3, "hero": True, "alt": ("두 금고 사이에서 광자 빔이 오가고, 엿듣는 순간 광자 상태가 흔들려 흔적이 남음", "A photon beam travels between two boxes, and an eavesdropper's peek disturbs the photons, leaving a trace"),
-         "caption": ("QKD는 빛(광자) 한 알에 열쇠를 실어 보내, 엿보면 반드시 들통나는 열쇠 나눔 방식이에요.", "QKD sends the key riding on single photons, so any peek is bound to be caught."),
+         "caption": ("QKD는 빛(광자) 한 알에 열쇠를 실어 보내, 엿보면 오류가 늘어 들통나는 열쇠 나눔 방식이에요.", "QKD sends the key riding on single photons, so a peek adds errors and gets caught."),
          "small": ("도청이 들통난 열쇠는 버리고 새 열쇠를 나눠요.", "A key caught being snooped is discarded, and a new one is shared."),
          "tricks": (4, [
              (QKD_PHOTON, ("광자 하나에 정보 하나", "One photon, one bit"), ("빛의 가장 작은 알갱이로 보내요", "sent on light's smallest particle"), "calm"),
@@ -86,18 +86,18 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("기존 암호키 전달과 QKD를 도청 감지·양자컴퓨터 내성으로 비교하는 설명판", "A board comparing old-style key exchange and QKD on eavesdropping detection and quantum-computer resistance"),
          "caption": ("기존 방식과 QKD의 가장 큰 차이는 QKD만 도청을 감지할 수 있다는 거예요.", "The biggest difference from older methods: QKD can tell when it's being snooped on."),
-         "small": ("QKD는 양자컴퓨터가 발전해도 원리상 안전해요.", "QKD is safe by design, even as quantum computers advance.")},
+         "small": ("QKD의 키 나눔 원리는 양자컴퓨터가 발전해도 계산으로 깨지지 않아요. 다만 장비 결함을 노린 공격은 따로 막아야 해요.", "QKD's key-sharing principle can't be broken by computation, even as quantum computers advance, though attacks on equipment flaws still need separate defenses.")},
         {"svg": P5, "alt": ("왼쪽: 광섬유 거리 제한. 오른쪽: QKD는 열쇠만 나누고 실제 암호화는 다른 알고리즘이 맡음", "Left: limited distance over optical fiber. Right: QKD only shares the key — actual encryption is a separate algorithm's job"),
          "caption": ("QKD를 널리 쓰는 데는 광섬유 거리 제한과 비싼 장비가 걸림돌이에요.", "Limited fiber distance and expensive equipment are the obstacles to using QKD widely."),
          "small": ("QKD는 '안전한 열쇠 나눔'까지만 해줘요.", "QKD only handles the 'safe key sharing' part.")},
     ],
-    "summary": (("<b>QKD(양자키분배)</b>는 빛(광자) 한 알 한 알에 암호키를 실어 보내, <b>누가 엿보면 양자 성질 때문에 반드시 흔적이 남는</b> 열쇠 나눔 방식이에요.",
-                 "<b>QKD (Quantum Key Distribution)</b> sends an encryption key riding on single photons of light, so that <b>any eavesdropping attempt is always caught</b> thanks to quantum properties."),
-                ("QKD는 양자역학의 관측 교란 원리를 이용해, 도청이 발생하면 광자의 양자 상태가 바뀌어 송수신 양측이 이를 감지할 수 있게 하는 키 분배 기술이에요. 도청이 감지된 키는 폐기하고 안전한 키만 암호화에 사용해요. 다만 광섬유 거리 제한, 고가의 전용 장비가 필요하고, QKD 자체는 '안전한 키 분배'만 담당할 뿐 실제 데이터 암호화는 대칭키 알고리즘 같은 별도 수단과 함께 써야 해요.",
-                 "QKD is a key-distribution technology that exploits quantum mechanics' observation-disturbance principle: any eavesdropping changes a photon's quantum state, letting both sender and receiver detect it. A key found to be eavesdropped on is discarded, and only a verified-safe key is used for encryption. However, it's limited by optical-fiber distance and needs expensive dedicated equipment, and QKD itself handles only 'safe key distribution' — actual data encryption still needs a separate method, like a symmetric-key algorithm.")),
+    "summary": (("<b>QKD(양자키분배)</b>는 빛(광자) 한 알 한 알에 암호키를 실어 보내, <b>누가 엿보면 양자 성질 때문에 오류라는 흔적이 남는</b> 열쇠 나눔 방식이에요.",
+                 "<b>QKD (Quantum Key Distribution)</b> sends an encryption key riding on single photons of light, so that <b>eavesdropping leaves a trace of errors</b> thanks to quantum properties."),
+                ("QKD는 양자역학의 관측 교란 원리를 이용해, 도청이 발생하면 광자의 양자 상태가 바뀌어 송수신 양측이 이를 감지할 수 있게 하는 키 분배 기술이에요. 도청이 감지된 키는 폐기하고 안전한 키만 암호화에 사용해요. 다만 광섬유 거리 제한, 고가의 전용 장비가 필요하고, QKD 자체는 '안전한 키 분배'만 담당할 뿐 실제 데이터 암호화는 대칭키 알고리즘 같은 별도 수단과 함께 써야 해요. 상대가 진짜인지 확인하는 인증도 QKD가 해주지 않아 별도 수단이 필요하고, 실제 장비의 결함을 노린 공격도 따로 막아야 해요.",
+                 "QKD is a key-distribution technology that exploits quantum mechanics' observation-disturbance principle: any eavesdropping changes a photon's quantum state, letting both sender and receiver detect it. A key found to be eavesdropped on is discarded, and only a verified-safe key is used for encryption. However, it's limited by optical-fiber distance and needs expensive dedicated equipment, and QKD itself handles only 'safe key distribution' — actual data encryption still needs a separate method, like a symmetric-key algorithm. QKD also doesn't authenticate the other party, so that needs a separate method too, and attacks on real equipment flaws need their own defenses.")),
     "glossary": [
-        ("양자키분배(QKD)", "QKD", ("엿보면 들통나는 빛의 열쇠 나눔.", "A light-based key exchange that always catches anyone who peeks."), ("광자의 양자 성질을 이용해요.", "Relies on the quantum properties of photons.")),
-        ("양자 얽힘·중첩", "Quantum Entanglement/Superposition", ("중첩은 관측하면 깨지고, 얽힘은 두 입자가 서로 묶인 양자의 성질.", "Superposition breaks when observed; entanglement ties two particles together."), ("QKD가 도청을 감지하는 원리예요.", "The principle behind QKD's eavesdropping detection.")),
+        ("양자키분배(QKD)", "QKD", ("엿보면 들통나는 빛의 열쇠 나눔.", "A light-based key exchange that exposes anyone who peeks."), ("광자의 양자 성질을 이용해요.", "Relies on the quantum properties of photons.")),
+        ("양자 얽힘·중첩", "Quantum Entanglement/Superposition", ("중첩은 관측하면 깨지고, 얽힘은 두 입자가 서로 묶인 양자의 성질.", "Superposition breaks when observed; entanglement ties two particles together."), ("BB84는 중첩이 관측으로 깨지는 점을, E91은 얽힘을 써서 도청을 알아채요.", "BB84 detects eavesdropping because observing disturbs superposition; E91 uses entanglement.")),
         ("대칭키 암호화", "Symmetric-Key Encryption", ("실제 데이터를 암호화하는 알고리즘.", "The algorithm that actually encrypts the data."), ("QKD가 나눈 열쇠를 여기에 써요.", "Uses the key QKD has safely shared.")),
         ("양자컴퓨터", "Quantum Computer", ("기존 암호를 풀 수도 있는 미래 기술.", "Future tech that might crack today's encryption."), ("QKD는 이 위협에도 안전하도록 설계됐어요.", "QKD is designed to stay safe even against this.")),
         ("블록체인 기술요소·보안", "Blockchain Tech & Security", ("해시·합의로 변조를 막는 다른 방식.", "A different way of blocking tampering, via hashing and consensus."), ('둘 다 신뢰를 지키는 기술이지만 방식이 달라요. → <a href="bctech-ko.html">블록체인 기술요소·보안 부스</a>', "Both protect trust, but in different ways. → <a href=\"bctech-en.html\">the Blockchain Tech & Security booth</a>")),

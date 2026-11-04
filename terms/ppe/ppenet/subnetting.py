@@ -11,7 +11,7 @@ P1 = svg(300, sky(300)
 # 2. 구역을 안 나누면, 작은 변화도 동네 전체에 영향
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + postoffice(180, 150, 0.7) + postoffice(380, 150, 0.7) + postoffice(580, 150, 0.7)
-         + label(380, 70, "⟦한 우체국이 쉬면 동네 전체가 멈춰요|if one post office stops, the whole town stops⟧", 12, "var(--ink)")
+         + label(380, 70, "⟦한 집이 동네방송(브로드캐스트)을 하면 온 동네로 퍼져요|one house's broadcast reaches the whole town⟧", 12, "var(--ink)")
          + label(380, 270, "⟦구역을 안 나누면 혼잡도 장애도 전부 같이 번져요|without zones, congestion and outages spread to everyone⟧", 12, "var(--ink)"))
 
 # 3. hero: 서브네팅 = 동네를 작은 우편번호 구역으로 나누는 것
@@ -38,7 +38,7 @@ P4 = svg(320, sky(320)
 # 5. 한계: 구역을 너무 잘게 쪼개면 번지수가 아까워요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--good-soft)"/>'
          + routemap(80, 40, 220, 160, "⟦구역 10개 (각 2집)|10 ZONES (2 houses each)⟧", ("⟦번지수 낭비 심함|wastes a lot of addresses⟧",), 0.9)
-         + routemap(460, 40, 220, 160, "⟦구역 2개 (각 500집)|2 ZONES (500 houses each)⟧", ("⟦혼잡·장애 전파 큼|more congestion, bigger blast radius⟧",), 0.9)
+         + routemap(460, 40, 220, 160, "⟦구역 2개 (각 500집)|2 ZONES (500 houses each)⟧", ("⟦혼잡·장애 전파 큼|more congestion, wider outages⟧",), 0.9)
          + label(380, 282, "⟦구역을 너무 잘게 쪼개도, 너무 크게 둬도 손해예요 — 적당한 크기가 중요해요|zones too small or too large both cost you — the right size matters⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
@@ -51,9 +51,9 @@ PAGE = {
         {"svg": P1, "alt": ("우편번호가 하나뿐인 동네에서 집배원이 땀을 흘리며 헤맴", "A carrier sweats, lost in a town that shares just one zip code"),
          "caption": ("동네 전체가 우편번호 하나예요.", "The whole town shares one zip code."),
          "small": ("집이 수천 채면 집배원이 하나씩 다 들러야 해요.", "With thousands of houses, the carrier has to visit every single one.")},
-        {"svg": P2, "alt": ("우체국 세 곳이 나란히 있고, 한 곳이 멈추면 동네 전체가 영향받는다고 적힘", "Three post offices stand side by side; if one stops, the whole town is affected"),
+        {"svg": P2, "alt": ("우체국 세 곳이 나란히 있고, 한 집의 동네방송이 온 동네로 퍼진다고 적힘", "Three post offices stand side by side; one house's broadcast reaches the whole town"),
          "caption": ("구역을 안 나누면 혼잡도 장애도 동네 전체로 번져요.", "Without zones, congestion and outages spread through the whole town."),
-         "small": ("한 우체국이 쉬면 동네 전체가 멈춰요.", "If one post office stops, the whole town stops.")},
+         "small": ("한 집이 동네방송(브로드캐스트)을 하면 온 동네로 퍼져요.", "One house's broadcast reaches the whole town.")},
         {"svg": P3, "hero": True, "alt": ("동네가 1구역, 2구역, 3구역이라는 작은 우편번호 구역 세 개로 나뉨", "The town splits into three smaller zip-code zones: Zone 1, 2, 3"),
          "caption": ("서브네팅 = 동네를 작은 우편번호 구역으로 나누는 거예요.", "Subnetting = splitting the town into smaller zip-code zones."),
          "small": ("구역마다 전용 우체국을 두니 집 찾기도, 구역 관리도 큰 동네 하나일 때보다 쉬워요.", "Each zone gets its own post office — houses are easier to find and manage than in one big town."),
@@ -79,7 +79,7 @@ PAGE = {
         ("서브넷 마스크", "Subnet Mask", ("주소의 앞뒤를 나눠주는 자.", "The ruler that splits an address's front from its back."), ("네트워크부/호스트부 경계를 정해요.", "Sets the boundary between network and host parts.")),
         ("CIDR", "CIDR", ("자 눈금을 숫자 하나로 적는 법.", "Writing the ruler's mark as one short number."), ("예: /24 처럼 표기해요.", "Written like /24, for example.")),
         ("네트워크부/호스트부", "Network/Host Part", ("구역 번호 / 그 안의 집 번호.", "The zone number / the house number within it."), ("주소를 둘로 쪼갠 구성이에요.", "The two halves an address is split into.")),
-        ("라우팅 테이블", "Routing Table", ("어느 구역으로 보낼지 적힌 안내판.", "The board that says which zone to ship to."), ('라우터가 늘 보는 지도예요. → <a href="adhocrouting-ko.html">집배원끼리 길을 찾아 전달하는 법</a>', 'The map a router always checks. → <a href="adhocrouting-en.html">how carriers find the way among themselves</a>')),
+        ("라우팅 테이블", "Routing Table", ("어느 구역으로 보낼지 적힌 안내판.", "The board that says which zone to ship to."), ('라우터가 늘 보는 지도예요. → <a href="dynamicrouting-ko.html">스스로 고쳐 그리는 배송 지도</a>', 'The map a router always checks. → <a href="dynamicrouting-en.html">the delivery map that redraws itself</a>')),
         ("OSI 3계층(네트워크)", "OSI Layer 3", ("구역과 길을 정하는 단계.", "The stage that decides the zone and the path."), ('주소·구역 나누기가 이 계층 일이에요. → <a href="osi7-ko.html">7단계로 나뉜 배송 공정</a>', "Addressing and zoning belong to this layer. → <a href=\"osi7-en.html\">the delivery process split into 7 stages</a>")),
         ("DNS", "DNS", ("번지수 대신 이름으로 찾게 해주는 주소록.", "The address book that finds a zip code by name instead."), ('다른 세계(보안)에서 자세히 다뤄요. → <a href="dns-ko.html">이름으로 찾는 주소록</a>', 'Covered in depth in another world (Security). → <a href="dns-en.html">the address book you search by name</a>')),
         ("L4 스위치", "L4 Switch", ("구역 안에서 창구 번호까지 보는 분류 직원.", "The sorter inside a zone who checks the counter number too."), ('구역이 나뉜 뒤 L4 스위치는 창구별로 더 세밀히 나눠요. → <a href="l4switch-ko.html">포트까지 보는 분류소 직원</a>', "Once inside a zone, an L4 switch splits traffic even finer, by counter. → <a href=\"l4switch-en.html\">the sorter who checks the port</a>")),

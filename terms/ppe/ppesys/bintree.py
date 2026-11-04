@@ -94,7 +94,7 @@ PAGE = {
              (BALANCE_I, ("균형(Balance)", "Balance"), ("트리가 쏠리면 반씩 줄이는 효과가 사라져요", "a lopsided tree loses the halving benefit")),
          ])},
         {"svg": P4, "alt": ("뿌리 31에서 왼쪽은 더 작은 값, 오른쪽은 더 큰 값이라는 이진탐색트리 규칙을 보여줌", "The root 31 shows the BST rule: smaller values go left, bigger values go right"),
-         "caption": ("작은 쪽은 왼쪽, 큰 쪽은 오른쪽이에요.", "Smaller goes left, bigger goes right."),
+         "caption": ("찾는 번호가 갈림길 번호보다 작으면 왼쪽, 크면 오른쪽으로 가요.", "If the number you want is smaller than the fork's, go left; if bigger, go right."),
          "small": ("작은 값은 왼쪽, 큰 값은 오른쪽 규칙을 모든 갈림길에서 지켜요.", "Every fork follows this rule: smaller left, bigger right.")},
         {"svg": P5, "alt": ("왼쪽: 균형 잡힌 나무가 매번 반씩 줄어듦. 오른쪽: 한쪽으로 쏠린 나무가 한 줄처럼 늘어짐", "Left: a balanced tree halves the search each step. Right: a lopsided tree stretches out like a plain line"),
          "caption": ("트리가 한쪽으로 쏠리면 탐색이 다시 한 줄처럼 느려져요.", "A tree leaning one way makes the search as slow as a plain line again."),

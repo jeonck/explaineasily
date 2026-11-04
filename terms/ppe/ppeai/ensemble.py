@@ -32,7 +32,7 @@ DIVERSE_I = icon('<circle cx="22" cy="32" r="10" fill="var(--accent)"/><rect x="
 # 4. 섞는 방식에도 여러 가지가 있어요
 P4 = svg(340, sky(340)
          + gradeboard(40, 20, 330, 300, "⟦배깅(Bagging)|BAGGING⟧",
-                      ("⟦작물을 다르게 나눠 각자 훈련|split the crops differently, train each separately⟧", "⟦결과를 평균/투표|average or vote the results⟧",
+                      ("⟦작물을 무작위로 다르게 뽑아 각자 훈련|draw different random crops, train each separately⟧", "⟦결과를 평균/투표|average or vote the results⟧",
                        "⟦여러 명을 동시에 키워요|grows several operators at once⟧"), 0.92)
          + gradeboard(390, 20, 330, 300, "⟦부스팅(Boosting)|BOOSTING⟧",
                       ("⟦앞사람이 틀린 작물을 다음 사람이 집중|the next trainee focuses on what the last one got wrong⟧", "⟦한 명씩 순서대로 보완|one after another, each fixing the last⟧",
@@ -44,12 +44,12 @@ P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x
          + label(230, 250, "⟦세 명이 다 봐야 하니 판정이 느려져요|three checks make judging slower⟧", 11, "var(--ink)")
          + person(570, 130, s=0.8, face=EYES, **FARMER)
          + label(570, 262, "⟦왜 합격인지 한마디로 설명하기 어려워요|hard to explain the pass in one simple reason⟧", 11, "var(--ink)")
-         + label(380, 300, "⟦앙상블은 모델 하나보다 더 안정적이지만, 더 느리고 설명하기도 더 어려워요|compared to one model, an ensemble is steadier, but slower and harder to explain⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 300, "⟦앙상블은 모델 하나보다 흔히 더 안정적이지만, 더 느리고 설명하기도 더 어려워요|compared to one model, an ensemble is usually steadier, but slower and harder to explain⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "ensemble", "order": 23,
     "title": ("세 조작원의 의견을 모아 결정하는 검사장", "The Station That Pools Three Operators' Calls"),
-    "h1": ("<em>앙상블(Ensemble) 기법</em>이/가 뭐예요?", "What is an <em>Ensemble</em> Method?"),
+    "h1": ("<em>앙상블(Ensemble) 기법</em>이 뭐예요?", "What is an <em>Ensemble</em> Method?"),
     "sub": ("앙상블 기법을, 조작원 한 명의 판단을 못 믿어 여러 명에게 묻고 다수결로 최종 결정하는 검사장 이야기로 풀어봤어요.",
             "Ensemble methods, told as a story about a station that distrusts any one operator's call and instead pools several opinions into a majority vote."),
     "panels": [
@@ -63,24 +63,24 @@ PAGE = {
          "caption": ("앙상블은 여러 조작원의 판정을 모아 다수결/평균으로 최종 결정해요.", "An ensemble pools several operators' calls into a majority vote or average."),
          "small": ("한 명보다 여럿의 평균이 더 안정적일 때가 많아요.", "The pooled average is often steadier than any single operator."),
          "tricks": (4, [
-             (BAG_I, ("배깅 — 각자 다르게 훈련", "Bagging — train each differently"), ("작물을 다르게 나눠 맡겨요", "split the crops differently for each"), "calm"),
+             (BAG_I, ("배깅 — 각자 다르게 훈련", "Bagging — train each differently"), ("작물을 무작위로 다르게 뽑아 맡겨요", "a different random draw of crops for each"), "calm"),
              (BOOST_I, ("부스팅 — 순서대로 보완", "Boosting — fix in sequence"), ("앞사람이 틀린 작물을 다음 사람이 집중해서 봐요", "the next one focuses on the last one's misses")),
              (VOTE_I, ("보팅 — 다수결 결정", "Voting — majority decides"), ("가장 많이 나온 답을 최종으로", "the most common answer wins"), "warm"),
-             (DIVERSE_I, ("다양성 — 서로 다르게 섞기", "Diversity — mix different kinds"), ("비슷한 모델만 모으면 같은 실수를 해서 소용없어요", "similar models make the same mistakes, so pooling them doesn't help")),
+             (DIVERSE_I, ("다양성 — 서로 다르게 섞기", "Diversity — mix different kinds"), ("비슷한 모델만 모으면 같은 실수를 해서 효과가 작아요", "similar models make the same mistakes, so pooling them helps little")),
          ])},
         {"svg": P4, "alt": ("배깅(각자 다른 작물로 동시에 훈련해 평균/투표)과 부스팅(앞사람의 실수를 다음이 순서대로 보완)을 나란히 비교", "Bagging (training each separately on different crops, then averaging/voting) is compared with boosting (each in sequence fixing the last one's mistakes)"),
          "caption": ("여러 모델을 섞는 방식에도 배깅·부스팅 등 여러 가지가 있어요.", "There's more than one way to pool models, such as bagging and boosting."),
          "small": ("배깅은 여러 모델을 동시에 따로 훈련하고, 부스팅은 앞 모델의 실수를 다음 모델이 순서대로 보완해요.", "Bagging trains several models separately at once; boosting has each next model fix the previous one's mistakes, in order.")},
         {"svg": P5, "alt": ("왼쪽: 세 조작원이 다 봐야 해서 판정이 느려짐. 오른쪽: 왜 합격인지 한마디로 설명하기 어려워함", "Left: having three operators check everything slows the process down. Right: it becomes hard to explain the pass in one simple reason"),
-         "caption": ("앙상블을 쓰면 판정이 느려지고, 판정 이유를 설명하기 어려워져요.", "With an ensemble, calls get slower and the reason behind them gets harder to explain."),
-         "small": ("앙상블은 모델 하나보다 더 안정적이지만, 더 느리고 설명하기도 더 어려워요.", "Compared to one model, an ensemble is steadier, but slower and harder to explain.")},
+         "caption": ("앙상블을 쓰면 모델 하나일 때보다 판정이 느려지고, 판정 이유를 설명하기 어려워져요.", "With an ensemble, calls get slower than with one model, and the reason behind them gets harder to explain."),
+         "small": ("앙상블은 모델 하나보다 흔히 더 안정적이지만, 더 느리고 설명하기도 더 어려워요.", "Compared to one model, an ensemble is usually steadier, but slower and harder to explain.")},
     ],
     "summary": (("<b>앙상블 기법</b> = <b>여러 모델(조작원)의 판정을 모아</b> <b>다수결이나 평균</b>으로 최종 결정하면, <b>한 모델보다 더 안정적</b>이라는 아이디어.",
                  "<b>Ensemble methods</b> pool the calls of <b>several models</b> into a <b>majority vote or average</b>, on the idea that the result is <b>steadier than any single model</b>."),
-                ("앙상블은 여러 약한 학습기를 결합해 더 강한 예측을 만드는 기법이에요. 배깅(Bagging)은 부트스트랩 샘플마다 독립적으로 모델을 학습시켜 평균/투표하고(예: 랜덤 포레스트), 부스팅(Boosting)은 이전 모델이 틀린 샘플에 가중치를 더해 순차적으로 모델을 보완해요(예: AdaBoost, Gradient Boosting). 분산을 줄이거나(배깅) 편향을 줄이는(부스팅) 효과가 있지만, 계산 비용이 늘고 개별 모델보다 설명력이 떨어져요.",
-                 "Ensembles combine multiple weak learners into a stronger predictor. Bagging trains models independently on bootstrap samples and averages or votes their outputs (e.g. Random Forest); boosting trains models sequentially, each weighting the previous model's misses more heavily (e.g. AdaBoost, Gradient Boosting). Bagging mainly reduces variance and boosting mainly reduces bias, but both cost more compute and are harder to explain than a single model.")),
+                ("앙상블은 여러 학습기(흔히 약한 학습기)를 결합해 더 강한 예측을 만드는 기법이에요. 배깅(Bagging)은 부트스트랩 샘플마다 독립적으로 모델을 학습시켜 평균/투표하고(예: 랜덤 포레스트), 부스팅(Boosting)은 이전 모델이 틀린 샘플에 가중치를 더하거나(AdaBoost) 남은 오차를 다음 모델이 배우게 해(Gradient Boosting) 순차적으로 보완해요. 분산을 줄이거나(배깅) 편향을 줄이는(부스팅) 효과가 있지만, 계산 비용이 늘고 개별 모델보다 설명력이 떨어져요.",
+                 "Ensembles combine multiple learners, often weak ones, into a stronger predictor. Bagging trains models independently on bootstrap samples and averages or votes their outputs (e.g. Random Forest); boosting trains models sequentially, each weighting the previous model's misses more heavily (AdaBoost) or learning its remaining error (Gradient Boosting). Bagging mainly reduces variance and boosting mainly reduces bias, but both cost more compute and are harder to explain than a single model.")),
     "glossary": [
-        ("배깅(Bagging)", "Bagging", ("각 조작원에게 작물을 다르게 나눠 맡기는 것.", "Splitting the crops differently for each operator."), ("랜덤 포레스트가 대표적인 배깅 기법이에요.", "Random Forest is the classic example of bagging.")),
+        ("배깅(Bagging)", "Bagging", ("작물을 중복 허용으로 무작위로 뽑아 조작원마다 다르게 맡기는 것.", "Giving each operator a different random draw of crops, with repeats allowed."), ("랜덤 포레스트가 대표적인 배깅 기법이에요.", "Random Forest is the classic example of bagging.")),
         ("부스팅(Boosting)", "Boosting", ("앞사람이 틀린 작물을 다음 사람이 집중해서 보는 것.", "The next operator focusing on what the last one got wrong."), ("AdaBoost·Gradient Boosting이 대표적이에요.", "AdaBoost and Gradient Boosting are classic examples.")),
         ("보팅(Voting)", "Voting", ("가장 많이 나온 답을 최종으로 뽑는 것.", "Picking whichever answer came up most."), ("다수결 방식과 가중 평균 방식이 있어요.", "Can be plain majority or a weighted average.")),
         ("랜덤 포레스트", "Random Forest", ("여러 선별기를 동시에 키우는 대표 배깅 기법.", "The classic bagging method that grows many sorters at once."), ("여러 결정나무를 모아 만들어요.", "Built from pooling many decision trees.")),

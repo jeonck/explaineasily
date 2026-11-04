@@ -43,7 +43,7 @@ P4 = svg(320, sky(320, ground=False)
                      ("⟦레벨1 — 전체 투어|level 1 — whole tour⟧",
                       "⟦레벨2 — 공연별(도시별)|level 2 — per show (per city)⟧",
                       "⟦레벨3 — 무대·음향·티켓...|level 3 — stage, sound, tickets...⟧",
-                      "⟦더 쪼갠 가장 작은 단위가 작업 패키지예요|smallest unit after that: work package⟧"), 1.0)
+                      "⟦맨 아래 단위가 작업 패키지예요|the bottom level: work package⟧"), 1.0)
          + person(560, 170, s=0.8, **PLANNER)
          + label(380, 300, "⟦작업 패키지마다 담당자·기간을 붙여요|each work package gets an owner and a duration⟧", 12, "var(--ink)", cls="d"))
 
@@ -86,16 +86,16 @@ PAGE = {
     ],
     "summary": (("<b>WBS</b> = 막막한 공연(프로젝트) 전체를 <b>작은 할 일로 쪼갠 트리형 체크리스트</b>로, 담당자·기간을 붙여 진짜 계획으로 만드는 도구.",
                  "<b>WBS</b> = a tree-shaped checklist that breaks an overwhelming project down into small tasks — each with an owner and a duration, turning it into a real plan."),
-                ("WBS(Work Breakdown Structure)는 프로젝트 범위를 산출물 또는 단계 기준으로 계층적으로 분해한 구조예요. 일정·예산 수립의 바탕이 되며, 100% 룰(상위 항목의 범위를 하위 항목들이 빠짐없이 덮어야 한다는 원칙)을 지키되 지나치게 세분화하면 관리 부담이 오히려 커져요. 이 페이지는 일정·범위를 쪼개는 관점을 다뤄요.",
-                 "WBS (Work Breakdown Structure) is a hierarchical decomposition of project scope by deliverable or phase. It underlies schedule and budget planning. The 100% rule says child items must fully cover the parent's scope — but over-decomposing adds more management burden than it saves. This page covers the schedule/scope-breakdown angle specifically.")),
+                ("WBS(Work Breakdown Structure)는 프로젝트 범위를 산출물 또는 단계 기준으로 계층적으로 분해한 구조예요. 일정·예산 수립의 바탕이 되며, 100% 룰(상위 항목의 범위를 하위 항목들이 빠짐없이 덮어야 한다는 원칙)을 지키되 지나치게 세분화하면 관리 부담이 오히려 커져요. 이 페이지는 프로젝트 범위를 쪼개고 그 결과를 일정·예산으로 잇는 관점을 다뤄요.",
+                 "WBS (Work Breakdown Structure) is a hierarchical decomposition of project scope by deliverable or phase. It underlies schedule and budget planning. The 100% rule says child items must fully cover the parent's scope — but over-decomposing adds more management burden than it saves. This page covers breaking down project scope and carrying the result into schedule and budget.")),
     "glossary": [
-        ("작업 패키지", "Work Package", ("더는 못 쪼개는 가장 작은 단위.", "The smallest unit — no further breakdown."), ("담당자와 기간을 붙이는 최소 단위예요.", "The base unit that gets an owner and a duration.")),
+        ("작업 패키지", "Work Package", ("WBS 맨 아래 단계의 작업 묶음.", "The lowest level of the WBS."), ("담당자와 기간을 붙이는 단위예요. 일정을 짤 때는 다시 세부 활동으로 나눠요.", "The unit that gets an owner and a duration. Scheduling splits it further into activities.")),
         ("100% 룰", "100% Rule", ("상위 항목을 하위 항목들이 빠짐없이 덮는 원칙.", "The rule that child items must fully cover the parent."), ("빠뜨리는 일을 막아줘요.", "Prevents anything from slipping through.")),
         ("분해 레벨", "Decomposition Level", ("전체→공연별→작업으로 내려가는 단계.", "The levels from whole tour down to each task."), ("보통 3~4단계면 충분해요.", "Three to four levels is usually enough.")),
-        ("일정관리", "Schedule Management", ("작업 패키지에 기간을 붙이는 일.", "Attaching a duration to each work package."), ("WBS가 바탕이 되는 다음 단계예요.", "The next step built on top of the WBS.")),
+        ("일정관리", "Schedule Management", ("작업 패키지를 활동으로 나눠 순서와 기간을 정하는 일.", "Splitting work packages into activities and setting their order and duration."), ("WBS가 바탕이 되는 다음 단계예요.", "The next step built on top of the WBS.")),
         ("프로젝트 위험관리", "Project Risk Mgmt", ("우산처럼 돌발 상황에 대비하는 일.", "Preparing for surprises, like carrying an umbrella."), ('위험은 WBS의 각 항목 안에 숨어 있어요. → <a href="projrisk-ko.html">비가 안 오는 날에도 챙기는 우산</a>', 'Risk hides inside each WBS item. → <a href="projrisk-en.html">the umbrella you carry even on a dry day</a>')),
         ("협상·계약", "Negotiation & Contract", ("출연 계약서로 조건을 조율하는 일.", "Tuning terms through the performance contract."), ('계약 범위를 가늠할 때 WBS를 참고해요. → <a href="negotiation-ko.html">조건을 조율해 서명하기</a>', 'WBS helps gauge scope before the contract. → <a href="negotiation-en.html">tuning terms until both sign</a>')),
-        ("감리/PMO", "IS Audit/PMO", ("프로젝트 전체를 바깥에서 점검하는 역할.", "A role that checks the whole project from the outside."), ('감리는 WBS대로 진행됐는지도 점검해요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'Audit also checks whether work followed the WBS. → <a href="pmoaudit-en.html">the last checker before publication</a>')),
+        ("감리/PMO", "IS Audit/PMO", ("프로젝트를 제3자 입장에서 점검(감리)하거나 관리를 돕는(PMO) 역할.", "Checks the project as a third party (audit) or supports its management (PMO)."), ('감리는 계약한 과업이 빠짐없이 이행됐는지 점검해요. WBS는 그 과업을 쪼갠 목록이에요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'Audit checks that the contracted work was all carried out. The WBS is that work broken into a list. → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
         ("기능점수(FP)", "Function Point", ("소프트웨어 규모를 재는 자.", "A ruler for measuring software size."), ('WBS가 할 일을 쪼갠다면, FP는 소프트웨어 크기를 재요. → <a href="fpruler-ko.html">쪽수 대신 기능을 재는 자</a>', 'If WBS breaks down the work, FP measures the size of the software. → <a href="fpruler-en.html">the ruler that measures functions, not pages</a>')),
     ],
 }

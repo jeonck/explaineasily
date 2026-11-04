@@ -22,7 +22,7 @@ P3 = svg(340, sky(340)
          + postoffice(460, 190, 0.7)
          + person(620, 150, s=0.75, face=SMILE, **RECEIVER)
          + label(380, 30, "⟦패킷교환 = 봉투를 조각내 각자 다른 길로 보냈다가, 도착지에서 다시 모으는 것|packet switching = splitting the envelope into pieces, sending each by a different road, then reassembling at the end⟧", 11, "var(--ink)", cls="d")
-         + label(380, 320, "⟦도로를 독점하지 않으니 여러 사람이 같이 나눠 써요|no one hogs a road, so many people share it at once⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦패킷교환은 도로를 독점하지 않으니 여러 사람이 같이 나눠 써요|packet switching lets no one hog a road, so many people share it at once⟧", 12, "var(--muted)"))
 
 I1 = icon('<rect x="12" y="24" width="12" height="16" rx="2" fill="var(--accent)"/><rect x="26" y="24" width="12" height="16" rx="2" fill="var(--accent)"/><rect x="40" y="24" width="12" height="16" rx="2" fill="var(--accent)"/>')
 I2 = icon('<path d="M10 20 Q32 10 54 20" stroke="var(--good)" stroke-width="3" fill="none"/><path d="M10 44 Q32 54 54 44" stroke="var(--accent)" stroke-width="3" fill="none"/>')
@@ -59,7 +59,7 @@ PAGE = {
          "small": ("도로는 한정돼 있는데 쓰는 사람은 계속 늘어나요.", "The roads are limited, but the number of users keeps growing.")},
         {"svg": P3, "hero": True, "alt": ("봉투가 셋으로 조각나 각각 다른 길로 우체국을 거쳐 받는 사람에게 도착한 뒤 다시 합쳐짐", "An envelope splits into three pieces, travels different roads through a post office, and is reassembled once it reaches the receiver"),
          "caption": ("패킷교환 = 봉투를 조각내 보냈다가 다시 모으는 거예요.", "Packet switching = splitting the envelope into pieces, then reassembling them."),
-         "small": ("도로를 독점하지 않으니 여러 사람이 같이 나눠 써요.", "No one hogs a road, so many people share it at once."),
+         "small": ("패킷교환은 도로를 독점하지 않으니 여러 사람이 같이 나눠 써요.", "Packet switching lets no one hog a road, so many people share it at once."),
          "tricks": (4, [
              (I1, ("조각내기", "Split Into Pieces"), ("봉투를 여러 조각으로 나눠요", "breaks the envelope into several pieces")),
              (I2, ("각자 다른 길", "Different Roads"), ("조각마다 길이 달라요", "each piece may take a different road"), "calm"),
@@ -67,7 +67,7 @@ PAGE = {
              (I4, ("나눠 쓰기", "Shared Use"), ("도로를 독점 안 해요", "no one hogs the road")),
          ])},
         {"svg": P4, "alt": ("회선교환과 패킷교환을 비교하는 안내판: 전용 도로, 공유, 순서 번호, 효율 네 줄", "A comparison board for circuit vs packet switching: dedicated road, sharing, sequence number, efficiency"),
-         "caption": ("두 방식은 얻는 것과 잃는 것이 달라요.", "The two methods gain and lose different things."),
+         "caption": ("회선교환은 도로를 독점해 품질이 안정적이고, 패킷교환은 도로를 나눠 써서 효율이 좋아요.", "Circuit switching holds a road for steady quality; packet switching shares roads for better efficiency."),
          "small": ("회선교환은 통화 품질이 안정적이고, 패킷교환은 도로를 효율적으로 나눠 써요.", "Circuit switching keeps call quality steady; packet switching shares roads efficiently.")},
         {"svg": P5, "alt": ("왼쪽: 회선교환은 도로를 낭비하지만 안정적임. 오른쪽: 패킷교환은 효율적이지만 순서가 뒤섞일 수 있음", "Left: circuit switching wastes the road but stays steady. Right: packet switching is efficient but order can get scrambled"),
          "caption": ("패킷교환은 조각의 도착 순서가 뒤섞일 수 있어요.", "Packet switching can have pieces arrive out of order."),
@@ -80,10 +80,10 @@ PAGE = {
     "glossary": [
         ("회선교환", "Circuit Switching", ("통화 내내 독점하는 전용 도로.", "The dedicated road reserved for the whole call."), ("전통적인 전화망 방식이에요.", "The classic telephone-network method.")),
         ("패킷교환", "Packet Switching", ("봉투를 조각내 나눠 보내는 방식.", "Splitting the envelope into pieces to send separately."), ("오늘날 인터넷의 기본 방식이에요.", "The basic method of today's internet.")),
-        ("패킷", "Packet", ("조각난 봉투 하나하나.", "Each individual piece of the split envelope."), ("순서 번호가 붙어 재조립돼요.", "Carries a sequence number for reassembly.")),
+        ("패킷", "Packet", ("조각난 봉투 하나하나.", "Each individual piece of the split envelope."), ("TCP는 여기에 순서 번호를 붙여 도착지에서 다시 맞춰요.", "TCP numbers these so they can be put back in order at the destination.")),
         ("전송계층(TCP/UDP)", "Transport Layer (TCP/UDP)", ("등기냐 일반우편이냐를 정하는 단계.", "The stage that decides registered mail or plain."), ('패킷교환 위에서 순서·신뢰도를 책임져요. → <a href="transportlayer-ko.html">포트를 나누고 신뢰도를 고르는 단계</a>', "Handles order and reliability on top of packet switching. → <a href=\"transportlayer-en.html\">the stage that splits ports and picks reliability</a>")),
-        ("OSI 7계층", "OSI 7 Layers", ("배송 전체를 7단계로 나눈 공정.", "The whole delivery process split into 7 stages."), ('교환 방식은 이 공정의 특정 단계에 해당해요. → <a href="osi7-ko.html">7단계로 나뉜 배송 공정</a>', 'Switching corresponds to specific stages in this process. → <a href="osi7-en.html">the delivery process split into 7 stages</a>')),
-        ("Modbus", "Modbus", ("산업 현장의 단순한 쪽지 규칙.", "A simple note rule used on factory floors."), ('Modbus 쪽지도 결국 둘 중 한 교환 방식 위에서 오가요. → <a href="modbus-ko.html">우체국장이 순서대로 묻는 쪽지 규칙</a>', 'This rule, too, ultimately rides on one of these switching methods. → <a href="modbus-en.html">the note rule where the clerk asks one at a time</a>')),
+        ("OSI 7계층", "OSI 7 Layers", ("배송 전체를 7단계로 나눈 공정.", "The whole delivery process split into 7 stages."), ('회선·패킷 교환은 주로 아래쪽 단계(1~3계층)의 이야기예요. → <a href="osi7-ko.html">7단계로 나뉜 배송 공정</a>', 'Circuit and packet switching belong mainly to the lower stages (layers 1-3). → <a href="osi7-en.html">the delivery process split into 7 stages</a>')),
+        ("Modbus", "Modbus", ("산업 현장의 단순한 쪽지 규칙.", "A simple note rule used on factory floors."), ('Modbus TCP 쪽지는 패킷교환 위에서 오가요. → <a href="modbus-ko.html">우체국장이 순서대로 묻는 쪽지 규칙</a>', 'Modbus TCP notes ride on packet switching. → <a href="modbus-en.html">the note rule where the clerk asks one at a time</a>')),
         ("Ad-hoc 라우팅", "Ad-hoc Routing", ("고정 우체국 없이 집배원끼리 길을 찾는 법.", "How carriers find the way among themselves, with no fixed post office."), ('패킷이 매번 다른 길을 찾는 상황의 극단적인 예예요. → <a href="adhocrouting-ko.html">집배원끼리 길을 찾아 전달하는 법</a>', "An extreme case of packets finding a fresh path each time. → <a href=\"adhocrouting-en.html\">how carriers find the way among themselves</a>")),
         ("5G 네트워크 슬라이싱", "5G Network Slicing", ("도로를 상황별 차선으로 나누는 기술.", "The technology that splits the road into situational lanes."), ('전용 차선을 만든다는 점에서 회선교환과 닮았어요. → <a href="5gcore-ko.html">상황별 전용 차선을 가진 배송망</a>', "Carves out dedicated lanes, echoing circuit switching's idea. → <a href=\"5gcore-en.html\">the network with a lane for every need</a>")),
     ],

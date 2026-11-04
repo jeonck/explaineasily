@@ -44,8 +44,8 @@ P4 = svg(320, sky(320, ground=False)
 
 # 5. 한계: 자유로운 대신 복잡한 관계 질문은 여전히 어려워요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + box(190, 150, 1.0, color="#2E8B57") + label(190, 220, "⟦상자 모양이 자유롭고 저장이 빨라요|boxes can take any shape, and storing is fast⟧", 11, "var(--ink)")
-         + receipt(570, 150, 0.9, void=True) + label(570, 240, "⟦여러 상자를 한 번에 묶는 전표(트랜잭션) 지원은 약해요|support for a receipt (transaction) binding many boxes is weak⟧", 11, "var(--ink)")
+         + box(190, 150, 1.0, color="#2E8B57") + label(190, 220, "⟦상자 모양을 미리 안 정해도 담을 수 있어요|boxes can go in without a preset shape⟧", 11, "var(--ink)")
+         + receipt(570, 150, 0.9, void=True) + label(570, 240, "⟦여러 상자를 묶는 전표(트랜잭션) 지원이 약한 제품이 많아요|many products are weak on multi-box receipts (transactions)⟧", 11, "var(--ink)")
          + label(380, 282, "⟦ACID를 다 지켜야 하면 보통 관계형 창고를 써요|if every ACID promise must hold, a relational warehouse is the usual pick⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
@@ -73,8 +73,8 @@ PAGE = {
         {"svg": P4, "alt": ("Key-Value, Document, Column-family, Graph 네 유형을 설명하는 표", "A table explaining key-value, document, column-family, and graph types"),
          "caption": ("NoSQL은 네 가지 유형으로 나뉘어요.", "NoSQL splits into four types."),
          "small": ("NoSQL은 관계형 창고(정규화)와 상자를 담는 방식부터 달라요.", "NoSQL stores boxes differently from the relational (normalized) warehouse.")},
-        {"svg": P5, "alt": ("왼쪽: 자유로운 모양과 빠른 저장. 오른쪽: 여러 상자를 묶는 전표(트랜잭션)는 약함", "Left: flexible shape, fast storage. Right: a receipt binding many boxes is weak"),
-         "caption": ("NoSQL은 모양이 자유로운 대신 여러 상자를 한 번에 묶는 트랜잭션 지원이 약해요.", "NoSQL is flexible, but its support for transactions binding many boxes is weaker."),
+        {"svg": P5, "alt": ("왼쪽: 모양을 미리 안 정해도 담김. 오른쪽: 여러 상자를 묶는 전표(트랜잭션) 지원이 약한 제품이 많음", "Left: boxes go in with no preset shape. Right: many products are weak on a receipt binding many boxes"),
+         "caption": ("NoSQL은 모양이 자유로운 대신, 여러 상자를 한 번에 묶는 트랜잭션 지원이 약한 제품이 많아요.", "NoSQL is flexible, but many products have weaker support for transactions binding many boxes."),
          "small": ("ACID를 다 지켜야 하면 보통 관계형 창고를 써요.", "If every ACID promise must hold, a relational warehouse is the usual pick.")},
     ],
     "summary": (("<b>NoSQL</b> = 고정된 테이블 칸 대신, <b>Key-Value·Document·Column-family·Graph</b> 등 상자 모양에 맞는 방식으로 담는 창고.",
@@ -82,13 +82,13 @@ PAGE = {
                 ("NoSQL(Not Only SQL)은 고정 스키마 없이 대용량·비정형 데이터를 유연하게 다루는 데이터 모델의 통칭으로, 수평 확장(샤딩)에 유리하지만 보통 ACID 트랜잭션은 관계형 DB보다 제한적으로 지원해요. 모델링은 조회 패턴을 먼저 정하고 그에 맞춰 데이터를 반정규화해 담는 식으로 이뤄져요.",
                  "NoSQL (\"Not Only SQL\") is an umbrella term for data models that handle large, unstructured data flexibly without a fixed schema. It favors horizontal scaling (sharding) but typically supports ACID transactions more narrowly than relational DBs. Modeling starts from query patterns and denormalizes data to fit them.")),
     "glossary": [
-        ("Key-Value", "Key-Value", ("번호표 하나로 상자 하나.", "One tag, one box."), ("가장 단순하고 빨라요.", "The simplest and fastest kind.")),
+        ("Key-Value", "Key-Value", ("번호표 하나로 상자 하나.", "One tag, one box."), ("구조가 가장 단순하고, 키로 찾을 때 빨라요.", "The simplest structure, and fast when looking up by key.")),
         ("Document", "Document", ("상자 안에 자유 형식으로 담기.", "Free-form content inside the box."), ("JSON처럼 중첩 구조를 담아요.", "Holds nested structure like JSON.")),
-        ("Column-family", "Column-family", ("세로로 긴 선반.", "A tall, column-shaped shelf."), ("특정 속성만 빨리 꺼내요.", "Fast at fetching specific attributes.")),
+        ("Column-family", "Column-family", ("행 키 아래 열 묶음을 담는 넓은 선반.", "A wide shelf holding column groups under each row key."), ("행마다 열 구성이 달라도 돼요. 분석용 컬럼형 DB와는 달라요.", "Rows can have different columns. It differs from an analytical columnar DB.")),
         ("Graph", "Graph", ("상자끼리 끈으로 연결.", "Boxes linked by string."), ("관계 추적에 강해요.", "Strong at tracing relationships.")),
         ("정규화", "Normalization", ("고정 선반에 중복 없이 담는 규칙.", "The rule of storing without duplication on fixed shelves."), ('NoSQL은 이 규칙을 느슨하게 써요. → <a href="normalization-ko.html">한 칸에 한 번만 적는 규칙</a>', 'NoSQL applies this rule loosely. → <a href="normalization-en.html">the rule of writing it once</a>')),
         ("샤딩/파티셔닝", "Sharding/Partitioning", ("창고를 구역으로 쪼개는 것.", "Splitting the warehouse into zones."), ('NoSQL은 보통 샤딩을 쉽게 지원해요. → <a href="dbsharding-ko.html">구역으로 쪼갠 창고</a>', 'NoSQL usually supports sharding easily. → <a href="dbsharding-en.html">the warehouse split into zones</a>')),
         ("ACID", "ACID", ("전표가 지키는 네 가지 약속.", "The four promises a receipt keeps."), ('NoSQL은 ACID를 관계형 창고만큼 엄격히 지키지 않을 수 있어요. → <a href="acid-ko.html">전표가 지키는 네 약속</a>', 'NoSQL may not keep ACID as strictly as the relational warehouse. → <a href="acid-en.html">the four promises a receipt keeps</a>')),
-        ("인메모리 DB", "In-Memory DB", ("디스크 대신 바로 꺼내는 출고대.", "A desk that skips the deep shelf and serves straight from memory."), ('Key-Value형 NoSQL과 자주 함께 쓰여요. → <a href="inmemorydb-ko.html">특급 출고대</a>', 'Often paired with key-value NoSQL. → <a href="inmemorydb-en.html">the express pickup desk</a>')),
+        ("인메모리 DB", "In-Memory DB", ("디스크 대신 바로 꺼내는 출고대.", "A desk that skips the deep shelf and serves straight from memory."), ('Redis처럼 Key-Value형 NoSQL이면서 인메모리인 제품도 있어요. → <a href="inmemorydb-ko.html">특급 출고대</a>', 'Some products, like Redis, are both key-value NoSQL and in-memory. → <a href="inmemorydb-en.html">the express pickup desk</a>')),
     ],
 }

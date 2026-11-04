@@ -36,7 +36,7 @@ P1 = svg(300, sky(300)
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(220, 150, s=0.85, face=SWEAT, **DEMO)
          + bubble(300, 58, 320, 50, "⟦경우의 수가 억 개나 되는데, 하나씩 다 확인해야 해요?|there are a hundred million cases — check them one by one?⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 270, "⟦스위치 컴퓨터는 한 번에 한 경우만 확인할 수 있어요|a switch-based computer can only check one case at a time⟧", 12, "var(--ink)"))
+         + label(380, 270, "⟦스위치 컴퓨터는 경우를 대체로 하나씩 차례로 확인해요|a switch-based computer basically checks cases one after another⟧", 12, "var(--ink)"))
 
 # 3. 양자 컴퓨팅 = 동전이 돌면서 앞뒤 둘 다인 상태를 쓰는 계산 (hero)
 P3 = svg(340, sky(340)
@@ -51,10 +51,10 @@ P4 = svg(320, sky(320)
          + infoboard(60, 40, 320, 240, "⟦비트 vs 큐비트|BIT vs QUBIT⟧",
                      ("⟦고전 비트 — 항상 0 아니면 1|classic bit — always 0 or 1⟧",
                       "⟦큐비트 — 0과 1을 동시에, 확률로 가져요|qubit — holds 0 and 1 at once, as probabilities⟧",
-                      "⟦큐비트 두 개를 묶으면 서로 영향을 줘요(얽힘)|entangled qubits affect each other⟧",
+                      "⟦큐비트 두 개를 묶으면 측정 결과가 서로 이어져요(얽힘)|entangled qubits give linked measurement results⟧",
                       "⟦양자 컴퓨터는 특정 문제만 고전 컴퓨터보다 빨라요|faster than classic computers only on some problems⟧"), 1.0, hl=1)
          + person(560, 150, s=0.75, face=EYES, **GUIDE)
-         + label(560, 250, "⟦양자 컴퓨터는 암호 풀기·분자 시뮬레이션에 강해요|quantum computers excel at code-breaking and molecules⟧", 11, "var(--muted)"))
+         + label(560, 250, "⟦암호 풀기·분자 시뮬레이션에 강할 것으로 기대돼요|expected to excel at code-breaking and molecules⟧", 11, "var(--muted)"))
 
 # 5. 한계 - 동전은 금방 멈춰요(오류), 모든 문제에 다 빠른 건 아니에요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--accent-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
@@ -76,7 +76,7 @@ PAGE = {
          "small": ("우리가 쓰는 컴퓨터는 전부 이 스위치(0, 1)로 돼 있어요.", "Every computer we use is built from switches like this — 0 or 1.")},
         {"svg": P2, "alt": ("시연 담당자가 경우의 수가 너무 많다며 진땀을 흘림", "A demo staffer sweats over the sheer number of cases to check"),
          "caption": ("경우의 수가 너무 많으면, 하나씩 다 보기엔 시간이 모자라요.", "When there are too many cases, checking them one by one takes forever."),
-         "small": ("스위치 컴퓨터는 한 번에 한 경우만 확인할 수 있어요.", "A switch-based computer can only check one case at a time.")},
+         "small": ("스위치 컴퓨터는 경우를 대체로 하나씩 차례로 확인해요.", "A switch-based computer basically checks cases one after another.")},
         {"svg": P3, "hero": True, "alt": ("부스 안에서 동전이 빙글빙글 돌며 앞뒤가 흐릿하게 겹쳐 보임", "A coin spins inside the booth, heads and tails blurring together"),
          "caption": ("양자 컴퓨팅은 돌아가는 동전처럼 0과 1을 동시에 품은 큐비트로 계산해요.", "Quantum computing computes with qubits that hold 0 and 1 at once, like a spinning coin."),
          "small": ("큐비트는 여러 경우를 한꺼번에 품고, 정답 쪽 확률을 키워서 풀어요.", "Qubits hold many cases at once and boost the odds of the right answer."),
@@ -88,7 +88,7 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("비트와 큐비트를 비교하는 설명판: 큐비트는 동시에, 얽혀서, 특정 문제에만 빠름", "A board compares bit vs qubit: qubits hold both at once, link together, and speed up only certain problems"),
          "caption": ("고전 비트는 0 아니면 1 중 하나만, 큐비트는 0과 1을 동시에 품어요.", "A classic bit holds just 0 or 1; a qubit holds both at once."),
-         "small": ("양자 컴퓨터는 암호 풀기·분자 시뮬레이션 같은 문제에 특히 강해요.", "Quantum computers are especially strong at code-breaking and molecule simulation.")},
+         "small": ("양자 컴퓨터는 암호 풀기·분자 시뮬레이션 같은 문제에 특히 강할 것으로 기대돼요.", "Quantum computers are expected to be especially strong at code-breaking and molecule simulation.")},
         {"svg": P5, "alt": ("왼쪽: 동전이 살짝만 건드려도 멈춤. 오른쪽: 평범한 계산은 고전 컴퓨터가 더 빠름", "Left: the coin stops the instant it's disturbed. Right: for ordinary math, the classic computer still wins"),
          "caption": ("큐비트는 작은 흔들림에도 오류가 나고, 평범한 계산은 고전 컴퓨터가 더 빨라요.", "Qubits err at the tiniest disturbance, and classic computers are still faster at ordinary math."),
          "small": ("양자 컴퓨터는 만능이 아니라, 특정 문제에 강한 특수 도구예요.", "A quantum computer isn't all-purpose — it's a specialist tool for particular problems.")},
@@ -101,7 +101,7 @@ PAGE = {
         ("큐비트", "Qubit", ("0과 1을 동시에 품는 동전.", "The coin that holds 0 and 1 at once."), ("양자 컴퓨팅의 가장 작은 단위예요.", "The smallest unit of quantum computing.")),
         ("중첩", "Superposition", ("0과 1이 겹쳐 있는 상태, 동전이 도는 모습 같아요.", "0 and 1 overlapping, like a coin still spinning."), ("큐비트를 재는 순간 0이나 1, 하나로 정해져요.", "The instant you measure a qubit, it settles to just 0 or 1.")),
         ("양자 얽힘", "Entanglement", ("두 큐비트가 서로 연결된 상태.", "Two qubits linked to each other."), ("한 큐비트를 재면 다른 큐비트도 즉시 정해져요.", "Measure one qubit and the other is instantly decided too.")),
-        ("양자 우월성", "Quantum Supremacy", ("특정 문제에서 고전 컴퓨터가 못 따라가는 순간.", "The moment a classic computer can't keep up on a given problem."), ("특정 문제 하나에서만 증명된 우위예요.", "A lead proven on one specific problem, not computing in general.")),
+        ("양자 우월성", "Quantum Supremacy", ("특정 문제에서 고전 컴퓨터가 못 따라가는 순간.", "The moment a classic computer can't keep up on a given problem."), ("계산 전반이 아니라 특정 문제에서만 보고된 우위예요.", "A lead reported only on specific problems, not computing in general.")),
         ("양자내성암호(PQC)", "Post-Quantum Cryptography", ("양자 컴퓨터로도 깨기 어렵게 설계한 암호.", "Cryptography designed to resist even quantum computers."), ("지금 쓰는 암호를 미리 바꿔두는 대비책이에요.", "A safeguard that swaps out today's cryptography ahead of time.")),
         ("양자암호통신(QKD)", "Quantum Key Distribution", ("양자 성질로 도청을 들키는 통신.", "Communication where quantum properties expose any eavesdropper."), ('양자 컴퓨팅과는 다른, 양자 통신 응용이에요. → <a href="qkdcomm-ko.html">엿들으면 바로 티 나는 빛 알갱이 열쇠</a>', 'A different quantum application — communication, not computing. → <a href="qkdcomm-en.html">the key of light that shows the moment it\'s watched</a>')),
         ("고전 컴퓨터", "Classical Computer", ("스위치(0, 1)로 돌아가는 익숙한 컴퓨터.", "The familiar computer running on 0-or-1 switches."), ("일상적인 계산은 여전히 고전 컴퓨터가 빨라요.", "For everyday computation, a classical computer is still faster.")),

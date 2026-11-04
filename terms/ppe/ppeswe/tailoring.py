@@ -37,8 +37,8 @@ PAGE = {
     "slug": "tailoring", "order": 32,
     "title": ("책마다 다른 편집 규칙", "Different Editing Rules for Each Book"),
     "h1": ("<em>개발방법론 테일러링</em>이 뭐예요?", "What is <em>Methodology Tailoring</em>?"),
-    "sub": ("모든 책에 똑같은 편집 규칙을 강요하면 오히려 늦어져요 — 책에 맞게 규칙을 고쳐 쓰는 이야기예요.",
-            "Forcing the same editing rules on every book only slows things down — a story about adjusting the rules to fit the book."),
+    "sub": ("모든 책에 똑같은 편집 규칙을 강요하면 작은 책까지 출간이 늦어져요 — 책에 맞게 규칙을 고쳐 쓰는 이야기예요.",
+            "Forcing the same editing rules on every book delays even small books — a story about adjusting the rules to fit the book."),
     "panels": [
         {"svg": P1, "alt": ("편집장이 그림책 작가에게도 두꺼운 사전용 규칙집을 들이밈", "The editor hands a thick dictionary-style rulebook to the picture-book author too"),
          "caption": ("그림책도 사전과 똑같은 규칙집을 다 따라야 할까요?", "Does a picture book really need the same rulebook as a dictionary?"),
@@ -65,10 +65,10 @@ PAGE = {
          "caption": ("규칙표는 책마다 달라져요.", "The rule card ends up different for each book."),
          "small": ("두 규칙표는 같은 규칙집에서 나왔지만, 최종 체크리스트는 서로 달라요.", "Both rule cards come from the same rulebook, but the final checklists differ.")},
         {"svg": svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
-                     + person(190, 130, s=0.8, face=FROWN, **EDITOR) + label(190, 260, "⟦규칙을 다 빼면: 오탈자를 거를 단계가 사라져요|strip too many rules: no step is left to catch typos⟧", 11, "var(--ink)")
+                     + person(190, 130, s=0.8, face=FROWN, **EDITOR) + label(190, 260, "⟦규칙을 너무 빼면: 오탈자를 거를 단계가 사라져요|strip too many rules: no step is left to catch typos⟧", 11, "var(--ink)")
                      + person(570, 130, s=0.8, face=SMILE, **EDITOR) + label(570, 260, "⟦필요한 규칙만 남기면: 마감도 품질도 지켜요|keep just the needed rules: deadline and quality both hold⟧", 11, "var(--ink)")
                      + label(380, 305, "⟦테일러링은 규칙을 없애는 게 아니라, 책에 맞게 고르는 기술이에요|tailoring isn't deleting rules — it's the skill of choosing them to fit the book⟧", 12, "var(--ink)", cls="d")),
-         "alt": ("왼쪽: 규칙을 다 빼서 오탈자를 거를 단계가 사라짐. 오른쪽: 필요한 규칙만 남겨 마감과 품질을 지킴", "Left: stripping too many rules leaves no step to catch typos. Right: keeping just the needed rules holds both deadline and quality"),
+         "alt": ("왼쪽: 규칙을 너무 빼서 오탈자를 거를 단계가 사라짐. 오른쪽: 필요한 규칙만 남겨 마감과 품질을 지킴", "Left: stripping too many rules leaves no step to catch typos. Right: keeping just the needed rules holds both deadline and quality"),
          "caption": ("규칙을 너무 많이 빼면 테일러링도 위험해요.", "Cut too many rules, and even tailoring gets risky."),
          "small": ("테일러링은 규칙을 없애는 게 아니라, 책에 맞게 고르는 기술이에요.", "Tailoring isn't about deleting rules — it's choosing them to fit the book.")},
     ],
@@ -83,7 +83,7 @@ PAGE = {
         ("CMMI", "CMMI", ("조직의 성숙도를 재는 잣대.", "A ruler for how mature an organization's process is."), ("테일러링 능력도 성숙도의 일부예요.", "The ability to tailor well is itself part of that maturity.")),
         ("품질 게이트", "Quality Gate", ("아무리 줄여도 남겨두는 핵심 검문소.", "The core checkpoint kept even after trimming."), ("테일러링에서도 빼면 안 되는 것.", "The thing tailoring should never cut.")),
         ("제품계열 방법론", "Product Line Engineering", ("핵심 자산을 모아 여러 판으로 파생.", "Gathering core assets to spin off many editions."), ('비슷하게 \'맞춤\'을 다루는 이웃 개념이에요. → <a href="productline-ko.html">같은 틀, 다른 표지</a>', 'A neighboring idea about fitting things to context. → <a href="productline-en.html">same template, different covers</a>')),
-        ("정보시스템 감리/PMO", "IS Audit/PMO", ("이 규칙표가 잘 지켜졌는지 바깥에서 점검.", "Checks from the outside whether this rule card was followed."), ('테일러링 결과를 점검 대상으로 삼기도 해요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', "Sometimes reviews the tailoring decisions themselves. → <a href=\"pmoaudit-en.html\">the last checker before publication</a>")),
+        ("정보시스템 감리/PMO", "IS Audit/PMO", ("이 규칙표가 잘 지켜졌는지 바깥에서 점검.", "Checks from the outside whether this rule card was followed."), ('테일러링 결과를 점검 대상으로 삼기도 해요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', "Sometimes reviews the tailoring decisions themselves. → <a href=\"pmoaudit-en.html\">the checker who watches the whole publishing run</a>")),
         ("과잉 프로세스", "Process Overkill", ("작은 책에 사전 규칙집을 통째로 적용하는 것.", "Applying the full dictionary rulebook to a tiny book."), ("테일러링이 막으려는 바로 그 문제예요.", "The exact problem tailoring tries to prevent.")),
     ],
 }

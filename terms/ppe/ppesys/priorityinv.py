@@ -35,7 +35,7 @@ RESET_I = icon('<path d="M46 20 A18 18 0 1 0 50 34" stroke="var(--good)" stroke-
 
 PAGE = {
     "slug": "priorityinv", "order": 24,
-    "title": ("급한 차가 유령처럼 멈춰요", "The Urgent Car Stalls Like a Ghost"),
+    "title": ("급한 차가 덜 급한 차에 밀려 멈춰요", "The Urgent Car Held Up by Less Urgent Ones"),
     "h1": ("<em>우선순위 역전/상속</em>이 뭐예요?", "What is <em>Priority Inversion/Inheritance</em>?"),
     "sub": ("급한 일이 사소한 일 때문에 하염없이 기다리는 문제와, 사소한 일의 순위를 잠깐 올려 푸는 임시 처방 이야기예요.",
             "A story about an urgent task stuck waiting on a trivial one — and the temporary priority boost that fixes it."),

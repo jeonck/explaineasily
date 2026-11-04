@@ -35,7 +35,7 @@
 ## 이미 쓴 비유 (order 순)
 | slug | 제목 |
 |---|---|
-| pmoaudit | 출간 전 마지막 검수관 |
+| pmoaudit | 출간 과정을 곁에서 살피는 검수관 |
 | ispismp | 출판 로드맵을 그리는 사람 |
 | reqeng | 쓰기 전에 먼저 묻는 사람 |
 | agilescrum | 한 챕터씩 보여주며 쓰기 |

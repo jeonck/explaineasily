@@ -58,7 +58,7 @@ PAGE = {
          "caption": ("로지스틱 회귀는 저울 눈금을 S자 곡선에 넣어 합격 확률로 바꿔요.", "Logistic regression feeds the scale's number through an S-curve to get a pass probability."),
          "small": ("S자 곡선을 거치면 점수가 아무리 크거나 작아도, 결과는 항상 0과 1 사이예요.", "After the S-curve, no matter how big or small the score, the result always lands between 0 and 1."),
          "tricks": (4, [
-             (SCORE_I, ("점수 매기기", "Score it"), ("특징을 더해 하나의 점수로 만들어요", "combining features into one score"), "calm"),
+             (SCORE_I, ("점수 매기기", "Score it"), ("특징에 가중치를 곱해 더한 점수를 만들어요", "weighting and adding features into one score"), "calm"),
              (SQUASH_I, ("S자로 눌러주기", "Squash it with an S"), ("점수를 0~1 사이로 눌러요", "squeezing the score between 0 and 1")),
              (THRESH_I, ("기준점 넘으면 합격", "Pass the cutoff, call it PASS"), ("보통 0.5를 기준으로 삼아요", "0.5 is the usual cutoff line"), "warm"),
              (BOUND_I, ("경계선 긋기", "Draw the boundary"), ("합격과 불합격을 가르는 선이에요", "the line that splits pass from fail")),
@@ -73,7 +73,7 @@ PAGE = {
          "small": ("선형 회귀는 '얼마나'를 묻고, 로지스틱 회귀는 '어느 쪽인지'를 물어요.", "Linear regression asks 'how much'; logistic regression asks 'which side'.")},
         {"svg": svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
                  + sigmoid_curve(100, 220, 160, 100) + label(180, 260, "⟦합격·불합격 경계선은 결국 하나의 직선이에요|the pass/fail boundary is still one straight line⟧", 11, "var(--ink)")
-                 + person(570, 150, s=0.75, face=EYES, **INSPECTOR) + label(570, 250, "⟦이 모델은 복잡하게 휜 경계를 못 그려요|this model can't draw a boundary with complicated curves⟧", 11, "var(--ink)")
+                 + person(570, 150, s=0.75, face=EYES, **INSPECTOR) + label(570, 250, "⟦특징을 변환하지 않으면 휜 경계를 못 그려요|without transformed features, it can't draw a curved line⟧", 11, "var(--ink)")
                  + label(380, 282, "⟦로지스틱 회귀는 S자로 눌러줄 뿐, 속은 여전히 직선 하나로 가르는 모델이에요|logistic regression only squashes the output — underneath, it's still one straight dividing line⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: S자 곡선과 경계선이 결국 직선 하나라는 설명. 오른쪽: 검수반장이 복잡한 경계는 못 그린다고 말함", "Left: a note that the boundary is still one straight line. Right: the inspector notes it can't draw a complicated curved boundary"),
          "caption": ("로지스틱 회귀는 점수를 S자로 누르긴 해도, 속은 직선 하나로 가르는 모델이에요.", "Logistic regression squashes the score with an S — but underneath, one straight line still does the dividing."),
@@ -81,13 +81,13 @@ PAGE = {
     ],
     "summary": (("<b>로지스틱 회귀분석</b> = 저울 눈금(점수)을 <b>S자 곡선</b>에 넣어, <b>0~1 사이 합격 확률</b>로 바꾸는 방법.",
                  "<b>Logistic regression</b> = feeding the scale's <b>score through an S-curve</b> to get a <b>pass probability between 0 and 1</b>."),
-                ("로지스틱 회귀분석(Logistic Regression)은 입력 특징의 선형 결합(가중합)을 시그모이드 함수에 통과시켜, 결과를 0과 1 사이의 확률로 바꾸는 지도학습 분류 방법이에요. 이 확률이 임계값(보통 0.5)을 넘으면 양성 클래스로, 아니면 음성 클래스로 분류해요. 이름에 '회귀'가 들어가지만 실제로는 분류 문제에 쓰이고, 결정 경계가 본질적으로 직선(초평면)이라 복잡하게 휜 경계를 가진 데이터에는 한계가 있어요.",
-                 "Logistic regression is a supervised classification method that passes a linear combination (weighted sum) of input features through a sigmoid function, turning the result into a probability between 0 and 1. If that probability clears a threshold (usually 0.5), it's classified as the positive class; otherwise, the negative class. Despite the word 'regression' in its name, it's actually used for classification — and because its decision boundary is fundamentally a straight line (a hyperplane), it struggles with data that needs a more complicated, curved boundary.")),
+                ("로지스틱 회귀분석(Logistic Regression)은 입력 특징의 선형 결합(가중합)을 시그모이드 함수에 통과시켜, 결과를 0과 1 사이의 확률로 바꾸는 지도학습 분류 방법이에요. 이 확률이 임계값(보통 0.5)을 넘으면 양성 클래스로, 아니면 음성 클래스로 분류해요. 이름에 '회귀'가 들어가지만 실제로는 분류 문제에 쓰이고, 결정 경계가 특징 공간에서 직선(초평면)이라, 특징을 변환하지 않으면 복잡하게 휜 경계를 가진 데이터에는 한계가 있어요.",
+                 "Logistic regression is a supervised classification method that passes a linear combination (weighted sum) of input features through a sigmoid function, turning the result into a probability between 0 and 1. If that probability clears a threshold (usually 0.5), it's classified as the positive class; otherwise, the negative class. Despite the word 'regression' in its name, it's actually used for classification — and because its decision boundary is a straight line (a hyperplane) in feature space, it struggles, without transformed features, on data that needs a curved boundary.")),
     "glossary": [
         ("로지스틱 회귀", "Logistic regression", ("저울 눈금을 S자 곡선에 넣어 확률로 바꾸는 방법.", "Feeding the scale's number through an S-curve to get a probability."), ("이름과 달리 분류 문제에 쓰여요.", "Despite its name, it's used for classification.")),
         ("시그모이드 함수", "Sigmoid function", ("아무 숫자나 0~1 사이로 눌러주는 S자 곡선.", "The S-curve that squashes any number into 0 to 1."), ("로지스틱 회귀의 핵심 장치예요.", "The core mechanism of logistic regression.")),
         ("선형 회귀", "Linear regression", ("저울 눈금 자체(연속된 숫자)를 예측하는 방법.", "Predicting the raw scale number itself — a continuous value."), ("로지스틱 회귀가 빌려 쓰는 점수 매기기 방식의 원래 주인이에요.", "The original owner of the scoring method logistic regression borrows.")),
-        ("결정 경계", "Decision boundary", ("합격과 불합격을 가르는 선.", "The line that splits pass from fail."), ("로지스틱 회귀에서는 이 경계가 늘 직선(또는 평면)이에요.", "In logistic regression, this boundary is always a straight line (or flat plane).")),
+        ("결정 경계", "Decision boundary", ("합격과 불합격을 가르는 선.", "The line that splits pass from fail."), ("로지스틱 회귀에서는 특징을 변환하지 않으면 이 경계가 직선(또는 평면)이에요.", "In logistic regression, without transformed features, this boundary is a straight line (or flat plane).")),
         ("임계값", "Threshold", ("확률을 합격·불합격으로 바꾸는 기준점.", "The cutoff that turns a probability into pass or fail."), ("보통 0.5를 쓰지만, 상황에 따라 옮길 수 있어요.", "Usually 0.5, but it can be moved depending on the situation.")),
         ("오즈비", "Odds ratio", ("오즈(합격 확률÷불합격 확률)가 특징 값 변화에 따라 몇 배 달라지는지 나타내는 비.", "How many times the odds (pass probability ÷ fail probability) change when a feature changes."), ("로지스틱 회귀의 계수를 해석할 때 쓰는 말이에요.", "The term used when interpreting a logistic regression coefficient.")),
         ("혼동행렬", "Confusion matrix", ("합격·불합격 판정을 네 칸으로 나눈 기록부.", "The ledger that splits pass/fail calls into four boxes."), ('로지스틱 회귀의 성능도 이걸로 확인해요. → <a href="confmatrix-ko.html">네 칸으로 나눈 도장 기록부</a>', "Logistic regression's own performance is checked the same way. → <a href=\"confmatrix-en.html\">The Four-Box Stamp Ledger</a>")),

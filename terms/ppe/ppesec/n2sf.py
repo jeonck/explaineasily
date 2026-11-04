@@ -64,15 +64,15 @@ P3 = svg(340, sky(340)
 P4 = svg(300, sky(300)
          + box(50, 30, 310, 240, "⟦기존 — 물리적 망분리|OLD — physical separation⟧",
                ("⟦다리를 아예 끊어요|the bridge is cut entirely⟧", "⟦가장 안전하지만 가장 불편해요|safest, but least convenient⟧", "⟦클라우드를 거의 못 써요|cloud tools barely usable⟧"), 12)
-         + box(400, 30, 310, 240, "⟦N2SF — 논리적 분리|N2SF — logical separation⟧",
-               ("⟦다리는 열되 구간마다 확인해요|the bridge stays open, checked section by section⟧", "⟦제로 트러스트 방식과 같아요|the same idea as zero trust⟧", "⟦등급에 맞으면 클라우드도 써요|cloud use allowed, matched to the grade⟧"), 12))
+         + box(400, 30, 310, 240, "⟦N2SF — 등급별 통제|N2SF — controls by grade⟧",
+               ("⟦등급에 맞춰 다리를 열고 구간마다 확인해요|bridges open by grade, checked by section⟧", "⟦제로 트러스트 생각을 함께 써요|borrows from zero trust⟧", "⟦등급에 맞으면 클라우드도 써요|cloud use allowed, matched to the grade⟧"), 12))
 
 # 5. 아직 초기 단계예요
 P5 = svg(280, '<rect width="760" height="280" fill="var(--bad-soft)"/>'
          + small_castle(100, 60, 0.5) + label(200, 180, "⟦바꾼 기관|a castle that switched⟧", 11, "var(--good)")
          + small_castle(380, 90, 0.42) + label(460, 185, "⟦아직 그대로인 기관|a castle that hasn't yet⟧", 11, "var(--muted)")
          + person(640, 150, s=0.8, face=EYES, **GUARD)
-         + bubble(540, 70, 205, 40, "⟦등급 나누는 기준부터 어려워요|even grading the castles is hard⟧", 10, "var(--panel)", "var(--line)", "bottom")
+         + bubble(540, 70, 205, 40, "⟦등급 나누는 기준부터 어려워요|even grading the ledgers is hard⟧", 10, "var(--panel)", "var(--line)", "bottom")
          + label(380, 258, "⟦모든 공공기관이 다 바꾸진 않았고, 등급 기준도 아직 다듬는 중이에요|not every public castle has switched, and the grading itself is still being refined⟧", 11, "var(--ink)"))
 
 PAGE = {
@@ -83,9 +83,9 @@ PAGE = {
             "N2SF, Korea's national network security framework, told as a story about rebuilding the bridge but lining it with checkpoints."),
     "panels": [
         {"svg": P1, "alt": ("공공기관 성과 클라우드 사이 다리가 완전히 끊겨 있음", "The bridge between a public-sector castle and the cloud is cut entirely"),
-         "caption": ("나라의 모든 성이 다리를 아예 끊었어요.", "Every public-sector castle had its bridge cut entirely."),
-         "small": ('<a href="airgap-ko.html">다리 없는 섬</a>처럼요 — 도둑도 못 오지만, 바깥 도구도 전혀 못 써요.',
-                   'Like an <a href="airgap-en.html">island with no bridge</a> — no thief can get in, but no outside tool can either.')},
+         "caption": ("공공기관 성들은 다리를 아예 끊어 왔어요.", "Public-sector castles have kept their bridges cut entirely."),
+         "small": ('<a href="airgap-ko.html">다리 없는 섬</a>처럼요. 실제로는 업무망과 인터넷망을 물리적으로 나눈 망분리예요. 도둑도 못 오지만, 바깥 도구도 전혀 못 써요.',
+                   'Like an <a href="airgap-en.html">island with no bridge</a>. In reality this is network separation: the work network is physically split from the internet. No thief can get in, but no outside tool can either.')},
         {"svg": P2, "alt": ("서기가 땀을 흘리며 '클라우드 없인 일이 안 돌아가요'라고 말하는데 다리는 여전히 끊겨 있음", "A sweating clerk says nothing works without the cloud now, while the bridge remains cut"),
          "caption": ("그런데 업무엔 점점 바깥 도구가 필요해요.", "But more and more work needs outside tools."),
          "small": ("다리를 다시 놓자니 도둑이 걱정이에요.", "Rebuild the bridge, and the old worry about thieves comes right back.")},
@@ -102,18 +102,18 @@ PAGE = {
              (icon('<circle cx="32" cy="32" r="18" fill="none" stroke="var(--good)" stroke-width="4"/><path d="M32 24 v8 l6 4" stroke="var(--good)" stroke-width="3" fill="none" stroke-linecap="round"/>'),
               ("계속 지켜봐요", "Watched continuously"), ("검문소를 한 번 통과해도 끝이 아니에요", "passing a checkpoint once isn't the end")),
          ])},
-        {"svg": P4, "alt": ("기존 물리적 망분리(다리 끊기, 가장 안전하지만 불편, 클라우드 거의 못 씀) vs N2SF(다리는 열고 구간마다 확인, 제로 트러스트 방식, 클라우드도 사용 가능) 비교", "Old physical separation (bridge cut, safest but least convenient, cloud barely usable) vs N2SF (bridge open but checked section by section, same idea as zero trust, cloud usable) compared"),
+        {"svg": P4, "alt": ("기존 물리적 망분리(다리 끊기, 가장 안전하지만 불편, 클라우드 거의 못 씀) vs N2SF(등급에 맞춰 다리를 열고 구간마다 확인, 제로 트러스트 생각을 함께 씀, 등급에 맞으면 클라우드 사용) 비교", "Old physical separation (bridge cut, safest but least convenient, cloud barely usable) vs N2SF (bridges open by grade and checked by section, borrowing from zero trust, cloud allowed to match the grade) compared"),
          "caption": ("기존 방식과 N2SF는 다리를 다루는 법이 달라요.", "The old way and N2SF handle the bridge differently."),
-         "small": ('N2SF의 검문소 방식은 <a href="zerotrust-ko.html">문마다 물어보는 성</a>과 같은 생각이에요.',
-                   "N2SF's checkpoint approach is the same idea as the <a href=\"zerotrust-en.html\">castle that always asks</a>.")},
-        {"svg": P5, "alt": ("이미 바꾼 작은 성과 아직 그대로인 작은 성이 나란히 있고, 경비가 '등급 나누는 기준부터 어려워요'라고 말함", "A castle that already switched stands beside one that hasn't, while a guard says even grading the castles is hard"),
+         "small": ('N2SF의 검문소 방식은 <a href="zerotrust-ko.html">문마다 물어보는 성</a>과 닮았어요.',
+                   "N2SF's checkpoint approach resembles the <a href=\"zerotrust-en.html\">castle that always asks</a>.")},
+        {"svg": P5, "alt": ("이미 바꾼 작은 성과 아직 그대로인 작은 성이 나란히 있고, 경비가 '등급 나누는 기준부터 어려워요'라고 말함", "A castle that already switched stands beside one that hasn't, while a guard says even grading the ledgers is hard"),
          "caption": ("N2SF 전환은 아직 초기 단계예요.", "The switch to N2SF is still in its early days."),
          "small": ("모든 공공기관이 다 바꾸진 않았고, 등급 기준도 아직 다듬는 중이에요.", "Not every public-sector castle has switched yet, and the grading criteria themselves are still being refined.")},
     ],
     "summary": (("<b>N2SF</b> = 다리를 <b>아예 끊는</b> 대신, <b>장부를 등급별로 나누고</b> 다리 위에 <b>검문소를 촘촘히</b> 세우는 나라의 새 망 보안 틀.",
                  "<b>N2SF</b> = the nation's new network security framework — instead of <b>cutting the bridge entirely</b>, it <b>grades ledgers by sensitivity</b> and lines the bridge with <b>checkpoints, one after another</b>."),
-                ("N2SF(국가 망 보안체계, National Network Security Framework)는 국가정보원이 추진하는 공공부문 망 보안체계로, 기존의 물리적 망분리 중심 정책을 등급제와 제로 트러스트 기반의 논리적 망분리로 전환하는 것을 핵심으로 해요. 업무정보를 기밀(C)·민감(S)·공개(O) 세 등급으로 나누고, 등급에 맞는 통제를 적용해 공공기관도 클라우드 등 외부 서비스를 활용할 수 있게 하는 게 목표예요.",
-                 "N2SF is a public-sector network security framework led by South Korea's National Intelligence Service, shifting the country's traditional physical network-separation policy toward a grade-based, zero-trust-driven logical separation. Work information is graded classified (C), sensitive (S), or open (O), with controls matched to each grade, aiming to let public institutions use cloud and other outside services while still staying protected.")),
+                ("N2SF(국가 망 보안체계, National Network Security Framework)는 국가정보원이 추진하는 공공부문 망 보안체계로, 획일적인 망분리 대신 데이터 중요도에 따라 보안 수준을 달리하는 것이 핵심이에요. 업무정보를 기밀(C)·민감(S)·공개(O) 세 등급으로 나누고, 등급에 맞는 통제(제로 트러스트 방식의 접근통제 포함)를 적용해 공공기관도 클라우드 등 외부 서비스를 활용할 수 있게 하는 게 목표예요. 2025년 가이드라인 1.0이 나왔고, 국정원은 2026년 4월 N2SF를 담은 개정 국가 사이버 보안 기본 지침을 5월부터 시행한다고 밝혔어요.",
+                 "N2SF is a public-sector network security framework led by South Korea's National Intelligence Service, replacing one-size-fits-all network separation with security levels set by how important the data is. Work information is graded classified (C), sensitive (S), or open (O), with controls matched to each grade (including zero-trust-style access control), aiming to let public institutions use cloud and other outside services while still staying protected. Guideline 1.0 came out in 2025, and in April 2026 the NIS said its revised National Cyber Security Basic Guidelines, which include N2SF, would apply from May.")),
     "glossary": [
         ("N2SF", "N2SF", ("나라의 새 망 보안 틀.", "The nation's new network security framework."), ("국가정보원이 추진하는 공공부문 망 보안체계예요.", "A public-sector framework led by Korea's National Intelligence Service.")),
         ("물리적 망분리", "Physical network separation", ("다리를 아예 끊기.", "Cutting the bridge entirely."), ('기존 방식. → <a href="airgap-ko.html">다리 없는 섬 창고</a>', 'The old approach. → <a href="airgap-en.html">the island shed with no bridge</a>')),

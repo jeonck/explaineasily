@@ -51,7 +51,7 @@ FADE_I = icon('<rect x="10" y="40" width="8" height="14" fill="var(--accent)" op
 P4 = svg(340, sky(340)
          + gradeboard(40, 30, 330, 280, "⟦AR 부분 — 지난 값 가중합|AR PART — WEIGHTED PAST VALUES⟧",
                       ("⟦오늘 ≈ 어제×0.6 + 그제×0.3 + …|today ≈ yesterday×0.6 + day before×0.3 + …⟧",
-                       "⟦최근일수록 가중치가 커요|more recent days get more weight⟧"), 0.95)
+                       "⟦가중치는 데이터로 정하고, 흔히 최근 값이 커요|weights come from data, often larger for recent days⟧"), 0.95)
          + gradeboard(390, 30, 330, 280, "⟦MA 부분 — 최근 오차 보정|MA PART — RECENT-ERROR CORRECTION⟧",
                       ("⟦예측이 빗나간 만큼 다음 예측에 반영|how far off we were feeds into the next guess⟧",
                        "⟦오차가 계속 크면 모델을 다시 봐요|if errors stay big, revisit the model⟧"), 0.95)
@@ -69,7 +69,7 @@ P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="
 PAGE = {
     "slug": "timeseries", "order": 15,
     "title": ("지난 며칠을 보고 내일을 가늠하는 검수반장", "The Inspector Who Reads the Last Few Days to Guess Tomorrow"),
-    "h1": ("<em>시계열분석(AR/MA)</em>이/가 뭐예요?", "What is <em>Time-Series Analysis (AR/MA)</em>?"),
+    "h1": ("<em>시계열분석(AR/MA)</em>이 뭐예요?", "What is <em>Time-Series Analysis (AR/MA)</em>?"),
     "sub": ("시계열분석(AR/MA)을, 매일 들쭉날쭉한 수확량을 지난 며칠 값과 최근 오차로 함께 가늠하는 검수반장 이야기로 풀어봤어요.",
             "AR/MA time-series analysis, told as a story about an inspector who guesses tomorrow's harvest from the last few days' numbers and how far recent guesses missed."),
     "panels": [
@@ -77,16 +77,16 @@ PAGE = {
          "caption": ("매일 수확량이 들쭉날쭉해요.", "The daily harvest count bounces around."),
          "small": ("매일 수확량이 오르내려서, 다음 날 얼마나 나올지 감이 안 와요.", "The harvest count bounces every day — so the next day's count is hard to guess.")},
         {"svg": P2, "alt": ("선별기 조작원이 어제 숫자만 그대로 베껴 예측했지만 실제값과 자주 어긋남", "The operator just copies yesterday's number as the forecast, and it keeps missing the real value"),
-         "caption": ("어제 숫자만 베끼면 틀려요.", "Just copying yesterday's number gets it wrong."),
+         "caption": ("어제 숫자만 베끼면 자주 빗나가요.", "Just copying yesterday's number often misses."),
          "small": ("하루 전 숫자만으론 들쭉날쭉함을 못 잡아요.", "One prior day can't capture the ups and downs.")},
         {"svg": P3, "hero": True, "alt": ("검수반장이 지난 며칠 막대그래프 위에 초록 점선 예측 그래프를 겹쳐 그림", "The inspector overlays a green dashed forecast line on top of the last few days' bar chart"),
          "caption": ("시계열분석(AR/MA)은 지난 며칠 값과 최근 오차를 함께 보고 다음 값을 추정해요.", "AR/MA time-series analysis estimates the next value from the last few days plus recent errors."),
          "small": ("초록 점선이 예측, 막대가 실제 — 완전히 겹치진 않아요.", "The green dashed line is the forecast, bars are the real count — they never match exactly."),
          "tricks": (4, [
-             (AR_I, ("지난 값 가중합 (AR)", "Weighted past values (AR)"), ("최근일수록 더 많이 반영", "recent days count more"), "calm"),
+             (AR_I, ("지난 값 가중합 (AR)", "Weighted past values (AR)"), ("흔히 최근 값을 더 많이 반영", "recent days often count more"), "calm"),
              (MA_I, ("최근 오차 보정 (MA)", "Recent-error correction (MA)"), ("빗나간 만큼 다음 번에 반영", "misses feed into the next guess")),
              (SEASON_I, ("계절성 체크하기", "Check for seasonality"), ("명절·수확철 패턴도 봐요", "look for holiday/harvest-season patterns"), "warm"),
-             (FADE_I, ("먼 과거는 약하게", "Fade out the distant past"), ("오래된 값일수록 가중치 작게", "older values get smaller weight")),
+             (FADE_I, ("먼 과거는 흔히 약하게", "The distant past often fades"), ("오래된 값은 영향이 작은 경우가 많아요", "older values often have less influence")),
          ])},
         {"svg": P4, "alt": ("AR 부분(지난 값의 가중합)과 MA 부분(최근 오차 보정)을 나란히 설명하는 두 체크표", "Two side-by-side boards explaining the AR part (weighted past values) and the MA part (recent-error correction)"),
          "caption": ("AR은 지난 값의 가중합, MA는 최근 오차 보정이에요.", "AR is a weighted sum of past values; MA corrects using recent errors."),
@@ -100,12 +100,12 @@ PAGE = {
                 ("AR(AutoRegressive, 자기회귀)은 현재 값을 과거 p개 값의 선형결합으로 모델링하고, MA(Moving Average, 이동평균)는 과거 오차항(백색잡음)의 선형결합으로 모델링해요. 둘을 합치면 ARMA(p,q), 비정상 시계열을 차분해 정상화하면 ARIMA(p,d,q), 계절성을 더하면 SARIMA가 돼요. 전제는 '과거 패턴이 미래에도 유지된다'는 것이라, 구조적 변화(돌발 이벤트)에는 취약해요.",
                  "AR (AutoRegressive) models the current value as a linear combination of the past p values; MA (Moving Average) models it as a linear combination of past white-noise error terms. Together they form ARMA(p,q); differencing a non-stationary series to make it stationary gives ARIMA(p,d,q); adding seasonality gives SARIMA. The core assumption — that past patterns persist into the future — makes these models fragile against structural breaks like sudden events.")),
     "glossary": [
-        ("AR(자기회귀)", "AR (AutoRegressive)", ("지난 며칠 값의 가중합.", "A weighted sum of the last few days."), ("최근 값일수록 더 크게 반영해요.", "More recent values get bigger weight.")),
-        ("MA(이동평균)", "MA (Moving Average)", ("최근 예측 오차의 보정.", "A correction from recent forecast errors."), ("빗나간 만큼을 다음 예측에 더해요.", "Adds how far off you were into the next guess.")),
+        ("AR(자기회귀)", "AR (AutoRegressive)", ("지난 며칠 값의 가중합.", "A weighted sum of the last few days."), ("가중치는 데이터에서 추정하고, 흔히 최근 값이 더 커요.", "Weights are estimated from data, often larger for recent values.")),
+        ("MA(이동평균)", "MA (Moving Average)", ("최근 예측 오차의 보정.", "A correction from recent forecast errors."), ("빗나간 정도에 계수를 곱해 다음 예측에 반영해요.", "Multiplies how far off you were by a weight and feeds it into the next guess.")),
         ("정상성", "Stationarity", ("패턴이 시간이 지나도 안 바뀐다는 가정.", "The assumption that the pattern doesn't shift over time."), ("패턴이 안 바뀌어야 AR/MA가 잘 맞아요.", "AR/MA only fits well when the pattern holds steady.")),
         ("계절성", "Seasonality", ("명절·수확철처럼 되풀이되는 패턴.", "A pattern that repeats, like holidays or harvest season."), ("있으면 SARIMA처럼 계절 항을 더해요.", "If present, add a seasonal term as in SARIMA.")),
         ("회귀모형 가정", "Regression Assumptions", ("저울이 똑바로 걸려 있다는 전제들.", "The conditions that keep the scale hanging straight."), ('시계열도 회귀의 사촌이라 비슷한 전제가 깔려요. → <a href="regassumption-ko.html">저울이 똑바로 걸리는 조건</a>', 'Time series is a cousin of regression and shares similar conditions. → <a href="regassumption-en.html">what keeps the scale hanging straight</a>')),
-        ("불편추정량", "Unbiased Estimator", ("치우치지 않은 저울눈금.", "A scale dial with no systematic tilt."), ('예측값을 만드는 저울 자체의 성질이에요. → <a href="unbiasedest-ko.html">치우치지 않은 저울눈금</a>', "A property of the scale that produces the forecast itself. → <a href=\"unbiasedest-en.html\">the dial with no systematic tilt</a>")),
+        ("불편추정량", "Unbiased Estimator", ("치우치지 않은 저울눈금.", "A scale dial with no systematic tilt."), ('예측에 쓰는 계수를 추정하는 방법도 치우침을 따져요. → <a href="unbiasedest-ko.html">치우치지 않은 저울눈금</a>', "How a forecast's coefficients are estimated is also checked for bias. → <a href=\"unbiasedest-en.html\">the dial with no systematic tilt</a>")),
         ("교차검증", "Cross Validation", ("조를 나눠 번갈아 시험해 보는 일.", "Splitting into groups and testing in rotation."), ('시계열 예측도 과거 구간으로 교차검증해요. → <a href="crossval-ko.html">자세히 보기</a>', 'Time-series forecasts are cross-validated over past windows too. → <a href="crossval-en.html">see it in full</a>')),
         ("강화학습", "Reinforcement Learning", ("정답표 없이 보상으로 배우는 선별기.", "A sorter that learns from rewards instead of an answer key."), ('예측과는 다른, 또 다른 학습 방식이에요. → <a href="rl-ko.html">자세히 보기</a>', 'A different style of learning from forecasting. → <a href="rl-en.html">see it in full</a>')),
     ],

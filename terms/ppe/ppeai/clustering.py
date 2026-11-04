@@ -64,14 +64,14 @@ PAGE = {
              (DENSE_I, ("빽빽한 곳 찾기", "Find the dense spots"), ("촘촘히 모인 곳을 무리로 봐요", "treating a tight cluster as one group"), "warm"),
              (NOISE_I, ("못 낀 건 소음으로 두기", "Leave the leftovers as noise"), ("억지로 어디에 넣지 않아요", "not forcing it into any group")),
          ])},
-        {"svg": svg(300, sky(300) + gradeboard(60, 20, 640, 260, "⟦두 가지 묶는 방식|TWO WAYS TO GROUP⟧",
+        {"svg": svg(300, sky(300) + gradeboard(60, 20, 640, 260, "⟦대표적인 두 묶는 방식|TWO COMMON WAYS TO GROUP⟧",
                  ("⟦K-평균(K-means) — 무리 개수(K)를 미리 정함|K-means — the number of groups is fixed in advance⟧",
                   "⟦K-평균 — 중심점에서 가까운 것끼리 묶음, 둥근 무리|K-means — groups by distance to a center, round clusters⟧",
                   "⟦DBSCAN — 빽빽한 밀도로 무리를 찾음, 개수 안 정해도 됨|DBSCAN — finds groups by density, no fixed count needed⟧",
                   "⟦DBSCAN — 아무 무리에도 안 낀 점은 소음으로 남김|DBSCAN — leaves points that fit nowhere as noise⟧"), 1.0)),
          "alt": ("K-평균과 DBSCAN 두 묶는 방식을 비교한 표", "A board comparing K-means and DBSCAN as two ways to group"),
          "caption": ("묶는 방식에 따라 결과 모양도 달라져요.", "Different methods produce differently shaped groups."),
-         "small": ("K-평균은 무리 수를 미리 정하고, DBSCAN은 밀도만 보고 스스로 찾아요.", "K-means fixes the count in advance; DBSCAN finds it on its own, by density alone.")},
+         "small": ("K-평균은 무리 수를 미리 정하고, DBSCAN은 거리·밀도 기준을 정해 주면 무리 수를 스스로 찾아요.", "K-means fixes the count in advance; given distance and density settings, DBSCAN finds the count on its own.")},
         {"svg": svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
                  + dashed_ring(155, 160, 55, "var(--good)") + scatter(GROUP_A, 0.9, "var(--good)") + label(155, 250, "⟦비슷한 작물끼리 묶긴 했어요|clustering grouped the look-alikes⟧", 11, "var(--ink)")
                  + person(570, 140, s=0.75, face=EYES, **INSPECTOR) + label(570, 250, "⟦근데 이 무리가 '사과'인지는 몰라요|but clustering can't tell this group means apples⟧", 11, "var(--ink)")
@@ -82,8 +82,8 @@ PAGE = {
     ],
     "summary": (("<b>군집분석</b> = 정답 이름표 없이, <b>비슷한 작물끼리</b> 스스로 <b>무리를 찾는</b> 방법.",
                  "<b>Clustering</b> = finding groups of <b>look-alike produce</b> on its own, <b>with no answer labels</b> to start from."),
-                ("군집분석(Clustering)은 정답 라벨이 없는 비지도학습(unsupervised learning)의 한 종류로, 데이터 사이의 거리나 밀도를 기준으로 비슷한 것끼리 묶는 방법이에요. K-평균(K-means)은 무리 개수(K)를 미리 정하고 중심점과의 거리로 둥근 무리를 만들고, DBSCAN은 밀도가 높은 곳을 무리로 보고 개수를 미리 정하지 않아도 되며 어디에도 안 속한 점을 노이즈로 남겨요. 군집분석은 무리를 찾아줄 뿐, 그 무리의 의미(라벨)는 사람이 해석해 붙여야 해요.",
-                 "Clustering is a form of unsupervised learning — no answer labels exist — that groups look-alike data by distance or density. K-means fixes the number of groups (K) in advance and forms round clusters based on distance to a center point; DBSCAN treats dense regions as groups without needing a fixed count, and leaves points that belong nowhere as noise. Either way, clustering only finds the groups — a person still has to interpret and name what each one means.")),
+                ("군집분석(Clustering)은 정답 라벨이 없는 비지도학습(unsupervised learning)의 한 종류로, 데이터 사이의 거리나 밀도를 기준으로 비슷한 것끼리 묶는 방법이에요. K-평균(K-means)은 무리 개수(K)를 미리 정하고 중심점과의 거리로 둥근 무리를 만들고, DBSCAN은 거리 반경과 최소 이웃 수를 정해 밀도가 높은 곳을 무리로 보고, 무리 개수는 미리 정하지 않아도 되며 어디에도 안 속한 점을 노이즈로 남겨요. 군집분석은 무리를 찾아줄 뿐, 그 무리의 의미(라벨)는 사람이 해석해 붙여야 해요.",
+                 "Clustering is a form of unsupervised learning — no answer labels exist — that groups look-alike data by distance or density. K-means fixes the number of groups (K) in advance and forms round clusters based on distance to a center point; DBSCAN takes a distance radius and a minimum neighbor count, treats dense regions as groups without needing a fixed group count, and leaves points that belong nowhere as noise. Either way, clustering only finds the groups — a person still has to interpret and name what each one means.")),
     "glossary": [
         ("군집분석", "Clustering", ("비슷한 것끼리 스스로 묶는 방법.", "Grouping look-alikes together on its own."), ("정답 라벨이 없는 비지도학습의 한 종류예요.", "A form of unsupervised learning with no answer labels.")),
         ("비지도학습", "Unsupervised learning", ("훈련 교사 없이 배우는 것.", "Learning with no teacher at all."), ('정답 라벨로 가르치는 지도학습과 정반대예요. → <a href="aidataqual-ko.html">상한 씨앗으로 가르친 선별기</a>', 'The opposite of supervised learning, which teaches from labels. → <a href="aidataqual-en.html">A Sorter Trained on Rotten Seed</a>')),

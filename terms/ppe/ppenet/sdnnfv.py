@@ -15,7 +15,7 @@ P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
          + postoffice(260, 170, 0.8)
          + tollgate(260, 240, 0.7)
          + person(420, 150, s=0.75, face=FROWN, **CLERK)
-         + label(420, 250, "⟦분류 기계가 고장나면 새 기계부터 사야 해요|when the sorting machine breaks, first you buy a whole new one⟧", 11, "var(--ink)")
+         + label(420, 250, "⟦새 기능을 더하려면 새 기계부터 사야 해요|adding a feature means buying a new machine first⟧", 11, "var(--ink)")
          + label(380, 300, "⟦기계가 자리에 고정돼 있어서, 바꿀 때마다 시간과 돈이 들어요|hardware is bolted to one spot — every change costs time and money⟧", 12, "var(--ink)", cls="d"))
 
 # 3. SDN=관제탑이 소프트웨어로 길을 바꿈, NFV=범용 트럭에 기능만 설치 (hero)
@@ -56,7 +56,7 @@ PAGE = {
         {"svg": P1, "alt": ("우체국 세 곳의 직원들이 각자 벽에 박힌 길 안내판을 땀 흘리며 손으로 고침", "Three post office clerks each sweat over rewiring their own wall-mounted route board"),
          "caption": ("길을 바꾸려면 우체국마다 손으로 고쳐야 해요.", "Rerouting means fixing each post office by hand."),
          "small": ("길 안내판이 벽에 못 박혀 있어서 바꾸기 번거로워요.", "The route board is nailed to the wall, so changing it is a hassle.")},
-        {"svg": P2, "alt": ("우체국장이 분류 기계가 고장 나 새 기계를 사야 한다고 걱정함", "A postmaster worries that a broken sorting machine means buying a whole new one"),
+        {"svg": P2, "alt": ("우체국장이 새 기능을 더하려면 새 기계를 사야 한다고 걱정함", "A postmaster worries that adding a feature means buying a whole new machine"),
          "caption": ("새 기능 하나마다 전용 기계를 또 사야 해요.", "Every new feature means buying another dedicated machine."),
          "small": ("기계가 자리에 고정돼 있어서, 바꿀 때마다 시간과 돈이 들어요.", "Hardware bolted to one spot makes every change cost time and money.")},
         {"svg": P3, "hero": True, "alt": ("관제탑 한 명이 점선 화살표로 우체국 세 곳의 길을 동시에 가리킴", "One person in a control tower points dashed arrows toward three post offices at once"),
@@ -64,7 +64,7 @@ PAGE = {
          "small": ("NFV는 전용 기계 대신 범용 트럭에 소프트웨어만 깔아요.", "NFV swaps the dedicated machine for software on a generic truck."),
          "tricks": (4, [
              (TOWER_I, ("중앙 제어", "Centralized control"), ("관제탑 하나가 모든 길을 결정해요", "one tower decides every road"), "calm"),
-             (CODE_I, ("소프트웨어로 길 변경", "Software-defined routing"), ("버튼 하나로 길이 바뀌어요", "one switch changes the route")),
+             (CODE_I, ("소프트웨어로 길 변경", "Software-defined routing"), ("소프트웨어 명령으로 길이 바뀌어요", "a software command changes the route")),
              (TRUCKFN_I, ("범용 장비에 기능 설치", "Functions as software (NFV)"), ("전용 기계 없이도 기능이 돌아가요", "the function runs without a dedicated machine"), "warm"),
              (SCALE_I, ("빠른 확장·축소", "Scale up or down fast"), ("필요할 때 기능을 늘리고 줄여요", "grow or shrink functions when needed")),
          ])},
@@ -77,8 +77,8 @@ PAGE = {
     ],
     "summary": (("<b>SDN</b>은 <b>관제탑이 소프트웨어로 길을 한 번에 바꾸는 것</b>, <b>NFV</b>는 <b>전용 기계 대신 범용 장비에 기능을 소프트웨어로 설치하는 것</b>이에요.",
                  "<b>SDN</b> is a <b>tower rerouting every road at once, in software</b>; <b>NFV</b> is <b>installing a function as software on generic hardware instead of a dedicated machine</b>."),
-                ("SDN(Software-Defined Networking)은 제어 평면(control plane)을 데이터 평면(data plane)에서 분리해, 중앙 컨트롤러가 네트워크 전체의 경로·정책을 소프트웨어로 제어하는 구조예요. NFV(Network Functions Virtualization)는 라우터·방화벽 같은 전용 장비(미들박스)의 기능을 범용 서버 위 소프트웨어(VNF)로 가상화하는 것이고요. 둘은 함께 쓰여 네트워크를 유연하고 빠르게 재구성할 수 있게 해줘요.",
-                 "SDN (Software-Defined Networking) separates the control plane from the data plane, letting one central controller govern a network's paths and policy entirely in software. NFV (Network Functions Virtualization) turns the function of dedicated hardware middleboxes — routers, firewalls — into software (VNFs) running on generic servers. Used together, they make a network fast and flexible to reconfigure.")),
+                ("SDN(Software-Defined Networking)은 제어 평면(control plane)을 데이터 평면(data plane)에서 분리해, 중앙 컨트롤러가 네트워크 전체의 경로·정책을 소프트웨어로 제어하는 구조예요. NFV(Network Functions Virtualization)는 라우터·방화벽 같은 전용 네트워크 장비의 기능을 범용 서버 위 소프트웨어(VNF)로 가상화하는 것이고요. 둘은 함께 쓰여 네트워크를 유연하고 빠르게 재구성할 수 있게 해줘요.",
+                 "SDN (Software-Defined Networking) separates the control plane from the data plane, letting one central controller govern a network's paths and policy entirely in software. NFV (Network Functions Virtualization) turns the function of dedicated network hardware — routers, firewalls — into software (VNFs) running on generic servers. Used together, they make a network fast and flexible to reconfigure.")),
     "glossary": [
         ("SDN", "SDN", ("관제탑이 소프트웨어로 길을 바꾸는 것.", "A tower that reroutes roads in software."), ("제어와 현장을 분리해요.", "Separates control from the field.")),
         ("NFV", "NFV", ("전용 기계 대신 범용 트럭에 기능만 설치.", "Installing a function on a generic truck instead of a dedicated machine."), ("전용 하드웨어의 기능을 소프트웨어로 바꿔요.", "Turns a dedicated hardware function into software.")),

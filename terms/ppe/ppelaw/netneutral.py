@@ -24,7 +24,7 @@ P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
 
 # 3. 망중립성 = 복도 관리자가 누구든 똑같은 속도로 보내는 원칙 (hero)
 P3 = svg(340, sky(340)
-         + label(380, 28, "⟦망중립성 = 통신사가 누구 데이터든 차별 없이 같은 속도로 보내는 원칙|net neutrality = the rule that a carrier moves everyone's data at the same speed, no favorites⟧", 13, "var(--ink)", cls="d")
+         + label(380, 28, "⟦망중립성 = 통신사가 누구 데이터든 차별 없이 똑같이 다루는 원칙|net neutrality = the rule that a carrier treats everyone's data equally, no favorites⟧", 13, "var(--ink)", cls="d")
          + person(380, 120, s=0.9, face=EYES, **TEACHER)
          + person(180, 190, s=0.7, face=SMILE, **STUDENT) + person(300, 190, s=0.7, face=SMILE, **STUDENT)
          + person(460, 190, s=0.7, face=SMILE, **STUDENT) + person(580, 190, s=0.7, face=SMILE, **STUDENT)
@@ -62,16 +62,16 @@ PAGE = {
          "caption": ("새치기는 돈 낸 학생에겐 편해도, 결국 줄 전체가 불공평해져요.", "Cutting in is convenient for whoever pays, but the whole line ends up unfair."),
          "small": ("한 번 새치기를 봐주면, 돈 없는 학생은 늘 손해예요.", "Allow one cut, and students without money always lose out.")},
         {"svg": P3, "hero": True, "alt": ("선생님이 모든 학생을 같은 순서로 줄 세움", "A teacher lines up every student in the same, fair order"),
-         "caption": ("망중립성은 통신사가 누구 데이터든 차별 없이 같은 속도로 보내는 원칙이에요.", "Net neutrality is the rule that a carrier moves everyone's data at the same speed, no favorites."),
+         "caption": ("망중립성은 통신사가 누구 데이터든 차별 없이 똑같이 다루는 원칙이에요.", "Net neutrality is the rule that a carrier treats everyone's data equally, no favorites."),
          "small": ("급식도 데이터도, 줄 선 순서대로 공평하게 보내줘요.", "Lunch or data, everyone is served fairly in line order."),
          "tricks": (4, [
-             (SAME_I, ("다 같은 속도로", "Same speed for all"), ("서비스별 차별 없이", "no favoring one service"), "calm"),
+             (SAME_I, ("다 똑같이 다루기", "Equal treatment for all"), ("서비스별 차별 없이", "no favoring one service"), "calm"),
              (NOBLOCK_I, ("막지 않기", "No blocking"), ("통신사가 특정 사이트를 막지 못해요", "a carrier can't block a specific site")),
              (NOSLOW_I, ("일부러 느리게 안 하기", "No deliberate slowdown"), ("통신사가 특정 업체만 일부러 느리게 못 해요", "a carrier can't slow down one company on purpose"), "warm"),
              (OPEN_I, ("트래픽 관리 방법 공개", "Disclose traffic management"), ("통신사가 관리 방법을 숨기지 않아요", "carriers don't hide how they manage it")),
          ])},
         {"svg": P4, "alt": ("왼쪽: 망중립이 있어 모두 같은 속도. 오른쪽: 망중립이 없어 유료 학생만 빠른 길로 감", "Left: with net neutrality, everyone moves at the same speed. Right: without it, only the paying student gets the fast lane"),
-         "caption": ("망중립이 있으면 모두 같은 속도, 없으면 돈 낸 쪽만 빠른 길로 가요.", "With net neutrality everyone moves at the same speed; without it, only those who pay get the fast lane."),
+         "caption": ("망중립이 있으면 모두 똑같은 줄에 서고, 없으면 돈 낸 쪽만 빠른 길로 가요.", "With net neutrality everyone shares the same line; without it, only those who pay get the fast lane."),
          "small": ("공평함이 사라지면, 새 서비스를 만들 기회도 돈 있는 쪽에만 몰려요.", "Lose fairness, and the chance to build new services tilts toward whoever can pay.")},
         {"svg": P5, "alt": ("선생님은 응급 방송도 똑같이 줄 세워야 하냐고 묻고, 학생회장은 불합리한 차별만 막는 거라고 답함", "A teacher asks if even an emergency broadcast must wait in line; the president answers it only bans unreasonable discrimination"),
          "caption": ("망중립 규칙이 너무 엄격하면 응급 방송 같은 특수 서비스가 곤란해요.", "Too strict a neutrality rule makes trouble for special services like emergency broadcasts."),
@@ -79,14 +79,14 @@ PAGE = {
     ],
     "summary": (("<b>망중립성</b> = 급식 줄(통신망)을 지나는 누구의 데이터든 <b>차별·차단·새치기 없이</b> 똑같이 다뤄야 한다는 원칙.",
                  "<b>Net neutrality</b> = the rule that everyone's data moving through the lunch line (the network) is treated the same, with <b>no discrimination, blocking, or cutting in line</b>."),
-                ("망중립성은 인터넷 제공사업자(ISP)가 트래픽의 내용·출처·서비스 종류에 따라 속도를 차별하거나 차단해서는 안 된다는 원칙이에요. 다만 모든 트래픽 관리가 금지되는 건 아니고, '불합리한 차별'만 규제 대상이에요 — 응급·의료 트래픽 같은 합리적 우선순위는 별도로 인정돼요.",
-                 "Net neutrality is the principle that internet service providers must not discriminate against or block traffic based on its content, source, or type of service. Not all traffic management is banned, though — only 'unreasonable discrimination' is regulated, while reasonable prioritization for things like emergency or medical traffic can still be allowed.")),
+                ("망중립성은 인터넷 제공사업자(ISP)가 합법적인 트래픽을 내용·유형·제공사업자에 따라 차별하거나 차단해서는 안 된다는 원칙으로, 국내에서는 과기정통부 가이드라인으로 운영돼요. 다만 모든 트래픽 관리가 금지되는 건 아니고, 망 혼잡을 덜거나 보안을 지키는 합리적 관리는 허용돼요. 2021년 시행된 개정 가이드라인은 자율주행·스마트팩토리처럼 망을 논리적으로 분리한 특수서비스를 망중립 원칙의 예외로 뒀어요.",
+                 "Net neutrality is the principle that internet service providers must not discriminate against or block lawful traffic based on its content, type, or provider; in Korea it runs through a Ministry of Science and ICT guideline. Not all traffic management is banned, though: reasonable management to ease congestion or protect security is allowed. The revised guideline in effect since 2021 also treats logically separated special services, like self-driving and smart factories, as exceptions to the neutrality principle.")),
     "glossary": [
         ("망중립성", "Network Neutrality", ("줄에서 새치기를 막는 규칙.", "The rule that stops cutting in line."), ("통신사가 트래픽을 차별하지 못하게 해요.", "Stops a carrier from favoring one kind of traffic.")),
         ("트래픽 차별", "Traffic Discrimination", ("특정 서비스만 빠르게/느리게 하는 것.", "Speeding up or slowing down one service on purpose."), ("망중립성이 막으려는 핵심 행위예요.", "The core behavior net neutrality is meant to stop.")),
         ("제로레이팅", "Zero-Rating", ("특정 앱만 데이터 요금을 안 받는 것.", "Not charging data fees for one specific app."), ("편리해 보이지만 망중립 논쟁의 단골 소재예요.", "Looks convenient, but it's a frequent flashpoint in the debate.")),
         ("트래픽 관리", "Traffic Management", ("통신사가 망이 혼잡할 때 데이터 흐름을 조절하는 것.", "A carrier adjusting data flow when the network gets congested."), ("합리적인 관리는 허용돼요 — 차별이 아니라면요.", "Reasonable management is allowed — as long as it isn't discrimination.")),
-        ("망중립성 vs 망이용대가", "Net Neutrality vs Network-Use Fees", ("줄 세우는 규칙과, 줄 서는 값을 내는 문제는 달라요.", "The line-order rule and who pays for the line are different issues."), ("요금 논쟁은 망중립성과는 또 다른 문제예요.", "The fee debate is a separate question from net neutrality.")),
+        ("망중립성 vs 망이용대가", "Net Neutrality vs Network-Use Fees", ("트래픽을 차별하지 않는 규칙과, 콘텐츠 업체가 통신사에 망 사용료를 내는 문제는 달라요.", "The no-discrimination rule and whether content companies pay carriers network fees are different issues."), ("요금 논쟁은 망중립성과는 또 다른 문제예요.", "The fee debate is a separate question from net neutrality.")),
         ("투명성 의무", "Transparency Obligation", ("관리 방법을 숨기지 않고 공개하는 것.", "Publishing how traffic is managed instead of hiding it."), ("불합리한 차별인지 확인할 수 있게 해줘요.", "Lets anyone check whether a discrimination is unreasonable.")),
         ("합리적 트래픽 관리", "Reasonable Traffic Management", ("혼잡 제어처럼 다 같이 봐줄 수 있는 관리.", "Management everyone can accept, like congestion control."), ("불합리한 차별과는 구분돼요.", "Distinguished from unreasonable discrimination.")),
         ("플랫폼 규제", "Platform Regulation", ("앱 하나가 너무 커질 때의 다른 규칙.", "A different rule for when one app grows too dominant."), ('망중립성과 비슷한 공정성 긴장이 있어요. → <a href="superapp-ko.html">학생증 하나로 다 되는 앱</a>', 'Shares a similar fairness tension. → <a href="superapp-en.html">the one app that does everything</a>')),

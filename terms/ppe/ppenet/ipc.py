@@ -30,7 +30,7 @@ I4 = icon('<rect x="10" y="22" width="44" height="22" rx="11" fill="var(--bad)"/
 # 4. 두 가지 편지함 방식: 소켓(실시간 통화) vs 메시지 큐(쌓아두고 나중에)
 P4 = svg(320, sky(320)
          + routemap(60, 40, 640, 240, "⟦전용 편지함 두 방식|TWO MAILBOX STYLES⟧",
-                    ("⟦소켓 — 전화처럼 실시간으로 계속 연결해 둬요|socket — stays connected live, like a phone call⟧",
+                    ("⟦소켓 — 전화처럼 상대와 바로 주고받아요(TCP는 연결 유지)|socket — talks live, like a phone call (TCP stays connected)⟧",
                      "⟦메시지 큐 — 편지함에 쌓아두고 상대가 나중에 꺼내가요|message queue — notes pile up, picked up later⟧",
                      "⟦포트 번호 — 같은 건물 안 어느 창구인지 알려줘요|port number — tells which counter inside the building⟧",
                      "⟦TCP/UDP — 등기로 보낼지, 일반우편으로 보낼지 골라요|TCP/UDP — choose registered mail or plain mail⟧"), 1.0))
@@ -58,14 +58,14 @@ PAGE = {
          "caption": ("네트워크 IPC = 건물 사이에 여는 전용 편지함이에요.", "Network IPC = a dedicated mailbox opened between buildings."),
          "small": ("두 프로세스는 소켓이나 메시지 큐로, 건물이 멀어도 손발을 맞춰요.", "Via sockets or message queues, two processes coordinate even across distant buildings."),
          "tricks": (4, [
-             (I1, ("소켓", "Socket"), ("실시간 통화 같은 연결", "a live, call-like connection")),
+             (I1, ("소켓", "Socket"), ("상대와 바로 주고받아요", "talks with the other side live")),
              (I2, ("메시지 큐", "Message Queue"), ("편지를 쌓아뒀다 나중에 꺼내요", "notes pile up and get picked up later"), "calm"),
              (I3, ("포트 번호", "Port Number"), ("건물 안 창구를 지정해요", "picks the counter inside the building"), "warm"),
              (I4, ("TCP/UDP", "TCP/UDP"), ("등기냐 일반우편이냐", "registered or plain mail")),
          ])},
         {"svg": P4, "alt": ("전용 편지함 두 방식 안내판: 소켓, 메시지 큐, 포트 번호, TCP/UDP 네 줄", "A guide board listing socket, message queue, port number, and TCP/UDP for the dedicated mailbox"),
          "caption": ("편지함에도 두 가지 방식이 있어요.", "There are two mailbox styles."),
-         "small": ("소켓은 실시간 통화처럼 연결해두고, 메시지 큐는 편지를 쌓아뒀다 나중에 꺼내가요.", "A socket stays connected live; a message queue lets notes pile up for pickup later.")},
+         "small": ("소켓은 통화처럼 상대와 바로 주고받고, 메시지 큐는 편지를 쌓아뒀다 나중에 꺼내가요.", "A socket talks live, like a call; a message queue lets notes pile up for pickup later.")},
         {"svg": P5, "alt": ("왼쪽: 같은 건물 안 부서끼리는 복도로 바로 전달. 오른쪽: 먼 건물끼리는 전용 편지함이 필요", "Left: same-building teams hand off across the hallway. Right: distant buildings need the dedicated mailbox"),
          "caption": ("네트워크 IPC는 같은 건물 안 전달과 달라요.", "Network IPC differs from hand-offs inside one building."),
          "small": ("같은 컴퓨터 안 프로세스끼리의 전달(로컬 IPC)은 공유 메모리·파이프를 써요.", "Hand-offs between processes on one computer (local IPC) use shared memory or pipes instead.")},
@@ -75,7 +75,7 @@ PAGE = {
                 ("네트워크를 통한 프로세스 간 통신(IPC)은 서로 다른 호스트에 있는 프로세스가 소켓이나 메시지 큐 같은 수단으로 데이터를 주고받는 방식이에요. 같은 컴퓨터 안 프로세스끼리 쓰는 공유 메모리·파이프 같은 로컬 IPC와 달리, 네트워크 IPC는 TCP/UDP와 포트 번호를 거쳐 원격지와 통신해요.",
                  "Network-based inter-process communication (IPC) lets processes on different hosts exchange data via sockets or message queues. Unlike local IPC mechanisms such as shared memory or pipes between processes on the same machine, network IPC goes through TCP/UDP and port numbers to reach a remote host.")),
     "glossary": [
-        ("소켓", "Socket", ("실시간으로 연결해두는 전용 편지함.", "A dedicated mailbox kept live, like an open call."), ("IP와 포트로 상대를 특정해요.", "Identifies the other side by IP and port.")),
+        ("소켓", "Socket", ("상대와 바로 주고받는 전용 편지함.", "A dedicated mailbox for talking with the other side live."), ("IP와 포트로 상대를 특정해요.", "Identifies the other side by IP and port.")),
         ("메시지 큐", "Message Queue", ("쌓아뒀다 나중에 꺼내가는 편지함.", "A mailbox where notes pile up for later pickup."), ("보내는 쪽과 받는 쪽이 동시에 있지 않아도 돼요.", "Sender and receiver don't need to be present at once.")),
         ("포트 번호", "Port Number", ("건물 안 몇 번 창구인지.", "Which counter inside the building."), ("같은 주소 안에서 서비스를 구분해요.", "Distinguishes services at the same address.")),
         ("TCP/UDP", "TCP/UDP", ("등기 봉투와 일반 봉투.", "The registered envelope and the plain one."), ("이 세계의 두 기본 배송 방식이에요.", "The two basic shipping methods in this world.")),

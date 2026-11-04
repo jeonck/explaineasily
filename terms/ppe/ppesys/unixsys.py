@@ -50,7 +50,7 @@ P3 = svg(340, sky(340)
          + bay(230, 170, 0.8) + bay(380, 170, 0.8) + bay(530, 170, 0.8)
          + person(380, 70, s=0.8, face=EYES, **CHIEF)
          + label(380, 25, "⟦UNIX = 베이와 작업을 질서 있게 나눠주는, 정비소의 보이지 않는 운영자|UNIX = the garage's invisible operator, handing out bays and jobs in order⟧", 12, "var(--ink)", cls="d")
-         + label(380, 320, "⟦정비사는 직접 베이를 배정하지 않고, 정해진 창구로만 요청해요|mechanics never claim a bay directly — they ask through one fixed window⟧", 11, "var(--muted)"))
+         + label(380, 320, "⟦정비사는 직접 베이를 배정하지 않고, 정해진 창구(시스템 콜)로만 요청해요|mechanics never claim a bay directly — they ask through a fixed window (a system call)⟧", 11, "var(--muted)"))
 
 SCHED_I = icon('<rect x="8" y="26" width="18" height="18" rx="2" fill="var(--accent)"/><rect x="32" y="20" width="18" height="18" rx="2" fill="var(--accent-soft)"/><rect x="8" y="20" width="18" height="18" rx="2" fill="var(--accent-soft)" opacity="0"/><path d="M14 10 a22 22 0 1 1 -8 6" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/>')
 TREE_I = icon('<circle cx="32" cy="14" r="6" fill="var(--accent)"/><path d="M32 20 v8 M32 28 l-14 16 M32 28 l14 16" stroke="var(--muted)" stroke-width="3"/><circle cx="18" cy="48" r="6" fill="var(--good)"/><circle cx="46" cy="48" r="6" fill="var(--good)"/>')
@@ -59,7 +59,7 @@ SHELL_I = icon('<rect x="8" y="12" width="48" height="40" rx="4" fill="#111C30"/
 
 # 4. 부품함 권한표
 P4 = svg(320, sky(320)
-         + queueboard(60, 40, 320, 200, "⟦부품함 권한표|PERMISSION TABLE⟧",
+         + queueboard(60, 40, 320, 200, "⟦부품함 권한표(한 예)|PERMISSION TABLE (ONE EXAMPLE)⟧",
                       ("⟦주인 — 읽기·쓰기·실행|owner — read, write, run⟧",
                        "⟦같은 팀 — 읽기·쓰기만|group — read, write only⟧",
                        "⟦그 외 사람 — 읽기만|others — read only⟧"), 1.0)
@@ -88,32 +88,32 @@ PAGE = {
          "small": ("나중엔 뭐가 어디 있는지 아무도 몰라요.", "Soon nobody knows what's where.")},
         {"svg": P3, "hero": True, "alt": ("정비반장이 베이 세 자리를 질서 있게 지켜봄", "The chief watches over three bays, keeping order"),
          "caption": ("UNIX는 베이와 작업을 질서 있게 나눠주는, 정비소의 보이지 않는 운영자예요.", "UNIX is the garage's invisible operator, handing out bays and jobs in order."),
-         "small": ("정비사는 직접 베이를 배정하지 않고, 정해진 창구로만 요청해요.", "Mechanics never claim a bay directly — they ask through one fixed window."),
+         "small": ("정비사는 직접 베이를 배정하지 않고, 정해진 창구(시스템 콜)로만 요청해요.", "Mechanics never claim a bay directly — they ask through a fixed window (a system call)."),
          "tricks": (4, [
              (SCHED_I, ("여러 작업을 나눠 돌려요", "Splits many jobs between bays"), ("한 작업이 베이를 독차지 못 해요", "no single job hogs a bay"), "calm"),
              (TREE_I, ("나뭇가지 모양 부품함", "A tree-shaped parts bin"), ("뿌리 하나에서 가지가 뻗어요", "branches spreading from one root")),
-             (KEY_I, ("부품함마다 열쇠 세 벌", "Three keys per bin"), ("주인·같은 팀·그 외 사람의 권한이 달라요", "owner, group, and others each get different access"), "warm"),
+             (KEY_I, ("부품함마다 열쇠 세 벌", "Three keys per bin"), ("주인·같은 팀·그 외 사람의 권한을 따로 정해요", "owner, group, and others each get access set separately"), "warm"),
              (SHELL_I, ("어디서나 통하는 명령창", "A command window that works anywhere"), ("다른 정비소에서도 같은 말이 통해요", "the same commands work in other garages too")),
          ])},
-        {"svg": P4, "alt": ("부품함 권한표: 주인·같은 팀·그 외 사람이 각기 다른 권한을 가짐. 열쇠 세 벌과 나뭇가지 부품함이 함께 보임", "A permission table: owner, group, and others each get different access, shown with three keys and a tree-shaped bin"),
+        {"svg": P4, "alt": ("부품함 권한표: 주인·같은 팀·그 외 사람의 권한을 따로 정한 한 가지 예. 열쇠 세 벌과 나뭇가지 부품함이 함께 보임", "A permission table, one example of setting access separately for owner, group, and others, shown with three keys and a tree-shaped bin"),
          "caption": ("부품함마다 주인·같은 팀·그 외 사람용 열쇠 세 벌이 따로 있어요.", "Every bin has three separate keys: owner, group, and others."),
-         "small": ("주인, 같은 팀, 그 외 사람 — 권한이 모두 달라요.", "Owner, group, and others — the access level differs for each.")},
+         "small": ("주인, 같은 팀, 그 외 사람의 권한을 따로 정해요. 이 표는 한 가지 예예요.", "Owner, group, and others each get access set separately. This table is one example.")},
         {"svg": P5, "alt": ("왼쪽: UNIX는 베이의 질서만 잡아줌. 오른쪽: 정비는 결국 정비사가 함", "Left: UNIX only keeps order at the bay. Right: the mechanic still does the actual repair"),
          "caption": ("UNIX가 정비를 대신해주진 않아요.", "UNIX doesn't do the repair for you."),
          "small": ("UNIX에도 여러 버전이 있어서, 규칙이 정비소마다 조금씩 달라요.", "UNIX comes in several versions, so the rules differ a little from garage to garage.")},
     ],
     "summary": (("<b>UNIX 시스템</b> = 베이(자원)와 작업(프로세스)을 <b>질서 있게 나눠주고</b>, 부품함(파일)은 <b>나뭇가지 모양</b>으로, 칸마다 <b>열쇠 세 벌</b>로 지키는 정비소의 운영자.",
                  "A <b>UNIX system</b> is the garage's operator — it <b>hands out bays and jobs in order</b>, keeps files in a <b>tree-shaped</b> store, and locks every bin with <b>three keys</b>."),
-                ("UNIX는 다중 사용자·다중 작업을 지원하는 운영체제로, 커널이 자원(CPU·메모리·파일)을 중재하고 쉘을 통해 명령을 받아요. 파일시스템은 루트(/)에서 가지를 뻗는 트리 구조이고, 모든 파일은 소유자·그룹·그 외 사용자에 대해 각각 읽기(r)·쓰기(w)·실행(x) 권한을 갖습니다. 표준화된 명령어 덕분에 다른 기종으로도 이식성이 높아요.",
-                 "UNIX is an operating system supporting multiple users and multitasking: the kernel arbitrates resources (CPU, memory, files) and takes commands through a shell. Its file system is a tree rooted at /, and every file carries separate read (r), write (w), and execute (x) permissions for its owner, group, and others. Standardized commands give it strong portability across different machines.")),
+                ("UNIX는 다중 사용자·다중 작업을 지원하는 운영체제로, 커널이 자원(CPU·메모리·파일)을 중재해요. 사용자의 명령은 쉘이 받아 실행하고, 프로그램은 시스템 콜이라는 정해진 창구로 커널에 요청해요. 파일시스템은 루트(/)에서 가지를 뻗는 트리 구조이고, 모든 파일은 소유자·그룹·그 외 사용자에 대해 각각 읽기(r)·쓰기(w)·실행(x) 권한을 갖습니다. 커널 대부분을 C 언어로 다시 쓴 덕분에 다른 기종으로 옮기기 쉬워졌고, POSIX 표준이 명령어와 프로그래밍 방식을 맞춰줘요.",
+                 "UNIX is an operating system supporting multiple users and multitasking: the kernel arbitrates resources (CPU, memory, files). A shell takes the user's commands and runs them, and programs ask the kernel for service through a fixed window called a system call. Its file system is a tree rooted at /, and every file carries separate read (r), write (w), and execute (x) permissions for its owner, group, and others. Rewriting most of the kernel in C made it easier to move to other machines, and the POSIX standard aligns commands and programming interfaces.")),
     "glossary": [
         ("UNIX", "UNIX", ("베이와 작업을 질서 있게 나누는 운영체제.", "An operating system that hands out bays and jobs in order."), ("1970년대부터 지금까지 쓰여요.", "In use continuously since the 1970s.")),
         ("커널(Kernel)", "Kernel", ("정비소의 보이지 않는 진짜 관리자.", "The garage's real, invisible manager."), ("자원을 나눠주고 작업 사이를 중재해요.", "It allocates resources and arbitrates between jobs.")),
         ("쉘(Shell)", "Shell", ("정비사가 지시를 내리는 명령창.", "The command window where a mechanic gives instructions."), ("정비사는 커널에 직접 손대지 않고 이 창을 거쳐요.", "Mechanics go through this window instead of touching the kernel directly.")),
         ("파일시스템(트리 구조)", "File System (Tree Structure)", ("나뭇가지처럼 뻗은 부품함 정리법.", "A storage layout that branches like a tree."), ("맨 위 뿌리(root, /)에서 가지가 갈라져요.", "Branches split off from a single root (/) at the top.")),
-        ("권한(rwx)", "Permissions (rwx)", ("부품함마다 다른 열쇠 세 벌.", "Three different keys for every bin."), ("주인·같은 팀·그 외 사람의 권한이 각각 달라요.", "Owner, group, and others each get their own access level.")),
+        ("권한(rwx)", "Permissions (rwx)", ("부품함마다 다른 열쇠 세 벌.", "Three different keys for every bin."), ("주인·같은 팀·그 외 사람의 권한을 각각 정해요.", "Owner, group, and others each get their own access setting.")),
         ("프로세스", "Process", ("지금 돌아가고 있는 작업 하나하나.", "Each job that's currently running."), ('어떤 작업을 먼저 돌릴지는 이 세계의 다른 이야기예요. → <a href="cpusched-ko.html">리프트에 누가 먼저 올라갈까</a>', 'Deciding which job runs first is another story in this world. → <a href="cpusched-en.html">who gets the lift first</a>')),
         ("다중 사용자/다중 작업", "Multiuser / Multitasking", ("UNIX는 여러 사람·여러 작업을 동시에 받아줘요.", "UNIX takes on many people and many jobs at once."), ("한 작업이 베이를 독차지하지 못해요.", "No single job monopolizes a bay.")),
-        ("이식성(Portability)", "Portability", ("다른 정비소 장비로 옮겨도 같은 명령이 통해요.", "The same commands still work after moving to a different garage's equipment."), ("표준화된 명령어 덕분이에요.", "Thanks to a standardized set of commands.")),
+        ("이식성(Portability)", "Portability", ("다른 정비소 장비로 옮겨도 같은 명령이 통해요.", "The same commands still work after moving to a different garage's equipment."), ("C 언어로 다시 쓴 커널과 POSIX 표준 덕분이에요.", "Thanks to a kernel rewritten in C and the POSIX standard.")),
     ],
 }

@@ -38,7 +38,7 @@ P4 = svg(320, sky(320, ground=False)
          + label(205, 130, "⟦짧고 빠른 거래 처리|short, fast transactions⟧", 10.5, "var(--good)")
          + label(205, 160, "⟦'지금 이 상자'엔 정확해요|accurate about 'this one box, right now'⟧", 10.5, "var(--good)")
          + label(555, 100, "⟦지역×기간×품목 큰 집계|big aggregates across region × time × item⟧", 10.5, "var(--muted)")
-         + label(555, 130, "⟦긴 분석 질문에 강해요|strong on big analytical questions⟧", 10.5, "var(--good)")
+         + label(555, 130, "⟦복잡한 분석 질문에 강해요|strong on complex analytical questions⟧", 10.5, "var(--good)")
          + label(555, 160, "⟦최신 거래 반영은 조금 늦을 수 있어요|the latest transactions can show up a bit late⟧", 10.5, "var(--bad)")
          + label(380, 300, "⟦포장 담당은 OLTP를, 관리자는 OLAP을 써요|the worker uses OLTP; the manager uses OLAP⟧", 12, "var(--ink)"))
 
@@ -87,8 +87,8 @@ PAGE = {
     ],
     "summary": (("<b>OLAP</b>(온라인 분석처리)은 전체 데이터를 <b>여러 기준(지역·기간·품목)으로 미리 쌓아두고 이리저리 잘라보며</b> 분석하는 방식이에요.",
                  "<b>OLAP</b> (Online Analytical Processing) analyzes the whole dataset by <b>pre-aggregating it across several axes — region, time, item — and slicing it any way you like</b>."),
-                ("한 건의 거래를 빠르게 처리하는 OLTP와 달리, OLAP은 큐브(다차원 집계) 구조로 슬라이스/다이스·드릴다운·롤업·피벗 같은 분석 연산을 빠르게 지원해요. 보통 데이터 웨어하우스에 쌓인 데이터를 스타 스키마로 모델링해 큐브를 만들고, 최신 거래 반영에는 배치 주기만큼의 시차가 있어요.",
-                 "Unlike OLTP, which processes one transaction quickly, OLAP uses a cube (multi-dimensional aggregate) structure to support fast slice/dice, drill-down, roll-up, and pivot operations. It's typically built by modeling data warehouse data into a star schema, and reflecting the very latest transactions lags by however often the cube batch-refreshes.")),
+                ("한 건의 거래를 빠르게 처리하는 OLTP와 달리, OLAP은 큐브(다차원 집계) 구조로 슬라이스/다이스·드릴다운·롤업·피벗 같은 분석 연산을 빠르게 지원해요. 보통 데이터 웨어하우스에 쌓인 데이터를 스타 스키마로 모델링해 큐브를 만들고, 최신 거래 반영에는 배치 주기만큼의 시차가 있어요. 큐브를 미리 계산해 두는 MOLAP과 달리, ROLAP은 조회할 때 관계형 테이블에서 계산해요.",
+                 "Unlike OLTP, which processes one transaction quickly, OLAP uses a cube (multi-dimensional aggregate) structure to support fast slice/dice, drill-down, roll-up, and pivot operations. It's typically built by modeling data warehouse data into a star schema, and reflecting the very latest transactions lags by however often the cube batch-refreshes. Unlike MOLAP, which precomputes the cube, ROLAP computes aggregates from relational tables at query time.")),
     "glossary": [
         ("OLTP", "OLTP", ("전표 한 건을 빠르게 처리.", "Processing one receipt quickly."), ("OLAP과 짝을 이루는 개념이에요.", "The counterpart concept to OLAP.")),
         ("큐브", "Cube", ("여러 기준으로 미리 쌓아둔 블록.", "A block pre-stacked across several axes."), ("OLAP 분석의 핵심 구조예요.", "The core structure behind OLAP analysis.")),

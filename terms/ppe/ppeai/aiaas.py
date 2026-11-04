@@ -48,7 +48,7 @@ P5 = svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="3
 PAGE = {
     "slug": "aiaas", "order": 17,
     "title": ("선별기를 사지 않고 구독하는 농가들", "The Farms That Subscribe to the Sorter Instead of Buying One"),
-    "h1": ("<em>AIaaS(AI as a Service)</em>이/가 뭐예요?", "What is <em>AIaaS (AI as a Service)</em>?"),
+    "h1": ("<em>AIaaS(AI as a Service)</em>가 뭐예요?", "What is <em>AIaaS (AI as a Service)</em>?"),
     "sub": ("AIaaS를, 선별기를 직접 사는 대신 중앙 검사장의 선별기를 구독료로 빌려 쓰는 농가들 이야기로 풀어봤어요.",
             "AIaaS, told as a story about small farms that subscribe to a central station's sorter instead of building their own."),
     "panels": [
@@ -76,8 +76,8 @@ PAGE = {
     ],
     "summary": (("<b>AIaaS</b> = 선별기(모델)를 <b>직접 만들거나 소유하지 않고</b>, <b>구독료나 건당 요금</b>으로 인터넷 너머의 AI를 빌려 쓰는 방식.",
                  "<b>AIaaS</b> = using AI <b>without building or owning the model yourself</b> — renting it over the network for a <b>subscription or per-use fee</b>."),
-                ("AI as a Service는 모델 개발·학습·인프라를 클라우드 제공자가 맡고, 사용자는 API 호출만으로 추론 결과를 받는 서비스 형태예요. 초기 투자·전문인력 없이 빠르게 쓸 수 있는 대신, 네트워크 의존·데이터가 외부 서버를 거치는 점·제공자 종속(vendor lock-in)이라는 트레이드오프가 있어요. 지연시간·개인정보가 중요한 경우 온디바이스 AI와 함께 고려해요.",
-                 "AI as a Service means a cloud provider handles model development, training, and infrastructure, while the user just calls an API to get inference results. It enables fast adoption without upfront investment or in-house expertise, but trades that off against network dependency, data passing through external servers, and vendor lock-in. When latency or privacy matters, weigh it against on-device AI.")),
+                ("AI as a Service는 모델 개발·학습·인프라를 클라우드 제공자가 맡고, 사용자는 API 호출만으로 추론 결과를 받는 서비스 형태예요. 초기 투자와 전문인력 부담을 크게 줄여 빠르게 쓸 수 있는 대신, 네트워크 의존·데이터가 외부 서버를 거치는 점·제공자 종속(vendor lock-in)이라는 트레이드오프가 있어요. 지연시간·개인정보가 중요한 경우 온디바이스 AI와 함께 고려해요.",
+                 "AI as a Service means a cloud provider handles model development, training, and infrastructure, while the user just calls an API to get inference results. It enables fast adoption with far less upfront investment and in-house expertise, but trades that off against network dependency, data passing through external servers, and vendor lock-in. When latency or privacy matters, weigh it against on-device AI.")),
     "glossary": [
         ("API", "API", ("사진을 보내고 등급표를 받는 창구.", "The counter where you send a photo and get a grade back."), ("요청과 응답이 오가는 정해진 통로예요.", "A fixed channel for requests and responses.")),
         ("클라우드", "Cloud", ("선별기가 실제로 놓인 중앙 검사장.", "The central station where the sorter actually sits."), ("기계와 전기·공간은 전부 거기 있어요.", "The machine, power, and space all live there.")),

@@ -18,7 +18,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(170, 150, s=0.7, face=FROWN, **REP) + label(170, 250, "⟦만든 사람 책임 아니에요?|isn't it the maker's fault?⟧", 11, "var(--ink)")
          + person(380, 150, s=0.7, face=EYES, **PRESIDENT) + label(380, 250, "⟦쓴 우리 책임인가요?|is it on us, who used it?⟧", 11, "var(--ink)")
          + person(590, 150, s=0.7, face=FROWN, **TEACHER) + label(590, 250, "⟦AI 자체 책임은 아니죠|it can't be the AI's own fault⟧", 11, "var(--ink)")
-         + label(380, 285, "⟦책임이 애매하면 피해 본 학생만 남겨져요|when responsibility is vague, the harmed student is the one left behind⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 285, "⟦책임이 애매하면 피해 본 학생은 보상을 요구할 곳을 못 찾아요|when responsibility is vague, the harmed student can't tell who to claim from⟧", 12, "var(--ink)", cls="d"))
 
 # 3. AI 윤리·법적 이슈 = AI를 쓸 때도 사람이 책임지는 구간을 법으로 정하는 것 (hero)
 P3 = svg(340, sky(340)
@@ -35,7 +35,7 @@ P4 = svg(280, sky(280, ground=False)
 
 # 5. 법대로 해도 사고가 안 생기는 건 아니에요
 P5 = svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
-         + person(190, 130, s=0.8, face=SWEAT + EYES, **PRESIDENT) + label(190, 260, "⟦법은 나라마다, 계속 빠르게 바뀌어요|laws differ by country and keep changing fast⟧", 11, "var(--bad)")
+         + person(190, 130, s=0.8, face=SWEAT + EYES, **PRESIDENT) + label(190, 260, "⟦AI 법은 나라마다 다르고 계속 바뀌어요|AI laws differ by country and keep changing⟧", 11, "var(--bad)")
          + person(570, 130, s=0.8, face=EYES, **TEACHER) + label(570, 260, "⟦법을 지켰다고 사고가 안 생기는 건 아니에요|following the law doesn't mean nothing goes wrong⟧", 11, "var(--ink)")
          + label(380, 305, "⟦법은 지켜야 할 최소선이라, 지켜도 위험은 남아요|the law only sets the minimum, so risk remains even when you follow it⟧", 12, "var(--ink)", cls="d"))
 
@@ -51,7 +51,7 @@ PAGE = {
          "small": ("'AI가 그랬어요'라고 해도 사람의 책임은 남아요.", "\"The AI did it\" doesn't end anyone's responsibility.")},
         {"svg": P2, "alt": ("대표, 학생회장, 선생님이 각각 만든 사람·쓴 사람·AI 자체 중 누구 책임인지 다툼", "A rep, a president, and a teacher argue over whether the maker, the user, or the AI itself is responsible"),
          "caption": ("AI 판단으로 피해가 났을 때 누구 책임인지 애매해서 다퉈요.", "When an AI decision causes harm, it's unclear who is responsible, so people argue."),
-         "small": ("책임이 애매하면 피해 본 학생만 남겨져요.", "When responsibility is vague, the harmed student is the one left behind.")},
+         "small": ("책임이 애매하면 피해 본 학생은 보상을 요구할 곳을 못 찾아요.", "When responsibility is vague, the harmed student can't tell who to claim from.")},
         {"svg": P3, "hero": True, "alt": ("선생님이 의사봉을 들고 책임 구간을 정하고, 학생회장이 웃으며 지켜봄", "A teacher holds a gavel marking out the zone of responsibility, as the president looks on"),
          "caption": ("AI 윤리·법적 이슈는 AI를 써도 사람이 책임지는 구간을 법으로 정하는 거예요.", "AI ethics and legal issues are about laws that pin down where a human stays responsible, even when AI is used."),
          "small": ("저작권·개인정보·차별·책임소재, 네 가지가 핵심이에요.", "Copyright, privacy, discrimination, and liability — the four core issues."),
@@ -70,16 +70,16 @@ PAGE = {
     ],
     "summary": (("<b>AI 윤리·법적 이슈</b> = AI를 쓰더라도 <b>저작권·개인정보·차별·책임소재</b>에서 사람이 책임지는 구간을 <b>법으로</b> 정해두는 것.",
                  "<b>AI ethics & legal issues</b> = pinning down, <b>by law</b>, where a human stays responsible for <b>copyright, privacy, discrimination, and liability</b>, even when AI is used."),
-                ("AI 윤리·법적 이슈는 AI 학습데이터와 생성물의 저작권 분쟁, 학습데이터에 포함된 개인정보, 알고리즘 편향으로 인한 차별, 그리고 오판 시 개발자·운영자·이용자 중 누가 책임지는지를 다루는 규제 영역이에요. EU AI Act는 위험도에 따라 규제 수준을 나누고, 국내에서도 AI기본법 등 관련 법이 빠르게 정비되고 있어요. ISO/IEC 42001 같은 '표준'이 자율적 관리 체계라면, 법은 어겼을 때 처벌이 따르는 강제 규범이에요.",
-                 "AI ethics and legal issues cover copyright disputes over AI training data and generated output, personal data embedded in training sets, discrimination from algorithmic bias, and — when something goes wrong — who among the developer, operator, and user is liable. The EU AI Act tiers its rules by risk level, and domestic laws such as Korea's AI Framework Act are being put in place quickly too. Where a standard like ISO/IEC 42001 is a largely voluntary management framework, law is a mandatory rule with penalties for breaking it.")),
+                ("AI 윤리·법적 이슈는 AI 학습데이터와 생성물의 저작권 분쟁, 학습데이터에 포함된 개인정보, 알고리즘 편향으로 인한 차별, 그리고 오판 시 개발자·운영자·이용자 중 누가 책임지는지를 다루는 규제 영역이에요. EU AI Act는 위험도에 따라 규제 수준을 나누고, 국내에서는 AI기본법이 2026년 1월 22일부터 시행 중이에요(과태료는 최소 1년 유예). ISO/IEC 42001 같은 '표준'이 자율적 관리 체계라면, 법은 어겼을 때 처벌이 따르는 강제 규범이에요.",
+                 "AI ethics and legal issues cover copyright disputes over AI training data and generated output, personal data embedded in training sets, discrimination from algorithmic bias, and — when something goes wrong — who among the developer, operator, and user is liable. The EU AI Act tiers its rules by risk level, and Korea's AI Framework Act has been in force since January 22, 2026 (with fines deferred for at least a year). Where a standard like ISO/IEC 42001 is a largely voluntary management framework, law is a mandatory rule with penalties for breaking it.")),
     "glossary": [
         ("AI 저작권", "AI Copyright", ("AI가 학습하거나 만든 결과물의 소유권 문제.", "Who owns what AI trained on or produced."), ("아직 나라마다 결론이 다른 영역이에요.", "Countries still reach different conclusions here.")),
-        ("알고리즘 차별", "Algorithmic Discrimination", ("AI가 특정 집단에 불리하게 판단하는 것.", "AI judging unfairly against a specific group."), ("학습 데이터의 편향에서 비롯돼요.", "Usually traces back to bias in the training data.")),
-        ("책임소재", "Liability", ("AI가 잘못 판단했을 때 누가 책임지는지.", "Who answers for it when AI gets something wrong."), ("개발자·운영자·이용자 중 하나로 정해요.", "Assigned to the developer, operator, or user.")),
+        ("알고리즘 차별", "Algorithmic Discrimination", ("AI가 특정 집단에 불리하게 판단하는 것.", "AI judging unfairly against a specific group."), ("학습 데이터의 편향에서 비롯되는 경우가 많아요.", "Often traces back to bias in the training data.")),
+        ("책임소재", "Liability", ("AI가 잘못 판단했을 때 누가 책임지는지.", "Who answers for it when AI gets something wrong."), ("법과 계약, 사고 경위에 따라 개발자·운영자·이용자에게 나눠 지워요.", "Divided among developer, operator, and user, depending on the law, contracts, and what happened.")),
         ("EU AI Act", "EU AI Act", ("위험도별로 규제 수준을 나눈 유럽연합 법.", "An EU law that tiers regulation by risk level."), ("위험이 클수록 규제도 강해져요.", "Higher risk means stricter rules.")),
-        ("AI기본법(국내)", "AI Framework Act (Korea)", ("국내에서 AI를 다루는 기본 법률.", "Korea's foundational law for AI."), ("빠르게 바뀌는 중인 법 분야예요.", "A fast-moving area of law.")),
+        ("AI기본법(국내)", "AI Framework Act (Korea)", ("국내에서 AI를 다루는 기본 법률.", "Korea's foundational law for AI."), ("2026년 1월 22일부터 시행 중이에요.", "In force since January 22, 2026.")),
         ("표준 vs 법", "Standard vs Law", ("자율적 관리 틀과, 처벌이 따르는 규범의 차이.", "A voluntary framework versus a rule backed by penalties."), ('표준 쪽은 바로 이웃 페이지에서 다뤄요. → <a href="iso42001-ko.html">AI도 규칙대로 쓰는지 도장 찍기</a>', 'The standard side is covered right next door. → <a href="iso42001-en.html">stamping that AI is managed by the rules too</a>')),
-        ("규정 준수", "Compliance", ("규칙을 지키고 증거로 보여주는 것.", "Following the rules and proving it with evidence."), ('법을 지켜도 안전이 보장되진 않는다는 메시지가 같아요. → <a href="compliance-ko.html">이웃 나라 규칙 검사관</a>', 'Shares the message that following the law doesn\'t guarantee safety. → <a href="compliance-en.html">the inspector from the neighboring kingdom</a>')),
+        ("규정 준수", "Compliance", ("규칙을 지키고 증거로 보여주는 것.", "Following the rules and proving it with evidence."), ('이 페이지처럼 \'법을 지켜도 안전이 보장되진 않는다\'고 말해요. → <a href="compliance-ko.html">이웃 나라 규칙 검사관</a>', 'Like this page, it says following the law doesn\'t guarantee safety. → <a href="compliance-en.html">the inspector from the neighboring kingdom</a>')),
         ("AI 윤리기준·거버넌스", "AI Ethics & Governance", ("매일 지키는 AI 운영 원칙.", "The day-to-day principles for running AI responsibly."), ('이 페이지는 법적 책임 각도, 그쪽은 운영 원칙 각도예요. → <a href="aiethicsgov-ko.html">검사장 공통 등급 원칙판</a>', 'This page takes the legal-liability angle; that one takes the operating-principle angle. → <a href="aiethicsgov-en.html">the shared grading charter</a>')),
     ],
 }

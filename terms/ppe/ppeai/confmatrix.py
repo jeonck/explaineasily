@@ -75,7 +75,7 @@ PAGE = {
              (TP_I, ("TP — 맞게 걸러냄", "TP — correctly rejected"), ("진짜 상한 걸 불합격으로 찍어요", "really rotten, called REJECT"), "calm"),
              (TN_I, ("TN — 맞게 통과시킴", "TN — correctly passed"), ("멀쩡한 걸 합격으로 찍어요", "really fine, called PASS"), "calm"),
              (FP_I, ("FP — 괜히 불합격(오탐)", "FP — a false alarm"), ("멀쩡한 걸 불합격으로 틀려요", "flags a fine one as rejected"), "warm"),
-             (FN_I, ("FN — 놓침(가장 위험)", "FN — a miss (the risky one)"), ("상한 걸 합격으로 틀려요", "lets a rotten one through"), "warm"),
+             (FN_I, ("FN — 놓침(여기선 더 위험)", "FN — a miss (riskier here)"), ("상한 걸 합격으로 틀려요", "lets a rotten one through"), "warm"),
          ])},
         {"svg": svg(300, sky(300) + gradeboard(60, 20, 640, 260, "⟦네 칸에서 뽑아내는 성능지표|METRICS BUILT FROM THE FOUR BOXES⟧",
                  ("⟦정답률(Accuracy) — 전체 중 맞춘 비율|accuracy — correct out of everything⟧",

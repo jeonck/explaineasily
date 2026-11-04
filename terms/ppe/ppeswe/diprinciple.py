@@ -91,8 +91,8 @@ PAGE = {
          "caption": ("규격을 너무 많이 두면 오히려 헷갈려요.", "Too many standards, and it gets confusing instead."),
          "small": ("필요한 곳에만 규격을 둬야, 바꿔 끼우기도 쉬워요.", "Put standards only where they're needed, and swapping stays easy.")},
     ],
-    "summary": (("<b>DI/DIP</b> = 작가(고수준)가 기계(저수준)에 직접 매이지 않고, 둘 다 <b>표준 콘센트(추상)</b>만 보게 하고 기계는 <b>바깥에서 꽂아주는</b> 원칙.",
-                 "<b>DI/DIP</b> is a principle where the writer (high-level) isn't tied directly to the machine (low-level) — both sides look only at a <b>standard socket (an abstraction)</b>, and the machine is <b>plugged in from outside</b>."),
+    "summary": (("<b>DIP</b> = 작가(고수준)가 기계(저수준)에 직접 매이지 않고, 둘 다 <b>표준 콘센트(추상)</b>만 보게 하는 원칙. <b>DI</b> = 기계를 <b>바깥에서 꽂아주는</b> 기법.",
+                 "<b>DIP</b> is the principle that the writer (high-level) isn't tied directly to the machine (low-level) — both sides look only at a <b>standard socket (an abstraction)</b>. <b>DI</b> is the technique of <b>plugging the machine in from outside</b>."),
                 ("의존성 역전 원칙(DIP)은 '고수준 모듈이 저수준 모듈에 의존하지 않고, 둘 다 추상(인터페이스)에 의존해야 한다'는 설계 원칙이고, 의존성 주입(DI)은 그 추상의 실제 구현체를 객체가 직접 생성하지 않고 외부에서 전달(주입)받는 구현 기법이에요. SOLID 원칙 중 D에 해당해요.",
                  "The Dependency Inversion Principle (DIP) says high-level modules shouldn't depend on low-level modules — both should depend on an abstraction (an interface). Dependency Injection (DI) is the implementation technique that passes (injects) a concrete implementation of that abstraction from outside, instead of an object creating it itself. DIP is the 'D' in the SOLID principles.")),
     "glossary": [
@@ -102,7 +102,7 @@ PAGE = {
         ("결합도(Coupling)", "Coupling", ("작가와 기계가 묶인 정도.", "How tightly the writer and machine are tied together."), ("직접 배선은 강한 결합, 콘센트는 느슨한 결합이에요.", "Direct wiring is tight coupling; a socket is loose coupling.")),
         ("정보은닉/캡슐화", "Encapsulation", ("세부 기계를 작가 눈에 안 보이게 감추는 것.", "Hiding the machine's details from the writer's view."), ('DIP가 기대는 또 다른 원칙이에요. → <a href="encapsulation-ko.html">작가의 잠긴 서랍</a>', "Another principle DIP leans on. → <a href=\"encapsulation-en.html\">the writer's locked drawer</a>")),
         ("테스트 더블(Mock)", "Test Double / Mock", ("테스트용 가짜 기계.", "A fake stand-in machine, used only for testing."), ("콘센트만 맞으면 진짜 기계 대신 꽂을 수 있어요.", "As long as the socket matches, it can stand in for the real machine.")),
-        ("제어의 역전(IoC)", "Inversion of Control", ("누가 언제 기계를 꽂을지 정하는 틀.", "The larger framework deciding who plugs in what, and when."), ("DI를 가능하게 해주는 더 큰 틀이에요.", "It's the broader framework that makes DI possible.")),
-        ("리팩터링", "Refactoring", ("직접 배선을 나중에 콘센트로 바꾸는 작업.", "The work of later turning direct wiring into a socket."), ('줄거리는 그대로, 연결 구조만 다시 다듬어요. → <a href="refactorppe-ko.html">줄거리는 그대로, 문장만 다시 다듬기</a>', 'The plot stays the same — only the wiring gets reworked. → <a href="refactorppe-en.html">same plot, retouched sentences</a>')),
+        ("제어의 역전(IoC)", "Inversion of Control", ("흐름 제어를 내 코드 대신 바깥 틀(프레임워크)이 맡는 것.", "Handing control of the flow from your own code to an outside framework."), ("DI는 IoC의 한 가지 형태예요.", "DI is one specific form of IoC.")),
+        ("리팩터링", "Refactoring", ("겉동작은 그대로 두고 구조를 고치는 일. 예: 직접 배선을 콘센트로 바꾸기.", "Changing structure but not behavior — e.g. turning direct wiring into a socket."), ('줄거리는 그대로, 연결 구조만 다시 다듬어요. → <a href="refactorppe-ko.html">줄거리는 그대로, 문장만 다시 다듬기</a>', 'The plot stays the same — only the wiring gets reworked. → <a href="refactorppe-en.html">same plot, retouched sentences</a>')),
     ],
 }

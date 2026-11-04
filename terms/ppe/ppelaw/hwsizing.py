@@ -35,7 +35,7 @@ P4 = svg(300, sky(300, ground=False)
                        "⟦참여율(피크)  × 60%  = 720명|peak participation × 60% = 720⟧",
                        "⟦여유율  × 1.3  = 약 936인분|safety margin × 1.3 ≈ 936 servings⟧",
                        "⟦내년 증가율  × 1.1  = 약 1,030인분 준비|next-year growth × 1.1 ≈ prepare 1,030 servings⟧"), 1.0, hl=2)
-         + label(380, 285, "⟦공식 하나로 누가 계산해도 같은 결과가 나와요|the same formula gives anyone the same answer⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 285, "⟦같은 숫자를 넣으면 누가 계산해도 같은 결과가 나와요|the same inputs give anyone the same answer⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 공식대로 해도 갑자기 바뀔 수 있어요
 P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
@@ -67,18 +67,18 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("학생 1,200명 기준 참여율·여유율·증가율을 순서대로 곱해 최종 준비량을 구하는 공식표", "A formula sheet multiplying participation rate, safety margin, and growth rate for 1,200 students to get a final quantity"),
          "caption": ("학생 1,200명 축제에 공식을 적용하면 약 1,030인분이 나와요.", "Applied to a 1,200-student festival, the formula gives about 1,030 servings."),
-         "small": ("공식 하나로 누가 계산해도 같은 결과가 나와요.", "The same formula gives anyone the same answer.")},
+         "small": ("같은 숫자를 넣으면 누가 계산해도 같은 결과가 나와요.", "The same inputs give anyone the same answer.")},
         {"svg": P5, "alt": ("왼쪽: 공식대로 약 1,030인분을 준비해 웃는 학생회장. 오른쪽: 옆 학교까지 몰려와 땀을 흘리는 학생", "Left: the president smiles, having prepared about 1,030 servings by the formula. Right: a student sweats as a neighboring school shows up too"),
          "caption": ("공식대로 준비해도 손님 수는 갑자기 바뀔 수 있어요.", "Even after preparing by the formula, the crowd can suddenly change."),
          "small": ("공식은 출발점이에요 — 실제 사용량을 계속 지켜보고 다시 재야 해요.", "The formula is a starting point — actual usage still has to be watched and re-measured.")},
     ],
     "summary": (("<b>하드웨어 규모산정</b> = 예상 인원과 사용량에 <b>피크·여유율·증가율</b>을 곱해 미리 계산하는 <b>공식표</b>.",
                  "<b>Hardware sizing</b> = a <b>formula sheet</b> that multiplies expected headcount and usage by <b>peak load, safety margin, and growth rate</b>, calculated in advance."),
-                ("정보시스템 하드웨어 규모산정 지침은 예상 사용자 수·처리량(TPS)·데이터 증가율 등을 바탕으로 서버·스토리지 용량을 공식으로 산출하는 행정 지침이에요. 평균이 아닌 피크 부하를 기준으로 하고, 안전 여유율과 향후 증설 계획까지 반영해요.",
-                 "The IS hardware sizing guideline is an administrative standard that calculates server and storage capacity with formulas based on expected users, transaction throughput (TPS), and data growth rate. It sizes for peak load rather than average, and builds in a safety margin plus future expansion.")),
+                ("정보시스템 하드웨어 규모산정 지침은 예상 사용자 수·처리량(TPS)·데이터 증가율 등을 바탕으로 서버·스토리지 용량을 공식으로 산출하는 한국정보통신기술협회(TTA)의 단체표준(TTAK.KO-10.0292)이에요. 공공 정보화사업에서 기준으로 쓰이고, 서버 성능은 tpmC·OPS 같은 단위로 나타내요. 평균이 아닌 피크 부하를 기준으로 하고, 안전 여유율과 향후 증설 계획까지 반영해요.",
+                 "The IS hardware sizing guideline is a TTA (Korea's ICT standards body) standard, TTAK.KO-10.0292, used in public-sector IT projects, with server performance expressed in units like tpmC and OPS. It calculates server and storage capacity with formulas based on expected users, transaction throughput (TPS), and data growth rate. It sizes for peak load rather than average, and builds in a safety margin plus future expansion.")),
     "glossary": [
         ("규모산정", "Capacity Sizing", ("필요한 양을 공식으로 미리 재는 것.", "Measuring the needed amount in advance with a formula."), ("감이 아니라 숫자로 근거를 남겨요.", "Leaves a numeric basis, not just a guess.")),
-        ("TPS", "TPS (Transactions Per Second)", ("초당 처리할 수 있는 주문 수.", "Orders handled per second."), ("서버 성능을 재는 기본 단위예요.", "The basic unit for measuring server performance.")),
+        ("TPS", "TPS (Transactions Per Second)", ("초당 처리할 수 있는 작업(주문) 수.", "Units of work (like orders) handled per second."), ("서버 성능을 재는 기본 단위예요.", "The basic unit for measuring server performance.")),
         ("피크 부하", "Peak Load", ("가장 붐비는 순간의 양.", "The amount at the busiest moment."), ("평균으로 재면 가장 바쁠 때 모자라요.", "Sizing by average falls short at the busiest moment.")),
         ("여유율", "Safety Margin", ("딱 맞추지 않고 더 얹는 비율.", "The extra percentage added instead of cutting it exact."), ("사용량이 갑자기 늘어도 시스템이 버티게 해줘요.", "Lets the system hold up even if demand suddenly rises.")),
         ("증가율 반영", "Growth Projection", ("내년에 더 늘어날 걸 미리 넣는 것.", "Building in next year's expected increase."), ("장비는 한 번 사면 몇 년은 써야 하니까요.", "Because hardware, once bought, has to last several years.")),

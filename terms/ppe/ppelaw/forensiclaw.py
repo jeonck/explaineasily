@@ -17,7 +17,7 @@ P1 = svg(300, sky(300)
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(220, 150, s=0.85, face=FROWN, **PRESIDENT) + bubble(100, 70, 295, 44, "⟦허락 없이 가져간 휴대폰은 증거로 못 써요|a phone taken without permission can't be evidence⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(570, 150, s=0.75, face=SWEAT + EYES, **TEACHER) + label(570, 250, "⟦분명 진짜 증거였는데…|but it really was the real evidence…⟧", 11, "var(--bad)")
-         + label(380, 285, "⟦제대로 된 절차 없이 휴대폰을 가져가면, 나중에 증거로 못 써요|take the phone without proper procedure, and it can't be used as evidence later⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 285, "⟦제대로 된 절차 없이 휴대폰을 가져가면, 나중에 증거로 못 쓸 수 있어요|take the phone without proper procedure, and it may not count as evidence later⟧", 12, "var(--ink)", cls="d"))
 
 # 3. 법적 증거수집 절차 = 권한 받고, 범위 정하고, 입회하고, 기록하는 것 (hero)
 P3 = svg(360, sky(360)
@@ -34,7 +34,7 @@ P3 = svg(360, sky(360)
 # 4. 절차를 지켰을 때 vs 안 지켰을 때
 P4 = svg(320, sky(320, ground=False)
          + rulesboard(50, 40, 320, 230, "⟦절차를 지켰을 때|FOLLOWED THE PROCEDURE⟧", ("⟦위원회가 증거로 인정해요|the committee accepts it as evidence⟧", "⟦학생도 결과에 승복하기 쉬워요|the student finds it easier to accept the result⟧"), 1.0)
-         + rulesboard(400, 40, 320, 230, "⟦절차를 안 지켰을 때|SKIPPED THE PROCEDURE⟧", ("⟦\"위법하게 얻었다\"며 증거가 빠져요|thrown out as \"unlawfully obtained\"⟧", "⟦진짜였어도 못 써서 사건 전체가 흔들려요|even if real, it's unusable — the whole case wobbles⟧"), 1.0)
+         + rulesboard(400, 40, 320, 230, "⟦절차를 안 지켰을 때|SKIPPED THE PROCEDURE⟧", ("⟦\"위법하게 얻었다\"며 증거가 빠질 수 있어요|can be thrown out as \"unlawful\"⟧", "⟦진짜였어도 못 써서 사건 전체가 흔들려요|even if real, it's unusable — the whole case wobbles⟧"), 1.0)
          + label(380, 295, "⟦증거 내용이 진짜인가와, 정당하게 얻었는가는 서로 다른 질문이에요|\"is the evidence real?\" and \"was it lawfully obtained?\" are two different questions⟧", 11, "var(--ink)", cls="d"))
 
 # 5. 절차를 지켜도 내용 판단은 또 다른 문제예요
@@ -55,7 +55,7 @@ PAGE = {
          "small": ("급하다고 휴대폰을 그냥 가져가도 되는 걸까요?", "Is grabbing the phone right away, just because it's urgent, really okay?")},
         {"svg": P2, "alt": ("학생회장이 허락 없이 가져간 거라 못 쓴다고 말하고, 선생님은 진짜 증거였는데 하며 땀 흘림", "The council president says it can't be used because it was taken without permission; the teacher sweats, insisting it really was the evidence"),
          "caption": ("절차 없이 휴대폰을 가져가면 나중에 증거가 무효가 될 수 있어요.", "Take the phone without proper procedure, and the evidence can become invalid later."),
-         "small": ("제대로 된 절차 없이 휴대폰을 가져가면, 나중에 증거로 못 써요.", "Take the phone without proper procedure, and it can't be used as evidence later.")},
+         "small": ("제대로 된 절차 없이 휴대폰을 가져가면, 나중에 증거로 못 쓸 수 있어요.", "Take the phone without proper procedure, and it may not count as evidence later.")},
         {"svg": P3, "hero": True, "alt": ("선생님이 허락서·범위·입회·기록 네 단계가 적힌 절차표를 들고, 학생이 그 옆에서 지켜봄", "A teacher holds up a four-step procedure board — permission, scope, witness, record — while a student looks on"),
          "caption": ("법적 증거수집 절차는 권한 받고, 범위 정하고, 입회하고, 기록하는 것이에요.", "Legal evidence collection means getting permission, setting the scope, collecting it with a witness, and keeping a record."),
          "small": ("증거를 기술로 보존하는 일과 달리, 이 절차는 '정당하게 얻었는가'를 따져요.", "Unlike preserving evidence technically, this procedure asks whether it was obtained lawfully."),
@@ -74,8 +74,8 @@ PAGE = {
     ],
     "summary": (("<b>디지털 증거수집의 법적 절차</b> = <b>권한(영장)</b>을 받고 <b>범위를 한정</b>해, <b>당사자 참여</b> 아래 <b>관리 연속성을 기록</b>하며 거둬서, 나중에 증거로 인정받게(증거능력) 하는 일.",
                  "<b>Legal digital evidence procedure</b> = obtaining <b>authorization (a warrant)</b>, keeping the <b>scope limited</b>, collecting it with the <b>affected party present</b>, and <b>documenting the chain of custody</b> — so it later counts as admissible evidence."),
-                ("디지털 증거수집은 기술적 보존(이미징·해시)과는 별개로, 압수수색영장 등 적법한 권한 안에서, 필요 최소 범위로, 당사자의 참여권을 보장하며 수행되어야 해요. 이 요건을 어기면 '위법수집증거배제법칙'에 따라 내용이 진짜라도 법정에서 증거능력이 부정될 수 있어요. 관리 연속성(chain of custody)이 끊기지 않게 문서화하는 것도 핵심 요건이에요.",
-                 "Separate from technical preservation (imaging, hashing), digital evidence collection must be carried out under lawful authority (such as a search warrant), limited to the minimum necessary scope, and with the affected party's right to be present respected. Violating these requirements can make even genuine evidence inadmissible in court under the exclusionary rule for unlawfully obtained evidence. Documenting an unbroken chain of custody is also a core requirement.")),
+                ("디지털 증거수집은 기술적 보존(이미징·해시)과는 별개로, 압수수색영장 등 적법한 권한 안에서, 필요 최소 범위로, 당사자의 참여권을 보장하며 수행되어야 해요. 이 요건을 어기면 '위법수집증거배제법칙'에 따라 내용이 진짜라도 법정에서 증거능력이 부정될 수 있어요. 또 디지털 증거는 원본과 같고 바뀌지 않았음(동일성·무결성)을 보여야 해서, 관리 연속성(chain of custody)을 끊기지 않게 문서화해요.",
+                 "Separate from technical preservation (imaging, hashing), digital evidence collection must be carried out under lawful authority (such as a search warrant), limited to the minimum necessary scope, and with the affected party's right to be present respected. Violating these requirements can make even genuine evidence inadmissible in court under the exclusionary rule for unlawfully obtained evidence. Digital evidence must also be shown to match the original and remain unaltered (identity and integrity), so an unbroken chain of custody is documented.")),
     "glossary": [
         ("적법절차", "Due Process", ("정해진 순서를 제대로 밟는 것.", "Properly following the set sequence of steps."), ("순서를 건너뛰면 그 결과가 무효가 될 수 있어요.", "Skip a step, and the result can be voided.")),
         ("증거능력", "Admissibility of Evidence", ("법정(위원회)이 증거로 받아줄 자격.", "Whether a court (or committee) will accept it as evidence at all."), ("내용이 맞고 틀리고와는 다른 문제예요.", "A separate question from whether the content is true.")),

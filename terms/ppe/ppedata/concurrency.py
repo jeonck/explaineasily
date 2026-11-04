@@ -33,7 +33,7 @@ def _row(y, a, b):
     return label(220, y, a, 12, "var(--ink)", anchor="start") + label(560, y, b, 12, "var(--ink)", anchor="start")
 
 P4 = svg(320, sky(320, ground=False)
-         + label(380, 34, "⟦병행제어 네 가지 방법|four concurrency control methods⟧", 14, "var(--ink)", cls="d")
+         + label(380, 34, "⟦병행제어 대표 방법 네 가지|four common concurrency control methods⟧", 14, "var(--ink)", cls="d")
          + '<rect x="200" y="54" width="360" height="2" fill="var(--line)"/>'
          + _row(80, "⟦비관적 잠금(Locking) — 상자 미리 잠가두기|pessimistic locking — lock the box up front⟧", "⟦충돌을 원천 차단|blocks conflict from the start⟧")
          + _row(116, "⟦낙관적 제어 — 일단 고치고 나중에 충돌 확인|optimistic — edit first, check for conflicts later⟧", "⟦충돌 드물 때 빠름|fast when conflicts are rare⟧")
@@ -69,10 +69,10 @@ PAGE = {
              (TWIN_I, ("MVCC(다중 버전)", "MVCC (multi-version)"), ("각자에게 데이터 스냅샷을 보여줘요", "shows each person a data snapshot")),
          ])},
         {"svg": P4, "alt": ("비관적 잠금, 낙관적 제어, 타임스탬프 순서, MVCC 네 방법을 비교하는 표", "A table comparing pessimistic locking, optimistic control, timestamp ordering, and MVCC"),
-         "caption": ("병행제어는 네 가지 방법으로 나뉘어요.", "Concurrency control splits into four methods."),
+         "caption": ("병행제어의 대표 방법은 네 가지예요.", "Concurrency control has four common methods."),
          "small": ("MVCC는 읽기와 쓰기가 서로 막지 않아요.", "MVCC lets reads and writes avoid blocking each other.")},
         {"svg": P5, "alt": ("왼쪽: 잠그면 안전함을 보여줌. 오른쪽: 배송 기사가 줄을 서서 기다리며 땀을 흘림", "Left: locking shows safety. Right: a driver sweats, waiting in line"),
-         "caption": ("데이터를 안전하게 지킬수록 뒷사람의 기다림이 늘어요.", "The more safely the data is guarded, the longer the next person waits."),
+         "caption": ("잠금으로 데이터를 안전하게 지킬수록 뒷사람의 기다림이 늘어요.", "The more tightly locks guard the data, the longer the next person waits."),
          "small": ("잠금 방식과 격리 수준이 함께 안전과 속도의 균형을 정해요.", "The locking method and isolation level together set the safety-speed balance.")},
     ],
     "summary": (("<b>병행제어</b> = 여러 사람이 <b>동시에 같은 데이터를 손대도 부딪히지 않게</b> 잠그거나 순서를 매기는 규칙.",
@@ -87,6 +87,6 @@ PAGE = {
         ("데드락(교착상태)", "Deadlock", ("서로의 자물쇠를 기다리며 멈추는 것.", "Both sides stuck waiting on each other's lock."), ("순환 대기가 생기면 발생해요.", "Happens when a wait cycle forms.")),
         ("격리 수준", "Isolation Level", ("동시 작업을 얼마나 엄격히 막을지 정하는 단계.", "The setting for how strictly to guard simultaneous work."), ('병행제어 방법이 이 수준을 실현해요. → <a href="isolevel-ko.html">동시에 손댈 때 얼마나 가려 볼지</a>', 'Concurrency control methods realize this level. → <a href="isolevel-en.html">how much to hide when hands overlap</a>')),
         ("ACID", "ACID", ("전표가 지키는 네 가지 약속.", "The four promises a receipt keeps."), ('병행제어는 그중 Isolation을 지켜줘요. → <a href="acid-ko.html">전표가 지키는 네 약속</a>', 'Concurrency control is what keeps the Isolation promise. → <a href="acid-en.html">the four promises a receipt keeps</a>')),
-        ("합의(Consensus)", "Consensus", ("놀이공원 세계의 여러 서버가 뜻을 맞추는 이야기.", "A story from the amusement-park world about servers agreeing."), ('여러 서버에 걸친 동시성은 합의로 넘어가요. → <a href="consensus-ko.html">합의(Consensus)</a>', 'Concurrency across many servers moves into consensus. → <a href="consensus-en.html">consensus</a>')),
+        ("합의(Consensus)", "Consensus", ("놀이공원 세계의 여러 서버가 뜻을 맞추는 이야기.", "A story from the amusement-park world about servers agreeing."), ('여러 서버가 같은 값에 동의해야 할 때는 합의 알고리즘을 써요. → <a href="consensus-ko.html">합의(Consensus)</a>', 'When many servers must agree on one value, they use a consensus algorithm. → <a href="consensus-en.html">consensus</a>')),
     ],
 }

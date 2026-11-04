@@ -100,7 +100,7 @@ PAGE = {
     ],
     "summary": (("<b>인터럽트 처리</b>는 벨(신호)이 울리면 <b>하던 일을 적어두고</b> 담당자에게 달려가 처리한 뒤, <b>원래 자리부터 다시 이어가는</b> 순서예요.",
                  "<b>Interrupt handling</b> is the sequence of <b>jotting down your place</b> when a signal fires, letting the right handler do the urgent job, then <b>resuming exactly where you left off</b>."),
-                ("인터럽트는 CPU가 현재 실행 중인 명령을 잠시 멈추고 다른 긴급한 작업을 처리하도록 하는 신호예요. 처리 과정은 ①인터럽트 발생 ②현재 레지스터·프로그램 카운터를 스택에 저장 ③인터럽트 벡터 테이블에서 해당 ISR(인터럽트 서비스 루틴) 주소 확인 ④ISR 실행 ⑤저장해둔 상태를 복원하고 원래 실행 흐름으로 복귀하는 순서로 이뤄져요. 계속 상태를 확인하는 폴링 방식보다 CPU 자원을 아낄 수 있어요.",
+                ("인터럽트는 CPU가 현재 실행 중인 프로그램을 잠시 멈추고 다른 긴급한 작업을 처리하도록 하는 신호예요. 처리 과정은 ①인터럽트 발생 ②현재 레지스터·프로그램 카운터를 스택에 저장 ③인터럽트 벡터 테이블에서 해당 ISR(인터럽트 서비스 루틴) 주소 확인 ④ISR 실행 ⑤저장해둔 상태를 복원하고 원래 실행 흐름으로 복귀하는 순서로 이뤄져요. 계속 상태를 확인하는 폴링 방식보다 CPU 자원을 아낄 수 있어요.",
                  "An interrupt is a signal that makes the CPU pause its current instruction stream to handle something urgent. The sequence is: ① interrupt occurs ② current registers and program counter are pushed to the stack ③ the interrupt vector table is consulted for the matching ISR (interrupt service routine) address ④ the ISR runs ⑤ the saved state is restored and execution resumes where it left off. This saves CPU resources compared to constantly polling for status.")),
     "glossary": [
         ("인터럽트", "Interrupt", ("급한 차가 울리는 벨.", "The bell an urgent car honks."), ("하던 일을 잠시 멈추게 하는 신호예요.", "A signal that pauses current work.")),
@@ -109,7 +109,7 @@ PAGE = {
         ("ISR(인터럽트 서비스 루틴)", "ISR (Interrupt Service Routine)", ("벨에 달려가 실제로 처리하는 사람.", "The one who actually runs to the bell and handles it."), ("벡터 테이블이 가리키는 처리 코드예요.", "The handler code the vector table points to.")),
         ("폴링", "Polling", ("계속 흘깃흘깃 확인하는 방식.", "Constantly glancing over to check."), ("인터럽트보다 비효율적일 수 있어요.", "Can be less efficient than interrupts.")),
         ("인터럽트 우선순위", "Interrupt Priority", ("더 급한 벨부터 처리하는 순서.", "Handling the more urgent bell first."), ("벨 여러 개가 동시에 울릴 때 쓰여요.", "Matters when several bells ring at once.")),
-        ("소프트웨어 인터럽트", "Software Interrupt", ("정비사 스스로 벨을 눌러 요청하는 것.", "The mechanic pressing the bell themselves to make a request."), ("시스템 콜이 이 방식을 써요.", "System calls use this mechanism.")),
+        ("소프트웨어 인터럽트", "Software Interrupt", ("정비사 스스로 벨을 눌러 요청하는 것.", "The mechanic pressing the bell themselves to make a request."), ("옛 x86 시스템 콜이 이 방식이었고, x86-64는 전용 syscall 명령어를 써요.", "Older x86 system calls used this; x86-64 has a dedicated syscall instruction.")),
         ("네트워크 인터럽트", "Network Interrupt", ("네트워크 카드 벨만 다루는 이야기.", "The story about the network-card bell specifically."), ('다른 세계(네트워크 분야)에서 자세히 다뤄요. → <a href="interruptnet-ko.html">소포가 도착했다고 알리는 벨소리</a>', 'Covered in depth in another world (the networking field). → <a href="interruptnet-en.html">the bell that says a parcel just arrived</a>')),
     ],
 }

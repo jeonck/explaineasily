@@ -52,7 +52,7 @@ PAGE = {
          "small": ("종합업체는 설치·연동만 맡아요, 가격을 매기지 않아요.", "The integrator only installs and connects it, and sets no price."),
          "tricks": (4, [
              (DIRECT_I, ("제조사와 직접 계약", "Contract directly with the maker"), ("중간 마진을 없애요", "cuts out the middleman's margin"), "calm"),
-             (PRICE_I, ("정가로 구매", "Buy at list price"), ("제조사 정가 그대로예요", "the maker's actual list price")),
+             (PRICE_I, ("중간 마진 없이 구매", "Buy without a markup"), ("제조사와 바로 값을 정해요", "the price is settled with the maker directly")),
              (SHIELD2_I, ("품질 그대로 유지", "Quality stays as specified"), ("몰래 바꿔치기할 틈이 없어요", "no room for a quiet swap"), "warm"),
              (SPLIT_I, ("설치는 별도 발주", "Installation ordered separately"), ("종합업체는 연동만 맡아요", "the integrator only handles the hookup")),
          ])},
@@ -63,7 +63,7 @@ PAGE = {
                                   ("⟦발주자가 직접 구매|client buys it directly⟧", "⟦가격이 투명함|price is transparent⟧", "⟦설치만 별도 계약|install contracted separately⟧"), 1.0, hl=0)),
          "alt": ("왼쪽: 통합발주는 종합업체가 구매해 마진이 숨겨짐. 오른쪽: 분리발주는 발주자가 직접 구매해 가격이 투명함", "Left: bundled procurement lets the integrator buy it with hidden margin. Right: separate procurement has the client buy directly with transparent pricing"),
          "caption": ("통합발주와 분리발주를 나란히 놓으면 마진과 가격 차이가 분명해요.", "Side by side, bundled and separate procurement clearly differ on margin and price."),
-         "small": ("가격 투명성과 품질 보장이 분리발주의 핵심 이득이에요.", "Price transparency and guaranteed quality are the main payoff of separate procurement.")},
+         "small": ("가격 투명성과 제품 바꿔치기 방지가 분리발주의 핵심 이득이에요.", "Transparent pricing and no product swaps are the main payoff of separate procurement.")},
         {"svg": svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
                      + person(190, 130, s=0.8, face=SMILE, **EDITOR) + label(190, 260, "⟦발주자가 제값 주고 제대로 된 인쇄기를 사요|the client pays the real price for the real machine⟧", 11, "var(--ink)")
                      + person(570, 130, s=0.8, face=EYES, **PRINTER) + label(570, 260, "⟦구매·설치 계약이 둘로 나뉘어 챙길 일이 늘어요|separate purchase and install contracts mean more to track⟧", 11, "var(--ink)")
@@ -74,8 +74,8 @@ PAGE = {
     ],
     "summary": (("<b>상용SW 직접구매</b> = 발주자가 상용 소프트웨어(인쇄기)만큼은 <b>제조사와 직접 계약</b>해 구매하고, 종합업체는 <b>설치·연동만</b> 맡게 하는 공공 IT 발주 방식.",
                  "<b>Direct COTS purchase</b> = having the client contract straight with the <b>maker</b> for commercial software, while the integrator handles only <b>installation and integration</b> — a public-sector IT procurement practice."),
-                ("공공 정보화 사업에서 시스템통합업체(SI)가 상용SW까지 통째로 구매·공급하면 중간 마진이 붙고, 예산에 맞추려 저가 제품으로 바뀌는 등 품질 저하가 생기기 쉬워요. 그래서 제도적으로 발주자가 상용SW는 제조사(공급사)와 직접 계약·구매하고, SI는 설치·연동·커스터마이징만 맡게 분리 발주해요. 이를 통해 가격 투명성과 소프트웨어 제값받기를 함께 꾀해요.",
-                 "In public IT projects, when a system integrator (SI) bundles in the purchase of commercial off-the-shelf software, hidden markups and budget-driven downgrades to cheaper products can creep in. To prevent this, procurement rules require the client to contract and buy COTS software directly from its maker, while the SI handles only installation, integration, and customization. This keeps pricing transparent and ensures software gets paid its fair value.")),
+                ("공공 정보화 사업에서 시스템통합업체(SI)가 상용SW까지 통째로 구매·공급하면 중간 마진이 붙고, 예산에 맞추려 저가 제품으로 바뀌는 등 품질 저하가 생기기 쉬워요. 그래서 일정 규모 이상 공공 사업에서는, 시스템 통합이 불가능한 경우 같은 예외를 빼면 발주자가 상용SW를 제조사(공급사)와 직접 계약·구매하고, SI는 설치·연동·커스터마이징만 맡게 분리 발주해요. 이를 통해 가격 투명성과 소프트웨어 제값받기를 함께 꾀해요.",
+                 "In public IT projects, when a system integrator (SI) bundles in the purchase of commercial off-the-shelf software, hidden markups and budget-driven downgrades to cheaper products can creep in. To prevent this, public projects above a set size have the client contract and buy COTS software directly from its maker or supplier, barring exceptions such as when integration isn't feasible, while the SI handles only installation, integration, and customization. This aims to keep pricing transparent and pay software its fair value.")),
     "glossary": [
         ("상용SW 직접구매", "Direct COTS Purchase", ("발주자가 제조사와 직접 계약하는 것.", "The client contracting straight with the maker."), ("분리발주 제도의 핵심이에요.", "The core of separate procurement.")),
         ("분리발주", "Split/Separate Procurement", ("구매와 설치를 서로 다른 계약으로 나누는 것.", "Splitting purchase and installation into separate contracts."), ("직접구매를 가능하게 하는 발주 방식이에요.", "The procurement structure that makes direct purchase possible.")),
@@ -83,7 +83,7 @@ PAGE = {
         ("SI(시스템통합업체)", "System Integrator (SI)", ("여러 요소를 엮어 전체를 완성하는 업체.", "The company that assembles the pieces into a whole."), ("직접구매 이후엔 설치·연동만 맡아요.", "Handles only installation and integration after direct purchase.")),
         ("제값주기", "Fair Value Payment", ("소프트웨어 가격을 깎지 않고 제대로 지불하는 것.", "Paying software its proper price without discounting it away."), ("직접구매 제도의 목적 중 하나예요.", "One of the goals behind the direct-purchase rule.")),
         ("과업변경", "Scope Change", ("계약 중간에 요구사항이 바뀌는 것.", "Requirements changing partway through the contract."), ("분리발주에서도 여전히 관리해야 할 위험이에요.", "Still a risk to manage even under split procurement.")),
-        ("하도급 관리", "Subcontract Management", ("설치·연동을 맡은 업체를 관리하는 일.", "Managing the company that handles installation and integration."), ("계약이 나뉘면 이 관리도 늘어나요.", "Splitting the contract means more of this to manage.")),
+        ("하도급 관리", "Subcontract Management", ("맡은 일의 일부를 다른 업체에 다시 맡길 때 챙기는 일.", "Overseeing work a contractor passes on to another company."), ("공공 SW사업은 하도급 비율을 법으로 제한해요.", "Public software projects cap subcontracting by law.")),
         ("좋은 소프트웨어의 조건", "Conditions of Good Software", ("직접 사 와도 품질은 저절로 보장되지 않아요.", "Buying it directly doesn't automatically guarantee quality."), ('품질은 결국 이 조건들로 판단해요. → <a href="goodsw-ko.html">좋은 책의 조건</a>', 'Quality is ultimately judged by these conditions. → <a href="goodsw-en.html">what makes a good book</a>')),
     ],
 }

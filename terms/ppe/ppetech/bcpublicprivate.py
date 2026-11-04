@@ -25,7 +25,7 @@ P1 = svg(300, sky(300, ground=False)
          + ribbon(130, 50, 1.0) + label(130, 42, "⟦블록체인 비교 부스|Public vs Private Blockchain Booth⟧", 12, "var(--ink)")
          + person(300, 150, s=0.85, face=EYES, **VISITOR)
          + bubble(360, 70, 260, 50, "⟦블록체인은 다 똑같은 거 아니에요?|Isn't blockchain all just... the same thing?⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 280, "⟦사실 블록체인은 누가 참여하느냐에 따라 완전히 달라요|actually, who's allowed to join changes how a blockchain works⟧", 13, "var(--ink)"))
+         + label(380, 280, "⟦사실 블록체인은 누가 참여할 수 있느냐에 따라 작동 방식이 달라져요|actually, who's allowed to join changes how a blockchain works⟧", 13, "var(--ink)"))
 
 # 2. 공개 여부에 따라 쓰임새가 완전히 달라요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--accent-soft)"/>'
@@ -54,8 +54,8 @@ P4 = svg(360, sky(360, ground=False)
                       "⟦투명성 — 전부 공개|fully transparent⟧", "⟦예시 — 비트코인|e.g. Bitcoin⟧"), 1.3)
          + infoboard(389, 30, 270, 230, "⟦프라이빗|PRIVATE⟧",
                      ("⟦참여 — 허가받은 사람만|only approved members⟧", "⟦속도 — 빨라요|faster⟧",
-                      "⟦투명성 — 제한적 공개|limited visibility⟧", "⟦예시 — 기업 간 공급망|e.g. enterprise supply chain⟧"), 1.3)
-         + label(380, 345, "⟦참여 자격이 속도와 투명성까지 결정해요|who may join decides speed and transparency too⟧", 12, "var(--ink)"))
+                      "⟦투명성 — 제한적 공개|limited visibility⟧", "⟦예시 — 한 회사의 사내 장부|e.g. one firm's internal ledger⟧"), 1.3)
+         + label(380, 345, "⟦참여 자격이 속도와 투명성에도 큰 영향을 줘요|who may join strongly affects speed and transparency too⟧", 12, "var(--ink)"))
 
 # 5. 둘 다 극단, 실제론 섞인 형태도 많아요
 P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
@@ -74,7 +74,7 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("관람객이 블록체인이 다 같은 게 아니냐고 질문함", "A visitor asks whether all blockchains are the same thing"),
          "caption": ("블록체인은 다 똑같은 거 아니에요?", "Isn't blockchain all just the same thing?"),
-         "small": ("사실 블록체인은 누가 참여하느냐에 따라 완전히 달라요.", "Actually, who's allowed to join changes how a blockchain works.")},
+         "small": ("사실 블록체인은 누가 참여할 수 있느냐에 따라 작동 방식이 달라져요.", "Actually, who's allowed to join changes how a blockchain works.")},
         {"svg": P2, "alt": ("왼쪽: 펼친 장부와 누구나 모인 관람객들. 오른쪽: 자물쇠 달린 장부와 허가된 소수", "Left: an open ledger with a crowd of visitors. Right: a locked ledger with only a few approved members"),
          "caption": ("누구나 참여하는 블록체인과 허가받은 사람만 쓰는 블록체인은 쓰임새가 달라요.", "A blockchain anyone can join and one limited to approved members serve different purposes."),
          "small": ("참여 자격이 속도·투명성·쓰임새를 함께 바꿔요.", "Who may join changes speed, transparency, and use together.")},
@@ -88,8 +88,8 @@ PAGE = {
              (BC_USE, ("대표 쓰임새", "Typical use"), ("퍼블릭은 암호화폐 vs 프라이빗은 기업 거래", "public: cryptocurrency vs private: enterprise deals"), "warm"),
          ])},
         {"svg": P4, "alt": ("퍼블릭과 프라이빗을 참여·속도·투명성·예시로 비교하는 두 설명판", "Two boards comparing public and private on participation, speed, transparency, and examples"),
-         "caption": ("참여 자격이 속도와 투명성까지 결정해요.", "Who may join decides speed and transparency too."),
-         "small": ("퍼블릭의 대표 예는 비트코인, 프라이빗의 대표 예는 기업 간 공급망이에요.", "Bitcoin is a typical public chain; an enterprise supply chain is a typical private one.")},
+         "caption": ("참여 자격이 속도와 투명성에도 큰 영향을 줘요.", "Who may join strongly affects speed and transparency too."),
+         "small": ("퍼블릭의 대표 예는 비트코인, 프라이빗의 대표 예는 한 회사가 운영하는 사내 장부예요. 여러 회사가 함께 쓰는 공급망은 컨소시엄형에 가까워요.", "Bitcoin is a typical public chain; one firm's internal ledger is a typical private one. A supply chain shared by several firms is closer to the consortium type.")},
         {"svg": P5, "alt": ("왼쪽: 펼친 장부와 자물쇠 장부가 섞인 컨소시엄형. 오른쪽: 보안은 다음 부스에서", "Left: a consortium type mixing open and locked ledgers. Right: security gets covered at the next booth"),
          "caption": ("완전 공개 장부도 완전 비공개 장부도 한쪽 끝일 뿐이에요.", "Fully open and fully closed ledgers are just two ends of a spectrum."),
          "small": ("실제 블록체인에는 컨소시엄형처럼 둘을 섞은 형태도 많아요.", "Many real blockchains mix the two, like the consortium type.")},

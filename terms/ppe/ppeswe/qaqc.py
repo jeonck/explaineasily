@@ -76,7 +76,7 @@ PAGE = {
         ("확인(Validation)", "Validation", ("\"맞는 걸 만들었나\"를 보는 것.", "Checking \"did we build the right thing.\""), ("완성품이 사용자 요구에 맞는지 봐요.", "Checks the result against what users need.")),
         ("결함(Defect)", "Defect", ("원고에 남은 오탈자.", "A typo left in the manuscript."), ("QC가 직접 찾아내는 대상이에요.", "What QC directly hunts for.")),
         ("ISO 9001", "ISO 9001", ("품질 경영 체계의 국제 표준.", "An international standard for quality management systems."), ("QA가 따르는 외부 기준 중 하나예요.", "One external standard QA can follow.")),
-        ("정보시스템 감리/PMO", "IS Audit/PMO", ("여러 책의 품질과 일정을 함께 점검.", "Checking quality and schedule across many books at once."), ('QA보다 더 넓은 범위를 봐요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'Looks at an even wider scope than QA. → <a href="pmoaudit-en.html">the last checker before publication</a>')),
-        ("CMMI", "CMMI", ("조직의 품질 프로세스 성숙도.", "How mature an organization's quality process is."), ("QA 활동이 누적되면 성숙도가 올라가요.", "Consistent QA work is what raises this maturity.")),
+        ("정보시스템 감리/PMO", "IS Audit/PMO", ("여러 책의 품질과 일정을 함께 점검.", "Checking quality and schedule across many books at once."), ('QA보다 더 넓은 범위를 봐요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'Looks at an even wider scope than QA. → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
+        ("CMMI", "CMMI", ("조직의 일하는 프로세스 성숙도.", "How mature an organization's working processes are."), ("QA는 CMMI가 살피는 활동 중 하나예요.", "QA is one of the practices CMMI looks at.")),
     ],
 }

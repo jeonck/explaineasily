@@ -42,7 +42,7 @@ P4 = svg(320, sky(320)
                       ("⟦문장을 두 번 반복 → 번역문도 두 번 반복돼야 함|repeat the sentence twice → the translation repeats twice too⟧",
                        "⟦단어 순서를 살짝 바꿔도 → 핵심 단어 수는 똑같아야 함|reorder words slightly → the key word count stays the same⟧",
                        "⟦같은 문장을 따로 두 번 번역하면 → 두 번 다 같은 번역이 나와야 함|translate the same sentence twice, separately → both outputs should match⟧"), 1.0)
-         + label(380, 300, "⟦이 관계가 깨지면, 정답을 몰라도 번역 어딘가 잘못된 거예요|if a relationship breaks, something went wrong in the translation — even with no answer key⟧", 12, "var(--ink)"))
+         + label(380, 300, "⟦이 관계가 깨지면, 정답을 몰라도 번역기 어딘가 잘못됐다는 신호예요|if a relationship breaks, it signals a fault in the translator — even with no answer key⟧", 12, "var(--ink)"))
 
 # 5. 관계를 잘못 세우면 놓침, 정답 비교를 대체하진 않음
 P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
@@ -81,7 +81,7 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("문장 반복, 단어 순서 변경, 같은 문장 재번역 세 가지 메타모픽 관계 예시표", "A table of three example metamorphic relations: repeating a sentence, reordering words, translating the same sentence twice separately"),
          "caption": ("문장을 반복하면 번역문도 반복되듯, 입력과 출력 사이의 '관계'를 미리 정해두고 확인해요.", "Like 'repeat the sentence, and the translation repeats', relationships between input and output are set in advance and checked."),
-         "small": ("이 관계가 깨지면, 정답을 몰라도 번역 어딘가 잘못된 거예요.", "If a relationship breaks, something went wrong in the translation — even with no answer key.")},
+         "small": ("이 관계가 깨지면, 정답을 몰라도 번역기 어딘가 잘못됐다는 신호예요.", "If a relationship breaks, it signals a fault in the translator — even with no answer key.")},
         {"svg": P5, "alt": ("왼쪽: 관계를 잘못 세워 버그를 놓침. 오른쪽: 정답을 아는 경우엔 정답 비교가 더 정확함", "Left: a badly chosen relation misses a bug. Right: when the answer is known, comparing to it is more precise"),
          "caption": ("관계를 잘못 세우면 버그를 놓칠 수 있어요.", "A badly chosen relationship can miss a real bug."),
          "small": ("정답을 아는 경우엔, 정답과 비교하는 쪽이 더 정확해요.", "When the answer is known, comparing to it directly is still more precise.")},
@@ -92,7 +92,7 @@ PAGE = {
                  "Metamorphic testing is a technique for programs with the 'oracle problem' — where there's no known correct output, or no single one to pin down. For systems like translators, search engines, or ML models, it defines 'metamorphic relations' that the output must satisfy when the input is transformed in a known way, and detects faults when those relations are violated.")),
     "glossary": [
         ("메타모픽 테스트", "Metamorphic Testing", ("정답 없이 관계로 확인하기.", "Checking by relationship, with no answer key."), ("오라클 문제가 있을 때 써요.", "Used when the oracle problem exists.")),
-        ("오라클 문제", "Oracle Problem", ("정답지가 아예 없는 상황.", "A situation with no answer key at all."), ("번역·검색·ML에서 자주 생겨요.", "Common in translation, search, and ML.")),
+        ("오라클 문제", "Oracle Problem", ("정답지가 없거나 정답을 하나로 정하기 어려운 상황.", "A situation with no answer key, or no single answer to pin down."), ("번역·검색·ML에서 자주 생겨요.", "Common in translation, search, and ML.")),
         ("메타모픽 관계", "Metamorphic Relation", ("입력을 바꾸면 출력도 이렇게 바뀐다는 규칙.", "The rule that a given input change implies a given output change."), ("미리 정의해둬야 해요.", "Must be defined ahead of time.")),
         ("회귀테스트", "Regression Test", ("줄거리가 그대로인지 확인하는 교정.", "The proofing that checks the plot hasn't shifted."), ("정답(기대 결과)을 알 때 더 흔히 써요.", "More common when the expected result is known.")),
         ("가설검정", "Hypothesis Testing", ("우연인지 진짜 차이인지 숫자로 가리기.", "Telling a real difference from coincidence, with numbers."), ("다른 방식으로 '모르는 것'을 다루는 방법이에요. → <a href=\"hypothesistest-ko.html\">두 표지 중 뭐가 진짜 더 잘 팔릴까</a>", 'A different way of handling uncertainty. → <a href="hypothesistest-en.html">which cover really sells better</a>')),

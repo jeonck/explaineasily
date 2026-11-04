@@ -28,7 +28,7 @@ P1 = svg(300, sky(300, ground=False)
          + singleserver(220, 160, 1.4, cracked=True)
          + person(380, 170, s=0.8, face=EYES, **DEMO)
          + bubble(440, 90, 250, 50, "⟦여기 한 곳만 몰래 고치면 아무도 몰라요|quietly edit this one spot and nobody knows⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 280, "⟦중앙 장부는 서버 한 곳만 뚫리면 기록을 마음대로 바꿀 수 있어요|with a central ledger, one breached server lets anyone rewrite the records⟧", 13, "var(--bad)"))
+         + label(380, 280, "⟦중앙 장부는 공격자가 서버 한 곳만 뚫으면 기록을 마음대로 바꿀 수 있어요|with a central ledger, an attacker who breaches one server can rewrite the records⟧", 13, "var(--bad)"))
 
 # 2. 블록체인은 블록마다 지문을 물고 있어요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--accent-soft)"/>'
@@ -51,7 +51,7 @@ BC_CONTRACT = icon('<rect x="16" y="10" width="32" height="44" rx="3" fill="#FFF
 # 4. 보안 고려사항
 P4 = svg(360, sky(360, ground=False)
          + infoboard(55, 30, 500, 230, "⟦블록체인 보안, 조심할 점|SECURITY, THINGS TO WATCH⟧",
-                     ("⟦51% 공격 — 합의 힘의 과반을 잡으면 장부가 뚫려요|51% attack — seize most consensus power, rewrite the ledger⟧",
+                     ("⟦51% 공격 — 합의 힘의 과반을 잡으면 최근 기록을 뒤집어요|51% attack — seize most consensus power, rewrite recent blocks⟧",
                       "⟦개인키 분실 — 자산을 되찾을 수 없어요|lost private key — the assets can't be recovered⟧",
                       "⟦스마트 컨트랙트 버그 — 자동 실행이라 되돌리기 어려워요|smart contract bugs — hard to undo once the code runs⟧",
                       "⟦프라이버시 — 공개 장부는 거래 기록이 다 보여요|privacy — a public ledger shows every transaction⟧"), 1.3)
@@ -72,7 +72,7 @@ PAGE = {
             "Blockchain's inner workings, told as a story about a ledger whose blocks each hold the previous block's fingerprint."),
     "panels": [
         {"svg": P1, "alt": ("시연 담당자가 중앙 서버 한 곳만 몰래 고치면 아무도 모른다고 말함", "A demonstrator says quietly editing just one central server goes unnoticed"),
-         "caption": ("중앙 장부는 서버 한 곳만 뚫리면 기록을 마음대로 바꿀 수 있어요.", "With a central ledger, one breached server lets anyone rewrite the records."),
+         "caption": ("중앙 장부는 공격자가 서버 한 곳만 뚫으면 기록을 마음대로 바꿀 수 있어요.", "With a central ledger, an attacker who breaches one server can rewrite the records."),
          "small": ("중앙 장부 한 곳만 고치면 아무도 몰라요.", "Quietly edit one central ledger, and nobody knows.")},
         {"svg": P2, "alt": ("네 개의 블록이 저마다 이전 블록의 지문(해시)을 물고 이어짐", "Four blocks, each holding the previous one's fingerprint (hash)"),
          "caption": ("블록마다 이전 블록의 지문을 물고 있어요.", "Each block holds the previous block's fingerprint."),
@@ -101,7 +101,7 @@ PAGE = {
         ("해시", "Hash", ("블록 하나하나의 고유한 지문.", "Each block's own unique fingerprint."), ("블록 내용이 조금만 바뀌어도 지문이 바뀌어요.", "Change anything in the block, and the fingerprint changes too.")),
         ("합의 알고리즘", "Consensus Algorithm", ("다수가 동의해야 장부에 적는 규칙.", "The rule requiring agreement before writing to the ledger."), ("블록체인이 느린 이유이자 안전한 이유예요.", "The reason blockchain is both slow and secure.")),
         ("스마트 컨트랙트", "Smart Contract", ("조건이 맞으면 자동 실행되는 약속.", "A promise that runs itself once conditions are met."), ("코드 버그는 되돌리기 어려워요.", "A code bug is hard to undo once it runs.")),
-        ("51% 공격", "51% Attack", ("합의 힘의 과반을 장악해 장부를 고치는 공격.", "An attack that seizes over half the consensus power to rewrite the ledger."), ("참여자가 적은 블록체인일수록 더 위험해요.", "Chains with fewer participants are at greater risk.")),
+        ("51% 공격", "51% Attack", ("합의 힘의 과반을 장악해 최근 기록을 뒤집는 공격.", "An attack that seizes over half the consensus power to rewrite recent blocks."), ("참여자가 적은 블록체인일수록 더 위험해요.", "Chains with fewer participants are at greater risk.")),
         ("개인키", "Private Key", ("잃어버리면 아무도 되찾아줄 수 없는 열쇠.", "The key nobody can recover for you if lost."), ("분실하면 자산도 함께 잃어요.", "Lose it, and the assets go with it.")),
         ("퍼블릭·프라이빗 블록체인", "Public/Private Blockchain", ("누가 참여하느냐에 따른 두 형태.", "Two forms, split by who may join."), ('이 보안 요소는 두 형태 모두에 적용돼요. → <a href="bcpublicprivate-ko.html">퍼블릭·프라이빗 비교 부스</a>', 'These security points apply to both forms. → <a href="bcpublicprivate-en.html">the Public vs Private booth</a>')),
         ("분산 원장", "Distributed Ledger", ("여러 군데에 똑같이 복사된 장부.", "The same ledger, copied identically in many places."), ("한 곳이 사라져도 기록은 남아요.", "The record survives even if one copy disappears.")),

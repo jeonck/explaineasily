@@ -3,9 +3,9 @@ from _world import *
 
 # 1. 한 집에 여러 사람이 살아요
 P1 = svg(330, sky(330)
-         + postoffice(300, 170, 1.0, "⟦101호|Apt 101⟧")
+         + postoffice(300, 170, 1.0, "⟦행복빌라|Happy Villa⟧")
          + person(220, 230, s=0.6, face=EYES, **RECEIVER) + person(300, 225, s=0.6, face=EYES, **SENDER) + person(380, 230, s=0.6, face=EYES, **CLERK)
-         + envelope(560, 160, 0.8, text="⟦101호로!|to Apt 101!⟧")
+         + envelope(560, 160, 0.8, text="⟦행복빌라로!|to Happy Villa!⟧")
          + label(380, 30, "⟦한 집에 여러 사람이 살아요, 편지가 오면 누구 것인지 몰라요|several people share one house — a letter arrives, but whose is it?⟧", 13, "var(--ink)", cls="d")
          + label(380, 315, "⟦집 주소만으론 몇 호에 사는 누구인지 구분이 안 돼요|the house address alone can't tell apart who's inside⟧", 12, "var(--muted)"))
 
@@ -20,7 +20,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 P3 = svg(340, sky(340)
          + postoffice(220, 170, 0.8, "⟦IP: 1.2.3.4|IP: 1.2.3.4⟧")
          + postoffice(540, 170, 0.8, "⟦IP: 5.6.7.8|IP: 5.6.7.8⟧")
-         + '<rect x="190" y="150" width="60" height="22" rx="4" fill="var(--accent)"/>' + label(220, 166, "⟦:80|:80⟧", 11, "#fff", cls="d")
+         + '<rect x="190" y="150" width="60" height="22" rx="4" fill="var(--accent)"/>' + label(220, 166, "⟦:51234|:51234⟧", 11, "#fff", cls="d")
          + '<rect x="510" y="150" width="60" height="22" rx="4" fill="var(--good)"/>' + label(540, 166, "⟦:443|:443⟧", 11, "#fff", cls="d")
          + '<path d="M280 200 Q380 150 500 200" stroke="var(--accent)" stroke-width="3" stroke-dasharray="6 5" fill="none"/>'
          + label(380, 30, "⟦소켓 = 집주소(IP)+호실번호(포트)로 만든, 이 대화 전용 구멍|a socket = a hole made from a house address (IP) plus a room number (port), dedicated to this one conversation⟧", 13, "var(--ink)", cls="d")
@@ -72,15 +72,15 @@ PAGE = {
          "small": ("소켓을 열 때 등기봉투(TCP)용으로 할지 일반봉투(UDP)용으로 할지 정해요.", "When a socket is opened, it's set up for registered envelopes (TCP) or plain ones (UDP).")},
     ],
     "summary": (("<b>소켓</b>은 <b>IP 주소(어느 집)와 포트 번호(몇 호실)</b>로 만든, <b>한 쌍의 대화만을 책임지는 전용 우편함 구멍</b>이에요.",
-                 "A <b>socket</b> is a <b>dedicated mailbox hole</b> made from an <b>IP address (which house) and a port number (which room)</b>, marking one end of a conversation."),
-                ("소켓은 운영체제가 네트워크 통신을 위해 제공하는 종단점(endpoint)으로, IP 주소+포트 번호의 조합(소켓 주소)으로 식별돼요. 프로그램은 소켓을 열어(bind/connect) 데이터를 읽고 쓰며, TCP 소켓이면 연결 지향, UDP 소켓이면 비연결형으로 동작해요. 한 호스트 안의 여러 프로그램이 같은 IP를 쓰더라도 포트 번호가 다르면 서로 다른 소켓으로 구분돼요.",
-                 "A socket is the endpoint the operating system provides for network communication, identified by the combination of an IP address and a port number (the socket address). A program opens a socket (bind/connect) to read and write data — a TCP socket behaves connection-oriented, a UDP socket connectionless. Multiple programs on the same host sharing one IP are still told apart as long as their port numbers differ.")),
+                 "A <b>socket</b> is a <b>dedicated mailbox hole</b> made from an <b>IP address (which house) and a port number (which room)</b>, looking after just one conversation."),
+                ("소켓은 운영체제가 네트워크 통신을 위해 제공하는 종단점(endpoint)으로, IP 주소+포트 번호의 조합(소켓 주소)으로 식별돼요. 프로그램은 소켓을 만들어 주소를 붙이거나(bind) 상대와 이은(connect) 뒤 데이터를 읽고 쓰며, TCP 소켓이면 연결 지향, UDP 소켓이면 비연결형으로 동작해요. 한 호스트 안의 여러 프로그램이 같은 IP를 쓰더라도 포트 번호가 다르면 서로 다른 소켓으로 구분돼요.",
+                 "A socket is the endpoint the operating system provides for network communication, identified by the combination of an IP address and a port number (the socket address). A program creates a socket, gives it an address (bind) or links it to the other side (connect), then reads and writes data — a TCP socket behaves connection-oriented, a UDP socket connectionless. Multiple programs on the same host sharing one IP are still told apart as long as their port numbers differ.")),
     "glossary": [
         ("소켓", "Socket", ("집주소+호실번호로 만든 전용 구멍.", "A dedicated hole made from an address and a room number."), ("연결의 한쪽 끝이 돼요.", "It marks one end of a connection.")),
         ("IP 주소", "IP address", ("집 주소.", "The house address."), ("어느 컴퓨터인지를 가리켜요.", "Points to which computer it is.")),
         ("포트 번호", "Port number", ("집 안의 호실 번호.", "The room number inside the house."), ("어느 프로그램인지를 가리켜요.", "Points to which program it is.")),
         ("TCP/UDP", "TCP/UDP", ("등기봉투와 일반봉투.", "The registered envelope and the plain one."), ('소켓이라는 구멍으로 어떤 봉투를 쓸지 고르는 거예요. → <a href="tcpudp-ko.html">등기봉투와 일반봉투</a>', 'Choosing which envelope to send through the socket hole. → <a href="tcpudp-en.html">the registered envelope and the plain one</a>')),
-        ("bind/connect", "bind/connect", ("소켓 구멍을 만들고 상대와 잇는 절차.", "The steps that open the hole and link it to the other side."), ("소켓을 쓰기 전 거치는 과정이에요.", "The setup step before a socket can be used.")),
+        ("bind/connect", "bind/connect", ("구멍에 주소를 붙이고(bind) 상대와 잇는(connect) 절차.", "The steps that give the hole an address (bind) and link it to the other side (connect)."), ("소켓을 쓰기 전 거치는 과정이에요.", "The setup step before a socket can be used.")),
         ("포트 충돌", "Port conflict", ("이미 쓰는 호실을 또 쓰려는 것.", "Trying to use a room number that's already taken."), ("같은 호실은 중복으로 못 써요.", "The same room number can't be reused at once.")),
         ("방화벽", "Firewall", ("문이 많은 성벽.", "A wall with many doors."), ('특정 포트(호실)만 열어두는 식으로 소켓 접근을 막기도 해요. → <a href="firewall-ko.html">문이 많은 성벽</a>', "Sometimes blocks socket access by keeping only certain ports open. → <a href=\"firewall-en.html\">the wall with many doors</a>")),
         ("IPv6", "IPv6", ("훨씬 길어진 새 집 주소 체계.", "The far longer new house-address system."), ('소켓 주소의 집 부분(IP)이 이 체계로 바뀌어 가요. → <a href="ipv6-ko.html">끝없이 늘어난 새 번지수</a>', "The house part of a socket address is moving to this system. → <a href=\"ipv6-en.html\">the new, nearly endless address system</a>")),

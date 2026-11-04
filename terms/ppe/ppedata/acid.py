@@ -69,7 +69,7 @@ PAGE = {
         {"svg": P4, "alt": ("Atomicity, Consistency, Isolation, Durability 네 글자를 설명하는 표", "A table explaining the four letters: atomicity, consistency, isolation, durability"),
          "caption": ("ACID의 네 글자는 약속을 하나씩 뜻해요.", "Each of ACID's four letters stands for one promise."),
          "small": ("Isolation은 격리 수준으로 세밀하게 조절해요.", "Isolation is fine-tuned via isolation levels.")},
-        {"svg": P5, "alt": ("왼쪽: 온전한 전표가 믿을 수 있음을 보여줌. 오른쪽: 특급 출고대가 더 빠르지만 ACID를 다 지키진 않음", "Left: a full receipt shows it can be trusted. Right: the express desk is faster but doesn't fully keep ACID"),
+        {"svg": P5, "alt": ("왼쪽: 온전한 전표가 믿을 수 있음을 보여줌. 오른쪽: 특급 출고대는 더 빠를 수 있음", "Left: a full receipt shows it can be trusted. Right: the express desk can be faster"),
          "caption": ("ACID를 다 지키면 장부를 믿을 수 있지만, 전표 처리는 느려질 수 있어요.", "Fully keeping ACID makes the ledger trustworthy, but receipt processing can slow down."),
          "small": ("장부 안전과 처리 속도는 종종 맞바꿔야 해요.", "Ledger safety and processing speed often trade off.")},
     ],
@@ -85,6 +85,6 @@ PAGE = {
         ("지속성(Durability)", "Durability", ("도장 찍히면 사라지지 않는 것.", "Once stamped, it never disappears."), ("도장 찍힌 기록은 정전이 나도 장부에 남아요.", "Stamped records survive even a power outage.")),
         ("병행제어", "Concurrency Control", ("동시에 손대도 안 부딪히게 막는 방법.", "The method that stops simultaneous edits colliding."), ('ACID의 I(고립성)를 실제로 구현하는 방법이에요. → <a href="concurrency-ko.html">동시에 안 부딪히는 규칙</a>', 'How isolation is actually implemented. → <a href="concurrency-en.html">the no-collision rule</a>')),
         ("인메모리 DB", "In-Memory DB", ("디스크 대신 바로 꺼내는 출고대.", "A desk that skips the deep shelf and serves from memory."), ('속도를 위해 지속성을 일부 타협하기도 해요. → <a href="inmemorydb-ko.html">특급 출고대</a>', 'Sometimes trades off durability for speed. → <a href="inmemorydb-en.html">the express pickup desk</a>')),
-        ("NoSQL 모델링", "NoSQL Modeling", ("상자 모양에 맞춰 선반을 바꾸는 창고.", "A warehouse reshaping shelves to fit the box."), ('보통 ACID를 관계형 창고만큼 엄격히 지키지 않아요. → <a href="nosqltype-ko.html">자유로운 선반 창고</a>', "Usually doesn't keep ACID as strictly as the relational warehouse. → <a href=\"nosqltype-en.html\">the free-shelf warehouse</a>")),
+        ("NoSQL 모델링", "NoSQL Modeling", ("상자 모양에 맞춰 선반을 바꾸는 창고.", "A warehouse reshaping shelves to fit the box."), ('ACID를 관계형 창고만큼 엄격히 지키지 않는 제품이 많아요. → <a href="nosqltype-ko.html">자유로운 선반 창고</a>', "Many products don't keep ACID as strictly as the relational warehouse. → <a href=\"nosqltype-en.html\">the free-shelf warehouse</a>")),
     ],
 }

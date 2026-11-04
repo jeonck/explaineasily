@@ -46,11 +46,11 @@ P4 = svg(340, sky(340, ground=False)
          + label(530, 230, "⟦아이디어|Ideate⟧", 13, "var(--ink)", cls="d")
          + label(205, 230, "⟦시제품|Prototype⟧", 13, "var(--ink)", cls="d")
          + label(250, 110, "⟦테스트|Test⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦다섯 단계를 한 바퀴 돌면, 독자를 다시 만나는 공감 단계로 돌아가요|after all five stages, the loop returns to empathy — meeting readers again⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦테스트 결과에 따라 앞 단계로 되돌아가, 독자를 다시 만나기도 해요|test results send the team back to earlier stages, even to meeting readers again⟧", 12, "var(--muted)"))
 
 # 5. 디자인씽킹이 전부를 대신하진 않아요
 P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
-         + person(190, 130, s=0.8, face=SMILE, **EDITOR) + label(190, 260, "⟦'뭘 쓸지' 찾는 데 쓰는 방법이에요|a method for finding what to write⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.8, face=SMILE, **EDITOR) + label(190, 260, "⟦디자인씽킹은 '뭘 쓸지' 찾는 방법이에요|design thinking finds what to write⟧", 11, "var(--ink)")
          + person(570, 130, s=0.8, face=EYES, **PRINTER) + inkstamp(570, 200, 0.5)
          + label(570, 260, "⟦그 뒤 일정·품질 관리는 또 다른 몫이에요|schedule and quality after that are a separate job⟧", 11, "var(--ink)")
          + label(380, 305, "⟦디자인씽킹은 무엇을 쓸지 찾는 방법이지, 모든 공정을 대신하진 않아요|design thinking finds what to write — it doesn't replace every other step⟧", 12, "var(--ink)", cls="d"))
@@ -78,23 +78,23 @@ PAGE = {
              (PROTOTYPE_I, ("싼 시제품으로 먼저 보여주기", "Prototype, then test"), ("독자 반응을 보고 시제품을 다시 고쳐요", "show readers, watch their reaction, rework the prototype")),
          ])},
         {"svg": P4, "alt": ("공감·정의·아이디어·시제품·테스트 다섯 단계가 원을 그리며 돌아감", "Five stages — empathize, define, ideate, prototype, test — looping in a circle"),
-         "caption": ("다섯 단계가 원을 그리며 돌고 돌아요.", "Five stages loop around in a circle."),
-         "small": ("다섯 단계를 한 바퀴 돌면, 독자를 다시 만나는 공감 단계로 돌아가요.", "After all five stages, the loop returns to empathy — meeting readers again.")},
+         "caption": ("다섯 단계는 한 번 순서대로 돌고 끝나지 않고, 필요하면 앞 단계로 되돌아가며 반복해요.", "The five stages don't run just once in order — the team loops back to earlier ones as needed."),
+         "small": ("테스트 결과에 따라 앞 단계로 되돌아가, 독자를 다시 만나기도 해요.", "Test results send the team back to earlier stages, even to meeting readers again.")},
         {"svg": P5, "alt": ("왼쪽: 디자인씽킹은 뭘 쓸지 찾는 방법. 오른쪽: 그 뒤 일정·품질 관리는 별개", "Left: design thinking finds what to write. Right: schedule and quality management afterward is separate"),
          "caption": ("디자인씽킹이 출판 공정 전부를 대신하진 않아요.", "Design thinking doesn't replace the whole publishing process."),
          "small": ("디자인씽킹은 무엇을 쓸지 찾는 방법이지, 모든 공정을 대신하진 않아요.", "Design thinking finds what to write — it doesn't replace every other step.")},
     ],
     "summary": (("<b>디자인 씽킹</b> = 책상 추측 대신 <b>독자를 직접 만나</b>, 공감·정의·아이디어·시제품·테스트를 <b>돌고 도는</b> 문제 해결법.",
                  "<b>Design thinking</b> is a problem-solving method that <b>meets readers directly</b> instead of guessing at a desk, <b>looping</b> through empathize, define, ideate, prototype, and test."),
-                ("디자인 씽킹은 사용자(독자) 공감에서 출발해, 문제를 재정의하고, 많은 아이디어를 내고, 값싼 시제품을 만들어, 실제 사용자에게 테스트한 뒤 다시 공감 단계로 돌아가는 사람 중심·반복적 설계 방법론이에요. 결과물을 어떻게 만들지보다, 무엇을 만들어야 하는지를 먼저 찾는 데 집중해요.",
-                 "Design thinking is a human-centered, iterative method that starts by empathizing with users, redefines the problem, generates many ideas, builds a cheap prototype, tests it with real users, then loops back to empathy. It focuses on finding what to build before deciding how to build it.")),
+                ("디자인 씽킹은 사용자(독자) 공감에서 출발해, 문제를 재정의하고, 많은 아이디어를 내고, 값싼 시제품을 만들어, 실제 사용자에게 테스트하고, 결과에 따라 앞 단계로 되돌아가는 사람 중심·반복적 설계 방법론이에요. 이 다섯 단계 구분은 스탠퍼드 d.school 모델로 널리 알려졌어요. 결과물을 어떻게 만들지보다, 무엇을 만들어야 하는지를 먼저 찾는 데 집중해요.",
+                 "Design thinking is a human-centered, iterative method that starts by empathizing with users, redefines the problem, generates many ideas, builds a cheap prototype, tests it with real users, then loops back to earlier stages based on the results. This five-stage breakdown is best known from the Stanford d.school model. It focuses on finding what to build before deciding how to build it.")),
     "glossary": [
         ("디자인씽킹", "Design Thinking", ("추측 대신 독자를 직접 만나는 문제 해결법.", "A problem-solving method that meets readers directly instead of guessing."), ("다섯 단계를 돌고 또 돌아요.", "It loops through five stages, again and again.")),
         ("공감(Empathize)", "Empathize", ("독자를 직접 만나는 첫 단계.", "The first stage — meeting the reader in person."), ("책상 추측을 멈추는 지점이에요.", "This is where desk-guessing stops.")),
         ("문제 정의(Define)", "Define", ("독자가 진짜 헷갈리는 지점을 다시 짚는 단계.", "The stage of pinning down what really confuses readers."), ("'좋은 책'이 아니라 구체적인 문제로 좁혀요.", "It narrows 'a good book' down to one concrete problem.")),
         ("아이디어 발산(Ideate)", "Ideate", ("일단 많이 쏟아내는 단계.", "The stage of throwing out as many ideas as possible."), ("아이디어의 좋고 나쁨은 나중에 걸러요.", "Good and bad ideas get sorted out later.")),
         ("프로토타입(Prototype)", "Prototype", ("싼값에 빨리 만든 샘플 페이지.", "A cheap, quickly made sample page."), ("완성본이 아니라 독자 반응을 확인하는 용도예요.", "It's for checking reader reactions, not for shipping.")),
-        ("요구공학", "Requirements Engineering", ("쓰기 전에 먼저 묻는, 더 체계적인 절차.", "A more systematic process of asking before writing."), ('디자인씽킹의 공감·정의를 더 깊게 파고들어요. → <a href="reqeng-ko.html">쓰기 전에 먼저 묻는 사람</a>', 'It digs deeper into the empathize/define stages. → <a href="reqeng-en.html">the one who asks before writing</a>')),
+        ("요구공학", "Requirements Engineering", ("쓰기 전에 먼저 묻는, 더 체계적인 절차.", "A more systematic process of asking before writing."), ('디자인씽킹의 공감·정의와 닿아 있고, 요구를 명세로 적고 검증하는 데까지 가요. → <a href="reqeng-ko.html">쓰기 전에 먼저 묻는 사람</a>', 'It overlaps with empathize/define, and goes on to write requirements down and verify them. → <a href="reqeng-en.html">the one who asks before writing</a>')),
         ("A/B 테스트", "A/B Test", ("두 안 중 뭐가 더 잘 통하는지 숫자로 재는 시험.", "A test that measures, with numbers, which of two options works better."), ('디자인씽킹의 테스트 단계를 통계적으로 더 깊게 들어가요. → <a href="hypothesistest-ko.html">두 표지 중 뭐가 진짜 더 잘 팔릴까</a>', "It goes deeper into the test stage with statistics. → <a href=\"hypothesistest-en.html\">which cover really sells better</a>")),
         ("사용성평가", "Usability Test", ("시제품을 실제로 써보게 하고 지켜보는 일.", "Having people actually try the prototype and watching them."), ('테스트 단계에서 자주 같이 써요. → <a href="usability-ko.html">독자가 책을 쓱 넘겨보는 시험</a>', 'Often paired with the test stage. → <a href="usability-en.html">the test where a reader just tries the book cold</a>')),
     ],

@@ -27,7 +27,7 @@ P3 = svg(340, sky(340)
          + person(330, 210, s=0.7, face=SMILE, **READER)
          + styleguide(70, 90, 220, 160, "⟦표준 신청서식|STANDARD REQUEST FORM⟧",
                       ("⟦무엇을: 분야·범위|what: topic and scope⟧", "⟦어떻게: 정해진 형식으로|how: in the fixed format⟧", "⟦받기: 바로 자동으로|get it: automatically, right away⟧"), 0.95)
-         + label(380, 325, "⟦이 서식대로만 쓰면, 누구나 바로 자료를 빌려볼 수 있어요|fill out this one form, and anyone can borrow the data right away⟧", 12, "var(--muted)"))
+         + label(380, 325, "⟦이 서식대로 쓰면, 누구나 같은 방법으로 자료를 빌려볼 수 있어요|fill out this one form, and anyone can borrow the data the same way⟧", 12, "var(--muted)"))
 
 PAGE = {
     "slug": "openapi", "order": 21,
@@ -44,7 +44,7 @@ PAGE = {
          "small": ("편집장이 하나하나 다시 확인해야 해서 느려요.", "The editor has to check each one by hand — slow going.")},
         {"svg": P3, "hero": True, "alt": ("표준 신청서식 안내판 앞에서 독자가 웃으며 서가를 바라봄", "A reader smiles toward the shelf, standing before a sign showing the standard request form"),
          "caption": ("개방형 API는 표준 신청서식을 공개한 열람실이에요.", "An Open API is a reading room whose request form is published as a standard."),
-         "small": ("이 서식대로만 쓰면, 누구나 바로 자료를 빌려볼 수 있어요.", "Fill out this one form, and anyone can borrow the data right away."),
+         "small": ("이 서식대로 쓰면, 누구나 같은 방법으로 자료를 빌려볼 수 있어요.", "Fill out this one form, and anyone can borrow the data the same way."),
          "tricks": (4, [
              (FORM_I, ("신청서식 표준화", "Standardize the form"), ("요청 방법을 미리 정해 공개해요", "the request format is fixed and published"), "calm"),
              (DESK_I, ("열람 창구 열기", "Open a reading desk"), ("서식대로 오면 누구나 받아줘요", "anyone using the form gets served")),
@@ -55,7 +55,7 @@ PAGE = {
                     + styleguide(60, 30, 640, 250, "⟦신청서식 명세서|THE REQUEST FORM SPEC⟧",
                                  ("⟦요청 항목: 어떤 자료를, 어떤 조건으로|request fields: which data, under what conditions⟧",
                                   "⟦응답 형식: 정해진 모양으로 돌려줘요|response format: comes back in a fixed shape⟧",
-                                  "⟦이용키: 신청하면 자동으로 발급|usage key: issued automatically on request⟧",
+                                  "⟦이용키: 신청해서 승인받으면 발급|usage key: issued once your request is approved⟧",
                                   "⟦이 명세서만 보면, 우리 내부 코드를 몰라도 자료를 신청할 수 있어요|read just this spec, and you can request data without seeing our internal code⟧"), 1.0)),
          "alt": ("요청 항목, 응답 형식, 이용키 발급 절차를 적은 신청서식 명세서", "A spec sheet listing request fields, response format, and the usage-key issuing process"),
          "caption": ("신청서식 명세서 하나로 누구나 자료를 신청할 수 있어요.", "One spec sheet for the request form lets anyone ask for data."),
@@ -76,11 +76,11 @@ PAGE = {
     "glossary": [
         ("개방형 API", "Open API", ("표준 서식 하나로 연 열람실.", "The reading room opened with one standard form."), ("누구나 같은 방식으로 자료를 요청해요.", "Anyone can request data the same way.")),
         ("API 명세(스펙)", "API Specification", ("신청서식 그 자체를 적은 문서.", "The document that writes down the request form itself."), ('OpenAPI(Swagger) 같은 표준으로 적어요.', 'Written using a standard like OpenAPI (Swagger).')),
-        ("이용키(인증키)", "API Key", ("누가 빌려 가는지 확인하는 열쇠.", "The key that confirms who's borrowing."), ("신청하면 자동으로 발급돼요.", "Issued automatically once you apply.")),
-        ("공공데이터포털", "Public Data Portal", ("정부가 연 가장 큰 열람실.", "The government's biggest reading room of all."), ("수많은 기관의 개방형 API가 여기 모여 있어요.", "Open APIs from many agencies are gathered here.")),
+        ("이용키(인증키)", "API Key", ("누가 빌려 가는지 확인하는 열쇠.", "The key that confirms who's borrowing."), ("신청이 승인되면 발급돼요.", "Issued once your application is approved.")),
+        ("공공데이터포털", "Public Data Portal", ("정부가 여러 기관 자료를 모아 연 열람실.", "The reading room the government opened, gathering many agencies' data."), ("수많은 기관의 개방형 API가 여기 모여 있어요.", "Open APIs from many agencies are gathered here.")),
         ("데이터 표준화", "Data Standardization", ("응답 모양을 다 같이 맞추는 것.", "Making the response shape the same for everyone."), ("응답 모양이 제각각이면, 서식이 있어도 받은 자료를 쓰기 어려워요.", "Even with a form, responses in mismatched shapes are hard to use.")),
         ("API 게이트웨이", "API Gateway", ("몰려드는 요청을 실제로 다루는 안내소.", "The booth that actually handles the flood of requests."), ('개방형 API는 정책, 게이트웨이는 그 요청을 다루는 인프라예요 → <a href="apigateway-ko.html">정문 안내소</a>.', 'Open API is the policy; the gateway is the infrastructure that handles the requests → <a href="apigateway-en.html">the front gate information booth</a>.')),
         ("EIF(외부연계파일)", "External Interface File", ("다른 출판사 자료를 참고하는 연결점.", "The connection point for referencing another publisher's data."), ('규모를 잴 때 이 연결도 하나로 세어요 → <a href="fpruler-ko.html">쪽수 대신 기능을 재는 자</a>.', 'This kind of link gets counted too, when sizing up the work → <a href="fpruler-en.html">the ruler that measures functions, not pages</a>.')),
-        ("이용 쿼터", "Usage Quota", ("한 열쇠로 하루에 빌릴 수 있는 한도.", "The daily limit on how much one key can borrow."), ("너무 많이 요청하면 그날은 더 못 빌려요.", "Ask too much, and that key is done for the day.")),
+        ("이용 쿼터", "Usage Quota", ("한 열쇠로 정해진 기간(흔히 하루)에 빌릴 수 있는 한도.", "The limit on how much one key can borrow in a set period, often a day."), ("한도를 넘게 요청하면 그 기간에는 더 못 빌려요.", "Go over the limit, and that key is done for the period.")),
     ],
 }

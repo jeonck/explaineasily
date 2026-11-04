@@ -17,8 +17,8 @@ P2 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="
 # 3. hero: 전송계층 = 창구 번호를 나누고 등기/일반우편을 고르는 단계
 P3 = svg(340, sky(340)
          + person(380, 110, s=0.9, face=EYES, **CLERK)
-         + envelope(220, 210, 0.6, text="80") + envelope(380, 230, 0.6, registered=True, text="21")
-         + envelope(540, 210, 0.6, text="443")
+         + envelope(220, 210, 0.6, registered=True, text="80") + envelope(380, 230, 0.6, text="53")
+         + envelope(540, 210, 0.6, registered=True, text="443")
          + label(380, 30, "⟦전송계층 = 창구 번호를 나누고, 등기냐 일반우편이냐를 고르는 단계|the transport layer = splitting counters by number, and choosing registered vs plain mail⟧", 12, "var(--ink)", cls="d")
          + label(380, 320, "⟦전송계층은 동네까지 온 봉투를 정확한 창구와 방식으로 넘겨줘요|this layer hands the envelope — once it's in the right town — to the right counter, the right way⟧", 12, "var(--muted)"))
 
@@ -54,7 +54,7 @@ PAGE = {
         {"svg": P2, "alt": ("왼쪽에 등기 봉투, 오른쪽에 일반 봉투가 각각 확실함과 속도를 설명함", "A registered envelope on the left and a plain one on the right, explaining certainty versus speed"),
          "caption": ("확실함(등기)과 속도(일반우편) 중 하나를 골라야 해요.", "You have to choose between certainty (registered) and speed (plain)."),
          "small": ("확실함과 속도, 둘 다 가질 순 없어요.", "You can't have both certainty and speed at once.")},
-        {"svg": P3, "hero": True, "alt": ("우체국장이 창구 번호 80, 21(등기), 443으로 봉투를 나눠 보냄", "A clerk routes envelopes to counters 80, 21 (registered), and 443"),
+        {"svg": P3, "hero": True, "alt": ("우체국장이 창구 번호 80(등기), 53(일반), 443(등기)으로 봉투를 나눠 보냄", "A clerk routes envelopes to counters 80 (registered), 53 (plain), and 443 (registered)"),
          "caption": ("전송계층 = 창구 번호를 나누고 등기·일반우편을 고르는 단계예요.", "The transport layer = splitting by counter number and choosing registered vs plain."),
          "small": ("전송계층은 동네까지 온 봉투를 정확한 창구와 방식으로 넘겨줘요.", "The transport layer hands the envelope to the right counter, the right way, once it's in the right town."),
          "tricks": (4, [
@@ -64,7 +64,7 @@ PAGE = {
              (I4, ("흐름 제어", "Flow Control"), ("상대 속도에 맞춰요", "matches the other side's pace")),
          ])},
         {"svg": P4, "alt": ("전송계층이 하는 일 안내판: 포트 구분, 신뢰도 선택, 분할·재조립, 흐름·혼잡 제어 네 줄", "A guide board listing port separation, reliability choice, segmentation, and flow/congestion control"),
-         "caption": ("전송계층은 이 네 가지 일을 해요.", "The transport layer does these four jobs."),
+         "caption": ("전송계층은 포트 구분·신뢰도 선택·분할과 재조립·흐름과 혼잡 제어를 맡아요.", "The transport layer handles port separation, reliability choice, segmentation, and flow and congestion control."),
          "small": ("보내는 쪽은 받는 쪽이나 길이 못 버티면 속도를 늦춰요.", "The sender slows down when the receiver or the road can't keep up.")},
         {"svg": P5, "alt": ("왼쪽: 창구와 방식은 전송계층이 정함. 오른쪽: 동네까지 가는 길은 네트워크계층(라우팅)의 몫", "Left: the transport layer picks the counter and method. Right: the route to town is the network layer's job"),
          "caption": ("전송계층이 길(라우팅) 자체를 정하진 않아요.", "The transport layer doesn't decide the route itself."),
@@ -72,8 +72,8 @@ PAGE = {
     ],
     "summary": (("<b>전송계층</b> = 동네(주소)까지 온 봉투를 <b>창구 번호(포트)</b>로 나누고, <b>등기(TCP)·일반우편(UDP)</b> 중 방식을 고르는 단계.",
                  "<b>The transport layer</b> = the stage that splits envelopes arriving in town by <b>counter number (port)</b> and chooses between <b>registered (TCP)</b> and <b>plain (UDP)</b> mail."),
-                ("전송계층(OSI 4계층)은 포트 번호로 같은 호스트 안의 여러 서비스를 구분하고, TCP(연결지향·신뢰성)나 UDP(비연결·속도) 중 하나로 데이터를 주고받으며, 필요하면 데이터를 세그먼트로 나누고 흐름·혼잡 제어로 보내는 속도를 조절해요. 목적지(주소)를 정하는 네트워크계층과는 역할이 구분돼요.",
-                 "The transport layer (OSI Layer 4) distinguishes multiple services on the same host by port number, exchanges data via either TCP (connection-oriented, reliable) or UDP (connectionless, fast), splits data into segments when needed, and regulates the sending rate through flow and congestion control. Its role is distinct from the network layer, which decides the destination address.")),
+                ("전송계층(OSI 4계층)은 포트 번호로 같은 호스트 안의 여러 서비스를 구분하고, TCP(연결지향·신뢰성)나 UDP(비연결·속도) 중 하나로 데이터를 주고받으며, TCP라면 데이터를 세그먼트로 나누고 흐름·혼잡 제어로 보내는 속도도 조절해요. 목적지(주소)를 정하는 네트워크계층과는 역할이 구분돼요.",
+                 "The transport layer (OSI Layer 4) distinguishes multiple services on the same host by port number, exchanges data via either TCP (connection-oriented, reliable) or UDP (connectionless, fast), and, with TCP, also splits data into segments and regulates the sending rate through flow and congestion control. Its role is distinct from the network layer, which decides the destination address.")),
     "glossary": [
         ("포트 번호", "Port Number", ("동네 안 몇 번 창구인지.", "Which counter inside the town."), ("같은 주소 안 서비스를 구분해요.", "Distinguishes services at the same address.")),
         ("TCP", "TCP", ("도착을 확인받는 등기 봉투.", "The registered envelope, with delivery confirmed."), ("연결지향적이고 신뢰성이 높아요.", "Connection-oriented and highly reliable.")),

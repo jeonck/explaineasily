@@ -82,8 +82,8 @@ PAGE = {
     ],
     "summary": (("<b>사용성평가</b> = 독자에게 책을 <b>그대로 줘보고</b>, 설명 없이 <b>어디서 헤매는지</b> 조용히 지켜보는 시험.",
                  "<b>Usability testing</b> means <b>handing the book over as-is</b> and quietly watching <b>where the reader gets stuck</b>, with no instructions given."),
-                ("사용성평가는 실제 사용자가 제품을 사용하는 모습을 관찰해 학습 용이성·효율성·기억 용이성·오류·만족도 등을 평가하는 방법이에요. 오탈자나 기능 오류를 잡는 품질보증(QA)과 달리, '맞는지'가 아니라 '쓰기 편한지'를 판단하는 사용자 중심 평가예요.",
-                 "Usability testing observes real users as they use a product, assessing learnability, efficiency, memorability, errors, and satisfaction. Unlike QA, which catches typos and functional bugs, it's a user-centered evaluation of whether something is easy to use — not whether it's correct.")),
+                ("사용성평가는 실제 사용자에게 과제를 주고 제품 쓰는 모습을 관찰해 학습 용이성·효율성·기억 용이성·오류·만족도 등을 평가하는 방법이에요. 전문가가 기준표로 살펴보는 휴리스틱 평가도 넓게는 여기에 들어가요. 오탈자나 기능 오류를 잡는 품질관리(QC)와 달리, '맞는지'가 아니라 '쓰기 편한지'를 판단하는 사용자 중심 평가예요.",
+                 "Usability testing gives real users tasks and observes them using a product, assessing learnability, efficiency, memorability, errors, and satisfaction. Broader usability evaluation also includes heuristic evaluation, where experts review a product against a checklist. Unlike QC, which catches typos and functional bugs, it's a user-centered evaluation of whether something is easy to use — not whether it's correct.")),
     "glossary": [
         ("사용성평가", "Usability Test", ("설명 없이 써보게 하고 지켜보는 시험.", "A test that hands something over with no instructions and watches."), ("책이 쓰기 편한지를 봐요.", "It checks whether the product itself is easy to use.")),
         ("학습 용이성(Learnability)", "Learnability", ("처음 봐도 금방 쓰는 법을 아는 정도.", "How quickly someone figures out how to use it the first time."), ("설명서 없이도 통하는 게 좋아요.", "Ideally it works without a manual.")),
@@ -91,7 +91,7 @@ PAGE = {
         ("기억 용이성(Memorability)", "Memorability", ("나중에 다시 써도 안 헤매는 정도.", "How little someone struggles coming back later."), ("오랜만에 봐도 쓰는 법이 금방 떠올라요.", "How to use it comes back quickly even after a long gap.")),
         ("만족도(Satisfaction)", "Satisfaction", ("쓰고 난 뒤의 기분.", "How someone feels after using it."), ("설문이나 인터뷰로 물어봐요.", "Usually gathered with a survey or interview.")),
         ("오류율(Errors)", "Errors", ("쓰다가 실수하는 횟수와 심각도.", "How often mistakes happen, and how serious they are."), ("다섯 번째 속성으로 자주 같이 봐요.", "Often tracked as a fifth attribute alongside the rest.")),
-        ("교정(QA)", "QA / Proofing", ("오탈자와 기능 오류를 잡는 일.", "Catching typos and functional mistakes."), ("'맞는지'를 보는 거라, '편한지'를 보는 사용성평가와 역할이 달라요.", "It checks correctness — a different job from usability, which checks ease of use.")),
+        ("교정(QC)", "QC / Proofing", ("오탈자와 기능 오류를 잡는 일.", "Catching typos and functional mistakes."), ("'맞는지'를 보는 거라, '편한지'를 보는 사용성평가와 역할이 달라요.", "It checks correctness — a different job from usability, which checks ease of use.")),
         ("SW 품질인증", "Software Quality Certification", ("심사표 항목 중 하나가 사용성이에요.", "Usability is one line item on a bigger checklist."), ('→ <a href="swcert-ko.html">책 표지의 공식 마크</a>', '→ <a href="swcert-en.html">the official mark on the cover</a>')),
     ],
 }

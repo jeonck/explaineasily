@@ -44,15 +44,15 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 P3 = svg(360, '<rect width="380" height="360" fill="var(--good-soft)"/><rect x="380" width="380" height="360" fill="var(--accent-soft)"/>'
          + label(190, 34, "⟦BLP — 비밀이 안 새게|BLP — no leaking secrets⟧", 14, "var(--ink)", cls="d")
          + person(140, 110, s=0.55, **HIGH) + person(140, 230, s=0.55, **LOW)
-         + blockarrow(170, 230, 170, 130) + label(80, 180, "⟦못 올려보기|no read up⟧", 11, "var(--bad)")
-         + blockarrow(120, 110, 120, 210) + label(230, 180, "⟦못 내려적기|no write down⟧", 11, "var(--bad)")
+         + blockarrow(170, 230, 170, 130) + label(230, 180, "⟦못 올려보기|no read up⟧", 11, "var(--bad)")
+         + blockarrow(120, 110, 120, 210) + label(70, 180, "⟦못 내려적기|no write down⟧", 11, "var(--bad)")
          + label(190, 312, "⟦기밀성 — 비밀을 지켜요|confidentiality — keeps secrets secret⟧", 12, "var(--ink)")
          + label(570, 34, "⟦Biba — 거짓이 안 섞이게|Biba — no corrupting the clean⟧", 14, "var(--ink)", cls="d")
          + person(520, 110, s=0.55, **HIGH) + person(520, 230, s=0.55, **LOW)
          + blockarrow(495, 110, 495, 210, ok=False) + label(420, 180, "⟦못 내려읽기|no read down⟧", 11, "var(--bad)")
          + blockarrow(545, 230, 545, 130, ok=False) + label(620, 180, "⟦못 올려적기|no write up⟧", 11, "var(--bad)")
          + label(570, 312, "⟦무결성 — 기록이 오염되지 않게 지켜요|integrity — keeps clean records clean⟧", 12, "var(--ink)")
-         + label(380, 338, "⟦같은 사다리, 서로 반대 방향의 규칙이에요|the same ladder, with mirror-image rules⟧", 13, "var(--ink)", cls="d"))
+         + label(380, 338, "⟦같은 모양의 사다리, 서로 반대 방향의 규칙이에요|same-shaped ladders, with mirror-image rules⟧", 13, "var(--ink)", cls="d"))
 
 UP_I = icon('<path d="M32 50 V16 M20 28 L32 14 L44 28" fill="none" stroke="var(--good)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>')
 DOWN_I = icon('<path d="M32 14 V48 M20 36 L32 50 L44 36" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>')
@@ -75,13 +75,13 @@ PAGE = {
          "small": ("낮은 등급이 위를 엿봐도, 높은 등급이 아래에 적어도 비밀이 새요. 비밀은 결국 낮은 등급으로 흘러가요.", "A low rank peeking up leaks the secret, and so does a high rank writing it down. Either way, the secret reaches lower ranks.")},
         {"svg": P3, "hero": True, "alt": ("왼쪽 BLP는 못 올려보기·못 내려적기로 비밀을 지키고, 오른쪽 Biba는 못 내려읽기·못 올려적기로 깨끗함을 지킴", "Left, BLP keeps secrets with no-read-up and no-write-down; right, Biba keeps things clean with no-read-down and no-write-up"),
          "caption": ("BLP와 Biba는 거꾸로 짝지은 두 규칙이에요.", "BLP and Biba are two rules, paired as mirror images."),
-         "small": ('BLP(1973)는 <a href="ciatriad-ko.html">기밀성</a>을, Biba(1977)는 <a href="ciatriad-ko.html">무결성</a>을 지켜요. 둘 다 같은 등급 사다리 위의 규칙이에요.',
-                   'BLP (1973) protects <a href="ciatriad-en.html">confidentiality</a>; Biba (1977) protects <a href="ciatriad-en.html">integrity</a>. Both are rules on the very same rank ladder.'),
+         "small": ('BLP(1973)는 <a href="ciatriad-ko.html">기밀성</a>을, Biba(1977)는 <a href="ciatriad-ko.html">무결성</a>을 지켜요. 사다리 모양은 같지만, BLP의 등급은 비밀 정도, Biba의 등급은 믿을 만한 정도예요.',
+                   'BLP (1973) protects <a href="ciatriad-en.html">confidentiality</a>; Biba (1977) protects <a href="ciatriad-en.html">integrity</a>. The ladders look alike, but BLP ranks measure secrecy and Biba ranks measure trustworthiness.'),
          "tricks": (4, [
              (UP_I, ("BLP: 못 올려보기", "BLP: no read up"), ("낮은 등급은 높은 비밀을 못 읽어요", "a low rank can't read a higher secret"), "calm"),
              (DOWN_I, ("BLP: 못 내려적기", "BLP: no write down"), ("높은 등급이 낮은 장부에 못 적어요", "a high rank can't write into a low ledger")),
              (MIRROR_I, ("Biba: 정반대", "Biba: the exact mirror"), ("못 내려읽기 + 못 올려적기", "no read down + no write up"), "warm"),
-             (EXAM_I, ("시험에 자주 나와요", "A frequent exam topic"), ("'BLP와 Biba의 차이'로 꼭 물어봐요", "almost always asked as the difference between them")),
+             (EXAM_I, ("둘을 짝지어 외워요", "Learn them as a pair"), ("차이를 규칙 방향으로 설명해 봐요", "explain the difference by each rule's direction")),
          ])},
         {"svg": svg(340, sky(340)
                     + '<rect x="40" y="30" width="680" height="260" rx="8" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><rect x="40" y="30" width="680" height="34" rx="8" fill="#C9A86A"/>'
@@ -89,31 +89,31 @@ PAGE = {
                     + "".join(f'<path d="M40 {64 + i * 75} h680" stroke="#C9A86A" stroke-width="1.5"/>' for i in range(1, 3))
                     + label(130, 100, "⟦BLP|BLP⟧", 14, "#142033", cls="d") + label(330, 92, "⟦못 올려보기(No Read Up)|no read up⟧", 11, "#142033") + label(330, 112, "⟦못 내려적기(No Write Down)|no write down⟧", 11, "#142033") + label(580, 100, "⟦기밀성|confidentiality⟧", 12, "#142033")
                     + label(130, 175, "⟦Biba|Biba⟧", 14, "#142033", cls="d") + label(330, 167, "⟦못 내려읽기(No Read Down)|no read down⟧", 11, "#142033") + label(330, 187, "⟦못 올려적기(No Write Up)|no write up⟧", 11, "#142033") + label(580, 175, "⟦무결성|integrity⟧", 12, "#142033")
-                    + label(130, 250, "⟦둘 다|both⟧", 14, "#142033", cls="d") + label(330, 250, "⟦같은 등급 사다리 위의 규칙|rules on the very same rank ladder⟧", 11, "#142033") + label(580, 250, "⟦MAC(강제적 접근통제)|MAC (mandatory access control)⟧", 11, "#142033")),
-         "alt": ("표: BLP — 못 올려보기+못 내려적기 / 기밀성, Biba — 못 내려읽기+못 올려적기 / 무결성, 둘 다 — 같은 사다리 위의 규칙 / MAC", "Table: BLP — no read up + no write down / confidentiality, Biba — no read down + no write up / integrity, Both — rules on the same ladder / MAC"),
+                    + label(130, 250, "⟦둘 다|both⟧", 14, "#142033", cls="d") + label(330, 250, "⟦같은 모양의 등급 사다리 규칙|rules on same-shaped rank ladders⟧", 11, "#142033") + label(580, 250, "⟦MAC(강제적 접근통제)|MAC (mandatory access control)⟧", 11, "#142033")),
+         "alt": ("표: BLP — 못 올려보기+못 내려적기 / 기밀성, Biba — 못 내려읽기+못 올려적기 / 무결성, 둘 다 — 같은 모양의 사다리 위 규칙 / MAC", "Table: BLP — no read up + no write down / confidentiality, Biba — no read down + no write up / integrity, Both — rules on same-shaped ladders / MAC"),
          "caption": ("네 가지 규칙을 나란히 보면 이래요.", "Side by side, here are the four rules."),
          "small": ("BLP는 비밀이 아래로 새는 걸, Biba는 거짓이 위로 섞이는 걸 막아요.", "BLP blocks a secret leaking downward; Biba blocks something untrustworthy creeping upward.")},
         {"svg": svg(330, sky(330)
                     + person(190, 125, s=0.85, **HIGH) + label(190, 260, "⟦BLP·Biba 규칙이 엄격해서 일상 업무에 쓰기 불편해요|the strict BLP/Biba rules make everyday work awkward⟧", 11, "var(--ink)")
-                    + person(560, 125, s=0.85, **MID) + label(560, 260, "⟦그래서 보통 역할 기반(RBAC)과 섞어 써요|so they're usually blended with role-based access (RBAC)⟧", 11, "var(--ink)")
-                    + label(380, 305, "⟦BLP·Biba는 군사·기밀 시스템에서 나온, MAC의 구체적인 규칙이에요|BLP and Biba were born in military and classified systems — the concrete rules behind MAC⟧", 12, "var(--ink)", cls="d")),
-         "alt": ("BLP·Biba 규칙이 엄격해 일상 업무에 쓰기 불편하고, 실제로는 RBAC와 섞어 씀. 군사·기밀 시스템에서 나온 MAC의 구체적 규칙", "The strict rules make daily use awkward, so in practice they're blended with RBAC. Born in military/classified systems as the concrete rules behind MAC"),
-         "caption": ("BLP·Biba는 엄격한 만큼, 실제론 다른 모델과 섞어 써요.", "Strict as they are, BLP and Biba are usually blended with other models in practice."),
-         "small": ('BLP·Biba가 바로 <a href="accesscontrolppe-ko.html">MAC</a>의 구체적인 규칙이에요. 회사 시스템은 보통 <a href="rbac-ko.html">RBAC</a>를 더 많이 써요.',
-                   'BLP and Biba are the concrete rules behind <a href="accesscontrolppe-en.html">MAC</a>. Most company systems lean more on <a href="rbac-en.html">RBAC</a> instead.')},
+                    + person(560, 125, s=0.85, **MID) + label(560, 260, "⟦그래서 역할 기반(RBAC)과 섞어 쓰기도 해요|so they're sometimes blended with role-based access (RBAC)⟧", 11, "var(--ink)")
+                    + label(380, 305, "⟦BLP·Biba는 군사·기밀 시스템에서 나온, MAC의 대표적인 규칙이에요|BLP and Biba were born in military and classified systems — leading rule sets for MAC⟧", 12, "var(--ink)", cls="d")),
+         "alt": ("BLP·Biba 규칙이 엄격해 일상 업무에 쓰기 불편하고, RBAC와 섞어 쓰기도 함. 군사·기밀 시스템에서 나온 MAC의 대표적 규칙", "The strict rules make daily use awkward, so they're sometimes blended with RBAC. Born in military/classified systems as leading rule sets for MAC"),
+         "caption": ("BLP·Biba는 엄격한 만큼, 다른 모델과 섞어 쓰기도 해요.", "Strict as they are, BLP and Biba are sometimes blended with other models."),
+         "small": ('BLP·Biba는 <a href="accesscontrolppe-ko.html">MAC</a>을 구체적인 규칙으로 풀어 쓴 대표 모델이에요. 회사 시스템은 보통 <a href="rbac-ko.html">RBAC</a>를 더 많이 써요.',
+                   'BLP and Biba are leading models that spell out <a href="accesscontrolppe-en.html">MAC</a> as concrete rules. Most company systems lean more on <a href="rbac-en.html">RBAC</a> instead.')},
     ],
     "summary": (("<b>BLP</b>는 등급 사다리에서 <b>못 올려보고(no read up) 못 내려적어서(no write down)</b> 비밀이 새지 않게 하고, <b>Biba</b>는 정반대로 <b>못 내려읽고 못 올려적어서</b> 거짓이 섞이지 않게 해요.",
                  "<b>BLP</b> keeps a secret from leaking by letting nobody <b>read up or write down</b> the rank ladder; <b>Biba</b> mirrors it exactly, letting nobody <b>read down or write up</b>, to keep clean records clean."),
-                ("Bell-LaPadula(BLP, 1973)는 기밀성을 지키는 MAC 모델로 No Read Up/No Write Down을 강제해요. Biba(1977)는 무결성을 지키는 모델로 No Read Down/No Write Up을 강제해, 신뢰도 낮은 주체가 높은 등급의 자료를 오염시키지 못하게 해요. 둘 다 등급(레이블) 기반 강제적 접근통제(MAC)의 구체적인 수학적 규칙이고, 군사·정부 기밀 시스템에서 비롯됐어요.",
-                 "Bell-LaPadula (BLP, 1973) is a confidentiality-focused MAC model enforcing No Read Up / No Write Down. Biba (1977) is an integrity-focused model enforcing No Read Down / No Write Up, so a lower-trust subject can never corrupt higher-ranked data. Both are the concrete, formal mathematical rules behind label-based Mandatory Access Control (MAC), originating in military and government classified systems.")),
+                ("Bell-LaPadula(BLP, 1973)는 기밀성을 지키는 MAC 모델로 No Read Up/No Write Down을 강제해요. Biba(1977)는 무결성을 지키는 모델로 No Read Down/No Write Up을 강제해, 신뢰도 낮은 주체가 높은 등급의 자료를 오염시키지 못하게 해요. Biba의 등급은 비밀 등급이 아니라 따로 매기는 무결성 등급이에요. 둘 다 등급(레이블) 기반 강제적 접근통제(MAC)를 수학적 규칙으로 풀어 쓴 대표 모델이고, 군사·정부 기밀 시스템에서 비롯됐어요.",
+                 "Bell-LaPadula (BLP, 1973) is a confidentiality-focused MAC model enforcing No Read Up / No Write Down. Biba (1977) is an integrity-focused model enforcing No Read Down / No Write Up, so a lower-trust subject can never corrupt higher-ranked data. Biba's ranks are separate integrity levels, not secrecy levels. Both are leading formal models that spell out label-based Mandatory Access Control (MAC) as mathematical rules, originating in military and government classified systems.")),
     "glossary": [
         ("BLP", "Bell-LaPadula", ("기밀이 안 새게 하는 규칙.", "The rule that keeps a secret from leaking."), ("못 올려보기 + 못 내려적기로 기밀성을 지켜요.", "No read up + no write down, protecting confidentiality.")),
         ("Biba", "Biba", ("거짓이 안 섞이게 하는 규칙.", "The rule that keeps something untrustworthy from creeping in."), ("못 내려읽기 + 못 올려적기로 무결성을 지켜요.", "No read down + no write up, protecting integrity.")),
         ("No Read Up", "No Read Up", ("낮은 등급이 높은 비밀을 못 읽어요.", "A low rank can't read a higher secret."), ("BLP의 첫 번째 규칙이에요.", "BLP's first rule.")),
         ("No Write Down", "No Write Down", ("높은 등급이 낮은 장부에 못 적어요.", "A high rank can't write into a lower ledger."), ("BLP의 두 번째 규칙이에요.", "BLP's second rule.")),
         ("No Read Down / No Write Up", "No Read Down / No Write Up", ("Biba의 정반대 규칙 한 쌍.", "Biba's mirror-image pair of rules."), ("무결성을 지키기 위해 BLP와 반대 방향으로 막아요.", "Blocks the opposite direction from BLP, to protect integrity instead.")),
-        ("MAC", "Mandatory Access Control", ("왕의 등급표, 아무도 못 바꿔요.", "The king's rank-list — nobody can override it."), ('BLP/Biba는 이 MAC을 실제로 구현하는 구체적 규칙이에요. → <a href="accesscontrolppe-ko.html">열쇠 주인을 정하는 세 가지 방식</a>', 'BLP/Biba are the concrete rules that actually implement MAC. → <a href="accesscontrolppe-en.html">three ways to decide who holds the key</a>')),
+        ("MAC", "Mandatory Access Control", ("왕의 등급표, 주인도 못 바꿔요.", "The king's rank-list — not even the owner can override it."), ('BLP/Biba는 이 MAC을 구체적인 규칙으로 풀어 쓴 대표 모델이에요. → <a href="accesscontrolppe-ko.html">열쇠 주인을 정하는 세 가지 방식</a>', 'BLP/Biba are leading models that spell out MAC as concrete rules. → <a href="accesscontrolppe-en.html">three ways to decide who holds the key</a>')),
         ("기밀성 · 무결성", "Confidentiality · Integrity", ("못 보게 · 못 바꾸게.", "No peeking · no tampering."), ('CIA 3요소 중 두 가지예요. → <a href="ciatriad-ko.html">지키는 것 세 가지</a>', 'Two of the three legs of the CIA triad. → <a href="ciatriad-en.html">three things to keep</a>')),
-        ("RBAC", "RBAC", ("실제 조직이 BLP·Biba보다 더 많이 쓰는 모델.", "The model real organizations lean on more than BLP/Biba."), ('BLP/Biba는 엄격해서, 보통 역할 기반과 섞어 써요. → <a href="rbac-ko.html">모자마다 열쇠 꾸러미</a>', 'BLP/Biba are strict enough that they\'re usually blended with role-based rules. → <a href="rbac-en.html">a key ring for every hat</a>')),
+        ("RBAC", "RBAC", ("실제 조직이 BLP·Biba보다 더 많이 쓰는 모델.", "The model real organizations lean on more than BLP/Biba."), ('BLP/Biba는 엄격해서, 역할 기반과 섞어 쓰기도 해요. → <a href="rbac-ko.html">모자마다 열쇠 꾸러미</a>', 'BLP/Biba are strict enough that they\'re sometimes blended with role-based rules. → <a href="rbac-en.html">a key ring for every hat</a>')),
     ],
 }

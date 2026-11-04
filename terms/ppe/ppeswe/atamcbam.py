@@ -57,7 +57,7 @@ PAGE = {
                      + label(380, 300, "⟦CBAM = ATAM에서 찾은 옵션에 비용과 이득을 숫자로 더해 저울질하는 단계|CBAM = the step that adds cost and benefit numbers to weigh the options ATAM found⟧", 12, "var(--ink)")),
          "alt": ("저렴한 제본(옵션 A)과 유연한 제본(옵션 B)의 비용·전환성·속도를 숫자로 비교", "Comparing a cheap binding (Option A) and a flexible binding (Option B) by cost, convertibility, and speed"),
          "caption": ("ATAM에서 찾은 옵션에 비용과 이득까지 숫자로 따지면 CBAM이에요.", "Put cost and benefit numbers on the options ATAM found, and it becomes CBAM."),
-         "small": ("옵션 A와 B 중 어느 쪽이 \'더 남는 장사\'인지 숫자로 비교해요.", "CBAM compares, in numbers, whether Option A or B pays off more.")},
+         "small": ("CBAM은 옵션 A와 B 중 어느 쪽이 \'더 남는 장사\'인지 숫자로 비교해요.", "CBAM compares, in numbers, whether Option A or B pays off more.")},
         {"svg": svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--good-soft)"/>'
                      + person(190, 130, s=0.8, face=EYES, **PRINTER) + label(190, 260, "⟦평가를 하면 어떤 위험이 있는지 다들 알게 돼요|the evaluation shows everyone the risks⟧", 11, "var(--ink)")
                      + person(570, 130, s=0.8, face=EYES, **EDITOR) + label(570, 260, "⟦결정은 결국 편집장 몫이에요|the final call is still the editor's⟧", 11, "var(--ink)")
@@ -77,7 +77,7 @@ PAGE = {
         ("민감점(Sensitivity Point)", "Sensitivity Point", ("한 결정이 품질에 크게 영향을 주는 지점.", "A spot where one decision swings quality a lot."), ("ATAM이 특히 주목하는 지점이에요.", "A spot ATAM pays special attention to.")),
         ("트레이드오프점", "Trade-off Point", ("하나를 얻으면 다른 걸 잃는 지점.", "A spot where gaining one thing costs another."), ("민감점이 여러 품질에 걸쳐 있으면 트레이드오프점이 돼요.", "A sensitivity point affecting multiple qualities becomes a trade-off point.")),
         ("이해관계자", "Stakeholder", ("편집장, 작가, 인쇄 감독처럼 평가에 모이는 사람들.", "People like the editor, author, and print supervisor who gather for the evaluation."), ("ATAM은 이들을 한자리에 모아요.", "ATAM brings them all into one room.")),
-        ("정보시스템 감리/PMO", "IS Audit/PMO", ("감리는 사후·전체 점검, ATAM은 설계 시점 평가.", "Audit checks after the fact and broadly; ATAM evaluates at design time."), ('둘은 보는 시점이 달라요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'They look at different moments. → <a href="pmoaudit-en.html">the last checker before publication</a>')),
+        ("정보시스템 감리/PMO", "IS Audit/PMO", ("감리는 사업 전반을 단계마다 점검, ATAM은 아키텍처 설계를 평가.", "Audit checks the whole project stage by stage; ATAM evaluates the architecture design."), ('둘은 보는 범위가 달라요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'They cover different scopes. → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
         ("좋은 소프트웨어의 조건", "Conditions of Good Software", ("ATAM이 저울질하는 바로 그 품질 조건들.", "The very quality conditions ATAM weighs against each other."), ('시나리오는 결국 이 조건들에서 나와요. → <a href="goodsw-ko.html">좋은 책의 조건</a>', 'Scenarios ultimately come from these conditions. → <a href="goodsw-en.html">what makes a good book</a>')),
     ],
 }

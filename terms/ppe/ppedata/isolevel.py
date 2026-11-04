@@ -35,7 +35,7 @@ def _row(y, a, b):
     return label(220, y, a, 12, "var(--ink)", anchor="start") + label(560, y, b, 12, "var(--ink)", anchor="start")
 
 P4 = svg(320, sky(320, ground=False)
-         + label(380, 34, "⟦격리 수준 네 단계|four isolation levels⟧", 14, "var(--ink)", cls="d")
+         + label(380, 34, "⟦SQL 표준 격리 수준 네 단계|four SQL-standard isolation levels⟧", 14, "var(--ink)", cls="d")
          + '<rect x="200" y="54" width="360" height="2" fill="var(--line)"/>'
          + _row(80, "⟦Read Uncommitted — 다 보임(더티 리드 O)|read uncommitted — sees everything, dirty reads allowed⟧", "⟦가장 느슨|loosest⟧")
          + _row(116, "⟦Read Committed — 확정된 값만 읽음|read committed — reads only confirmed writes⟧", "⟦더티 리드 막음|blocks dirty reads⟧")
@@ -45,7 +45,7 @@ P4 = svg(320, sky(320, ground=False)
 # 5. 한계: 엄격할수록 기다리는 사람이 늘어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + person(190, 150, s=0.8, face=SMILE, **AUDITOR) + label(190, 257, "⟦Serializable = 가장 안전|serializable: safest⟧", 11, "var(--ink)")
-         + person(570, 150, s=0.8, face=SWEAT + EYES, **DRIVER) + label(570, 257, "⟦대신 뒷사람이 오래 기다려요|but the next person waits longer⟧", 11, "var(--ink)")
+         + person(570, 150, s=0.8, face=SWEAT + EYES, **DRIVER) + label(570, 257, "⟦대신 뒷사람이 더 오래 기다릴 수 있어요|but the next person may wait longer⟧", 11, "var(--ink)")
          + label(380, 285, "⟦그래서 작업에 필요한 안전과 속도에 맞는 격리 수준을 골라야 해요|so pick the isolation level that fits the safety and speed the work needs⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
@@ -71,21 +71,21 @@ PAGE = {
              (SHIELD_I, ("차례로 처리하기", "Process one at a time"), ("가장 엄격한 Serializable", "the strictest — serializable")),
          ])},
         {"svg": P4, "alt": ("Read Uncommitted, Read Committed, Repeatable Read, Serializable 네 단계를 비교하는 표", "A table comparing four levels: read uncommitted, read committed, repeatable read, serializable"),
-         "caption": ("격리 수준은 네 단계로 나뉘어요.", "Isolation levels split into four stages."),
+         "caption": ("SQL 표준의 격리 수준은 네 단계예요.", "The SQL standard defines four isolation levels."),
          "small": ("Serializable이 가장 엄격해요.", "Serializable is the strictest.")},
         {"svg": P5, "alt": ("왼쪽: 감사원이 가장 안전한 Serializable을 만족해함. 오른쪽: 배송 기사가 오래 기다리며 땀 흘림", "Left: the auditor is pleased with the safest serializable level. Right: a driver sweats, waiting longer"),
-         "caption": ("Serializable은 가장 안전하지만, 뒷사람이 오래 기다려요.", "Serializable is safest, but the next person waits longer."),
+         "caption": ("Serializable은 가장 안전하지만, 낮은 격리 수준보다 뒷사람이 오래 기다릴 수 있어요.", "Serializable is safest, but the next person may wait longer than at lower levels."),
          "small": ("그래서 작업에 필요한 안전과 속도에 맞는 격리 수준을 골라야 해요.", "So pick the isolation level that fits the safety and speed the work needs.")},
     ],
     "summary": (("<b>격리 수준</b> = 여러 사람이 <b>동시에 같은 데이터를 손댈 때</b>, 서로의 작업이 얼마나 보이고 가려질지 정하는 규칙.",
                  "<b>Isolation level</b> decides, when several people touch the same data at once, how much of each other's work they can see."),
-                ("트랜잭션 격리 수준은 Read Uncommitted·Read Committed·Repeatable Read·Serializable 네 단계가 있고, 낮을수록 더티 리드·반복 불가 읽기·팬텀 리드 같은 이상현상이 더 많이 허용돼요. 격리가 강할수록 일관성은 높아지지만 동시 처리량(성능)은 떨어져요.",
-                 "Transaction isolation levels — Read Uncommitted, Read Committed, Repeatable Read, Serializable — allow progressively fewer anomalies (dirty read, non-repeatable read, phantom read) as they get stricter. Stronger isolation means higher consistency but lower concurrent throughput.")),
+                ("트랜잭션 격리 수준은 Read Uncommitted·Read Committed·Repeatable Read·Serializable 네 단계가 있고, 낮을수록 더티 리드·반복 불가 읽기·팬텀 리드 같은 이상현상이 더 많이 허용돼요. 격리가 강할수록 일관성은 높아지지만 동시 처리량(성능)은 떨어질 수 있어요.",
+                 "Transaction isolation levels — Read Uncommitted, Read Committed, Repeatable Read, Serializable — allow progressively fewer anomalies (dirty read, non-repeatable read, phantom read) as they get stricter. Stronger isolation means higher consistency but can lower concurrent throughput.")),
     "glossary": [
-        ("더티 리드", "Dirty Read", ("아직 확정 안 된 값을 보는 것.", "Seeing a value that isn't confirmed yet."), ("Read Uncommitted에서만 생겨요.", "Only happens at read uncommitted.")),
+        ("더티 리드", "Dirty Read", ("아직 확정 안 된 값을 보는 것.", "Seeing a value that isn't confirmed yet."), ("SQL 표준 기준으로 Read Uncommitted에서만 허용돼요.", "By the SQL standard, allowed only at read uncommitted.")),
         ("반복 불가 읽기", "Non-repeatable Read", ("같은 걸 다시 읽었더니 값이 바뀜.", "Re-reading the same thing gives a different value."), ("Repeatable Read부터 막혀요.", "Blocked from repeatable read onward.")),
-        ("유령 읽기(팬텀 리드)", "Phantom Read", ("없던 행이 다시 조회하니 생겨남.", "A row that wasn't there shows up on re-query."), ("Serializable에서 완전히 막혀요.", "Fully blocked only at serializable.")),
-        ("Serializable", "Serializable", ("동시 작업을 차례로 하나씩 처리한 것처럼 만드는 수준.", "The level that makes simultaneous work look done one at a time."), ("가장 엄격하고 가장 느려요.", "Strictest and slowest.")),
+        ("유령 읽기(팬텀 리드)", "Phantom Read", ("없던 행이 다시 조회하니 생겨남.", "A row that wasn't there shows up on re-query."), ("SQL 표준 기준으로 Serializable에서 완전히 막혀요. PostgreSQL처럼 Repeatable Read에서 막는 제품도 있어요.", "By the SQL standard, fully blocked at serializable. Some products, like PostgreSQL, block it at repeatable read too.")),
+        ("Serializable", "Serializable", ("동시 작업을 차례로 하나씩 처리한 것처럼 만드는 수준.", "The level that makes simultaneous work look done one at a time."), ("가장 엄격하고, 동시 작업이 많을 때 보통 가장 느려요.", "Strictest, and usually the slowest under concurrent work.")),
         ("ACID", "ACID", ("전표가 지키는 네 가지 약속.", "The four promises a receipt keeps."), ('격리(I)는 그중 하나예요. → <a href="acid-ko.html">전표가 지키는 네 약속</a>', 'Isolation is one of the four. → <a href="acid-en.html">the four promises a receipt keeps</a>')),
         ("병행제어", "Concurrency Control", ("격리 수준을 실제로 지켜내는 방법.", "How isolation levels actually get enforced."), ('락이나 MVCC로 구현해요. → <a href="concurrency-ko.html">동시에 안 부딪히는 규칙</a>', 'Implemented with locks or MVCC. → <a href="concurrency-en.html">the no-collision rule</a>')),
         ("CAP 정리", "CAP Theorem", ("놀이공원 세계의 트레이드오프 이야기.", "A trade-off story from the amusement-park world."), ('분산 환경에서 일관성 자체의 한계를 다뤄요. → <a href="captheorem-ko.html">CAP 정리</a>', 'Covers the limits of consistency itself in distributed settings. → <a href="captheorem-en.html">the CAP theorem</a>')),

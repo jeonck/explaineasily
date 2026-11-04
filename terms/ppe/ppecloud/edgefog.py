@@ -34,7 +34,7 @@ P4 = svg(320, sky(320)
                      ("⟦엣지(지점): 간단한 요청은 그 자리에서 바로 처리|edge (branch): simple requests, handled right there⟧",
                       "⟦포그(중간 허브): 지점 여러 곳의 데이터를 모아 정리|fog (middle hub): gathers and sorts data from several branches⟧",
                       "⟦본사: 전체 저장·복잡한 분석을 맡아요|HQ: handles full storage and heavy analysis⟧",
-                      "⟦거리가 짧을수록 응답이 빨라요|the shorter the distance, the faster the response⟧"), 1.0))
+                      "⟦처리하는 곳이 가까울수록 응답이 빨라요|the closer the processing, the faster the response⟧"), 1.0))
 
 # 5. 깨지는 곳: 작은 지점엔 다 담을 수 없고, 결국 본사와 맞춰야 해요
 P5 = svg(300, sky(300)
@@ -68,13 +68,13 @@ PAGE = {
          "tricks": (4, [
              (NEAR_I, ("방문객과 가까운 지점이 먼저 처리해요", "The branch nearest the visitor handles the request first"), ("엣지 = 동네 지점이에요", "edge = the local branch"), "calm"),
              (LAYER_I, ("포그는 지점 여러 곳을 묶어요", "Fog bundles several branches together"), ("본사와 지점 사이 중간 허브예요", "it's the hub between branch and HQ")),
-             (LATENCY_I, ("거리가 짧을수록 응답이 빨라요", "The shorter the distance, the faster the response"), ("응답 지연이 줄어요", "response latency drops"), "warm"),
+             (LATENCY_I, ("처리하는 곳이 가까울수록 응답이 빨라요", "The closer the processing, the faster the response"), ("응답 지연이 줄어요", "response latency drops"), "warm"),
              (SYNC_I, ("그래도 지점 자료는 결국 본사와 맞춰야 해요", "Branch data still has to sync with HQ eventually"), ("이 일을 동기화라고 불러요", "that's called synchronization")),
          ])},
-        {"svg": P4, "alt": ("지도: 엣지는 간단한 건 바로, 포그는 지점 여러 곳을 묶음, 본사는 전체 저장·복잡한 분석을 맡고, 거리가 짧을수록 응답이 빠름", "A map: edge handles simple things right away, fog bundles branches together, HQ handles full storage and heavy analysis, and shorter distance means faster response"),
+        {"svg": P4, "alt": ("지도: 엣지는 간단한 건 바로, 포그는 지점 여러 곳을 묶음, 본사는 전체 저장·복잡한 분석을 맡고, 처리하는 곳이 가까울수록 응답이 빠름", "A map: edge handles simple things right away, fog bundles branches together, HQ handles full storage and heavy analysis, and closer processing means faster response"),
          "caption": ("엣지·포그·본사는 맡는 일이 각각 달라요.", "Edge, fog, and HQ each take on different work."),
          "small": ("간단한 요청은 가까운 지점이, 무거운 분석은 본사가 맡아요.", "Nearby branches take simple requests; HQ takes heavy analysis.")},
-        {"svg": P5, "alt": ("작은 지점에서 땀 흘리는 방문객이 다 담을 수 없다고 말하고, 결국 본사와 자료를 맞춰야 함을 화살표로 보여줌", "A sweating visitor at the small branch says it can't hold everything, with an arrow showing it must still sync back to HQ"),
+        {"svg": P5, "alt": ("땀 흘리는 방문객 옆 작은 지점은 자료를 다 담을 수 없고, 화살표가 본사와 자료를 맞춰야 함을 보여줌", "Beside a sweating visitor, the small branch can't hold all the data, and an arrow shows it must still sync with HQ"),
          "caption": ("작은 지점엔 자료를 다 담을 수 없어요.", "The branch is too small to hold all the data."),
          "small": ("지점 자료는 결국 본사와 맞춰야 해요(동기화).", "Branch data still has to sync back up with HQ eventually.")},
     ],
@@ -90,6 +90,6 @@ PAGE = {
         ("IoT", "IoT", ("현장에서 데이터를 만들어내는 기기.", "The devices out in the field generating data."), ("엣지가 바로 옆에서 이 기기의 데이터를 처리해요.", "Edge computing processes these devices' data right beside them.")),
         ("중앙 클라우드(본사)", "Central cloud (HQ)", ("전체 저장·복잡한 분석을 맡는 본사 건물.", "The HQ building handling full storage and heavy analysis."), ('이 책 전체의 배경인 그 건물이에요. → <a href="cloudmodel-ko.html">공유 오피스 빌딩</a>', 'The very building this whole book is set in. → <a href="cloudmodel-en.html">the shared office building</a>')),
         ("서버리스", "Serverless", ("쓸 때만 여는 시간제 회의실.", "The meeting room that opens only when used."), ('엣지에 서버리스 함수를 두기도 해요. → <a href="serverless-ko.html">시간제 회의실</a>', 'Serverless functions are sometimes placed at the edge too. → <a href="serverless-en.html">the hourly meeting room</a>')),
-        ("오토스케일", "Auto scale", ("지점 수를 자동으로 늘리는 것.", "Automatically adding more branches."), ('엣지 지점 수도 수요에 맞춰 늘고 줄 수 있어요. → <a href="scaleupout-ko.html">사무실을 키울까 더 빌릴까</a>', 'Edge branch count can also scale with demand. → <a href="scaleupout-en.html">bigger office or more offices</a>')),
+        ("오토스케일", "Auto scale", ("서버 수를 자동으로 늘리고 줄이는 것.", "Automatically adding and removing servers."), ('엣지 지점 안의 서버 수도 수요에 맞춰 늘고 줄 수 있어요. → <a href="scaleupout-ko.html">사무실을 키울까 더 빌릴까</a>', 'The server count inside an edge branch can also scale with demand. → <a href="scaleupout-en.html">bigger office or more offices</a>')),
     ],
 }

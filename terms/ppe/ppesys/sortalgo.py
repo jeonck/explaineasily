@@ -45,7 +45,7 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="
          + person(190, 120, s=0.7, face=SMILE, **MECH2)
          + label(190, 250, "⟦차 두세 대면 단순 비교가 나눠 풀기보다 빨라요|with two or three cars, plain comparing beats splitting⟧", 11, "var(--ink)")
          + car(520, 170, 0.7) + car(600, 170, 1.0) + car(680, 170, 0.5)
-         + label(600, 250, "⟦차가 아주 많을 때만 나눠 풀기가 이득이에요|splitting pays off only once the line gets long⟧", 11, "var(--ink)")
+         + label(600, 250, "⟦차가 많아져야 나눠 풀기가 이득이에요|splitting pays off once the line gets long⟧", 11, "var(--ink)")
          + label(380, 282, "⟦언제나 제일 빠른 정렬은 없어요 — 상황에 맞게 골라요|there's no single fastest sort — pick one for the situation⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {

@@ -46,7 +46,7 @@ P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x
 PAGE = {
     "slug": "regassumption", "order": 20,
     "title": ("저울을 똑바로 걸기 위한 네 가지 조건", "The Four Conditions for Hanging the Scale Straight"),
-    "h1": ("<em>회귀모형 가정</em>이/가 뭐예요?", "What are <em>Regression Assumptions</em>?"),
+    "h1": ("<em>회귀모형 가정</em>이 뭐예요?", "What are <em>Regression Assumptions</em>?"),
     "sub": ("회귀모형 가정을, 무게로 가격을 예측하는 저울을 똑바로 걸기 위해 지켜야 할 네 가지 조건 이야기로 풀어봤어요.",
             "Regression assumptions, told as a story about four conditions a weight-to-price scale must meet to hang straight and be trusted."),
     "panels": [
@@ -69,13 +69,13 @@ PAGE = {
          "caption": ("네 조건이 깨지면 데이터와 오차에 이런 모습이 나타나요.", "When a condition breaks, the data and errors show these patterns."),
          "small": ("휘어진 관계, 엮인 오차, 깔때기 모양, 한쪽으로 몰린 오차 — 전부 가정이 깨졌다는 신호예요.", "A curved relation, entangled errors, a funnel shape, lopsided errors — each is a sign an assumption has broken.")},
         {"svg": P5, "alt": ("저울은 어떤 상황에서도 예측 숫자를 내놓지만, 검수반장은 그 숫자의 신뢰 여부는 가정이 지켜졌는지에 달렸다고 말함", "The scale always outputs a predicted number, but the inspector notes how much to trust it depends on whether the conditions held"),
-         "caption": ("가정이 깨져도 예측 숫자는 나오지만, 그 숫자를 믿을 수는 없어요.", "Break the assumptions and a predicted number still comes out — but it can't be trusted."),
+         "caption": ("가정이 깨져도 예측 숫자는 나오지만, 그 숫자를 그대로 믿으면 안 돼요.", "Break the assumptions and a predicted number still comes out — but it shouldn't be taken at face value."),
          "small": ("오차범위·검정은 가정이 지켜졌을 때만 믿을 수 있어요.", "The error range and significance tests are only trustworthy when the assumptions hold.")},
     ],
-    "summary": (("<b>회귀모형 가정</b> = 예측 저울을 믿으려면 지켜야 할 <b>선형성·독립성·등분산성·정규성</b> 네 조건. 깨져도 숫자는 나오지만, 믿을 순 없어요.",
-                 "<b>Regression assumptions</b> are the four conditions — <b>linearity, independence, equal variance (homoscedasticity), and normality</b> — a prediction scale must meet to be trusted. Break them, and a number still comes out, but it can't be trusted."),
-                ("선형회귀가 유효하려면 ① 선형성(독립변수와 종속변수의 관계가 선형), ② 오차의 독립성(자기상관 없음), ③ 등분산성(오차의 분산이 일정, homoscedasticity), ④ 오차의 정규성을 만족해야 해요. 가정이 깨지면 계수 추정치 자체는 계산되지만, 표준오차·신뢰구간·유의성 검정(p-value)이 왜곡돼 잘못된 결론으로 이어질 수 있어요. 잔차 플롯으로 점검하고, 깨졌다면 변수 변환·강건 표준오차·다른 모형을 고려해요.",
-                 "Linear regression needs ① linearity (the relationship between predictors and outcome is linear), ② independence of errors (no autocorrelation), ③ homoscedasticity (constant error variance), and ④ normality of errors. If these break, the coefficient estimates still compute, but standard errors, confidence intervals, and p-values become distorted, leading to wrong conclusions. Check with residual plots, and if assumptions fail, consider variable transformations, robust standard errors, or a different model.")),
+    "summary": (("<b>회귀모형 가정</b> = 예측 저울을 믿으려면 지켜야 할 <b>선형성·독립성·등분산성·정규성</b> 네 조건. 깨져도 숫자는 나오지만, 그대로 믿으면 안 돼요.",
+                 "<b>Regression assumptions</b> are the four conditions — <b>linearity, independence, equal variance (homoscedasticity), and normality</b> — a prediction scale must meet to be trusted. Break them, and a number still comes out, but it shouldn't be taken at face value."),
+                ("선형회귀가 유효하려면 ① 선형성(독립변수와 종속변수의 관계가 선형), ② 오차의 독립성(자기상관 없음), ③ 등분산성(오차의 분산이 일정, homoscedasticity), ④ 오차의 정규성을 만족해야 해요. 가정이 깨져도 계수 추정치는 계산되지만, 선형성이 깨지면 계수 자체가 치우칠 수 있고 독립성·등분산성·정규성이 깨지면 표준오차·신뢰구간·유의성 검정(p-value)이 왜곡돼 잘못된 결론으로 이어질 수 있어요. 표본이 크면 정규성 위반의 영향은 줄어들어요. 잔차 플롯으로 점검하고, 깨졌다면 변수 변환·강건 표준오차·다른 모형을 고려해요.",
+                 "Linear regression needs ① linearity (the relationship between predictors and outcome is linear), ② independence of errors (no autocorrelation), ③ homoscedasticity (constant error variance), and ④ normality of errors. If these break, the coefficient estimates still compute, but broken linearity can bias the coefficients themselves, and broken independence, homoscedasticity, or normality can distort standard errors, confidence intervals, and p-values, leading to wrong conclusions. With large samples, the effect of non-normality shrinks. Check with residual plots, and if assumptions fail, consider variable transformations, robust standard errors, or a different model.")),
     "glossary": [
         ("선형성", "Linearity", ("관계가 곡선이 아니라 직선이라는 전제.", "The assumption that the relation is straight, not curved."), ("깨지면 비선형 모형이나 변수 변환을 써요.", "If it breaks, use a nonlinear model or transform the variables.")),
         ("등분산성", "Homoscedasticity", ("흔들림 크기가 구간마다 같다는 전제.", "The assumption that the wobble stays the same size across ranges."), ("깨지면 깔때기 모양 잔차가 나타나요.", "Breaking it shows up as a funnel-shaped residual plot.")),

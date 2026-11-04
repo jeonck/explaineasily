@@ -48,7 +48,7 @@ P5 = svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="
 PAGE = {
     "slug": "unbiasedest", "order": 19,
     "title": ("치우치지 않은 저울눈금", "The Scale Dial With No Systematic Tilt"),
-    "h1": ("<em>불편추정량</em>이/가 뭐예요?", "What is an <em>Unbiased Estimator</em>?"),
+    "h1": ("<em>불편추정량</em>이 뭐예요?", "What is an <em>Unbiased Estimator</em>?"),
     "sub": ("불편추정량을, 한 번은 틀려도 여러 번 재면 평균이 진짜 무게로 맞춰지는 저울 이야기로 풀어봤어요.",
             "Unbiased estimators, told as a story about a scale that may miss once, but whose average lands on the true weight over many weighings."),
     "panels": [
@@ -62,7 +62,7 @@ PAGE = {
          "caption": ("불편추정량은 여러 번 재면 평균적으로 진짜 값과 같아지는 저울이에요.", "An unbiased estimator is a scale whose average over many weighings lands on the true value."),
          "small": ("세 번의 결과가 다 다르지만, 평균은 진짜 무게 쪽을 가리켜요.", "The three readings differ, but their average points right at the true weight."),
          "tricks": (4, [
-             (MANY_I, ("여러 표본 평균 내기", "Average over many samples"), ("한 번이 아니라 여러 번 재요", "weigh more than once"), "calm"),
+             (MANY_I, ("여러 표본 평균 내기", "Average over many samples"), ("치우침은 여러 번의 평균을 봐야 드러나요", "bias only shows in the average of many tries"), "calm"),
              (FORMULA_I, ("치우침 없는 공식 쓰기", "Use an unbiased formula"), ("분산은 n이 아니라 n-1로 나눠요", "for variance, divide by n-1, not n")),
              (RANDOM_I, ("무작위로 뽑기", "Sample at random"), ("한쪽 상자만 골라 재면 안 돼요", "don't always pick the same box"), "warm"),
              (ONESHOT_I, ("한 번으로 판단 안 하기", "Don't judge from just one reading"), ("한 번은 틀려도 괜찮아요", "it's fine if a single reading misses")),

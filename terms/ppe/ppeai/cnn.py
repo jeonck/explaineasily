@@ -64,24 +64,24 @@ PAGE = {
          "small": ("CNN은 이렇게 찾은 무늬들을 여러 층으로 쌓아, 사진 전체가 무엇인지 판단해요.", "A CNN stacks the patterns it finds across layers and judges what the whole photo shows."),
          "tricks": (4, [
              (SLIDE_I, ("작은 창으로 훑기", "Slide a small window"), ("한 칸씩 옮기며 무늬를 찾아요", "nudging one cell at a time, hunting for a pattern"), "calm"),
-             (POOL_I, ("중요한 것만 남기기", "Keep only what matters"), ("가장 강한 신호만 남겨요(풀링)", "keeping only the strongest signal (pooling)")),
+             (POOL_I, ("중요한 것만 남기기", "Keep only what matters"), ("흔히 가장 강한 신호를 남겨요(풀링)", "often keeping the strongest signal (pooling)")),
              (LAYER_I, ("여러 겹 쌓기", "Stack several layers"), ("작은 무늬가 모여 큰 무늬가 돼요", "small patterns build into bigger ones"), "warm"),
              (CLASSIFY_I, ("마지막에 분류하기", "Classify at the end"), ("쌓인 무늬로 최종 판정을 내려요", "making the final call from everything stacked up")),
          ])},
         {"svg": svg(300, sky(300) + gradeboard(60, 20, 640, 260, "⟦CNN이 하는 네 단계|FOUR STAGES OF A CNN⟧",
                  ("⟦합성곱(Convolution) — 작은 창으로 국소 무늬를 찾음|convolution — a small window finds local patterns⟧",
-                  "⟦활성화(Activation) — 찾은 무늬 중 의미 있는 것만 살림|activation — keeps only the patterns that matter⟧",
-                  "⟦풀링(Pooling) — 지도를 줄여 가장 강한 신호만 남김|pooling — shrinks the map, keeping the strongest signal⟧",
+                  "⟦활성화(Activation) — 비선형을 더해 복잡한 무늬까지 배우게 함|activation — adds nonlinearity so complex patterns can be learned⟧",
+                  "⟦풀링(Pooling) — 지도를 줄임, 흔히 가장 강한 신호를 남김|pooling — shrinks the map, often keeping the strongest signal⟧",
                   "⟦완전연결층(Fully Connected) — 쌓인 무늬로 최종 분류|fully connected — makes the final classification from it all⟧"), 1.0)),
          "alt": ("합성곱·활성화·풀링·완전연결층 네 단계를 적은 표", "A board listing convolution, activation, pooling, and fully connected as four stages"),
-         "caption": ("합성곱·활성화·풀링을 여러 번 반복해 쌓고, 마지막에 완전연결층으로 분류해요.", "Convolution, activation, and pooling repeat in layers; a fully connected layer classifies at the end."),
+         "caption": ("합성곱·활성화·풀링을 여러 번 반복해 쌓고, 마지막에 흔히 완전연결층으로 분류해요.", "Convolution, activation, and pooling repeat in layers; a fully connected layer typically classifies at the end."),
          "small": ("층이 깊어질수록, 점·선 같은 작은 무늬가 사과 모양 같은 큰 무늬로 자라요.", "Layer by layer, tiny patterns like dots and lines grow into bigger ones, like the shape of an apple.")},
         {"svg": svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
                  + pixel_grid(100, 90, 6, 6, 22, seed=5) + label(190, 250, "⟦CNN은 사진·무늬에 강해요|CNNs are strong with photos and patterns⟧", 11, "var(--ink)")
                  + person(570, 150, s=0.75, face=FROWN, **OPERATOR)
-                 + label(570, 250, "⟦그래도 사람처럼 '이해'하는 건 아니에요|still doesn't 'understand' the way a person does⟧", 11, "var(--bad)")
-                 + label(380, 282, "⟦CNN은 픽셀 무늬에 기대기 때문에, 몇 점만 살짝 바꿔도 속아 넘어가요|because a CNN relies on pixel patterns, a few nudged dots can still fool it⟧", 12, "var(--ink)", cls="d")),
-         "alt": ("왼쪽: 픽셀 격자 사진과 무늬에 강하다는 설명. 오른쪽: 조작원이 사람처럼 이해하는 건 아니라고 말하며 적대적 공격 페이지로 연결됨", "Left: a pixel grid with a note that it's strong with photos. Right: the operator notes it still doesn't understand like a person does, linking to the adversarial attack page"),
+                 + label(570, 250, "⟦CNN도 사람처럼 '이해'하는 건 아니에요|a CNN doesn't 'understand' the way a person does⟧", 11, "var(--bad)")
+                 + label(380, 282, "⟦CNN은 픽셀 무늬에 기대기 때문에, 몇 점만 살짝 바꿔도 속을 수 있어요|because a CNN relies on pixel patterns, a few nudged dots can fool it⟧", 12, "var(--ink)", cls="d")),
+         "alt": ("왼쪽: 픽셀 격자 사진과 CNN이 무늬에 강하다는 설명. 오른쪽: 조작원이 CNN도 사람처럼 이해하는 건 아니라고 말하고, 몇 점만 바꿔도 속을 수 있다는 설명이 붙음", "Left: a pixel grid with a note that CNNs are strong with photos. Right: the operator notes a CNN doesn't understand like a person does, above a note that a few nudged dots can fool it"),
          "caption": ("CNN은 사진·무늬엔 강하지만, 사람처럼 '이해'하는 건 아니에요.", "A CNN is strong with photos and patterns — but it doesn't understand them like a person."),
          "small": ("그래서 CNN의 판정은 적대적 공격 같은 미세 조작에 여전히 흔들려요.", "Which is why a CNN's call can still be flipped by tiny tampering like adversarial attacks.")},
     ],
@@ -94,9 +94,9 @@ PAGE = {
         ("합성곱", "Convolution", ("작은 필터를 조금씩 옮기며 훑는 연산.", "The operation of sliding a small filter bit by bit."), ("국소 무늬를 찾아내는 핵심 동작이에요.", "The core move that hunts down local patterns.")),
         ("필터(커널)", "Filter (kernel)", ("무늬를 찾는 작은 점선 창.", "The small dashed window that hunts for a pattern."), ("엣지·색 패치 같은 서로 다른 무늬를 찾는 필터가 여러 개 있어요.", "Many different filters exist, each hunting a different kind of pattern.")),
         ("특징맵", "Feature map", ("무늬가 있던 자리만 밝게 남은 작은 지도.", "The small map where only pattern-found spots stay bright."), ("합성곱 한 번이 끝나면 나오는 결과물이에요.", "What comes out after one pass of convolution.")),
-        ("풀링", "Pooling", ("지도를 줄여 가장 강한 신호만 남기는 것.", "Shrinking the map, keeping only the strongest signal."), ("계산량을 줄이고, 판정이 작은 위치 차이에 덜 흔들리게 해요.", "Cuts computation and makes the call less rattled by small shifts in position.")),
+        ("풀링", "Pooling", ("지도를 줄이는 것. 흔히 가장 강한 신호를 남겨요.", "Shrinking the map, often keeping the strongest signal."), ("계산량을 줄이고, 판정이 작은 위치 차이에 덜 흔들리게 해요.", "Cuts computation and makes the call less rattled by small shifts in position.")),
         ("층(레이어)", "Layer", ("작은 무늬가 쌓여 큰 무늬가 되는 단계.", "The stage where small patterns build into bigger ones."), ("얕은 층은 단순한 무늬를, 깊은 층은 복잡한 모양을 봐요.", "Shallow layers see simple patterns; deep layers see complex shapes.")),
-        ("완전연결층", "Fully connected layer", ("쌓인 무늬를 모아 최종 분류를 내리는 층.", "The layer that gathers everything stacked up and makes the final call."), ("CNN의 맨 끝에서 분류함을 정해요.", "Sits at the very end of a CNN, deciding the bin.")),
+        ("완전연결층", "Fully connected layer", ("쌓인 무늬를 모아 최종 분류를 내리는 층.", "The layer that gathers everything stacked up and makes the final call."), ("흔히 CNN의 맨 끝에서 분류함을 정해요.", "Typically sits at the very end of a CNN, deciding the bin.")),
         ("적대적 예제", "Adversarial example", ("픽셀 무늬만 보는 약점을 파고드는 공격.", "An attack that exploits the weakness of reading pixel patterns alone."), ('픽셀 무늬에 기대는 CNN이 여전히 속는 공격이에요. → <a href="advattack-ko.html">작물에 몰래 붙인 가짜 점무늬</a>', "A CNN, leaning on pixel patterns, can still be fooled by this. → <a href=\"advattack-en.html\">The Fake Dot Pattern Snuck Onto the Produce</a>")),
     ],
 }

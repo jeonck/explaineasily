@@ -56,10 +56,10 @@ PAGE = {
                                  ("⟦동등분할: 정상(50), 범위 밖(-1), 범위 밖(200)|partition: normal (50), out of range (-1), out of range (200)⟧",
                                   "⟦경계값: 0, -1, 150, 151 — 선 바로 위아래|boundary: 0, -1, 150, 151 — just either side of the line⟧",
                                   "⟦모든 나이를 다 넣어보지 않아요|not every single age gets tried⟧",
-                                  "⟦위 사례 몇 개만으로도 나이 규칙 위반을 대부분 잡아요|just these few cases catch most age-rule violations⟧"), 1.0)),
+                                  "⟦위 사례 몇 개로 나이 규칙의 범위와 경계를 확인해요|these few cases check the age rule's range and edges⟧"), 1.0)),
          "alt": ("나이 칸 0~150 규칙에 대한 동등분할·경계값 테스트 사례 목록", "A list of equivalence-partition and boundary-value test cases for the 0–150 age rule"),
-         "caption": ("대표 사례 몇 개만 골라도 규칙 위반은 대부분 잡혀요.", "Just a handful of representative cases catches most rule violations."),
-         "small": ("정상 범위 하나, 범위 밖 둘, 경계선 바로 위아래 값 — 이 정도 사례면 충분할 때가 많아요.", "One normal case, two out-of-range cases, and the values just either side of the boundary — that's usually enough.")},
+         "caption": ("대표 사례 몇 개로 규칙의 범위와 경계를 확인해요.", "A handful of representative cases checks the rule's range and edges."),
+         "small": ("정상 범위 하나, 범위 밖 둘, 경계선 바로 위아래 값 — 이 정도 사례면 충분할 때가 많아요.", "One normal case, two out-of-range cases, and the values just either side of the boundary — that's often enough.")},
         {"svg": svg(300, sky(300)
                     + person(190, 150, s=0.8, face=EYES, **PROOFER) + label(190, 265, "⟦전수 검사보다 빠르고, 적은 사례로 검사해요|faster than testing everything, with just a few cases⟧", 11, "var(--ink)")
                     + person(560, 150, s=0.8, face=EYES, **WRITER) + label(560, 265, "⟦규칙에 없던 드문 조합은 놓칠 수 있어요|rare combinations the rules never mention can slip through⟧", 11, "var(--ink)")
@@ -74,8 +74,8 @@ PAGE = {
                  "Specification-based (black-box) test design creates test cases from the requirements spec alone, without looking at the internal code. The main techniques are equivalence partitioning (testing one representative from each group of similar inputs), boundary value analysis (testing just either side of a boundary), decision table testing (laying out condition combinations in a table), and state transition testing (testing at each change of state).")),
     "glossary": [
         ("명세기반테스트", "Specification-Based Testing", ("규칙서만 보고 하는 검사.", "Testing based on the rulebook alone."), ("코드를 안 보고도 할 수 있어요(블랙박스).", "Can be done without looking at the code — black-box.")),
-        ("동등분할", "Equivalence Partitioning", ("비슷한 입력끼리 묶는 것.", "Grouping similar inputs together."), ("한 그룹에서 하나만 검사해도 충분해요.", "Testing just one from each group is enough.")),
-        ("경계값분석", "Boundary Value Analysis", ("기준선 바로 위아래만 보는 것.", "Checking just either side of the line."), ("실수는 경계에서 가장 많이 나요.", "Mistakes cluster right at the boundary.")),
+        ("동등분할", "Equivalence Partitioning", ("비슷한 입력끼리 묶는 것.", "Grouping similar inputs together."), ("한 그룹은 똑같이 처리된다고 보고 하나만 검사해요.", "Each group is assumed to behave alike, so one test stands for it.")),
+        ("경계값분석", "Boundary Value Analysis", ("기준선 바로 위아래만 보는 것.", "Checking just either side of the line."), ("실수는 경계에서 자주 나요.", "Mistakes often show up right at the boundary.")),
         ("결정테이블테스트", "Decision Table Testing", ("조건 조합을 표로 만드는 것.", "Laying out condition combinations as a table."), ("조건이 여러 개 얽힐 때 빠뜨리지 않게 해줘요.", "Keeps you from missing a combination when several conditions interact.")),
         ("상태전이테스트", "State Transition Testing", ("이야기 단계가 바뀔 때마다 보는 것.", "Testing every time the story moves to a new stage."), ("예약→확정→취소 같은 흐름에 써요.", "Used for flows like booked → confirmed → canceled.")),
         ("블랙박스테스트", "Black-Box Testing", ("내부를 안 보고 밖에서만 확인하는 것.", "Checking from the outside without seeing the inside."), ("명세기반 기법은 전부 이 범주예요.", "All spec-based techniques fall in this category.")),

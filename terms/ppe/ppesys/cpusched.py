@@ -60,7 +60,7 @@ PAGE = {
         {"svg": P1, "alt": ("정비공장에 리프트는 하나뿐인데 차가 여러 대 몰려 반장이 진땀을 흘림", "The garage has only one lift but several cars pile up, and the chief sweats"),
          "caption": ("이 정비공장이 곧 컴퓨터 시스템이에요.", "This garage IS a computer system."),
          "small": ("리프트(CPU)는 하나인데, 차(작업)는 계속 들어와요.", "One lift (the CPU), but cars (jobs) keep arriving.")},
-        {"svg": P2, "hero": False, "alt": ("긴 엔진 작업 차가 리프트를 3시간째 붙잡아, 타이어만 넣으면 되는 손님이 계속 기다림", "A long engine job holds the lift for 3 hours while a customer who just needs air keeps waiting"),
+        {"svg": P2, "hero": False, "alt": ("긴 엔진 작업 차가 리프트를 3시간째 붙잡아, 타이어에 바람만 넣으면 되는 손님이 계속 기다림", "A long engine job holds the lift for 3 hours while a customer who just needs air keeps waiting"),
          "caption": ("차 순서를 아무렇게나 정하면, 먼저 온 느린 차가 다른 차를 다 막아요.", "Pick the car order carelessly, and a slow car that came first blocks all the others."),
          "small": ("짧은 일도 긴 일 뒤에서 하염없이 기다려요.", "Even a quick job waits forever behind a long one.")},
         {"svg": P3, "hero": True, "alt": ("작업 순서판에 적힌 차례대로 반장이 차를 리프트에 올림", "The chief sends cars onto the lift in the order written on the job board"),

@@ -94,8 +94,8 @@ PAGE = {
     ],
     "summary": (("<b>ARQ(자동 재전송 요청)</b>는 받는 쪽이 메시지를 <b>확인하고, 틀리면 자동으로 다시 보내달라고 요청</b>하는 오류 제어 방식이에요.",
                  "<b>ARQ (Automatic Repeat reQuest)</b> is an error-control method where the receiver <b>checks the message and automatically asks for a resend</b> when it's wrong."),
-                ("ARQ는 체크섬/CRC로 오류를 검출한 뒤, 확인 응답(ACK/NACK)을 바탕으로 틀린 데이터를 재전송하는 방식이에요. Stop-and-Wait, Go-Back-N, Selective Repeat 세 방식이 대표적이고, 뒤로 갈수록 처리량은 좋아지지만 구현과 버퍼 관리가 복잡해져요. 재전송 자체가 지연을 늘리기 때문에, 실시간 음성·영상처럼 지연에 민감한 데이터는 오류 난 데이터를 그냥 버리거나 FEC(전진 오류 수정) 같은 다른 방식을 함께 써요.",
-                 "ARQ detects errors with a checksum/CRC, then resends bad data based on acknowledgment responses (ACK/NACK). Stop-and-Wait, Go-Back-N, and Selective Repeat are the three classic variants — throughput improves down the list, at the cost of more complex implementation and buffer management. Because resending itself adds delay, delay-sensitive data like live voice or video often just drops the damaged data or pairs ARQ with other methods like FEC (forward error correction).")),
+                ("ARQ는 체크섬/CRC로 오류를 검출한 뒤, 확인 응답(ACK/NACK)이나 시간 초과를 바탕으로 틀린 데이터를 재전송하는 방식이에요. Stop-and-Wait, Go-Back-N, Selective Repeat 세 방식이 대표적이고, 뒤로 갈수록 처리량은 좋아지지만 구현과 버퍼 관리가 복잡해져요. 재전송 자체가 지연을 늘리기 때문에, 실시간 음성·영상처럼 지연에 민감한 데이터는 오류 난 데이터를 그냥 버리거나 FEC(전진 오류 수정) 같은 다른 방식을 함께 써요.",
+                 "ARQ detects errors with a checksum/CRC, then resends bad data based on acknowledgment responses (ACK/NACK) or a timeout. Stop-and-Wait, Go-Back-N, and Selective Repeat are the three classic variants — throughput improves down the list, at the cost of more complex implementation and buffer management. Because resending itself adds delay, delay-sensitive data like live voice or video often just drops the damaged data or pairs ARQ with other methods like FEC (forward error correction).")),
     "glossary": [
         ("ARQ", "ARQ", ("틀리면 다시 보내달라고 요청하는 방식.", "The method that asks for a resend when wrong."), ("확인 응답을 주고받으며 동작해요.", "Works by exchanging acknowledgments.")),
         ("Stop-and-Wait", "Stop-and-Wait", ("한 개 보내고 확인부터 기다리는 가장 단순한 방식.", "The simplest variant — send one, then wait."), ("단순하지만 느려요.", "Simple, but slow.")),
@@ -104,6 +104,6 @@ PAGE = {
         ("체크섬/CRC", "Checksum / CRC", ("메시지가 틀렸는지 확인하는 검사값.", "The check value that tells if a message is wrong."), ("ARQ가 재전송을 결정하는 근거예요.", "What ARQ uses to decide whether to resend.")),
         ("ACK/NACK", "ACK/NACK", ("'받았어요'와 '틀렸어요' 신호.", "The 'got it' and 'that's wrong' signals."), ("ARQ 동작의 핵심 신호예요.", "The core signals that drive ARQ.")),
         ("FEC(전진 오류 수정)", "Forward Error Correction", ("재전송 없이 오류를 고치는 다른 방식.", "A different approach that fixes errors without resending."), ("지연에 민감한 데이터에는 ARQ보다 잘 맞아요.", "Suits delay-sensitive data better than ARQ does.")),
-        ("MEC", "MEC", ("지연을 줄이려고 사용자 가까이에서 계산하는 기술.", "Computing near the user to cut delay."), ('재전송 지연 자체를 줄이는 또 다른 접근이에요. → <a href="mec-ko.html">MEC 부스</a>', 'A different approach to shrinking the resend delay itself. → <a href="mec-en.html">the MEC booth</a>')),
+        ("MEC", "MEC", ("지연을 줄이려고 사용자 가까이에서 계산하는 기술.", "Computing near the user to cut delay."), ('서버가 가까우면 왕복 시간이 짧아져 재전송 지연도 줄어요. → <a href="mec-ko.html">MEC 부스</a>', 'A nearer server means a shorter round trip, so resends take less time too. → <a href="mec-en.html">the MEC booth</a>')),
     ],
 }

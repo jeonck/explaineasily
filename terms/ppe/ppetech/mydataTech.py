@@ -31,7 +31,7 @@ P1 = svg(350, sky(350, ground=False)
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + datadrawer(190, 140, 1.2, "⟦은행은 은행 것만|bank shows only bank data⟧", "#5B8DEF")
          + datadrawer(570, 140, 1.2, "⟦병원은 병원 것만|hospital shows only hospital data⟧", "#2E8B57")
-         + label(380, 250, "⟦정보 소유권이 모호해서, 기업들이 각자 쌓아만 둬요|unclear ownership means each company just stockpiles its own⟧", 12, "var(--ink)")
+         + label(380, 250, "⟦기관마다 따로 쌓아두기만 해서, 내 정보가 한데 모이지 않아요|each institution keeps its own pile, so my data never comes together⟧", 12, "var(--ink)")
          + label(380, 280, "⟦나는 내 정보를 다른 곳으로 옮길 방법이 없었어요|I had no way to move my own data elsewhere⟧", 11, "var(--muted)"))
 
 # 3. 마이데이터 = 내가 허락해서 한곳에 모아보기 (hero)
@@ -94,16 +94,16 @@ PAGE = {
     ],
     "summary": (("<b>마이데이터</b>는 '<b>내 정보는 나의 것</b>'이라는 생각에서, 내가 직접 동의해 여러 기관의 내 정보를 한곳에 모아보고 다른 곳으로 옮길 수도 있게 하는 제도예요.",
                  "<b>MyData</b> starts from the idea that '<b>my data is mine</b>' — letting me consent to gather my own information from several institutions into one view, and move it elsewhere too."),
-                ("마이데이터는 정보주체(개인)가 자신에 관한 데이터의 전송을 직접 요구할 수 있는 개인정보 이동권에 기반한 제도예요. 표준화된 API로 은행·통신·의료 등 여러 기관의 데이터를 본인 동의 하에 통합 조회하거나 제3자에게 전송할 수 있어요. 동의 절차가 있어도 유출 위험이 사라지는 건 아니고, 모든 기관이 표준을 지원하는 것도 아니라는 한계가 있어요.",
-                 "MyData is a system built on the data subject's (an individual's) right to data portability — the right to directly request that their own data be transferred. Through standardized APIs, it lets individuals view data from multiple institutions (banking, telecom, healthcare) together, or send it to a third party, all with their own consent. Even with a consent process, breach risk doesn't disappear, and not every institution supports the standard.")),
+                ("마이데이터는 정보주체(개인)가 자신에 관한 데이터의 전송을 직접 요구할 수 있는 개인정보 이동권(법 용어로는 전송요구권)에 기반한 제도예요. 표준화된 API로 은행·통신·의료 등 여러 기관의 데이터를 본인 동의 하에 통합 조회하거나 제3자에게 전송할 수 있어요. 동의 절차가 있어도 유출 위험이 사라지는 건 아니고, 모든 기관이 표준을 지원하는 것도 아니라는 한계가 있어요.",
+                 "MyData is a system built on the data subject's (an individual's) right to data portability — the right to directly request that their own data be transferred (Korean law calls it the right to request transmission). Through standardized APIs, it lets individuals view data from multiple institutions (banking, telecom, healthcare) together, or send it to a third party, all with their own consent. Even with a consent process, breach risk doesn't disappear, and not every institution supports the standard.")),
     "glossary": [
         ("마이데이터", "MyData", ("내 정보를 내가 모아보는 제도.", "A system letting me gather my own data."), ("본인 동의가 시작점이에요.", "It all starts with my own consent.")),
-        ("개인정보 이동권", "Data Portability Right", ("내 데이터 전송을 내가 요구할 권리.", "My right to request my own data be transferred."), ("마이데이터 제도의 법적 기반이에요.", "The legal basis MyData rests on.")),
+        ("개인정보 이동권", "Data Portability Right", ("내 데이터 전송을 내가 요구할 권리.", "My right to request my own data be transferred."), ("개인정보 보호법 제35조의2(2025년 3월 시행), 금융은 신용정보법 제33조의2가 근거예요.", "Its basis is Article 35-2 of the Personal Information Protection Act (in force March 2025); for finance, Article 33-2 of the Credit Information Act.")),
         ("오픈뱅킹", "Open Banking", ("표준 API로 은행 데이터를 주고받는 방식.", "Exchanging bank data via a standard API."), ("마이데이터처럼 표준 API를 쓰는 비슷한 사례예요.", "A similar case that also uses standard APIs, as MyData does.")),
         ("마이데이터 사업자", "MyData Provider", ("여러 기관의 데이터를 모아주는 중개자.", "The go-between that gathers data from several institutions."), ("표준 API로 데이터를 연결해요.", "Connects the data through standard APIs.")),
         ("데이터 유출", "Data Breach", ("내 정보가 밖으로 새는 사고, 동의해도 위험은 남아요.", "An accident where my data leaks out; consenting doesn't remove the risk."), ("마이데이터도 예외는 아니에요.", "MyData is no exception.")),
         ("스마트시티", "Smart City", ("도시 곳곳의 데이터를 모아 조율하는 것.", "Gathering citywide data to coordinate services."), ('개인정보 수집 범위 고민이 여기와 맞닿아요. → <a href="smartcity-ko.html">스마트시티 부스</a>', "Raises the same concern about how much personal data gets collected. → <a href=\"smartcity-en.html\">the Smart City booth</a>")),
         ("표준화", "Standardization", ("기관마다 다른 데이터 형식을 하나로 맞추는 것.", "Making institutions' different data formats match."), ("표준이 안 맞으면 데이터를 못 가져와요.", "Without matching standards, data can't be imported.")),
-        ("개인정보보호법", "Personal Data Protection Law", ("동의와 이동권을 뒷받침하는 법.", "The law behind consent and portability rights."), ("마이데이터 제도 운영의 근거예요.", "The legal ground MyData operates on.")),
+        ("개인정보 보호법", "Personal Information Protection Act", ("동의와 이동권을 뒷받침하는 법.", "The law behind consent and portability rights."), ("의료·통신부터 전송요구 대상을 단계적으로 넓히고 있어요.", "It is widening data-transfer rights step by step, starting with healthcare and telecom.")),
     ],
 }

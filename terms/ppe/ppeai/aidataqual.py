@@ -59,14 +59,14 @@ PAGE = {
              (BIAS_I, ("치우침 점검하기", "Check for bias"), ("한 종류만 쌓이지 않게요", "making sure one kind doesn't pile up"), "warm"),
              (FRESH_I, ("최신 상태 유지하기", "Keep it current"), ("오래된 데이터는 새것으로 갈아요", "replacing stale data with new")),
          ])},
-        {"svg": svg(280, sky(280) + gradeboard(60, 20, 640, 240, "⟦데이터 품질 네 기준|FOUR QUALITY STANDARDS⟧",
+        {"svg": svg(280, sky(280) + gradeboard(60, 20, 640, 240, "⟦대표적인 품질 기준 넷|FOUR COMMON QUALITY STANDARDS⟧",
                  ("⟦정확성 — 라벨이 맞나|accuracy — is the label right?⟧",
                   "⟦완전성 — 빠진 값은 없나|completeness — any missing values?⟧",
                   "⟦일관성 — 같은 기준으로 적혔나|consistency — recorded the same way?⟧",
                   "⟦대표성 — 한쪽에 치우치지 않았나|representativeness — not skewed to one kind?⟧"), 1.0)),
          "alt": ("정확성·완전성·일관성·대표성 네 기준이 적힌 품질표", "A quality board listing accuracy, completeness, consistency, and representativeness"),
-         "caption": ("데이터 품질은 정확성·완전성·일관성·대표성 네 가지로 가늠해요.", "Data quality is judged by four standards: accuracy, completeness, consistency, and representativeness."),
-         "small": ("네 기준 중 하나라도 무너지면, 선별기의 '정답률'은 숫자일 뿐 믿을 수 없어요.", "If even one of the four fails, the sorter's accuracy number stops being trustworthy.")},
+         "caption": ("데이터 품질은 흔히 정확성·완전성·일관성·대표성 같은 기준으로 가늠해요.", "Data quality is commonly judged by standards such as accuracy, completeness, consistency, and representativeness."),
+         "small": ("네 기준 중 하나라도 무너지면, 선별기의 '정답률' 숫자를 믿기 어려워져요.", "If even one of the four fails, the sorter's accuracy number becomes hard to trust.")},
         {"svg": svg(320, '<rect width="380" height="320" fill="var(--good-soft)"/><rect x="380" width="380" height="320" fill="var(--accent-soft)"/>'
                  + person(190, 130, s=0.8, face=SMILE, **INSPECTOR) + label(190, 260, "⟦씨앗은 깨끗해졌어요|the seed is clean now⟧", 11, "var(--ink)")
                  + person(570, 130, s=0.75, face=EYES, **OPERATOR) + label(570, 260, "⟦그래도 제가 잘 배우는 건 별개예요|but whether I actually learn well is a separate question⟧", 11, "var(--ink)")
@@ -81,9 +81,9 @@ PAGE = {
                  "Training data quality management is the practice of checking and improving a training set's accuracy, completeness, consistency, and representativeness before a model ever learns from it. Left unchecked, label errors, missing values, duplicates, and bias don't produce a high-performing model — they produce one that has faithfully memorized a mess. Garbage in, garbage out: no amount of clever model architecture fixes bad material.")),
     "glossary": [
         ("데이터 품질관리", "Data quality management", ("씨앗(훈련 데이터)부터 검사하는 일.", "Checking the seed (training data) itself."), ("가르치기 전에 먼저 봐요.", "Done before any teaching starts.")),
-        ("라벨링", "Labeling", ("농작물에 이름표 붙이기.", "Tagging produce with a name."), ("틀린 이름표가 가장 흔한 사고예요.", "A wrong tag is the most common accident.")),
+        ("라벨링", "Labeling", ("농작물에 이름표 붙이기.", "Tagging produce with a name."), ("틀린 이름표는 흔한 사고예요.", "A wrong tag is a common accident.")),
         ("데이터 편향", "Data bias", ("한 종류만 잔뜩 담긴 바구니.", "A basket stuffed with only one kind."), ("선별기가 많이 본 종류만 잘 맞히게 돼요.", "The sorter ends up good only at the kinds it saw most.")),
-        ("결측치", "Missing value", ("라벨이 아예 없는 작물.", "Produce with no label at all."), ("비워두지 말고 채우거나 빼야 해요.", "It has to be filled in or dropped — never left blank.")),
+        ("결측치", "Missing value", ("라벨이나 값이 빠져 있는 작물.", "Produce with a label or value missing."), ("빠진 이유를 살핀 뒤 보통 채우거나 빼요.", "Usually filled in or dropped, after checking why it's missing.")),
         ("중복 데이터", "Duplicate data", ("같은 작물 사진이 여러 장.", "The same photo of produce, several times over."), ("같은 사진이 훈련과 시험에 함께 들어가면 성적이 부풀려져요.", "If the same photo lands in both training and testing, the score gets inflated.")),
         ("데이터 증강", "Data augmentation", ("작물을 돌리고 뒤집어 사진을 늘리는 것.", "Rotating and flipping produce to make more photos."), ("적은 재료로 더 다양하게 가르쳐요.", "More variety taught from less raw material.")),
         ("학습/검증/테스트 분할", "Train/val/test split", ("가르칠 바구니, 연습 바구니, 시험 바구니를 나누는 것.", "Splitting into a teaching basket, a practice basket, and an exam basket."), ("섞으면 시험이 쉬워져 거짓 성적이 나와요.", "Mixing them makes the exam too easy — the score becomes a lie.")),

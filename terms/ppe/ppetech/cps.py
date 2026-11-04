@@ -39,7 +39,7 @@ P3 = svg(340, sky(340)
          + arm(560, 190, 1.3, bent=True)
          + glyph(470, 140, 0.8, LOOP_P)
          + person(660, 255, s=0.55, face=SMILE, **GUIDE)
-         + label(380, 30, "⟦CPS = 화면 속 디지털 쌍둥이와 실제 기계가 센서·신호로 서로 맞물려 움직이는 시스템|CPS = a system where a screen twin and a real machine move together via sensors and signals⟧", 13, "var(--ink)", cls="d")
+         + label(380, 30, "⟦CPS = 컴퓨터와 실제 기계가 센서·신호로 서로 맞물려 움직이는 시스템|CPS = a system where computers and a real machine move together via sensors and signals⟧", 13, "var(--ink)", cls="d")
          + label(380, 320, "⟦화면이 바뀌면 기계가 움직이고, 기계가 움직이면 화면도 다시 바뀌어요|change the screen and the machine moves — move the machine and the screen updates too⟧", 12, "var(--muted)"))
 
 # 4. 신호가 도는 순서(닫힌 고리)
@@ -75,7 +75,7 @@ PAGE = {
          "caption": ("화면과 진짜 기계가 따로 놀면 소용없어요.", "It's no good if the screen and the real machine move independently."),
          "small": ("화면에서는 팔을 굽혔는데, 진짜 기계팔은 그대로 멈춰 있어요.", "The screen bends the arm, but the real arm just sits there unmoved.")},
         {"svg": P3, "hero": True, "alt": ("화면 속 쌍둥이 팔과 진짜 기계팔이 화살표로 이어진 채 똑같이 구부러짐", "The screen twin's arm and the real arm bend identically, linked by a looping arrow"),
-         "caption": ("CPS는 화면 속 쌍둥이와 진짜 기계가 센서·신호로 서로 맞물려 움직이는 시스템이에요.", "A CPS is a system where a digital twin on screen and a real machine move together, linked by sensors and signals."),
+         "caption": ("CPS는 컴퓨터와 진짜 기계가 센서·신호로 서로 맞물려 움직이는 시스템이에요. 이 부스에선 컴퓨터 쪽을 화면 속 쌍둥이로 보여줘요.", "A CPS is a system where computers and a real machine move together, linked by sensors and signals. This booth shows the computer side as a digital twin on screen."),
          "small": ("화면이 바뀌면 기계가 움직이고, 기계가 움직이면 화면도 다시 바뀌어요.", "Change the screen and the machine moves — move the machine and the screen updates too."),
          "tricks": (4, [
              (SENSOR2_I, ("상태 읽기", "Read the state"), ("진짜 기계를 센서로 읽어요", "a sensor reads the real machine")),
@@ -92,11 +92,11 @@ PAGE = {
     ],
     "summary": (("<b>CPS</b> = <b>센서</b>로 읽은 실제 상태를 컴퓨터에 비추고(이 그림에선 <b>디지털 트윈 화면</b>), 컴퓨터가 판단한 명령으로 <b>진짜 기계</b>를 다시 움직이는 닫힌 고리 시스템.",
                  "<b>CPS</b> = a closed-loop system that mirrors a <b>sensor</b>-read real state into a computer (here, a <b>digital-twin screen</b>), then uses the computer's decision to move the <b>real machine</b> again."),
-                ("사이버물리시스템(Cyber-Physical System)은 센서·네트워크·컴퓨팅이 물리적 기계·설비와 실시간으로 연결되어, 감지·판단·제어가 하나의 피드백 루프로 돌아가는 시스템이에요. 디지털 트윈은 CPS에서 기계 상태를 비추는 가상 모형으로, 모든 CPS에 꼭 있는 건 아니에요. 스마트팩토리·자율주행·스마트팜 등 대부분의 신기술 현장 응용이 CPS 구조 위에서 동작해요.",
-                 "A Cyber-Physical System links sensors, networks, and computing to physical machinery in real time, so that sensing, deciding, and controlling run as one continuous feedback loop. A digital twin is a virtual model that can mirror a machine's state in a CPS, though not every CPS has one. Most real-world applications of new technology — smart factories, autonomous driving, smart farms — run on this same CPS structure.")),
+                ("사이버물리시스템(Cyber-Physical System)은 센서·네트워크·컴퓨팅이 물리적 기계·설비와 실시간으로 연결되어, 감지·판단·제어가 하나의 피드백 루프로 돌아가는 시스템이에요. 디지털 트윈은 CPS에서 기계 상태를 비추는 가상 모형으로, 모든 CPS에 꼭 있는 건 아니에요. 스마트팩토리·자율주행·스마트팜 같은 현장 응용이 CPS 구조 위에서 동작해요.",
+                 "A Cyber-Physical System links sensors, networks, and computing to physical machinery in real time, so that sensing, deciding, and controlling run as one continuous feedback loop. A digital twin is a virtual model that can mirror a machine's state in a CPS, though not every CPS has one. Real-world applications such as smart factories, autonomous driving, and smart farms run on this same CPS structure.")),
     "glossary": [
-        ("디지털 트윈", "Digital Twin", ("실제를 그대로 옮긴 화면 속 쌍둥이.", "The screen twin that mirrors the real thing exactly."), ("CPS에서 '화면' 역할을 맡아요.", "It plays the 'screen' role inside a CPS.")),
-        ("피드백 루프", "Feedback Loop", ("감지→판단→제어로 돌고 도는 신호의 고리.", "The signal's circle of sensing, deciding, and controlling."), ("CPS가 멈추지 않고 계속 작동하는 이유예요.", "The reason a CPS keeps running without stopping.")),
+        ("디지털 트윈", "Digital Twin", ("실제를 그대로 옮긴 화면 속 쌍둥이.", "The screen twin that mirrors the real thing exactly."), ("이 부스에선 CPS의 '화면' 역할을 맡아요.", "In this booth it plays the CPS's 'screen' role.")),
+        ("피드백 루프", "Feedback Loop", ("감지→판단→제어로 돌고 도는 신호의 고리.", "The signal's circle of sensing, deciding, and controlling."), ("CPS가 결과를 보고 다음 동작을 계속 고치는 바탕이에요.", "It lets a CPS check each result and keep correcting its next move.")),
         ("엣지컴퓨팅", "Edge Computing", ("현장에서 바로 판단하는 작은 컴퓨터.", "The small computer that decides right there on the spot."), ('이 전시장 다른 부스에서도 같은 원리가 나와요. → <a href="ambientcompute-ko.html">말 안 해도 알아서 척척인 전시관</a>', 'The same idea shows up at another booth in this hall. → <a href="ambientcompute-en.html">the exhibit that just knows</a>')),
         ("자율주행", "Autonomous Driving", ("CPS 구조가 달리는 대표적인 현장.", "A prime real-world venue where this CPS structure runs."), ('자율주행차에도 보기·판단·움직이기가 똑같이 적용돼요. → <a href="autodrive-ko.html">운전석이 비어 있는 시연 트랙의 차</a>', "The same see-decide-act loop applies there too. → <a href=\"autodrive-en.html\">the demo-track car with an empty driver's seat</a>")),
         ("스마트팜", "Smart Farm", ("CPS 구조가 돌아가는 또 다른 현장.", "Another real-world venue where this same CPS loop runs."), ('온실을 센서가 재고 기계가 돌보는 것도 같은 고리예요. → <a href="smartfarm-ko.html">센서가 돌보는 온실 부스</a>', 'Sensors measuring a greenhouse and machines tending it run on the same loop. → <a href="smartfarm-en.html">the greenhouse booth tended by sensors</a>')),

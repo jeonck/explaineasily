@@ -46,7 +46,7 @@ PAGE = {
          "caption": ("DevOps는 작가와 인쇄소 사이 담장을 허물고, 작은 묶음을 자주 함께 찍어내는 거예요.", "DevOps tears down the wall between writer and printer so they print together in small, frequent runs."),
          "small": ("작가와 인쇄소가 담장 없이 나란히 서서, 원고를 작은 묶음으로 자주 주고받아요.", "Writer and printer stand side by side, with no wall, trading small batches of pages often."),
          "tricks": (4, [
-             (WALL_I, ("담장 허물기", "Tear down the wall"), ("따로 일하던 작가와 인쇄소가 한 팀이 돼요", "the writer and printer, once separate, become one team"), "calm"),
+             (WALL_I, ("담장 허물기", "Tear down the wall"), ("따로 일하던 작가와 인쇄소가 한 팀처럼 일해요", "the writer and printer, once separate, work as one team"), "calm"),
              (SMALLBATCH_I, ("작게, 자주 내기", "Ship small, ship often"), ("큰 묶음 대신 조금씩 자주 찍어요", "small frequent runs instead of one big one")),
              (AUTOLINE_I, ("자동 인쇄라인", "Automate the line"), ("확인과 찍기를 자동으로 이어요", "checking and printing run automatically")),
              (SHARED_I, ("같이 책임지기", "Share the responsibility"), ("문제가 생기면 작가와 인쇄소가 같이 고쳐요", "when something breaks, writer and printer fix it together"), "warm"),
@@ -55,35 +55,35 @@ PAGE = {
                     + styleguide(60, 30, 320, 260, "⟦옛날 방식|THE OLD WAY⟧",
                                  ("⟦분기에 한 번, 큰 묶음|once a quarter, one big batch⟧",
                                   "⟦인쇄소가 받고서야 문제 발견|the printer finds problems only after receiving it⟧",
-                                  "⟦고치는 데 몇 주|fixing it takes weeks⟧"), 1.0)
+                                  "⟦묶음이 커서 고치는 데 오래 걸려요|big batches take longer to fix⟧"), 1.0)
                     + styleguide(380, 30, 320, 260, "⟦DevOps 방식|THE DEVOPS WAY⟧",
                                  ("⟦매일, 작은 묶음|every day, small batches⟧",
                                   "⟦찍기 전에 자동으로 확인|checked automatically before printing⟧",
-                                  "⟦고치는 데 몇 분|fixing it takes minutes⟧"), 1.0)),
+                                  "⟦묶음이 작아서 금방 고쳐요|small batches get fixed fast⟧"), 1.0)),
          "alt": ("왼쪽: 분기에 한 번 큰 묶음을 내는 옛날 방식. 오른쪽: 매일 작은 묶음을 자동 확인 후 내는 DevOps 방식", "Left: the old way of shipping one big batch per quarter. Right: the DevOps way of shipping small, auto-checked batches daily"),
          "caption": ("묶음을 작게 쪼개면, 문제도 작게 쪼개져요.", "Split the batch smaller, and the problems get smaller too."),
          "small": ("자주 낼수록 한 번에 고칠 분량이 줄어서, 고치는 시간도 짧아져요.", "The more often you ship, the less there is to fix each time — so fixes take less time too.")},
         {"svg": svg(300, sky(300)
                     + person(190, 150, s=0.8, face=SMILE, **WRITER) + label(190, 265, "⟦이제 같이 일해요|now we work together⟧", 11, "var(--ink)")
-                    + person(560, 150, s=0.8, face=EYES, **PRINTER) + label(560, 265, "⟦그래도 보안을 맡을 경비는 따로 필요해요|but we still need a guard for security⟧", 11, "var(--ink)")
+                    + person(560, 150, s=0.8, face=EYES, **PRINTER) + label(560, 265, "⟦그래도 보안은 저절로 챙겨지지 않아요|but security doesn't take care of itself⟧", 11, "var(--ink)")
                     + label(380, 30, "⟦담장을 허문다고 보안까지 해결되진 않아요|tearing down the wall doesn't solve security⟧", 13, "var(--bad)", cls="d")),
-         "alt": ("작가는 이제 같이 일한다고 웃고, 인쇄 감독은 그래도 보안을 맡을 경비는 따로 필요하다고 말함", "The writer smiles that they now work together; the print supervisor says a guard is still needed for security"),
+         "alt": ("작가는 이제 같이 일한다고 웃고, 인쇄 감독은 그래도 보안은 저절로 챙겨지지 않는다고 말함", "The writer smiles that they now work together; the print supervisor says security still doesn't take care of itself"),
          "caption": ("담장을 허문다고 보안까지 해결되진 않아요.", "Tearing down the wall doesn't solve security."),
          "small": ('빠르게 같이 찍어내도, 보안까지 저절로 챙겨지진 않아요. 경비까지 같이 세우는 건 → <a href="devsecops-ko.html">짓는 동안 같이 보는 목수와 경비</a> 쪽 이야기예요.',
                    'Printing fast together doesn\'t automatically take care of security. Bringing a guard into that too is a different story → <a href="devsecops-en.html">the builder and the guard, side by side</a>.')},
     ],
     "summary": (("<b>DevOps</b> = 작가(개발)와 인쇄소(운영) 사이 <b>담장을 허물고</b>, <b>작은 묶음을 자주</b> 자동화된 라인으로 함께 찍어내는 문화·방식.",
                  "<b>DevOps</b> = tearing down the <b>wall</b> between the writer (dev) and the printer (ops), and printing together in <b>small, frequent, automated</b> batches."),
-                ("DevOps는 개발(Dev)과 운영(Ops)을 분리된 조직으로 두지 않고 하나의 팀으로 묶어, 지속적 통합(CI)과 지속적 배포(CD)를 통해 작은 변경을 자주, 자동화된 파이프라인으로 내보내는 문화이자 방법론이에요. 성과는 배포 빈도·변경 리드타임·변경 실패율·복구 시간 같은 지표로 가늠해요.",
-                 "DevOps is a culture and set of practices that bring development (Dev) and operations (Ops) together as one team instead of separate silos, shipping small changes often through an automated pipeline of continuous integration (CI) and continuous delivery (CD). Success is measured with metrics like deployment frequency, change lead time, change failure rate, and recovery time.")),
+                ("DevOps는 개발(Dev)과 운영(Ops)이 따로 떨어져 일하지 않고 한 팀처럼 협력하며, 지속적 통합(CI)과 지속적 전달·배포(CD)를 통해 작은 변경을 자주, 자동화된 파이프라인으로 내보내는 문화이자 방법론이에요. 성과는 배포 빈도·변경 리드타임·변경 실패율·복구 시간 같은 지표로 가늠해요.",
+                 "DevOps is a culture and set of practices that get development (Dev) and operations (Ops) working as one team instead of separate silos, shipping small changes often through an automated pipeline of continuous integration (CI) and continuous delivery/deployment (CD). Success is measured with metrics like deployment frequency, change lead time, change failure rate, and recovery time.")),
     "glossary": [
-        ("DevOps", "DevOps", ("담장을 허문 작가와 인쇄소.", "The writer and the printer, with no wall between them."), ("개발과 운영이 한 팀으로 묶여요.", "Development and operations become one team.")),
+        ("DevOps", "DevOps", ("담장을 허문 작가와 인쇄소.", "The writer and the printer, with no wall between them."), ("개발과 운영이 한 팀처럼 일해요.", "Development and operations work as one team.")),
         ("지속적통합(CI)", "Continuous Integration", ("원고를 조금씩 자주 합치는 것.", "Merging manuscript changes often, in small pieces."), ("합칠 때마다 자동으로 확인해요.", "Every merge gets checked automatically.")),
-        ("지속적배포(CD)", "Continuous Delivery/Deployment", ("확인된 원고를 자동으로 인쇄 라인에 올리는 것.", "Automatically feeding a checked manuscript onto the print line."), ("사람이 매번 수동으로 올리지 않아요.", "No one has to push it through by hand each time.")),
+        ("지속적배포(CD)", "Continuous Delivery/Deployment", ("확인된 원고를 자동으로 인쇄 라인에 올리는 것.", "Automatically feeding a checked manuscript onto the print line."), ("지속적 전달은 운영 반영 직전에 사람이 승인하고, 지속적 배포는 승인 없이 자동으로 내보내요.", "Continuous delivery keeps a human approval before release; continuous deployment ships automatically.")),
         ("무중단 배포 전략", "Zero-Downtime Deployment", ("서점 문을 닫지 않고 새 판으로 바꾸는 방법.", "Swapping in a new edition without closing the bookstore."), ('블루-그린, 카나리 같은 구체적 방법이 있어요 → <a href="bluegreen-ko.html">쌍둥이 기구를 번갈아 운영</a>, <a href="canary-ko.html">구석에서 몰래 하는 시험 운행</a>.', 'Specific methods include blue-green and canary → <a href="bluegreen-en.html">running twin rides, one at a time</a>, <a href="canary-en.html">a quiet test run in the corner</a>.')),
         ("인프라as코드(IaC)", "Infrastructure as Code", ("인쇄소 설비 설정까지 글로 적어 관리하는 것.", "Writing down the print shop's own setup as text, too."), ('설비도 원고처럼 버전관리할 수 있어요 → <a href="iac-ko.html">놀이공원 세계의 설계도 코드</a>.', 'The equipment itself can be version-controlled like a manuscript → <a href="iac-en.html">the blueprint-as-code in the theme-park world</a>.')),
         ("공동 책임 문화", "Shared Responsibility Culture", ("문제가 생기면 작가와 인쇄소가 같이 고치는 태도.", "The attitude of writer and printer fixing problems together, not pointing fingers."), ("'누구 탓'보다 '같이 해결'을 먼저 봐요.", "Puts 'let's fix it together' ahead of 'whose fault is it'.")),
-        ("DORA 지표", "DORA Metrics", ("DevOps가 잘 되고 있는지 재는 네 가지 자.", "The four rulers that measure whether DevOps is working."), ('배포 빈도·리드타임·실패율·복구시간이에요 → <a href="dorametrics-ko.html">네 가지 성과 지표</a>.', 'Deployment frequency, lead time, failure rate, and recovery time → <a href="dorametrics-en.html">the four performance metrics</a>.')),
+        ("DORA 지표", "DORA Metrics", ("DevOps가 잘 되고 있는지 재는 자.", "The rulers that measure whether DevOps is working."), ('배포 빈도·리드타임·실패율·복구시간이 대표적이고, 요즘 DORA는 재작업률까지 다섯 개를 봐요 → <a href="dorametrics-ko.html">네 가지 성과 지표</a>.', 'Deployment frequency, lead time, failure rate, and recovery time are the classics; DORA now adds rework rate as a fifth → <a href="dorametrics-en.html">the four performance metrics</a>.')),
         ("데브섹옵스", "DevSecOps", ("담장을 허문 자리에 경비까지 같이 세우는 것.", "Bringing a guard into the wall-free space too."), ('보안까지 처음부터 같이 보는 더 넓은 방식이에요 → <a href="devsecops-ko.html">짓는 동안 같이 보는 목수와 경비</a>.', 'The broader version that brings security in from the start, too → <a href="devsecops-en.html">the builder and the guard, side by side</a>.')),
     ],
 }

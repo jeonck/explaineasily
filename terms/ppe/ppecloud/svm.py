@@ -27,13 +27,13 @@ P3 = svg(340, sky(340)
          + '<path d="M250 80 L390 300" stroke="var(--stone-dark)" stroke-width="2" stroke-dasharray="5 4"/>'
          + '<path d="M364 42 L490 240" stroke="var(--stone-dark)" stroke-width="2" stroke-dasharray="5 4"/>'
          + label(380, 30, "⟦SVM = 두 그룹에서 가장 멀리 떨어진 경계선을 긋는 심사관|SVM = the reviewer who draws the line farthest from both groups⟧", 13, "var(--ink)", cls="d")
-         + label(380, 325, "⟦SVM은 경계에 가장 가까운 점(서포트 벡터)만 보고 선을 그어요|SVM draws the line using only the points closest to it — the support vectors⟧", 11, "var(--muted)"))
+         + label(380, 325, "⟦SVM에선 경계에 가장 가까운 점(서포트 벡터)이 선의 위치를 정해요|in SVM, the points closest to the line — support vectors — set its position⟧", 11, "var(--muted)"))
 
 # 4. 작동 디테일: 마진 폭 비교 — 좁은 마진 vs 넓은 마진
 P4 = svg(320, sky(320)
          + floorplan(60, 20, 640, 280, "⟦왜 '가장 넓게' 가르나요|why the \"widest\" split⟧",
                      ("⟦마진 = 경계선과 가장 가까운 점 사이 여유 폭|margin = the gap between the line and the closest points⟧",
-                      "⟦마진이 넓을수록 새 입주사를 더 잘 맞혀요|a wider margin predicts new tenants more reliably⟧",
+                      "⟦마진이 넓을수록 새 입주사를 대체로 더 잘 맞혀요|a wider margin tends to predict new tenants more reliably⟧",
                       "⟦서포트 벡터 = 그 여유 폭을 정하는 경계의 점들|support vectors = the boundary points that set that gap⟧",
                       "⟦직선으로 못 가르면 커널 트릭으로 공간을 바꿔요|when a straight line can't split them, a kernel trick reshapes the space⟧"), 1.0))
 
@@ -65,32 +65,32 @@ PAGE = {
          "small": ("경계선이 한쪽 그룹에 너무 붙어 있으면 안 돼요.", "The line can't hug either group too closely.")},
         {"svg": P3, "hero": True, "alt": ("두 그룹 사이에 가장 넓은 간격을 두고 그은 굵은 경계선과, 그 경계에 가장 가까운 두 점에 원이 쳐져 있음", "A thick boundary line drawn with the widest possible gap between two groups, with circles marking the two closest points to that boundary"),
          "caption": ("SVM = 두 그룹에서 가장 멀리 떨어진 경계선을 긋는 심사관이에요.", "SVM = the reviewer who draws the line farthest from both groups."),
-         "small": ("SVM은 경계에 가장 가까운 점(서포트 벡터)만 보고 선을 그어요.", "SVM draws the line using only the points closest to it — the support vectors."),
+         "small": ("SVM에선 경계에 가장 가까운 점(서포트 벡터)이 선의 위치를 정해요.", "In SVM, the points closest to the line — the support vectors — set its position."),
          "tricks": (4, [
              (MARGIN_I, ("두 그룹 사이 가장 넓은 간격을 찾아요", "Finds the widest gap between the two groups"), ("마진이라고 불러요", "called the margin"), "calm"),
-             (SUPPORT_I, ("경계에 가장 가까운 점만 봐요", "Watches only the points closest to the line"), ("서포트 벡터라고 불러요", "called support vectors")),
+             (SUPPORT_I, ("경계에 가장 가까운 점이 선을 정해요", "The points closest to the line set its position"), ("서포트 벡터라고 불러요", "called support vectors")),
              (KERNEL_I, ("직선으로 못 가르면 데이터 공간을 바꿔요", "Reshapes the data's space when a straight line can't split it"), ("커널 트릭이라고 불러요", "called the kernel trick"), "warm"),
              (CLASSIFY_I, ("새 데이터를 두 그룹 중 하나로 분류해요", "Classifies new data into one of two groups"), ("분류 알고리즘이에요", "it's a classification algorithm")),
          ])},
         {"svg": P4, "alt": ("마진이 경계선과 가장 가까운 점 사이 여유 폭임을 보여주고, 넓을수록 잘 맞히며, 서포트 벡터가 그 폭을 정하고, 휘어야 할 땐 커널 트릭을 쓴다고 설명", "Explains margin as the gap between the line and closest points, wider is more reliable, support vectors set that gap, and a kernel trick is used when curving is needed"),
          "caption": ("경계선을 '가장 넓게' 띄워 긋는 게 SVM의 핵심이에요.", "Drawing the line with \"the widest\" gap is the whole point of SVM."),
-         "small": ("마진이 넓을수록 경계 근처의 새 데이터도 더 잘 맞혀요.", "A wider margin classifies new data near the line more reliably.")},
+         "small": ("마진이 넓을수록 경계 근처의 새 데이터도 대체로 더 잘 맞혀요.", "A wider margin tends to classify new data near the line more reliably.")},
         {"svg": P5, "alt": ("왼쪽: 심사관이 이 건물 비유가 여기부터 억지라고 인정함. 오른쪽: SVM은 실제로 클라우드 인프라가 아니라 전통적인 머신러닝 분류 알고리즘이라는 설명", "Left: the reviewer admits this building metaphor gets forced from here. Right: an explanation that SVM is actually a classic machine-learning classification algorithm, not cloud infrastructure"),
          "caption": ("사실 SVM은 클라우드 인프라 이야기가 아니에요.", "SVM isn't actually a cloud-infrastructure story."),
-         "small": ("SVM은 전통적인 머신러닝 분류 알고리즘이에요 — 시험 범위라 다뤘지만, 이 건물 비유는 여기서 멈출게요.", "SVM is a classic machine-learning classification algorithm — covered here because it's on the exam list, but the building metaphor stops here.")},
+         "small": ("SVM은 전통적인 머신러닝 분류 알고리즘이에요 — 수험 주제라 함께 다뤘지만, 이 건물 비유는 여기서 멈출게요.", "SVM is a classic machine-learning classification algorithm — covered here as an exam-prep topic, but the building metaphor stops here.")},
     ],
     "summary": (("<b>SVM</b> = 두 그룹 사이에 <b>가장 넓은 여유(마진)</b>를 두고 경계선을 긋는 <b>분류 알고리즘</b>. 경계에 가장 가까운 점(<b>서포트 벡터</b>)만으로 선이 정해져요.",
                  "<b>SVM</b> is a <b>classification algorithm</b> that draws a boundary with the <b>widest possible margin</b> between two groups. The line is set using only the closest points — the <b>support vectors</b>."),
-                ("SVM(Support Vector Machine)은 두 클래스를 나누는 초평면(결정 경계)을 마진이 최대가 되도록 찾는 지도학습 분류 기법이에요. 선형으로 나눌 수 없는 데이터는 커널 트릭으로 고차원 공간에 매핑해 나눠요. 클라우드 인프라 주제가 아니라 전통적인 머신러닝 알고리즘이라, 이 페이지만 비유가 다른 페이지보다 느슨해요.",
-                 "SVM (Support Vector Machine) is a supervised classification technique that finds the hyperplane (decision boundary) separating two classes with the maximum margin. Data that can't be split linearly gets mapped into a higher-dimensional space via the kernel trick. Since this is a classic ML algorithm rather than a cloud-infrastructure topic, this page's building metaphor is intentionally looser than the others.")),
+                ("SVM(Support Vector Machine)은 두 클래스를 나누는 초평면(결정 경계)을 마진이 최대가 되도록 찾는 지도학습 분류 기법이에요. 선형으로 나눌 수 없는 데이터는 커널 트릭으로 고차원 공간에 옮긴 것처럼 계산해 나눠요. 클라우드 인프라 주제가 아니라 전통적인 머신러닝 알고리즘이라, 이 페이지만 비유가 다른 페이지보다 느슨해요.",
+                 "SVM (Support Vector Machine) is a supervised classification technique that finds the hyperplane (decision boundary) separating two classes with the maximum margin. Data that can't be split linearly is handled with the kernel trick, computed as if mapped into a higher-dimensional space. Since this is a classic ML algorithm rather than a cloud-infrastructure topic, this page's building metaphor is intentionally looser than the others.")),
     "glossary": [
         ("SVM", "Support Vector Machine", ("두 그룹을 가장 넓게 가르는 심사관.", "The reviewer splitting two groups the widest."), ("지도학습 분류 알고리즘이에요.", "A supervised-learning classification algorithm.")),
         ("결정 경계(초평면)", "Decision boundary (hyperplane)", ("두 그룹을 가르는 경계선.", "The line separating the two groups."), ("데이터 차원이 늘면 평면(초평면)이 돼요.", "In higher dimensions, this line becomes a hyperplane.")),
-        ("마진", "Margin", ("경계선과 가장 가까운 점 사이 여유 폭.", "The gap between the line and the closest points."), ("넓을수록 새 데이터를 더 잘 맞혀요.", "Wider margins predict new data more reliably.")),
+        ("마진", "Margin", ("경계선과 가장 가까운 점 사이 여유 폭.", "The gap between the line and the closest points."), ("넓을수록 새 데이터를 대체로 더 잘 맞혀요.", "Wider margins tend to predict new data more reliably.")),
         ("서포트 벡터", "Support vector", ("경계에 가장 가까운, 선을 정하는 점들.", "The closest points, the ones that actually set the line."), ("이 점들만 바뀌어도 경계선이 바뀌어요.", "Move just these points, and the boundary moves too.")),
         ("커널 트릭", "Kernel trick", ("직선으로 못 가를 때 공간을 바꾸는 방법.", "The trick of reshaping the space when a straight line won't do."), ("휘어진 경계도 그릴 수 있게 해줘요.", "Lets the boundary curve when it needs to.")),
         ("지도학습", "Supervised learning", ("정답이 있는 데이터로 배우는 방식.", "Learning from data that already has labeled answers."), ("조용한 입주사/시끄러운 입주사처럼 라벨이 미리 있어요.", "Like already knowing which tenants are quiet vs noisy, ahead of time.")),
-        ("분류", "Classification", ("둘 중 하나로 나누는 일.", "Sorting into one of two groups."), ("SVM이 결국 하는 일이에요.", "What SVM ultimately does.")),
+        ("분류", "Classification", ("정해진 그룹 중 하나로 나누는 일.", "Sorting into one of a set of groups."), ("SVM은 기본적으로 두 그룹으로 나눠요.", "SVM basically sorts into two groups.")),
         ("과적합", "Overfitting", ("훈련 데이터에만 너무 딱 맞춘 경계선.", "A boundary fit too tightly to the training data."), ("마진을 너무 좁게 잡으면 생기기 쉬워요.", "More likely when the margin is drawn too tight.")),
     ],
 }

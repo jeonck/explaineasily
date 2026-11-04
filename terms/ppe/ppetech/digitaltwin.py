@@ -95,8 +95,8 @@ PAGE = {
     ],
     "summary": (("<b>디지털 트윈</b>은 진짜 기계·설비를 <b>센서 데이터로 그대로 복제한 가상 쌍둥이</b>로, 위험하거나 비싼 실험을 화면 속에서 먼저 해볼 수 있게 해줘요.",
                  "A <b>digital twin</b> is a <b>virtual twin of a real machine, kept in sync by sensor data</b>, that lets you try risky or costly experiments on screen first."),
-                ("디지털 트윈은 물리적 자산·공정·시스템을 소프트웨어로 실시간 복제해, 시뮬레이션·예측·최적화에 활용하는 기술이에요. 트윈의 정확도는 전적으로 들어오는 센서 데이터 품질에 달려 있고, 최종 검증은 여전히 실물로 한 번 더 거쳐야 해요.",
-                 "A digital twin is a software replica of a physical asset, process, or system, kept synchronized in real time for simulation, prediction, and optimization. Its accuracy depends entirely on the quality of incoming sensor data, and final validation still needs a pass on the real thing.")),
+                ("디지털 트윈은 물리적 자산·공정·시스템을 소프트웨어로 실시간 복제해, 시뮬레이션·예측·최적화에 활용하는 기술이에요. 트윈의 정확도는 들어오는 센서 데이터 품질과 모델의 정밀도에 달려 있고, 최종 검증은 여전히 실물로 한 번 더 거쳐야 해요.",
+                 "A digital twin is a software replica of a physical asset, process, or system, kept synchronized in real time for simulation, prediction, and optimization. Its accuracy depends on the quality of incoming sensor data and of the model itself, and final validation still needs a pass on the real thing.")),
     "glossary": [
         ("디지털 트윈", "Digital Twin", ("진짜 기계를 빼닮은 화면 속 쌍둥이.", "The on-screen look-alike of a real machine."), ("센서 데이터로 진짜와 같이 움직여요.", "Moves like the real thing, fed by sensor data.")),
         ("엣지 컴퓨팅", "Edge Computing", ("센서 바로 옆에서 빠르게 계산.", "Computing right next to the sensor."), ('트윈에 들어갈 데이터를 빠르게 처리해요. → <a href="edgecompute-ko.html">다음 부스, 엣지 컴퓨팅</a>', 'Processes the twin\'s incoming data fast. → <a href="edgecompute-en.html">next booth, Edge Computing</a>')),

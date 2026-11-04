@@ -28,7 +28,7 @@ P4 = svg(320, sky(320)
                       ("⟦일정 — 제때 끝나나|schedule — on time?⟧",
                        "⟦품질 — 교정 기준 지켰나|quality — proofing standard met?⟧",
                        "⟦위험 — 막힌 곳은 없나|risk — any blockers?⟧",
-                       "⟦보고 — 윗선에 투명하게|reporting — transparent upward⟧"), 1.0)
+                       "⟦보고 — 결과를 윗선에 그대로|reporting — results sent up as-is⟧"), 1.0)
          + person(560, 150, s=0.75, face=EYES, **PRINTER)
          + label(560, 250, "⟦감리는 원고를 대신 쓰지 않고 확인만 해요|audit doesn't write for the author — it only checks⟧", 11, "var(--muted)")
          + label(380, 300, "⟦PMO는 같은 네 항목 점검을 여러 책(프로젝트)에 걸쳐 동시에 해요|PMO runs the same four checks across many books (projects) at once⟧", 12, "var(--ink)"))
@@ -46,7 +46,7 @@ REPORT_I = icon('<rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7
 
 PAGE = {
     "slug": "pmoaudit", "order": 1,
-    "title": ("출간 전 마지막 검수관", "The Last Checker Before Publication"),
+    "title": ("출간 과정을 곁에서 살피는 검수관", "The Checker Who Watches the Whole Publishing Run"),
     "h1": ("<em>정보시스템 감리/PMO</em>가 뭐예요?", "What is <em>IS Audit/PMO</em>?"),
     "sub": ("정보시스템 감리와 PMO를, 여러 책의 출간을 동시에 바깥에서 점검하는 검수관 이야기로 풀어봤어요.",
             "IS audit and PMO, told as a story about an outside checker watching several books head toward publication at once."),
@@ -67,16 +67,16 @@ PAGE = {
              (REPORT_I, ("투명하게 보고하기", "Report transparently"), ("점검 결과를 윗선도 같이 봐요", "so leadership sees the results too")),
          ])},
         {"svg": P4, "alt": ("감리 점검표: 일정·품질·위험·보고 네 항목. 인쇄 감독은 작가 대신 쓰지 않고 확인만 함", "An audit checklist: schedule, quality, risk, reporting. The supervisor only checks — doesn't write for the author"),
-         "caption": ("감리는 일정·품질·위험·보고, 네 가지를 점검해요.", "Audit checks four things: schedule, quality, risk, and reporting."),
+         "caption": ("이 점검표는 감리가 보는 것을 일정·품질·위험·보고 네 가지로 줄였어요.", "This checklist boils what audit looks at down to four things: schedule, quality, risk, and reporting."),
          "small": ("감리는 원고를 대신 쓰지 않고 확인만 해요. PMO는 같은 점검을 여러 책에 걸쳐 동시에 해요.", "Audit doesn't write for the author — it only checks. PMO runs the same checks across many books at once.")},
         {"svg": P5, "alt": ("왼쪽: 인쇄 감독이 늦는 걸 알려줌. 오른쪽: 결국 쓰는 건 작가", "Left: the supervisor flags the delay. Right: the author still has to write it"),
          "caption": ("감리가 늦어진 책을 직접 살려내진 않아요.", "Audit doesn't rescue a late book by itself."),
          "small": ("감리/PMO는 확인하고 조율하는 역할이지, 개발을 대신하지 않아요.", "Audit/PMO checks and coordinates — it doesn't do the development itself.")},
     ],
-    "summary": (("<b>정보시스템 감리/PMO</b> = 여러 프로젝트를 <b>바깥에서 동시에 점검</b>하며 <b>일정·품질·위험</b>을 미리 알려주는 역할.",
-                 "<b>IS Audit/PMO</b> = an outside role that checks several projects at once, flagging <b>schedule, quality, and risk</b> before they become real problems."),
-                ("정보시스템 감리는 외부 전문가가 사업 전반(관리·품질·보안)을 독립적으로 점검해 발주자에게 보고하는 제도이고, PMO(Project Management Office)는 여러 프로젝트를 표준화된 기준으로 총괄 관리하는 조직이에요. 감리는 '진단'에, PMO는 '운영 지원'에 더 가까워요.",
-                 "IS audit is an independent review by outside experts covering management, quality, and security, reported to the client. PMO (Project Management Office) oversees multiple projects under standardized criteria. Audit leans toward diagnosis; PMO leans toward operational support.")),
+    "summary": (("<b>정보시스템 감리/PMO</b> = 개발팀 <b>바깥에서 프로젝트를 점검·관리</b>하며 <b>일정·품질·위험</b> 문제를 미리 알려주는 역할.",
+                 "<b>IS Audit/PMO</b> = a role outside the development team that <b>checks and manages projects</b>, flagging <b>schedule, quality, and risk</b> issues before they become real problems."),
+                ("정보시스템 감리는 발주자와 사업자의 이해관계에서 독립된 제3자가 정보시스템 구축·운영을 종합 점검해 개선을 이끄는 전자정부법상의 제도로, 공공 사업에서는 보통 요구정의·설계·종료 단계마다 점검하고 결과를 발주자에게 보고해요. PMO(Project Management Office)는 프로젝트를 표준화된 기준으로 관리하는 조직으로, 조직 안에 두기도 하고 공공 사업에서는 전자정부법에 따라 외부 전문 사업자에게 맡기기도 해요. 감리는 '진단'에, PMO는 '운영 지원'에 더 가까워요.",
+                 "IS audit is a system under Korea's E-Government Act: a third party independent of both client and contractor reviews how an information system is built and run, and drives improvements. Public projects are usually checked at the requirements, design, and closing stages, with results reported to the client. A PMO (Project Management Office) manages projects under standardized criteria; it can sit inside an organization, or a public project can hand it to an outside specialist under the same Act. Audit leans toward diagnosis; PMO leans toward operational support.")),
     "glossary": [
         ("정보시스템 감리", "IS Audit", ("바깥에서 하는 독립 점검.", "An independent check from the outside."), ("발주자에게 직접 보고해요.", "Reports straight to the client.")),
         ("PMO", "Project Management Office", ("여러 프로젝트를 총괄하는 조직.", "The office that oversees many projects."), ("표준 기준으로 관리해요.", "Manages them against one shared standard.")),
@@ -85,6 +85,6 @@ PAGE = {
         ("품질보증(QA/QC)", "QA/QC", ("교정자처럼 결함을 막고 찾아내는 일.", "Preventing and finding flaws, like a proofreader."), ("감리는 품질에 일정과 위험까지 더해 더 넓게 봐요.", "Audit adds schedule and risk on top of quality.")),
         ("형상관리", "Configuration Management", ("원고를 보관하는 서가.", "The shelf where manuscripts are kept."), ('감리가 점검하는 항목 중 하나예요. → <a href="scmshelf-ko.html">원고를 지키는 보관 서가</a>', "One of the things audit checks. → <a href=\"scmshelf-en.html\">the shelf that protects the manuscript</a>")),
         ("SLA", "SLA", ("관객에게 보장한 약속.", "The promise made to the audience."), ('다른 세계(IT관리)에서 자세히 다뤄요. → <a href="slappe-ko.html">공연 보장 티켓</a>', 'Covered in depth in another world (IT Mgmt). → <a href="slappe-en.html">the ticket that guarantees the show</a>')),
-        ("기능점수(FP)", "Function Point", ("소프트웨어 규모를 재는 자.", "The ruler for measuring software size."), ('감리가 규모를 가늠할 때 써요. → <a href="fpruler-ko.html">쪽수 대신 기능을 재는 자</a>', "Used by audit to gauge project size. → <a href=\"fpruler-en.html\">the ruler that measures functions, not pages</a>")),
+        ("기능점수(FP)", "Function Point", ("소프트웨어 규모를 재는 자.", "The ruler for measuring software size."), ('사업 규모를 재는 지표예요. → <a href="fpruler-ko.html">쪽수 대신 기능을 재는 자</a>', "A common measure of a project's size. → <a href=\"fpruler-en.html\">the ruler that measures functions, not pages</a>")),
     ],
 }

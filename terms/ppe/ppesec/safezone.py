@@ -66,7 +66,7 @@ P4 = svg(300, sky(300)
 P5 = svg(280, '<rect width="760" height="280" fill="var(--accent-soft)"/>'
          + person(160, 150, s=0.85, face=FROWN + SWEAT, **ANALYST)
          + '<g transform="translate(260,130)"><rect x="-26" y="-22" width="52" height="48" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/><rect x="-26" y="-22" width="52" height="12" rx="4" fill="var(--accent)"/></g>'
-         + label(285, 196, "⟦승인에 몇 주가 걸려요|approval can take weeks⟧", 11, "var(--muted)")
+         + label(285, 196, "⟦승인을 받을 때까지 기다려요|you wait until approval comes⟧", 11, "var(--muted)")
          + paper_small(560, 150, 1.2, "⟦반출 불가|denied⟧") + person(650, 170, s=0.7, face=EYES, **GUARD)
          + label(380, 258, "⟦결과가 재식별될 수 있으면 반출 자체가 거부돼요|if the result could still be re-identified, the export itself is refused⟧", 12, "var(--ink)"))
 
@@ -99,15 +99,15 @@ PAGE = {
         {"svg": P4, "alt": ("신청·승인·분석·반출심사 네 단계 절차표", "A four-step process: apply, approval, analyze, export review"),
          "caption": ("안심구역을 쓰려면 정해진 절차를 거쳐요.", "Using a safe zone follows a set process."),
          "small": ("신청하고, 승인받고, 방 안에서 분석하고, 나가기 전에 한 번 더 검사받아요.", "Apply, get approved, analyze inside the room, then undergo one more check before anything leaves.")},
-        {"svg": P5, "alt": ("분석가가 땀을 흘리며 몇 주짜리 달력을 기다리고, 다른 결과는 '반출 불가' 도장이 찍힘", "A sweating analyst waits through a weeks-long calendar, while another result is stamped export denied"),
-         "caption": ("안심구역 승인은 오래 걸리고, 결과 반출도 다 허락되진 않아요.", "Approval can take a long time, and not every result is allowed out."),
+        {"svg": P5, "alt": ("분석가가 땀을 흘리며 달력을 보고 승인을 기다리고, 다른 결과는 '반출 불가' 도장이 찍힘", "A sweating analyst watches a calendar, waiting for approval, while another result is stamped export denied"),
+         "caption": ("안심구역은 승인을 기다려야 쓸 수 있고, 결과 반출도 다 허락되진 않아요.", "A safe zone can be used only after waiting for approval, and not every result is allowed out."),
          "small": ('결과가 <a href="pseudonymize-ko.html">재식별</a>될 수 있으면 반출 자체가 거부돼요.',
                    'If the result could still be <a href="pseudonymize-en.html">re-identified</a>, the export is refused outright.')},
     ],
     "summary": (("<b>개인정보 안심구역</b> = 여러 기관의 데이터를 <b>한 방에 모아</b> 그 안에서만 분석하고, <b>결과만 승인받아 반출</b>하는 특별 열람실.",
                  "A <b>personal-data safe zone</b> = a special reading room where data from several organizations is <b>gathered in one place</b>, analyzed only inside, with <b>only approved results ever exported</b>."),
-                ("데이터 안심구역은 여러 기관의 가명정보·결합정보를 물리적·논리적으로 통제된 공간에 모아 분석하되, 원본 데이터의 반출은 원천 차단하고 분석 결과만 재식별 위험 평가를 거쳐 반출을 허용하는 제도예요. 운영기관이 이용 신청을 심사하고, 가명정보 결합은 결합전문기관이 맡으며, 반출심사위원회가 결과물의 재식별 가능성을 확인한 뒤에만 밖으로 나갈 수 있어요. 여러 기관의 데이터를 안전하게 활용하면서도 유출 위험을 최소화하는 것이 목적이에요.",
-                 "A data safe zone gathers pseudonymized and linked data from multiple organizations into a physically and logically controlled space for analysis, while blocking the raw data from ever leaving and allowing only the analysis results out, after a re-identification risk review. The operating agency screens applications, a data linkage agency performs the linkage, and an export review committee checks the results for re-identification risk before anything is released. The goal is to let organizations use combined data safely while keeping leak risk to a minimum.")),
+                ("데이터 안심구역(데이터산업법 제11조)은 밖에 공개하지 않는 데이터(가명정보·결합정보 등)를 물리적·논리적으로 통제된 공간에 모아 분석하되, 원본 데이터의 반출은 원천 차단하고 분석 결과만 재식별 위험 평가를 거쳐 반출을 허용하는 제도예요. 운영기관이 이용 신청을 심사하고, 가명정보 결합은 결합전문기관이 맡으며, 반출심사위원회가 결과물의 재식별 가능성을 확인한 뒤에만 밖으로 나갈 수 있어요. 여러 기관의 데이터를 안전하게 활용하면서도 유출 위험을 최소화하는 것이 목적이에요.",
+                 "A data safe zone (Data Industry Act, Article 11) gathers unreleased data, such as pseudonymized and linked data, into a physically and logically controlled space for analysis, while blocking the raw data from ever leaving and allowing only the analysis results out, after a re-identification risk review. The operating agency screens applications, a data linkage agency performs the linkage, and an export review committee checks the results for re-identification risk before anything is released. The goal is to let organizations use combined data safely while keeping leak risk to a minimum.")),
     "glossary": [
         ("개인정보 안심구역", "Personal-data safe zone", ("특별 열람실.", "The special reading room."), ("여러 기관의 데이터를 모아 분석하되 원본은 못 나가는 통제된 공간이에요.", "A controlled space where data from several organizations is analyzed, but the raw data never leaves.")),
         ("결합전문기관", "Data linkage agency", ("여러 장부를 합치는 전담 기관.", "The dedicated agency that combines the ledgers."), ("가명정보끼리의 결합을 전문적으로 수행해요.", "Specializes in linking pseudonymized datasets.")),

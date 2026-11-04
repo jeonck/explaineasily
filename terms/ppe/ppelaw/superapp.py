@@ -12,7 +12,7 @@ P1 = svg(300, sky(300)
          + person(380, 130, s=0.9, face=SMILE, **PRESIDENT)
          + '<rect x="305" y="200" width="150" height="60" rx="8" fill="var(--panel)" stroke="var(--line)" stroke-width="3"/>'
          + label(380, 225, "⟦학생증 앱|STUDENT ID APP⟧", 10, "var(--ink)", cls="d")
-         + label(380, 245, "⟦급식 · 도서관 · 출석 · 포인트|lunch · library · roll call · points⟧", 8, "var(--muted)")
+         + label(380, 245, "⟦급식 · 도서관 · 출석 · 포인트|lunch · library · roll call · points⟧", 9, "var(--muted)")
          + person(180, 160, s=0.7, face=SMILE, **STUDENT) + person(580, 160, s=0.7, face=SMILE, **STUDENT)
          + label(380, 290, "⟦학생들은 앱 하나로 다 되니 편하다고 좋아해요|students love having it all in one app⟧", 12, "var(--ink)", cls="d"))
 
@@ -66,7 +66,7 @@ PAGE = {
              (ALLIN_I, ("한 곳에서 다 해결", "Solve it all in one place"), ("앱 하나면 충분해요", "one app is all it takes"), "calm"),
              (DATA_I, ("쓸수록 데이터가 모임", "Data pools the more it's used"), ("운영자가 이용자를 누구보다 많이 알게 돼요", "the operator comes to know users better than anyone")),
              (WALL_I, ("다른 곳은 들어오기 어려움", "Hard for others to get in"), ("진입장벽이 생겨요", "a barrier to entry forms"), "warm"),
-             (LAW_I, ("그래서 법으로 공정 기준을 정함", "So the law sets fairness rules"), ("플랫폼 규제가 따로 생겨요", "platform-specific regulation follows")),
+             (LAW_I, ("그래서 법으로 공정 기준을 정함", "So the law sets fairness rules"), ("EU DMA처럼 플랫폼 전용 규제가 생기기도 해요", "platform-specific rules can follow, like the EU's DMA")),
          ])},
         {"svg": P4, "alt": ("편리한 점과 규제가 필요한 이유를 나란히 비교한 규칙판 두 개", "Two rule boards comparing convenience against the reasons regulation is needed"),
          "caption": ("편리함 뒤에는 규제가 필요한 이유도 있어요.", "Behind the convenience are reasons regulation is needed."),
@@ -75,13 +75,13 @@ PAGE = {
          "caption": ("슈퍼앱을 너무 규제하면 편리함이 줄어들 수 있어요.", "Over-regulating a super app can shrink its convenience."),
          "small": ("공정함과 자율성, 망중립성에서도 봤던 똑같은 줄다리기예요.", "Fairness vs autonomy — the same tug-of-war seen with net neutrality.")},
     ],
-    "summary": (("<b>슈퍼앱</b> = 여러 서비스를 <b>한 앱에 몰아 모은 것</b>. 편리하지만 <b>독점·끼워팔기·데이터 집중</b> 우려 때문에 따로 규제해요.",
-                 "<b>Super app</b> = <b>bundling many services into one app</b>. Convenient, but regulated separately because of <b>monopoly, forced bundling, and data concentration</b> concerns."),
+    "summary": (("<b>슈퍼앱</b> = 여러 서비스를 <b>한 앱에 몰아 모은 것</b>. 편리하지만 <b>독점·끼워팔기·데이터 집중</b> 우려 때문에 별도 규제가 논의돼요.",
+                 "<b>Super app</b> = <b>bundling many services into one app</b>. Convenient, but separate regulation is debated because of <b>monopoly, forced bundling, and data concentration</b> concerns."),
                 ("슈퍼앱은 결제·메시징·쇼핑·배차 등 여러 서비스를 하나의 앱 안에 통합해 제공하는 플랫폼이에요. 편의성이 크지만, 시장지배력이 한 앱에 집중되고 데이터가 결합·오남용될 수 있으며, 자사 서비스를 묶어 경쟁 서비스를 밀어내는 끼워팔기 문제가 생길 수 있어요. 그래서 EU 디지털시장법(DMA)은 큰 플랫폼에 상호운용성과 공정한 입점 기준을 요구하고, 한국에서도 온라인 플랫폼 규제 법안이 논의돼 왔어요.",
                  "A super app is a platform that bundles services like payments, messaging, shopping, and ride-hailing into a single app. It's highly convenient, but market power concentrates in one app, data can be combined and misused, and bundling its own services can push out competitors. That's why the EU's Digital Markets Act (DMA) requires interoperability and fair terms of entry from large platforms, and online-platform bills have been debated in Korea too.")),
     "glossary": [
         ("슈퍼앱", "Super App", ("여러 서비스를 한 앱에 모은 것.", "Many services bundled into one app."), ("편리하지만 시장과 데이터가 한 앱에 몰릴 우려도 있어요.", "Convenient, but market power and data may pile up in one app.")),
-        ("플랫폼 규제", "Platform Regulation", ("큰 앱 하나를 따로 다루는 법.", "A law that treats one dominant app differently."), ("EU의 DMA가 대표적이고, 한국에서는 법안이 논의돼 왔어요.", "The EU's DMA is the main example; Korea has debated bills of its own.")),
+        ("플랫폼 규제", "Platform Regulation", ("큰 앱 하나를 따로 다루는 법.", "A law that treats one dominant app differently."), ("EU의 DMA가 대표적이에요. 한국은 온라인 플랫폼 법안들이 국회에 올라가 있고(2026년 9월 기준 미통과), 공정위 독과점 심사지침은 2023년 1월부터 시행 중이에요.", "The EU's DMA is the main example. In Korea, online-platform bills sit in the National Assembly (not passed as of September 2026), while the Fair Trade Commission's monopoly review guidelines took effect in January 2023.")),
         ("끼워팔기", "Bundling/Tying", ("한 서비스를 쓰려면 다른 서비스도 함께 쓰게 묶는 것.", "Making users take one service only together with another."), ("경쟁을 제한하는 대표적인 행위예요.", "A classic way competition gets restricted.")),
         ("데이터 집중", "Data Concentration", ("한 앱에 데이터가 몰리는 것.", "Data all pooling into one app."), ("몰린 데이터가 오남용되면 피해가 커질 수 있어요.", "Misuse of that pooled data can cause outsized harm.")),
         ("상호운용성", "Interoperability", ("다른 서비스와도 잘 맞물려 돌아가는 성질.", "Working smoothly together with other services."), ("플랫폼 규제가 요구하는 핵심 조건 중 하나예요.", "One of the core conditions platform regulation demands.")),

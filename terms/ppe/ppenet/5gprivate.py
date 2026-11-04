@@ -42,7 +42,7 @@ P4 = svg(320, sky(320)
 
 # 5. 특화망도 만능은 아니에요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
-         + truck(190, 160, 0.85, fast=True) + label(190, 240, "⟦공장 안에서는 특화망이 공용망보다 확실히 빨라요|on campus, the private network is reliably faster than the public one⟧", 11, "var(--ink)")
+         + truck(190, 160, 0.85, fast=True) + label(190, 240, "⟦공장 안에선 남과 안 섞여 속도가 공용망보다 안정적이에요|on campus, with no shared traffic, speed is steadier than public⟧", 11, "var(--ink)")
          + postoffice(570, 170, 0.6) + label(570, 260, "⟦특화망은 공장 밖으로 안 나가요, 전국망이 아니에요|the private network stops at the campus — it's not nationwide⟧", 11, "var(--ink)")
          + label(380, 282, "⟦특화망은 좁지만 확실한 길이지, 세상 전체로 가는 길은 아니에요|a private network is a narrow but certain road — not a road to the whole world⟧", 12, "var(--ink)", cls="d"))
 
@@ -70,20 +70,20 @@ PAGE = {
          "tricks": (4, [
              (FREQ_I, ("전용 주파수", "Dedicated frequency"), ("이 공장만 쓰는 전파 대역", "a radio band only this factory uses"), "calm"),
              (ROUTE_I, ("전용 경로", "Dedicated route"), ("바깥 소포와 안 섞여요", "never mixes with outside mail")),
-             (LOCK_I, ("보안 강화", "Stronger security"), ("데이터가 공장 밖으로 안 나가요", "data never leaves the campus"), "warm"),
-             (GAUGE_I, ("보장된 지연", "Guaranteed latency"), ("초저지연이 약속돼요", "ultra-low delay is promised")),
+             (LOCK_I, ("보안 강화", "Stronger security"), ("데이터를 공장 안에 둘 수 있어요", "data can stay on the campus"), "warm"),
+             (GAUGE_I, ("맞춤 지연 설계", "Latency by design"), ("남과 안 섞여 지연을 공장 용도에 맞춰요", "no shared traffic, so delay is tuned to the factory's needs")),
          ])},
         {"svg": P4, "alt": ("공용 배송망과 5G 특화망을 속도·보안·비용·범위로 비교한 지도", "A map comparing public network vs 5G private network by speed, security, cost, coverage"),
-         "caption": ("공용망과 특화망은 네 가지가 달라요.", "Public and private networks differ on four things."),
-         "small": ("특화망은 공용망보다 속도·보안이 확실하지만, 더 비싸고 공장 안에서만 쓸 수 있어요.", "A private network is faster and more secure than the public one, but pricier and usable only on the campus.")},
-        {"svg": P5, "alt": ("왼쪽: 공장 안에서 특화망 트럭이 공용망보다 빠름. 오른쪽: 공장 밖으로는 안 나가는 우체국", "Left: inside the campus the private truck beats the public network. Right: the post office never serves outside the campus"),
+         "caption": ("공용망과 특화망은 속도·보안·비용·범위가 달라요.", "Public and private networks differ in speed, security, cost, and reach."),
+         "small": ("특화망은 공용망보다 속도·보안이 확실하지만, 더 비싸고 공장 안에서만 쓸 수 있어요.", "A private network gives surer speed and security than the public one, but it's pricier and usable only on the campus.")},
+        {"svg": P5, "alt": ("왼쪽: 공장 안에서 특화망 트럭의 속도가 공용망보다 안정적임. 오른쪽: 공장 밖으로는 안 나가는 우체국", "Left: inside the campus the private truck runs steadier than the public network. Right: the post office never serves outside the campus"),
          "caption": ("특화망도 만능은 아니에요.", "A private network isn't a cure-all."),
          "small": ("특화망은 좁지만 확실한 길이지, 세상 전체로 가는 길은 아니에요.", "A private network is a narrow but certain road — not a road to the whole world.")},
     ],
     "summary": (("<b>5G 특화망</b>은 한 공장·건물·캠퍼스만을 위해 <b>따로 깔아둔 전용 5G망</b>으로, 공용망과 안 섞여 속도와 보안을 보장해요.",
                  "A <b>5G private network</b> is a <b>dedicated 5G network laid down for one factory, building, or campus</b> — never mixed with the public network, so speed and security can be guaranteed."),
-                ("5G 특화망(이음5G/Local 5G)은 통신사의 공용 5G 코어·주파수와 분리된 전용 주파수·전용 코어망을 특정 구역에만 구축해, 지연·보안·대역폭을 그 구역 용도에 맞게 보장하는 방식이에요. 스마트팩토리·병원·항만 등 끊기면 안 되는 현장에 주로 쓰여요.",
-                 "A 5G private network builds a dedicated frequency and dedicated core — separate from a carrier's shared public 5G core — within one specific site, guaranteeing latency, security, and bandwidth tailored to that site's needs. It's used where connectivity can't be allowed to drop: smart factories, hospitals, ports.")),
+                ("5G 특화망(한국의 이음5G, 일본의 Local 5G)은 통신사의 공용 5G 코어·주파수와 분리된 전용 주파수·전용 코어망을 특정 구역에만 구축해, 지연·보안·대역폭을 그 구역 용도에 맞게 보장하는 방식이에요. 스마트팩토리·병원·항만 등 끊기면 안 되는 현장에 주로 쓰여요.",
+                 "A 5G private network (Korea's 이음5G, Japan's Local 5G) builds a dedicated frequency and dedicated core — separate from a carrier's shared public 5G core — within one specific site, guaranteeing latency, security, and bandwidth tailored to that site's needs. It's used where connectivity can't be allowed to drop: smart factories, hospitals, ports.")),
     "glossary": [
         ("5G 특화망", "5G Private Network", ("이 공장만을 위한 전용 배송망.", "A delivery network dedicated to just this factory."), ("주파수·코어망을 따로 가져요.", "Has its own frequency and core network.")),
         ("주파수 대역", "Frequency band", ("배송 트럭이 달리는 전용 차로.", "The dedicated lane the delivery trucks run on."), ("공용망과 섞이지 않는 전파 구간이에요.", "A radio range that never mixes with the public network.")),

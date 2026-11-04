@@ -30,7 +30,7 @@ P3 = svg(365, sky(365)
 P4 = svg(320, sky(320)
          + floorplan(60, 20, 640, 280, "⟦블록 vs 파일 vs 오브젝트|block vs file vs object⟧",
                      ("⟦구조: 벽돌 조각 vs 폴더 트리 vs 태그 붙은 박스|structure: raw bricks vs folder tree vs tagged boxes⟧",
-                      "⟦접근: 가장 빠름 vs 사람에게 익숙함 vs API로 조회|access: fastest vs human-familiar vs via API lookup⟧",
+                      "⟦접근: 보통 가장 빠름 vs 사람에게 익숙함 vs API로 조회|access: usually fastest vs human-familiar vs via API lookup⟧",
                       "⟦확장성: 보통 vs 보통 vs 무제한에 가까움|scalability: moderate vs moderate vs near-unlimited⟧",
                       "⟦대표 용도: 데이터베이스 vs 공유 문서 vs 사진·백업·로그|typical use: databases vs shared docs vs photos, backups, logs⟧"), 1.0))
 
@@ -64,9 +64,9 @@ PAGE = {
          "caption": ("블록=벽돌, 파일=폴더 트리, 오브젝트=태그 붙은 박스예요.", "Block=bricks, file=folder tree, object=tagged boxes."),
          "small": ("블록·파일·오브젝트는 저장하고 꺼내는 방식이 서로 달라요.", "Block, file, and object differ in how data gets stored and retrieved."),
          "tricks": (4, [
-             (RAW_I, ("블록 = 벽돌 조각", "Block = raw bricks"), ("별도 구조 없는 조각이라 셋 중 가장 빨라요", "structureless pieces, and the fastest of the three"), "calm"),
+             (RAW_I, ("블록 = 벽돌 조각", "Block = raw bricks"), ("별도 구조 없는 조각이고 보통 셋 중 가장 빨라요", "structureless pieces, and usually the fastest of the three"), "calm"),
              (TREE_I, ("파일 = 폴더 트리", "File = a folder tree"), ("사람에게 가장 익숙해요", "most familiar to people")),
-             (TAG_I, ("오브젝트 = 태그 붙은 박스", "Object = tagged boxes"), ("API로 태그를 조회해 찾아요", "found by querying tags via an API"), "warm"),
+             (TAG_I, ("오브젝트 = 태그 붙은 박스", "Object = tagged boxes"), ("API로 박스의 고유 ID를 불러 꺼내요", "fetched by its unique ID through an API"), "warm"),
              (SCALE_I, ("오브젝트는 거의 무제한으로 쌓여요", "Object storage piles up almost without limit"), ("박스 창고를 옆으로 계속 늘릴 수 있어요", "the box warehouse can keep growing sideways")),
          ])},
         {"svg": P4, "alt": ("구조·접근 방식·확장성·대표 용도를 블록·파일·오브젝트로 비교한 안내판", "A board comparing block, file, and object storage on structure, access, scalability, and typical use"),
@@ -76,15 +76,15 @@ PAGE = {
          "caption": ("오브젝트는 일부만 고칠 때도 박스를 통째로 바꿔야 해서 블록보다 느려요.", "Even a small edit to an object means resending the whole box, so it's slower than block."),
          "small": ("블록은 바뀐 조각만 고쳐 쓰면 돼서 빨라요.", "Block storage rewrites only the changed piece, so edits are quick.")},
     ],
-    "summary": (("<b>블록</b> = 벽돌 조각(가장 빠르고, 별도 구조 없음). <b>파일</b> = 폴더 트리(사람에게 익숙). <b>오브젝트</b> = 태그 붙은 박스(무한 확장, 메타데이터로 조회).",
-                 "<b>Block</b> is raw bricks (fastest, with no structure of its own). <b>File</b> is a folder tree (familiar to people). <b>Object</b> is tagged boxes (near-infinite scale, found by metadata)."),
+    "summary": (("<b>블록</b> = 벽돌 조각(보통 가장 빠르고, 별도 구조 없음). <b>파일</b> = 폴더 트리(사람에게 익숙). <b>오브젝트</b> = 태그 붙은 박스(거의 무제한 확장, 고유 ID로 꺼내기).",
+                 "<b>Block</b> is raw bricks (usually fastest, with no structure of its own). <b>File</b> is a folder tree (familiar to people). <b>Object</b> is tagged boxes (near-unlimited scale, fetched by unique ID)."),
                 ("블록 스토리지는 고정 크기 블록 단위로 접근해 DB처럼 빠른 입출력이 필요한 곳에 쓰이고, 파일 스토리지는 디렉터리·파일 계층 구조로 사람이 다루기 쉬워요. 오브젝트 스토리지는 파일을 메타데이터·고유 ID가 붙은 객체로 저장해 API로 조회하며, 수평 확장이 거의 무제한이라 사진·백업·로그 같은 비정형 대용량 데이터에 적합해요. 다만 객체는 일부만 수정하는 덴 비효율적이에요.",
                  "Block storage is accessed in fixed-size chunks, suited to fast I/O like databases. File storage uses a directory/file hierarchy that's easy for people to navigate. Object storage keeps data as objects tagged with metadata and a unique ID, queried via an API, with near-unlimited horizontal scale — ideal for unstructured bulk data like photos, backups, and logs. But objects are inefficient to partially modify.")),
     "glossary": [
-        ("블록 스토리지", "Block storage", ("벽돌처럼 조각난 저장 단위.", "Storage carved into brick-like chunks."), ("셋 중 가장 빠르지만, 파일 같은 구조는 없어요.", "Fastest of the three, but with no file structure of its own.")),
+        ("블록 스토리지", "Block storage", ("벽돌처럼 조각난 저장 단위.", "Storage carved into brick-like chunks."), ("보통 셋 중 가장 빠르지만, 파일 같은 구조는 없어요.", "Usually the fastest of the three, but with no file structure of its own.")),
         ("파일 스토리지", "File storage", ("폴더 트리처럼 정리된 저장 방식.", "Storage organized like a folder tree."), ("사람이 다루기 가장 익숙해요.", "Most familiar for a person to navigate.")),
-        ("오브젝트 스토리지", "Object storage", ("태그(메타데이터) 붙은 박스 창고.", "A warehouse of boxes tagged with metadata."), ("API로 태그를 조회해 찾아요.", "Found by querying tags via an API.")),
-        ("메타데이터", "Metadata", ("박스에 붙이는 태그.", "The tag attached to the box."), ("오브젝트를 찾는 열쇠예요.", "The key used to find an object.")),
+        ("오브젝트 스토리지", "Object storage", ("태그(메타데이터) 붙은 박스 창고.", "A warehouse of boxes tagged with metadata."), ("API로 박스의 고유 ID를 불러 꺼내요.", "Fetched by its unique ID through an API.")),
+        ("메타데이터", "Metadata", ("박스에 붙이는 태그.", "The tag attached to the box."), ("생성 날짜나 종류처럼 오브젝트를 설명하는 정보예요.", "Details that describe an object, like its creation date or type.")),
         ("DAS/NAS/SAN", "DAS / NAS / SAN", ("연결 방식과 나눠쓰는 범위의 차이.", "A difference in connection method and sharing scope."), ('DAS/NAS/SAN은 기준이 달라요 — 데이터 모양이 아니라 연결 방식 이야기예요. → <a href="dasnassan-ko.html">내 서랍, 공용 자료실, 전용 창고망</a>', "A different yardstick — how storage connects, not what shape data takes. → <a href=\"dasnassan-en.html\">my drawer, the shared file room, the dedicated network</a>")),
         ("수평 확장", "Horizontal scaling", ("창고를 옆으로 계속 늘리는 것.", "Adding more warehouse space sideways, endlessly."), ("오브젝트 스토리지가 이 방식으로 거의 무제한 늘어나요.", "This is how object storage scales almost without limit.")),
         ("백업", "Backup", ("자료 사본을 따로 하나 더 두는 일.", "Keeping one more copy of the data elsewhere."), ("오브젝트 스토리지가 자주 쓰이는 용도예요.", "A common use case for object storage.")),

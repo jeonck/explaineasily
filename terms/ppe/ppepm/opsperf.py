@@ -17,7 +17,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + label(80, 85, "⟦오픈 직후|right after launch⟧", 11, "var(--muted)", "start")
          + label(680, 262, "⟦몇 달 후, 예매 사이트가 느려지고 자꾸 멈춰요|months later, the ticket site is slow and keeps stalling⟧", 11, "var(--bad)", "end")
          + person(150, 190, s=0.75, face=SWEAT, **DIRECTOR)
-         + label(380, 282, "⟦시스템을 안 지켜보면 성능이 티 안 나게 서서히 나빠져요|left unwatched, a system's performance quietly gets worse over time⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦안 지켜보면 시스템이 서서히 느려져도 아무도 몰라요|left unwatched, a system can slow down and nobody notices⟧", 12, "var(--ink)", cls="d"))
 
 # 3. hero: 운영성과관리 = 투어 끝난 뒤에도 시스템을 계속 점검하는 일
 MONITOR = '<g transform="translate(560,190)"><rect x="-50" y="-35" width="100" height="70" rx="4" fill="#1B2A44"/><path d="M-35 0 l15 -15 l10 20 l10 -25 l15 10 l10 -5" stroke="var(--good)" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="-12" y="35" width="24" height="10" fill="var(--stone-dark)"/></g>'
@@ -59,7 +59,7 @@ PAGE = {
          "caption": ("공연은 끝났는데, 표 예매 시스템은 계속 돌아가야 해요.", "The show is over, but the ticket system still has to keep running."),
          "small": ("시스템은 \"만들고 끝\"이 아니에요, 만든 뒤 운영이 이어져요.", "A system isn't \"build it and done\" — running it comes after.")},
         {"svg": P2, "alt": ('시스템 성능이 오픈 직후엔 좋다가 몇 달 뒤 서서히 나빠지는 그래프, 감독관이 진땀을 흘림', 'A graph shows system performance fine right after launch, then slowly degrading months later, as the director sweats'),
-         "caption": ("시스템을 안 지켜보면 성능이 티 안 나게 서서히 나빠져요.", "Left unwatched, a system's performance quietly gets worse over time."),
+         "caption": ("안 지켜보면 시스템이 서서히 느려져도 아무도 몰라요.", "Left unwatched, a system can slow down and nobody notices."),
          "small": ("오픈 직후 빠르던 시스템도 몇 달 후엔 느려질 수 있어요, 계속 재야 알아요.", "A system that's fast right after launch can slow down months later — only steady measuring shows it.")},
         {"svg": P3, "hero": True, "alt": ('감독관이 웃으며 모니터링 화면을 지켜보고 있음', 'The director smiles while watching a monitoring screen'),
          "caption": ("운영 성과관리는 투어 끝난 뒤에도 시스템을 계속 점검하는 일이에요.", "Ops performance management is keeping watch on the system even after the tour ends."),
@@ -79,8 +79,8 @@ PAGE = {
     ],
     "summary": (("<b>정보시스템 운영 성과관리</b> = 공연(프로젝트)이 끝난 뒤에도 <b>가동률·응답속도·만족도를 계속 재고 개선</b>하는 일.",
                  "<b>IS operations performance management</b> = continuing to measure and improve uptime, latency, and satisfaction, even after the project (show) ends."),
-                ("정보시스템 운영 성과관리는 가동률(availability)·응답속도(latency)·사용자 만족도 같은 지표를 지속적으로 측정하고, 그 결과를 PDCA(Plan-Do-Check-Act)처럼 반복적으로 개선에 반영하는 활동이에요. IT 투자성과 평가가 '끝난 뒤 한 번' 묻는 질문이라면, 운영 성과관리는 그 질문에 '계속' 답하는 과정이에요.",
-                 "IS operations performance management continuously measures metrics like availability, latency, and user satisfaction, feeding results back into improvement through a PDCA (Plan-Do-Check-Act) cycle. If IT investment evaluation asks its question once, after the project ends, operations performance management is the ongoing process of continuing to answer it.")),
+                ("정보시스템 운영 성과관리는 가동률(availability)·응답속도(latency)·사용자 만족도 같은 지표를 지속적으로 측정하고, 그 결과를 PDCA(Plan-Do-Check-Act)처럼 반복적으로 개선에 반영하는 활동이에요. IT 투자성과 평가가 주로 프로젝트가 끝난 시점에 묻는 질문이라면, 운영 성과관리는 그 질문에 '계속' 답하는 과정이에요. 공공기관은 「전자정부 성과관리 지침」에 따라 서비스 개시 1년이 지난 시스템의 성과를 매년 비용 측면(운영 적정성·유지 용이성·비용 효율성)과 업무 측면(기능활용도·업무성과 달성도)으로 재고, 점수가 낮으면 개선·폐기 대상으로 분류해요(2024년 매뉴얼 기준).",
+                 "IS operations performance management continuously measures metrics like availability, latency, and user satisfaction, feeding results back into improvement through a PDCA (Plan-Do-Check-Act) cycle. If IT investment evaluation mainly asks its question when the project ends, operations performance management is the ongoing process of continuing to answer it. Korean public institutions, under the e-Government performance management guideline, measure each system every year once it is a year past launch, on cost (operating adequacy, ease of maintenance, cost efficiency) and on work (feature use, achievement of work goals), and low scorers are classed for improvement or retirement (per the 2024 manual).")),
     "glossary": [
         ("가동률", "Availability/Uptime", ("시스템이 안 멈춘 시간의 비율.", "The share of time the system stays up."), ("정전 같은 사고로 깎여요.", "Cut down by incidents like outages.")),
         ("응답속도", "Latency", ("요청에 얼마나 빨리 답하는가.", "How fast the system responds to a request."), ("서서히 느려지는 걸 놓치기 쉬워요.", "Easy to miss as it slowly degrades.")),
@@ -88,7 +88,7 @@ PAGE = {
         ("PDCA", "PDCA", ("계획-실행-점검-개선을 도는 고리.", "The loop of Plan, Do, Check, Act."), ("운영 개선은 이 고리를 계속 돌려요.", "Ops improvement keeps turning this loop.")),
         ("SLA/SLM", "SLA/SLM", ("후원사와 맺은 보장 티켓과 그 관리.", "The guarantee ticket agreed with the sponsor, and managing it."), ('운영 지표는 이 약속을 지켰는지의 근거가 돼요. → <a href="slappe-ko.html">공연을 보장하는 티켓</a>', 'Ops metrics become the evidence that the promise was kept. → <a href="slappe-en.html">the ticket that guarantees the show</a>')),
         ("IT 투자성과 평가", "IT Investment Evaluation", ("공연 끝난 뒤 돈값 했는지 따지는 성적표.", "The scorecard checking if the investment paid off."), ('운영 데이터는 돈값을 했느냐는 질문에 계속 답을 줘요. → <a href="itinvesteval-ko.html">공연 끝난 뒤의 성적표</a>', 'Ops data keeps answering whether the investment paid off. → <a href="itinvesteval-en.html">the scorecard after the show</a>')),
-        ("BCP", "BCP", ("정전 같은 큰 사고에도 공연을 잇는 계획.", "The plan that keeps the show going through a disaster."), ('BCP 발동 여부도 운영 기록에 남아요. → <a href="bcpplan-ko.html">정전에도 멈추지 않는 투어</a>', 'Whether BCP had to trigger is logged in ops records too. → <a href="bcpplan-en.html">the tour that doesn\'t stop for a blackout</a>')),
-        ("감리/PMO", "IS Audit/PMO", ("프로젝트 전체를 바깥에서 점검하는 역할.", "A role that checks the whole project from the outside."), ('운영 지표도 감리가 점검하는 항목이에요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'Ops metrics are among the things audit checks too. → <a href="pmoaudit-en.html">the last checker before publication</a>')),
+        ("BCP", "BCP", ("정전 같은 큰 사고에도 공연을 잇는 계획.", "The plan that keeps the show going through a disaster."), ('BCP 발동 여부도 운영 기록에 남아요. → <a href="bcpplan-ko.html">정전에도 이어가는 투어</a>', 'Whether BCP had to trigger is logged in ops records too. → <a href="bcpplan-en.html">the tour that carries on through a blackout</a>')),
+        ("감리/PMO", "IS Audit/PMO", ("프로젝트를 제3자 입장에서 점검(감리)하거나 관리를 돕는(PMO) 역할.", "Checks the project as a third party (audit) or supports its management (PMO)."), ('운영 단계 감리에서는 운영 지표도 볼 수 있어요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'An operations-stage audit can look at ops metrics too. → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
     ],
 }

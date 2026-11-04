@@ -22,7 +22,7 @@ P3 = svg(340, sky(340, ground=False)
          + indexcard(380, 150, 1.8, tags=["B", "✓", "⟦가|C⟧"])
          + label(380, 30, "⟦다차원 색인구조 = 카드 한 장에 여러 딱지를 동시에 붙이기|Multi-dimensional index = several tags on one card at once⟧", 13.5, "var(--ink)", cls="d")
          + label(260, 250, "⟦구역|zone⟧", 11, "var(--muted)") + label(380, 250, "⟦유통기한|expiry⟧", 11, "var(--muted)") + label(500, 250, "⟦분류|category⟧", 11, "var(--muted)")
-         + label(380, 320, "⟦구역·유통기한·분류를 어떻게 조합해 찾아도 상자를 바로 찾아내요|whatever mix of zone, expiry, and category you ask for, the box turns up fast⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦구역·유통기한·분류를 섞어 찾아도 선반을 다 뒤지지 않아요|even a mix of zone, expiry, and category is found without searching every shelf⟧", 12, "var(--muted)"))
 
 # 4. R-트리 스타일: 공간을 나눠 좁혀가기
 P4 = svg(320, sky(320, ground=False)
@@ -69,9 +69,9 @@ PAGE = {
          "small": ("구역 색인이 있어도 유통기한 찾기까지 빨라지진 않아요.", "A zone index doesn't speed up a search by expiry date.")},
         {"svg": P3, "hero": True, "alt": ("큰 색인 카드 한 장에 구역·유통기한·분류 세 가지 딱지가 동시에 붙어 있음", "One big index card carries zone, expiry, and category tags all at once"),
          "caption": ("다차원 색인구조는 카드 한 장에 여러 딱지를 동시에 붙여요.", "A multi-dimensional index puts several tags on one card at once."),
-         "small": ("구역·유통기한·분류를 어떻게 조합해 찾아도 상자를 바로 찾아내요.", "Whatever mix of zone, expiry, and category you ask for, the box turns up fast."),
+         "small": ("구역·유통기한·분류를 섞어 찾아도 선반을 다 뒤지지 않아요.", "Even a mix of zone, expiry, and category is found without searching every shelf."),
          "tricks": (4, [
-             (MULTI_I, ("여러 딱지 동시에 붙이기", "Tag by several keys at once"), ("복합 색인이에요", "a composite index")),
+             (MULTI_I, ("여러 딱지 동시에 붙이기", "Tag by several keys at once"), ("복합 색인도 쓰지만 컬럼 순서에 묶여요", "composite indexes do this, but depend on column order")),
              (SPACE_I, ("공간을 나눠 찾기", "Narrow down by space"), ("R-트리 방식이에요", "the R-tree approach"), "calm"),
              (BIT_I, ("있다/없다로 빨리 거르기", "Filter fast with yes/no"), ("비트맵 색인이에요", "a bitmap index")),
              (SIM_I, ("비슷한 것끼리 묶어 찾기", "Group by similarity"), ("벡터 검색에 쓰여요", "used for vector search"), "warm"),

@@ -39,7 +39,7 @@ P3 = svg(340, sky(340)
          + glyph(560, 120, 1.0, EYE_P) + glyph(560, 190, 1.0, BRAIN2_P)
          + person(660, 250, s=0.6, face=SMILE, **VISITOR)
          + label(380, 30, "⟦자율주행 = 센서로 길을 보고, 스스로 판단해서, 직접 핸들을 꺾는 차|autonomous driving = a car that sees the road, decides for itself, and turns the wheel⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦사람이 운전하지 않아도, 차가 운전을 끝까지 맡아요|with no one at the wheel, the car does all the driving⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦이 시연 차는 정해진 구역 안에서, 사람 없이 운전을 끝까지 맡아요|within its set area, this demo car does all the driving, no one at the wheel⟧", 12, "var(--muted)"))
 
 # 4. 보기 → 판단 → 움직이기, 그리고 자율주행의 단계
 P4 = svg(320, sky(320)
@@ -54,10 +54,10 @@ P4 = svg(320, sky(320)
 # 5. 한계 - 처음 보는 돌발 상황엔 아직 서툴러요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
          + car(130, 150, 1.0)
-         + label(190, 260, "⟦늘 보던 길에선 차가 사람보다 꾸준하고 안 지쳐요|on familiar roads, the car beats people: steady, never tired⟧", 11, "var(--ink)")
+         + label(190, 260, "⟦늘 보던 길에선 차가 사람보다 꾸준하고 안 지쳐요|on familiar roads, the car is steadier and never tires⟧", 11, "var(--ink)")
          + car(510, 150, 1.0) + glyph(610, 140, 0.8, HANDS_P)
          + label(570, 260, "⟦처음 보는 공사장·눈길에선 차가 아직 서툴러요|a new construction zone or snowy road can trip the car up⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦낯선 상황에서는 여전히 사람이 핸들을 다시 잡아야 해요|in unfamiliar situations, a person still has to take the wheel back⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦낯선 상황에서는 운전자가 넘겨받거나 원격 직원이 조언해야 할 때가 있어요|in unfamiliar situations, a driver may take over or a remote agent may advise⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "autodrive", "order": 22,
@@ -74,29 +74,29 @@ PAGE = {
          "small": ("길 위 상황은 매번 달라서, 정해진 규칙만으로는 차를 몰 수 없어요.", "Road conditions change every time, so fixed rules alone can't drive the car.")},
         {"svg": P3, "hero": True, "alt": ("차 옆에 눈과 뇌 모양의 그림이 떠 있고, 관람객이 흐뭇하게 지켜봄", "Eye and brain icons float beside the car while a visitor watches contentedly"),
          "caption": ("자율주행은 센서로 보고, 스스로 판단해서, 직접 운전하는 차예요.", "Autonomous driving is a car that sees the road, decides for itself, and turns the wheel."),
-         "small": ("사람이 운전하지 않아도, 차가 운전을 끝까지 맡아요.", "With no one at the wheel, the car does all the driving."),
+         "small": ("이 시연 차는 정해진 구역 안에서, 사람 없이 운전을 끝까지 맡아요.", "Within its set area, this demo car does all the driving, no one at the wheel."),
          "tricks": (4, [
              (EYE_I, ("보기", "See"), ("카메라·LiDAR로 주변을 봐요", "sees around it with camera, LiDAR")),
              (BRAIN2_I, ("판단하기", "Decide"), ("길·사람·신호를 가늠해요", "judges the road, people, signals"), "calm"),
              (STEER_I, ("움직이기", "Act"), ("핸들·브레이크를 직접 조작해요", "turns the wheel and brakes itself")),
-             (HANDS_I, ("도움 받기", "Get help"), ("낯선 상황엔 사람 손이 필요해요", "needs a person in unfamiliar situations"), "warm"),
+             (HANDS_I, ("도움 받기", "Get help"), ("낯선 상황엔 사람 도움이 필요할 때가 있어요", "may need a person in unfamiliar situations"), "warm"),
          ])},
         {"svg": P4, "alt": ("보기→판단→움직이기 설명판, 안내원이 자율주행 레벨을 설명", "A see-decide-act board, with a guide explaining autonomous driving levels"),
          "caption": ("차는 센서로 보고, 스스로 판단하고, 핸들과 브레이크를 직접 움직여요.", "The car sees with sensors, decides for itself, and moves the wheel and brakes on its own."),
          "small": ("자율주행은 레벨 0(전부 사람)부터 레벨 5(전부 차)까지 나뉘어요.", "Autonomous driving ranges from Level 0 (all human) to Level 5 (all car).")},
         {"svg": P5, "alt": ("왼쪽: 늘 다니던 길에서 차가 안정적으로 달림. 오른쪽: 낯선 공사장 앞에서 손이 필요하다는 신호가 뜸", "Left: the car drives smoothly on a familiar road. Right: a hand icon signals it needs help at an unfamiliar construction site"),
          "caption": ("자율주행차는 처음 보는 돌발 상황엔 아직 서툴러요.", "Self-driving cars are still clumsy in situations they've never seen."),
-         "small": ("낯선 상황에서는 여전히 사람이 핸들을 다시 잡아야 해요.", "In unfamiliar situations, a person still has to take the wheel back.")},
+         "small": ("낯선 상황에서는 운전자가 넘겨받거나 원격 직원이 조언해야 할 때가 있어요.", "In unfamiliar situations, a driver may have to take over or a remote agent may have to advise.")},
     ],
     "summary": (("<b>자율주행</b> = 센서로 주변을 <b>보고</b>, 스스로 <b>판단</b>해서, 직접 핸들과 브레이크를 <b>움직이는</b> 차.",
                  "<b>Autonomous driving</b> = a car that <b>sees</b> its surroundings with sensors, <b>decides</b> for itself, and <b>acts</b> on the wheel and brakes directly."),
-                ("자율주행은 카메라·LiDAR·레이더 등 센서로 주변 환경을 인식하고, AI가 상황을 판단해 조향·가속·제동을 직접 수행하는 기술이에요. SAE 기준 레벨 0(비자동)부터 레벨 5(완전자율)까지 단계가 나뉘며, 단계가 올라갈수록 사람의 개입이 줄어들어요.",
-                 "Autonomous driving perceives its surroundings with sensors like cameras, LiDAR, and radar, then has AI judge the situation and directly handle steering, acceleration, and braking. The SAE scale runs from Level 0 (no automation) to Level 5 (full autonomy), with less human involvement needed at each higher level.")),
+                ("자율주행은 카메라·LiDAR·레이더 등 센서로 주변 환경을 인식하고, AI가 상황을 판단해 조향·가속·제동을 직접 수행하는 기술이에요. SAE 기준 레벨 0(비자동)부터 레벨 5(완전자율)까지 단계가 나뉘며, 단계가 올라갈수록 사람의 개입이 줄어들어요. 레벨 3은 시스템이 요청하면 사람이 넘겨받아야 하고, 레벨 4부터는 정해진 조건 안에서 사람이 대기하지 않아도 돼요.",
+                 "Autonomous driving perceives its surroundings with sensors like cameras, LiDAR, and radar, then has AI judge the situation and directly handle steering, acceleration, and braking. The SAE scale runs from Level 0 (no automation) to Level 5 (full autonomy), with less human involvement needed at each higher level. At Level 3 a person must take over when the system asks; from Level 4, no one needs to stand by within the set conditions.")),
     "glossary": [
-        ("LiDAR", "LiDAR", ("레이저로 거리를 정확히 재는 눈.", "The eye that measures distance exactly with lasers."), ('많은 자율주행차가 기대는 눈이에요. → <a href="lidar-ko.html">레이저로 거리를 재는 회전하는 눈</a>', "An eye many self-driving cars rely on. → <a href=\"lidar-en.html\">the spinning eye that measures distance with lasers</a>")),
+        ("LiDAR", "LiDAR", ("레이저로 거리를 정확히 재는 눈.", "The eye that measures distance exactly with lasers."), ('많은 자율주행차가 기대는 눈이에요. → <a href="lidar-ko.html">레이저로 거리를 재는 눈</a>', "An eye many self-driving cars rely on. → <a href=\"lidar-en.html\">the eye that measures distance with lasers</a>")),
         ("자율주행 레벨", "Autonomous Driving Levels", ("사람 개입이 줄어드는 여섯 단계.", "Six stages where human involvement shrinks."), ("레벨 0은 전부 사람, 레벨 5는 전부 차예요.", "Level 0 is all human; Level 5 is all car.")),
         ("센서 융합", "Sensor Fusion", ("여러 센서의 정보를 하나로 합치는 것.", "Combining data from several sensors into one picture."), ("카메라·LiDAR·레이더를 함께 써서 서로의 약점을 메워요.", "Camera, LiDAR, and radar together cover for each other's blind spots.")),
-        ("CPS", "CPS", ("화면과 실제 기계가 맞물려 움직이는 것.", "Screen and real machine moving in lockstep."), ('자율주행차도 이 틀 안의 한 예시예요. → <a href="cps-ko.html">사이버물리시스템(CPS)</a>', 'A self-driving car is one example living inside this bigger frame. → <a href="cps-en.html">Cyber-Physical Systems</a>')),
+        ("CPS", "CPS", ("컴퓨터와 실제 기계가 맞물려 움직이는 것.", "Computer and real machine moving in lockstep."), ('자율주행차도 이 틀 안의 한 예시예요. → <a href="cps-ko.html">사이버물리시스템(CPS)</a>', 'A self-driving car is one example living inside this bigger frame. → <a href="cps-en.html">Cyber-Physical Systems</a>')),
         ("드론 보안위협", "Drone Security Threats", ("드론의 무선 조종 신호를 노리는 위협.", "Threats that target a drone's wireless control link."), ('자율주행차는 무선 신호보다 센서에 더 기대지만, 외부 공격을 받는 위협은 닮았어요. → <a href="dronesecurity-ko.html">보이지 않는 줄로 매달린 드론</a>', 'A self-driving car leans more on sensors than radio links, but outside attacks threaten both. → <a href="dronesecurity-en.html">the drone held up by an invisible string</a>')),
         ("정량적 위험분석", "Quantitative Risk Analysis", ("사고 확률과 피해를 숫자로 재는 방법.", "A way to score accident probability and damage with numbers."), ('자율주행차의 안전성도 이렇게 가늠해요. → <a href="quantrisk-ko.html">위험을 숫자 하나로 적는 전광판</a>', "A self-driving car's safety gets sized up the same way. → <a href=\"quantrisk-en.html\">the scoreboard that writes risk as one number</a>")),
         ("스마트팜", "Smart Farm", ("센서가 작물을 대신 돌봐주는 또 다른 현장.", "Another real-world setting where sensors tend the crops."), ("비슷한 센서로 보고 자동으로 움직인다는 생각이 밭에도 있어요. → <a href=\"smartfarm-ko.html\">센서가 돌보는 온실 부스</a>", "The same sense-and-act-automatically idea lives on a farm too. → <a href=\"smartfarm-en.html\">the greenhouse booth tended by sensors</a>")),

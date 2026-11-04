@@ -45,14 +45,14 @@ P4 = svg(360, sky(360, ground=False)
                       "⟦가상 공간 — 함께 머무는 3D 세계|virtual space — a shared 3D world⟧",
                       "⟦실시간 상호작용 — 목소리·동작이 그대로|real-time interaction — voice and motion, live⟧",
                       "⟦가상경제 — 아이템을 사고팔기|virtual economy — buying and selling items⟧"), 1.3)
-         + label(380, 345, "⟦이 네 가지가 모여야 '같이 있다'는 느낌이 나요|all four together make it feel like 'being there'⟧", 12, "var(--ink)"))
+         + label(380, 345, "⟦아바타·공간·실시간 상호작용이 '같이 있다'는 느낌을 만들어요|avatars, space, and live interaction make it feel like 'being there'⟧", 12, "var(--ink)"))
 
 # 5. 한계: 멀미, 비싼 기기, 서로 호환 안 됨
 P5 = svg(330, '<rect width="380" height="330" fill="var(--bad-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
          + person(190, 125, s=0.85, face=SWEAT + EYES, **VISITOR)
-         + label(190, 260, "⟦헤드셋을 오래 쓰면 어지럽고, 기기도 비싸요|wear a headset too long and you get dizzy; the gear is pricey⟧", 11, "var(--ink)")
+         + label(190, 260, "⟦헤드셋을 오래 쓰면 어지러울 수 있고, 기기도 비싸요|long headset wear can make you dizzy; the gear is pricey⟧", 11, "var(--ink)")
          + avatar(540, 150, 1.3, "var(--accent)") + label(650, 150, "✕", 28, "var(--bad)", cls="d") + avatar(700, 150, 1.0, "#C9822B")
-         + label(570, 260, "⟦서로 다른 메타버스끼리는 아바타·아이템이 아직 호환이 안 돼요|different metaverses still can't share avatars or items⟧", 11, "var(--ink)")
+         + label(570, 260, "⟦서로 다른 메타버스끼리는 아바타·아이템이 아직 잘 안 통해요|different metaverses still rarely share avatars or items⟧", 11, "var(--ink)")
          + label(380, 305, "⟦헤드셋 자체는 다음 부스, VR에서 자세히 봐요|the headset itself gets its own booth next: VR⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
@@ -78,18 +78,18 @@ PAGE = {
              (META_ECON, ("가상경제 참여", "Join a virtual economy"), ("아이템을 사고팔아요", "buy and sell items"), "warm"),
          ])},
         {"svg": P4, "alt": ("메타버스를 이루는 네 요소: 아바타, 가상공간, 실시간 상호작용, 가상경제", "A board showing four parts of the metaverse: avatar, virtual space, real-time interaction, virtual economy"),
-         "caption": ("아바타·가상 공간·실시간 상호작용·가상경제가 모여야 '같이 있다'는 느낌이 나요.", "Avatars, a virtual space, real-time interaction, and a virtual economy together make it feel like 'being there.'"),
-         "small": ("이 중 하나라도 빠지면 그냥 또 다른 화면일 뿐이에요.", "Missing even one of these, it's just another screen.")},
+         "caption": ("아바타·가상 공간·실시간 상호작용이 '같이 있다'는 느낌을 만들고, 가상경제는 그 세계에 머물 이유를 더해줘요.", "Avatars, a virtual space, and real-time interaction make it feel like 'being there'; a virtual economy adds a reason to stay."),
+         "small": ("아바타도 실시간 반응도 없으면 그냥 또 다른 화면일 뿐이에요.", "Without avatars or live interaction, it's just another screen.")},
         {"svg": P5, "alt": ("왼쪽: 관람객이 멀미와 비싼 기기를 호소함. 오른쪽: 서로 다른 메타버스 아바타가 호환되지 않음", "Left: a visitor complains of dizziness and pricey gear. Right: avatars from different metaverses can't connect"),
-         "caption": ("메타버스용 헤드셋을 오래 쓰면 어지럽고, 기기도 비싸요.", "Wear a metaverse headset too long and you get dizzy; the gear is pricey too."),
-         "small": ("서로 다른 메타버스끼리는 아바타·아이템이 아직 호환이 안 돼요.", "Different metaverses still can't share avatars or items.")},
+         "caption": ("메타버스용 헤드셋을 오래 쓰면 어지러울 수 있고, 기기도 비싸요.", "Wear a metaverse headset too long and you can get dizzy; the gear is pricey too."),
+         "small": ("서로 다른 메타버스끼리는 아바타·아이템이 아직 잘 안 통해요.", "Different metaverses still rarely share avatars or items.")},
     ],
-    "summary": (("<b>메타버스</b>는 아바타로 들어가 <b>같은 가상 공간에 함께 있는 느낌</b>을 주는 인터넷으로, 가상공간·실시간 상호작용·가상경제가 함께 있어야 완성돼요.",
-                 "The <b>metaverse</b> is an internet that gives you the <b>feeling of being together in the same virtual space</b>, as an avatar — complete only with a shared space, real-time interaction, and a virtual economy together."),
+    "summary": (("<b>메타버스</b>는 아바타로 들어가 <b>같은 가상 공간에 함께 있는 느낌</b>을 주는 인터넷으로, 흔히 가상공간·실시간 상호작용·가상경제를 구성요소로 꼽아요.",
+                 "The <b>metaverse</b> is an internet that gives you the <b>feeling of being together in the same virtual space</b>, as an avatar — usually described as a shared space, real-time interaction, and a virtual economy."),
                 ("메타버스는 아바타를 통해 사용자가 몰입형 3D 가상 공간에서 실시간으로 상호작용하고, 가상 재화를 거래할 수 있는 확장된 인터넷 환경이에요. VR·AR 기기는 메타버스에 들어가는 한 가지 방법일 뿐이고, 서로 다른 메타버스 플랫폼 간 상호운용성 부족과 장시간 착용의 피로는 아직 풀어야 할 과제예요.",
                  "The metaverse is an extended internet environment where users, through avatars, interact in real time in immersive 3D virtual spaces and trade virtual goods. VR/AR headsets are just one way to enter it, and a lack of interoperability between different metaverse platforms, plus fatigue from extended wear, remain unresolved challenges.")),
     "glossary": [
-        ("메타버스", "Metaverse", ("아바타가 함께 머무는 가상 공간.", "The virtual space avatars share together."), ("가상공간·상호작용·경제가 다 있어야 해요.", "Needs space, interaction, and an economy, all together.")),
+        ("메타버스", "Metaverse", ("아바타가 함께 머무는 가상 공간.", "The virtual space avatars share together."), ("가상공간·상호작용·경제를 흔히 구성요소로 꼽아요.", "Space, interaction, and an economy are its usual parts.")),
         ("아바타", "Avatar", ("나를 대신하는 가상 모습.", "A virtual stand-in for me."), ("메타버스 안에서 나를 표현해요.", "Represents me inside the metaverse.")),
         ("가상현실(VR)", "Virtual Reality", ("가상 세계로 들어가는 헤드셋 기술.", "The headset technology for entering a virtual world."), ('메타버스에 들어가는 한 방법이에요. → <a href="vrtech-ko.html">VR 부스</a>', "One way to enter the metaverse. → <a href=\"vrtech-en.html\">the VR booth</a>")),
         ("디지털 트윈", "Digital Twin", ("현실을 그대로 복제하는 쌍둥이.", "A twin that copies reality exactly."), ('트윈은 현실 복제, 메타버스는 새 세계도 만들 수 있어요. → <a href="digitaltwin-ko.html">디지털 트윈 부스</a>', 'A twin copies reality; the metaverse can invent new worlds too. → <a href="digitaltwin-en.html">the Digital Twin booth</a>')),

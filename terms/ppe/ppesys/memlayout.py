@@ -46,7 +46,7 @@ P4 = svg(360, '<rect width="760" height="360" fill="var(--sky)"/>'
          + bay(260, 130, 240, 80, "var(--accent-soft)", "⟦힙 — 쓸수록 그림 아래로 늘어남|heap — grows down this picture as used⟧", "↓")
          + bay(260, 210, 240, 30, "var(--bad-soft)", "⟦충돌하면 메모리 부족!|collision = out of memory!⟧")
          + bay(260, 240, 240, 90, "var(--good-soft)", "⟦스택 — 쓸수록 그림 위로 늘어남|stack — grows up this picture as used⟧", "↑")
-         + label(380, 348, "⟦힙과 스택이 서로를 향해 자라다 부딪히면 문제예요|heap and stack grow toward each other — collision is trouble⟧", 12, "var(--ink)"))
+         + label(380, 348, "⟦힙과 스택이 서로를 향해 자라다 사이 공간이 바닥나면 메모리가 모자라요|heap and stack grow toward each other — when the gap runs out, memory does too⟧", 12, "var(--ink)"))
 
 # 5. 동적 할당은 편하지만 안 돌려주면 쌓여요
 P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
@@ -80,15 +80,15 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("코드, 데이터/BSS, 힙, 스택 네 구역이 세로로 쌓여 있고 힙은 아래로 스택은 위로 서로를 향해 자람", "Four stacked zones — code, data/BSS, heap, stack — with heap and stack growing toward each other"),
          "caption": ("이 그림(낮은 주소가 위)에선 힙이 아래로, 스택이 위로 자라요.", "In this picture (low addresses on top), the heap grows down and the stack grows up."),
-         "small": ("힙과 스택이 부딪히면 메모리가 부족해져요.", "If the heap and stack collide, memory runs out.")},
+         "small": ("힙과 스택 사이 공간이 바닥나면 메모리가 모자라요.", "When the gap between heap and stack runs out, memory runs out.")},
         {"svg": P5, "alt": ("왼쪽: 필요할 때 힙에서 더 받는 동적 할당이 편리함. 오른쪽: 돌려주지 않으면 못 쓰는 공간이 쌓이는 메모리 누수", "Left: dynamic allocation from the heap is handy. Right: not giving it back causes a memory leak"),
          "caption": ("동적 할당은 편하지만, 다 쓴 공간은 직접 돌려줘야 해요.", "Dynamic allocation is handy, but you must return the space when done."),
          "small": ("힙에서 받은 만큼 돌려줘야 작업 공간이 모자라지 않아요.", "Give back what you take from the heap, or the workspace runs short.")},
     ],
     "summary": (("<b>프로세스 메모리 구조</b>는 작업 공간을 <b>코드·데이터·힙·스택</b> 구역으로 나누는 규칙이고, <b>동적 메모리 할당</b>은 힙에서 <b>필요한 만큼 빌렸다가 돌려주는 것</b>이에요.",
                  "A <b>process memory layout</b> fixes zones — <b>code, data, heap, stack</b> — for the workspace, and <b>dynamic memory allocation</b> is <b>borrowing from the heap as needed, then giving it back</b>."),
-                ("프로세스의 가상 메모리는 보통 낮은 주소부터 코드(텍스트) 영역, 초기화된/초기화되지 않은 전역변수인 데이터·BSS 영역, 실행 중 malloc/new 등으로 늘어나는 힙, 그리고 함수 호출마다 쌓였다 사라지는 스택 순으로 배치돼요. 힙은 낮은 주소에서 높은 주소로, 스택은 높은 주소에서 낮은 주소로 자라며 서로를 향해 커지는데, 둘이 충돌하면 메모리 부족 오류가 나요. 동적 할당된 메모리를 free()/delete로 반납하지 않으면 메모리 누수가 쌓여요.",
-                 "A process's virtual memory is typically laid out, from low addresses up, as the code (text) segment, the data/BSS segment for initialized and uninitialized global variables, the heap which grows via malloc/new during execution, and the stack which grows and shrinks with each function call. The heap grows from low to high addresses while the stack grows from high to low, each toward the other — colliding causes an out-of-memory error. Failing to release dynamically allocated memory with free()/delete accumulates as a memory leak.")),
+                ("프로세스의 가상 메모리는 보통 낮은 주소부터 코드(텍스트) 영역, 초기화된/초기화되지 않은 전역변수인 데이터·BSS 영역, 실행 중 malloc/new 등으로 늘어나는 힙, 그리고 함수 호출마다 쌓였다 사라지는 스택 순으로 배치돼요. 힙은 낮은 주소에서 높은 주소로, 스택은 높은 주소에서 낮은 주소로 자라며 서로를 향해 커지는데, 둘 사이 공간이 바닥나면 메모리 부족 오류가 나요. 실제 운영체제는 스택 크기 한도와 보호 페이지로 둘이 맞닿기 전에 막아요. 동적 할당된 메모리를 free()/delete로 반납하지 않으면 메모리 누수가 쌓여요.",
+                 "A process's virtual memory is typically laid out, from low addresses up, as the code (text) segment, the data/BSS segment for initialized and uninitialized global variables, the heap which grows via malloc/new during execution, and the stack which grows and shrinks with each function call. The heap grows from low to high addresses while the stack grows from high to low, each toward the other; when the gap between them runs out, an out-of-memory error results. Real operating systems use stack-size limits and guard pages to stop them before they touch. Failing to release dynamically allocated memory with free()/delete accumulates as a memory leak.")),
     "glossary": [
         ("코드(텍스트) 영역", "Code (Text) Segment", ("바뀌지 않는 설계도가 있는 구역.", "The zone holding the unchanging blueprint."), ("실행 파일의 명령어가 들어있어요.", "Holds the program's instructions.")),
         ("데이터/BSS 영역", "Data/BSS Segment", ("처음부터 준비된 전역 부품 구역.", "The zone for globally prepared parts."), ("초기화 여부로 데이터와 BSS가 나뉘어요.", "Split by whether the value is initialized.")),

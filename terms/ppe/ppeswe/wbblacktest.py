@@ -75,8 +75,8 @@ PAGE = {
     ],
     "summary": (("<b>화이트박스/블랙박스 테스트</b> = 원고 <b>속 흐름을 보며</b> 확인할지, <b>겉으로 완성된 책만 보며</b> 확인할지의 차이.",
                  "<b>White-box/black-box testing</b> = whether you check by looking at the manuscript's <b>inner flow</b>, or only at the <b>finished book from outside</b>."),
-                ("화이트박스 테스트는 소스 코드의 내부 구조(분기, 반복문 등)를 알고 그 경로를 따라가며 검증하는 방식이고, 블랙박스 테스트는 내부 구조를 모른 채 입력과 출력만으로 기능을 검증하는 방식이에요. 경계값 분석과 동등분할은 대표적인 블랙박스 기법이고, 구문·결정·조건 커버리지는 대표적인 화이트박스 기법이에요.",
-                 "White-box testing verifies code by knowing its internal structure (branches, loops) and tracing those paths, while black-box testing verifies functionality using only input and output, without knowing the internals. Boundary value analysis and equivalence partitioning are classic black-box techniques; statement, decision, and condition coverage are classic white-box ones.")),
+                ("화이트박스 테스트는 소스 코드의 내부 구조(분기, 반복문 등)를 알고 그 경로를 따라가며 검증하는 방식이고, 블랙박스 테스트는 내부 구조를 모른 채 입력과 출력만으로 기능을 검증하는 방식이에요. 경계값 분석과 동등분할은 대표적인 블랙박스 기법이고, 구문·결정·조건 커버리지는 대표적인 화이트박스 기법이에요. 그림에서는 완성된 책으로 비유했지만, 블랙박스 테스트는 단위 수준에서도 쓸 수 있어요.",
+                 "White-box testing verifies code by knowing its internal structure (branches, loops) and tracing those paths, while black-box testing verifies functionality using only input and output, without knowing the internals. Boundary value analysis and equivalence partitioning are classic black-box techniques; statement, decision, and condition coverage are classic white-box ones. The pictures use a finished book as the metaphor, but black-box testing also works at the unit level.")),
     "glossary": [
         ("화이트박스 테스트", "White-box Testing", ("원고 속 흐름을 보며 하는 교정.", "Proofing by looking at the manuscript's inner flow."), ("코드의 분기·경로를 따라가요.", "Traces the code's branches and paths.")),
         ("블랙박스 테스트", "Black-box Testing", ("완성된 책만 보고 하는 교정.", "Proofing only the finished book."), ("입력과 출력만으로 확인해요.", "Checks using only input and output.")),

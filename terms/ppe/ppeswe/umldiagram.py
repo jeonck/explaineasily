@@ -19,7 +19,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 P3 = svg(340, sky(340)
          + styleguide(60, 44, 280, 236, "⟦쓰기 전 설계 지도|THE MAP DRAWN BEFORE WRITING⟧",
                       ("⟦관계도 — 등장인물들 사이 관계|relationship map — how characters relate⟧",
-                       "⟦순서도 — 사건이 일어나는 차례|sequence — the order events happen in⟧",
+                       "⟦사건 순서 — 사건이 일어나는 차례|sequence — the order events happen in⟧",
                        "⟦할 일 목록 — 독자가 할 수 있는 일|use-case list — what readers can do⟧"), 1.0)
          + person(500, 150, s=0.9, face=EYES, **WRITER)
          + label(380, 30, "⟦UML 다이어그램 = 쓰기 전에 구조를 그림으로 미리 그려보는 설계 지도|UML diagrams = a design map that draws out the structure in pictures, before writing begins⟧", 12, "var(--ink)", cls="d")
@@ -51,7 +51,7 @@ PAGE = {
     "slug": "umldiagram", "order": 11,
     "title": ("쓰기 전에 그리는 설계 지도", "The Design Map Drawn Before Writing"),
     "h1": ("<em>UML 다이어그램 작성</em>이 뭐예요?", "What is <em>Writing UML Diagrams</em>?"),
-    "sub": ("UML 다이어그램을, 책을 쓰기 전에 등장인물 관계도·사건 순서도·독자가 할 수 있는 일 목록을 미리 그려보는 설계 지도 이야기로 풀어봤어요.",
+    "sub": ("UML 다이어그램을, 책을 쓰기 전에 등장인물 관계도·사건 순서 그림·독자가 할 수 있는 일 목록을 미리 그려보는 설계 지도 이야기로 풀어봤어요.",
             "UML diagrams, told as a story about drawing a design map before writing a book — a character relationship map, a sequence of events, a list of what readers can do."),
     "panels": [
         {"svg": P1, "alt": ("작가가 설계 지도 없이 바로 써서, 등장인물 관계가 꼬여버린 원고들", "A writer writes straight in without a design map, and the manuscripts end up with tangled character relationships"),
@@ -60,7 +60,7 @@ PAGE = {
         {"svg": P2, "alt": ("편집장은 그림 그릴 시간에 그냥 쓰라 하고, 작가는 그림 없인 설명 못 한다고 반박함", "The editor says to spend that drawing time writing instead; the writer says a diagram is needed to explain it"),
          "caption": ("편집장은 그림 그릴 시간에 쓰라 하고, 작가는 그림 없인 구조를 설명 못 한다고 반박해요.", "The editor says to just write; the writer objects that the structure can't be explained without a diagram."),
          "small": ("말로만 설명하면, 다른 사람은 같은 그림을 못 떠올려요.", "Explained only in words, no one else pictures the same thing.")},
-        {"svg": P3, "hero": True, "alt": ("작가가 관계도·순서도·할 일 목록이 적힌 설계 지도 안내판 앞에 섬", "A writer stands by a design-map board listing relationship map, sequence, and use-case list"),
+        {"svg": P3, "hero": True, "alt": ("작가가 관계도·사건 순서·할 일 목록이 적힌 설계 지도 안내판 앞에 섬", "A writer stands by a design-map board listing relationship map, sequence, and use-case list"),
          "caption": ("UML 다이어그램은 쓰기 전에 그려보는 설계 지도예요.", "UML diagrams are the design map drawn before writing."),
          "small": ("약속된 그림 기호로, 말로 설명하기 어려운 구조를 또렷하게 보여줘요.", "Agreed-upon symbols show clearly a structure that's hard to explain in words."),
          "tricks": (4, [
@@ -83,7 +83,7 @@ PAGE = {
     "glossary": [
         ("UML", "UML", ("약속된 그림 기호 체계.", "The agreed-upon system of diagram symbols."), ("구조와 동작을 표준화된 기호로 그려요.", "Draws structure and behavior in standardized symbols.")),
         ("클래스 다이어그램", "Class Diagram", ("등장인물들 사이 관계도.", "The relationship map between characters."), ("정적인 구조를 보여줘요.", "Shows the static structure.")),
-        ("시퀀스 다이어그램", "Sequence Diagram", ("사건이 일어나는 순서도.", "The order events happen in."), ("시간 흐름에 따른 상호작용이에요.", "Shows interaction over time.")),
+        ("시퀀스 다이어그램", "Sequence Diagram", ("사건이 일어나는 순서를 그린 그림.", "A diagram of the order events happen in."), ("시간 흐름에 따른 상호작용이에요.", "Shows interaction over time.")),
         ("유스케이스 다이어그램", "Use-case Diagram", ("독자가 할 수 있는 일 목록.", "The list of what readers can do."), ("사용자 관점에서 기능을 나열해요.", "Lists functions from the user's point of view.")),
         ("상태 다이어그램", "State Diagram", ("마음이 바뀌는 과정을 보여주는 그림.", "A diagram showing how a character's state changes."), ("객체의 상태 변화를 추적해요.", "Tracks how an object's state changes.")),
         ("요구공학", "Requirements Engineering", ("쓰기 전에 먼저 묻는 일.", "Asking before writing."), ('개요서를 그림으로 더 또렷하게 만들 때도 UML을 써요. → <a href="reqeng-ko.html">쓰기 전에 먼저 묻는 사람</a>', 'UML also makes the outline even clearer, in picture form. → <a href="reqeng-en.html">the one who asks before writing</a>')),

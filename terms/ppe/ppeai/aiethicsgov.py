@@ -22,7 +22,7 @@ P3 = svg(360, sky(360)
          + gradeboard(210, 30, 340, 290, "⟦공통 등급 원칙판|SHARED GRADING CHARTER⟧",
                  ("⟦공정성 — 작물 종류로 차별 않기|fairness — no bias by produce type⟧",
                   "⟦설명가능성 — 등급 이유 남기기|explainability — record why a grade was given⟧",
-                  "⟦책임소재 — 오판 시 누가 맡나|accountability — who owns a bad call?⟧",
+                  "⟦책임소재 — 오판 시 누가 책임지나|accountability — who answers for a bad call?⟧",
                   "⟦사람 재검토 — 이의 제기 통로|human review — a path to appeal⟧"), 1.0)
          + person(90, 220, s=0.7, face=SMILE, **INSPECTOR)
          + person(660, 220, s=0.6, face=EYES, **OPERATOR)
@@ -52,7 +52,7 @@ PAGE = {
          "tricks": (4, [
              (FAIR_I, ("공정성 지키기", "Keep it fair"), ("작물 종류로 차별 않기", "no bias by produce type"), "calm"),
              (EXPLAIN_I, ("설명 가능하게 하기", "Make it explainable"), ("등급 이유를 남겨요", "recording why a grade was given")),
-             (OWN_I, ("책임소재 분명히 하기", "Fix accountability"), ("오판 시 누가 맡는지요", "who owns a bad call"), "warm"),
+             (OWN_I, ("책임소재 분명히 하기", "Fix accountability"), ("오판 때 누가 책임지는지 정해요", "naming who answers for a bad call"), "warm"),
              (APPEAL_I, ("사람이 재검토하기", "Allow human review"), ("이의 제기 통로를 열어요", "opening a path to appeal")),
          ])},
         {"svg": svg(300, sky(300) + person(140, 160, s=0.75, face=EYES, **FARMER) + label(140, 255, "⟦이의 제기|files an appeal⟧", 11, "var(--muted)")
@@ -73,8 +73,8 @@ PAGE = {
     ],
     "summary": (("<b>AI 윤리기준·거버넌스</b> = 모든 검사장이 함께 지킬 <b>공정성·설명가능성·책임소재</b>를 정한 등급 원칙판.",
                  "<b>AI ethics & governance</b> = a shared grading charter spelling out <b>fairness, explainability, and accountability</b> for every station."),
-                ("AI 윤리기준·거버넌스는 조직이 AI를 개발·운영하는 전 과정에서 공정성, 투명성(설명가능성), 책임소재, 사람의 재검토 권리를 보장하도록 정한 정책·규범 체계예요. 기술사 시험에서는 OECD AI 원칙, EU AI Act, 국내 AI기본법의 윤리·신뢰성 요건과 함께 다뤄져요. 보안 사고 대응에 초점을 둔 운영 거버넌스(AI 보안 거버넌스)와 달리, 이쪽은 사회적 수용성·규제 준수·이해관계자 신뢰라는 더 넓은 틀을 다뤄요.",
-                 "AI ethics and governance is the policy and normative framework ensuring fairness, transparency (explainability), accountability, and a right to human review throughout how an organization builds and operates AI. In Korean PE exams it's discussed alongside the OECD AI Principles, the EU AI Act, and the ethics/trustworthiness requirements of Korea's AI Basic Act. Unlike security-operations governance focused on incident response, this is the wider frame of social acceptability, regulatory compliance, and stakeholder trust.")),
+                ("AI 윤리기준·거버넌스는 조직이 AI를 개발·운영하는 전 과정에서 공정성, 투명성(설명가능성), 책임소재, 사람의 재검토 권리를 보장하도록 정한 정책·규범 체계예요. OECD AI 원칙, EU AI Act, 국내 AI기본법의 신뢰성 요건과 맞닿아 있어요. 보안 사고 대응에 초점을 둔 운영 거버넌스(AI 보안 거버넌스)와 달리, 이쪽은 사회적 수용성·규제 준수·이해관계자 신뢰라는 더 넓은 틀을 다뤄요.",
+                 "AI ethics and governance is the policy and normative framework ensuring fairness, transparency (explainability), accountability, and a right to human review throughout how an organization builds and operates AI. It connects to the OECD AI Principles, the EU AI Act, and the trust requirements of Korea's AI Basic Act. Unlike security-operations governance focused on incident response, this is the wider frame of social acceptability, regulatory compliance, and stakeholder trust.")),
     "glossary": [
         ("AI 윤리기준", "AI ethics standard", ("공통 등급 원칙판.", "The shared grading charter."), ("모든 검사장이 함께 지켜요.", "Every station follows it together.")),
         ("AI 거버넌스(보안 각도)", "AI governance (security angle)", ("주방 세계의 규칙판.", "The kitchen world's rules board."), ('운영·보안 중심 각도는 여기서. → <a href="aigovernance-ko.html">주방 규칙판</a>', 'The operations/security-focused angle lives here. → <a href="aigovernance-en.html">The Kitchen Rules Board</a>')),

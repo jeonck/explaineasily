@@ -36,7 +36,7 @@ P4 = svg(320, sky(320)
 
 # 5. 묶임을 풀면, 조율이라는 새 일이 생겨요
 P5 = svg(340, '<rect width="380" height="340" fill="var(--accent-soft)"/><rect x="380" width="380" height="340" fill="var(--good-soft)"/>'
-         + person(190, 130, s=0.8, face=EYES, **EDITOR) + label(190, 260, "⟦한 편에 문제가 생겨도 다른 편엔 안 번져요|a problem in one volume doesn't spread to the others⟧", 11, "var(--ink)")
+         + person(190, 130, s=0.8, face=EYES, **EDITOR) + label(190, 260, "⟦잘 나누면 한 편의 문제가 다른 편에 덜 번져요|split well, a problem in one volume spreads less⟧", 11, "var(--ink)")
          + person(570, 110, s=0.8, face=SMILE, **PRINTER) + manuscript(570, 200, 0.6) + label(570, 260, "⟦목차를 맞추는 조율 비용은 늘어나요|but the cost of coordinating the index goes up⟧", 11, "var(--ink)")
          + label(380, 315, "⟦마이크로서비스는 묶임을 푸는 대신, 조율이라는 새 일을 만들어요|microservices trade away being bound together — but create a new job: coordination⟧", 12, "var(--ink)", cls="d"))
 
@@ -70,22 +70,22 @@ PAGE = {
         {"svg": P4, "alt": ("소책자 구조 특징표: 독립 출간·독립 팀·목차 연결·독립 분량 네 항목", "A board of split-structure traits: independent release, independent teams, index-only links, independent sizing"),
          "caption": ("소책자 구조는 독립 출간·독립 팀·목차 연결·따로 정하는 분량, 이런 특징을 가져요.", "The split structure has four traits: independent release, independent teams, index-only links, and separate sizing."),
          "small": ("소책자 수만큼 조율할 목차도 늘어나요.", "The more volumes, the more indexes to coordinate.")},
-        {"svg": P5, "alt": ("왼쪽: 편집장이 한 편에 문제가 생겨도 다른 편엔 안 번진다고 말함. 오른쪽: 인쇄 감독이 조율 비용은 늘어난다고 말함", "Left: the editor says a problem in one volume doesn't spread to others. Right: the print supervisor says coordination cost still rises"),
+        {"svg": P5, "alt": ("왼쪽: 편집장이 잘 나누면 한 편의 문제가 다른 편에 덜 번진다고 말함. 오른쪽: 인쇄 감독이 조율 비용은 늘어난다고 말함", "Left: the editor says that, split well, a problem in one volume spreads less. Right: the print supervisor says coordination cost still rises"),
          "caption": ("책을 소책자로 풀면, 조율이라는 새 일이 생겨요.", "Splitting the book into volumes creates a new job: coordination."),
          "small": ("소책자 구조의 장점은 조율 비용을 치르고 얻는 거예요.", "The split structure's benefits are paid for with coordination costs.")},
     ],
     "summary": (("<b>마이크로서비스 아키텍처</b> = 두꺼운 책 한 권을 <b>독립된 소책자들</b>로 쪼개, <b>목차로만 연결</b>하는 구조.",
                  "<b>Microservices architecture</b> = splitting one thick book into <b>independent standalone volumes</b>, <b>linked only through a shared index</b>."),
-                ("마이크로서비스 아키텍처는 하나의 거대한 애플리케이션(모놀리스)을, 각자 독립적으로 개발·배포·확장할 수 있는 작은 서비스 단위로 나누는 방식이에요. 서비스끼리는 API로만 통신하고 내부 구현을 서로 숨겨요. 장애나 트래픽 급증이 한 서비스에 머물 수 있다는 장점이 있지만, 서비스가 많아질수록 서로 맞추는 조율·운영 비용도 함께 커져요.",
-                 "Microservices architecture splits one giant application (a monolith) into small services that can each be developed, deployed, and scaled independently. Services communicate only through APIs, hiding their internal implementation from each other. A failure or traffic spike can stay contained to one service, but as services multiply, the cost of coordinating and operating them all grows too.")),
+                ("마이크로서비스 아키텍처는 하나의 거대한 애플리케이션(모놀리스)을, 각자 독립적으로 개발·배포·확장할 수 있는 작은 서비스 단위로 나누는 방식이에요. 서비스끼리는 API나 메시지 같은 정해진 창구로만 통신하고 내부 구현을 서로 숨겨요. 장애나 트래픽 급증이 한 서비스에 머물 수 있다는 장점이 있지만, 서비스가 많아질수록 서로 맞추는 조율·운영 비용도 함께 커져요.",
+                 "Microservices architecture splits one giant application (a monolith) into small services that can each be developed, deployed, and scaled independently. Services communicate only through defined channels such as APIs or messages, hiding their internal implementation from each other. A failure or traffic spike can stay contained to one service, but as services multiply, the cost of coordinating and operating them all grows too.")),
     "glossary": [
         ("마이크로서비스 아키텍처", "Microservices Architecture", ("독립 소책자로 쪼갠 구조.", "A structure split into independent volumes."), ("서비스마다 따로 배포·확장해요.", "Each service deploys and scales on its own.")),
         ("모놀리스", "Monolith", ("하나로 묶인 두꺼운 백과사전.", "One thick, bound-together encyclopedia."), ("마이크로서비스가 쪼개는 대상이에요.", "What microservices architecture splits apart.")),
         ("API", "API", ("소책자들이 서로 가리키는 목차.", "The index the volumes use to point to one another."), ("내용을 안 섞고 참조만 해요.", "Refers without mixing content.")),
-        ("독립 배포", "Independent Deployment", ("한 편만 먼저 찍어 낼 수 있는 일.", "Being able to print one volume alone, first."), ("모놀리스에서는 불가능해요.", "Impossible in a monolith.")),
+        ("독립 배포", "Independent Deployment", ("한 편만 먼저 찍어 낼 수 있는 일.", "Being able to print one volume alone, first."), ("모놀리스에서는 보통 전체를 함께 배포해요.", "A monolith usually deploys as a whole.")),
         ("서비스 메시", "Service Mesh", ("소책자 사이를 오가는 전용 통로.", "The dedicated path between the volumes."), ('소책자들 사이의 통신을 따로 전담하는 장치예요. → <a href="servicemesh-ko.html">기구 사이 전용 통로</a>', 'A dedicated layer handling communication between the volumes. → <a href="servicemesh-en.html">the dedicated path between rides</a>')),
         ("API 게이트웨이", "API Gateway", ("독자가 늘 드나드는 대표 창구.", "The single front desk readers always go through."), ("여러 소책자 앞에 세운 창구예요.", "A single window set up in front of many volumes.")),
         ("소프트웨어 아키텍처 모델", "Software Architecture Model", ("책 모양을 미리 정하는 큰 틀.", "The big framework that decides a book's overall shape."), ('마이크로서비스는 그중 한 가지 모델이에요. → <a href="swarchmodel-ko.html">책 전체를 미리 짜 두는 구조 밑그림</a>', 'Microservices is just one of those models. → <a href="swarchmodel-en.html">the blueprint that shapes the whole book ahead of time</a>')),
-        ("정보시스템 감리/PMO", "IS Audit/PMO", ("출간 전 마지막 검수관.", "The last checker before publication."), ('소책자가 많아질수록 감리도 더 여러 곳을 봐야 해요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'The more volumes there are, the more places audit has to check. → <a href="pmoaudit-en.html">the last checker before publication</a>')),
+        ("정보시스템 감리/PMO", "IS Audit/PMO", ("출간 과정을 곁에서 살피는 검수관.", "The checker who watches the whole publishing run."), ('소책자가 많아질수록 감리도 더 여러 곳을 봐야 해요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'The more volumes there are, the more places audit has to check. → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
     ],
 }

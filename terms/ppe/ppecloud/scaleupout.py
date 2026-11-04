@@ -26,7 +26,7 @@ P4 = svg(320, sky(320)
          + floorplan(60, 20, 640, 280, "⟦스케일업 vs 스케일아웃 vs 오토스케일|scale-up vs scale-out vs auto scale⟧",
                      ("⟦스케일업: 한 사무실을 더 크고 세게(수직 확장)|scale-up: make one office bigger and stronger (vertical)⟧",
                       "⟦스케일아웃: 같은 사무실을 더 많이(수평 확장)|scale-out: add more identical offices (horizontal)⟧",
-                      "⟦둘 다 사람이 정할 수도, 자동으로 맡길 수도 있어요|either can be decided by hand, or handed off to automation⟧",
+                      "⟦스케일업·아웃 모두 사람이 정할 수도, 자동으로 맡길 수도 있어요|scale-up and scale-out can each be set by hand or automated⟧",
                       "⟦자동으로 늘렸다 줄이는 건 오토스케일이라고 불러요|growing and shrinking automatically is called auto scale⟧"), 1.0))
 
 # 5. 깨지는 곳 + 마무리: 이 건물 투어는 여기까지예요
@@ -56,11 +56,11 @@ PAGE = {
          "small": ("둘 다 쓸 공간이 더 넓어진다는 결과는 같아요.", "Both end up with more usable space."),},
         {"svg": P3, "hero": True, "alt": ("왼쪽에 훨씬 커진 사무실 하나(스케일업), 오른쪽에 같은 크기 사무실 세 개가 나란히(스케일아웃)", "Left: one much bigger office (scale-up). Right: three identically sized offices side by side (scale-out)"),
          "caption": ("스케일업 = 사무실 한 칸을 키우기, 스케일아웃 = 사무실 수를 늘리기예요.", "Scale-up = make one office bigger, scale-out = add more offices."),
-         "small": ("서버 한 대를 세게 키우거나, 일을 여러 대로 나누거나예요.", "Either make one server much stronger, or spread the work across many servers."),
+         "small": ("실제로는 서버 한 대를 더 세게 키우거나, 일을 여러 서버로 나누는 거예요.", "In real terms, you either make one server stronger or spread the work across many servers."),
          "tricks": (4, [
              (UP_I, ("스케일업 = 사무실 한 칸을 더 크게", "Scale-up = make one office bigger"), ("수직 확장이라고 불러요", "called vertical scaling"), "calm"),
              (OUT_I, ("스케일아웃 = 사무실 수를 더 많이", "Scale-out = add more offices"), ("수평 확장이라고 불러요", "called horizontal scaling")),
-             (AUTO_I, ("둘 다 자동으로 맡길 수 있어요", "Either can be handed off to automation"), ("오토스케일이라고 불러요", "called auto scale"), "warm"),
+             (AUTO_I, ("스케일업·아웃 모두 자동으로 맡길 수 있어요", "Scale-up and scale-out can both be automated"), ("오토스케일이라고 불러요", "called auto scale"), "warm"),
              (LIMIT_I, ("자동으로 할 땐 최대·최소를 정해둬요", "Automated scaling still needs a max and min"), ("사무실이 너무 늘거나 줄지 않게요", "so the office count never goes too far either way")),
          ])},
         {"svg": P4, "alt": ("스케일업·스케일아웃·오토스케일을 정리한 안내판: 수직/수평 확장, 수동/자동 결정 여부", "A board summarizing scale-up, scale-out, and auto scale: vertical vs horizontal, manual vs automated decision"),
@@ -79,7 +79,7 @@ PAGE = {
         ("스케일아웃(수평 확장)", "Scale-out (horizontal)", ("같은 사무실을 더 많이 빌리는 것.", "Renting more identical offices."), ("서버 수 자체를 늘려요.", "Adds more servers of the same kind.")),
         ("오토스케일", "Auto scale", ("늘릴지 줄일지를 자동으로 정하는 것.", "Automatically deciding whether to grow or shrink capacity."), ('자세한 동작은 SRE 세계에서 다뤄요. → <a href="autoscaling-ko.html">줄이 길어지면 직원을 더 부르기</a>', 'Detailed behavior is covered in the SRE world. → <a href="autoscaling-en.html">call in more staff when the line grows</a>')),
         ("오케스트레이션/쿠버네티스", "Orchestration / Kubernetes", ("몇 자리를 유지할지 정하는 규칙과 그 제품.", "The rule for how many spots to keep, and the product behind it."), ('실제로 자리를 늘리고 줄이는 걸 실행에 옮기는 역할이에요. → <a href="k8s-ko.html">자동 배정 배지의 그 유명한 제품</a>', 'The role that actually carries out adding or removing spots. → <a href="k8s-en.html">the famous brand behind the auto-assign badge</a>')),
-        ("가상머신/컨테이너", "VM / Container", ("독채는 스케일업, 칸막이는 스케일아웃에 더 잘 맞아요.", "Private offices fit scale-up; partitioned desks fit scale-out."), ('이 건물 투어의 두 번째 페이지였어요. → <a href="vmcontainer-ko.html">독채 사무실과 칸막이 책상</a>', 'The second page of this building tour. → <a href="vmcontainer-en.html">the private office and the partitioned desk</a>')),
+        ("가상머신/컨테이너", "VM / Container", ("칸막이는 빨리 떠서 스케일아웃에 특히 잘 맞아요.", "Partitioned desks start fast, so they suit scale-out especially well."), ('이 건물 투어의 두 번째 페이지였어요. → <a href="vmcontainer-ko.html">독채 사무실과 칸막이 책상</a>', 'The second page of this building tour. → <a href="vmcontainer-en.html">the private office and the partitioned desk</a>')),
         ("서버리스", "Serverless", ("스케일 결정 자체를 신경 쓸 필요 없는 선택.", "The option where you never think about scaling decisions at all."), ('확장이 이미 완전히 자동화된 형태예요. → <a href="serverless-ko.html">시간제 회의실</a>', 'Scaling there is already fully automated. → <a href="serverless-en.html">the hourly meeting room</a>')),
         ("클라우드 서비스 모델", "Cloud service model", ("뼈대만/인테리어까지/완제품 — 이 건물 투어의 첫 페이지.", "Bare shell / interior done / move-in ready — the first page of this tour."), ('→ <a href="cloudmodel-ko.html">셋 중 골라 빌리기</a>', '→ <a href="cloudmodel-en.html">pick one to rent</a>')),
         ("AI 데이터센터", "AI data center", ("GPU만을 위한 전용 별관.", "An annex built just for the GPUs."), ("장비를 더 세게 키우면서(스케일업) 대수도 함께 늘려요(스케일아웃).", "Grows both ways: beefier machines (scale-up) and more of them (scale-out).")),

@@ -82,8 +82,8 @@ PAGE = {
     ],
     "summary": (("<b>MLOps/ModelOps</b> = 자동 교정 기계를 <b>한 번 만들고 끝내지 않고</b>, 새 원고로 <b>계속 다시 가르치고</b>, 실수를 <b>지켜보며 필요하면 되돌리는</b> 돌봄 과정.",
                  "<b>MLOps/ModelOps</b> = not building the proofing machine once and walking away, but <b>continuously retraining</b> it on new manuscripts, <b>watching for mistakes</b>, and <b>rolling back</b> when needed."),
-                ("MLOps(Machine Learning Operations)는 머신러닝 모델의 데이터 수집·학습·검증·배포·모니터링을 하나의 반복 파이프라인으로 관리하는 방법론이에요. ModelOps는 여기서 한발 더 나아가 운영 중인 여러 모델의 거버넌스·감사까지 포괄해요. 코드가 아니라 데이터로 동작이 바뀌는 모델의 특성상, 일반 CI/CD보다 재학습·드리프트 감지가 핵심이에요.",
-                 "MLOps (Machine Learning Operations) manages a machine learning model's data collection, training, validation, deployment, and monitoring as one repeating pipeline. ModelOps goes further, covering governance and auditing across many models in production. Because a model's behavior shifts with data rather than code, retraining and drift detection matter more here than in ordinary CI/CD.")),
+                ("MLOps(Machine Learning Operations)는 머신러닝 모델의 데이터 수집·학습·검증·배포·모니터링을 하나의 반복 파이프라인으로 관리하는 방법론이에요. ModelOps는 범위를 ML 모델 밖의 규칙·최적화 같은 AI·의사결정 모델까지 넓혀, 운영 중 모델의 거버넌스와 수명주기 관리를 다뤄요. 코드뿐 아니라 데이터에 따라서도 동작이 바뀌는 모델의 특성상, 일반 CI/CD보다 재학습·드리프트 감지가 핵심이에요.",
+                 "MLOps (Machine Learning Operations) manages a machine learning model's data collection, training, validation, deployment, and monitoring as one repeating pipeline. ModelOps widens the scope beyond ML to AI and decision models such as rules and optimization, covering governance and lifecycle management in production. Because a model's behavior shifts with data as well as code, retraining and drift detection matter more here than in ordinary CI/CD.")),
     "glossary": [
         ("MLOps/ModelOps", "MLOps/ModelOps", ("교정 기계를 계속 돌보는 과정.", "The process of continuously caring for the machine."), ("만들고 끝이 아니라, 운영까지 포함해요.", "Not just building it — running it is part of the job too.")),
         ("데이터 파이프라인", "Data Pipeline", ("새 원고를 모아 들이는 길.", "The path that brings in new manuscripts."), ("학습용 예시가 계속 흘러 들어와요.", "A steady stream of training examples.")),

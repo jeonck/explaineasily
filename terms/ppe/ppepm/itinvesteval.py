@@ -20,7 +20,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
 # 3. hero: IT 투자성과 평가 = 공연 끝난 뒤 돈과 숫자로 매기는 성적표
 P3 = svg(340, sky(340)
          + '<g transform="translate(230,150) scale(1.7,1.1)">' + ticket(0, 0) + '</g>' + label(230, 154, "⟦투자 1억|invested $100k⟧", 11, "#142033")
-         + '<g transform="translate(380,150) scale(1.7,1.1)">' + ticket(0, 0) + '</g>' + label(380, 154, "⟦매출 1.4억|revenue $140k⟧", 11, "#142033")
+         + '<g transform="translate(380,150) scale(1.7,1.1)">' + ticket(0, 0) + '</g>' + label(380, 154, "⟦회수 1.4억|returned $140k⟧", 11, "#142033")
          + person(540, 180, s=0.85, face=SMILE, **DIRECTOR)
          + label(380, 30, "⟦IT 투자성과 평가 = 공연 끝난 뒤 돈과 숫자로 매기는 성적표|IT investment evaluation = a scorecard for the show, written in money and numbers afterward⟧", 13, "var(--ink)", cls="d")
          + label(380, 320, "⟦투자한 만큼 돌아왔는지, 숫자로 확인해요|checking, in numbers, whether the investment paid off⟧", 12, "var(--muted)"))
@@ -59,7 +59,7 @@ PAGE = {
         {"svg": P2, "alt": ('기획자는 관객 반응이 좋았다고 말하지만 후원사는 돈 얘기를 물음', 'The planner says the audience loved it, while the sponsor asks about the money'),
          "caption": ("\"관객이 좋아했어요\"만으론 후원사를 설득 못 해요.", "\"The audience loved it\" alone can't convince the sponsor."),
          "small": ("관객 반응만으론 부족해요, 성과를 돈과 숫자로 보여줘야 해요.", "Audience reactions aren't enough — results have to be shown in money and numbers.")},
-        {"svg": P3, "hero": True, "alt": ('투자금과 매출 티켓을 나란히 들고 감독관이 웃음', 'The director smiles, holding the investment and revenue tickets side by side'),
+        {"svg": P3, "hero": True, "alt": ('투자금과 회수금 티켓을 나란히 들고 감독관이 웃음', 'The director smiles, holding the invested and returned money tickets side by side'),
          "caption": ("IT 투자성과 평가는 공연 끝난 뒤 돈과 숫자로 매기는 성적표예요.", "IT investment evaluation is a scorecard for the show, written in money and numbers afterward."),
          "small": ("투자한 만큼 돌아왔는지, 숫자로 확인해요.", "Checking, in numbers, whether the investment paid off."),
          "tricks": (4, [
@@ -77,16 +77,16 @@ PAGE = {
     ],
     "summary": (("<b>IT 투자성과 평가</b> = 프로젝트(공연)가 끝난 뒤 <b>투자한 돈만큼 돌아왔는지</b> 숫자와 정성 효과로 함께 확인하는 일.",
                  "<b>IT investment evaluation</b> = after the project (show) ends, checking — in both numbers and intangibles — whether the investment paid off."),
-                ("IT 투자성과 평가는 ROI(투자수익률), NPV(순현재가치) 같은 재무 지표와 BSC(균형성과표)의 재무·고객·내부프로세스·학습성장 네 관점, 그리고 브랜드 가치 같은 정성적 효과를 함께 측정해 투자 타당성을 판단하는 활동이에요.",
-                 "IT investment evaluation measures financial metrics like ROI and NPV, the four BSC perspectives (financial, customer, internal process, learning & growth), and qualitative effects like brand value, together, to judge whether an investment was worthwhile.")),
+                ("IT 투자성과 평가는 ROI(투자수익률), NPV(순현재가치) 같은 재무 지표와 BSC(균형성과표)의 재무·고객·내부프로세스·학습성장 네 관점, 그리고 브랜드 가치 같은 정성적 효과를 함께 측정해 투자가 값을 했는지 판단하는 활동이에요. 이 페이지는 투자 뒤 성과를 확인하는 사후 평가를 중심으로 다루지만, 같은 지표를 투자 전 타당성 검토에도 써요.",
+                 "IT investment evaluation measures financial metrics like ROI and NPV, the four BSC perspectives (financial, customer, internal process, learning & growth), and qualitative effects like brand value, together, to judge whether an investment was worthwhile. This page centers on checking results after the investment, but the same metrics also serve feasibility reviews before it.")),
     "glossary": [
-        ("ROI", "ROI", ("투자 대비 번 돈의 비율.", "The ratio of money earned to money invested."), ("가장 많이 쓰는 기본 지표예요.", "The most commonly used baseline metric.")),
-        ("NPV", "NPV", ("미래에 벌 돈을 지금 가치로 당겨온 것.", "Future earnings pulled back to today's value."), ("시간에 따라 돈 가치가 변하는 걸 반영해요.", "Reflects how money's value changes over time.")),
+        ("ROI", "ROI", ("투자한 돈 대비 순이익의 비율.", "The ratio of net gain to money invested."), ("널리 쓰는 기본 지표예요.", "A widely used baseline metric.")),
+        ("NPV", "NPV", ("미래에 벌 돈을 지금 가치로 당겨온 뒤 투자금을 뺀 값.", "Future earnings in today's value, minus the money invested."), ("시간에 따라 돈 가치가 변하는 걸 반영해요.", "Reflects how money's value changes over time.")),
         ("BSC", "Balanced Scorecard", ("재무·관객·운영·성장 네 각도로 보는 성적표.", "A scorecard viewed from four angles: finance, audience, ops, growth."), ("숫자 하나에 치우치지 않게 해줘요.", "Keeps you from leaning on just one number.")),
         ("정성적 효과", "Qualitative Benefit", ("팬심·신뢰처럼 숫자로 못 담는 가치.", "Value like fan loyalty that doesn't fit a number."), ("무시하지 않고 별도로 챙겨요.", "Not ignored — tracked separately instead.")),
         ("프로젝트 위험관리", "Project Risk Mgmt", ("공연 당일 날씨에 대비하는 우산.", "The umbrella that prepares for show-day weather."), ('투자 결정 전에도 위험을 따져요. → <a href="projrisk-ko.html">돌발 상황에 대비하는 우산</a>', 'Risk is weighed before the investment decision too. → <a href="projrisk-en.html">the umbrella for surprises</a>')),
-        ("운영 성과관리", "Ops Performance Mgmt", ("공연 끝난 뒤 시설이 계속 잘 굴러가는지 보는 일.", "Watching whether the facilities keep running well after the show."), ('투자 평가는 운영 단계에서도 계속돼요. → <a href="opsperf-ko.html">공연 끝난 뒤의 운영실</a>', 'Evaluation keeps happening through the operations stage too. → <a href="opsperf-en.html">the ops room after the show</a>')),
-        ("감리/PMO", "IS Audit/PMO", ("프로젝트 전체를 바깥에서 점검하는 역할.", "A role that checks the whole project from the outside."), ('다른 페이지(출판사 이야기)에서 자세히 다뤄요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'Covered in depth on another page (the publishing-house story). → <a href="pmoaudit-en.html">the last checker before publication</a>')),
+        ("운영 성과관리", "Ops Performance Mgmt", ("공연 끝난 뒤에도 시스템의 가동률·응답속도를 재는 일.", "Measuring system uptime and latency after the show too."), ('투자 평가는 운영 단계에서도 계속돼요. → <a href="opsperf-ko.html">공연 끝난 뒤의 운영실</a>', 'Evaluation keeps happening through the operations stage too. → <a href="opsperf-en.html">the ops room after the show</a>')),
+        ("감리/PMO", "IS Audit/PMO", ("프로젝트를 제3자 입장에서 점검(감리)하거나 관리를 돕는(PMO) 역할.", "Checks the project as a third party (audit) or supports its management (PMO)."), ('다른 페이지(출판사 이야기)에서 자세히 다뤄요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'Covered in depth on another page (the publishing-house story). → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
         ("계약·협상", "Negotiation & Contract", ("출연 계약서에 조건을 적는 일.", "Writing terms into the performance contract."), ('계약 조건이 달라지면 투자 비용과 효과도 달라져요. → <a href="negotiation-ko.html">조건을 조율해 서명하기</a>', 'Contract terms change what the investment costs and returns. → <a href="negotiation-en.html">tuning terms until both sign</a>')),
     ],
 }

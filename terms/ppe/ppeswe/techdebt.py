@@ -39,7 +39,7 @@ P4 = svg(320, sky(320)
 # 5. 빚을 0으로 만들 필요는 없음, 기록하고 계획적으로 갚는 게 핵심
 P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="380" width="380" height="330" fill="var(--accent-soft)"/>'
          + person(190, 130, s=0.8, face=FROWN, **EDITOR)
-         + label(190, 260, "⟦빚을 완전히 0으로 만들면 마감을 못 맞춰요|driving the debt to zero means missing every deadline⟧", 11, "var(--ink)")
+         + label(190, 260, "⟦빚을 0으로 만들려다 마감을 놓치기 쉬워요|chasing zero debt can easily cost you the deadline⟧", 11, "var(--ink)")
          + '<rect x="540" y="130" width="60" height="70" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/>' + person(600, 180, s=0.7, face=SMILE, **PROOFER)
          + label(570, 278, "⟦장부에 적어두고 계획적으로 갚아요|write it down, repay it on purpose⟧", 11, "var(--ink)")
          + label(380, 305, "⟦핵심은 빚을 없애는 게 아니라, 기록하고 계획적으로 갚는 거예요|the point isn't erasing debt — it's recording and repaying it on purpose⟧", 12, "var(--ink)", cls="d"))
@@ -74,7 +74,7 @@ PAGE = {
         {"svg": P4, "alt": ("의도적/무의식적 빚이 쌓이는 방식과, 당장 비용 vs 나중 비용(이자)을 정리한 표", "Tables comparing deliberate vs. inadvertent debt, and cost now vs. cost later (interest)"),
          "caption": ("빚은 알면서 쌓을 수도, 모르고 쌓일 수도 있어요.", "Debt can be taken on knowingly, or pile up without anyone noticing."),
          "small": ("의도적이든 아니든, 빚은 적어두고 계획적으로 갚아야 해요.", "Deliberate or not, the debt needs to be recorded and repaid on purpose.")},
-        {"svg": P5, "alt": ("왼쪽: 빚을 완전히 0으로 만들려다 마감을 놓침. 오른쪽: 장부에 적어 계획적으로 갚음", "Left: trying to zero out the debt misses every deadline. Right: writing it in a ledger and repaying it on purpose"),
+        {"svg": P5, "alt": ("왼쪽: 빚을 완전히 0으로 만들려다 마감을 놓침. 오른쪽: 장부에 적어 계획적으로 갚음", "Left: trying to zero out the debt can miss the deadline. Right: writing it in a ledger and repaying it on purpose"),
          "caption": ("빚을 0으로 만들 필요는 없어요.", "The debt doesn't need to hit zero."),
          "small": ("핵심은 빚을 없애는 게 아니라, 기록하고 계획적으로 갚는 거예요.", "The point isn't erasing debt — it's recording and repaying it on purpose.")},
     ],
@@ -89,7 +89,7 @@ PAGE = {
         ("리팩토링", "Refactoring", ("빚을 갚는 대표적인 방법.", "The classic way to repay this debt."), ('줄거리는 그대로 두고 구조만 다시 다듬어요. → <a href="refactorppe-ko.html">줄거리는 그대로, 문장만 다시 다듬기</a>', 'Keeping the plot the same while reworking the structure. → <a href="refactorppe-en.html">same plot, retouched sentences</a>')),
         ("코드 스멜", "Code Smell", ("문장이 꼬여 보이는 낌새.", "The whiff of sentences gone tangled."), ("빚이 쌓이고 있다는 신호예요.", "A sign the debt is piling up.")),
         ("WBS", "WBS", ("작업을 쪼개 일정을 세우는 목록.", "The task tree a schedule is built from."), ('WBS 일정이 너무 빠듯하면 기술부채가 쌓여요. → <a href="wbsswe-ko.html">책 만들기를 나뭇가지로 늘어놓기</a>', 'Too tight a WBS schedule, and technical debt piles up. → <a href="wbsswe-en.html">laying out the book as a tree</a>')),
-        ("정보시스템 감리/PMO", "IS Audit/PMO", ("빚이 너무 쌓였는지 바깥에서 점검하는 사람.", "The outside checker watching whether debt has piled up too far."), ('여러 프로젝트의 빚을 한눈에 봐요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'Watches debt across many projects at once. → <a href="pmoaudit-en.html">the last checker before publication</a>')),
+        ("정보시스템 감리/PMO", "IS Audit/PMO", ("빚이 너무 쌓였는지 바깥에서 점검하는 사람.", "The outside checker watching whether debt has piled up too far."), ('일정과 품질을 보다 보면 빚이 쌓이는 낌새도 보여요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'Watching schedule and quality can reveal debt building up. → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
         ("단위테스트", "Unit Test", ("빚을 갚을 때 줄거리가 안 바뀌었나 보는 교정.", "The proofing that checks the plot held while the debt is repaid."), ("테스트 없인 안전하게 갚을 수 없어요.", "Without tests, repaying debt safely is hard.")),
     ],
 }

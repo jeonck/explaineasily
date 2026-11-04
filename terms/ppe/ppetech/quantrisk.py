@@ -29,7 +29,7 @@ P3 = svg(340, sky(340)
          + glyph(230, 110, 1.3, DICE_P) + glyph(350, 125, 1.0, MULT_P) + glyph(420, 110, 1.3, SCALE_P) + glyph(540, 110, 1.3, BOARD_P)
          + person(620, 240, s=0.75, face=SMILE, **GUIDE)
          + label(380, 30, "⟦정량적 위험분석 = '일어날 확률' × '피해 크기'를 곱해, 위험을 숫자 하나로 적는 것|quantitative risk analysis = probability × impact, written as one single risk number⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦위험을 느낌 대신 숫자로 적으니, 누가 봐도 같은 순위를 매길 수 있어요|a number instead of a feeling — so anyone can rank the risks the same way⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦위험을 느낌 대신 숫자로 적으니, 모두 같은 숫자를 보고 순위를 따져요|a number instead of a feeling — so everyone ranks risks from the same figures⟧", 12, "var(--muted)"))
 
 # 4. 위험도 = 확률 × 영향
 P4 = svg(320, sky(320)
@@ -64,7 +64,7 @@ PAGE = {
          "small": ("같은 부스인데 사람마다 말이 다르면, 뭘 먼저 고쳐야 할지 못 정해요.", "When the same booth gets different verdicts, you can't tell what to fix first.")},
         {"svg": P3, "hero": True, "alt": ("주사위와 저울을 곱해 전광판에 숫자 42가 뜨고, 안내원이 흐뭇해함", "A die multiplied by a scale lights up '42' on a scoreboard while a guide looks satisfied"),
          "caption": ("정량적 위험분석은 확률과 피해 크기를 곱해 위험을 숫자 하나로 적는 거예요.", "Quantitative risk analysis multiplies probability by impact, writing risk as one single number."),
-         "small": ("위험을 느낌 대신 숫자로 적으니, 누가 봐도 같은 순위를 매길 수 있어요.", "A number instead of a feeling — so anyone can rank the risks the same way."),
+         "small": ("위험을 느낌 대신 숫자로 적으니, 모두 같은 숫자를 보고 순위를 따져요.", "A number instead of a feeling — so everyone ranks risks from the same figures."),
          "tricks": (4, [
              (DICE_I, ("확률 재기", "Measure probability"), ("얼마나 자주 일어날까요", "how often might it happen")),
              (SCALE_I, ("피해 크기 재기", "Measure impact"), ("피해가 얼마나 클까요", "how big would the damage be")),
@@ -83,13 +83,13 @@ PAGE = {
                 ("정량적 위험분석 기법은 위험을 발생 확률과 손실 규모의 곱으로 수치화해, 서로 다른 위험을 객관적으로 비교·우선순위화하는 방법이에요. ALE(연간예상손실), ROSI(보안투자수익률)가 대표적이고, 칸으로 나타내는 위험 매트릭스는 반정량적 도구로 함께 쓰이며, 정성적 분석(상/중/하 같은 등급 판단)과 짝을 이뤄 보완적으로 쓰여요.",
                  "Quantitative risk analysis scores a risk as probability multiplied by loss magnitude, letting different risks be compared and prioritized objectively. ALE (Annual Loss Expectancy) and ROSI (Return on Security Investment) are common tools, risk matrices serve as a semi-quantitative aid, and all are typically paired with qualitative analysis (high/medium/low judgment calls) as a complement.")),
     "glossary": [
-        ("ALE(연간예상손실)", "Annual Loss Expectancy", ("일 년 동안 예상되는 손실을 돈으로 계산한 값.", "The expected loss for one year, calculated in money."), ("확률×피해를 일 년 단위로 계산해요.", "It's probability times impact, scaled to a year.")),
+        ("ALE(연간예상손실)", "Annual Loss Expectancy", ("일 년 동안 예상되는 손실을 돈으로 계산한 값.", "The expected loss for one year, calculated in money."), ("1회 손실액(SLE) × 연간 발생 횟수(ARO)로 계산해요.", "Single loss (SLE) times yearly occurrence rate (ARO).")),
         ("위험 매트릭스", "Risk Matrix", ("위험을 확률·피해 크기에 따라 표의 한 칸에 놓는 것.", "Placing a risk into one grid cell by its probability and impact."), ("숫자 대신 칸 색으로 보여주는 방식이에요.", "A way of showing the same idea with colored cells instead of numbers.")),
         ("정성적 위험분석", "Qualitative Risk Analysis", ("상·중·하로만 매기는 평가.", "Judging risk only as high, medium, or low."), ("정량적 분석과 짝을 이루는 보완 방법이에요.", "A complementary method that pairs with the quantitative one.")),
         ("ROSI", "Return on Security Investment", ("보안에 쓴 돈이 본전을 하는지 보는 셈.", "A calculation of whether security spending pays for itself."), ("정량적 위험분석의 숫자를 투자 결정에 써요.", "It feeds the quantitative risk number into a spending decision.")),
         ("프로젝트 위험관리", "Project Risk Management", ("프로젝트에 닥칠 위험을 미리 찾아 대비하는 것.", "Finding and preparing for risks to a project in advance."), ("여기선 위험을 숫자로 재고, 저 페이지는 프로젝트 위험을 관리하는 틀을 다뤄요. → <a href=\"projrisk-ko.html\">비가 안 오는 날에도 챙기는 우산</a>", "Here risk gets a number; that page covers a framework for managing project risk. → <a href=\"projrisk-en.html\">the umbrella you carry even on a dry day</a>")),
         ("드론 보안위협", "Drone Security Threats", ("위험 점수 매기기가 적용되는 실제 위협.", "A real-world threat this same risk scoring applies to."), ('이 드론 위협들의 크기도 이렇게 재요. → <a href="dronesecurity-ko.html">보이지 않는 줄로 매달린 드론</a>', 'These drone threats get sized up the same way. → <a href="dronesecurity-en.html">the drone held up by an invisible string</a>')),
-        ("NFT", "NFT", ("가치가 출렁이는 디지털 자산.", "A digital asset whose value swings wildly."), ('가격 변동 위험을 가늠할 때도 이 기법이 쓰여요. → <a href="nft-ko.html">그림에 붙이는 위조 못 하는 증명서</a>', "This same technique sizes up its price swings too. → <a href=\"nft-en.html\">the certificate you can't forge</a>")),
+        ("NFT", "NFT", ("가치가 출렁이는 디지털 자산.", "A digital asset whose value swings wildly."), ('가격 변동 위험도 숫자로 따져볼 수 있어요. → <a href="nft-ko.html">그림에 붙이는 몰래 못 고치는 증명서</a>', "Its price-swing risk can be put in numbers too. → <a href=\"nft-en.html\">the certificate nobody can quietly alter</a>")),
         ("4차 산업혁명", "4th Industrial Revolution", ("여러 신기술이 모여 만드는 큰 흐름.", "The big wave made when many new technologies combine."), ('이 전시장 전체를 아우르는 이야기예요. → <a href="fourthindustry-ko.html">4차 산업혁명</a>', 'The story that frames this whole exhibit hall. → <a href="fourthindustry-en.html">the 4th Industrial Revolution</a>')),
     ],
 }

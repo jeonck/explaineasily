@@ -14,14 +14,14 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(200, 160, s=0.85, face=EYES, **TEACHER)
          + bubble(90, 70, 220, 46, "⟦이 명부로 선별 기준을 다시 짤게요|I\'ll retrain the sorting rules with this list⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + person(560, 160, s=0.75, face=FROWN, **INSPECTOR)
-         + bubble(435, 70, 305, 54, "⟦잠깐요, 동의도 안 받고 이름까지 넣으면 법에 어긋나요|hold on — using names without consent breaks the law⟧", 11, "var(--panel)", "var(--line)", "bottom")
-         + label(380, 280, "⟦작물 품질과 달리, 사람 정보는 '허락받은 만큼만' 쓸 수 있어요|unlike crop quality, people's info can only be used as far as they agreed⟧", 12, "var(--ink)"))
+         + bubble(435, 70, 305, 54, "⟦잠깐요, 동의 등 법적 근거 없이 쓰면 안 돼요|hold on — not without consent or another legal basis⟧", 11, "var(--panel)", "var(--line)", "bottom")
+         + label(380, 280, "⟦작물 품질과 달리, 사람 정보는 동의 같은 법적 근거가 허용한 만큼만 쓸 수 있어요|unlike crop quality, people's info can only be used as far as a legal basis, like consent, allows⟧", 12, "var(--ink)"))
 
 # 3. AI 개인정보보호(컴플라이언스) = 쓰기 전에 법령 체크리스트로 확인하고 서류로 남기는 일 (hero)
 P3 = svg(360, sky(360)
          + person(400, 140, s=0.9, face=EYES, **INSPECTOR)
          + gradeboard(460, 60, 260, 170, "⟦법령 체크리스트|COMPLIANCE CHECKLIST⟧",
-                      ("⟦① 왜 모으나 — 목적|① why collect — purpose⟧", "⟦② 허락 받았나 — 동의|② consented? — consent⟧",
+                      ("⟦① 왜 모으나 — 목적|① why collect — purpose⟧", "⟦② 법적 근거 있나 — 동의 등|② legal basis? — consent etc.⟧",
                        "⟦③ 언제까지 두나 — 보유기간|③ how long kept — retention⟧", "⟦④ 어디로 가나 — 국외이전|④ where it goes — transfer⟧"), 0.95)
          + person(160, 190, s=0.8, face=SMILE, **FARMER) + stamp2(260, 150, 0.8, ok=True)
          + label(380, 30, "⟦AI 개인정보보호 = 쓰기 전에 법령 체크리스트로 확인하고 서류로 남기는 일|AI data-privacy compliance = checking a legal checklist before use, and keeping the paperwork⟧", 13, "var(--ink)", cls="d")
@@ -42,7 +42,7 @@ P4 = svg(330, sky(330)
 
 # 5. 기술적 가리기와는 다른 일이에요
 P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
-         + person(190, 150, s=0.8, face=EYES, **INSPECTOR) + gradeboard(30, 180, 185, 60, "⟦허락·서류|PERMISSION⟧", ("⟦동의·보유기간·이전|consent · retention · transfer⟧",), 0.7)
+         + person(190, 150, s=0.8, face=EYES, **INSPECTOR) + gradeboard(25, 180, 210, 60, "⟦허락·서류|PERMISSION⟧", ("⟦동의·보유기간·이전|consent · retention · transfer⟧",), 0.7)
          + label(190, 275, "⟦컴플라이언스는 '허락받았나, 적어뒀나'를 봐요|compliance asks: consented? written down?⟧", 11, "var(--ink)")
          + person(570, 125, s=0.8, face=SMILE, **OPERATOR) + label(570, 265, "⟦이름을 번호표로 가리는 건 기술의 몫이에요|masking names into tags is a technical job⟧", 11, "var(--ink)")
          + label(380, 300, "⟦AI 개인정보보호(법·감사)와 기술적 마스킹은 둘 다 갖춰야 하는 짝이에요|legal/audit privacy compliance and technical masking are a pair: you need both⟧", 12, "var(--ink)", cls="d"))
@@ -50,16 +50,16 @@ P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x
 PAGE = {
     "slug": "aiprivacyppe", "order": 13,
     "title": ("출하자 명부를 지키는 서류함", "The Paperwork Cabinet That Protects the Grower List"),
-    "h1": ("<em>AI 개인정보보호</em>이/가 뭐예요?", "What is <em>AI Data-Privacy Compliance</em>?"),
+    "h1": ("<em>AI 개인정보보호</em>가 뭐예요?", "What is <em>AI Data-Privacy Compliance</em>?"),
     "sub": ("AI 개인정보보호(컴플라이언스)를, 작물과 함께 딸려온 출하자 명부를 법령 체크리스트로 확인하고 서류로 남기는 이야기로 풀어봤어요.",
             "AI data-privacy compliance, told as a story about checking a grower list — that rode along with the crops — against a legal checklist, and keeping the paperwork."),
     "panels": [
         {"svg": P1, "alt": ("농부가 출하자 명부(이름·연락처·농지 위치)를 선별기 조작원에게 통째로 넘김", "A grower hands over a whole list of names, phone numbers, and field locations to the sorter operator"),
          "caption": ("농부가 출하자 명부를 통째로 선별기 조작원에게 넘겨요.", "The grower hands the whole grower list to the sorter operator."),
          "small": ("조작원은 작물 데이터만 올 줄 알았는데, 이름·연락처 같은 사람 정보까지 왔어요.", "The operator expected only crop data — but names and phone numbers came too.")},
-        {"svg": P2, "alt": ("훈련 교사가 명부로 선별 기준을 다시 짜려 하자, 검수반장이 동의 없이는 법에 어긋난다고 경고함", "The trainer is about to retrain the sorter with the list, but the inspector warns that doing so without consent breaks the rules"),
-         "caption": ("검수반장이 동의 없이 명부를 쓰면 법에 어긋난다고 경고해요.", "The inspector warns that using the list without consent breaks the law."),
-         "small": ("사람 정보는 작물과 달리, 허락받은 만큼만 쓸 수 있어요.", "Unlike crops, people's info can only be used as far as they agreed.")},
+        {"svg": P2, "alt": ("훈련 교사가 명부로 선별 기준을 다시 짜려 하자, 검수반장이 동의 같은 법적 근거 없이는 법에 어긋난다고 경고함", "The trainer is about to retrain the sorter with the list, but the inspector warns that doing so with no legal basis, like consent, breaks the rules"),
+         "caption": ("검수반장이 동의 같은 법적 근거 없이 명부를 쓰면 법에 어긋난다고 경고해요.", "The inspector warns that using the list with no legal basis, like consent, breaks the law."),
+         "small": ("사람 정보는 작물과 달리, 동의 같은 법적 근거가 허용한 만큼만 쓸 수 있어요.", "Unlike crops, people's info can only be used as far as a legal basis, like consent, allows.")},
         {"svg": P3, "hero": True, "alt": ("검수반장이 법령 체크리스트를 들고 있고, 농부는 승인 도장을 받음", "The inspector holds a compliance checklist while the grower receives an approval stamp"),
          "caption": ("AI 개인정보보호는 쓰기 전에 법령 체크리스트로 확인하고 서류로 남기는 일이에요.", "AI data-privacy compliance means checking a legal checklist before use, and keeping the paperwork."),
          "small": ("이름을 기술로 가리는 것과는 또 다른, 허락과 서류의 문제예요.", "A different problem from technically masking names — it's about permission and paperwork."),
@@ -76,16 +76,16 @@ PAGE = {
          "caption": ("AI 개인정보보호는 기술적 가리기(마스킹)와는 다른 일이에요.", "AI data-privacy compliance is a different job from technical masking."),
          "small": ("법·감사 쪽 확인과 기술적 마스킹은 둘 다 갖춰야 해요.", "Legal/audit compliance and technical masking are both needed.")},
     ],
-    "summary": (("<b>AI 개인정보보호(컴플라이언스)</b> = 선별기에 사람 정보를 넣기 전, <b>목적·동의·보유기간·국외이전</b>을 <b>법령 체크리스트</b>로 확인하고 <b>서류로 남기는</b> 일.",
-                 "<b>AI data-privacy compliance</b> = before feeding people's info into the sorter, checking <b>purpose, consent, retention, and cross-border transfer</b> against a <b>legal checklist</b> and keeping the <b>paperwork</b>."),
-                ("개인정보보호법·GDPR 등 관련 법령에 따라, AI 학습·추론에 개인정보를 쓸 때는 수집 목적의 명시, 정보주체 동의, 보유기간 설정, 국외 이전 시 추가 요건(표준계약조항 등), 개인정보 영향평가(PIA)를 거쳐야 해요. 기술적 마스킹·가명처리(비식별화)는 이 요건을 만족시키는 '수단' 중 하나이지, 컴플라이언스 자체를 대체하지 않아요.",
-                 "Under laws like Korea's PIPA or GDPR, using personal data for AI training or inference requires stating the collection purpose, obtaining data-subject consent, setting a retention period, meeting extra requirements for cross-border transfer (e.g. standard contractual clauses), and running a Privacy Impact Assessment. Technical masking and pseudonymization are one *means* of meeting these requirements — they don't replace compliance itself.")),
+    "summary": (("<b>AI 개인정보보호(컴플라이언스)</b> = 선별기에 사람 정보를 넣기 전, <b>목적·법적 근거(동의 등)·보유기간·국외이전</b>을 <b>법령 체크리스트</b>로 확인하고 <b>서류로 남기는</b> 일.",
+                 "<b>AI data-privacy compliance</b> = before feeding people's info into the sorter, checking <b>purpose, legal basis (such as consent), retention, and cross-border transfer</b> against a <b>legal checklist</b> and keeping the <b>paperwork</b>."),
+                ("개인정보보호법·GDPR 등 관련 법령에 따라, AI 학습·추론에 개인정보를 쓸 때는 수집 목적의 명시, 동의나 정당한 이익 같은 법적 근거, 보유기간 설정, 국외 이전 요건(한국의 별도 동의·인증·동등성 인정, GDPR의 표준계약조항 등)을 확인하고, 법이 정한 대상이거나 위험이 크면 개인정보 영향평가(PIA)도 거쳐요. 기술적 마스킹·가명처리(비식별화)는 이 요건을 만족시키는 '수단' 중 하나이지, 컴플라이언스 자체를 대체하지 않아요. 가명정보는 통계작성·과학적 연구 등의 목적이면 동의 없이 처리할 수 있어요.",
+                 "Under laws like Korea's PIPA or GDPR, using personal data for AI training or inference means stating the collection purpose, having a legal basis such as consent or legitimate interest, setting a retention period, and meeting cross-border transfer requirements (separate consent, certification, or adequacy in Korea; standard contractual clauses and others under GDPR) — plus a Privacy Impact Assessment where the law requires one or the risk is high. Technical masking and pseudonymization are one *means* of meeting these requirements — they don't replace compliance itself. Pseudonymized data can be processed without consent for purposes such as statistics or scientific research.")),
     "glossary": [
         ("개인정보보호법 · GDPR", "PIPA · GDPR", ("명부 같은 사람 정보를 어떻게 다룰지 정한 법.", "The law that governs how personal data like the list may be handled."), ("개인정보 수집·이용·제공의 조건을 정해요.", "Sets the conditions for collecting, using, and sharing personal data.")),
-        ("동의", "Consent", ("농부가 직접 허락하는 서명.", "The grower's own signature of permission."), ("목적이 바뀌면 동의도 다시 받아야 해요.", "If the purpose changes, consent must be obtained again.")),
-        ("보유기간", "Retention period", ("명부를 서류함에 두는 기한.", "How long the list stays in the cabinet."), ("기한이 지나면 파기하거나 다시 승인받아요.", "Once it expires, dispose of it or get re-approval.")),
-        ("국외이전", "Cross-border transfer", ("명부가 다른 나라 창고로 가는 일.", "The list traveling to a warehouse in another country."), ("표준계약조항 같은 별도 요건이 붙어요.", "Extra requirements like standard contractual clauses apply.")),
-        ("개인정보 영향평가(PIA)", "Privacy Impact Assessment", ("개인정보를 많이 쓰는 작업 전에 미리 해보는 위험 점검.", "A risk check run before a job that uses a lot of personal data."), ("위험이 큰 처리를 시작하기 전 의무로 하는 곳이 많아요.", "Often mandatory before high-risk processing begins.")),
+        ("동의", "Consent", ("농부가 직접 허락하는 서명.", "The grower's own signature of permission."), ("대표적인 법적 근거예요(정당한 이익 등 다른 근거도 있어요). 목적이 크게 바뀌면 보통 다시 받아요.", "The best-known legal basis (others, like legitimate interest, exist). If the purpose changes substantially, it's usually obtained again.")),
+        ("보유기간", "Retention period", ("명부를 서류함에 두는 기한.", "How long the list stays in the cabinet."), ("기한이 지나면 지체 없이 파기해요. 다른 법이 보존을 요구하면 분리해 보관해요.", "Once it expires, dispose of it without delay; if another law requires keeping it, store it separately.")),
+        ("국외이전", "Cross-border transfer", ("명부가 다른 나라 창고로 가는 일.", "The list traveling to a warehouse in another country."), ("별도 동의·인증 같은 요건이 붙어요(GDPR은 표준계약조항 등).", "Extra requirements apply, like separate consent or certification (standard contractual clauses and others under GDPR).")),
+        ("개인정보 영향평가(PIA)", "Privacy Impact Assessment", ("개인정보를 많이 쓰는 작업 전에 미리 해보는 위험 점검.", "A risk check run before a job that uses a lot of personal data."), ("한국은 기준을 넘는 공공기관에 의무, 민간은 노력 의무예요. GDPR은 위험이 크면 요구해요.", "In Korea it's mandatory for public institutions above set thresholds and an effort duty for others; GDPR requires one for high-risk processing.")),
         ("가명정보", "Pseudonymized data", ("이름을 번호표로 바꾼 명부.", "The list with names swapped for tags."), ('기술적 마스킹의 결과물이에요. → <a href="aiprivacy-ko.html">앵무새에게 준 비밀 콩</a>', 'The result of technical masking. → <a href="aiprivacy-en.html">the secret beans we gave the parrot</a>')),
         ("AI 거버넌스", "AI Governance", ("농장 전체의 운영 규칙판.", "The operating rules board for the whole farm."), ('개인정보보호는 거버넌스의 한 축이에요. → <a href="aigovernance-ko.html">주방 규칙판</a>', 'Privacy compliance is one pillar of governance. → <a href="aigovernance-en.html">the rules board on the wall</a>')),
         ("AI 신뢰성", "AI Trustworthiness", ("등급판 전체 — 공정·안전·투명성까지.", "The whole certification board — fairness, safety, transparency too."), ('개인정보보호는 신뢰성을 이루는 조각 중 하나예요. → <a href="aitrust-ko.html">품질인증 등급판</a>', 'Privacy is one piece that makes up trustworthiness. → <a href="aitrust-en.html">the certification board</a>')),

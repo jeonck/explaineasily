@@ -36,8 +36,8 @@ P3 = svg(340, sky(340)
          + sealshop(140, 170, 0.9, "var(--panel)") + label(140, 250, "⟦공동인증서(옛 공인인증서)|the Joint Certificate (the old mandatory one)⟧", 10, "var(--muted)")
          + sealshop(380, 170, 0.9, "var(--good-soft)") + label(380, 250, "⟦카카오·토스 같은 민간 인증|private certificates, like KakaoPay or Toss⟧", 10, "var(--muted)")
          + sealshop(620, 170, 0.9, "var(--accent-soft)") + label(620, 250, "⟦통신사 PASS 인증|carrier PASS authentication⟧", 10, "var(--muted)")
-         + person(380, 70, s=0.6, face=SMILE, **VILLAGER) + label(380, 40, "⟦이제 아무 도장집이나 똑같이 통해요|now any of these shops carries equal weight⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦전자서명법 개정(2020) = 법이 특혜를 없애고, 선택지를 열었어요|the amended Digital Signature Act (2020) ended the monopoly and opened up the choice⟧", 13, "var(--ink)", cls="d"))
+         + person(380, 70, s=0.6, face=SMILE, **VILLAGER) + label(380, 40, "⟦이제 어느 도장집도 법적 특별 대우를 안 받아요|now no shop gets special legal standing⟧", 13, "var(--ink)", cls="d")
+         + label(380, 320, "⟦전자서명법 개정(2020) = 법이 특혜를 없애고, 선택지를 열었어요|the amended Digital Signature Act (2020) ended the privilege and opened up the choice⟧", 13, "var(--ink)", cls="d"))
 
 LAW_I = icon('<rect x="14" y="10" width="36" height="44" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 22 h20 M22 30 h20 M22 38 h12" stroke="#142033" stroke-width="2.5" stroke-linecap="round"/>')
 MANY_I = icon('<circle cx="18" cy="32" r="10" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2.5"/><circle cx="32" cy="20" r="10" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2.5"/><circle cx="46" cy="32" r="10" fill="var(--good-soft)" stroke="var(--good)" stroke-width="2.5"/>')
@@ -46,37 +46,37 @@ TECH_I = icon('<rect x="18" y="20" width="28" height="30" rx="3" fill="#8B5E3C"/
 
 PAGE = {
     "slug": "pkicert", "order": 21,
-    "title": ("하나뿐이던 도장집, 이제는 여럿", "The One Seal-Shop That's Now Many"),
+    "title": ("나라가 고른 도장집, 이제는 여럿", "The State-Picked Seal-Shops, Now Joined by Many"),
     "h1": ("<em>공인인증서·사설인증</em>이 뭐예요?", "What are <em>Accredited and Private Certificates</em>?"),
-    "sub": ("공인인증서와 사설(민간) 인증서를, 나라가 정한 도장집이 하나뿐이던 시절과 여럿이 된 지금을 비교하는 이야기로 풀어봤어요.",
-            "Accredited (공인) vs. private (사설) certificates, told as a story comparing the days of one state-designated seal-shop with today's many."),
+    "sub": ("공인인증서와 사설(민간) 인증서를, 나라가 지정한 도장집만 특별 대우받던 시절과 여러 도장집이 동등해진 지금을 비교하는 이야기로 풀어봤어요.",
+            "Accredited (공인) vs. private (사설) certificates, told as a story comparing the days when only state-designated seal-shops got special standing with today's many equal shops."),
     "panels": [
         {"svg": P1, "alt": ("나라가 지정한 도장집이 성 한가운데 있고, 빵을 사거나 서류를 내려는 손님 모두 이곳을 거쳐야 함", "A state-designated seal-shop sits at the center of the castle, and every villager — whether buying bread or filing a paper — must pass through it"),
          "caption": ("나라가 지정한 도장집만 특별 대우를 받던 시절이 있었어요.", "There was a time when only state-designated seal-shops got special standing."),
-         "small": ("공인인증서. 법은 나라가 지정한 도장집들이 찍어준 도장에만 더 강한 효력을 줬어요.", "The 공인인증서 (accredited certificate). The law gave stronger effect only to seals from the state-designated shops.")},
+         "small": ("공인인증서. 법은 나라가 지정한 도장집들이 찍어준 도장에만 더 강한 효력을 줬어요.", "The accredited certificate. The law gave stronger effect only to seals from the state-designated shops.")},
         {"svg": P2, "alt": ("손님이 땀 흘리며 도장을 특별한 상자에 담아 다녀야 하고 다른 성엔 못 쓴다고 불평함", "A sweating villager complains that the seal must ride in a special box and fails at other castles"),
          "caption": ("인증서가 복잡하고 불편해도 다른 길이 없었어요.", "The certificate was inconvenient, but there was no other option."),
          "small": ("인증서를 특별한 상자(보안 프로그램)에 담아 들고 다녀야 했고, 다른 컴퓨터로 옮기기도 번거로웠어요.", "The certificate had to be carried around in a special box (security software), and moving it to another computer was a hassle.")},
-        {"svg": P3, "hero": True, "alt": ("법이 바뀌어 공동인증서, 카카오·토스 같은 민간 인증, 통신사 PASS 인증이 나란히 서 있고 손님이 아무거나 고를 수 있음", "After the law changed, the Joint Certificate, private certificates like KakaoPay or Toss, and carrier PASS authentication stand side by side, and the villager can pick any of them"),
+        {"svg": P3, "hero": True, "alt": ("법이 바뀌어 공동인증서, 카카오·토스 같은 민간 인증, 통신사 PASS 인증이 나란히 서 있고 손님이 서비스가 받아 주는 것 중에서 고를 수 있음", "After the law changed, the Joint Certificate, private certificates like KakaoPay or Toss, and carrier PASS authentication stand side by side, and the villager can pick among those a service accepts"),
          "caption": ("법이 바뀌어 도장집이 여럿 생겼어요.", "The law changed, and now there are several seal-shops."),
-         "small": ('전자서명법 개정(2020)으로 공인인증서의 법적 특혜가 사라지고, <a href="mydataSec-ko.html">본인확인</a>에 쓰는 여러 민간 인증서가 똑같은 효력을 가지게 됐어요.',
+         "small": ('전자서명법 개정(2020)으로 공인인증서의 법적 특혜가 사라지고, <a href="mydataSec-ko.html">본인확인</a>에 쓰는 여러 민간 인증서도 공인인증서와 같은 법적 지위에 서게 됐어요.',
                    'The 2020 amendment to the Digital Signature Act ended the accredited certificate\'s special legal status — several private certificates used for <a href="mydataSec-en.html">identity verification</a> now carry the very same legal weight.'),
          "tricks": (4, [
              (LAW_I, ("법이 특혜를 없앴어요", "The law ended the privilege"), ("전자서명법 개정, 2020년", "the Digital Signature Act, amended in 2020"), "calm"),
              (MANY_I, ("여러 도장집이 생겼어요", "Several shops sprang up"), ("카카오페이, 토스, PASS, 네이버 등", "KakaoPay, Toss, PASS, Naver, and more")),
-             (EQUAL_I, ("법적 효력은 똑같아요", "Equal legal effect"), ("어느 인증서를 써도 서명으로 인정돼요", "any of these certificates counts as a valid signature"), "warm"),
+             (EQUAL_I, ("법적 효력은 똑같아요", "Equal legal effect"), ("공인인증서만 더 강하던 효력 차이가 없어졌어요", "the accredited certificate's extra legal weight is gone"), "warm"),
              (TECH_I, ("기술(PKI)은 그대로예요", "The underlying tech (PKI) is unchanged"), ("바뀐 건 법이지, 암호 방식이 아니에요", "what changed was the law, not the cryptography")),
          ])},
         {"svg": svg(320, '<rect width="380" height="320" fill="var(--bad-soft)"/><rect x="380" width="380" height="320" fill="var(--good-soft)"/>'
                     + label(190, 30, "⟦2020년 이전|before 2020⟧", 13, "var(--ink)", cls="d")
-                    + label(190, 80, "⟦공인인증서만 더 강한 법적 효력|only the accredited certificate got stronger legal effect⟧", 11, "var(--ink)") + label(190, 110, "⟦특정 보안 프로그램 강제|a specific security program was mandatory⟧", 11, "var(--ink)")
+                    + label(190, 80, "⟦공인인증서만 더 강한 법적 효력|only the accredited certificate got stronger legal effect⟧", 11, "var(--ink)") + label(190, 110, "⟦전용 보안 프로그램을 깔 때가 많음|security software often had to be installed⟧", 11, "var(--ink)")
                     + label(570, 30, "⟦2020년 이후|after 2020⟧", 13, "var(--ink)", cls="d")
                     + label(570, 80, "⟦여러 민간 인증서가 동등한 효력|many private certificates carry equal effect⟧", 11, "var(--ink)") + label(570, 110, "⟦앱 하나로 간편 인증 가능|simple app-based authentication is enough⟧", 11, "var(--ink)")
                     + idcard(190, 220) + idcard(570, 220)
-                    + label(380, 290, "⟦신분증 자체는 그대로, 발급하는 곳이 늘었을 뿐이에요|the ID card itself didn't change — only who may issue it did⟧", 12, "var(--ink)", cls="d")),
+                    + label(380, 290, "⟦신분증 구조는 그대로, 달라진 건 법이 주던 특별 대우예요|the ID card's structure didn't change — the legal special treatment did⟧", 12, "var(--ink)", cls="d")),
          "alt": ("왼쪽: 2020년 이전엔 공인인증서만 더 강한 법적 효력. 오른쪽: 2020년 이후엔 여러 민간 인증서가 동등한 효력", "Left: before 2020, only the accredited certificate had stronger legal effect. Right: after 2020, many private certificates carry equal effect"),
          "caption": ("2020년 법 개정 전과 후를 나란히 보면 이래요.", "Before and after the 2020 amendment, side by side."),
-         "small": ("신분증(인증서) 자체의 구조는 그대로예요. 달라진 건 누가 발급할 수 있느냐예요.", "The ID card (the certificate) itself is structurally unchanged — what changed is who's allowed to issue one.")},
+         "small": ("신분증(인증서) 자체의 구조는 그대로예요. 달라진 건 법이 특정 발급처에 주던 특별 대우예요.", "The ID card (the certificate) itself is structurally unchanged — what changed is the special legal treatment of certain issuers.")},
         {"svg": svg(320, sky(320)
                     + person(190, 150, s=0.85, **CLERK_A) + label(190, 270, "⟦도장 찍는 방식(PKI)은 법 개정 전과 똑같아요|the stamping mechanism (PKI) is the same as before the amendment⟧", 11, "var(--muted)")
                     + person(560, 150, s=0.85, **CLERK_B) + label(560, 270, "⟦어느 도장집을 믿을지는 여전히 중요해요|which shop to trust still matters just as much⟧", 11, "var(--ink)")
@@ -88,15 +88,15 @@ PAGE = {
     ],
     "summary": (("과거엔 나라가 지정한 기관이 발급한 <b>공인인증서</b>만 더 강한 법적 효력을 가졌지만, <b>2020년 전자서명법 개정</b>으로 그 특혜가 사라지고 여러 <b>사설(민간) 인증서</b>가 <b>동등한 법적 효력</b>을 갖게 됐어요.",
                  "Only the <b>accredited certificate</b>, issued by state-designated authorities, used to carry stronger legal effect, but the <b>2020 amendment to the Digital Signature Act</b> ended that privilege, giving several <b>private certificates</b> <b>equal legal standing</b>."),
-                ("공인인증서는 1999년 전자서명법 제정 이후 정부가 지정한 공인인증기관만 발급할 수 있었고, 민간 전자서명보다 높은 법적 추정력을 가졌어요. 2020년 전자서명법 전부개정으로 이 특별한 지위가 폐지되고, 기존 공인인증서는 '공동인증서'라는 이름으로 남아 카카오페이·PASS·네이버 등 다른 사설인증과 동등한 효력을 갖게 됐어요. 기술적으로는 공인·사설 모두 PKI(공개키 기반 구조)를 쓰며, 달라진 건 법적 지위일 뿐이에요.",
-                 "After the 1999 Digital Signature Act, only government-designated accredited certificate authorities could issue a 공인인증서, which carried a stronger legal presumption than private electronic signatures. The 2020 full revision of the Act abolished that special status; the old certificate survives as the renamed '공동인증서' (Joint Certificate), now standing on equal legal footing with other private certificates like KakaoPay, PASS, and Naver. Technically, both accredited and private certificates run on PKI (Public Key Infrastructure) — what changed was the legal status, not the cryptography.")),
+                ("공인인증서는 1999년 전자서명법 제정 이후 정부가 지정한 공인인증기관(금융결제원 등, 시기에 따라 대여섯 곳)만 발급할 수 있었고, 민간 전자서명보다 높은 법적 추정력을 가졌어요. 2020년 전자서명법 전부개정(12월 시행)으로 이 특별한 지위가 폐지되고, 기존 공인인증서는 '공동인증서'라는 이름으로 남아 카카오페이·PASS·네이버 등 다른 사설인증과 동등한 효력을 갖게 됐어요. 기술적으로는 공인인증서와 대표적인 사설 인증서 모두 PKI(공개키 기반 구조)를 쓰며, 달라진 건 법적 지위일 뿐이에요.",
+                 "After the 1999 Digital Signature Act, only government-designated accredited certificate authorities (five or six depending on the period, including KFTC) could issue an accredited certificate, which carried a stronger legal presumption than private electronic signatures. The 2020 full revision of the Act, in force that December, abolished that special status; the old certificate survives as the renamed '공동인증서' (Joint Certificate), now standing on equal legal footing with other private certificates like KakaoPay, PASS, and Naver. Technically, the accredited certificate and the major private ones all run on PKI (Public Key Infrastructure) — what changed was the legal status, not the cryptography.")),
     "glossary": [
-        ("공인인증서", "Accredited certificate", ("예전엔 하나뿐이던 법적 도장집.", "Once the only seal-shop with legal weight."), ("2020년 개정 후 '공동인증서'로 이름이 바뀌었어요.", "Renamed '공동인증서' (Joint Certificate) after the 2020 amendment.")),
+        ("공인인증서", "Accredited certificate", ("예전에 법이 특별 대우하던 도장.", "The seal the law once treated as special."), ("2020년 개정 후 '공동인증서'로 이름이 바뀌었어요.", "Renamed '공동인증서' (Joint Certificate) after the 2020 amendment.")),
         ("사설(민간) 인증서", "Private certificate", ("새로 생긴 다른 도장집들.", "The new, other seal-shops."), ("카카오페이·PASS·네이버 등, 이제 법적 효력이 동등해요.", "KakaoPay, PASS, Naver, and more — now carrying equal legal effect.")),
         ("전자서명법", "Digital Signature Act", ("도장집 자격을 정하는 법.", "The law that decides who may run a seal-shop."), ("2020년 전부개정으로 공인인증서의 특별 지위를 없앴어요.", "The 2020 full revision ended the accredited certificate's special status.")),
         ("공동인증서", "Joint certificate", ("옛 공인인증서의 새 이름.", "The old accredited certificate's new name."), ("특혜는 사라졌지만, 여전히 쓸 수 있는 선택지 중 하나예요.", "The privilege is gone, but it's still one option among many.")),
-        ("PKI", "PKI", ("도장을 실제로 찍고 확인하는 기술.", "The actual mechanism for stamping and checking the seal."), ('공인·사설 모두 이 기술을 써요. → <a href="pki-ko.html">왕의 도장이 찍힌 신분증</a>', 'Both accredited and private certificates run on this. → <a href="pki-en.html">the badge with the king\'s seal</a>')),
-        ("전자서명", "Digital signature", ("편지 끝에 찍는 왕의 도장.", "The king's seal stamped at the end of a letter."), ("법적으로 손으로 쓴 서명과 같은 효력을 가져요.", "Legally carries the same weight as a handwritten signature.")),
+        ("PKI", "PKI", ("도장을 실제로 찍고 확인하는 기술.", "The actual mechanism for stamping and checking the seal."), ('공인인증서와 대표적인 사설 인증서가 이 기술을 써요. → <a href="pki-ko.html">왕의 도장이 찍힌 신분증</a>', 'The accredited certificate and the major private ones run on this. → <a href="pki-en.html">the badge with the king\'s seal</a>')),
+        ("전자서명", "Digital signature", ("편지 끝에 찍는 왕의 도장.", "The king's seal stamped at the end of a letter."), ("전자 형태라는 이유만으로 서명의 효력이 부인되지 않아요.", "Its validity as a signature can't be denied merely because it's electronic.")),
         ("간편 인증", "Simple authentication", ("앱 하나로 끝나는 본인 확인.", "Identity verification done with just one app."), ('마이데이터·금융 서비스에서 흔히 봐요. → <a href="mydataSec-ko.html">내 장부는 내가 들고 다닐 권리</a>', 'Commonly seen across MyData and financial services. → <a href="mydataSec-en.html">my right to carry my own ledger</a>')),
         ("법적 추정력", "Legal presumption", ("법이 신뢰해주는 정도.", "How much trust the law grants it."), ("공인인증서만 특별히 더 높았던 것이, 개정 후 동등해졌어요.", "Once uniquely stronger for the accredited certificate — equalized after the amendment.")),
     ],

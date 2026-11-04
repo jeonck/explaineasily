@@ -26,11 +26,11 @@ P3 = svg(340, sky(340)
 P4 = svg(320, sky(320)
          + styleguide(60, 40, 320, 240, "⟦스크럼 역할과 리듬|SCRUM ROLES AND RHYTHM⟧",
                       ("⟦편집장(PO) — 백로그 우선순위를 정해요|editor (PO) — sets backlog priority⟧",
-                       "⟦작가팀(개발팀) — 챕터를 실제로 써요|writers (dev team) — actually write the chapters⟧",
+                       "⟦작가들(개발자) — 챕터를 실제로 써요|writers (developers) — actually write the chapters⟧",
                        "⟦스크럼 마스터 — 막힌 일을 풀어 진행을 도와요|scrum master — clears blockers, helps work flow⟧",
-                       "⟦스프린트 — 2주마다 챕터 한 편|sprint — one chapter every two weeks⟧"), 1.0)
+                       "⟦스프린트 — 예: 2주마다 챕터 한 편|sprint — e.g. one chapter every two weeks⟧"), 1.0)
          + person(560, 150, s=0.75, face=EYES, **EDITOR)
-         + label(560, 250, "⟦편집장도 우선순위를 혼자 정하지 않고, 스프린트마다 팀과 맞춰요|the editor sets priority with the team's input each sprint⟧", 11, "var(--muted)")
+         + label(560, 250, "⟦우선순위 책임은 편집장, 팀 의견도 들어요|the editor owns priority, with the team's input⟧", 11, "var(--muted)")
          + label(380, 300, "⟦스프린트를 짧게 반복하면, 책이 틀린 방향으로 가도 몇 주 안에 알아차려요|short, repeated sprints reveal a wrong direction within weeks, not years⟧", 12, "var(--ink)"))
 
 # 5. 독자 의견은 빨리 들어도 글은 작가가 써야 해요
@@ -66,25 +66,25 @@ PAGE = {
              (BACKLOG_I, ("우선순위부터 쓰기", "Write top priority first"), ("중요한 챕터부터 먼저요", "the most important chapter goes first"), "warm"),
              (RETRO_I, ("팀이 함께 돌아보기", "Team looks back together"), ("잘된 점과 고칠 점을 찾아 다음 챕터에 써요", "finding what to keep and change in the next chapter")),
          ])},
-        {"svg": P4, "alt": ("스크럼 역할표: 편집장(PO)·작가팀(개발팀)·스크럼 마스터·스프린트 리듬 네 항목", "A Scrum roles board: editor (PO), writers (dev team), scrum master, sprint rhythm"),
+        {"svg": P4, "alt": ("스크럼 역할표: 편집장(PO)·작가들(개발자)·스크럼 마스터·스프린트 리듬 네 항목", "A Scrum roles board: editor (PO), writers (developers), scrum master, sprint rhythm"),
          "caption": ("스크럼은 역할과 짧은 리듬으로 움직여요.", "Scrum runs on roles and a short rhythm."),
-         "small": ("편집장도 우선순위를 혼자 정하지 않고, 스프린트마다 팀과 맞춰요.", "The editor sets priority with the team's input each sprint.")},
+         "small": ("우선순위의 최종 책임은 편집장(PO)에게 있지만, 스프린트마다 팀 의견을 듣고 맞춰요.", "The editor (PO) holds final accountability for priority, but adjusts it with the team's input each sprint.")},
         {"svg": P5, "alt": ("왼쪽: 편집장이 짧게 나눠 쓰면 독자 의견을 더 빨리 듣는다고 말함. 오른쪽: 글은 여전히 작가가 직접 써야 함", "Left: the editor says short chapters bring reader feedback in sooner. Right: the writer still has to write the book themselves"),
          "caption": ("독자 의견은 빨리 들어도, 글은 작가가 직접 써야 해요.", "Reader feedback comes sooner, but the writer still has to write the chapters."),
          "small": ("애자일은 일하는 방식이지, 글쓰기 실력을 대신 채워주진 않아요.", "Agile is a way of working — it doesn't replace the writer's own skill.")},
     ],
     "summary": (("<b>애자일/스크럼</b> = 책을 <b>짧은 챕터 단위</b>로 나눠 쓰고, <b>챕터마다 독자에게 보여주며</b> 고쳐가는 작업법.",
                  "<b>Agile/Scrum</b> = writing a book in <b>short chapters</b>, <b>showing each one to readers</b>, and revising as you go."),
-                ("애자일은 변화에 빠르게 대응하는 소프트웨어 개발 철학이고, 스크럼은 그 철학을 실행하는 대표적 프레임워크예요. 일을 스프린트(보통 1~4주) 단위로 쪼개고, 매 스프린트 끝에 결과물을 보여주는 리뷰와 과정을 돌아보는 회고를 거쳐요. 제품 책임자(PO)가 우선순위를, 개발팀이 실행을, 스크럼 마스터가 진행을 돕는 역할을 맡아요.",
-                 "Agile is a philosophy for responding quickly to change in software development, and Scrum is its best-known framework. Work is split into sprints (usually 1-4 weeks), each ending with a review of the result and a retrospective on the process. A product owner sets priority, the dev team executes, and a scrum master helps the process run smoothly.")),
+                ("애자일은 변화에 빠르게 대응하는 소프트웨어 개발 철학이고, 스크럼은 그 철학을 실행하는 대표적 프레임워크예요. 일을 스프린트(보통 1~4주) 단위로 쪼개고, 매 스프린트 끝에 결과물을 보여주는 리뷰와 과정을 돌아보는 회고를 거쳐요. 제품 책임자(PO)가 우선순위를, 개발자들이 실행을, 스크럼 마스터가 진행을 돕는 역할을 맡아요.",
+                 "Agile is a philosophy for responding quickly to change in software development, and Scrum is its best-known framework. Work is split into sprints (usually 1-4 weeks), each ending with a review of the result and a retrospective on the process. A product owner sets priority, the developers execute, and a scrum master helps the process run smoothly.")),
     "glossary": [
         ("애자일", "Agile", ("짧게 쓰고 자주 보여주는 철학.", "The philosophy of writing short and showing often."), ("변화에 빠르게 대응해요.", "Responds quickly to change.")),
-        ("스크럼", "Scrum", ("애자일을 실행하는 대표적 틀.", "The best-known framework for running Agile."), ("스프린트·리뷰·회고로 이뤄져요.", "Made of sprints, reviews, and retrospectives.")),
+        ("스크럼", "Scrum", ("애자일을 실행하는 대표적 틀.", "The best-known framework for running Agile."), ("스프린트 안에서 계획·일일 점검·리뷰·회고를 해요.", "Each sprint holds planning, daily check-ins, a review, and a retrospective.")),
         ("스프린트", "Sprint", ("챕터 한 편을 쓰는 짧은 주기.", "The short cycle for writing one chapter."), ("보통 1~4주예요.", "Usually one to four weeks.")),
         ("제품 백로그", "Product Backlog", ("아직 안 쓴 챕터들의 줄 세운 목록.", "The ranked list of chapters not yet written."), ("편집장이 우선순위를 매겨요.", "The editor ranks it by priority.")),
         ("폭포수 모델", "Waterfall Model", ("책 전체를 처음 계획대로 끝까지 한 번에 쓰는 방식.", "Writing the whole book in one go, exactly to the original plan."), ("애자일이 맞서는 옛 방식이에요.", "The older style Agile pushes back against.")),
-        ("요구공학", "Requirements Engineering", ("독자가 뭘 원하는지 쓰기 전에 먼저 묻는 일.", "Asking what readers want before writing."), ('스크럼에서는 백로그의 내용과 순서를 스프린트마다 다시 따져 물어요. → <a href="reqeng-ko.html">쓰기 전에 먼저 묻는 사람</a>', 'In Scrum, the backlog gets questioned again every sprint. → <a href="reqeng-en.html">the one who asks before writing</a>')),
-        ("일일 스탠드업", "Daily Standup", ("매일 아침 짧게 서서 나누는 진행 상황.", "A short standing check-in on progress every morning."), ("막힌 곳을 빨리 찾아내요.", "Catches blockers quickly.")),
+        ("요구공학", "Requirements Engineering", ("독자가 뭘 원하는지 쓰기 전에 먼저 묻는 일.", "Asking what readers want before writing."), ('스크럼에서는 백로그의 내용과 순서를 스프린트마다 다시 따져 물어요. → <a href="reqeng-ko.html">쓰기 전에 먼저 묻는 사람</a>', 'In Scrum, the contents and order of the backlog get questioned again every sprint. → <a href="reqeng-en.html">the one who asks before writing</a>')),
+        ("일일 스탠드업", "Daily Standup", ("매일 같은 시간에 15분 안에 나누는 진행 상황.", "A 15-minute check-in on progress, at the same time every day."), ("막힌 곳을 빨리 찾아내요.", "Catches blockers quickly.")),
         ("회고", "Retrospective", ("챕터 끝에 팀이 모여 돌아보는 시간.", "The team's look-back at the end of a chapter."), ("잘된 점과 고칠 점을 찾아 다음 스프린트에 적용해요.", "Finds what to keep and change for the next sprint.")),
     ],
 }

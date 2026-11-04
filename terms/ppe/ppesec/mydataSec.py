@@ -64,37 +64,37 @@ PAGE = {
              (MINE_I, ("내 것이라고 선언해요", "Declared mine"), ("장부 내용은 손님의 것이에요", "the ledger's content belongs to the villager"), "calm"),
              (ROUTE_I, ("보낼 곳도 내가 정해요", "I choose where it goes"), ("가게 A에서 가게 B로 직접", "straight from shop A to shop B")),
              (VIEW_I, ("한곳에 모아 볼 수 있어요", "All in one view"), ("여러 가게 장부를 합쳐서 봐요", "combine ledgers from many shops"), "warm"),
-             (CONSENT_I, ("보낼 곳은 동의할 때마다 새로 정해요", "Fresh consent, every time"), ("동의는 언제든 다시 거둘 수 있어요", "and consent can be withdrawn any time")),
+             (CONSENT_I, ("보낼 곳은 내 동의로 정해요", "My consent picks the destination"), ("동의는 언제든 다시 거둘 수 있어요", "and consent can be withdrawn any time")),
          ])},
         {"svg": svg(320, sky(320)
                     + person(120, 110, s=0.7, **VILLAGER) + label(120, 205, "⟦① 동의|① consent⟧", 12, "var(--ink)")
                     + '<path d="M170 100 h60" stroke="var(--good)" stroke-width="3" marker-end=""/>'
-                    + shopfront(300, 130, 0.55, "⟦A가게|shop A⟧") + label(300, 205, "⟦② A가게: 요청 전달|② shop A: request forwarded⟧", 12, "var(--ink)")
+                    + shopfront(300, 130, 0.55, "⟦A가게|shop A⟧") + label(300, 205, "⟦② A가게: 요청받아 전송|② shop A: sends on request⟧", 12, "var(--ink)")
                     + '<path d="M350 100 h60" stroke="var(--good)" stroke-width="3"/>'
                     + person(470, 110, s=0.6, **AGENT) + label(470, 205, "⟦③ 마이데이터 사업자|③ a licensed MyData operator⟧", 11, "var(--ink)")
                     + '<path d="M510 100 h60" stroke="var(--good)" stroke-width="3"/>'
                     + shopfront(640, 130, 0.55, "⟦B가게|shop B⟧") + label(640, 205, "⟦④ B가게: 전달 완료|④ shop B: delivered⟧", 12, "var(--ink)")
                     + label(380, 270, "⟦장부는 허가받은 사업자를 거치는 경우가 많아요|pages often pass through a licensed operator, not a free-for-all⟧", 12, "var(--ink)", cls="d")),
-         "alt": ("손님 동의 → A가게가 요청 전달 → 마이데이터 사업자 → B가게로 전달 완료", "Villager's consent -> shop A forwards the request -> a licensed MyData operator -> delivered to shop B"),
+         "alt": ("손님 동의 → A가게가 요청받아 전송 → 마이데이터 사업자 → B가게로 전달 완료", "Villager's consent -> shop A sends on request -> a licensed MyData operator -> delivered to shop B"),
          "caption": ("실제로는 장부가 이런 순서로 옮겨져요.", "In practice, the pages move through these steps."),
-         "small": ("동의 → 요청 전달 → (허가받은 사업자) → 전달 완료. 아무 가게나 마음대로 보내주는 게 아니에요.", "Consent, then the request forwards, then a licensed operator carries it, then delivery. It isn't just any shop sending it on a whim.")},
+         "small": ("동의 → A가게 전송 → (허가받은 사업자) → 전달 완료. 아무 가게나 마음대로 보내주는 게 아니에요.", "Consent, then shop A sends, then a licensed operator carries it, then delivery. It isn't just any shop sending it on a whim.")},
         {"svg": svg(320, sky(320)
-                    + person(190, 150, s=0.85, **AGENT) + label(190, 270, "⟦허가받은 사업자만 장부를 중계할 수 있어요|only a licensed operator may relay pages⟧", 11, "var(--muted)")
+                    + person(190, 150, s=0.85, **AGENT) + label(190, 270, "⟦중계는 허가·지정받은 사업자가 맡아요|relaying is left to licensed or designated operators⟧", 11, "var(--muted)")
                     + person(560, 150, s=0.85, face=FROWN + SWEAT, **SHOPKEEP_B) + label(560, 270, "⟦전달 통로가 뚫리면 여러 가게 장부가 한꺼번에 새요|a breached pipe leaks every shop's pages at once⟧", 11, "var(--bad)")
                     + label(380, 305, "⟦장부 옮기기가 편리해진 만큼, 전달 통로를 지키는 게 더 중요해져요|easier moves raise the stakes on protecting the delivery pipe⟧", 12, "var(--ink)", cls="d")),
-         "alt": ("허가받은 사업자만 마이데이터를 다룰 수 있고, 전달 통로가 뚫리면 여러 가게 장부가 한 번에 샐 수 있음", "Only a licensed operator may handle MyData, and a breach of the pipe can leak every shop's pages at once"),
+         "alt": ("중계는 허가·지정받은 사업자가 맡고, 전달 통로가 뚫리면 여러 가게 장부가 한 번에 샐 수 있음", "Relaying is left to licensed or designated operators, and a breach of the pipe can leak every shop's pages at once"),
          "caption": ("장부 옮기기가 편해진 만큼, 전달 통로도 지켜야 해요.", "The easier pages move, the more the delivery pipe needs protecting."),
-         "small": ('마이데이터는 허가받은 사업자만 다룰 수 있고, 전달 통로 보안이 특히 중요해요 → <a href="privacy-ko.html">개인정보 보호</a>, <a href="data3law-ko.html">데이터 3법 개정</a>',
-                   'Only a licensed operator may handle MyData, and securing the delivery pipe matters most of all → <a href="privacy-en.html">privacy</a>, <a href="data3law-en.html">the Three Data Acts amendment</a>')},
+         "small": ('중계는 허가·지정받은 사업자가 맡고, 전달 통로 보안이 특히 중요해요 → <a href="privacy-ko.html">개인정보 보호</a>, <a href="data3law-ko.html">데이터 3법 개정</a>',
+                   'Relaying is left to licensed or designated operators, and securing the delivery pipe matters most of all → <a href="privacy-en.html">privacy</a>, <a href="data3law-en.html">the Three Data Acts amendment</a>')},
     ],
     "summary": (("<b>마이데이터</b> = 여러 가게에 흩어진 내 장부는 <b>내 것</b>이니, <b>내가 동의</b>하면 가게끼리 <b>직접</b> 주고받을 수 있는 권리.",
                  "<b>MyData</b> = the ledger scattered across many shops is <b>mine</b>, so with <b>my consent</b> the shops can hand pages to each other <b>directly</b>."),
-                ("MyData, 본인 신용정보·개인정보 이동권. 개인이 자신에 관한 정보를 보유한 기관에 전송을 요구하면, 그 기관이 본인이나 본인이 지정한 다른 기관·마이데이터 사업자에게 표준화된 방식(API)으로 데이터를 전달하는 제도예요. 한국은 신용정보법 개정으로 금융 마이데이터가 먼저 시작됐고, 허가받은 마이데이터 사업자만 중계할 수 있어요.",
-                 "MyData — the individual's right to data portability. A person can require an institution holding information about them to transmit it, on request, to the person or to another institution or licensed MyData operator the person designates, via a standardized method (an API). In Korea, financial MyData launched first under an amendment to the Credit Information Act, and only licensed MyData operators may act as the intermediary.")),
+                ("MyData, 본인 신용정보·개인정보 이동권. 개인이 자신에 관한 정보를 보유한 기관에 전송을 요구하면, 그 기관이 본인이나 본인이 지정한 다른 기관·마이데이터 사업자에게 표준화된 방식(API)으로 데이터를 전달하는 제도예요. 한국은 신용정보법 개정으로 금융 마이데이터가 먼저 시작됐고, 금융 분야 중계는 허가받은 마이데이터 사업자가 맡아요. 개인정보 보호법의 전송요구권(제35조의2)으로 의료·통신 등 다른 분야로도 넓어지고 있어요.",
+                 "MyData — the individual's right to data portability. A person can require an institution holding information about them to transmit it, on request, to the person or to another institution or licensed MyData operator the person designates, via a standardized method (an API). In Korea, financial MyData launched first under an amendment to the Credit Information Act, with licensed MyData operators as the intermediary there. A transfer-request right in the Personal Information Protection Act (Article 35-2) is extending it to healthcare, telecom and other fields.")),
     "glossary": [
         ("마이데이터", "MyData", ("내 장부는 내가 보낼 곳을 정하는 권리.", "The right to choose where your own ledger goes."), ("정보 주체 본인이 전송을 요구할 수 있는 권리예요.", "The data subject's own right to require the transfer.")),
-        ("전송요구권", "Right to data portability", ("보유 기관에 전송을 요구하는 권리.", "The right to require the holder to transmit it."), ("가게가 거절할 수 없는, 손님이 쥔 요구권이에요.", "A right the villager holds, that the shop cannot refuse.")),
-        ("마이데이터 사업자", "Licensed MyData operator", ("가게 사이를 중계하는 허가받은 심부름꾼.", "The licensed go-between carrying pages shop to shop."), ("허가받은 곳만 중계할 수 있어요.", "Only a licensed operator may carry pages between shops.")),
+        ("전송요구권", "Right to data portability", ("보유 기관에 전송을 요구하는 권리.", "The right to require the holder to transmit it."), ("손님이 쥔 요구권이라 가게가 이유 없이 거절할 수 없어요. 다만 법이 거절·중단을 허용하는 경우도 있어요.", "A right the villager holds, so a shop can't refuse without reason, though the law allows refusal or suspension in some cases.")),
+        ("마이데이터 사업자", "Licensed MyData operator", ("가게 사이를 중계하는 허가받은 심부름꾼.", "The licensed go-between carrying pages shop to shop."), ("금융 분야는 허가, 다른 분야는 지정(개인정보관리 전문기관)을 받은 곳이 중계해요.", "In finance the go-between needs a license; in other fields, designation as a personal-data management agency.")),
         ("표준 API", "Standardized API", ("정해진 전달 통로.", "The fixed delivery pipe."), ("가게마다 다른 방식이 아니라, 정해진 한 가지 통로로 전달돼요.", "Delivered through one fixed pipe, not a different method at every shop.")),
         ("동의 철회", "Withdrawing consent", ("앞으로 보내지 말라고 동의를 거두는 것.", "Taking back consent, so no further pages are sent."), ("언제든 전송 동의를 거둘 수 있어요.", "Consent to transfer can be withdrawn at any time.")),
         ("신용정보법", "Credit Information Act", ("금융 마이데이터를 먼저 연 법.", "The law that opened financial MyData first."), ('데이터 3법 중 하나예요. → <a href="data3law-ko.html">데이터 3법 개정</a>', 'One of the Three Data Acts. → <a href="data3law-en.html">the Three Data Acts amendment</a>')),

@@ -28,7 +28,7 @@ P2 = svg(320, '<rect width="760" height="320" fill="var(--bad-soft)"/>'
          + person(160, 120, s=0.8, face=EYES, **OPERATOR) + label(160, 250, "⟦픽셀 숫자를 더해서 읽어요|reads by adding up pixel numbers⟧", 11, "var(--muted)")
          + speck_produce(400, 130, 1.6)
          + person(620, 120, s=0.8, face=SMILE, **INSPECTOR) + label(620, 250, "⟦모양 전체를 한눈에 봐요|sees the whole shape at a glance⟧", 11, "var(--muted)")
-         + label(380, 300, "⟦픽셀 숫자 몇 개만 살짝 흔들어도, 선별기의 분류 결과는 완전히 뒤집혀요|nudge just a handful of pixel numbers, and the sorter's classification flips completely⟧", 12, "var(--bad)", cls="d"))
+         + label(380, 300, "⟦픽셀 숫자를 아주 살짝만 흔들어도, 선별기의 분류 결과가 뒤집힐 수 있어요|nudge the pixel numbers ever so slightly, and the sorter's classification can flip⟧", 12, "var(--bad)", cls="d"))
 
 NOISE_I = icon('<rect x="8" y="12" width="48" height="40" rx="4" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><circle cx="20" cy="22" r="1.4" fill="var(--bad)"/><circle cx="30" cy="34" r="1.4" fill="var(--bad)"/><circle cx="42" cy="24" r="1.4" fill="var(--bad)"/><circle cx="24" cy="44" r="1.4" fill="var(--bad)"/>')
 EDGE_I = icon('<path d="M10 44 Q32 10 54 44" stroke="var(--accent)" stroke-width="3" fill="none"/><path d="M10 44 Q32 18 54 44" stroke="var(--bad)" stroke-width="2" stroke-dasharray="3 3" fill="none"/>')
@@ -73,7 +73,7 @@ PAGE = {
          "small": ("사과 사진에 아주 작은 점무늬 몇 개가 섞여 있을 뿐이에요.", "Just a handful of nearly invisible dots have been mixed into the apple's photo.")},
         {"svg": P2, "alt": ("선별기 조작원은 픽셀 숫자를 더해서 읽고, 검수반장은 모양 전체를 한눈에 봄", "The operator reads by adding up pixel numbers, while the inspector takes in the whole shape at a glance"),
          "caption": ("선별기는 숫자를 보고, 사람은 모양을 봐요.", "The sorter reads numbers; a person reads shape."),
-         "small": ("사진의 픽셀 숫자 몇 개만 흔들어도, 선별기의 분류 결과는 완전히 뒤집혀요.", "Nudge just a handful of the photo's pixel numbers, and the sorter's result flips completely.")},
+         "small": ("사진의 픽셀 숫자를 아주 살짝만 흔들어도, 선별기의 분류 결과가 뒤집힐 수 있어요.", "Nudge the photo's pixel numbers ever so slightly, and the sorter's result can flip.")},
         {"svg": P3, "hero": True, "alt": ("같은 사진을 사람은 그냥 사과로 보지만 선별기는 불합격함에 떨어뜨림", "The same photo looks like a plain apple to a person, but the sorter drops it into the reject bin"),
          "caption": ("사람 눈엔 정상 사과인데, 선별기는 불합격으로 분류해요.", "A normal apple to a person — but the sorter classifies it as a reject."),
          "small": ("입력 사진은 거의 그대로인데, 선별기의 분류만 합격에서 불합격으로 바뀌어요.", "The input photo is almost unchanged, yet the sorter's call flips from pass to reject."),
@@ -92,8 +92,8 @@ PAGE = {
     ],
     "summary": (("<b>적대적 공격</b> = 사람 눈엔 <b>똑같아 보이지만</b> 선별기는 <b>완전히 다르게 분류하도록</b> 입력을 미세하게 조작하는 공격.",
                  "<b>Adversarial attack</b> = subtly perturbing an input so it <b>looks the same</b> to a person but the sorter <b>classifies it completely differently</b>."),
-                ("적대적 공격(Adversarial Attack)은 사람이 알아챌 수 없을 만큼 작은 변형(노이즈, 패턴)을 입력에 더해, 이미 학습이 끝난 분류 모델의 판정을 공격자가 원하는 대로 틀리게 만드는 추론 단계(inference-time)의 공격이에요. 모델 가중치를 알아야 정교하게 만들 수 있는 화이트박스 공격과, 몰라도 반복 시도로 만들 수 있는 블랙박스 공격으로 나뉘고, 이미지뿐 아니라 음성·텍스트·정형 데이터 분류기에도 똑같은 원리가 적용돼요. 학습 데이터 자체를 오염시키는 데이터 포이즈닝과 달리, 적대적 공격은 이미 다 학습된 모델을 상대로 일어나요.",
-                 "An adversarial attack is an inference-time attack that adds a perturbation (noise, a pattern) too small for a human to notice, making an already-trained classifier misjudge exactly the way the attacker wants. White-box attacks, which need knowledge of the model's weights, make a more precise perturbation; black-box attacks, without that knowledge, work by repeated trial. The same principle applies beyond images — to audio, text, and tabular classifiers alike. Unlike data poisoning, which corrupts the training data itself, an adversarial attack targets a model that has already finished learning.")),
+                ("적대적 공격(Adversarial Attack)은 사람이 알아채기 어려울 만큼 작은 변형(노이즈)이나 사람은 대수롭지 않게 보는 무늬(스티커)를 입력에 더해, 이미 학습이 끝난 분류 모델의 판정을 공격자가 원하는 대로 틀리게 만드는 추론 단계(inference-time)의 공격이에요. 모델 가중치를 알아야 정교하게 만들 수 있는 화이트박스 공격과, 몰라도 반복 시도로 만들 수 있는 블랙박스 공격으로 나뉘고, 이미지뿐 아니라 음성·텍스트·정형 데이터 분류기에도 똑같은 원리가 적용돼요. 학습 데이터 자체를 오염시키는 데이터 포이즈닝과 달리, 적대적 공격은 이미 다 학습된 모델을 상대로 일어나요.",
+                 "An adversarial attack is an inference-time attack that adds a perturbation too small for a human to notice (noise) or a pattern a human would shrug off (a sticker), making an already-trained classifier misjudge exactly the way the attacker wants. White-box attacks, which need knowledge of the model's weights, make a more precise perturbation; black-box attacks, without that knowledge, work by repeated trial. The same principle applies beyond images — to audio, text, and tabular classifiers alike. Unlike data poisoning, which corrupts the training data itself, an adversarial attack targets a model that has already finished learning.")),
     "glossary": [
         ("적대적 공격", "Adversarial attack", ("사람 눈엔 똑같지만 선별기는 다르게 분류하는 조작.", "A perturbation that looks the same to a person but gets classified differently by the sorter."), ("이미 다 학습된 모델을 상대로 일어나요.", "Happens against a model that has already finished training.")),
         ("데이터 포이즈닝", "Data poisoning", ("씨앗(학습 데이터) 자체를 상하게 하는 것.", "Spoiling the seed — the training data itself."), ('공격 시점이 달라요(학습 중). → <a href="datapoisoning-ko.html">주방 세계의 데이터 포이즈닝</a>', 'A different attack timing — during training. → <a href="datapoisoning-en.html">the kitchen world\'s data poisoning</a>')),
@@ -102,6 +102,6 @@ PAGE = {
         ("오분류", "Misclassification", ("작물을 엉뚱한 분류함에 떨어뜨리는 것.", "Dropping an item into the wrong bin."), ("적대적 공격이 노리는 바로 그 결과예요.", "The outcome an adversarial attack is built to cause.")),
         ("혼동행렬", "Confusion matrix", ("합격·불합격 도장을 네 칸으로 정리한 표.", "The four-box table sorting pass/fail stamps."), ('적대적 공격이 섞이면 실수 칸(FP·FN)의 숫자가 늘어요. → <a href="confmatrix-ko.html">네 칸으로 나눈 도장 기록부</a>', 'Mixed-in adversarial attacks raise the counts in the mistake boxes (FP, FN). → <a href="confmatrix-en.html">The Four-Box Stamp Ledger</a>')),
         ("이상치", "Outlier", ("유난히 튀는 작물 한 개.", "The one item that stands out from the rest."), ('적대적 공격을 막는 방법 중 하나가 유난히 튀는 입력을 찾는 거예요. → <a href="outlier-ko.html">무리에서 유난히 튀는 작물</a>', 'One defense against adversarial attacks is spotting inputs that stand out. → <a href="outlier-en.html">The Produce That Stands Out from the Crowd</a>')),
-        ("이미지 인젝션(LLM/비전 각도)", "Image injection (LLM/vision angle)", ("사진 속에 숨긴 명령으로 LLM을 속이는, 같은 뿌리의 공격.", "The same-rooted attack that fools an LLM with a command hidden in a photo."), ('LLM이 사진 속 명령을 읽는 각도는 주방 세계에서 다뤄요. → <a href="adversarialexample-ko.html">눈속임 그림 주문서</a>', 'The angle where an LLM reads a hidden command in a photo lives in the kitchen world. → <a href="adversarialexample-en.html">The Picture Order That Fools the Eye</a>')),
+        ("이미지 인젝션(LLM/비전 각도)", "Image injection (LLM/vision angle)", ("사진 속에 숨긴 명령으로 LLM을 속이는, 닮은 갈래의 공격.", "A related attack that fools an LLM with a command hidden in a photo."), ('LLM이 사진 속 명령을 읽는 각도는 주방 세계에서 다뤄요. → <a href="adversarialexample-ko.html">눈속임 그림 주문서</a>', 'The angle where an LLM reads a hidden command in a photo lives in the kitchen world. → <a href="adversarialexample-en.html">The Picture Order That Fools the Eye</a>')),
     ],
 }

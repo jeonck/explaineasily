@@ -59,10 +59,10 @@ PAGE = {
     "sub": ("데이터 웨어하우스와 데이터 레이크를, 미리 분류해 선반에 올린 창고와 일단 쌓아두는 야적장을 비교하는 이야기로 풀어봤어요.",
             "A data warehouse and a data lake, told as a story comparing a tidily shelved warehouse with a yard where things just get piled up."),
     "panels": [
-        {"svg": P1, "alt": ("분류 담당이 반듯한 상자와 뒤죽박죽 더미가 동시에 쏟아져 들어오는 걸 보며 땀을 흘림", "The modeler sweats as neat boxes and messy piles arrive at the same time"),
+        {"svg": P1, "alt": ("분류 담당이 반듯한 상자와 뒤죽박죽 더미가 동시에 쏟아져 들어오는 걸 보며 땀을 흘림", "The sorter sweats as neat boxes and messy piles arrive at the same time"),
          "caption": ("반듯한 상자도, 뒤죽박죽 더미도 한꺼번에 들어와요.", "Neat boxes and messy piles arrive all at once."),
          "small": ("물건마다 선반에 올릴지, 일단 쌓아둘지 정해야 해요.", "Each item has to be either shelved now or piled up for later.")},
-        {"svg": P2, "alt": ("분류 담당이 처음 보는 물건 앞에서 곤란해하며, 정돈된 선반은 뒤에 비어 있음", "The modeler is stuck in front of an unfamiliar item, with the tidy shelf standing empty behind"),
+        {"svg": P2, "alt": ("분류 담당이 처음 보는 물건 앞에서 곤란해하며, 정돈된 선반은 뒤에 비어 있음", "The sorter is stuck in front of an unfamiliar item, with the tidy shelf standing empty behind"),
          "caption": ("선반에 올리려면 분류 규칙을 미리 다 정해둬야 해요.", "Shelving an item requires every sorting rule to be set in advance."),
          "small": ("처음 보는 물건은 규칙이 없어 못 올려요.", "A brand-new kind of item has no rule, so it can't go on the shelf.")},
         {"svg": P3, "hero": True, "alt": ("왼쪽엔 정돈된 선반(웨어하우스), 오른쪽엔 쌓아둔 더미(레이크)가 나란히 있음", "A tidy shelf (warehouse) on the left, a piled-up yard (lake) on the right, side by side"),

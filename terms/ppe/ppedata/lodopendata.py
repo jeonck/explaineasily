@@ -88,6 +88,6 @@ PAGE = {
         ("RDF", "RDF", ("상자와 상자를 잇는 끈의 규칙.", "The rule for the string linking box to box."), ("주어-서술어-목적어 형태로 적어요.", "Written as subject–predicate–object.")),
         ("NoSQL 모델링", "NoSQL Modeling", ("상자 모양에 맞춰 선반을 바꾸는 창고.", "A warehouse reshaping shelves to fit each box."), ('그래프형 NoSQL은 연결 표현에 잘 맞아요. → <a href="nosqltype-ko.html">자유로운 선반 창고</a>', 'Graph-type NoSQL fits linked data well. → <a href="nosqltype-en.html">the free-shelf warehouse</a>')),
         ("정규화", "Normalization", ("선반 한 칸에 한 번만 적는 규칙.", "Writing shared info on one shelf once."), ('공개 데이터도 중복을 줄이면 더 다루기 쉬워요. → <a href="normalization-ko.html">한 칸에 한 번만 적는 규칙</a>', 'Open data is easier to manage with less duplication too. → <a href="normalization-en.html">the rule of writing it once</a>')),
-        ("개인정보/프라이버시", "AI Privacy", ("공개 전에 가려야 하는 정보.", "Information that must be masked before publishing."), ('앵무새 세계의 다른 페이지에서 자세히 다뤄요. → <a href="aiprivacy-ko.html">AI 개인정보</a>', 'Covered in depth on another page in the parrot world. → <a href="aiprivacy-en.html">AI privacy</a>')),
+        ("개인정보/프라이버시", "Personal Data / Privacy", ("공개 전에 가려야 하는 정보.", "Information that must be masked before publishing."), ('앵무새 세계의 다른 페이지에서 자세히 다뤄요. → <a href="aiprivacy-ko.html">AI 개인정보</a>', 'Covered in depth on another page in the parrot world. → <a href="aiprivacy-en.html">AI privacy</a>')),
     ],
 }

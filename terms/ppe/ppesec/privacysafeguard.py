@@ -18,7 +18,7 @@ def scroll(x, y, w, h, title, tiers, size=12):
 def storeroom(x, y, s=1.0):
     return (f'<g transform="translate({x},{y}) scale({s})"><rect x="-70" y="-10" width="140" height="110" fill="var(--panel)" stroke="var(--good)" stroke-width="4"/>'
             f'<path d="M-80 -10 L0 -46 L80 -10 Z" fill="var(--good)"/><rect x="-16" y="40" width="32" height="50" fill="var(--night)"/>'
-            + label(0, -58, "⟦손님 정보 창고|guest-info storeroom⟧", 11, "var(--muted)") + "</g>")
+            + label(0, -58, "⟦손님 정보 창고|guest-info storeroom⟧", fit(11, s), "var(--muted)") + "</g>")
 
 
 def logbook(x, y, s=1.0):
@@ -100,15 +100,15 @@ PAGE = {
          "small": ('수칙이 글로만 있으면 종이예요 — 실제 접속기록으로 지켰음을 증명해야 해요. 검사관은 늘 <a href="compliance-ko.html">증거</a>부터 봐요.',
                    'A rulebook alone is just paper — real access logs prove it\'s followed. The <a href="compliance-en.html">inspector</a> always checks the evidence first.')},
     ],
-    "summary": (("<b>내부관리계획</b> = <b>손님 정보 창고</b>만을 위한 전담 단속 수칙. <b>접근 권한·접속기록·암호화·물리적 보안</b> 네 가지를 구체적으로 정해요.",
-                 "An <b>internal management plan</b> = a <b>lockdown rulebook written just for the guest-info storeroom</b>. It spells out <b>access rights, access logs, encryption, and physical security</b> in detail."),
-                ("개인정보의 안전성 확보조치는 개인정보보호법 시행령과 관련 고시가 정한 기술적·관리적·물리적 보호조치 기준이에요. 내부관리계획은 이 기준을 조직이 실제로 어떻게 지킬지 문서로 정리한 것으로, 접근권한 관리·접속기록 보관·암호화·백신·물리적 보안 등을 구체적으로 규정해요. 일정 규모 이상 개인정보처리자는 수립·시행이 의무예요.",
-                 "Safeguard measures for personal data are the technical, managerial, and physical protection standards set by the enforcement decree of Korea's Personal Information Protection Act and its related notices. The internal management plan is the document that spells out how an organization actually meets those standards — covering access-rights management, access-log retention, encryption, antivirus, and physical security. Establishing and enforcing it is mandatory for personal-data handlers above a certain size.")),
+    "summary": (("<b>내부관리계획</b> = <b>손님 정보 창고</b>만을 위한 전담 단속 수칙. <b>접근 권한·접속기록·암호화·물리적 보안</b> 같은 항목을 구체적으로 정해요.",
+                 "An <b>internal management plan</b> = a <b>lockdown rulebook written just for the guest-info storeroom</b>. It spells out items such as <b>access rights, access logs, encryption, and physical security</b> in detail."),
+                ("개인정보의 안전성 확보조치는 개인정보보호법 시행령과 관련 고시가 정한 기술적·관리적·물리적 보호조치 기준이에요. 내부관리계획은 이 기준을 조직이 실제로 어떻게 지킬지 문서로 정리한 것으로, 접근권한 관리·접속기록 보관·암호화·백신·물리적 보안 등을 구체적으로 규정해요. 개인정보처리자는 수립·시행이 의무이고, 정보주체 1만 명 미만을 다루는 소상공인·개인·단체만 생략할 수 있어요.",
+                 "Safeguard measures for personal data are the technical, managerial, and physical protection standards set by the enforcement decree of Korea's Personal Information Protection Act and its related notices. The internal management plan is the document that spells out how an organization actually meets those standards — covering access-rights management, access-log retention, encryption, antivirus, and physical security. Establishing and enforcing it is mandatory for personal-data handlers; only small businesses, individuals, and groups handling fewer than 10,000 people's data may skip it.")),
     "glossary": [
-        ("내부관리계획", "Internal management plan", ("창고 전담 수칙 문서.", "The storeroom's own rulebook document."), ("손님 정보를 다루는 조직이 실제로 세워야 하는 문서예요.", "A document any organization handling guest info must actually draw up.")),
+        ("내부관리계획", "Internal management plan", ("창고 전담 수칙 문서.", "The storeroom's own rulebook document."), ("손님 정보를 다루는 조직이 세워야 하는 문서예요(1만 명 미만을 다루는 소상공인 등은 생략 가능).", "A document an organization handling guest info must draw up (small businesses handling under 10,000 people may skip it).")),
         ("안전성 확보조치 기준", "Safeguard-measures notice", ("법이 정한 세부 항목.", "The detailed items set by law."), ("개인정보보호위원회의 고시로, 기술적·관리적·물리적 조치를 정해요.", "A notice from Korea's Personal Information Protection Commission, setting technical, managerial, and physical measures.")),
         ("접근 권한 관리", "Access-rights management", ("들어올 수 있는 사람 명부.", "The list of who may enter."), ("누가 들어올 수 있는지 최소한으로 정하고 기록해요.", "Decides and records who may enter, kept to the minimum.")),
-        ("접속기록 보관·점검", "Access-log retention and review", ("언제 누가 들어왔는지 일지.", "The log of who came in, and when."), ("일정 기간(보통 1~2년) 보관하고 정기적으로 점검해요.", "Kept for a set period (usually one to two years) and reviewed regularly.")),
+        ("접속기록 보관·점검", "Access-log retention and review", ("언제 누가 들어왔는지 일지.", "The log of who came in, and when."), ("1년 이상(5만 명 이상이나 민감정보 등을 다루면 2년 이상) 보관하고, 점검 주기는 내부관리계획으로 정해요.", "Kept at least one year (two if the system covers 50,000+ people or sensitive data, among other cases), with the review cycle set in the internal plan.")),
         ("고유식별정보 암호화", "Encrypting unique identifiers", ("주민번호 같은 건 반드시.", "Mandatory for things like ID numbers."), ('성에 들어온 뒤에도 자물쇠로 한 번 더 잠가요. → <a href="encryption-ko.html">열쇠 없이는 못 읽는 편지</a>', 'Locked again even after it\'s inside the castle. → <a href="encryption-en.html">the letter nobody can read without the key</a>')),
         ("개인정보 보호책임자", "Chief Privacy Officer (CPO)", ("창고 전담 책임자.", "The officer responsible for the storeroom."), ("내부관리계획을 세우고 지키는 걸 책임지는 사람이에요.", "The person responsible for drawing up and enforcing the plan.")),
         ("성의 규칙 두루마리", "Castle-wide security policy", ("성 전체의 일반 보안 규칙.", "The castle-wide general security rules."), ('내부관리계획은 이것의 손님정보 전용 버전이에요. → <a href="policy-ko.html">성의 규칙 두루마리</a>', 'The internal management plan is its guest-info-only version. → <a href="policy-en.html">the castle rule scroll</a>')),

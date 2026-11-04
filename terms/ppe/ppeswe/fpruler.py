@@ -44,22 +44,22 @@ PAGE = {
          "caption": ("기능점수(FP)는 쪽수 대신 원고가 하는 일(기능)을 세는 표준 자예요.", "A Function Point is a standard ruler that counts what a manuscript does (its functions), not its pages."),
          "small": ("작가 솜씨나 글씨체와 상관없이, 같은 기준으로 규모를 재요.", "Size is measured the same way, no matter the writer's style."),
          "tricks": (4, [
-             (INBOX_I, ("입력 세기", "Count the inputs"), ("원고에 써넣는 칸이 몇 개인지", "how many fields get written in"), "calm"),
-             (OUTBOX_I, ("출력·조회 세기", "Count outputs and lookups"), ("독자에게 보여주는 결과가 몇 개인지", "how many results readers see")),
+             (INBOX_I, ("입력 세기", "Count the inputs"), ("자료를 써넣는 기능이 몇 개인지", "how many functions write data in"), "calm"),
+             (OUTBOX_I, ("출력·조회 세기", "Count outputs and lookups"), ("결과를 보여주는 기능이 몇 개인지", "how many functions show results")),
              (SHELF_I, ("저장소 세기", "Count the storage"), ("책 안에서 관리하는 자료 묶음 수", "how many data groups the book keeps")),
-             (LINK_I, ("외부 연계 세기", "Count the links out"), ("다른 출판사와 주고받는 길 수", "how many links to other publishers"), "warm"),
+             (LINK_I, ("외부 연계 세기", "Count the links out"), ("다른 출판사가 관리하는, 참고만 하는 자료 묶음 수", "how many data groups other publishers keep, read-only"), "warm"),
          ])},
         {"svg": svg(340, '<rect width="760" height="340" fill="var(--good-soft)"/>'
                     + styleguide(60, 30, 640, 230, "⟦FP 계산 절차|HOW FP IS CALCULATED⟧",
                                  ("⟦① 입력·출력·조회·저장·연계 개수 세기|① count input/output/inquiry/storage/link⟧",
                                   "⟦② 항목별 복잡도 가중치 곱하기|② multiply each by a complexity weight⟧",
                                   "⟦③ 합산 = UFP(미조정 기능점수)|③ sum = UFP (unadjusted FP)⟧",
-                                  "⟦④ 보정계수(VAF) 곱하면 FP|④ × VAF (adjustment factor) = FP⟧"), 1.0)
+                                  "⟦④ 보정계수(VAF) 곱하면 FP (선택 단계)|④ × VAF (adjustment factor) = FP (optional step)⟧"), 1.0)
                     + label(380, 300, "⟦FP = UFP × VAF|FP = UFP × VAF⟧", 16, "var(--ink)", cls="d")
                     + label(380, 325, "⟦이 점수로 원고 분량(규모)을 가늠해요|this score is how you gauge the manuscript's size⟧", 12, "var(--muted)")),
          "alt": ("FP 계산 절차 네 단계 안내판과 'FP = UFP × VAF' 공식", "A four-step guide to the FP calculation and the formula FP = UFP × VAF"),
-         "caption": ("FP는 이렇게 계산해요.", "This is how FP gets calculated."),
-         "small": ("개수 × 가중치를 더해 UFP를 구하고, 보정계수를 곱해 최종 FP를 얻어요.", "Count × weight gives UFP; multiplying by the adjustment factor gives the final FP.")},
+         "caption": ("FP는 입력·출력·조회·저장·연계 기능을 세고 가중치를 곱해 계산해요.", "FP counts input, output, inquiry, storage, and interface functions, then applies weights."),
+         "small": ("개수 × 가중치를 더해 UFP를 구하고, 보정계수를 곱해 최종 FP를 얻어요. 현재 IFPUG 방식에서 보정은 선택이라, UFP를 그대로 규모로 쓰기도 해요.", "Count × weight gives UFP; multiplying by the adjustment factor gives the final FP. In current IFPUG practice the adjustment is optional, so UFP can stand as the size.")},
         {"svg": svg(300, sky(300)
                     + person(190, 130, s=0.8, face=EYES, **EDITOR) + label(190, 250, "⟦원고 규모는 쟀어요|we've measured the manuscript's size⟧", 11, "var(--ink)")
                     + person(560, 130, s=0.8, face=EYES, **PRINTER) + label(560, 250, "⟦그 규모로 비용·일정을 가늠해요|now we gauge cost and schedule from that size⟧", 11, "var(--ink)")
@@ -72,13 +72,13 @@ PAGE = {
     ],
     "summary": (("<b>기능점수(FP)</b> = 쪽수가 아니라 <b>입력·출력·조회·저장·연계</b> 개수로 원고 분량을 재는 표준 자.",
                  "<b>Function Point (FP)</b> = a standard ruler that measures a manuscript by counting <b>inputs, outputs, inquiries, storage, and links</b> — not pages."),
-                ("기능점수(FP)는 소프트웨어 기능을 외부입력(EI)·외부출력(EO)·외부조회(EQ)·내부논리파일(ILF)·외부연계파일(EIF) 다섯 가지로 나눠 세고, 복잡도 가중치를 곱해 미조정 기능점수(UFP)를 구한 뒤, 보정계수(VAF)를 곱해 최종 FP를 산출하는 규모산정 기법이에요. 코드 줄 수(LOC)와 달리 개발 언어나 작성자 스타일에 덜 영향을 받아요.",
-                 "Function Point (FP) is a sizing technique that counts five function types — external input (EI), external output (EO), external inquiry (EQ), internal logical file (ILF), and external interface file (EIF) — multiplies each by a complexity weight to get the unadjusted FP (UFP), then multiplies by a value adjustment factor (VAF) for the final FP. Unlike lines of code (LOC), it's less sensitive to language or authoring style.")),
+                ("기능점수(FP)는 소프트웨어 기능을 외부입력(EI)·외부출력(EO)·외부조회(EQ)·내부논리파일(ILF)·외부연계파일(EIF) 다섯 가지로 나눠 세고, 복잡도 가중치를 곱해 미조정 기능점수(UFP)를 구한 뒤, 필요하면 보정계수(VAF)를 곱해 최종 FP를 내는 규모산정 기법이에요(IFPUG 4.3부터 보정은 선택 사항이에요). 코드 줄 수(LOC)와 달리 개발 언어나 작성자 스타일에 덜 영향을 받아요.",
+                 "Function Point (FP) is a sizing technique that counts five function types — external input (EI), external output (EO), external inquiry (EQ), internal logical file (ILF), and external interface file (EIF) — multiplies each by a complexity weight to get the unadjusted FP (UFP), then, if wanted, multiplies by a value adjustment factor (VAF) for the final FP (the adjustment has been optional since IFPUG 4.3). Unlike lines of code (LOC), it's less sensitive to language or authoring style.")),
     "glossary": [
         ("기능점수(FP)", "Function Point", ("원고를 기능으로 세는 자.", "The ruler that counts a manuscript by function."), ("쪽수 대신 '무엇을 하는가'로 규모를 재요.", "Measures size by what it does, not by page count.")),
         ("UFP(미조정 기능점수)", "Unadjusted FP", ("가중치만 곱해 더한 값.", "The sum after weights, before adjustment."), ("아직 보정 전 원점수예요.", "The raw score, before adjustment.")),
-        ("VAF(보정계수)", "Value Adjustment Factor", ("난이도를 반영해 곱하는 수.", "The multiplier that reflects difficulty."), ("성능·보안 같은 요구조건을 반영해요.", "Reflects conditions like performance and security needs.")),
-        ("EI(외부입력)", "External Input", ("원고에 써넣는 칸.", "A field written into the manuscript."), ("자료를 안으로 들여오는 기능이에요.", "A function that brings data in.")),
+        ("VAF(보정계수)", "Value Adjustment Factor", ("시스템 특성을 반영해 곱하는 수.", "The multiplier that reflects system characteristics."), ("성능·온라인 갱신 같은 14가지 특성으로 계산하고, 값은 0.65~1.35예요.", "Computed from 14 traits such as performance and online update, ranging from 0.65 to 1.35.")),
+        ("EI(외부입력)", "External Input", ("원고에 자료를 써넣는 기능.", "A function that writes data into the manuscript."), ("자료를 안으로 들여오는 기능이에요.", "A function that brings data in.")),
         ("EO(외부출력)", "External Output", ("독자에게 보여주는 결과물.", "The result shown to the reader."), ("계산하거나 가공해서 내보내요.", "Data that's processed before it goes out.")),
         ("EQ(외부조회)", "External Inquiry", ("그냥 찾아서 보여주는 것.", "Just looking something up and showing it."), ("가공 없이 바로 보여주는 조회예요.", "A lookup shown as-is, with no processing.")),
         ("ILF(내부논리파일)", "Internal Logical File", ("책 안에서 관리하는 자료 묶음.", "A data group the book manages internally."), ("이 출판사가 직접 유지보수해요.", "Maintained directly by this publishing house.")),

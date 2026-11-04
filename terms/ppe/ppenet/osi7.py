@@ -13,7 +13,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(354, 105, s=0.9, face=SWEAT + FROWN, **SENDER)
          + envelope(260, 230, 0.4) + envelope(500, 230, 0.4) + postoffice(220, 130, 0.35) + postoffice(540, 130, 0.35)
          + label(380, 50, "⟦한 사람이 포장부터 배달 확인까지 전부 떠안으면 힘들어요|one person handling everything from packing to delivery confirmation is overwhelming⟧", 12, "var(--ink)")
-         + label(380, 270, "⟦공정을 나눠서 각자 맡으면 훨씬 수월해져요|splitting the process so each step has its own owner makes it much easier⟧", 12, "var(--ink)"))
+         + label(380, 270, "⟦공정을 나눠 각자 맡으면, 한 단계를 바꿔도 다른 단계는 그대로예요|with each stage owned separately, changing one leaves the others untouched⟧", 12, "var(--ink)"))
 
 # 3. hero: OSI 7계층 = 택배가 보내지는 과정을 7단계 공정으로 나눈 것
 P3 = svg(340, sky(340)
@@ -61,7 +61,7 @@ PAGE = {
          "small": ("포장, 주소, 분류, 배송, 확인까지… 어느 일이 누구 몫인지 헷갈려요.", "Packing, addressing, sorting, shipping, confirming… it's hard to tell whose job is whose.")},
         {"svg": P2, "alt": ("한 사람이 포장부터 배달 확인까지 전부 떠안으며 땀을 흘림", "One person sweats, carrying everything from packing to delivery confirmation alone"),
          "caption": ("공정을 안 나누면 한 사람이 다 떠안아요.", "Without splitting the process, one person carries everything."),
-         "small": ("공정을 나눠서 각자 맡으면 훨씬 수월해져요.", "Splitting the process so each step has its own owner makes it much easier.")},
+         "small": ("공정을 나눠 각자 맡으면, 한 단계를 바꿔도 다른 단계는 그대로예요.", "With each stage owned separately, changing one leaves the others untouched.")},
         {"svg": P3, "hero": True, "alt": ("두 개의 안내판에 7계층부터 1계층까지 배송 공정이 나뉘어 적혀 있음", "Two guide boards list the delivery process split from layer 7 down to layer 1"),
          "caption": ("OSI 7계층 = 배송 과정을 7단계 공정으로 나눈 거예요.", "OSI 7 layers = splitting the delivery process into 7 stages."),
          "small": ("각 단계가 자기 몫만 책임지고 다음 단계로 넘겨요.", "Each stage handles only its own job, then hands off to the next."),
@@ -69,10 +69,10 @@ PAGE = {
              (I1, ("단계별 분담", "Divide by Stage"), ("한 단계씩 나눠 맡아요", "each stage owns one job")),
              (I2, ("아래부터 위로", "Bottom to Top"), ("물리 도로부터 쌓아올려요", "built up from the physical road"), "calm"),
              (I3, ("캡슐화", "Encapsulation"), ("단계마다 포장을 덧씌워요", "each stage adds its own wrapper"), "warm"),
-             (I4, ("계층 간 통신", "Peer Layers Talk"), ("보내는 쪽과 받는 쪽의 같은 단계끼리 말이 통해요", "same-numbered stages on both ends understand each other")),
+             (I4, ("대등 계층 통신", "Peer Layers Talk"), ("보내는 쪽과 받는 쪽의 같은 단계끼리 말이 통해요", "same-numbered stages on both ends understand each other")),
          ])},
         {"svg": P4, "alt": ("7단계 배송 공정 안내판: 응용, 표현, 세션, 전송, 네트워크, 데이터링크, 물리 일곱 줄", "A guide board listing all 7 delivery stages: application, presentation, session, transport, network, data link, physical"),
-         "caption": ("7단계를 한 줄씩 정리하면 이래요.", "Here's each of the 7 stages in one line."),
+         "caption": ("응용부터 물리까지 7단계의 일을 한 줄씩 정리했어요.", "Each of the 7 stages, application down to physical, gets one line."),
          "small": ("위쪽(7)은 내용·형식을, 아래쪽(1)은 실제 도로를 다뤄요.", "The top (7) handles content and format; the bottom (1) handles the actual road.")},
         {"svg": P5, "alt": ("분류 직원은 4계층까지만, 우체국장은 3계층까지만 보고 보낼 곳을 정함", "A sorter checks only up through layer 4, a clerk only through layer 3, to choose where to send"),
          "caption": ("중간 장비가 7단계를 다 들여다보는 건 아니에요.", "Devices along the way don't read all 7 stages."),

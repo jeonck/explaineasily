@@ -52,7 +52,7 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("땀 흘리는 AI 입주사가 전기를 어마어마하게 먹는 GPU 장비를 사무실에 들여왔다고 말함", "A sweating AI tenant says they've brought in GPU equipment that draws enormous power"),
          "caption": ("AI 입주사가 전력을 엄청나게 쓰는 장비를 들여왔어요.", "An AI tenant has brought in equipment that draws enormous power."),
-         "small": ("GPU 장비가 쓰는 전기는 보통 사무실 장비와 차원이 달라요.", "The power a GPU rack draws is nothing like ordinary office equipment's.")},
+         "small": ("GPU 장비 한 랙은 보통 사무실 장비보다 전기를 훨씬 많이 써요.", "A GPU rack draws far more power than ordinary office equipment.")},
         {"svg": P2, "alt": ("건물주가 차단기가 계속 내려가고 에어컨도 못 따라간다며 땀을 흘림", "The landlord sweats, saying the breaker keeps tripping and the AC can't keep up"),
          "caption": ("일반 사무실 전기·냉방으론 GPU 장비를 감당 못 해요.", "Ordinary office power and AC can't handle GPU equipment."),
          "small": ("차단기가 내려가고, 에어컨이 장비 열을 못 따라가요.", "The breaker trips, and the AC can't keep up with the racks' heat.")},

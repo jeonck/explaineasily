@@ -61,15 +61,15 @@ P4 = svg(320, sky(320)
          + queueboard(410, 40, 300, 240, "⟦HBM — 적층 + 초광대역|HBM — stacked + ultra-wide⟧",
                       ("⟦공구탑이 엔진 바로 옆|stack sits right next to the engine⟧",
                        "⟦아주 많은 통로가 한 번에|a huge number of lanes at once⟧",
-                       "⟦DDR보다 빠르지만 비싸요|faster than DDR, but pricier⟧"), 1.0, hl=1))
+                       "⟦DDR보다 대역폭이 크지만 비싸요|more bandwidth than DDR, but pricier⟧"), 1.0, hl=1))
 
 # 5. 공구탑도 한계는 있어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + toolstack(190, 220, 3, s=0.9)
-         + label(190, 260, "⟦공구 오가는 속도는 일반 호스(DDR)보다 훨씬 빨라요|tools move far faster than through an ordinary hose (DDR)⟧", 11, "var(--ink)")
+         + label(190, 260, "⟦한 번에 오가는 공구는 일반 호스(DDR)보다 훨씬 많아요|far more tools cross at once than through a hose (DDR)⟧", 11, "var(--ink)")
          + person(570, 130, s=0.8, face=FROWN, **CHIEF)
          + label(570, 250, "⟦탑을 더 쌓을수록 열이 많이 나고 비싸져요|stacking higher means more heat and more cost⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦그래서 HBM은 보통 대용량보단 AI·그래픽처럼 속도가 중요한 곳에 써요|so HBM is mainly used where speed over capacity matters — AI, graphics⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦그래서 HBM은 보통 대용량보단 AI·그래픽처럼 대역폭이 중요한 곳에 써요|so HBM mostly goes where bandwidth beats capacity — AI, graphics⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "hbm", "order": 16,
@@ -82,28 +82,28 @@ PAGE = {
          "caption": ("큰 엔진 작업은 공구가 한꺼번에 많이 필요해요.", "The big engine job needs lots of tools at once."),
          "small": ("호스 한 가닥으로는 공구가 줄줄이 늦게 와요.", "One thin hose means tools trickle in slowly.")},
         {"svg": P2, "alt": ("호스를 세 가닥으로 늘렸지만 공구함이 멀리 있어 여전히 느림", "Three hoses now run, but the toolbox is still far away and remains slow"),
-         "caption": ("호스를 늘려도 공구함이 멀면 소용없어요.", "Adding hoses doesn't help if the toolbox stays far away."),
-         "small": ("가닥 수를 늘리는 것도 거리 앞에선 한계가 있어요.", "Adding more hoses only goes so far against distance.")},
+         "caption": ("공구함이 멀리 있으면 호스를 늘리는 데 한계가 있어요.", "With the toolbox far away, adding hoses only goes so far."),
+         "small": ("그래서 공구함을 엔진 바로 옆으로 옮겨요.", "So the toolbox moves right beside the engine.")},
         {"svg": P3, "hero": True, "alt": ("공구탑이 엔진 바로 옆에 쌓여 있고 아주 넓은 통로로 연결됨", "A toolbox tower stacked right beside the engine, linked by a very wide passage"),
          "caption": ("HBM은 공구탑을 엔진 바로 옆에 쌓고 통로를 아주 넓게 뚫은 것이에요.", "HBM stacks toolboxes right beside the engine with a very wide passage."),
          "small": ("한 번에 아주 많은 공구가 동시에 엔진으로 건너가요(고대역폭).", "A huge number of tools cross to the engine at once — high bandwidth."),
          "tricks": (4, [
              (STACK_I, ("층층이 쌓기", "Stack in layers"), ("공구함 여러 개를 쌓아요", "stacks several toolboxes up"), "calm"),
              (NEAR_I, ("바로 옆에 두기", "Keep it right next door"), ("엔진 가까이 두어 거리 줄여요", "keeps it near the engine to cut distance")),
-             (WIDE_I, ("통로를 아주 넓게", "Make the passage very wide"), ("공구가 수천 가닥 통로로 한 번에 오가요", "tools move through thousands of lanes at once")),
-             (COST_I, ("비싼 대신 빠름", "Pricier, but faster"), ("빠른 대신 열과 비용이 늘어요", "faster, at the price of more heat and cost"), "warm"),
+             (WIDE_I, ("통로를 아주 넓게", "Make the passage very wide"), ("공구가 천 가닥이 넘는 통로로 한 번에 오가요", "tools move through over a thousand lanes at once")),
+             (COST_I, ("비싼 대신 대역폭이 큼", "Pricier, but wider"), ("대역폭이 큰 대신 열과 비용이 늘어요", "more bandwidth, at the price of more heat and cost"), "warm"),
          ])},
         {"svg": P4, "alt": ("왼쪽: 일반 DDR 메모리는 공구함이 멀고 호스가 가늘다. 오른쪽: HBM은 공구탑이 가깝고 통로가 아주 넓다", "Left: ordinary DDR keeps the toolbox far with a thin hose. Right: HBM keeps the tower close with a very wide passage"),
          "caption": ("일반 DDR은 공구함이 멀고 호스가 가늘지만, HBM은 공구탑이 가깝고 통로가 넓어요.", "Ordinary DDR has a far toolbox and thin hoses; HBM has a close tower and a wide passage."),
-         "small": ("HBM은 DDR보다 속도는 빠르지만 더 비싸요.", "HBM is faster than DDR, but pricier.")},
-        {"svg": P5, "alt": ("왼쪽: HBM 공구탑은 일반 DDR보다 훨씬 빠름. 오른쪽: 높이 쌓을수록 열과 비용이 늘어남", "Left: the HBM tower is far faster than ordinary DDR. Right: stacking higher raises heat and cost"),
+         "small": ("HBM은 DDR보다 대역폭이 크지만 더 비싸요.", "HBM has more bandwidth than DDR, but is pricier.")},
+        {"svg": P5, "alt": ("왼쪽: HBM 공구탑은 일반 DDR보다 대역폭이 훨씬 큼. 오른쪽: 높이 쌓을수록 열과 비용이 늘어남", "Left: the HBM tower has far more bandwidth than ordinary DDR. Right: stacking higher raises heat and cost"),
          "caption": ("공구탑은 높이 쌓을수록 열과 비용이 늘어요.", "The higher the tower, the more heat and cost."),
-         "small": ("그래서 HBM은 보통 AI·그래픽처럼 속도가 중요한 곳에 써요.", "So HBM is mainly used where speed matters most — AI, graphics.")},
+         "small": ("그래서 HBM은 보통 AI·그래픽처럼 대역폭이 중요한 곳에 써요.", "So HBM is mainly used where bandwidth matters most — AI, graphics.")},
     ],
     "summary": (("<b>HBM</b>은 메모리 칩을 <b>층층이 쌓아 프로세서 바로 옆</b>에 두고, <b>아주 넓은 통로</b>로 연결해 데이터를 한꺼번에 많이 주고받는 메모리예요.",
                  "<b>HBM</b> stacks memory chips <b>in layers right beside the processor</b> and links them through a <b>very wide passage</b>, moving huge amounts of data at once."),
-                ("HBM(High Bandwidth Memory, 고대역폭 메모리)은 DRAM 칩을 TSV(실리콘 관통전극)로 수직 적층하고, 인터포저를 통해 GPU·AI 가속기 바로 옆에 배치해 매우 넓은 버스 폭으로 연결한 메모리예요. 기존 DDR 메모리보다 훨씬 높은 대역폭을 제공하지만, 제조 공정이 복잡해 비용이 높고 발열 관리가 중요해요. 그래픽·AI 연산처럼 메모리 대역폭이 성능을 좌우하는 영역에 주로 쓰여요.",
-                 "HBM (High Bandwidth Memory) vertically stacks DRAM chips using TSVs (through-silicon vias) and places them right next to a GPU or AI accelerator via an interposer, connecting them with a very wide bus. It offers far higher bandwidth than conventional DDR memory, but is costlier to manufacture and requires careful heat management. It's mainly used where memory bandwidth drives performance, such as graphics and AI workloads.")),
+                ("HBM(High Bandwidth Memory, 고대역폭 메모리)은 DRAM 칩을 TSV(실리콘 관통전극)로 수직 적층하고, 인터포저를 통해 GPU·AI 가속기 바로 옆에 배치해 매우 넓은 버스 폭으로 연결한 메모리예요. 핀 하나의 속도를 올리기보다 버스 폭을 넓혀(DDR 모듈 64비트, HBM 스택당 1,024비트, HBM4는 2,048비트) 기존 DDR 메모리보다 훨씬 높은 대역폭을 제공하지만, 제조 공정이 복잡해 비용이 높고 발열 관리가 중요해요. 그래픽·AI 연산처럼 메모리 대역폭이 성능을 좌우하는 영역에 주로 쓰여요.",
+                 "HBM (High Bandwidth Memory) vertically stacks DRAM chips using TSVs (through-silicon vias) and places them right next to a GPU or AI accelerator via an interposer, connecting them with a very wide bus. Rather than pushing per-pin speed, it widens the bus (64 bits for a DDR module, 1,024 per HBM stack, 2,048 for HBM4) to offer far higher bandwidth than conventional DDR memory, but is costlier to manufacture and requires careful heat management. It's mainly used where memory bandwidth drives performance, such as graphics and AI workloads.")),
     "glossary": [
         ("HBM", "HBM", ("엔진 바로 옆에 쌓은 공구탑.", "The toolbox tower stacked right by the engine."), ("공구탑과 엔진이 아주 넓은 통로로 연결돼요.", "The tower and engine connect through a very wide passage.")),
         ("대역폭", "Bandwidth", ("한 번에 건너갈 수 있는 공구의 양.", "How many tools can cross at once."), ("통로가 넓을수록 대역폭이 커요.", "A wider passage means more bandwidth.")),

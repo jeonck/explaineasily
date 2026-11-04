@@ -51,7 +51,7 @@ P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="
 PAGE = {
     "slug": "aitrust", "order": 16,
     "title": ("정확도 하나로는 못 받는 품질인증 등급판", "The Certification Board That One Accuracy Number Can't Earn"),
-    "h1": ("<em>AI 신뢰성</em>이/가 뭐예요?", "What is <em>AI Trustworthiness</em>?"),
+    "h1": ("<em>AI 신뢰성</em>이 뭐예요?", "What is <em>AI Trustworthiness</em>?"),
     "sub": ("AI 신뢰성을, 정확도만으론 통과할 수 없는 품질인증 등급판 — 공정성·강건성·설명가능성·책임소재까지 다 보는 이야기로 풀어봤어요.",
             "AI trustworthiness, told as a story about a certification board that accuracy alone can't pass — one that also checks fairness, robustness, explainability, and accountability."),
     "panels": [
@@ -79,8 +79,8 @@ PAGE = {
     ],
     "summary": (("<b>AI 신뢰성</b> = <b>정확도</b>만이 아니라 <b>공정성·강건성·설명가능성·책임소재</b>까지 모두 갖춰야 받는, 그리고 <b>계속 다시 점검해야 하는</b> 품질인증.",
                  "<b>AI trustworthiness</b> is a certification that needs <b>accuracy plus fairness, robustness, explainability, and accountability</b> all at once — and must be <b>re-checked continuously</b>."),
-                ("Trustworthy AI는 OECD·EU AI Act 등에서 공통으로 다루는 개념으로, 성능(정확도)뿐 아니라 공정성(fairness, 편향 완화), 강건성(robustness, 적대적 공격·분포 밖 입력에 대한 내성), 설명가능성(explainability, XAI), 책임성(accountability, 거버넌스·인간 감독)을 함께 요구해요. 하나의 지표가 아니라 여러 축의 균형이고, 환경(데이터·사용처)이 바뀌면 재평가가 필요해요.",
-                 "Trustworthy AI is a concept shared across frameworks like the OECD principles and the EU AI Act: beyond raw performance (accuracy), it requires fairness (bias mitigation), robustness (resilience to adversarial attacks and out-of-distribution input), explainability (XAI), and accountability (governance and human oversight). It is a balance across several axes rather than a single metric, and needs re-evaluation whenever the data or use context changes.")),
+                ("Trustworthy AI는 OECD·EU AI Act 등에서 공통으로 다루는 개념으로, 성능(정확도)뿐 아니라 공정성(fairness, 편향 완화), 강건성(robustness, 적대적 공격·분포 밖 입력에 대한 내성), 설명가능성(explainability, XAI), 책임성(accountability, 거버넌스·인간 감독)을 함께 요구해요. 하나의 지표가 아니라 여러 축의 균형이고, 환경(데이터·사용처)이 바뀌면 재평가가 필요해요. 기준 목록은 문서마다 달라서(EU 전문가그룹 지침은 7가지 요건), 여기의 '다섯 기준'과 '품질인증'은 이해를 돕는 비유예요.",
+                 "Trustworthy AI is a concept shared across frameworks like the OECD principles and the EU AI Act: beyond raw performance (accuracy), it requires fairness (bias mitigation), robustness (resilience to adversarial attacks and out-of-distribution input), explainability (XAI), and accountability (governance and human oversight). It is a balance across several axes rather than a single metric, and needs re-evaluation whenever the data or use context changes. The lists differ by document (the EU expert group's guidelines name seven requirements), so the 'five criteria' and 'certification' here are a teaching metaphor.")),
     "glossary": [
         ("공정성(Fairness)", "Fairness", ("품종마다 고르게 맞히는 성질.", "Scoring evenly across every crop."), ('치우침은 AI 세계의 기본 개념이에요. → <a href="bias-ko.html">편향이 뭐예요?</a>', 'Bias is a core AI concept. → <a href="bias-en.html">What is Bias?</a>')),
         ("강건성(Robustness)", "Robustness", ("작은 흠집에 안 속는 성질.", "Not being fooled by a tiny scratch."), ("적대적 예제 같은 공격에 버티는 힘이에요.", "The resilience that holds up against attacks like adversarial examples.")),

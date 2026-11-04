@@ -36,8 +36,7 @@
 | osslicense | 다 같이 쓰는 준비물 규칙 라벨 |
 | hwsizing | 축제 준비물 개수 미리 정하기 |
 | netneutral | 급식 줄은 다 똑같이 서야 해요 |
-| iso25000 | 좋은 준비물의 기준표 |
-| manchestercode | 박자를 스스로 알려주는 신호 |
+| iso25000 | 좋은 소프트웨어의 기준표 |
 | iso42001 | AI도 규칙대로 쓰는지 도장 찍기 |
 | opendataqual | 공지 게시판에 다 보이게 붙이기 |
 | refintegrity | 출석부에 없는 이름은 반장이 될 수 없어요 |
@@ -46,10 +45,8 @@
 | datastd | 전교가 함께 쓰는 공통 기준표 |
 | riskanalysis | 사고를 거꾸로, 또는 미리 훑어보기 |
 | intellinfolaw | 학교 전체의 디지털 생활을 아우르는 기본 헌장 |
-| pagingseg | 창고를 나누는 두 가지 다른 방식 |
 | forensiclaw | 정당하게 거뒀는가를 따지는 절차 |
 | egdi | 같은 잣대로 모든 학교를 재는 평가단 |
 | funcsafetystd | 안전 등급을 매기는 공통 규칙서 |
-| gradientdescent | 안개 낀 산을 한 걸음씩 내려가기 |
 | algoparadigm | 쪼개고, 급한 것부터, 기억해두고 |
 | regtech | 흩어진 규칙판을 한꺼번에 대조하는 자동 검사기 |

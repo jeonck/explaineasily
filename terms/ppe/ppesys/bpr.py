@@ -78,11 +78,11 @@ PAGE = {
     "sub": ("BPR을, 끊기고 복잡해진 정비공장 공정을 조금씩 고치는 대신 처음부터 다시 그리는 이야기로 풀어봤어요.",
             "BPR, told as a story about redrawing a broken, overcomplicated repair process from scratch instead of tweaking it piece by piece."),
     "panels": [
-        {"svg": P1, "alt": ("접수부터 출고까지 끊긴 네 단계 공정을 보며 정비반장이 진땀을 흘림", "The chief sweats over a four-step process from intake to pickup that keeps stalling"),
+        {"svg": P1, "alt": ("접수·대기·재진단·재작성으로 끊긴 네 단계 공정을 보며 정비반장이 진땀을 흘림", "The chief sweats over a four-step process (intake, wait, re-diagnose, re-write) that keeps stalling"),
          "caption": ("차 한 대 고치는 데 단계가 너무 많고 자꾸 끊겨요.", "Fixing one car takes too many steps, each one stalling."),
          "small": ("옛날 방식을 그대로 두고 조금씩 손봐선 한계가 있어요.", "Tweaking the old way bit by bit only goes so far.")},
         {"svg": P2, "alt": ("서류 다섯 장이 늘어서 있고 정비사가 한 단계를 빨리해도 전체가 느려짐에 좌절함", "Five separate papers lined up; the mechanic is frustrated that speeding up one step doesn't help"),
-         "caption": ("한 단계를 빨리해도 전체 공정은 안 빨라져요.", "Speeding up one step doesn't speed up the whole process."),
+         "caption": ("한 단계를 빨리해도 서류를 다시 쓰느라 전체 공정은 안 빨라져요.", "Speed up one step, and rewriting the paperwork still keeps the whole process slow."),
          "small": ("공정 전체를 처음부터 다시 그려야 할 때가 있어요.", "Sometimes the whole process needs redrawing from scratch.")},
         {"svg": P3, "hero": True, "alt": ("접수와 진단을 하나로 합친 두 단계짜리 새 공정도 앞에서 정비반장이 만족함", "The chief is pleased in front of a new two-step process that merges intake and diagnosis"),
          "caption": ("BPR은 공정을 처음부터 다시 설계하는 것이에요.", "BPR redesigns the process from scratch."),
@@ -107,7 +107,7 @@ PAGE = {
     "glossary": [
         ("BPR", "Business Process Reengineering", ("공정을 처음부터 다시 그리는 것.", "Redrawing the process from scratch."), ("근본적·급진적 재설계가 핵심이에요.", "Fundamental, radical redesign is the core idea.")),
         ("카이젠(점진적 개선)", "Kaizen (Incremental Improvement)", ("기존 단계를 조금씩 빨리하는 것.", "Speeding up existing steps a little at a time."), ("BPR과 달리 큰 틀은 그대로 둬요.", "Unlike BPR, the overall structure stays the same.")),
-        ("프로세스 혁신", "Process Innovation", ("BPR을 가리키는 다른 이름.", "Another name for BPR."), ("정보기술 활용이 자주 함께 와요.", "Often paired with the use of information technology.")),
+        ("프로세스 혁신", "Process Innovation", ("BPR과 비슷한 뜻으로 함께 쓰이는 말.", "A close relative of BPR, often used alongside it."), ("정보기술 활용이 자주 함께 와요.", "Often paired with the use of information technology.")),
         ("단계 통합", "Step Consolidation", ("여러 단계를 하나로 합치는 것.", "Merging several steps into one."), ("접수+진단 통합이 그 예예요.", "Merging intake and diagnosis is one example.")),
         ("변화 관리", "Change Management", ("새 방식에 사람이 적응하도록 돕는 것.", "Helping people adapt to the new way."), ("변화 관리가 없으면 재설계가 실패하기 쉬워요.", "Without change management, the redesign tends to fail.")),
         ("정보기술 지렛대", "IT as a Lever", ("디지털 전표처럼 기술로 단계를 줄이는 것.", "Using technology, like a digital slip, to cut steps."), ("BPR을 가능하게 하는 수단이에요.", "A key enabler of BPR.")),

@@ -49,7 +49,7 @@ P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x
 PAGE = {
     "slug": "rl", "order": 21,
     "title": ("정답표 없이 점수로 배우는 신입 조작원", "The Rookie Operator Who Learns by Score, Not an Answer Key"),
-    "h1": ("<em>강화학습</em>이/가 뭐예요?", "What is <em>Reinforcement Learning</em>?"),
+    "h1": ("<em>강화학습</em>이 뭐예요?", "What is <em>Reinforcement Learning</em>?"),
     "sub": ("강화학습을, 미리 정답표 없이 행동마다 돌아오는 점수(보상)만으로 요령을 스스로 찾아가는 신입 조작원 이야기로 풀어봤어요.",
             "Reinforcement learning, told as a story about a rookie operator who, with no answer key, finds the knack purely from the score each action earns."),
     "panels": [

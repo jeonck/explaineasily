@@ -62,7 +62,7 @@ PAGE = {
          "small": ("요청에 있는 조건은 넣고, 없는 조건은 빼서 조립한 뒤 실행해요.", "Add the conditions the request has, skip the rest, then run the slip."),
          "tricks": (4, [
              (ASSEMBLE_I, ("요청 들을 때마다 조립", "Build it at request time"), ("실행 직전에 만들어요", "assembled right before it runs")),
-             (IF_I, ("조건 있으면 추가", "Add a piece if requested"), ("WHERE 조각을 덧붙여요", "an extra WHERE clause"), "calm"),
+             (IF_I, ("조건 있으면 추가", "Add a piece if requested"), ("WHERE 조건을 덧붙여요", "an extra WHERE condition"), "calm"),
              (BIND_I, ("빈칸은 안전하게 끼우기", "Slot values in safely"), ("파라미터 바인딩이에요", "parameter binding")),
              (RUN_I, ("조립 끝나면 실행", "Run once assembled"), ("완성된 문장을 실행해요", "executes the finished statement"), "warm"),
          ])},
@@ -83,8 +83,8 @@ PAGE = {
         ("파라미터 바인딩", "Parameter Binding", ("값만 빈칸에 안전하게 끼우기.", "Safely slotting just the value into a blank."), ("문자열을 직접 이어붙이지 않아요.", "Never concatenates raw text.")),
         ("SQL 인젝션", "SQL Injection", ("빈칸에 엉뚱한 지시가 끼어드는 일.", "An unwanted instruction slipping into the blank."), ('보안 세계에서 자세히 다뤄요. → <a href="injection-ko.html">끼어드는 나쁜 지시</a>', 'Covered in depth in the security world. → <a href="injection-en.html">the bad instruction that sneaks in</a>')),
         ("PREPARE/EXECUTE", "PREPARE/EXECUTE", ("SQL 양식을 미리 준비해두고 값만 바꿔 반복 실행.", "Preparing the SQL form once, then rerunning it with new values."), ("같은 모양 요청이 많을 때 빨라요.", "Faster when many requests share the same shape.")),
-        ("저장 프로시저 내 동적 SQL", "Dynamic SQL in Stored Procedures", ("SQL 문장을 저장 프로시저 안에서 조립하기.", "Assembling a SQL statement inside a stored procedure."), ("실행 권한 관리가 더 까다로워요.", "Execution-permission handling gets trickier.")),
-        ("실행계획 재사용", "Plan Cache Reuse", ("같은 모양 SQL은 실행 계획을 다시 안 짜요.", "SQL of the same shape doesn't need a new execution plan."), ("동적 SQL은 이 재사용이 어려워요.", "Dynamic SQL makes this reuse harder.")),
+        ("저장 프로시저 내 동적 SQL", "Dynamic SQL in Stored Procedures", ("SQL 문장을 저장 프로시저 안에서 조립하기.", "Assembling a SQL statement inside a stored procedure."), ("조립한 문장은 프로시저와 별개로 권한을 검사하기도 해서, 실행 권한 설정이 더 까다로워요.", "The assembled statement may be permission-checked apart from the procedure, so permission setup gets trickier.")),
+        ("실행계획 재사용", "Plan Cache Reuse", ("같은 모양 SQL은 실행 계획을 다시 안 짜요.", "SQL of the same shape doesn't need a new execution plan."), ("문장 모양이 매번 달라지는 동적 SQL은 이 재사용이 어려워요.", "Dynamic SQL whose shape keeps changing makes this reuse harder.")),
         ("ORM 동적 쿼리 빌더", "ORM Query Builder", ("코드로 주문서를 짜 맞추는 도구.", "A tool that assembles the slip in code."), ("내부적으로 동적 SQL을 만들어요.", "Generates dynamic SQL under the hood.")),
     ],
 }

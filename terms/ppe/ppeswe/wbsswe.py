@@ -23,7 +23,7 @@ P3 = svg(360, sky(360)
          + manuscript(180, 140, 0.6, text="⟦집필|writing⟧") + '<rect x="140" y="200" width="80" height="30" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/>' + label(180, 220, "⟦1~5장|ch. 1-5⟧", 10, "#142033")
          + '<rect x="340" y="140" width="80" height="30" rx="3" fill="#FFF8E7" stroke="#C9A86A" stroke-width="2"/>' + label(380, 160, "⟦교정|proofing⟧", 11, "#142033") + person(380, 200, s=0.5, face=EYES, **PROOFER)
          + printplate(580, 150, 0.9, label_text="⟦인쇄·배본|print and ship⟧")
-         + label(380, 320, "⟦작업을 더 이상 안 쪼개질 때까지 나눠요|split tasks until each piece can't be split further⟧", 12, "var(--muted)")
+         + label(380, 320, "⟦기간과 담당자를 정할 수 있는 크기까지 나눠요|split tasks until each piece can be estimated and assigned⟧", 12, "var(--muted)")
          + label(380, 340, "⟦WBS = 큰 목표를 작은 작업들로 나뭇가지처럼 늘어놓은 목록|WBS = the goal laid out as small tasks, branching like a tree⟧", 13, "var(--ink)", cls="d"))
 
 # 4. 트리형 표
@@ -67,10 +67,10 @@ PAGE = {
          "small": ("'책 만들기'가 얼마나 걸릴지 감이 안 와요.", "There's no feel for how long 'making a book' even takes.")},
         {"svg": P3, "hero": True, "alt": ("책 한 권 내기라는 목표가 집필·교정·인쇄 배본 가지로 나뭇가지처럼 쪼개짐", "The goal 'publish one book' branches like a tree into writing, proofing, and printing/shipping"),
          "caption": ("WBS는 목표를 나뭇가지처럼 작은 작업으로 늘어놓은 목록이에요.", "A WBS lays the goal out as small tasks, branching like a tree."),
-         "small": ("작업을 더 이상 안 쪼개질 때까지 나눠요.", "Tasks get split until each piece can't be split further."),
+         "small": ("기간과 담당자를 정할 수 있는 크기까지 작업을 나눠요.", "Tasks get split until each piece can be estimated and assigned."),
          "tricks": (4, [
              (TREE_I, ("큰 목표를 쪼개기", "Split the big goal"), ("가지를 치듯 나눠요", "branching it apart"), "calm"),
-             (LEAF_I, ("작업 단위까지", "Down to a work unit"), ("더는 못 쪼갤 때까지요", "until it can't be split further")),
+             (LEAF_I, ("작업 단위까지", "Down to a work unit"), ("기간·담당자를 정할 수 있을 때까지요", "until it can be estimated and assigned")),
              (OWNER_I, ("담당자 붙이기", "Assign an owner"), ("가지마다 누가 맡을지요", "who owns each branch")),
              (CHECK_I, ("빠진 일 확인", "Check nothing's missing"), ("가지를 다 세어 빠진 작업이 없는지 봐요", "counting branches to spot a missing task"), "warm"),
          ])},
@@ -83,16 +83,16 @@ PAGE = {
     ],
     "summary": (("<b>WBS(작업분해구조)</b>는 큰 목표를 <b>작업 단위로 쪼개</b> 나뭇가지처럼 늘어놓아, 누가·언제·무엇을 할지 보이게 만드는 목록이에요.",
                  "A <b>WBS (Work Breakdown Structure)</b> splits a big goal into <b>task-sized pieces</b>, laid out like a tree, so who does what and when becomes visible."),
-                ("WBS는 프로젝트의 전체 범위를 계층적으로 더 작은 작업 단위(Work Package)로 분해한 구조도예요. 최상위에 프로젝트 목표를 두고, 더 이상 쪼갤 필요가 없는 수준까지 하위 작업으로 나눠요. 이렇게 만들어진 작업 단위에 일정·담당자·비용을 배정해 일정관리(WBS→간트차트)와 원가관리의 토대로 삼아요.",
-                 "A WBS hierarchically decomposes a project's full scope into smaller work packages. The project goal sits at the top, broken down into sub-tasks until each is small enough that it needs no further splitting. Schedule, owner, and cost get assigned to each resulting work package, forming the basis for schedule management (WBS feeding into a Gantt chart) and cost management.")),
+                ("WBS는 프로젝트의 전체 범위를 계층적으로 더 작은 작업 단위(Work Package)로 분해한 구조도예요. 최상위에 프로젝트 목표를 두고, 일정과 비용을 추정하고 관리할 수 있는 수준까지 하위 작업으로 나눠요. 이렇게 만들어진 작업 단위에 일정·담당자·비용을 배정해 일정관리(WBS→간트차트)와 원가관리의 토대로 삼아요.",
+                 "A WBS hierarchically decomposes a project's full scope into smaller work packages. The project goal sits at the top, broken down into sub-tasks until each is small enough to estimate and manage its schedule and cost. Schedule, owner, and cost get assigned to each resulting work package, forming the basis for schedule management (WBS feeding into a Gantt chart) and cost management.")),
     "glossary": [
         ("WBS", "WBS", ("책 만들기를 나뭇가지로 늘어놓은 목록.", "The goal laid out as a tree of tasks."), ("프로젝트 범위를 눈에 보이게 해요.", "Makes the full project scope visible.")),
-        ("작업 패키지", "Work Package", ("더 이상 안 쪼개지는 가장 작은 가지.", "The smallest branch that needs no further splitting."), ("여기에 담당자와 기간이 붙어요.", "This is where an owner and timeline attach.")),
+        ("작업 패키지", "Work Package", ("WBS 맨 아래의 가장 작은 가지.", "The smallest branch at the bottom of the WBS."), ("여기에 담당자·기간·비용이 붙어요.", "This is where owner, timeline, and cost attach.")),
         ("간트차트", "Gantt Chart", ("가지마다 기간을 막대로 그린 그림.", "Bars drawn for each branch's timeline."), ("WBS에 일정을 입힌 그림이에요.", "A WBS with a schedule drawn on top.")),
         ("의존관계", "Dependency", ("교정이 끝나야 인쇄가 시작되는 순서.", "Printing can't start until proofing is done."), ("쪼개기만으론 안 보이는 부분이에요.", "Something splitting alone doesn't reveal.")),
-        ("정보시스템 감리/PMO", "IS Audit/PMO", ("WBS가 제대로 지켜지는지 바깥에서 점검.", "Checking from the outside that the WBS is actually followed."), ('WBS를 포함해 여러 프로젝트를 점검해요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'Checks the WBS along with everything else, across projects. → <a href="pmoaudit-en.html">the last checker before publication</a>')),
+        ("정보시스템 감리/PMO", "IS Audit/PMO", ("WBS가 제대로 지켜지는지 바깥에서 점검.", "Checking from the outside that the WBS is actually followed."), ('WBS를 포함해 여러 프로젝트를 점검해요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'Checks the WBS along with everything else, across projects. → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
         ("기능점수(FP)", "Function Point", ("매수 계산 자로 규모를 먼저 재기.", "Gauging size first with the measuring ruler."), ("WBS로 쪼개기 전에 규모를 가늠하기도 해요.", "Size is sometimes gauged before the WBS split even begins.")),
         ("기술부채", "Technical Debt", ("일정에 쫓겨 나중으로 미룬 빚.", "A debt postponed under schedule pressure."), ('WBS로 일정을 못 맞추면 생기기 쉬워요. → <a href="techdebt-ko.html">지금 빨리 가려고 쌓아둔 빚</a>', 'Easy to accumulate when the WBS schedule slips. → <a href="techdebt-en.html">the debt you pile up to move fast now</a>')),
-        ("SLA", "SLA", ("고객에게 서비스 수준을 보장한 약속.", "A promise to customers about service levels."), ("WBS의 기간이 지켜질 때 이 약속도 지키기 쉬워요.", "Keeping the WBS timeline makes this promise easier to keep.")),
+        ("SLA", "SLA", ("고객에게 서비스 수준을 보장한 약속.", "A promise to customers about service levels."), ("WBS는 프로젝트 작업을, SLA는 운영 중 서비스 수준을 다루는 서로 다른 도구예요.", "A WBS breaks down project work; an SLA sets service levels in operation. They are different tools.")),
     ],
 }

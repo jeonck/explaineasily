@@ -77,8 +77,8 @@ PAGE = {
          "small": ("상자째 안 지워도 부품을 바로바로 바꿔 쓸 수 있어요.", "You can swap parts in place without erasing a whole box."),
          "tricks": (4, [
              (FAST_I, ("쓰기 속도", "Write speed"), ("지우지 않고 바로 바꾸니 NAND보다 빨라요", "swaps in place — no erase, so faster than NAND"), "calm"),
-             (DURABLE_I, ("쓰기 내구성", "Write endurance"), ("몇 번이고 다시 써도 오래가요", "holds up through many rewrites")),
-             (DENSE_I, ("저장 밀도", "Storage density"), ("한 칸에 얼마나 많이 담기는지예요", "how much fits in one slot")),
+             (DURABLE_I, ("쓰기 내구성", "Write endurance"), ("NAND보다 훨씬 많이 다시 써도 버텨요", "survives far more rewrites than NAND")),
+             (DENSE_I, ("저장 밀도", "Storage density"), ("같은 크기에 얼마나 많이 담기는지예요", "how much fits in the same physical size")),
              (PRICE_I, ("가격", "Price"), ("아직은 NAND보다 비싼 편이에요", "still pricier than NAND"), "warm"),
          ])},
         {"svg": P4, "alt": ("FeRAM은 쓰기가 빠르지만 용량이 작고, MRAM은 쓰기 내구성이 매우 높고 속도도 빠르지만 비싼 비교표", "A board comparing FeRAM (fast writes, small capacity) and MRAM (very high endurance, fast, pricier)"),
@@ -90,8 +90,8 @@ PAGE = {
     ],
     "summary": (("<b>차세대 비휘발성 메모리</b>는 <b>FeRAM·MRAM·PRAM</b>처럼, 플래시(NAND/NOR)와는 <b>다른 저장 방식</b>으로 꺼져도 기억하면서 <b>빠르고 오래 쓸 수 있는</b> 새 메모리들이에요.",
                  "<b>Next-generation non-volatile memory</b> — <b>FeRAM, MRAM, PRAM</b> — are new memories that remember without power using a <b>different storage mechanism</b> than flash (NAND/NOR), aiming for <b>speed and long write endurance</b>."),
-                ("차세대 비휘발성 메모리는 플래시처럼 쓰기 전에 블록을 통째로 지울 필요 없이 바이트 단위로 즉시 덮어쓸 수 있는 메모리들을 말해요. FeRAM(강유전체 메모리)은 쓰기 속도가 매우 빠르지만 집적도가 낮아 소용량에 적합하고, MRAM(자기저항 메모리)은 쓰기 내구성이 사실상 무한에 가깝고 속도도 빠르지만 비용이 더 들며, PRAM(상변화 메모리)은 상변화 물질의 결정/비결정 상태를 이용해 속도와 집적도의 균형이 좋아요. 플래시메모리(NAND)는 여전히 대용량·저비용 저장에서 강점을 유지해요.",
-                 "Next-generation non-volatile memories can overwrite at the byte level instantly, without erasing a whole block first the way flash does. FeRAM (ferroelectric RAM) writes very fast but has lower density, suiting small capacities. MRAM (magnetoresistive RAM) offers near-unlimited write endurance and good speed, at a higher cost. PRAM (phase-change RAM) uses a material's crystalline/amorphous states for a good balance of speed and density. Flash (NAND) still leads for high-capacity, low-cost storage.")),
+                ("차세대 비휘발성 메모리는 플래시처럼 쓰기 전에 블록을 통째로 지울 필요 없이 바이트 단위로 즉시 덮어쓸 수 있는 메모리들을 말해요. FeRAM(강유전체 메모리)은 쓰기 속도가 매우 빠르지만 집적도가 낮아 소용량에 적합하고, MRAM(자기저항 메모리)은 쓰기 내구성이 매우 높고 속도도 빠르지만 비용이 더 들며, PRAM(상변화 메모리)은 상변화 물질의 결정/비결정 상태를 이용해 속도와 집적도의 균형이 좋아요. 플래시메모리(NAND)는 여전히 대용량·저비용 저장에서 강점을 유지해요.",
+                 "Next-generation non-volatile memories can overwrite at the byte level instantly, without erasing a whole block first the way flash does. FeRAM (ferroelectric RAM) writes very fast but has lower density, suiting small capacities. MRAM (magnetoresistive RAM) offers very high write endurance and good speed, at a higher cost. PRAM (phase-change RAM) uses a material's crystalline/amorphous states for a good balance of speed and density. Flash (NAND) still leads for high-capacity, low-cost storage.")),
     "glossary": [
         ("FeRAM", "FeRAM", ("쓰기가 아주 빠른 작은 창고.", "A small warehouse with very fast writes."), ("강유전체 물질의 분극 방향을 이용해요.", "Uses the polarization direction of a ferroelectric material.")),
         ("MRAM", "MRAM", ("몇 번을 다시 써도 오래가는 창고.", "A warehouse that holds up through countless rewrites."), ("자성 방향으로 값을 저장해요.", "Stores values via magnetic orientation.")),

@@ -55,6 +55,6 @@ def indexcard(x, y, s=1.0, tags=None):
     cx = -20
     for t in tags:
         w = 14 if len(t) == 1 or t.startswith("⟦") else 9 * len(t) + 6
-        out += f'<rect x="{cx}" y="-27" width="{w - 2}" height="15" rx="2" fill="var(--accent)"/>' + label(cx + (w - 2) / 2, -16, t, fit(10, s, 8.5), "#fff")
+        out += f'<rect x="{cx}" y="-27" width="{w - 2}" height="15" rx="2" fill="var(--accent)"/>' + label(cx + (w - 2) / 2, -16, t, fit(10, s), "#fff")
         cx += w
     return out + '</g>'

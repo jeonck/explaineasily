@@ -90,8 +90,8 @@ PAGE = {
     ],
     "summary": (("<b>앰비언트 컴퓨팅</b> = 사람이 다가가면 <b>센서와 작은 컴퓨터</b>가 알아서 환경을 바꿔주는, '보이지 않는' 기술.",
                  "<b>Ambient computing</b> = sensors and small computers that change your environment for you as you approach, staying invisible as technology."),
-                ("앰비언트 컴퓨팅은 센서·IoT 기기·엣지컴퓨팅이 사람의 존재와 상황을 감지해, 명시적 조작 없이도 조명·온도·안내 등 주변 환경이 스스로 반응하도록 하는 패러다임이에요. 기술이 전면에 드러나지 않고 배경에 녹아드는 것이 핵심이에요.",
-                 "Ambient computing is a paradigm where sensors, IoT devices, and edge computing detect a person's presence and context so the surrounding environment — lighting, temperature, guidance — reacts on its own, without explicit input. The key idea is that the technology recedes into the background instead of standing in front.")),
+                ("앰비언트 컴퓨팅은 센서·IoT 기기·엣지컴퓨팅이 사람의 존재와 상황을 감지해, 버튼이나 화면을 거의 조작하지 않아도 조명·온도·안내 등 주변 환경이 스스로 반응하도록 하는 패러다임이에요. 실제 제품에서는 음성으로 말을 거는 방식도 함께 써요. 기술이 전면에 드러나지 않고 배경에 녹아드는 것이 핵심이에요.",
+                 "Ambient computing is a paradigm where sensors, IoT devices, and edge computing detect a person's presence and context so the surrounding environment — lighting, temperature, guidance — reacts on its own, with little or no button or screen input. Real products often add voice commands too. The key idea is that the technology recedes into the background instead of standing in front.")),
     "glossary": [
         ("앰비언트 컴퓨팅", "Ambient Computing", ("다가가면 알아서 바뀌는 환경.", "An environment that changes itself as you approach."), ("사람이 기술을 의식하지 않을수록 잘 만든 거예요.", "The less you notice the tech, the better it's built.")),
         ("IoT", "IoT", ("곳곳에 숨어 인터넷으로 이어진 센서·기기들.", "Sensors and devices hidden everywhere and linked by the internet."), ('IoT 자체의 보안 위협은 다른 세계에서 다뤄요. → <a href="iotsec-ko.html">IoT 보안 위협</a>', 'IoT security itself is covered in another world. → <a href="iotsec-en.html">IoT security threats</a>')),

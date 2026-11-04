@@ -1,4 +1,4 @@
-"""관계 무결성 제약(Referential Integrity Constraint)."""
+"""참조 무결성 제약(Referential Integrity Constraint)."""
 from _draw import *
 from _world import *
 
@@ -19,7 +19,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(560, 150, s=0.75, face=FROWN, **REP) + bubble(445, 70, 280, 44, "⟦전학 간 학생을 못 지웠나 봐요|guess we forgot to remove a transferred student⟧", 11, "var(--panel)", "var(--line)", "bottom")
          + label(380, 280, "⟦명부에 없는 학생이 반장으로 올라 있으면 그 반장 정보를 확인할 곳이 없어요|a president who isn't on the roster has no record to check against⟧", 12, "var(--ink)", cls="d"))
 
-# 3. 관계 무결성 제약 = 원본 명부에 있는 이름만 반장 명단에 쓸 수 있다는 규칙 (hero)
+# 3. 참조 무결성 제약 = 원본 명부에 있는 이름만 반장 명단에 쓸 수 있다는 규칙 (hero)
 P3 = svg(340, sky(340)
          + rulesboard(50, 40, 280, 240, "⟦학생 명부(원본)|STUDENT ROSTER (ORIGINAL)⟧", ("⟦1반 김하나|class 1: Kim Hana⟧", "⟦2반 이두리|class 2: Lee Duri⟧", "⟦3반 박세찬|class 3: Park Sechan⟧"), 1.0)
          + '<path d="M340 160 H420" stroke="var(--good)" stroke-width="4"/><path d="M414 152 l10 8 l-10 8" fill="none" stroke="var(--good)" stroke-width="3"/>'
@@ -44,8 +44,8 @@ P5 = svg(330, '<rect width="380" height="330" fill="var(--good-soft)"/><rect x="
 PAGE = {
     "slug": "refintegrity", "order": 9,
     "title": ("출석부에 없는 이름은 반장이 될 수 없어요", "No Name on the Roster, No Class President"),
-    "h1": ("<em>관계 무결성 제약</em>이 뭐예요?", "What is a <em>Referential Integrity Constraint</em>?"),
-    "sub": ("관계 무결성 제약을, 학생 명부에 있는 이름만 반장 명단에 쓸 수 있다는 학생회 규칙 이야기로 풀어봤어요.",
+    "h1": ("<em>참조 무결성 제약</em>이 뭐예요?", "What is a <em>Referential Integrity Constraint</em>?"),
+    "sub": ("참조 무결성 제약을, 학생 명부에 있는 이름만 반장 명단에 쓸 수 있다는 학생회 규칙 이야기로 풀어봤어요.",
             "Referential integrity constraints, told as a story about the student council's rule that only a name on the roster can go on the president list."),
     "panels": [
         {"svg": P1, "alt": ("학생 명부에는 없는 이름이 반장 명단 4반에 적혀 있음", "A name on the class-4 president list doesn't appear on the student roster at all"),
@@ -64,24 +64,24 @@ PAGE = {
              (NULL_I, ("빈 칸 처리(SET NULL)", "Leave it blank (SET NULL)"), ("참조 칸만 비워둬요", "just empties the referring field")),
          ])},
         {"svg": P4, "alt": ("원본 학생이 전학 갈 때 CASCADE·RESTRICT·SET NULL 세 가지 선택지를 보여주는 규칙판", "A rule board showing CASCADE, RESTRICT, and SET NULL as options when a roster student transfers out"),
-         "caption": ("원본에서 학생이 사라지면, 참조 명단을 어떻게 할지 세 가지 중 하나를 골라요.", "When a student disappears from the original, one of three options decides what happens to the list that refers to them."),
+         "caption": ("원본에서 학생이 사라지면, 참조 명단을 어떻게 할지 대표적인 세 가지 중에서 골라요.", "When a student disappears from the original, one of three common options decides what happens to the list that refers to them."),
          "small": ("상황에 맞게 CASCADE·RESTRICT·SET NULL 중 하나를 미리 정해둬요.", "One of CASCADE, RESTRICT, or SET NULL is chosen ahead of time, to fit the situation.")},
         {"svg": P5, "alt": ("왼쪽: 이름이 꼭 맞는지 확인하는 선생님. 오른쪽: 반장부터 내려야 전학 가게 돼 번거로워하는 대표", "Left: a teacher always checking names match. Right: a rep frustrated at having to step down as president before transferring"),
          "caption": ("제약이 너무 엄격하면 평소 일 처리가 불편해요.", "Too strict a constraint makes everyday work inconvenient."),
          "small": ("RESTRICT처럼 엄격한 규칙은 전학 처리 같은 평소 일을 번거롭게 해요.", "A strict rule like RESTRICT makes everyday tasks, like processing a transfer, a hassle.")},
     ],
-    "summary": (("<b>관계 무결성 제약</b> = 참조하는 자료는 반드시 <b>원본에 실제로 있는 값</b>이어야 한다는 규칙. 원본이 사라질 때 <b>지우거나, 막거나, 비우는</b> 방식을 미리 정해둬요.",
-                 "<b>Referential integrity</b> = the rule that anything referencing another table must point to a <b>value that actually exists</b> there. When the original is removed, you decide in advance whether to <b>delete it along, block the delete, or leave it blank</b>."),
-                ("관계 무결성 제약(보통 '참조 무결성'이라고 불러요)은 관계형 데이터베이스에서 외래키(FK)가 반드시 참조 대상 테이블의 기본키(PK)에 실제로 존재하는 값이어야 한다는 제약이에요. 원본 행이 삭제·수정될 때는 CASCADE(함께 삭제/수정), RESTRICT(삭제 자체를 금지), SET NULL(참조 값을 NULL로) 중 하나를 옵션으로 정해 데이터 일관성을 지켜요.",
-                 "A referential integrity constraint requires that a foreign key (FK) in a relational database always point to a value that actually exists as a primary key (PK) in the referenced table. When the original row is deleted or updated, one of three options — CASCADE (delete/update together), RESTRICT (block the delete), or SET NULL (clear the reference) — is chosen to preserve data consistency.")),
+    "summary": (("<b>참조 무결성 제약</b> = 참조하는 자료는 반드시 <b>원본에 실제로 있는 값</b>(또는 빈 값)이어야 한다는 규칙. 원본이 사라질 때 <b>지우거나, 막거나, 비우는</b> 방식을 미리 정해둬요.",
+                 "<b>Referential integrity</b> = the rule that anything referencing another table must point to a <b>value that actually exists</b> there (or be left empty). When the original is removed, you decide in advance whether to <b>delete it along, block the delete, or leave it blank</b>."),
+                ("참조 무결성 제약(일부 교재의 '관계 무결성'이라고 불러요)은 관계형 데이터베이스에서 외래키(FK) 값은 참조 대상 테이블의 기본키(PK)에 실제로 존재하는 값이거나 NULL이어야 한다는 제약이에요. 원본 행이 삭제·수정될 때는 CASCADE(함께 삭제/수정), RESTRICT(삭제·수정 자체를 금지), SET NULL(참조 값을 NULL로) 같은 옵션을 정해 데이터 일관성을 지켜요(SET DEFAULT, NO ACTION도 있어요).",
+                 "A referential integrity constraint requires that a foreign key (FK) value in a relational database either match a primary key (PK) that actually exists in the referenced table or be NULL. When the original row is deleted or updated, an option such as CASCADE (delete/update together), RESTRICT (block the change), or SET NULL (clear the reference) is chosen to preserve data consistency (SET DEFAULT and NO ACTION also exist).")),
     "glossary": [
-        ("관계 무결성 제약", "Referential Integrity Constraint", ("참조는 원본에 있는 값이어야 한다는 규칙.", "The rule that a reference must point to a value that exists in the original."), ("관계형 데이터베이스의 기본 일관성 규칙이에요.", "A basic consistency rule in relational databases.")),
-        ("외래키(FK)", "Foreign Key (FK)", ("다른 명부를 가리키는 칸.", "The field that points to another roster."), ("원본 명부의 기본키를 가리켜야 해요.", "It must point to the original roster's primary key.")),
+        ("참조 무결성 제약", "Referential Integrity Constraint", ("참조는 원본에 있는 값이어야 한다는 규칙.", "The rule that a reference must point to a value that exists in the original."), ("관계형 데이터베이스의 기본 일관성 규칙이에요.", "A basic consistency rule in relational databases.")),
+        ("외래키(FK)", "Foreign Key (FK)", ("다른 명부를 가리키는 칸.", "The field that points to another roster."), ("보통 원본 명부의 기본키를 가리켜요.", "It usually points to the original roster's primary key.")),
         ("기본키(PK)", "Primary Key (PK)", ("명부에서 한 사람을 딱 가리키는 번호.", "The ID that points to exactly one person on the roster."), ("외래키가 가리키는 대상이에요.", "This is what a foreign key points to.")),
         ("CASCADE", "CASCADE", ("원본이 사라지면 참조도 같이 지우는 것.", "Deleting the reference whenever the original is removed."), ("자동으로 정리되지만, 의도치 않게 많이 지워질 수도 있어요.", "Cleans up automatically, but can delete more than intended.")),
         ("RESTRICT", "RESTRICT", ("참조가 있으면 원본을 못 지우게 막는 것.", "Blocking deletion of the original while something still refers to it."), ("데이터는 안전하지만 가끔 일 처리가 불편해요.", "Keeps data safe, but sometimes makes work inconvenient.")),
         ("SET NULL", "SET NULL", ("참조 칸만 비워두는 것.", "Just leaving the referring field blank."), ("원본은 지우되 참조 기록은 남겨요.", "Removes the original but keeps the referring record.")),
-        ("정규화", "Normalization", ("명부를 한 번만 적도록 나누는 규칙.", "The rule for splitting a roster so each fact is written once."), ('참조 무결성은 정규화된 명부 사이의 규칙이에요. → <a href="normalization-ko.html">한 칸에 한 번만 적는 규칙</a>', 'Referential integrity is a rule between normalized rosters. → <a href="normalization-en.html">the rule of writing it once</a>')),
+        ("정규화", "Normalization", ("명부를 한 번만 적도록 나누는 규칙.", "The rule for splitting a roster so each fact is written once."), ('참조 무결성은 정규화로 나눈 명부들을 바르게 이어줘요. → <a href="normalization-ko.html">한 칸에 한 번만 적는 규칙</a>', 'Referential integrity keeps rosters split by normalization correctly linked. → <a href="normalization-en.html">the rule of writing it once</a>')),
         ("트랜잭션", "Transaction", ("명부를 바꾸는 작업의 단위.", "The unit of work that changes a roster."), ("제약을 어긴 변경은 거부되고 되돌려져요.", "A change that breaks the constraint is rejected and rolled back.")),
     ],
 }

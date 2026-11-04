@@ -41,7 +41,7 @@ P4 = svg(320, sky(320, ground=False)
          + rulesboard(40, 40, 320, 240, "⟦허용적 라이선스 (MIT 등)|PERMISSIVE (MIT, etc.)⟧",
                       ("⟦자유롭게 써도 돼요|free to use⟧", "⟦출처만 적으면 끝|just credit the source⟧", "⟦고쳐서 나눠줄 때 소스 비공개도 OK|may keep your modified source closed⟧"), 1.0)
          + rulesboard(400, 40, 320, 240, "⟦카피레프트 (GPL)|COPYLEFT (GPL)⟧",
-                      ("⟦자유롭게 써도 돼요|free to use too⟧", "⟦근데 고쳐서 나눠줄 땐|but when you share a modified copy⟧", "⟦너도 소스를 공개해야 해요|you must open your source too⟧"), 1.0)
+                      ("⟦자유롭게 써도 돼요|free to use too⟧", "⟦근데 고쳐서 나눠줄 땐|but when you share a modified copy⟧", "⟦받는 사람에게 소스도 줘야 해요|recipients must get the source too⟧"), 1.0)
          + label(380, 300, "⟦두 종류를 한 프로그램에 섞어 쓰면 규칙이 충돌할 수 있어요 — 조합을 꼭 확인해요|mixing licenses in one program can clash — always check the combination⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 라벨은 법적 효력이 있어요
@@ -83,11 +83,11 @@ PAGE = {
     ],
     "summary": (("<b>오픈소스 라이선스</b> = 공개된 코드(공용 준비물)에 붙이는 <b>규칙 라벨</b>. 자유롭게 쓰되, 라벨이 정한 대로 출처를 밝히고 다시 나눠줄 때의 규칙을 지켜야 해요.",
                  "<b>Open-source license</b> = the <b>rule tag</b> on shared code (the shared supplies). Free to use, but you must credit the source and follow the tag's rule when you pass it on."),
-                ("오픈소스 라이선스는 소스코드의 이용·수정·배포 조건을 정한 법적 문서예요. MIT/BSD/Apache처럼 조건이 가벼운 '허용적(permissive) 라이선스'와, GPL처럼 수정본도 같은 조건으로 공개해야 하는 '카피레프트(copyleft) 라이선스'로 크게 나뉘어요. 라이선스를 어기면 저작권 침해로 법적 책임을 질 수 있어요.",
-                 "Open-source licenses are legal terms governing how source code may be used, modified, and redistributed. They range from lightweight 'permissive' licenses like MIT/BSD/Apache to 'copyleft' licenses like GPL, which require derivative works to be released under the same terms. Breaking a license can mean legal liability for copyright infringement.")),
+                ("오픈소스 라이선스는 소스코드의 이용·수정·배포 조건을 정한 법적 문서예요. MIT/BSD/Apache처럼 조건이 가벼운 '허용적(permissive) 라이선스'와, GPL처럼 수정본을 배포할 때 같은 조건으로 소스까지 제공해야 하는 '카피레프트(copyleft) 라이선스'로 크게 나뉘어요. 라이선스를 어기면 저작권 침해로 법적 책임을 질 수 있어요.",
+                 "Open-source licenses are legal terms governing how source code may be used, modified, and redistributed. They range from lightweight 'permissive' licenses like MIT/BSD/Apache to 'copyleft' licenses like GPL, which require modified versions, when distributed, to come with source under the same terms. Breaking a license can mean legal liability for copyright infringement.")),
     "glossary": [
         ("오픈소스", "Open Source", ("소스코드를 공개해 자유롭게 쓰고 고치게 하는 것.", "Publishing source code so anyone can use and change it."), ("다만 '자유'의 범위는 라이선스마다 달라요.", "But how free depends on which license.")),
-        ("카피레프트", "Copyleft (e.g. GPL)", ("고쳐서 나눠주면 소스도 공개해야 하는 라벨.", "The tag that says: share a modified version, and you must open its source too."), ("한 프로그램에 섞어 쓰면 프로그램 전체가 공개 대상이 될 수 있어요(전염성).", "Mix it into a program, and the whole program may have to open up too.")),
+        ("카피레프트", "Copyleft (e.g. GPL)", ("고쳐서 나눠주면 받는 사람에게 소스도 줘야 하는 라벨.", "The tag that says: share a modified version, and recipients must get its source too."), ("한 프로그램에 섞어 배포하면 프로그램 전체 소스를 줘야 할 수 있어요(전염성).", "Mix it into a program you distribute, and the whole program's source may have to go along.")),
         ("허용적 라이선스", "Permissive License (MIT/BSD/Apache)", ("출처만 적으면 자유로운 라벨.", "The tag that's free as long as you credit it."), ("독점 소프트웨어에 섞어도 괜찮아요.", "Safe to mix into closed, proprietary software.")),
         ("라이선스 호환성", "License Compatibility", ("서로 다른 라벨을 섞어도 되는지.", "Whether two different tags can be mixed."), ("섞으면 안 되는 조합도 있어요.", "Some combinations simply can't be mixed.")),
         ("고지 의무", "Attribution / Notice Obligation", ("누가 만들었는지 꼭 적기.", "Always writing down who made it."), ("라벨 대부분이 요구하는 최소 조건이에요.", "The minimum almost every tag asks for.")),

@@ -35,7 +35,7 @@ P3 = svg(360, sky(360)
 # 4. 언제 어떤 방법을 쓸까
 P4 = svg(320, sky(320, ground=False)
          + rulesboard(50, 30, 320, 260, "⟦FTA — 결과에서 원인으로|FTA — EFFECT BACK TO CAUSE⟧",
-                      ("⟦사고가 이미 일어났거나|an accident already happened,⟧", "⟦\"왜?\"를 되짚을 때|or you're asking \"why?\" backward⟧", "⟦원인들이 어떻게 겹치는지 봄|shows how causes combine⟧"), 1.0)
+                      ("⟦사고가 났거나 우려될 때|an accident happened or is feared⟧", "⟦\"왜?\"를 거꾸로 되짚어요|asks \"why?\" backward⟧", "⟦원인들이 어떻게 겹치는지 봄|shows how causes combine⟧"), 1.0)
          + rulesboard(400, 30, 320, 260, "⟦FMEA / HAZOP — 부품·단계부터 앞으로|FMEA / HAZOP — PARTS AND STEPS FORWARD⟧",
                       ("⟦아직 안 일어난 고장을 미리 찾을 때|finding failures before they happen⟧", "⟦부품 하나하나(FMEA) 또는|part by part (FMEA), or⟧", "⟦공정 단계마다(HAZOP) 훑어봄|step by step in a process (HAZOP)⟧"), 1.0)
          + label(380, 305, "⟦사고에서 거꾸로 되짚을 땐 FTA, 부품·단계를 미리 훑을 땐 FMEA·HAZOP|to trace back from an accident, use FTA — to scan parts and steps ahead, use FMEA/HAZOP⟧", 11, "var(--ink)", cls="d"))
@@ -68,8 +68,8 @@ PAGE = {
              (HAZOP_I, ("HAZOP — 단계별 훑기", "HAZOP — scan each step"), ("과다·과소·없음·반대 같은 질문어로", "with guide words like too much, too little, none, reverse")),
              (EARLY_I, ("위험을 사고 전에 찾기", "Catch risks before an accident"), ("셋 다 같은 목적이에요", "all three share this one goal"), "calm"),
          ])},
-        {"svg": P4, "alt": ("왼쪽 기준표는 사고 후 원인을 되짚는 FTA, 오른쪽은 사고 전 부품·단계를 미리 훑는 FMEA·HAZOP을 비교함", "Left board: FTA traces causes after an accident. Right board: FMEA/HAZOP scan parts and steps before one"),
-         "caption": ("사고 원인을 되짚을 땐 FTA, 고장을 미리 찾을 땐 FMEA·HAZOP을 써요.", "Use FTA to trace an accident's causes; use FMEA or HAZOP to find failures in advance."),
+        {"svg": P4, "alt": ("왼쪽 기준표는 사고에서 원인으로 되짚는 FTA, 오른쪽은 부품·단계를 미리 훑는 FMEA·HAZOP을 비교함", "Left board: FTA traces from an accident back to causes. Right board: FMEA/HAZOP scan parts and steps ahead of time"),
+         "caption": ("실제 사고나 우려되는 사고의 원인을 되짚을 땐 FTA, 고장을 미리 찾을 땐 FMEA·HAZOP을 써요.", "Use FTA to trace the causes of an actual or feared accident; use FMEA or HAZOP to find failures in advance."),
          "small": ("사고에서 거꾸로 되짚을 땐 FTA, 부품·단계를 미리 훑을 땐 FMEA·HAZOP을 써요.", "To trace back from an accident, use FTA — to scan parts and steps ahead, use FMEA/HAZOP.")},
         {"svg": P5, "alt": ("왼쪽: 선생님이 찾아낸 위험은 미리 막을 수 있다고 말함. 오른쪽: 대표가 못 떠올린 위험은 여전히 남는다고 땀 흘리며 말함", "Left: the teacher says found risks can be prevented. Right: a sweating rep says unthought-of risks still remain"),
          "caption": ("분석했다고 사고가 안 나는 건 아니에요.", "Analysis doesn't mean an accident can never happen."),
@@ -77,15 +77,15 @@ PAGE = {
     ],
     "summary": (("<b>위험·안전성 분석</b> = 사고 원인과 위험을 <b>FTA(거꾸로 원인 추적)</b>, <b>FMEA(부품별 점검)</b>, <b>HAZOP(단계별 훑기)</b>으로 미리 찾아내는 세 가지 방법.",
                  "<b>Risk/safety analysis</b> = three methods for catching trouble early — <b>FTA</b> (tracing causes backward), <b>FMEA</b> (checking each part), and <b>HAZOP</b> (scanning each step with guide words)."),
-                ("FTA(Fault Tree Analysis)는 이미 일어났거나 우려되는 사고(정상사상)를 꼭대기에 두고, 논리 게이트(AND/OR)로 하위 원인을 트리 형태로 분해해 근본 원인과 발생 확률을 추정해요. FMEA(Failure Mode and Effects Analysis)는 구성요소마다 가능한 고장 모드와 그 영향·심각도를 하나씩 훑어 위험 우선순위를 매겨요. HAZOP(Hazard and Operability Study)은 공정의 각 단계에 '과다·과소·없음·반대로·기타' 같은 가이드워드를 적용해 이탈 가능성을 체계적으로 찾아요. 셋 다 사고를 줄이기 위한 사전 예방 기법이지만, 분석자의 경험과 상상력의 한계를 완전히 벗어나진 못해요.",
-                 "FTA (Fault Tree Analysis) places a top (undesired) event at the root and decomposes it into contributing causes through logic gates (AND/OR), estimating root causes and likelihood. FMEA (Failure Mode and Effects Analysis) walks through each component's possible failure modes and their severity, ranking risk priority. HAZOP (Hazard and Operability Study) applies guide words — too much, too little, none, reverse, other — to each step of a process to systematically find deviations. All three are preventive techniques, but none fully escape the limits of the analyst's own experience and imagination.")),
+                ("FTA(Fault Tree Analysis)는 이미 일어났거나 우려되는 사고(정상사상)를 꼭대기에 두고, 논리 게이트(AND/OR)로 하위 원인을 트리 형태로 분해해 근본 원인과 발생 확률을 추정해요. FMEA(Failure Mode and Effects Analysis)는 구성요소마다 가능한 고장 모드와 그 영향을 하나씩 훑어, 심각도·발생도·검출도로 위험 우선순위를 매겨요. HAZOP(Hazard and Operability Study)은 공정의 각 단계에 '과다·과소·없음·반대로·기타' 같은 가이드워드를 적용해 이탈 가능성을 체계적으로 찾아요. 셋 다 사고를 줄이기 위한 사전 예방 기법이지만, 분석자의 경험과 상상력의 한계를 완전히 벗어나진 못해요.",
+                 "FTA (Fault Tree Analysis) places a top (undesired) event at the root and decomposes it into contributing causes through logic gates (AND/OR), estimating root causes and likelihood. FMEA (Failure Mode and Effects Analysis) walks through each component's possible failure modes and effects, ranking risk priority by severity, occurrence, and detection. HAZOP (Hazard and Operability Study) applies guide words — too much, too little, none, reverse, other — to each step of a process to systematically find deviations. All three are preventive techniques, but none fully escape the limits of the analyst's own experience and imagination.")),
     "glossary": [
         ("FTA", "FTA (Fault Tree Analysis)", ("사고에서 거꾸로 원인을 따라가는 트리.", "A tree that traces backward from an accident to its causes."), ("논리 게이트로 원인들이 겹치는 방식을 보여줘요.", "Logic gates show how causes combine.")),
-        ("FMEA", "FMEA (Failure Mode and Effects Analysis)", ("부품마다 \"고장나면?\"을 점검하는 표.", "A table checking \"what if this fails?\" for every part."), ("영향이 큰 고장부터 우선순위를 매겨요.", "Ranks failures by how severe their effect is.")),
+        ("FMEA", "FMEA (Failure Mode and Effects Analysis)", ("부품마다 \"고장나면?\"을 점검하는 표.", "A table checking \"what if this fails?\" for every part."), ("심각도·발생도·검출도로 우선순위를 매겨요.", "Ranks failures by severity, occurrence, and detection.")),
         ("HAZOP", "HAZOP", ("과다·과소·없음 같은 질문어로 훑는 점검.", "A scan using guide words like too much, too little, none."), ("공정의 각 단계를 하나씩 짚어가요.", "Walks through a process one step at a time.")),
         ("위험성평가", "Risk Assessment", ("위험의 크기와 빈도를 가늠하는 일.", "Gauging how big and how often a risk is."), ("세 분석법 모두 이 평가를 돕는 도구예요.", "All three methods are tools that feed into this.")),
         ("근본원인분석", "Root Cause Analysis", ("겉으로 드러난 증상 말고 진짜 원인을 찾는 것.", "Finding the real cause, not just the visible symptom."), ("FTA가 대표적인 방법 중 하나예요.", "FTA is one of its representative methods.")),
-        ("고장모드", "Failure Mode", ("한 부품이 망가지는 구체적인 방식.", "The specific way a single part can break."), ("FMEA에서 부품마다 하나씩 나열해요.", "FMEA lists these out, one per part.")),
+        ("고장모드", "Failure Mode", ("한 부품이 망가지는 구체적인 방식.", "The specific way a single part can break."), ("FMEA에서 부품마다 가능한 방식을 모두 나열해요.", "FMEA lists every possible one for each part.")),
         ("가이드워드", "Guide Word", ("HAZOP이 쓰는 정해진 질문 단어들.", "HAZOP's fixed set of prompting words."), ("빠뜨리지 않고 훑게 해주는 체크리스트 같은 거예요.", "Works like a checklist that keeps the scan from skipping anything.")),
         ("기능안전 표준", "Functional Safety Standard", ("분석으로 찾은 위험에 등급을 매기게 하는 공식 표준.", "The official standard that grades the risks these analyses find."), ('분석 결과가 등급(SIL/ASIL)으로 이어지는 표준이 따로 있어요. → <a href="funcsafetystd-ko.html">안전 등급을 매기는 공통 규칙서</a>', 'A separate standard turns this analysis into a safety grade. → <a href="funcsafetystd-en.html">the shared rulebook that grades safety</a>')),
     ],

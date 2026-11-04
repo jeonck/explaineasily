@@ -38,7 +38,7 @@ P4 = svg(320, sky(320, ground=False)
          + label(555, 100, "⟦가까운 지점에서 빠르게 응답|fast answers from the nearest branch⟧", 10.5, "var(--good)")
          + label(555, 130, "⟦한 지점 고장도 나머진 계속 동작|one branch down, the rest keep going⟧", 10.5, "var(--good)")
          + label(555, 160, "⟦지점 간 조인·정합성 맞추기 어려움|cross-branch joins and consistency get hard⟧", 10.5, "var(--bad)")
-         + label(380, 300, "⟦시험에서는 이 트레이드오프(속도 vs 정합성/조인 비용)를 물어요|exams ask about exactly this trade-off — speed vs. consistency and join cost⟧", 12, "var(--ink)"))
+         + label(380, 300, "⟦분산을 택할지는 이 트레이드오프(속도 vs 정합성/조인 비용)로 판단해요|weigh this trade-off — speed vs. consistency and join cost — when choosing⟧", 12, "var(--ink)"))
 
 # 5. 더 깊은 이론은 SRE 세계에서
 P5 = svg(300, sky(300, ground=False)
@@ -62,7 +62,7 @@ PAGE = {
         {"svg": P1, "alt": ("전국의 배송 기사들이 멀리 있는 창고 하나에만 몰려듦", "Drivers from across the country all converge on one distant warehouse"),
          "caption": ("전국 모든 주문이 창고 하나로만 몰려요.", "Every order nationwide piles onto one single warehouse."),
          "small": ("창고가 멀면 배송도 느려요.", "A far-away warehouse means slow delivery too.")},
-        {"svg": P2, "alt": ("분류 담당이 그냥 복제하면 된다고 말하지만, 복제 상자 두 개가 서로 틀어질 위험이 있음", "The modeler suggests just copying everything, but twin boxes risk drifting apart"),
+        {"svg": P2, "alt": ("분류 담당이 그냥 복제하면 된다고 말하지만, 복제 상자 두 개가 서로 틀어질 위험이 있음", "The sorter suggests just copying everything, but twin boxes risk drifting apart"),
          "caption": ("지점마다 다 복제해두면 되는 거 아냐?", "Just copy everything to every branch, right?"),
          "small": ("두 지점에서 동시에 고치면 복제본 숫자가 서로 달라져요.", "If two branches edit at once, the copies' counts drift apart.")},
         {"svg": P3, "hero": True, "alt": ("서울·부산·대전 세 지점으로 나뉜 창고가 점선으로 서로 이어짐", "A warehouse split into Seoul, Busan, and Daejeon branches, linked by dashed lines"),
@@ -76,17 +76,17 @@ PAGE = {
          ])},
         {"svg": P4, "alt": ("중앙집중 창고와 분산 창고를 속도·장애내성·정합성 기준으로 비교한 표", "A table comparing a centralized warehouse and a distributed one on speed, fault tolerance, and consistency"),
          "caption": ("중앙집중과 분산 중 어느 쪽을 고르느냐는 응답 속도와 정합성을 맞바꾸는 선택이에요.", "Choosing centralized or distributed trades response speed against consistency."),
-         "small": ("시험에서는 속도와 정합성의 트레이드오프를 자주 물어요.", "Exams often ask about this speed-versus-consistency trade-off.")},
+         "small": ("지점 간 조인 비용까지 함께 따져서 골라야 해요.", "The cost of cross-branch joins belongs in that choice too.")},
         {"svg": P5, "alt": ("관리자가 나뉜 상자와 복제 상자를 보며 서 있음", "A manager stands beside split and duplicated boxes"),
          "caption": ("나누기·복제·합의는 분산 DB 모델링의 기본기예요.", "Sharding, replication, and consensus are the basics of distributed DB modeling."),
          "small": ("분산 이론 자체는 SRE 세계에서 더 깊이 다뤄요.", "Distributed-systems theory itself goes deeper in the SRE world.")},
     ],
-    "summary": (("<b>분산 데이터베이스</b>는 하나의 논리적 DB를 <b>여러 지점(노드)에 나눠 저장</b>하고, 복제와 합의로 <b>하나처럼 보이게</b> 맞추는 구조예요.",
-                 "A <b>distributed database</b> stores one logical database <b>split across many nodes</b>, using replication and consensus to make it <b>look like a single database</b>."),
-                ("DB 모델링 시험 관점에서는 데이터를 어떻게 나눌지(샤딩 키 설계), 어떻게 복제할지(동기/비동기), 조인·트랜잭션 비용이 어떻게 늘어나는지를 다뤄요. CAP 정리·합의 알고리즘 같은 분산 시스템 이론 자체는 SRE 세계의 관련 페이지에서 더 깊이 설명해요.",
-                 "From a DB-modeling exam angle, this is about choosing a sharding key, picking sync vs. async replication, and the rising cost of cross-node joins and transactions. The deeper distributed-systems theory — CAP theorem, consensus algorithms — is covered in more depth over in the SRE world.")),
+    "summary": (("<b>분산 데이터베이스</b>는 하나의 논리적 DB를 <b>여러 지점(노드)에 나눠 저장</b>하고, 복제·합의 같은 기법으로 <b>하나처럼 보이게</b> 맞추는 구조예요.",
+                 "A <b>distributed database</b> stores one logical database <b>split across many nodes</b>, using techniques like replication and consensus to make it <b>look like a single database</b>."),
+                ("DB 모델링 관점에서는 데이터를 어떻게 나눌지(샤딩 키 설계), 어떻게 복제할지(동기/비동기), 조인·트랜잭션 비용이 어떻게 늘어나는지를 다뤄요. CAP 정리·합의 알고리즘 같은 분산 시스템 이론 자체는 SRE 세계의 관련 페이지에서 더 깊이 설명해요.",
+                 "From a DB-modeling angle, this is about choosing a sharding key, picking sync vs. async replication, and the rising cost of cross-node joins and transactions. The deeper distributed-systems theory — CAP theorem, consensus algorithms — is covered in more depth over in the SRE world.")),
     "glossary": [
-        ("샤딩", "Sharding", ("지점별로 나눠 담기.", "Splitting goods by branch."), ('나누는 기준(키) 설계는 이 세계에서 더 다뤄요. → <a href="dbsharding-ko.html">너무 커진 창고를 구역으로 쪼개기</a>', 'Choosing the split key is covered right here. → <a href="dbsharding-en.html">splitting an overgrown warehouse into zones</a>')),
+        ("샤딩", "Sharding", ("지점별로 나눠 담기.", "Splitting goods by branch."), ('나누는 기준(키) 설계는 이 세계에서 더 다뤄요. → <a href="dbsharding-ko.html">너무 커진 창고를 구역으로 쪼개기</a>', 'Choosing the split key is covered further in this same world. → <a href="dbsharding-en.html">splitting an overgrown warehouse into zones</a>')),
         ("복제", "Replication", ("지점마다 복제 상자 두기.", "Keeping a duplicate box at each branch."), ('동기/비동기 복제의 차이를 다뤄요. → <a href="replication-ko.html">복제 상자의 세계</a>', 'Covers sync vs. async replication. → <a href="replication-en.html">the world of duplicate boxes</a>')),
         ("합의 알고리즘", "Consensus", ("여럿이 투표해서 하나로 정하기.", "Several branches voting on one answer."), ('Raft/Paxos 같은 알고리즘을 다뤄요. → <a href="consensus-ko.html">여러 명이 투표로 정하기</a>', 'Covers algorithms like Raft/Paxos. → <a href="consensus-en.html">deciding by a vote among many</a>')),
         ("CAP 정리", "CAP Theorem", ("세 가지 성질을 다 완벽히 가질 순 없다는 법칙.", "The law that three properties can't all be perfect at once."), ('일관성·가용성·분단내성의 트레이드오프예요. → <a href="captheorem-ko.html">세 가지를 동시에 가질 수 없는 법칙</a>', "The consistency/availability/partition trade-off. → <a href=\"captheorem-en.html\">the law you can't have all three of at once</a>")),

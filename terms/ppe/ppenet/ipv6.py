@@ -67,7 +67,7 @@ PAGE = {
              (BRIDGE_I, ("호환 작업 필요", "Needs compatibility work"), ("IPv4와 직접 통하지 않아 연결 작업이 필요해요", "can't talk directly to IPv4, so it needs a bridge")),
          ])},
         {"svg": P4, "alt": ("IPv4와 IPv6를 길이·개수·NAT 필요 여부·표기법으로 비교한 두 안내판", "Two boards comparing IPv4 and IPv6 by length, count, NAT need, and notation"),
-         "caption": ("IPv4와 IPv6는 네 가지가 달라요.", "IPv4 and IPv6 differ on four things."),
+         "caption": ("IPv4와 IPv6는 길이·개수·NAT 필요성·표기가 달라요.", "IPv4 and IPv6 differ in length, count, need for NAT, and notation."),
          "small": ("IPv6 주소는 IPv4보다 훨씬 길고 개수도 많아, NAT도 대부분 필요 없어요.", "IPv6 addresses are far longer and more plentiful than IPv4's, so NAT is mostly unneeded.")},
         {"svg": P5, "alt": ("IPv6 우체국과 IPv4 우체국이 점선으로 연결돼 나란히 함께 운영됨", "An IPv6 post office and an IPv4 post office running side by side, linked by a dashed line"),
          "caption": ("인터넷이 아직 IPv6로 다 바뀌진 않았어요.", "The internet hasn't fully switched to IPv6 yet."),

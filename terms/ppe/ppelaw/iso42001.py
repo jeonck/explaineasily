@@ -33,7 +33,7 @@ P4 = svg(300, sky(300, ground=False)
          + rulesboard(50, 40, 320, 220, "⟦ISO 27001|ISO 27001⟧",
                       ("⟦정보보안 관리체계|information-security mgmt system⟧", "⟦기밀성·무결성·가용성|confidentiality, integrity, availability⟧", "⟦PDCA로 지속 개선|continuous PDCA improvement⟧"), 1.0)
          + rulesboard(390, 40, 320, 220, "⟦ISO 42001|ISO 42001⟧",
-                      ("⟦AI 경영시스템(AIMS)|AI management system (AIMS)⟧", "⟦위험·편향·설명가능성|risk, bias, explainability⟧", "⟦같은 PDCA 구조|the same PDCA structure⟧"), 1.0, hl=1)
+                      ("⟦AI 경영시스템(AIMS)|AI management system (AIMS)⟧", "⟦위험·편향·설명가능성|risk, bias, explainability⟧", "⟦같은 경영시스템 구조|the same management-system structure⟧"), 1.0, hl=1)
          + label(380, 285, "⟦구조는 닮았지만, 42001은 AI만의 위험(편향·설명가능성)을 더 봐요|similar in structure, but 42001 adds AI-specific risks like bias and explainability⟧", 12, "var(--ink)", cls="d"))
 
 # 5. 인증받았다고 다 끝나는 건 아니에요
@@ -61,7 +61,7 @@ PAGE = {
          "tricks": (4, [
              (RISK_I, ("위험 미리 찾기", "Find risk early"), ("편향 같은 AI 위험을요", "risks like bias, specifically"), "warm"),
              (RECORD_I, ("설명 가능하게 기록", "Keep explainable records"), ("왜 그런 결과인지 남겨요", "records why a result came out that way"), "calm"),
-             (HUMAN_I, ("사람이 최종 확인", "A human has the final say"), ("AI 혼자 결정하지 않아요", "AI doesn't decide alone")),
+             (HUMAN_I, ("사람이 감독하기", "Human oversight"), ("필요하면 사람이 살피고 끼어들어요", "people review and step in when needed")),
              (LOOP_I, ("계속 점검하고 고치기", "Check and fix, continuously"), ("한 번으로 끝나지 않아요", "never a one-time thing")),
          ])},
         {"svg": P4, "alt": ("ISO 27001과 ISO 42001을 나란히 비교한 규칙판 두 개", "Two rule boards comparing ISO 27001 and ISO 42001 side by side"),
@@ -71,18 +71,18 @@ PAGE = {
          "caption": ("인증받았다고 AI 관리가 끝나는 건 아니에요.", "Being certified doesn't mean managing the AI is done."),
          "small": ("인증은 AI를 '관리한다'는 뜻이지 AI가 '완벽하다'는 뜻이 아니에요.", "Certified means the AI is managed well — not that it's flawless.")},
     ],
-    "summary": (("<b>ISO/IEC 42001</b> = AI를 쓰는 조직이 <b>위험관리·설명가능성·사람의 확인</b>을 갖췄는지 확인해 <b>인증 도장</b>을 찍는 기준이 되는 국제표준.",
+    "summary": (("<b>ISO/IEC 42001</b> = AI를 쓰는 조직이 <b>위험관리·설명가능성·사람의 감독</b>을 갖췄는지 확인해 <b>인증 도장</b>을 찍는 기준이 되는 국제표준.",
                  "<b>ISO/IEC 42001</b> = the international standard used to check that an organization using AI has <b>risk management, explainability, and human oversight</b> in place, and to award a <b>certification stamp</b>."),
-                ("ISO/IEC 42001:2023은 세계 최초의 AI 경영시스템(AIMS, AI Management System) 국제표준이에요. ISO 27001(정보보안 경영시스템)과 같은 PDCA 구조를 따르면서, AI 특유의 위험(편향, 설명가능성, 데이터 품질, 사람의 감독)을 추가로 요구해요. 인증은 조직이 AI를 '책임감 있게 관리하는 체계'를 갖췄다는 증거이지, AI의 모든 판단이 옳다는 보증은 아니에요.",
-                 "ISO/IEC 42001:2023 is the world's first international standard for an AI Management System (AIMS). It follows the same PDCA structure as ISO 27001 (information security management) while adding requirements specific to AI — bias, explainability, data quality, and human oversight. Certification proves an organization has a system for managing AI responsibly — not that every decision the AI makes is correct.")),
+                ("ISO/IEC 42001:2023은 세계 최초의 AI 경영시스템(AIMS, AI Management System) 국제표준이에요. ISO 27001(정보보안 경영시스템)과 같은 경영시스템 구조를 따르면서, AI 특유의 주제(편향, 설명가능성, 데이터 품질, 사람의 감독)까지 다뤄요. 인증은 조직이 AI를 '책임감 있게 관리하는 체계'를 갖췄다는 증거이지, AI의 모든 판단이 옳다는 보증은 아니에요.",
+                 "ISO/IEC 42001:2023 is the world's first international standard for an AI Management System (AIMS). It follows the same management-system structure as ISO 27001 (information security management) while also covering topics specific to AI — bias, explainability, data quality, and human oversight. Certification proves an organization has a system for managing AI responsibly — not that every decision the AI makes is correct.")),
     "glossary": [
-        ("ISO/IEC 42001", "ISO/IEC 42001", ("AI 관리 인증 도장.", "The stamp certifying AI is managed well."), ("세계 최초의 AI 경영시스템(AIMS) 표준이에요.", "The world's first AI management system standard.")),
+        ("ISO/IEC 42001", "ISO/IEC 42001", ("AI 관리 인증 도장의 기준이 되는 표준.", "The standard behind the stamp certifying AI is managed well."), ("세계 최초의 AI 경영시스템(AIMS) 표준이에요.", "The world's first AI management system standard.")),
         ("AIMS", "AI Management System", ("AI를 관리하는 전체 체계.", "The whole system for managing AI."), ("위험관리부터 지속 개선까지 포함해요.", "Covers everything from risk management to ongoing improvement.")),
         ("PDCA", "PDCA (Plan-Do-Check-Act)", ("계획하고, 해보고, 확인하고, 고치는 순환.", "The cycle of plan, do, check, and fix."), ("ISO 경영시스템 표준들의 공통 뼈대예요.", "The common backbone of ISO management-system standards.")),
         ("AI 위험관리", "AI Risk Management", ("편향·오작동 같은 위험을 미리 찾는 것.", "Spotting risks like bias or malfunction in advance."), ("42001이 요구하는 핵심 활동이에요.", "A core activity 42001 requires.")),
         ("설명가능성", "Explainability", ("왜 그런 결과가 나왔는지 설명할 수 있는 성질.", "Being able to explain why a result came out that way."), ("기록이 없으면 설명도 불가능해요.", "No record means no explanation either.")),
-        ("사람의 감독", "Human Oversight", ("AI 혼자 최종 결정을 내리지 않는 것.", "Not letting AI make the final call alone."), ("사람이 확인하는 단계를 반드시 둬요.", "A human-review step is always kept in place.")),
-        ("ISO/IEC 27001", "ISO/IEC 27001", ("정보보안 관리체계 인증.", "The certification for information-security management."), ('구조가 닮은 먼저 나온 표준이에요. → <a href="compliance-ko.html">이웃 나라 규칙 검사관</a>', 'The earlier standard this one is structured after. → <a href="compliance-en.html">the inspector from the neighboring kingdom</a>')),
+        ("사람의 감독", "Human Oversight", ("AI의 판단을 사람이 살피고 필요하면 끼어들 수 있게 하는 것.", "Letting people review AI decisions and step in when needed."), ("어느 단계에 어떻게 둘지는 조직이 위험에 맞춰 정해요.", "The organization sets where and how, to fit the risk.")),
+        ("ISO/IEC 27001", "ISO/IEC 27001", ("정보보안 관리체계 표준.", "The standard for information-security management."), ('구조가 닮은 먼저 나온 표준이에요. → <a href="compliance-ko.html">이웃 나라 규칙 검사관</a>', 'The earlier standard this one is structured after. → <a href="compliance-en.html">the inspector from the neighboring kingdom</a>')),
         ("AI 윤리기준·거버넌스", "AI Ethics & Governance", ("매일 지키는 AI 운영 원칙.", "The day-to-day principles for running AI responsibly."), ('이 표준의 인증 틀과 달리, 실제 운영 원칙 자체를 다뤄요. → <a href="aiethicsgov-ko.html">검사장 공통 등급 원칙판</a>', 'Unlike this standard\'s certification frame, it covers the operating principles themselves. → <a href="aiethicsgov-en.html">the shared grading charter</a>')),
     ],
 }

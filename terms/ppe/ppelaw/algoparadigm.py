@@ -30,7 +30,7 @@ P3 = svg(360, sky(360)
                        "⟦동적계획법 — 한 번 구한 답은 저장해 다시 쓰기|dynamic programming — save each answer and reuse it⟧",
                        "⟦셋 다: 큰 문제를 작은 단위로 다루는 틀|all three: handle the big problem in small pieces⟧"), 0.9)
          + person(640, 160, s=0.8, face=SMILE, **REP)
-         + label(380, 335, "⟦학생회도 복잡한 결정을 내릴 땐 명확한 절차를 따라야 해요, 알고리즘처럼|even the student council follows a clear step-by-step procedure for a hard decision, just like an algorithm⟧", 11, "var(--muted)"))
+         + label(380, 335, "⟦학생회도 복잡한 결정을 내릴 땐 명확한 절차를 따라야 해요, 알고리즘처럼|even the student council should follow a clear procedure for a hard decision, just like an algorithm⟧", 11, "var(--muted)"))
 
 # 4. 세 방법을 축제 예산에 적용하면
 P4 = svg(320, sky(320, ground=False)
@@ -40,7 +40,7 @@ P4 = svg(320, sky(320, ground=False)
                        "⟦마지막에 전부 합쳐요|then all shares are combined⟧"), 1.0)
          + rulesboard(400, 20, 320, 270, "⟦탐욕법 / 동적계획법|GREEDY / DP⟧",
                       ("⟦탐욕: 가장 급한 동아리부터 먼저 배정|greedy: fund the most urgent club first⟧",
-                       "⟦DP: 이미 계산한 학년 조합은 다시 안 따져요|DP: never recomputes a grade combo it did⟧",
+                       "⟦DP: 이미 계산한 학년 조합은 다시 안 따져요|DP: never redoes a grade combo it solved⟧",
                        "⟦탐욕: 빠르지만 전체 최선이 아닐 수 있어요|greedy: fast, but may miss the overall best⟧"), 1.0)
          + label(380, 310, "⟦문제를 쪼갤 수 있는지, 같은 계산이 반복되는지에 따라 어울리는 방법이 달라요|the right method depends on whether the problem splits cleanly or repeats the same subproblems⟧", 11, "var(--ink)", cls="d"))
 
@@ -65,18 +65,18 @@ PAGE = {
          "small": ("접수 순서로만 나누면 더 공정한 배분을 놓쳐요.", "Handing out money by submission order alone misses a fairer split.")},
         {"svg": P3, "hero": True, "alt": ("학생회장이 분할정복·탐욕법·동적계획법 세 가지 방법이 적힌 기준표를 들고, 대표가 옆에서 웃음", "The council president holds a board listing divide-and-conquer, greedy, and dynamic programming, while a rep smiles beside"),
          "caption": ("큰 문제를 푸는 방법은 분할정복·탐욕법·동적계획법, 세 가지예요.", "There are three ways to solve a big problem: divide-and-conquer, greedy, and dynamic programming."),
-         "small": ("학생회도 복잡한 결정을 내릴 땐 명확한 절차를 따라야 해요, 알고리즘처럼.", "Even the student council follows a clear step-by-step procedure for a hard decision, just like an algorithm."),
+         "small": ("학생회도 복잡한 결정을 내릴 땐 명확한 절차를 따라야 해요, 알고리즘처럼.", "Even the student council should follow a clear procedure for a hard decision, just like an algorithm."),
          "tricks": (4, [
              (SPLIT_I, ("분할정복 — 쪼개서 합치기", "Divide & conquer — split, then combine"), ("작은 조각씩 풀고 나중에 합쳐요", "solves small pieces, then merges them"), "calm"),
              (GREEDY_I, ("탐욕법 — 당장 최선 고르기", "Greedy — pick the best right now"), ("매번 지금 가장 좋아 보이는 것을 골라요", "always picks what looks best this instant"), "warm"),
              (DP_I, ("동적계획법 — 답 기억해두기", "Dynamic programming — remember the answer"), ("같은 문제를 두 번 안 풀어요", "never solves the same subproblem twice")),
-             (STEP_I, ("공통점 — 작은 단위로 다루기", "In common — handle a big problem in small steps"), ("큰 문제를 쪼개 순서대로 풀어요", "breaks the big problem into an ordered sequence")),
+             (STEP_I, ("공통점 — 작은 단위로 다루기", "In common — handle a big problem in small steps"), ("큰 문제를 작은 문제나 단계로 나눠 풀어요", "breaks the big problem into smaller problems or steps")),
          ])},
         {"svg": P4, "alt": ("왼쪽: 분할정복으로 학년별 몫을 나눠 정하고 합침. 오른쪽: 탐욕법으로 급한 곳부터, 동적계획법으로 같은 조합은 다시 안 따짐", "Left: divide-and-conquer splits the budget by grade, then combines. Right: greedy funds the urgent one first; DP avoids re-solving the same combination"),
          "caption": ("세 방법을 축제 예산에 적용하면 나누는 방식·고르는 순서·계산 횟수가 달라져요.", "Applied to the festival budget, the three differ in how they split, what they pick first, and how often they recalculate."),
          "small": ("문제를 쪼갤 수 있는지, 같은 계산이 반복되는지에 따라 어울리는 방법이 달라요.", "The right method depends on whether the problem splits cleanly or repeats the same subproblems.")},
         {"svg": P5, "alt": ("왼쪽: 대표가 가장 급한 곳부터 바로 줬다고 말함. 오른쪽: 학생회장이 전체로 보면 더 나은 조합이 있었다고 땀 흘리며 말함", "Left: a rep says they funded the most urgent club right away. Right: a sweating president says a better overall combination existed"),
-         "caption": ("탐욕법은 빠르지만 늘 최선은 아니에요.", "Greedy is fast, but not always the best."),
+         "caption": ("탐욕법은 모든 조합을 따지지 않아 빠르지만, 늘 최선은 아니에요.", "Greedy is fast because it skips comparing every combination, but it isn't always the best."),
          "small": ("탐욕법은 빠르지만, 매번 전체 최선을 보장하진 않아요.", "Greedy is fast — but it doesn't always guarantee the overall best.")},
     ],
     "summary": (("<b>분할정복</b>은 문제를 <b>쪼개서 합치고</b>, <b>탐욕법</b>은 <b>매번 당장 최선</b>을 고르고, <b>동적계획법</b>은 <b>이미 푼 답을 기억</b>해 다시 안 풀어요.",

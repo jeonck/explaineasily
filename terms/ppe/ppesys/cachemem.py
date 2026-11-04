@@ -50,7 +50,7 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="
          + label(190, 248, "⟦공구를 찾는 것도 빨라요|and finding a tool stays fast⟧", 11, "var(--ink)")
          + toolbox(570, 150, 1.8, None) + label(570, 240, "⟦안 쓰는 공구까지 다 담으면|cram in the rarely used tools too⟧", 11, "var(--ink)")
          + label(570, 258, "⟦뒤지는 시간만 늘어요|and searching just gets slower⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦캐시는 크기가 아니라 \"무엇을 담느냐\"가 핵심이에요(지역성)|cache is about what you keep, not how big it is (locality)⟧", 12, "var(--ink)", cls="d"))
+         + label(380, 282, "⟦캐시는 크기만 키운다고 되지 않고, \"무엇을 담느냐\"도 중요해요(지역성)|a cache needs more than size — what you keep matters too (locality)⟧", 12, "var(--ink)", cls="d"))
 
 HIT_I = icon('<rect x="10" y="10" width="44" height="44" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M20 32 l8 8 l16 -18" stroke="var(--good)" stroke-width="4" fill="none" stroke-linecap="round"/>')
 MISS_I = icon('<rect x="10" y="10" width="44" height="44" rx="6" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M22 22 l20 20 M42 22 l-20 20" stroke="var(--bad)" stroke-width="4" stroke-linecap="round"/>')
@@ -84,12 +84,12 @@ PAGE = {
          "small": ("L1→L2→L3처럼 단계별로 더 크고 느린 공구함을 두기도 해요.", "Some garages keep L1→L2→L3, each bigger and a bit slower.")},
         {"svg": P5, "alt": ("왼쪽: 자주 쓰는 것만 담으면 빠르게 유지됨. 오른쪽: 안 쓰는 것까지 다 담으면 오히려 느려짐", "Left: keeping only the frequent tools stays fast. Right: cramming in everything makes it slower"),
          "caption": ("공구함을 늘린다고 항상 빨라지진 않아요.", "A bigger toolbox isn't always a faster one."),
-         "small": ("캐시는 크기가 아니라 \"무엇을 담느냐\"가 핵심이에요(지역성).", "Cache is about what you keep, not how big it is (locality).")},
+         "small": ("캐시는 크기만 키운다고 되지 않고, \"무엇을 담느냐\"도 중요해요(지역성).", "A cache needs more than size — what you keep matters too (locality).")},
     ],
     "summary": (("<b>캐시 메모리</b> = 멀리 있는 창고(메모리) 대신, <b>자주 쓰는 것만 바로 옆에</b> 담아두는 작은 공구함.",
                  "<b>Cache memory</b> = a small toolbox that keeps only the frequently used items right beside you, instead of the far-off warehouse (main memory)."),
-                ("캐시는 CPU와 메인 메모리 사이에 있는 작고 빠른 저장공간이에요. 데이터가 캐시에 있으면 적중(hit), 없으면 미스(miss)로 메인 메모리까지 가져와요. 시간적 지역성(방금 쓴 걸 또 씀)과 공간적 지역성(근처 데이터를 같이 씀) 덕분에 작은 캐시로도 효과가 커요. 꽉 차면 LRU 등의 정책으로 교체(eviction)하고, L1/L2/L3처럼 계층을 둬 속도와 용량을 절충해요.",
-                 "Cache is a small, fast storage layer between the CPU and main memory. A hit means the data is already in the cache; a miss means fetching it from main memory. Temporal locality (reusing what you just used) and spatial locality (using nearby data together) make even a small cache effective. When full, a policy like LRU evicts entries, and levels like L1/L2/L3 trade off speed against capacity.")),
+                ("캐시는 CPU와 메인 메모리 사이에 있는 작고 빠른 저장공간이에요. 데이터가 캐시에 있으면 적중(hit), 없으면 미스(miss)로 메인 메모리까지 가져와요. 시간적 지역성(방금 쓴 걸 또 씀)과 공간적 지역성(근처 데이터를 같이 씀) 덕분에 작은 캐시로도 효과가 커요. 꽉 차면 LRU 등의 정책으로 교체(eviction)해요. 캐시가 클수록 한 번 찾는 시간도 길어져서, L1/L2/L3처럼 계층을 둬 속도와 용량을 절충해요.",
+                 "Cache is a small, fast storage layer between the CPU and main memory. A hit means the data is already in the cache; a miss means fetching it from main memory. Temporal locality (reusing what you just used) and spatial locality (using nearby data together) make even a small cache effective. When full, a policy like LRU evicts entries. A bigger cache also takes longer to search, so levels like L1/L2/L3 trade off speed against capacity.")),
     "glossary": [
         ("적중(Hit)", "Cache Hit", ("공구함 안에 있어서 바로 꺼냄.", "It's in the toolbox — grab it right away."), ("공구를 바로 꺼내는 빠른 경우예요.", "The fast case: the tool comes right out.")),
         ("미스(Miss)", "Cache Miss", ("공구함에 없어 창고까지 가야 함.", "Not in the toolbox — off to the warehouse."), ("창고까지 오가는 느린 경우예요.", "The slow case: a round trip to the warehouse.")),

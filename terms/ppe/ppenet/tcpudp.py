@@ -26,12 +26,12 @@ P3 = svg(340, sky(340)
 
 # 4. TCP vs UDP 헤더 비교
 P4 = svg(320, sky(320)
-         + routemap(60, 40, 310, 250, "⟦TCP 헤더(등기)|TCP header (registered)⟧",
+         + routemap(60, 40, 310, 250, "⟦TCP(등기)|TCP (registered)⟧",
                     ("⟦포트 번호 — 있음|port number — yes⟧",
                      "⟦순서 번호 — 있음|sequence number — yes⟧",
                      "⟦인사(핸드셰이크) — 3번|handshake — 3-way⟧",
                      "⟦연결 — 유지함|connection — kept open⟧"), 1.0)
-         + routemap(390, 40, 310, 250, "⟦UDP 헤더(일반)|UDP header (plain)⟧",
+         + routemap(390, 40, 310, 250, "⟦UDP(일반)|UDP (plain)⟧",
                     ("⟦포트 번호 — 있음|port number — yes⟧",
                      "⟦순서 번호 — 없음|sequence number — no⟧",
                      "⟦인사(핸드셰이크) — 없음|handshake — none⟧",
@@ -71,8 +71,8 @@ PAGE = {
              (STAMP_I, ("체크섬", "Checksum"), ("겉면 도장으로 훼손을 확인해요", "a stamp on the outside checks for damage"), "warm"),
              (DOOR_I, ("포트 번호", "Port number"), ("몇 호실로 갈지 정확히 적어요", "writes exactly which room number to deliver to")),
          ])},
-        {"svg": P4, "alt": ("TCP 헤더와 UDP 헤더를 포트·순서번호·핸드셰이크·연결 유지 여부로 비교한 안내판", "A board comparing TCP and UDP headers by port, sequence number, handshake, and connection"),
-         "caption": ("TCP 헤더엔 UDP 헤더보다 더 많은 항목이 적혀 있어요.", "A TCP header carries more fields than a UDP one."),
+        {"svg": P4, "alt": ("TCP와 UDP를 포트·순서번호·핸드셰이크·연결 유지 여부로 비교한 안내판", "A board comparing TCP and UDP by port, sequence number, handshake, and connection"),
+         "caption": ("TCP는 약속이 많아 UDP보다 헤더 항목이 많고, 연결 절차도 따로 있어요.", "TCP promises more, so it has more header fields than UDP, plus a connection setup."),
          "small": ("포트는 둘 다 있지만, 순서·인사·연결 유지는 TCP에만 있어요.", "Both have ports, but only TCP has sequencing, handshake, and a kept-open connection.")},
         {"svg": P5, "alt": ("왼쪽: 서류·결제는 등기(TCP)가 맞음. 오른쪽: 영상·게임은 일반(UDP)이 맞음", "Left: papers and payments suit registered (TCP). Right: video and games suit plain (UDP)"),
          "caption": ("TCP도 UDP도 완벽한 정답은 아니에요.", "Neither TCP nor UDP is the one right answer."),
@@ -85,7 +85,7 @@ PAGE = {
     "glossary": [
         ("TCP", "TCP", ("확인받으며 순서대로 가는 등기봉투.", "The registered envelope that confirms and keeps order."), ("신뢰성을 보장하는 대신 UDP보다 느려요.", "Slower than UDP, in exchange for reliability.")),
         ("UDP", "UDP", ("확인 없이 빠르게 가는 일반봉투.", "The plain envelope that just goes fast."), ("TCP보다 가볍고 빠른 대신 봉투를 잃어버릴 수 있어요.", "Lighter and faster than TCP, but can lose an envelope.")),
-        ("3-way 핸드셰이크", "3-way handshake", ("보내기 전 나누는 인사 세 번.", "The three greetings exchanged before anything is sent."), ("TCP만 이 절차를 거쳐요.", "Only TCP goes through this step.")),
+        ("3-way 핸드셰이크", "3-way handshake", ("보내기 전 나누는 인사 세 번.", "The three greetings exchanged before anything is sent."), ("UDP는 이 절차 없이 바로 보내요.", "UDP sends right away, with no such step.")),
         ("포트 번호", "Port number", ("집 안의 정확한 호실 번호.", "The exact room number inside the house."), ('누구에게 전달할지 구분하는 구멍이에요. → <a href="socket-ko.html">전용 우편함 구멍</a>', 'The dedicated hole that says exactly who gets the envelope. → <a href="socket-en.html">the dedicated mailbox hole</a>')),
         ("오류·흐름·혼잡 제어", "Error/flow/congestion control", ("등기 배송을 끝까지 안전하게 지키는 세 장치.", "The three devices that keep a registered delivery safe to the end."), ('TCP가 쓰는 세부 장치예요. → <a href="tcpcontrol-ko.html">세 가지 안전장치</a>', "The fine-grained machinery TCP uses. → <a href=\"tcpcontrol-en.html\">the three safety devices</a>")),
         ("체크섬", "Checksum", ("봉투 겉면에 찍는 확인 도장.", "The confirming stamp on the envelope's outside."), ("훼손 여부를 간단히 검사해요.", "A quick check for whether the contents got damaged.")),

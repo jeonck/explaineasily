@@ -33,7 +33,7 @@ P4 = svg(320, sky(320, ground=False)
          + shelfzone(580, 60, 70, 60, 0.6, n=2) + box(660, 80, 0.6, twin=True)
          + label(620, 145, "⟦RAID 10|RAID 10⟧", 11, "var(--ink)", weight=700)
          + label(620, 160, "⟦나누고 겹치고 둘다|both split and doubled⟧", 10, "var(--muted)")
-         + label(380, 220, "⟦레벨마다 속도·안전·용량을 어떻게 맞바꾸는지가 시험 포인트예요|the exam point is how each level trades speed, safety, and capacity⟧", 12, "var(--ink)")
+         + label(380, 220, "⟦레벨마다 속도·안전·용량을 어떻게 맞바꾸는지가 핵심이에요|the key point is how each level trades speed, safety, and capacity⟧", 12, "var(--ink)")
          + label(380, 250, "⟦RAID 1·5·10은 한 칸이 고장나도 남은 선반과 여분 선반(핫스페어)으로 복구해요|on RAID 1, 5, and 10, surviving shelves and a spare (hot spare) rebuild a failed slot⟧", 11, "var(--muted)"))
 
 # 5. RAID는 백업이 아니에요

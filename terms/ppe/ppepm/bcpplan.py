@@ -22,7 +22,7 @@ P3 = svg(340, sky(340)
          + person(150, 220, s=0.85, face=SMILE, **DIRECTOR)
          + '<g transform="translate(600,190)"><rect x="-14" y="-20" width="28" height="44" rx="4" fill="#1B2A44"/><path d="M4 -14 l-10 16 h8 l-4 14 l12 -18 h-8 z" fill="#E9B44C"/></g>'
          + label(380, 30, "⟦BCP = 비상시에도 핵심 공연을 이어가도록 미리 짜둔 계획|BCP = a plan made in advance to keep the core show going, even in an emergency⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦정전이 나도, 미리 골라둔 핵심 공연은 멈추지 않아요|even if the power goes out, the chosen core show doesn't stop⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦정전이 나도, 미리 골라둔 핵심 공연은 정한 시간 안에 이어가요|in a blackout, the core show resumes within the set time⟧", 12, "var(--muted)"))
 
 CORE_I = icon('<rect x="28" y="8" width="4" height="48" fill="#5A3B22"/><path d="M32 10 h22 l-7 9 l7 9 h-22 z" fill="var(--good)"/>')
 ALT_I = icon('<rect x="18" y="14" width="28" height="36" rx="4" fill="var(--accent)"/><path d="M34 22 l-8 12 h6 l-4 10 l10 -14 h-6 z" fill="#FFF8E7"/>')
@@ -32,8 +32,8 @@ DRILL_I = icon('<rect x="10" y="10" width="44" height="44" rx="6" fill="#FFF8E7"
 # 4. BCP vs DRP 비교
 P4 = svg(320, sky(320, ground=False)
          + checklist(60, 30, 300, 250, "⟦BCP vs DRP|BCP vs DRP⟧",
-                     ("⟦BCP — 사업(공연) 전체를 지속해요|BCP — keeps the whole business going⟧",
-                      "⟦DRP — 무너진 시스템을 복구해요|DRP — recovers the broken system⟧",
+                     ("⟦BCP — 핵심 사업(공연)을 이어가요|BCP — keeps the core business going⟧",
+                      "⟦DRP — 무너진 IT 시스템을 복구해요|DRP — recovers the broken IT system⟧",
                       "⟦RTO — 목표 복구 시간을 정해요|RTO — sets a target recovery time⟧",
                       "⟦DRP는 BCP 안의 한 부분이에요|DRP sits inside BCP as one part⟧"), 1.0)
          + person(560, 170, s=0.8, face=EYES, **DIRECTOR)
@@ -44,12 +44,12 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="3
          + checklist(70, 110, 240, 110, "⟦BCP 문서|BCP DOC⟧", ("⟦서랍 속에 잠들어 있어요|sitting asleep in a drawer⟧",), 0.9)
          + label(190, 250, "⟦BCP 문서를 서랍에 넣어두기만 하면 소용없어요|a BCP left in a drawer is useless⟧", 11, "var(--ink)")
          + person(520, 150, s=0.75, face=SMILE, **DIRECTOR) + person(620, 150, s=0.75, face=SMILE, **PLANNER)
-         + label(570, 250, "⟦모의훈련을 해봐야 계획이 실제로 작동해요|only drills make the plan actually work⟧", 11, "var(--ink)")
+         + label(570, 250, "⟦모의훈련을 해봐야 계획이 작동하는지 알아요|only drills show whether the plan works⟧", 11, "var(--ink)")
          + label(380, 282, "⟦계획은 서랍에 넣어두는 게 아니라, 모의훈련으로 실제 쓸 수 있는지 계속 확인하는 거예요|a plan isn't meant for the drawer — regular drills keep checking that it really works⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "bcpplan", "order": 6,
-    "title": ("정전에도 멈추지 않는 투어", "The Tour That Doesn't Stop for a Blackout"),
+    "title": ("정전에도 이어가는 투어", "The Tour That Carries On Through a Blackout"),
     "h1": ("<em>BCP(업무 연속성 계획)</em>이 뭐예요?", "What is <em>BCP (Business Continuity Plan)</em>?"),
     "sub": ("BCP를, 공연장에 정전이 나도 핵심 공연만은 이어가도록 미리 짜둔 계획 이야기로 풀어봤어요.",
             "BCP, told as a story about a plan made in advance to keep the core show going even when the venue loses power."),
@@ -62,15 +62,15 @@ PAGE = {
          "small": ("정전이 난 순간엔 무엇부터 되살려야 할지조차 몰라요.", "When the power dies, nobody even knows what to restore first.")},
         {"svg": P3, "hero": True, "alt": ('무대는 비상 전원으로 계속 불이 켜져 있고 감독관이 웃으며 지켜봄', 'The stage stays lit on backup power while the director watches, smiling'),
          "caption": ("BCP는 비상시에도 핵심 공연을 이어가도록 미리 짜둔 계획이에요.", "BCP is a plan made in advance to keep the core show going, even in an emergency."),
-         "small": ("정전이 나도, 미리 골라둔 핵심 공연은 멈추지 않아요.", "Even if the power goes out, the chosen core show doesn't stop."),
+         "small": ("정전이 나도, 미리 골라둔 핵심 공연은 정한 시간 안에 이어가요.", "Even if the power goes out, the chosen core show resumes within the set time."),
          "tricks": (4, [
              (CORE_I, ("핵심업무 식별하기", "Identify the core"), ("어떤 공연을 꼭 살릴지 골라요", "decide which show absolutely must keep running"), "calm"),
              (ALT_I, ("대체 수단 준비하기", "Prepare an alternative"), ("비상 발전기 같은 백업이요", "a backup, like a standby generator")),
-             (RTO_I, ("목표 복구시간 정하기", "Set a target recovery time"), ("RTO — 핵심 공연을 몇 분 안에 되살릴지 정해요", "RTO — how fast the core show must be back"), "warm"),
+             (RTO_I, ("목표 복구시간 정하기", "Set a target recovery time"), ("RTO — 핵심 공연을 얼마 만에 되살릴지 정해요", "RTO — how fast the core show must be back"), "warm"),
              (DRILL_I, ("모의훈련 하기", "Run drills"), ("계획대로 직접 해봐야 작동하는지 알아요", "only practicing the plan proves it works")),
          ])},
         {"svg": P4, "alt": ('BCP와 DRP를 비교하는 체크리스트', 'A checklist comparing BCP and DRP'),
-         "caption": ("BCP는 사업 전체를 이어가는 계획, DRP는 무너진 시스템을 되살리는 계획이에요.", "BCP keeps the whole business going; DRP brings the broken system back."),
+         "caption": ("BCP는 핵심 사업을 이어가는 계획, DRP는 무너진 IT 시스템을 되살리는 계획이에요.", "BCP keeps the core business going; DRP brings the broken IT system back."),
          "small": ("시스템 복구(DRP)는 사업 지속(BCP)의 한 조각이에요.", "System recovery (DRP) is one piece of keeping the business going (BCP).")},
         {"svg": P5, "alt": ('왼쪽: BCP 문서가 서랍 속에 잠들어 있음. 오른쪽: 감독관과 기획자가 모의훈련을 함', 'Left: the BCP document sits asleep in a drawer. Right: the director and planner run a drill'),
          "caption": ("BCP 문서를 서랍에 넣어두기만 하면 소용없어요.", "A BCP left in a drawer is useless."),
@@ -85,9 +85,9 @@ PAGE = {
         ("대체 수단", "Alternative Resource", ("비상 발전기 같은 백업.", "A backup, like a standby generator."), ("핵심업무를 이어가게 해줘요.", "Keeps the core operation running.")),
         ("RTO", "Recovery Time Objective", ("목표로 삼는 복구 시간.", "The target time to be back up."), ("짧을수록 비용이 더 들어요.", "Shorter targets cost more to achieve.")),
         ("모의훈련", "BCP Drill", ("실제로 해보는 연습.", "Actually practicing the plan."), ("훈련 안 한 계획은 서랍 속 종이예요.", "An untested plan is just paper in a drawer.")),
-        ("DRP", "DRP", ("무너진 시스템을 복구하는 계획.", "The plan for recovering a broken system."), ('다른 페이지(성 이야기)에서 자세히 다뤄요. → <a href="drp-ko.html">성이 불타도 다음 날 장사하는 법</a>', 'Covered in depth on another page (the castle story). → <a href="drp-en.html">how to open the market the morning after the fire</a>')),
+        ("DRP", "DRP", ("무너진 IT 시스템을 복구하는 계획.", "The plan for recovering a broken IT system."), ('다른 페이지(성 이야기)에서 자세히 다뤄요. → <a href="drp-ko.html">성이 불타도 다음 날 장사하는 법</a>', 'Covered in depth on another page (the castle story). → <a href="drp-en.html">how to open the market the morning after the fire</a>')),
         ("프로젝트 위험관리", "Project Risk Mgmt", ("우산처럼 돌발 상황에 대비하는 일.", "Preparing for surprises, like carrying an umbrella."), ('BCP는 그중 가장 큰 위험에 대한 대비예요. → <a href="projrisk-ko.html">비가 안 오는 날에도 챙기는 우산</a>', 'BCP is the preparation for the biggest risks among them. → <a href="projrisk-en.html">the umbrella you carry even on a dry day</a>')),
-        ("운영 성과관리", "Ops Performance Mgmt", ("공연 끝난 뒤 시스템이 잘 굴러가는지 보는 일.", "Watching whether systems keep running well after the show."), ('BCP 발동 여부도 운영 지표로 기록돼요. → <a href="opsperf-ko.html">공연 끝난 뒤의 운영실</a>', 'Whether BCP had to trigger is tracked as an ops metric too. → <a href="opsperf-en.html">the ops room after the show</a>')),
-        ("ESG 경영", "ESG Management", ("스태프 안전·처우까지 챙기는 경영.", "Management that also minds staff safety and treatment."), ('비상 계획엔 스태프와 관객의 안전도 들어가니 ESG의 \'S(사회)\' 축과도 맞닿아 있어요. → <a href="esgit-ko.html">환경·사회·투명성까지 챙기는 투어</a>', 'An emergency plan also covers staff and audience safety, so it touches the \'S\' (social) axis of ESG too. → <a href="esgit-en.html">the tour that minds environment, society, and transparency too</a>')),
+        ("운영 성과관리", "Ops Performance Mgmt", ("공연 끝난 뒤에도 시스템의 가동률·응답속도를 재는 일.", "Measuring system uptime and latency after the show too."), ('BCP 발동 여부도 운영 기록에 남아요. → <a href="opsperf-ko.html">공연 끝난 뒤의 운영실</a>', 'Whether BCP had to trigger is logged in ops records too. → <a href="opsperf-en.html">the ops room after the show</a>')),
+        ("ESG 경영", "ESG Management", ("스태프 안전·처우까지 챙기는 경영.", "Management that also minds staff safety and treatment."), ('비상 계획엔 스태프와 관객의 안전도 들어가니 ESG의 \'S(사회)\' 축과도 맞닿아 있어요. → <a href="esgit-ko.html">환경·사회·지배구조까지 챙기는 투어</a>', 'An emergency plan also covers staff and audience safety, so it touches the \'S\' (social) axis of ESG too. → <a href="esgit-en.html">the tour that minds environment, society, and governance too</a>')),
     ],
 }

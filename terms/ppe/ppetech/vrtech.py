@@ -56,7 +56,7 @@ P4 = svg(360, sky(360, ground=False)
 # 5. 한계: 멀미, 피로, 비싼 장비
 P5 = svg(300, '<rect width="380" height="300" fill="var(--bad-soft)"/><rect x="380" width="380" height="300" fill="var(--accent-soft)"/>'
          + personvr(190, 105, 1.0, face=SWEAT + EYES)
-         + label(190, 240, "⟦헤드셋 화면 반응이 늦으면 멀미가 나요|a delayed headset response causes dizziness⟧", 11, "var(--ink)")
+         + label(190, 240, "⟦헤드셋 화면 반응이 늦으면 멀미가 날 수 있어요|a delayed headset response can cause dizziness⟧", 11, "var(--ink)")
          + headset(570, 150, 1.5)
          + label(570, 240, "⟦오래 쓰면 피곤하고, 장비도 비싸서 널리 쓰기 어려워요|long wear is tiring, and pricey gear slows adoption⟧", 11, "var(--ink)")
          + label(380, 282, "⟦VR은 메타버스를 체험하는 한 가지 방법일 뿐이에요|VR is just one way to experience the metaverse⟧", 12, "var(--ink)", cls="d"))
@@ -87,20 +87,20 @@ PAGE = {
          "caption": ("VR·AR·MR은 현실과 가상을 섞는 정도가 달라요.", "VR, AR, and MR differ in how much they mix reality and virtual content."),
          "small": ("VR은 완전 가상, AR은 현실 위에 가상을 겹치고, MR은 현실과 가상이 서로 반응해요.", "VR is fully virtual, AR overlays virtual content onto reality, and MR lets reality and virtual content react to each other.")},
         {"svg": P5, "alt": ("왼쪽: 관람객이 멀미를 느낌. 오른쪽: 커다란 헤드셋과 피로·비용 문제", "Left: a visitor feels dizzy. Right: a bulky headset with fatigue and cost problems"),
-         "caption": ("헤드셋 화면 반응이 늦으면 멀미가 나고, 오래 쓰면 피곤해요.", "A delayed headset response causes dizziness, and long wear tires you out."),
+         "caption": ("헤드셋 화면 반응이 늦으면 멀미가 날 수 있고, 오래 쓰면 피곤해요.", "A delayed headset response can cause dizziness, and long wear tires you out."),
          "small": ("VR은 메타버스를 체험하는 한 가지 방법일 뿐이에요.", "VR is just one way to experience the metaverse.")},
     ],
     "summary": (("<b>가상현실(VR)</b>은 헤드셋으로 눈앞 전체를 가상 세계로 바꿔, <b>그 안에 있는 것처럼 느끼게</b> 하는 기술이에요.",
                  "<b>Virtual reality (VR)</b> uses a headset to replace your whole field of view with a virtual world, making you <b>feel like you're inside it</b>."),
-                ("VR은 머리 장착형 디스플레이(HMD)로 사용자의 시야를 완전히 가상 콘텐츠로 대체하고, 머리·손 움직임을 추적해 실시간으로 반응시키는 기술이에요. 현실을 그대로 보여주며 가상 정보를 겹치는 AR, 현실과 가상이 서로 반응하는 MR과 구분돼요. 지연시간이 생기면 멀미(사이버 멀미)가 나타날 수 있고, 장시간 착용 피로와 장비 비용은 대중화의 걸림돌이에요.",
-                 "VR uses a head-mounted display (HMD) to fully replace the user's view with virtual content, tracking head and hand movement to react in real time. It's distinct from AR, which overlays virtual information on an unobstructed view of reality, and MR, where reality and virtual content react to each other. Latency can trigger motion sickness ('cybersickness'), and extended-wear fatigue plus equipment cost remain barriers to wider adoption.")),
+                ("VR은 머리 장착형 디스플레이(HMD)로 사용자의 시야를 완전히 가상 콘텐츠로 대체하고, 머리·손 움직임을 추적해 실시간으로 반응시키는 기술이에요. 현실을 그대로 보여주며 가상 정보를 겹치는 AR, 현실과 가상이 서로 반응하는 MR과 구분돼요. 눈에 보이는 움직임과 몸이 느끼는 움직임이 어긋나면 사이버 멀미가 나타날 수 있는데 지연시간이 길면 더 심해져요. 장시간 착용 피로와 장비 비용은 대중화의 걸림돌이에요.",
+                 "VR uses a head-mounted display (HMD) to fully replace the user's view with virtual content, tracking head and hand movement to react in real time. It's distinct from AR, which overlays virtual information on an unobstructed view of reality, and MR, where reality and virtual content react to each other. A mismatch between what the eyes see and what the body feels can trigger motion sickness ('cybersickness'), and latency makes it worse. Extended-wear fatigue plus equipment cost remain barriers to wider adoption.")),
     "glossary": [
         ("가상현실(VR)", "Virtual Reality", ("눈앞 전체를 가상으로 바꾸는 헤드셋.", "A headset that replaces your whole view with virtual content."), ("시야 전체를 가상 세계로 덮어요.", "Covers your entire field of view.")),
         ("증강현실(AR)", "Augmented Reality", ("현실 위에 가상 정보를 겹치는 것.", "Overlaying virtual info onto reality."), ("현실은 그대로 보여요.", "Reality stays fully visible.")),
         ("혼합현실(MR)", "Mixed Reality", ("현실과 가상이 서로 반응하는 것.", "Reality and virtual content reacting to each other."), ("가상 물체를 만지듯 다룰 수 있어요.", "Lets you handle virtual objects as if touching them.")),
         ("메타버스", "Metaverse", ("아바타로 함께 머무는 가상 공간.", "The shared virtual space avatars gather in."), ('VR은 메타버스를 체험하는 한 방법이에요. → <a href="metaverse-ko.html">메타버스 부스</a>', "VR is one way to experience it. → <a href=\"metaverse-en.html\">the Metaverse booth</a>")),
         ("HMD(머리 장착형 디스플레이)", "HMD", ("머리에 쓰는 화면 장치, VR에선 눈앞을 완전히 가려요.", "A screen worn on the head; for VR it fully covers your view."), ("VR 체험의 핵심 장비예요.", "The core piece of VR hardware.")),
-        ("사이버 멀미", "Cybersickness / VR Sickness", ("지연 때문에 생기는 어지럼증.", "Dizziness caused by response delay."), ("추적·반응이 느릴수록 심해져요.", "Worse the slower the tracking and response.")),
+        ("사이버 멀미", "Cybersickness / VR Sickness", ("눈과 몸이 느끼는 움직임이 어긋나 생기는 어지럼증.", "Dizziness from a mismatch between what the eyes see and the body feels."), ("추적·반응이 느릴수록 심해져요.", "Worse the slower the tracking and response.")),
         ("헤드 트래킹", "Head Tracking", ("고개 방향을 읽어 화면을 바꾸는 기술.", "Reading head direction to change the view."), ("몰입감을 만드는 핵심 기술이에요.", "The key technology behind immersion.")),
         ("디지털 트윈", "Digital Twin", ("현실 기계를 그대로 복제한 쌍둥이.", "A twin that copies a real machine exactly."), ('VR로 트윈 안을 직접 둘러볼 수도 있어요. → <a href="digitaltwin-ko.html">디지털 트윈 부스</a>', "VR can even let you walk around inside a twin. → <a href=\"digitaltwin-en.html\">the Digital Twin booth</a>")),
     ],

@@ -41,7 +41,7 @@ P4 = svg(320, sky(320, ground=False)
          + label(560, 76, "⟦반정규화|Denormalize⟧", 12, "var(--accent)", anchor="start", weight=800)
          + _row(110, "⟦중복 적지 않기|no duplicate writes⟧", "⟦자주 읽는 건 합쳐두기|pre-join frequent reads⟧")
          + _row(146, "⟦고치기 쉬움|easy to update⟧", "⟦조회가 빠름|faster to read⟧")
-         + _row(182, "⟦조인이 늘어남|more joins needed⟧", "⟦중복 위험 생김|risk of mismatch⟧")
+         + _row(182, "⟦조인이 늘어남|more joins needed⟧", "⟦값이 어긋날 위험|risk of mismatch⟧")
          + box(640, 240, 0.6) + box(690, 240, 0.6, color="#C9822B")
          + label(560, 280, "⟦표를 너무 잘게 나눠 조인이 많아지면 다시 합쳐요|if tables get so fine-grained that joins pile up, merge them back⟧", 11, "var(--muted)"))
 
@@ -68,7 +68,7 @@ PAGE = {
          "caption": ("정규화 = 같은 정보는 선반 한 칸에 한 번만 적어요.", "Normalization = write shared info on one shelf once."),
          "small": ("그래서 고객이 이사 가도 주소 칸 하나만 고치면 끝이에요.", "So when the customer moves, fixing that one address shelf is enough."),
          "tricks": (4, [
-             (NUM_I, ("한 칸에 값 하나만", "One value per shelf slot"), ("중복을 없애요", "removing duplicates"), "calm"),
+             (NUM_I, ("같은 정보는 한 칸에만", "Each fact in one slot only"), ("중복을 없애요", "removing duplicates"), "calm"),
              (TAG_I, ("번호표로 연결하기", "Link by tag"), ("전표가 선반을 가리켜요", "the receipt points to the shelf")),
              (SPLIT_I, ("더 잘게 나누기", "Split further"), ("표를 나누면 고칠 곳이 줄어요", "split tables leave fewer places to update"), "warm"),
              (MERGE_I, ("자주 같이 읽으면 다시 합치기", "Merge back if read together often"), ("조인이 줄어 조회가 빨라져요(반정규화)", "fewer joins, faster reads — denormalization")),

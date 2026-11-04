@@ -85,9 +85,9 @@ PAGE = {
         ("SLM", "SLM", ("티켓 내용을 계속 관리하는 일.", "Managing what's written on the ticket, continuously."), ("측정·보고·개선을 반복해요.", "Measure, report, improve — on repeat.")),
         ("KPI/지표", "KPI/Metric", ("재볼 수 있는 숫자로 적은 기준.", "The standard, written as a number you can measure."), ("기준이 모호하면 분쟁이 나요.", "A vague standard invites disputes.")),
         ("위약금/패널티", "Penalty", ("약속을 못 지켰을 때의 조치.", "What happens if the promise is broken."), ("환불이나 보상으로 적어둬요.", "Written in as a refund or compensation.")),
-        ("정기 리뷰", "Periodic Review", ("분기마다 티켓 내용을 다시 점검하는 일.", "Re-checking the ticket's terms every quarter."), ("상황이 바뀌면 조항도 바뀌어요.", "Terms change as circumstances change.")),
+        ("정기 리뷰", "Periodic Review", ("정해진 주기(예: 분기)마다 티켓 내용을 다시 점검하는 일.", "Re-checking the ticket's terms on a set cycle, such as quarterly."), ("상황이 바뀌면 조항도 바뀌어요.", "Terms change as circumstances change.")),
         ("기술적 SLA/SLO", "Technical SLA/SLO", ("실제로 가동률을 지켜내는 기술 목표.", "The technical target that actually keeps uptime up."), ('신뢰성 공학 관점은 다른 페이지에서 다뤄요. → <a href="sla-ko.html">기술적 신뢰성 SLA</a>', 'The reliability-engineering angle is covered on another page. → <a href="sla-en.html">the technical-reliability SLA</a>')),
         ("협상·계약", "Negotiation & Contract", ("출연 계약서로 조건을 조율하는 일.", "Tuning terms through the performance contract."), ('SLA 조항도 이 협상 과정에서 정해져요. → <a href="negotiation-ko.html">조건을 조율해 서명하기</a>', 'SLA terms get set during this same negotiation. → <a href="negotiation-en.html">tuning terms until both sign</a>')),
-        ("감리/PMO", "IS Audit/PMO", ("프로젝트 전체를 바깥에서 점검하는 역할.", "A role that checks the whole project from the outside."), ('감리는 SLA 준수 여부도 점검해요. → <a href="pmoaudit-ko.html">출간 전 마지막 검수관</a>', 'Audit also checks whether the SLA was kept. → <a href="pmoaudit-en.html">the last checker before publication</a>')),
+        ("감리/PMO", "IS Audit/PMO", ("프로젝트를 제3자 입장에서 점검(감리)하거나 관리를 돕는(PMO) 역할.", "Checks the project as a third party (audit) or supports its management (PMO)."), ('운영 단계 감리에서는 SLA 달성 여부도 볼 수 있어요. → <a href="pmoaudit-ko.html">출간 과정을 곁에서 살피는 검수관</a>', 'An operations-stage audit can also look at whether the SLA was met. → <a href="pmoaudit-en.html">the checker who watches the whole publishing run</a>')),
     ],
 }

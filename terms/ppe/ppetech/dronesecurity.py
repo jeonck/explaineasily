@@ -40,7 +40,7 @@ P3 = svg(340, sky(340)
 # 4. 네 가지 공격 경로 비교표
 P4 = svg(320, sky(320)
          + infoboard(60, 40, 320, 260, "⟦시연장 드론, 이렇게 뚫려요|HOW THE DEMO DRONE GETS HIT⟧",
-                     ("⟦재밍 — 신호를 방해해 드론을 추락시켜요|jamming — block the signal, the drone drops⟧",
+                     ("⟦재밍 — 신호를 방해해 조종을 끊어요|jamming — block the signal, cut off control⟧",
                       "⟦스푸핑 — 가짜 GPS로 드론 길을 속여요|spoofing — fake GPS, the drone strays⟧",
                       "⟦하이재킹 — 조종을 통째로 빼앗아요|hijacking — seize the controls entirely⟧",
                       "⟦도청 — 촬영 영상을 몰래 훔쳐봐요|eavesdropping — secretly watch the camera feed⟧"), 1.0)
@@ -72,7 +72,7 @@ PAGE = {
          "caption": ("드론 보안위협은 드론을 노리는 보이지 않는 공격들이에요.", "Drone security threats are unseen attacks that target a drone in the sky."),
          "small": ("공격자는 조종 신호·위치 정보·촬영 영상을 모두 노릴 수 있어요.", "Attackers can target the control signal, the location data, even the camera feed."),
          "tricks": (4, [
-             (SIGNAL_I, ("재밍", "Jamming"), ("조종 신호를 방해해 드론을 떨어뜨려요", "jams the control signal so the drone drops"), "warm"),
+             (SIGNAL_I, ("재밍", "Jamming"), ("조종 신호를 방해해 조종을 끊어요", "jams the control signal to cut off control"), "warm"),
              (LOCATION_I, ("스푸핑", "Spoofing"), ("가짜 GPS로 드론의 위치를 속여요", "fools the drone with fake GPS positions")),
              (DRONE_I, ("하이재킹", "Hijacking"), ("드론 조종을 통째로 뺏어요", "seizes the drone's controls entirely"), "warm"),
              (MASK2_I, ("도청", "Eavesdropping"), ("드론 촬영 영상을 몰래 훔쳐봐요", "secretly watches the drone's camera feed")),
@@ -90,12 +90,12 @@ PAGE = {
                  "Drone security threats refer to attacks — GPS spoofing, RF jamming, control-link hijacking, video eavesdropping — that exploit a drone's structural reliance on wireless communication. Countermeasures include encrypted links, anomaly detection, and fail-safe auto-return when the signal is lost.")),
     "glossary": [
         ("GPS 스푸핑", "GPS Spoofing", ("가짜 GPS 신호로 드론의 위치를 속이는 것.", "Faking GPS signals to lie to a drone about its location."), ("드론이 자기 위치를 잘못 믿게 만들어요.", "Tricks the drone into trusting the wrong position.")),
-        ("전파 재밍", "RF Jamming", ("강한 전파로 조종 신호를 눌러버리는 것.", "Drowning out the control signal with strong radio noise."), ("신호를 잃으면 드론이 추락하거나 멈춰요.", "Lose the signal and the drone falls or stalls.")),
+        ("전파 재밍", "RF Jamming", ("강한 전파로 조종 신호를 눌러버리는 것.", "Drowning out the control signal with strong radio noise."), ("신호를 잃은 드론은 설정에 따라 자동 복귀하거나, 제자리에 멈추거나, 추락해요.", "A drone that loses signal returns home, hovers, or falls, depending on its settings.")),
         ("하이재킹", "Hijacking", ("드론 조종을 통째로 빼앗는 것.", "Seizing a drone's controls entirely."), ("가장 직접적인 드론 탈취예요.", "The most direct form of taking over a drone.")),
         ("IoT 보안", "IoT Security", ("드론을 포함한 무선 기기를 지키는 보안.", "Security for wireless devices, drones included."), ('비슷한 위협을 더 넓게 다루는 세계가 있어요. → <a href="iotsec-ko.html">말 못 하는 기계들</a>', 'A broader take on the same kind of threat lives in another world. → <a href="iotsec-en.html">the machines that cannot speak</a>')),
         ("DDoS", "DDoS", ("한꺼번에 몰려와 먹통으로 만드는 공격.", "An attack that floods a target until it chokes."), ('조종 신호 대신 서버를 노리는 사촌 격 공격이에요. → <a href="ddos-ko.html">DDoS</a>', 'A cousin attack that floods a server instead of a control link. → <a href="ddos-en.html">DDoS</a>')),
         ("자율주행", "Autonomous Driving", ("센서로 보고 스스로 달리는 차.", "A car that senses its surroundings and drives itself."), ('드론과 달리 무선 신호보다 센서에 더 기대는 차를 다루는 부스예요. → <a href="autodrive-ko.html">자율주행</a>', 'A neighboring booth: unlike a drone, the car leans more on sensors than on radio signal. → <a href="autodrive-en.html">Autonomous Driving</a>')),
-        ("CPS", "CPS", ("화면과 실제 기계가 맞물려 움직이는 것.", "Screen and real machine moving in lockstep."), ('드론도 이 틀 안의 한 예시예요. → <a href="cps-ko.html">사이버물리시스템(CPS)</a>', 'A drone is one example living inside this bigger frame. → <a href="cps-en.html">Cyber-Physical Systems</a>')),
+        ("CPS", "CPS", ("컴퓨터와 실제 기계가 맞물려 움직이는 것.", "Computer and real machine moving in lockstep."), ('드론도 이 틀 안의 한 예시예요. → <a href="cps-ko.html">사이버물리시스템(CPS)</a>', 'A drone is one example living inside this bigger frame. → <a href="cps-en.html">Cyber-Physical Systems</a>')),
         ("정량적 위험분석", "Quantitative Risk Analysis", ("위협을 숫자로 매기는 방법.", "A way to score a threat with numbers."), ('이 드론 위협들의 크기도 이렇게 재요. → <a href="quantrisk-ko.html">정량적 위험분석 기법</a>', 'These drone threats get sized up the same way. → <a href="quantrisk-en.html">Quantitative Risk Analysis</a>')),
     ],
 }

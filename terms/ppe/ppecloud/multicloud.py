@@ -41,7 +41,7 @@ P5 = svg(320, '<rect width="380" height="320" fill="var(--accent-soft)"/><rect x
          + person(190, 130, s=0.75, face=FROWN + SWEAT, **TENANT)
          + label(190, 260, "⟦건물마다 규칙·용어가 달라 배우기 힘들어요|different rules and terms per building — hard to learn them all⟧", 11, "var(--ink)")
          + person(570, 130, s=0.75, face=EYES, **TENANT)
-         + label(570, 260, "⟦관리 인력과 비용이 건물 수만큼 늘어나요|staff and cost grow with every extra building⟧", 11, "var(--ink)"))
+         + label(570, 260, "⟦건물이 늘수록 관리 인력과 비용도 늘어나요|staff and cost grow with every extra building⟧", 11, "var(--ink)"))
 
 RISK_I = icon('<circle cx="20" cy="20" r="12" fill="var(--good-soft)" stroke="var(--good)" stroke-width="3"/><circle cx="44" cy="20" r="12" fill="var(--good-soft)" stroke="var(--good)" stroke-width="3"/><path d="M20 20 L44 20" stroke="var(--good)" stroke-width="2" stroke-dasharray="3 3"/>')
 PRICE_I = icon('<circle cx="32" cy="32" r="22" fill="none" stroke="var(--accent)" stroke-width="4"/><text x="32" y="40" font-size="22" font-weight="800" text-anchor="middle" fill="var(--accent)">₩</text>')
@@ -71,11 +71,11 @@ PAGE = {
              (COMPLEX_I, ("대신 배우고 챙길 규칙이 늘어나요", "But there are more rules to learn and follow"), ("건물마다 규칙이 다 달라서요", "because every building's rules differ")),
          ])},
         {"svg": P4, "alt": ("여러 건물에 나누는 이유를 재해대비, 가격비교, 지역규제, 강점 활용 네 가지로 정리한 안내판", "A board listing four reasons to split across buildings: disaster readiness, price comparison, local rules, best-of-breed gear"),
-         "caption": ("여러 건물에 나누는 데는 네 가지 이유가 있어요.", "There are four reasons to split across buildings."),
+         "caption": ("여러 건물에 나누는 대표적인 이유는 네 가지예요.", "Here are four common reasons to split across buildings."),
          "small": ("회사마다 어느 이유를 더 중요하게 보는지가 달라요.", "Which reason matters most differs company to company.")},
-        {"svg": P5, "alt": ("왼쪽: 건물마다 규칙과 용어가 달라 배우기 힘든 입주사. 오른쪽: 관리 인력과 비용이 건물 수만큼 늘어난다고 말하는 입주사", "Left: a tenant struggling to learn different rules and terms per building. Right: a tenant noting staff and cost grow with every extra building"),
+        {"svg": P5, "alt": ("왼쪽: 건물마다 규칙과 용어가 달라 배우기 힘든 입주사. 오른쪽: 건물이 늘수록 관리 인력과 비용도 늘어난다고 말하는 입주사", "Left: a tenant struggling to learn different rules and terms per building. Right: a tenant noting staff and cost grow with every extra building"),
          "caption": ("건물마다 규칙·용어가 달라, 회사가 건물별로 따로 배우고 챙겨야 해요.", "Each building has its own rules and terms, so the company must learn and follow each set."),
-         "small": ("관리 인력과 비용이 이중, 삼중으로 늘어나요.", "Staff and cost multiply with every extra building.")},
+         "small": ("건물이 늘수록 관리 인력과 비용도 함께 늘어나요.", "Staff and cost grow with every extra building.")},
     ],
     "summary": (("<b>멀티클라우드</b> = 한 회사가 <b>여러 클라우드 건물에 동시에 입주</b>해서, <b>한 곳에만 의존하는 위험을 줄이는</b> 전략.",
                  "<b>Multi-cloud</b> is a strategy where one company <b>moves into several cloud \"buildings\" at once</b>, to <b>reduce the risk of depending on just one</b>."),
@@ -84,10 +84,10 @@ PAGE = {
     "glossary": [
         ("멀티클라우드", "Multi-cloud", ("여러 건물에 동시에 입주하는 전략.", "The strategy of moving into several buildings at once."), ("한 곳에 의존하는 위험을 줄여줘요.", "Reduces the risk of depending on just one.")),
         ("벤더 락인", "Vendor lock-in", ("한 건물 방식에만 너무 맞춰져서 못 옮기는 상태.", "Being fit so tightly to one building's way that you can't move."), ("멀티클라우드가 줄이려는 바로 그 위험이에요.", "Exactly the risk multi-cloud tries to reduce.")),
-        ("재해 복구", "Disaster recovery", ("한 건물이 멈춰도 다른 건물이 받쳐주는 것.", "Another building covering when one goes down."), ("여러 건물에 나누는 가장 큰 이유 중 하나예요.", "One of the biggest reasons to split across buildings.")),
+        ("재해 복구", "Disaster recovery", ("한 건물이 멈춰도 다른 건물이 받쳐주는 것.", "Another building covering when one goes down."), ("다른 건물에 미리 복제해 둬야 받쳐줄 수 있고, 여러 건물에 나누는 이유 중 하나예요.", "The other building can only cover if data is copied there in advance; this is one reason to split across buildings.")),
         ("데이터 주권/지역 규제", "Data sovereignty / regional rules", ("어떤 데이터는 특정 지역 건물에만 둬야 한다는 규칙.", "The rule that some data must stay in a building in a specific region."), ("공공부문에서 특히 중요해요.", "Especially important in the public sector.")),
         ("하이브리드클라우드", "Hybrid cloud", ("내 건물과 공유 건물을 함께 쓰는 것.", "Using your own building together with a shared one."), ("멀티클라우드와 자주 혼동되지만 기준이 달라요 — 하이브리드는 직접 지은 건물을 포함해요.", "Often confused with multi-cloud, but the test differs — hybrid includes your own building.")),
-        ("공공부문 클라우드 활용", "Public-sector cloud adoption", ("검증된 건물에만 등급 맞춰 입주하는 규정.", "The rule: move into a certified building, at the right grade."), ('공공기관도 이중화를 위해 멀티클라우드를 쓰기도 해요. → <a href="govcloud-ko.html">검증된 건물에만 입주</a>', 'Public agencies sometimes use multi-cloud for redundancy too. → <a href="govcloud-en.html">only into a certified building</a>')),
+        ("공공부문 클라우드 활용", "Public-sector cloud adoption", ("검증된 건물에만 등급 맞춰 입주하는 규정.", "The rule: move into a certified building, at the right grade."), ('공공기관도 비용 절감이나 재해 대비 등을 위해 멀티클라우드를 쓰기도 해요. → <a href="govcloud-ko.html">검증된 건물에만 입주</a>', 'Public agencies sometimes use multi-cloud too, for reasons like saving cost or preparing for disaster. → <a href="govcloud-en.html">only into a certified building</a>')),
         ("클라우드 서비스 모델", "Cloud service model", ("뼈대만/인테리어까지/완제품.", "Bare shell / interior done / move-in ready."), ('어느 건물이든 이 세 모델 중 하나로 빌려요. → <a href="cloudmodel-ko.html">셋 중 골라 빌리기</a>', 'Any building is rented as one of these three models. → <a href="cloudmodel-en.html">pick one to rent</a>')),
         ("API", "API", ("건물마다 다른 '입주 신청 방식'.", "Each building's own \"how to apply for a lease\" process."), ("프로그램이 건물에 일을 시키는 방법인데, 건물마다 달라서 따로 배워야 해요.", "How programs give a building instructions — it differs by building, so each must be learned separately.")),
     ],

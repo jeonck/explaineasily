@@ -7,7 +7,7 @@ P1 = svg(300, sky(300)
          + person(440, 170, s=0.85, face=EYES, **SORTER)
          + envelope(360, 230, 0.6) + '<circle cx="330" cy="150" r="14" fill="var(--accent)"/>' + label(330, 154, "⟦땡!|DING!⟧", 10, "#fff", cls="d")
          + label(380, 30, "⟦소포가 도착할 때마다 벨이 울려 직원이 하던 일을 멈춰요|a bell rings on every arrival, pulling the clerk off whatever they were doing⟧", 13, "var(--ink)", cls="d")
-         + label(380, 280, "⟦벨이 소포마다 즉시 알려주니 놓치는 소포가 없어요|the bell flags every arrival right away, so nothing gets missed⟧", 12, "var(--muted)"))
+         + label(380, 280, "⟦벨이 소포마다 즉시 알려주니 직원이 계속 확인하러 다니지 않아도 돼요|the bell flags every arrival, so the clerk needn't keep walking over to check⟧", 12, "var(--muted)"))
 
 # 2. 트럭이 너무 빨라지면 벨이 쉴 새 없이 울려요
 P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
@@ -15,7 +15,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + person(460, 170, s=0.85, face=SWEAT + EYES, **SORTER)
          + '<circle cx="400" cy="140" r="12" fill="var(--bad)"/><circle cx="420" cy="150" r="12" fill="var(--bad)"/><circle cx="440" cy="140" r="12" fill="var(--bad)"/>'
          + label(460, 283, "⟦벨이 쉴 새 없이 울려 직원이 다른 일을 전혀 못 해요|the bell never stops — the clerk has no time for anything else⟧", 11, "var(--ink)")
-         + label(380, 30, "⟦초고속 트럭이 초당 수천 통을 배달하면 벨이 폭주해요|an ultra-fast truck delivering thousands a second floods the bell⟧", 13, "var(--ink)", cls="d"))
+         + label(380, 30, "⟦초고속 트럭이 소포를 쉴 새 없이 쏟아내면 벨이 폭주해요|an ultra-fast truck pouring out parcels nonstop floods the bell⟧", 13, "var(--ink)", cls="d"))
 
 # 3. 네트워크 인터럽트 = 도착 벨, 너무 잦으면 모아서 울림 (hero)
 P3 = svg(340, sky(340)
@@ -59,10 +59,10 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("소포가 도착하자 벨이 울리고 분류소 직원이 하던 일을 멈춤", "A bell rings as a parcel arrives, and the sorting clerk stops what they were doing"),
          "caption": ("소포가 도착할 때마다 벨이 울려요.", "A bell rings every time a parcel arrives."),
-         "small": ("벨이 소포마다 즉시 알려주니 놓치는 소포가 없어요.", "The bell flags every arrival right away, so nothing gets missed.")},
+         "small": ("벨이 소포마다 즉시 알려주니 직원이 계속 확인하러 다니지 않아도 돼요.", "The bell flags every arrival, so the clerk needn't keep walking over to check.")},
         {"svg": P2, "alt": ("초고속 트럭이 쏟아내는 소포에 벨이 연달아 세 번 울려 직원이 진땀을 흘림", "An ultra-fast truck unloads parcels so fast the bell rings three times in a row, and the clerk sweats"),
          "caption": ("트럭이 너무 빨라지면 벨이 쉴 새 없이 울려요.", "A faster truck makes the bell ring nonstop."),
-         "small": ("초당 수천 통을 배달하면 벨이 폭주해요.", "Delivering thousands a second floods the bell.")},
+         "small": ("소포가 쉴 새 없이 쏟아지면 벨이 폭주해 직원이 다른 일을 못 해요.", "When parcels pour in nonstop, the bell floods and the clerk can't do anything else.")},
         {"svg": P3, "hero": True, "alt": ("소포가 도착하자 벨이 울리고, 소포 여러 통이 모여 있는 모습", "A bell rings on arrival, and several parcels are shown gathered together"),
          "caption": ("벨은 소포 도착을 즉시 알리고, 너무 잦으면 소포를 모아 한 번만 울려요.", "The bell announces each arrival right away — or, when that's too frequent, rings once for several parcels."),
          "small": ("벨이 너무 자주 울리면 직원 일을 방해하니, 소포를 모아 한 번만 울리기도 해요.", "A bell ringing too often disrupts the clerk, so several parcels can share one ring."),
@@ -81,8 +81,8 @@ PAGE = {
     ],
     "summary": (("네트워크 I/O의 <b>인터럽트</b>는 <b>소포(패킷)가 도착했다고 즉시 알리는 벨소리</b>이고, 너무 잦으면 <b>모아서 한 번에 울리기(코얼레싱)</b>도 해요.",
                  "A network I/O <b>interrupt</b> is <b>the bell that announces a parcel (packet) has arrived right away</b> — and when it rings too often, several are <b>coalesced into one ring</b> instead."),
-                ("네트워크 카드(NIC)는 패킷이 도착할 때마다 CPU에 인터럽트를 걸어 즉시 처리하게 해요. 트래픽이 아주 많아지면 인터럽트가 너무 잦아져 CPU가 다른 일을 못 하는 '인터럽트 폭풍'이 생기는데, 이를 막기 위해 패킷 여러 개를 모았다가 인터럽트를 한 번만 거는 '인터럽트 코얼레싱(interrupt coalescing)'을 써요. 지연은 조금 늘지만 전체 처리량(throughput)은 좋아져요. CPU가 실행 중인 프로그램을 멈추고 신호를 처리하는 인터럽트 일반 원리 위에서, 네트워크 I/O에 특화된 이야기예요.",
-                 "A network interface card (NIC) raises a CPU interrupt on every packet arrival so it gets handled right away. Under very heavy traffic, interrupts fire so often the CPU can't do anything else — an 'interrupt storm.' To prevent this, interrupt coalescing batches several packets and raises just one interrupt for the group, trading a bit of latency for better overall throughput. It builds on the general CPU interrupt that pauses a running program, applied specifically to network I/O.")),
+                ("네트워크 카드(NIC)는 패킷이 도착할 때마다 CPU에 인터럽트를 걸어 즉시 처리하게 해요. 트래픽이 아주 많아지면 인터럽트가 너무 잦아져 CPU가 다른 일을 못 하는 '인터럽트 폭풍'이 생기는데, 이를 막기 위해 패킷 여러 개를 모았다가 인터럽트를 한 번만 거는 '인터럽트 코얼레싱(interrupt coalescing)'을 써요. 지연은 조금 늘지만 전체 처리량(throughput)은 좋아져요. 리눅스 NAPI처럼 부하가 큰 동안 폴링으로 바꾸는 방식도 있어요. CPU가 실행 중인 프로그램을 멈추고 신호를 처리하는 인터럽트 일반 원리 위에서, 네트워크 I/O에 특화된 이야기예요.",
+                 "A network interface card (NIC) raises a CPU interrupt on every packet arrival so it gets handled right away. Under very heavy traffic, interrupts fire so often the CPU can't do anything else — an 'interrupt storm.' To prevent this, interrupt coalescing batches several packets and raises just one interrupt for the group, trading a bit of latency for better overall throughput. Linux's NAPI goes further, switching to polling while traffic stays heavy. It builds on the general CPU interrupt that pauses a running program, applied specifically to network I/O.")),
     "glossary": [
         ("네트워크 인터럽트", "Network interrupt", ("소포 도착을 즉시 알리는 벨소리.", "The bell that announces a parcel's arrival right away."), ("NIC가 CPU에 거는 신호예요.", "A signal the NIC raises to the CPU.")),
         ("인터럽트 폭풍", "Interrupt storm", ("벨이 쉴 새 없이 울려 업무가 마비되는 것.", "The bell ringing nonstop until all other work stalls."), ("트래픽이 아주 많을 때 생겨요.", "Happens under very heavy traffic.")),

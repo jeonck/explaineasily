@@ -82,7 +82,7 @@ PAGE = {
     "panels": [
         {"svg": P1, "alt": ("작가가 2장을 고쳤는데 서로 얽힌 5장과 7장까지 다시 써야 해 진땀을 흘림", "The author fixes chapter 2 but, because it's tangled with chapters 5 and 7, has to rewrite those too, breaking a sweat"),
          "caption": ("2장을 고쳤는데 5장, 7장까지 다 다시 써야 해요.", "Fixing chapter 2 forces a rewrite of chapters 5 and 7 too."),
-         "small": ("챕터끼리 서로 너무 얽혀 있으면 생기는 일이에요.", "This happens when chapters are too entangled with each other.")},
+         "small": ("한 챕터를 고칠 때 다른 챕터까지 손대야 하는 건, 챕터끼리 너무 얽혀서예요.", "Fixing one chapter forces edits in others when chapters are too entangled.")},
         {"svg": P2, "alt": ("한 챕터 안에 요리법, 역사, 시가 전혀 상관없이 뒤섞여 있음", "One chapter mixes a recipe, a history lesson, and a poem with no real connection"),
          "caption": ("한 챕터 안에 서로 안 맞는 얘기가 뒤섞여 있어요.", "Unrelated topics are mixed together inside one chapter."),
          "small": ("독자는 이 챕터가 뭘 말하려는 건지 헷갈려요.", "Readers can't tell what the chapter is even about.")},
@@ -114,6 +114,6 @@ PAGE = {
         ("정보 은닉", "Information Hiding", ("필요한 것만 보여주고 나머지는 감추는 원칙.", "The principle of showing only what's needed and hiding the rest."), ("결합도를 낮추는 실제 기법이에요.", "A concrete technique for lowering coupling.")),
         ("제품계열 방법론", "Product Line Engineering", ("공통 자산이 잘 나뉘어야 재사용이 쉬워요.", "Core assets need to be split well for reuse to work."), ('결합도·응집도는 핵심 자산 설계에 바로 쓰여요. → <a href="productline-ko.html">같은 틀, 다른 표지</a>', 'Coupling and cohesion are used directly when designing core assets. → <a href="productline-en.html">same template, different covers</a>')),
         ("좋은 소프트웨어의 조건", "Conditions of Good Software", ("결합도·응집도는 유지보수성과 가장 직결돼요.", "Coupling and cohesion tie most directly to maintainability."), ('결합도·응집도는 그 조건 중 하나인 유지보수성을 떠받쳐요. → <a href="goodsw-ko.html">좋은 책의 조건</a>', 'They underpin maintainability, one of those conditions. → <a href="goodsw-en.html">what makes a good book</a>')),
-        ("디자인 패턴", "Design Pattern", ("저결합·고응집을 실현하는 정해진 해법.", "A ready-made solution for achieving low coupling and high cohesion."), ("스타일가이드에 자주 올라오는 항목이에요.", "A frequent entry in the style guide.")),
+        ("디자인 패턴", "Design Pattern", ("저결합·고응집을 돕는 검증된 해법.", "A proven solution that helps achieve low coupling and high cohesion."), ("GoF 패턴이 대표적이에요.", "The GoF patterns are the best-known set.")),
     ],
 }

@@ -48,8 +48,8 @@ P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="
          + glyph(166, 110, 1.3, CHECK2_P)
          + label(190, 250, "⟦평소엔 폰 결제가 지갑보다 빠르고 간편해요|day to day, phone payment beats a wallet for speed⟧", 11, "var(--ink)")
          + person(570, 150, s=0.8, face=FROWN, **VISITOR)
-         + label(570, 262, "⟦배터리가 없거나 네트워크가 끊기면 결제가 멈춰버려요|a dead battery or a dropped connection, and payment just stops⟧", 11, "var(--ink)")
-         + label(380, 282, "⟦폰 결제는 편리하지만, 전기와 네트워크가 없으면 못 쓰는 약점이 있어요|phone payment is handy, but it fails without power and a network⟧", 12, "var(--ink)", cls="d"))
+         + label(570, 262, "⟦배터리가 없거나 네트워크가 끊기면 결제가 막힐 수 있어요|a dead battery or a dropped network can block payment⟧", 11, "var(--ink)")
+         + label(380, 282, "⟦폰 결제는 편리하지만, 전기와 네트워크에 기대는 약점이 있어요|phone payment is handy, but it depends on power and a network⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "fintech", "order": 25,
@@ -77,18 +77,18 @@ PAGE = {
          "caption": ("카드를 앱에 등록해두고 폰으로 찍으면, 결제망이 그 결제를 안전하게 확인해요.", "Register your card in the app and tap your phone; the payment network safely verifies the payment."),
          "small": ("금융에 이런 기술을 더한 서비스를 핀테크라고 불러요.", "Finance combined with technology like this is called fintech.")},
         {"svg": P5, "alt": ("왼쪽: 평소엔 결제가 빠르고 간편함. 오른쪽: 배터리가 없어 당황하는 관람객", "Left: payment is usually fast and simple. Right: a visitor flustered by a dead battery"),
-         "caption": ("폰 배터리가 없거나 네트워크가 끊기면, 결제가 멈춰요.", "A dead phone battery or a dropped connection stops payment."),
-         "small": ("폰 결제는 편리하지만, 전기와 네트워크가 없으면 못 쓰는 약점이 있어요.", "Phone payment is handy, but it fails without power and a network.")},
+         "caption": ("폰 배터리가 없거나 폰·단말기 네트워크가 끊기면, 결제가 막힐 수 있어요.", "A dead phone battery or a dropped connection on the phone or terminal can block payment."),
+         "small": ("폰 결제는 편리하지만, 전기와 네트워크에 기대는 약점이 있어요.", "Phone payment is handy, but it depends on power and a network.")},
     ],
     "summary": (("<b>핀테크</b> = 금융을 <b>스마트폰·암호화·네트워크</b>와 엮은 서비스. 대표 예는 지갑 없이 <b>한 번의 터치</b>로 끝내는 간편결제.",
                  "<b>Fintech</b> = financial services woven together with <b>smartphones, encryption, and networks</b>. Its best-known example is simple payment: <b>one tap</b>, no wallet."),
-                ("핀테크(FinTech)는 금융(Finance)과 기술(Technology)의 합성어로, 모바일 간편결제·송금·인증 기술을 결합해 전통적인 현금·카드 결제를 대체하는 서비스예요. 카드 정보를 암호화해 저장하고, 결제 순간에만 일회성 토큰으로 주고받아 안전성을 높이는 토큰화(tokenization) 기술이 핵심이에요. 다만 기기·배터리·네트워크에 의존한다는 한계도 함께 가져요.",
-                 "Fintech — a blend of 'finance' and 'technology' — combines mobile simple-payment, money-transfer, and authentication tech to replace traditional cash and card payment. Its core is tokenization: card data is stored encrypted, and only a one-time token is exchanged at the moment of payment, boosting security. Its limitation is its dependence on a device, a battery, and a network connection.")),
+                ("핀테크(FinTech)는 금융(Finance)과 기술(Technology)의 합성어로, 결제·송금·대출·투자·보험 같은 금융 서비스에 IT를 결합한 서비스를 말해요. 대표 예인 간편결제는 실제 카드 번호 대신 대체 번호(토큰)와 결제마다 새로 만드는 일회용 암호를 주고받는 토큰화(tokenization) 기술로 안전성을 높여요. 다만 간편결제는 기기·배터리·네트워크에 의존한다는 한계도 함께 가져요.",
+                 "Fintech — a blend of 'finance' and 'technology' — combines IT with financial services such as payment, money transfer, lending, investing, and insurance. Its best-known example, simple payment, boosts security with tokenization: a substitute number (token) and a fresh one-time code for each payment are exchanged instead of the real card number. Simple payment's limitation is its dependence on a device, a battery, and a network connection.")),
     "glossary": [
-        ("토큰화", "Tokenization", ("카드 번호 대신 쓰는 일회용 암호.", "A one-time code used instead of the real card number."), ("실제 번호가 새어나가지 않게 지켜줘요.", "It keeps the real number from ever leaking out.")),
+        ("토큰화", "Tokenization", ("실제 카드 번호 대신 쓰는 대체 번호(토큰).", "A substitute number (token) used instead of the real card number."), ("가맹점에는 실제 번호가 넘어가지 않고, 결제마다 일회용 암호가 따라가요.", "The merchant never gets the real number, and each payment carries a one-time code.")),
         ("간편결제", "Simple Payment", ("지갑 없이 폰 하나로 끝내는 결제.", "Payment finished with just a phone, no wallet."), ("핀테크가 가장 널리 퍼진 모습 중 하나예요.", "One of the most widespread forms of fintech.")),
         ("NFC/QR", "NFC/QR", ("폰과 매표소가 신호를 주고받는 방법.", "How the phone and the booth exchange a signal."), ("NFC는 폰을 갖다 대고, QR은 카메라로 찍어요.", "NFC works by holding the phone close; QR works by scanning with a camera.")),
-        ("NFT", "NFT", ("디지털 자산에 붙는 소유 증명서.", "The ownership certificate attached to a digital asset."), ('돈이 아니라 자산을 다루는 핀테크의 사촌이에요. → <a href="nft-ko.html">그림에 붙이는 위조 못 하는 증명서</a>', "A fintech cousin that certifies assets instead of moving money. → <a href=\"nft-en.html\">the certificate you can't forge</a>")),
+        ("NFT", "NFT", ("디지털 자산에 붙는 소유 증명서.", "The ownership certificate attached to a digital asset."), ('돈이 아니라 자산을 다루는 핀테크의 사촌이에요. → <a href="nft-ko.html">그림에 붙이는 몰래 못 고치는 증명서</a>', "A fintech cousin that certifies assets instead of moving money. → <a href=\"nft-en.html\">the certificate nobody can quietly alter</a>")),
         ("정량적 위험분석", "Quantitative Risk Analysis", ("결제 사고 위험을 숫자로 재는 방법.", "A way to score payment-fraud risk with numbers."), ('핀테크 보안도 이 방식으로 위험을 가늠해요. → <a href="quantrisk-ko.html">위험을 숫자 하나로 적는 전광판</a>', "Fintech security sizes up its risks the same way. → <a href=\"quantrisk-en.html\">the scoreboard that writes risk as one number</a>")),
         ("CPS", "Cyber-Physical System", ("현실의 기계와 컴퓨터 제어가 실시간으로 맞물린 구조.", "Physical machines and computer control locked together in real time."), ('결제 자체가 CPS는 아니지만, 실시간으로 맞물린다는 점이 닮았어요. → <a href="cps-ko.html">화면 속 쌍둥이와 함께 움직이는 기계팔</a>', "A payment isn't itself a CPS, but it shares the real-time back-and-forth. → <a href=\"cps-en.html\">the mechanical arm that moves with its screen twin</a>")),
         ("RPA", "RPA", ("영수증 발급 같은 반복 업무를 대신하는 로봇.", "The robot that handles repetitive tasks like issuing receipts."), ('매표소 안쪽에서 이 로봇이 거들고 있어요. → <a href="rpa-ko.html">규칙대로만 반복하는 로봇 직원</a>', 'Behind the counter, this robot is lending a hand. → <a href="rpa-en.html">the robot worker that only repeats the rule</a>')),

@@ -34,7 +34,7 @@ P2 = svg(300, '<rect width="760" height="300" fill="var(--bad-soft)"/>'
          + booth(290, 60, 200, 150, 1.0, "var(--muted)", "⟦전력|POWER⟧")
          + booth(520, 60, 200, 150, 1.0, "var(--muted)", "⟦수도|WATER⟧")
          + label(380, 250, "⟦교통·전력·수도가 각자 자기 것만 봐서, 도시 전체는 아무도 안 봐요|traffic, power, and water each watch their own; nobody watches the whole city⟧", 13, "var(--ink)")
-         + label(380, 282, "⟦그래서 한쪽의 문제를 다른 쪽이 몰라 자원이 낭비돼요|so one system misses another's problem, and resources go to waste⟧", 12, "var(--muted)"))
+         + label(380, 282, "⟦그래서 도로를 막 고친 뒤 수도관 공사로 또 파헤치듯, 돈과 시간이 낭비돼요|so a road just repaved gets dug up again for water pipes, wasting money and time⟧", 12, "var(--muted)"))
 
 # 3. 스마트시티 = 도시가 함께 조율됨 (hero)
 P3 = svg(340, sky(340, ground=False)
@@ -56,7 +56,7 @@ P4 = svg(360, sky(360, ground=False)
                       "⟦데이터 플랫폼 — 한곳에 모아 분석|data platform — collects and analyzes it⟧",
                       "⟦교통·환경 서비스 — 신호·대기질 조율|traffic/environment services — coordinate lights, air quality⟧",
                       "⟦안전 서비스 — 재난 조기경보|safety services — early disaster warning⟧"), 1.3)
-         + label(380, 345, "⟦스마트시티는 스마트팩토리와 같은 뼈대를 도시 규모로 키운 거예요|a smart city is a smart factory's skeleton, scaled up to a city⟧", 12, "var(--ink)"))
+         + label(380, 345, "⟦스마트시티는 스마트팩토리와 닮은 뼈대(센서·데이터·조절)를 도시 규모로 키운 셈이에요|a smart city scales a smart factory-like skeleton (sensors, data, control) up to a city⟧", 12, "var(--ink)"))
 
 # 5. 한계: 개인정보와 단일장애점
 P5 = svg(330, '<rect width="380" height="330" fill="var(--accent-soft)"/><rect x="380" width="380" height="330" fill="var(--bad-soft)"/>'
@@ -78,7 +78,7 @@ PAGE = {
          "small": ("차가 없는 쪽도 많은 쪽도 신호를 똑같은 시간만큼 기다려요.", "Empty or packed, every side waits the same fixed time at the light.")},
         {"svg": P2, "alt": ("교통·전력·수도 부스가 서로 떨어져 따로 운영됨", "Traffic, power, and water booths sit apart, each run on its own"),
          "caption": ("교통·전력·수도가 각자 자기 것만 봐서, 도시 전체는 아무도 안 봐요.", "Traffic, power, and water each watch their own — nobody watches the whole city."),
-         "small": ("그래서 한쪽의 문제를 다른 쪽이 몰라 자원이 낭비돼요.", "So one system misses another's problem, and resources go to waste.")},
+         "small": ("그래서 도로를 막 고친 뒤 수도관 공사로 또 파헤치듯, 돈과 시간이 낭비돼요.", "So a road just repaved gets dug up again for water pipes, wasting money and time.")},
         {"svg": P3, "hero": True, "alt": ("도시 모형과 화면 속 도시 쌍둥이가 나란히 있고, 차가 몰린 쪽 신호가 바뀜", "A city model and its on-screen twin side by side, the busier light changing first"),
          "caption": ("스마트시티는 도시 곳곳 데이터를 모아 교통·에너지·안전을 함께 조율해요.", "A smart city gathers citywide data to coordinate traffic, energy, and safety together."),
          "small": ("예를 들어, 차가 몰리는 쪽 신호가 먼저 초록불로 바뀌어요.", "For example, the busier side's light turns green first."),
@@ -89,7 +89,7 @@ PAGE = {
              (CITY_DATA, ("시민 데이터 활용", "Use citizen data"), ("모은 데이터로 교통·행정 서비스를 고쳐요", "to fine-tune traffic and city services"), "warm"),
          ])},
         {"svg": P4, "alt": ("센서망·데이터 플랫폼·교통환경 서비스·안전 서비스 네 겹 구조도", "A four-layer diagram: sensor network, data platform, traffic/environment, safety services"),
-         "caption": ("스마트시티는 스마트팩토리와 같은 뼈대를 도시 규모로 키운 거예요.", "A smart city is a smart factory's skeleton, scaled up to a city."),
+         "caption": ("스마트시티는 스마트팩토리와 닮은 뼈대(센서·데이터·조절)를 도시 규모로 키운 셈이에요.", "A smart city scales a smart factory-like skeleton (sensors, data, control) up to a city."),
          "small": ("센서망이 모은 데이터를 데이터 플랫폼이 모아 서비스로 내보내요.", "The sensor network's data flows through the platform into services.")},
         {"svg": P5, "alt": ("왼쪽: 관람객이 개인정보 수집을 걱정함. 오른쪽: 데이터 플랫폼이 멈추면 도시 전체가 흔들림", "Left: a visitor worries about personal data collection. Right: the data platform going down wobbles the whole city"),
          "caption": ("스마트시티엔 개인정보 수집 논란과, 플랫폼 한 곳이 멈추면 서비스가 함께 멈추는 단일장애점 위험이 따라와요.", "A smart city brings personal-data concerns, plus single-point-of-failure risk: one platform stops and many services stop with it."),
@@ -100,9 +100,9 @@ PAGE = {
                 ("스마트시티는 IoT 센서망·통합 데이터 플랫폼·각종 서비스(교통·에너지·안전·행정)를 연결해 도시 자원을 실시간으로 최적화하는 개념이에요. 스마트팩토리의 구조를 도시 규모로 확장한 형태에 가깝고, 수집되는 데이터의 양이 많은 만큼 개인정보 보호와 데이터 플랫폼 장애 시 여러 서비스가 동시에 영향받는 위험을 함께 설계해야 해요.",
                  "A smart city connects IoT sensor networks, an integrated data platform, and various services (traffic, energy, safety, administration) to optimize city resources in real time. It's close to a smart factory's structure scaled up to city size, and because it collects so much data, personal-data protection and the risk of a platform outage hitting many services at once both need to be designed for.")),
     "glossary": [
-        ("스마트시티", "Smart City", ("도시 곳곳의 데이터로 함께 조율되는 도시.", "A city coordinated by citywide data."), ("스마트팩토리의 도시 버전이에요.", "The city-scale version of a smart factory.")),
-        ("스마트팩토리", "Smart Factory", ("센서·데이터로 스스로 조절하는 공장.", "A factory that adjusts itself using sensors and data."), ('스마트시티와 구조가 거의 같아요. → <a href="smartfactory-ko.html">스마트팩토리 부스</a>', "Nearly the same structure as a smart city. → <a href=\"smartfactory-en.html\">the Smart Factory booth</a>")),
-        ("디지털 트윈", "Digital Twin", ("도시를 화면 속에 그대로 복제한 쌍둥이.", "A twin of the city, replicated on screen."), ('스마트시티 화면도 이 기술을 써요. → <a href="digitaltwin-ko.html">디지털 트윈 부스</a>', "The city's screen uses this same technology. → <a href=\"digitaltwin-en.html\">the Digital Twin booth</a>")),
+        ("스마트시티", "Smart City", ("도시 곳곳의 데이터로 함께 조율되는 도시.", "A city coordinated by citywide data."), ("센서·데이터·조절의 뼈대가 스마트팩토리와 닮았어요.", "Its sensor-data-control skeleton resembles a smart factory's.")),
+        ("스마트팩토리", "Smart Factory", ("센서·데이터로 스스로 조절하는 공장.", "A factory that adjusts itself using sensors and data."), ('스마트시티와 구조가 닮았어요. → <a href="smartfactory-ko.html">스마트팩토리 부스</a>', "A structure much like a smart city's. → <a href=\"smartfactory-en.html\">the Smart Factory booth</a>")),
+        ("디지털 트윈", "Digital Twin", ("도시를 화면 속에 그대로 복제한 쌍둥이.", "A twin of the city, replicated on screen."), ('스마트시티 화면에 이 기술을 쓰기도 해요. → <a href="digitaltwin-ko.html">디지털 트윈 부스</a>', "A city's screen can use this same technology too. → <a href=\"digitaltwin-en.html\">the Digital Twin booth</a>")),
         ("마이데이터", "MyData", ("내 정보를 내가 통제하는 제도.", "A system letting you control your own data."), ('개인정보 수집 논란과 맞닿아요. → <a href="mydataTech-ko.html">마이데이터 부스</a>', 'Connects to the personal-data concern here. → <a href="mydataTech-en.html">the MyData booth</a>')),
         ("단일장애점", "Single Point of Failure", ("한 곳이 멈추면 전체가 멈추는 지점.", "The one spot whose failure stops everything."), ("데이터 플랫폼이 이 지점이 되기 쉬워요.", "The data platform easily becomes this spot.")),
         ("IoT 센서망", "IoT Sensor Network", ("도시 곳곳에 심어둔 눈과 귀.", "Eyes and ears planted all over the city."), ("모든 서비스의 출발점이에요.", "The starting point for every service.")),

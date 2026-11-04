@@ -36,7 +36,7 @@ P3 = svg(340, sky(340)
          + glyph(430, 130, 1.1, STAMP_P)
          + person(670, 220, s=0.8, face=SMILE, **VISITOR)
          + label(380, 30, "⟦NFT = 그림은 그대로 두고, 그 그림에 '이건 진짜예요'라는 증명서만 따로 붙이는 것|NFT = leaving the picture as-is, but attaching a separate 'this one is the real one' certificate⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦증명서는 모두가 함께 적는 장부(블록체인)에 기록돼 위조할 수 없어요|the certificate goes into a shared ledger (blockchain) everyone keeps, so it can't be forged⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦증명서는 모두가 함께 적는 장부(블록체인)에 기록돼, 몰래 고칠 수 없어요|the certificate goes into a shared ledger (blockchain) everyone keeps, so it can't be quietly altered⟧", 12, "var(--muted)"))
 
 # 4. 증명서에는 무엇이 적히나요
 P4 = svg(320, sky(320)
@@ -51,14 +51,14 @@ P4 = svg(320, sky(320)
 # 5. 한계 - 증명서만 유일할 뿐, 그림 자체는 막을 수 없어요
 P5 = svg(300, '<rect width="380" height="300" fill="var(--good-soft)"/><rect x="380" width="380" height="300" fill="var(--bad-soft)"/>'
          + glyph(166, 110, 1.3, STAMP_P)
-         + label(190, 250, "⟦증명서로 '누가 갖고 있나'는 확실히 증명돼요|the certificate proves, for certain, who holds the work⟧", 11, "var(--ink)")
+         + label(190, 250, "⟦증명서 주인이 누구인지는 확실히 증명돼요|it proves, for certain, who holds the certificate⟧", 11, "var(--ink)")
          + canvas(550, 110, 1.0) + glyph(560, 170, 0.6, COPY_P)
          + label(570, 262, "⟦그림 자체는 여전히 누구나 내려받고 복사할 수 있어요|the picture itself can still be downloaded and copied by anyone⟧", 11, "var(--ink)")
          + label(380, 282, "⟦NFT는 '이 번호의 주인' 기록이지, 복제를 막는 자물쇠가 아니에요|an NFT records who holds this token, not a lock against copying⟧", 12, "var(--ink)", cls="d"))
 
 PAGE = {
     "slug": "nft", "order": 19,
-    "title": ("그림에 붙이는 위조 못 하는 증명서", "The Certificate You Can't Forge, Stuck to the Picture"),
+    "title": ("그림에 붙이는 몰래 못 고치는 증명서", "The Certificate Nobody Can Quietly Alter, Stuck to the Picture"),
     "h1": ("<em>NFT</em>가 뭐예요?", "What is <em>NFT</em>?"),
     "sub": ("NFT를, 복사되는 디지털 그림에 '이게 진짜예요'라고 붙이는 증명서 이야기로 풀어봤어요.",
             "NFTs, told as a story about a certificate stuck onto a copyable digital picture, saying 'this one is the real one.'"),
@@ -71,11 +71,11 @@ PAGE = {
          "small": ("그림이 열 장 복사돼도, 어느 게 '진짜'인지 구별이 안 돼요.", "Even with ten copies, there's no way to tell which one is 'the real one.'")},
         {"svg": P3, "hero": True, "alt": ("그림 옆에 위조 방지 도장이 찍힌 증명서가 붙고, 관람객이 흐뭇해함", "A tamper-proof certificate is stamped beside the picture while a visitor looks pleased"),
          "caption": ("NFT는 그림은 그대로 두고 '이건 진짜예요'라는 증명서만 따로 붙이는 거예요.", "An NFT leaves the picture as-is, but attaches a separate 'this one is real' certificate."),
-         "small": ("증명서는 모두가 함께 적는 장부(블록체인)에 기록돼 위조할 수 없어요.", "The certificate is written into a shared ledger (blockchain) everyone keeps, so it can't be forged."),
+         "small": ("증명서는 모두가 함께 적는 장부(블록체인)에 기록돼, 몰래 고칠 수 없어요.", "The certificate is written into a shared ledger (blockchain) everyone keeps, so it can't be quietly altered."),
          "tricks": (4, [
              (PAINT_I, ("원본은 그대로", "The artwork stays as-is"), ("그림 자체는 안 바뀌어요", "the picture itself doesn't change")),
              (STAMP_I, ("증명서 붙이기", "Attach a certificate"), ("고유 번호를 하나 붙여요", "attaches one unique ID"), "calm"),
-             (CHAIN_I, ("모두의 장부에 기록", "Record on a shared ledger"), ("다 같이 적어서 위조가 안 돼요", "everyone keeps the record, so it can't be forged")),
+             (CHAIN_I, ("모두의 장부에 기록", "Record on a shared ledger"), ("다 같이 적어서 기록을 몰래 못 고쳐요", "everyone keeps the record, so it can't be quietly altered")),
              (COPY_I, ("그래도 복사는 돼요", "Still copyable"), ("그림 파일 복사 자체는 못 막아요", "it can't stop the image file from being copied"), "warm"),
          ])},
         {"svg": P4, "alt": ("증명서 설명판: 고유 번호, 현재 소유자, 거래 기록, 작품 자체는 아님", "A board lists what the certificate records: unique ID, current owner, history, and that it is not the artwork itself"),
@@ -85,17 +85,17 @@ PAGE = {
          "caption": ("증명서만 유일할 뿐, 그림 복사 자체는 막을 수 없어요.", "Only the certificate is unique — it can't stop the picture from being copied."),
          "small": ("NFT는 '이 번호의 주인' 기록이지, 복제를 막는 자물쇠가 아니에요. 저작권까지 넘어오는 것도 아니에요.", "An NFT records who holds this token; it isn't a lock against copying, and it doesn't transfer copyright by itself.")},
     ],
-    "summary": (("<b>NFT</b> = 디지털 작품에 <b>위조 못 하는 고유 번호</b>를 붙여, <b>누가 원본을 소유하는지</b>만 증명하는 기술.",
-                 "<b>NFT</b> = a technology that attaches an <b>unforgeable unique ID</b> to a digital work, proving only <b>who owns the original</b>."),
-                ("NFT(Non-Fungible Token)는 블록체인 위에 디지털 자산의 소유권과 거래 이력을 기록한 고유 토큰이에요. 자산 파일 자체를 암호화하거나 복제를 막는 것이 아니라, '이 토큰을 가진 사람이 원본 소유자'라는 사실만 위조 불가능하게 증명해요.",
-                 "An NFT (Non-Fungible Token) is a unique token recorded on a blockchain that tracks a digital asset's ownership and transaction history. It doesn't encrypt the asset file or prevent copying — it only proves, unforgeably, that whoever holds the token is the original owner.")),
+    "summary": (("<b>NFT</b> = 디지털 작품에 <b>고유 번호(토큰)</b>를 붙여, <b>누가 그 토큰을 가졌는지</b>만 증명하는 기술.",
+                 "<b>NFT</b> = a technology that attaches a <b>unique ID (a token)</b> to a digital work, proving only <b>who holds that token</b>."),
+                ("NFT(Non-Fungible Token)는 블록체인 위에 디지털 자산의 소유권과 거래 이력을 기록한 고유 토큰이에요. 자산 파일 자체를 암호화하거나 복제를 막는 것이 아니라, 누가 이 토큰을 가졌는지만 증명해요. 그림 파일은 보통 블록체인 밖에 있고 토큰엔 그 주소만 적혀요. 토큰을 샀다고 저작권이 따라오지 않고, 다른 사람이 같은 그림으로 또 다른 NFT를 만드는 것도 기술만으로는 못 막아요.",
+                 "An NFT (Non-Fungible Token) is a unique token recorded on a blockchain that tracks a digital asset's ownership and transaction history. It doesn't encrypt the asset file or prevent copying — it only proves who holds the token. The image file usually sits off-chain, with only its address in the token. Buying a token doesn't bring the copyright with it, and technology alone can't stop someone from minting another NFT of the same picture.")),
     "glossary": [
-        ("NFT", "NFT", ("그림에 붙는 위조 못 하는 증명서.", "The unforgeable certificate stuck to a picture."), ("그림이 아니라 '소유'를 증명해요.", "It proves ownership, not the artwork.")),
+        ("NFT", "NFT", ("그림에 붙는 몰래 못 고치는 증명서.", "The unforgeable certificate stuck to a picture."), ("그림 자체가 아니라 '이 토큰의 주인'을 증명해요.", "It proves who holds this token, not the artwork itself.")),
         ("블록체인", "Blockchain", ("모두가 함께 적는 장부.", "The ledger everyone keeps together."), ("증명서가 적히는 바로 그 장부예요.", "The very ledger the certificate is written into.")),
         ("대체 불가능", "Non-Fungible", ("세상에 하나뿐이라는 뜻.", "Meaning there's only one in the whole world."), ("일련번호가 있어 다른 토큰과 안 바뀌어요.", "Its serial number means it can't be swapped for another token.")),
-        ("가상자산", "Virtual Asset", ("디지털로만 존재하는 재산.", "Property that exists only digitally."), ("NFT도 이 큰 갈래 중 하나예요.", "NFTs are one branch of this larger category.")),
+        ("가상자산", "Virtual Asset", ("디지털로만 존재하는 재산.", "Property that exists only digitally."), ("한국 금융당국은 수집용 NFT는 원칙적으로 가상자산에서 빼지만, 대량 발행돼 지급수단처럼 쓰이면 가상자산으로 볼 수 있다고 해요.", "Korean regulators generally exclude collectible NFTs from virtual assets, but mass-issued ones used like payment can count as virtual assets.")),
         ("디지털 저작권", "Digital Copyright", ("원본을 베끼지 못하게 막는 권리.", "The right that's meant to stop copying."), ("NFT는 이 권리를 대신해주지 않아요.", "An NFT doesn't substitute for this right.")),
-        ("핀테크", "Fintech", ("돈을 디지털로 주고받는 기술.", "Technology for sending money digitally."), ('NFT 거래에도 이런 결제 기술이 쓰여요. → <a href="fintech-ko.html">핀테크·간편결제</a>', 'NFT trades lean on this same kind of payment tech. → <a href="fintech-en.html">Fintech & simple payment</a>')),
+        ("핀테크", "Fintech", ("금융에 IT를 더한 서비스.", "Financial services combined with IT."), ('NFT 거래에도 이런 결제 기술이 쓰여요. → <a href="fintech-ko.html">핀테크·간편결제</a>', 'NFT trades lean on this same kind of payment tech. → <a href="fintech-en.html">Fintech & simple payment</a>')),
         ("정량적 위험분석", "Quantitative Risk Analysis", ("가치 변동 위험을 숫자로 재는 방법.", "A way to score value swings with numbers."), ('NFT 가격의 급등락 위험도 이렇게 가늠해요. → <a href="quantrisk-ko.html">정량적 위험분석 기법</a>', "An NFT's wild price swings get sized up the same way. → <a href=\"quantrisk-en.html\">Quantitative Risk Analysis</a>")),
         ("4차 산업혁명", "4th Industrial Revolution", ("여러 신기술이 모여 만드는 큰 흐름.", "The big wave made when many new technologies combine."), ('이 전시장 전체를 아우르는 이야기예요. → <a href="fourthindustry-ko.html">4차 산업혁명</a>', 'The story that frames this whole exhibit hall. → <a href="fourthindustry-en.html">the 4th Industrial Revolution</a>')),
     ],

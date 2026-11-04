@@ -43,7 +43,7 @@ P3 = svg(340, sky(340)
          + card(530, 100, 110, 60, "")
          + label(585, 70, "⟦봉인된 합계|the sealed total⟧", 11, "var(--muted)")
          + person(660, 220, s=0.8, **VILLAGER1)
-         + label(660, 325, "⟦열쇠 주인만 합계를 열어요|only the key's owner opens the total⟧", 11, "var(--good)")
+         + label(660, 325, "⟦열쇠 주인만 합계를 열어요|only the key's owner opens it⟧", 11, "var(--good)")
          + label(380, 320, "⟦서기는 한 번도 뜯지 않고 더했어요|the scribe added them without ever breaking a seal⟧", 13, "var(--ink)", cls="d"))
 
 ADD_I = icon('<rect x="8" y="16" width="48" height="32" rx="5" fill="#FFF8E7" stroke="#C9A86A" stroke-width="3"/><path d="M32 24 v16 M24 32 h16" stroke="var(--good)" stroke-width="4" stroke-linecap="round"/>')
@@ -67,7 +67,7 @@ PAGE = {
         {"svg": P3, "hero": True, "alt": ("봉인된 카드 세 장을 더해 봉인된 합계 카드를 만들고, 주인만 자기 열쇠로 염", "Three sealed cards are added to make one sealed total card, which only the owner unseals with their own key"),
          "caption": ("동형암호는 봉인째로 더하는 셈이에요.", "Homomorphic encryption adds the cards while they're still sealed."),
          "small": ('서기는 한 번도 뜯지 않고 더했어요. 합계를 열 수 있는 건 <a href="encryption-ko.html">열쇠</a>를 가진 주인뿐이에요.',
-                   'The scribe added them without ever breaking a seal. Only the owner holding the key can open the total.'),
+                   'The scribe added them without ever breaking a seal. Only the owner holding the <a href="encryption-en.html">key</a> can open the total.'),
          "tricks": (4, [
              (ADD_I, ("더하기도 봉인한 채", "Add while still sealed"), ("뜯지 않고 셈해요", "math, without opening it"), "calm"),
              (MUL_I, ("곱하기까지 되는 종류도 있어요", "Some can multiply too"), ("완전 동형암호는 더하기와 곱하기를 다 해요", "fully homomorphic schemes both add and multiply")),
@@ -90,11 +90,11 @@ PAGE = {
                     + person(160, 140, s=0.85, face=EYES, **SCRIBE) + card(230, 100, 90, 60, "")
                     + label(160, 250, "⟦한 가지 연산만 되는 간단한 동형암호도 있어요|a simpler kind supports just one operation⟧", 11, "var(--muted)")
                     + person(560, 140, s=0.85, **VILLAGER2) + label(560, 250, "⟦더하기·곱하기 다 되는 버전은 덧셈 버전보다 훨씬 느려요|the add-and-multiply kind runs far slower than add-only⟧", 11, "var(--muted)")
-                    + label(380, 280, "⟦클라우드에 맡긴 의료·금융 자료를 계산할 때 주로 써요|mostly used for computing on medical or financial data handed to the cloud⟧", 12, "var(--ink)", cls="d")),
+                    + label(380, 280, "⟦클라우드에 맡긴 의료·금융 자료를 계산할 때 쓸 수 있어요|useful for computing on medical or financial data handed to the cloud⟧", 12, "var(--ink)", cls="d")),
          "alt": ("부분 동형암호(한 가지 연산)와 완전 동형암호(덧셈+곱셈)를 비교", "Comparing partial homomorphic encryption (one operation) with fully homomorphic encryption (addition and multiplication)"),
          "caption": ("동형암호는 종류에 따라 되는 셈이 다르고, 보통 계산보다 훨씬 느려요.", "Which math works depends on the type of homomorphic encryption, and all of it is far slower than plain computation."),
-         "small": ('동형암호는 클라우드에 맡긴 의료·금융 자료를 계산할 때 주로 써요. 개인을 지키며 통계 내는 다른 방법도 있어요 → <a href="ppdm-ko.html">PPDM</a>',
-                   'Homomorphic encryption is mostly used to compute on medical or financial data handed to the cloud. Other ways to mine statistics while protecting individuals exist too → <a href="ppdm-en.html">PPDM</a>')},
+         "small": ('동형암호는 클라우드에 맡긴 의료·금융 자료를 계산할 때 쓸 수 있어요. 개인을 지키며 통계 내는 다른 방법도 있어요 → <a href="ppdm-ko.html">PPDM</a>',
+                   'Homomorphic encryption is useful for computing on medical or financial data handed to the cloud. Other ways to mine statistics while protecting individuals exist too → <a href="ppdm-en.html">PPDM</a>')},
     ],
     "summary": (("<b>동형암호</b> = 편지를 <b>봉인한 채로</b> 더하거나 곱할 수 있는 암호. 계산하는 사람은 내용을 못 보고, <b>결과도 봉인된 채</b> 나와서 주인만 열 수 있어요.",
                  "<b>Homomorphic encryption</b> = a cipher that lets you add or multiply a letter <b>while it stays sealed</b>. Whoever computes never sees the content, and the <b>result comes out sealed too</b> — only the owner can open it."),
@@ -105,7 +105,7 @@ PAGE = {
         ("부분 동형암호(PHE)", "Partial HE", ("한 가지 연산만 되는 간단한 버전.", "A simpler version with one operation."), ("덧셈이나 곱셈 중 하나만 암호문 상태로 지원해요.", "Supports either addition or multiplication directly on ciphertext.")),
         ("완전 동형암호(FHE)", "Fully HE", ("더하기·곱하기 다 되는 버전.", "A version that both adds and multiplies."), ("부분 동형암호보다 훨씬 유연하지만 훨씬 느려요.", "Far more flexible than partial HE, but far slower too.")),
         ("암호문 연산", "Ciphertext computation", ("봉인된 채로 셈.", "Doing the math while it's sealed."), ("계산자는 내용을 몰라도 돼요.", "The one computing never needs to know the content.")),
-        ("기밀 계산", "Confidential computing", ("계산하는 동안에도 자료를 숨기기.", "Hiding the data even while it's being computed on."), ("동형암호는 이 목표를 암호로 이루는 한 가지 방법이에요.", "Homomorphic encryption is one cryptographic way to reach this goal.")),
+        ("기밀 계산", "Confidential computing", ("계산하는 동안에도 자료를 숨기기.", "Hiding the data even while it's being computed on."), ("이 말은 보통 하드웨어 보호 구역(TEE) 방식을 가리켜요. 동형암호는 같은 목표를 암호로 이루는 다른 방법이에요.", "The term usually means hardware-protected enclaves (TEEs). Homomorphic encryption reaches the same goal a different way, through cryptography.")),
         ("복호화", "Decryption", ("봉인을 여는 것.", "Opening the seal."), ('일반 암호화는 계산 전에 열어야 해요. → <a href="encryption-ko.html">열쇠 없이는 못 읽는 편지</a>', 'Ordinary encryption has to be opened before you compute. → <a href="encryption-en.html">the letter no one reads without the key</a>')),
         ("클라우드 위탁 계산", "Outsourced cloud computation", ("빌린 창고에 계산을 맡기는 것.", "Handing the computing to a rented warehouse."), ("동형암호는 자료 내용을 보여주지 않고도 계산을 맡길 수 있게 해줘요.", "Homomorphic encryption lets you hand over the computing without ever showing the data.")),
         ("PPDM", "PPDM", ("개인을 지키며 통계 내는 다른 기법들.", "Other techniques for mining statistics while protecting individuals."), ('동형암호는 PPDM이 쓰는 도구 중 하나예요. → <a href="ppdm-ko.html">PPDM</a>', 'Homomorphic encryption is one tool PPDM uses. → <a href="ppdm-en.html">PPDM</a>')),

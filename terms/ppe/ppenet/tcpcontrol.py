@@ -22,7 +22,7 @@ P3 = svg(340, sky(340)
          + person(260, 150, s=0.85, face=EYES, **CARRIER) + envelope(380, 140, 0.8, registered=True)
          + person(520, 180, s=0.85, face=SMILE, **RECEIVER)
          + label(380, 30, "⟦TCP 오류·흐름·혼잡 제어 = 등기 배송을 끝까지 안전하게 지키는 세 장치|TCP's error, flow, and congestion control = the three devices that guard a registered delivery to the end⟧", 13, "var(--ink)", cls="d")
-         + label(380, 320, "⟦봉투를 잃어버리면 다시 보내고, 우편함이 넘치면 늦추고, 길이 막히면 보내는 봉투 수를 줄여요|resend lost envelopes, slow down when the mailbox overflows, send fewer when the road jams⟧", 12, "var(--muted)"))
+         + label(380, 320, "⟦TCP는 봉투를 잃어버리면 다시 보내고, 우편함이 넘치면 늦추고, 길이 막히면 보내는 봉투 수를 줄여요|TCP resends lost envelopes, slows when the mailbox overflows, and sends fewer when the road jams⟧", 12, "var(--muted)"))
 
 # 4. 혼잡 제어 타임라인(점점 늘리다 줄이는 톱니)
 P4 = svg(300, sky(300, ground=False)
@@ -58,7 +58,7 @@ PAGE = {
          "small": ("훼손·분실, 우편함 넘침, 길 전체 막힘이 한꺼번에 와요.", "Damage and loss, an overflowing mailbox, and a jammed road all arrive together.")},
         {"svg": P3, "hero": True, "alt": ("집배원과 받는 사람 사이에서 등기봉투가 안전하게 오가는 모습", "A registered envelope passing safely between a carrier and a smiling receiver"),
          "caption": ("TCP의 오류·흐름·혼잡 제어는 등기 배송을 끝까지 지키는 세 장치예요.", "TCP's error, flow, and congestion control are three devices guarding a registered delivery to the end."),
-         "small": ("봉투를 잃어버리면 다시 보내고, 우편함이 넘치면 늦추고, 길이 막히면 보내는 봉투 수를 줄여요.", "Resend lost envelopes, slow down when the mailbox overflows, send fewer when the road jams."),
+         "small": ("TCP는 봉투를 잃어버리면 다시 보내고, 우편함이 넘치면 늦추고, 길이 막히면 보내는 봉투 수를 줄여요.", "TCP resends lost envelopes, slows when the mailbox overflows, and sends fewer when the road jams."),
          "tricks": (4, [
              (RESEND_I, ("오류 제어", "Error control"), ("확인이 없으면 다시 보내요(재전송)", "no acknowledgment means the envelope gets resent"), "calm"),
              (WINDOW_I, ("흐름 제어", "Flow control"), ("받는 우편함 크기만큼만 보내요(윈도)", "sends only as much as the mailbox can hold (window)")),
@@ -74,8 +74,8 @@ PAGE = {
     ],
     "summary": (("TCP는 <b>오류 제어(잃어버리면 재전송)</b>, <b>흐름 제어(받는 쪽 속도에 맞추기)</b>, <b>혼잡 제어(길 막히면 속도 줄이기)</b> 세 장치로 등기 배송을 끝까지 지켜요.",
                  "TCP guards a registered delivery to the end with three devices: <b>error control</b> (resend what's lost), <b>flow control</b> (match the receiver's pace), and <b>congestion control</b> (slow down when the road jams)."),
-                ("오류 제어는 체크섬·ACK·재전송(timeout, 빠른 재전송)으로 손실·훼손을 복구하고, 흐름 제어는 수신 윈도(receive window)로 수신 측 버퍼가 넘치지 않게 송신 속도를 조절해요. 혼잡 제어는 네트워크 혼잡 자체를 추정해 혼잡 윈도(congestion window)를 slow start·congestion avoidance로 늘리고, 손실이 감지되면 줄이는 방식으로(AIMD) 전체 경로의 과부하를 막아요.",
-                 "Error control recovers loss and corruption through checksums, ACKs, and retransmission (timeout, fast retransmit). Flow control uses the receive window to throttle the sender so the receiver's buffer never overflows. Congestion control estimates network congestion itself, growing the congestion window via slow start and congestion avoidance, then cutting it on detected loss (AIMD) to keep the whole path from overloading.")),
+                ("오류 제어는 체크섬·ACK·재전송(timeout, 빠른 재전송)으로 손실·훼손을 복구하고, 흐름 제어는 수신 윈도(receive window)로 수신 측 버퍼가 넘치지 않게 송신 속도를 조절해요. 혼잡 제어는 네트워크 혼잡 자체를 추정해 혼잡 윈도(congestion window)를 slow start·congestion avoidance로 늘리고, 손실이 감지되면 줄이는 방식으로(전통적인 AIMD) 전체 경로의 과부하를 막아요.",
+                 "Error control recovers loss and corruption through checksums, ACKs, and retransmission (timeout, fast retransmit). Flow control uses the receive window to throttle the sender so the receiver's buffer never overflows. Congestion control estimates network congestion itself, growing the congestion window via slow start and congestion avoidance, then cutting it on detected loss (classic AIMD) to keep the whole path from overloading.")),
     "glossary": [
         ("오류 제어", "Error control", ("잃어버리거나 훼손되면 다시 보내는 장치.", "The device that resends what was lost or damaged."), ("체크섬과 확인응답(ACK)으로 알아차려요.", "Detected via checksum and acknowledgment (ACK).")),
         ("흐름 제어", "Flow control", ("받는 우편함 크기만큼만 보내는 장치.", "The device that sends only as much as the mailbox can hold."), ("수신 윈도 크기로 속도를 맞춰요.", "Matches pace to the receive window size.")),
@@ -83,7 +83,7 @@ PAGE = {
         ("ACK", "ACK", ("잘 받았다는 확인 쪽지.", "The note confirming something arrived safely."), ("없으면 재전송이 시작돼요.", "Its absence is what triggers a resend.")),
         ("타임아웃·재전송", "Timeout/retransmission", ("일정 시간 답이 없으면 다시 보내는 규칙.", "The rule that resends when no reply comes in time."), ("오류 제어의 핵심 수단이에요.", "A core mechanism of error control.")),
         ("3-way 핸드셰이크", "3-way handshake", ("보내기 전 나누는 인사 세 번.", "The three greetings exchanged before anything is sent."), ('TCP가 제어 전에 먼저 거치는 절차예요. → <a href="tcpudp-ko.html">등기봉투와 일반봉투</a>', "The step TCP takes before any of this control begins. → <a href=\"tcpudp-en.html\">the registered envelope and the plain one</a>")),
-        ("TCP/UDP", "TCP/UDP", ("등기봉투와 일반봉투.", "The registered envelope and the plain one."), ('이 세 장치는 등기봉투(TCP)에만 있어요. → <a href="tcpudp-ko.html">등기봉투와 일반봉투</a>', 'These three devices exist only in the registered envelope (TCP). → <a href="tcpudp-en.html">the registered envelope and the plain one</a>')),
+        ("TCP/UDP", "TCP/UDP", ("등기봉투와 일반봉투.", "The registered envelope and the plain one."), ('일반봉투(UDP)에는 이 세 장치가 없어요. → <a href="tcpudp-ko.html">등기봉투와 일반봉투</a>', 'The plain envelope (UDP) has none of these three devices. → <a href="tcpudp-en.html">the registered envelope and the plain one</a>')),
         ("5G 네트워크 슬라이싱", "5G Network slicing", ("한 도로를 전용 차선으로 나누는 것.", "Splitting one road into dedicated lanes."), ('도로 전체가 막히면 차선 보장도 같이 흔들려요. → <a href="5gslicing-ko.html">도로를 차선으로 나누기</a>', "Lane guarantees shake too once the whole road jams. → <a href=\"5gslicing-en.html\">splitting the road into lanes</a>")),
     ],
 }
